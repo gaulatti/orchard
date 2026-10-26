@@ -1,6 +1,9 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Foundation;
@@ -64,19 +67,26 @@ public sealed partial class BleeckerMediaLibrary
         {
             private readonly BleeckerMediaLibrary owner;
             private readonly Image image = new() { Name = "MediaPreviewImage", Stretch = Stretch.Uniform, IsHitTestVisible = false, FlowDirection = FlowDirection.LeftToRight };
-            private readonly TextBlock failure;
+            private readonly RichTextBlock failure;
+            private readonly Run failureLabel = new();
+            private readonly Microsoft.UI.Xaml.Shapes.Path failureGlyph;
             private BleeckerMediaLibraryItem? item;
             private bool failed;
             private Size size;
             internal ImageFrame(BleeckerMediaLibrary owner)
             {
-                this.owner = owner; UseLayoutRounding = false; failure = Text("MediaPreviewFailedImage", (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"], 16, 24); failure.Visibility = Visibility.Collapsed; Children.Add(image); Children.Add(failure);
+                this.owner = owner; UseLayoutRounding = false;
+                failure = new() { Name = "MediaPreviewFailedImage", FontFamily = (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"], FontSize = 16, LineHeight = 24, LineStackingStrategy = LineStackingStrategy.BlockLineHeight, TextWrapping = TextWrapping.Wrap, UseLayoutRounding = false, IsHitTestVisible = false, Visibility = Visibility.Collapsed };
+                failureGlyph = (Microsoft.UI.Xaml.Shapes.Path)XamlReader.Load("<Path xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Name='MediaPreviewFailedImageGlyph' Width='16' Height='16' Stretch='None' StrokeThickness='1' Data='M1.5,1.5 H14.5 V14.5 H1.5 Z M3.5,11 L6,8 L8,10 L10,7 L13,11 M10,5 A1,1 0 1 0 8,5 A1,1 0 1 0 10,5'/>");
+                failureGlyph.IsHitTestVisible = false; failureGlyph.RenderTransform = new TranslateTransform { Y = -4 }; AutomationProperties.SetAccessibilityView(failureGlyph, AccessibilityView.Raw);
+                var paragraph = new Paragraph(); paragraph.Inlines.Add(new InlineUIContainer { Child = failureGlyph }); paragraph.Inlines.Add(failureLabel); failure.Blocks.Add(paragraph);
+                Children.Add(image); Children.Add(failure);
                 image.ImageOpened += Opened; image.ImageFailed += Failed;
             }
             internal void Update(BleeckerMediaLibraryItem? next)
             {
                 item = next; if (!ReferenceEquals(image.Source, next?.ImageSource)) { failed = false; image.Source = next?.ImageSource; }
-                var label = string.IsNullOrEmpty(next?.Alt) ? next?.Filename ?? "" : next.Alt; AutomationProperties.SetName(image, label); failure.Text = label; failure.Foreground = owner.Foreground; failure.Language = owner.Language; failure.FlowDirection = owner.FlowDirection; image.Visibility = image.Source is not null && !failed ? Visibility.Visible : Visibility.Collapsed; failure.Visibility = failed ? Visibility.Visible : Visibility.Collapsed; InvalidateMeasure();
+                var label = string.IsNullOrEmpty(next?.Alt) ? next?.Filename ?? "" : next.Alt; AutomationProperties.SetName(image, label); failureLabel.Text = label; failure.Foreground = owner.Foreground; failureGlyph.Stroke = owner.Brush("Secondary"); failure.Language = owner.Language; failure.FlowDirection = owner.FlowDirection; image.Visibility = image.Source is not null && !failed ? Visibility.Visible : Visibility.Collapsed; failure.Visibility = failed ? Visibility.Visible : Visibility.Collapsed; InvalidateMeasure();
             }
             private void Opened(object sender, RoutedEventArgs args) { failed = false; Update(item); }
             private void Failed(object sender, ExceptionRoutedEventArgs args) { failed = true; Update(item); if (item is not null) owner.Failed(item); }

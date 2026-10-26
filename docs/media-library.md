@@ -71,6 +71,8 @@ The tile uses a nonempty thumbnail URL before a nonempty full URL, with alt text
 falling back to the filename. With neither image value it displays `No preview`.
 An image decoding failure does not select another source. The preview uses only
 the full URL, so a thumbnail-only item has an empty image frame in the modal.
+When the full preview image fails, its original alt text appears with the same
+small, non-interactive failure marker used by a failed tile thumbnail.
 For a failed tile thumbnail, the original alt text remains visible with a small
 image-failure marker at its start, matching the source's broken-image affordance.
 At narrow widths, later lines of the alt text wrap back to the tile edge instead
@@ -207,3 +209,13 @@ PNG audits, including narrow failed-alt wrapping. Its state snapshots and
 behavior results match the source host. ARM64 has build evidence only; native
 ARM64 runtime, physical pointer/keyboard input and the remaining full visual
 review are still open. Media Library is not yet an accepted inventory entry.
+
+The later source-only full-preview repair adds that marker to the broken-full
+case in both themes. `artifacts/current/media-library-preview-failure-v1` passes
+100 hidden x64 states, 38 behavior checks and 102 rendered PNG audits. Its light
+and dark broken-full captures were compared with the pinned source, and the
+negative audit rejects 87 corruptions, including a hidden or erased preview
+marker. The x64 and ARM64 catalog builds pass without warnings; 498 portable
+tests pass. The v2 NuGet above predates this repair, so fresh package and
+catalog delivery, physical input, full visual review and ARM64 native runtime
+remain open. The component is still not accepted.
