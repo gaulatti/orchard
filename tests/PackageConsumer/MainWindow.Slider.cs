@@ -11,7 +11,10 @@ public sealed partial class MainWindow
     private async Task VerifyPackageSliderAsync()
     {
         Root.UpdateLayout();var originalName=AutomationProperties.GetName(PackageSlider);var peer=FrameworkElementAutomationPeer.CreatePeerForElement(PackageSlider);var provider=(IRangeValueProvider)peer.GetPattern(PatternInterface.RangeValue);
-        Require(PackageSlider.Value==25.3&&provider.Value==30&&provider.Minimum==0&&provider.Maximum==100&&provider.SmallChange==10&&peer.GetAutomationControlType()==AutomationControlType.Slider,"Packaged Slider lost its authoritative/sanitized value or native range metadata.");
+        // The XAML fractional literal is 25.299999237060547 on this runtime;
+        // its unsnapped caller value is distinct from the effective range value.
+        Require(Math.Abs(PackageSlider.Value-25.3)<.000001&&provider.Value==30&&provider.Minimum==0&&provider.Maximum==100&&provider.SmallChange==10&&peer.GetAutomationControlType()==AutomationControlType.Slider,
+            $"Packaged Slider lost its authoritative/sanitized value or native range metadata: raw={PackageSlider.Value}, effective={provider.Value}, min={provider.Minimum}, max={provider.Maximum}, step={provider.SmallChange}, role={peer.GetAutomationControlType()}.");
         var producer=new TextBlock{Tag=25.3};PackageSlider.SetBinding(BleeckerSlider.ValueProperty,new Binding{Source=producer,Path=new PropertyPath("Tag"),Mode=BindingMode.OneWay});var requests=new List<double>();EventHandler<BleeckerSliderValueRequestedEventArgs> requested=(_,args)=>requests.Add(args.Value);PackageSlider.ValueRequested+=requested;
         provider.SetValue(60);Require(requests.SequenceEqual(new[]{60d})&&PackageSlider.Value==25.3&&provider.Value==30,"Packaged Slider mutated the consumer's controlled binding.");producer.Tag=60d;Root.UpdateLayout();Require(provider.Value==60&&PackageSlider.GetBindingExpression(BleeckerSlider.ValueProperty)is not null,"Packaged Slider did not retain live binding updates.");
         PackageSlider.IsEnabled=false;var disabledRejected=false;try{provider.SetValue(70);}catch(ElementNotEnabledException){disabledRejected=true;}Require(disabledRejected&&requests.Count==1,"Packaged disabled Slider accepted a request.");PackageSlider.IsEnabled=true;

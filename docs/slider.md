@@ -62,6 +62,15 @@ does not show/activate a window, focus a control, send input or change OS
 preferences. Visible raster, normal motion and physical input remain separate
 acceptance checks.
 
+The broad independent consumer's initial Slider check now accepts the observed
+XAML-parsed raw value `25.299999237060547` for a `Value="25.3"` declaration
+within one millionth, while still requiring the exact sanitized native range
+value `30`, bounds, step and role. Its previous exact-double assertion rejected
+this retained caller value. A fresh run passed that boundary but later stopped
+in a separate Pagination physical-input check; it does not establish a complete
+broad consumer pass. The focused hidden Sonner consumer check is recorded in
+[Sonner](sonner.md).
+
 All 234 portable tests and seven windowless native font tests pass. The
 multilingual label uses the combined inline shaping advance, avoiding an extra
 1/64 DIP from separately rounding fallback-font runs. The catalog includes that
