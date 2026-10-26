@@ -171,7 +171,7 @@ public sealed partial class BleeckerCommandSpotlight
             foreach (var group in owner.state.Groups)
             {
                 if (!sections.TryGetValue(group.Name, out var section)) { section = new() { UseLayoutRounding = false }; section.Children.Add(Text("SpotlightGroupLabel")); sections[group.Name] = section; }
-                var label = (TextBlock)section.Children[0]; label.FontWeight = FontWeights.SemiBold; owner.SetText(label, 11, 16.5, owner.Brush("Secondary")); label.CharacterSpacing = 50; label.Text = group.Name.ToUpperInvariant(); label.Margin = new(12 * f, 0, 12 * f, 4 * f); AutomationProperties.SetName(label, group.Name);
+                var label = (TextBlock)section.Children[0]; label.FontWeight = FontWeights.SemiBold; owner.SetText(label, 11, 16.5, owner.Brush("Secondary")); label.CharacterSpacing = 50; label.Text = BleeckerTextCasing.Uppercase(group.Name, owner.Language); label.Margin = new(12 * f, 0, 12 * f, 4 * f); AutomationProperties.SetName(label, group.Name);
                 var wantedRows = new List<UIElement> { label };
                 for (var i = 0; i < group.Actions.Count; i++) { var action = group.Actions[i]; var key = (group.Name, action.Id); if (!rows.TryGetValue(key, out var row)) rows[key] = row = new(owner, action); row.Set(action); row.Margin = new(0, i > 0 ? 4 * f : 0, 0, 0); wantedRows.Add(row); }
                 Sync(section, wantedRows); wantedSections.Add(section);

@@ -109,6 +109,18 @@ internal static partial class CommandSpotlightFixture
                     var snapshot = Snapshot(control); var file = await Capture("command-spotlight-" + cases.Count + "-" + theme); cases.Add(new { id, theme = theme.ToString(), viewport = new { width, height }, snapshot, file, softwareSelection = interaction == "row-hover", pointerHoverVerified = false, focusVerified = false });
                 }
                 // Further interaction checks execute through the real public control/native peers.
+                stage = theme + "/group-language";
+                var localized = await New(true);
+                var groupedAction = new BleeckerCommandSpotlightAction("localized", "Fictional local action") { Group = "istanbul" };
+                localized.Actions = [groupedAction];
+                foreach (var (language, expected) in new[] { ("tr-TR", "İSTANBUL"), ("en-US", "ISTANBUL") })
+                {
+                    localized.Language = language;
+                    await Layout();
+                    var groupLabel = Elements(host).OfType<TextBlock>().Single(text => text.Name == "SpotlightGroupLabel");
+                    Require(groupLabel.Text == expected && AutomationProperties.GetName(groupLabel) == "istanbul" && groupedAction.Group == "istanbul", "Live group language preserves caller text and automation name");
+                    contracts.Add(new { theme = theme.ToString(), id = "group-language-" + language, displayed = groupLabel.Text, automationName = AutomationProperties.GetName(groupLabel), original = groupedAction.Group, passed = true });
+                }
                 stage = theme + "/contracts"; var current = await New(false); var requests = new List<bool>(); current.OpenRequested += (_, value) => requests.Add(value); Invoke((Button)Elements(current).Single(e => e.Name == "SpotlightTrigger")); await Layout(); Require(!current.IsOpen && requests.SequenceEqual([true]), "Controlled open rejection"); contracts.Add(new { theme = theme.ToString(), id = "controlled-open-rejected", passed = true });
                 current = await New(true); Edit("beta"); await Layout(); Require(current.Query == "beta", "Native value provider query"); current.Close(); await Layout(); Require(current.IsOpen && current.Query == "" && ((TextBox)Find("SpotlightSearch")).Text == "", "Rejected close clears actual editor"); contracts.Add(new { theme = theme.ToString(), id = "controlled-close-query-cleared", passed = true });
                 current = await New(); var events = new List<string>(); var pending = new TaskCompletionSource(); var original = current.Actions.First(); original.OnSelectAsync = () => { events.Add("own"); return pending.Task; }; current.ActionSelected += (_, value) => { Require(ReferenceEquals(value, original), "Exact original callback object"); events.Add("outer"); }; current.OpenRequested += (_, value) => events.Add(value ? "open" : "close"); current.Show(); await Layout(350); current.InvokeAction(original); Require(!current.IsOpen && events.SequenceEqual(["open", "outer", "own", "close"]), "Original callback order and immediate close"); pending.SetResult(); await Layout(220); contracts.Add(new { theme = theme.ToString(), id = "original-dispatch-immediate-close", passed = true });

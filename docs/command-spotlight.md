@@ -25,6 +25,9 @@ Search query and selected action ID are internal. Search trims and lowercases
 the whole query, then finds that exact substring in the joined title,
 description, original group, keywords and href. It does not tokenize or rank.
 Visible groups use trimmed names or `Actions`, in first-occurrence order.
+The displayed group heading uses the control's live `Language` for uppercase
+casing (for example, Turkish `istanbul` displays as `İSTANBUL`), while its
+original group value and automation name remain unchanged.
 
 Disabled actions remain visible but cannot be selected or run. Arrow selection
 wraps through enabled actions in original filtered order, which can differ from
@@ -62,8 +65,8 @@ Source references retain actual PNGs, computed styles, accessibility snapshots
 and interaction histories, with independent recapture and auditor
 counterexamples. Browser navigation boundaries are explicitly intercepted and
 reported. They are not native or physical-input evidence.
-Desktop work, Narrator, OS settings, pointer heartbeat and Actions remain
-unauthorized.
+Native checks run in hidden windows without physical input. The pointer
+heartbeat stays paused and pushes must not trigger GitHub Actions.
 
 The reference harness waits for browser painting before recording settled
 interaction metadata. Its separate exit-presence observation records the panel
@@ -508,8 +511,21 @@ covered native paint pixels per host. Its 34-PNG/26-lifecycle auditor rejects
 39 corruptions. This paint check does not establish exact blurred-image parity.
 Original browser/native Command Spotlight images still differ at
 7,769,949 pixels/max239; hints at 20,596/max216; full source/package
-at 77/max6, source/archive at 48/max6. All thresholds stay zero.
+at 77/max6, source/archive at 48/max6. These raster differences are diagnostic,
+not a public-component delivery gate.
 The isolated large light far-only shadow regression is recorded explicitly.
 All 112 entries and both demos remain in progress and unaccepted. See the
 [shared paint contract](overlay-shadow.md#source-paint-encoding) and
 `artifacts/current/overlay-shadow-tint-checkpoint-v1.json`.
+
+## Group heading language
+
+The `0.1.0-group-language-v1-local` package uses the control's live language
+for visible group headings. A hidden x64 source catalog and a freshly restored
+independent NuGet consumer each pass 24 interaction contracts, including
+Turkish and English heading changes in both themes; the caller's group value
+and automation name remain unchanged. The shared casing tests pass 10/10 and
+the ARM64 catalog builds. Native ARM64 execution and full component acceptance
+remain open. Reports are under
+`artifacts/current/command-spotlight-group-language-source-v2` and
+`artifacts/current/command-spotlight-group-language-package-v1`.
