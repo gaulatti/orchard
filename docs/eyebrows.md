@@ -57,8 +57,9 @@ still require reconciliation. Consumer rich content/templates retain their
 text and must currently supply uppercase content themselves. This does not yet
 match the reference's inherited CSS text transform. Exact native/browser glyph
 and tracking comparison, inline/baseline behavior, template/RTL edge cases,
-contrast, Narrator, isolated scaling and the remaining ARM64 state checks remain
+isolated scaling and the remaining ARM64 state checks remain
 unverified. HTML
 `div`/`p`/`span` selection has no direct native equivalent; composed layout and
 semantics still require acceptance evidence. No desktop-wide settings should
-be changed for scaling verification.
+be changed for scaling verification. Narrator and OS contrast campaigns are
+excluded by the current [library scope](library-scope.md).

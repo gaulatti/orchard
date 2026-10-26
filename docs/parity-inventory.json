@@ -4343,12 +4343,14 @@
       ],
       "requiredStates": [
         "normal",
+        "horizontal",
+        "vertical",
+        "decorative",
+        "semantic",
         "disabled",
-        "empty",
-        "error",
         "light",
         "dark",
-        "text-scaling",
+        "rtl",
         "constrained-width"
       ],
       "acceptance": [
@@ -4367,13 +4369,32 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/SeparatorsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/SeparatorFixture.cs",
+        "scripts/verify-separator.ps1",
+        "scripts/verify-separator.mjs",
+        "scripts/test-separator-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Fractional display scaling and physical keyboard traversal",
-        "Remaining ARM64 state acceptance and complete rendered parity"
-      ]
+        "Actual fractional display scaling",
+        "Current native ARM64 state acceptance"
+      ],
+      "nativePreview": {
+        "sourceAudit": "artifacts/current/separator-source-native-v2/audit.json",
+        "packageAudit": "artifacts/current/separator-package-native-v1/audit.json",
+        "packageVersion": "0.1.0-file-input-styles-v1-local",
+        "newProbePackagedInPublicCatalog": false,
+        "sourceLibrarySha256": "758d23980168a5381c59500336d6db14042055af41b31ebeee83a35c6b1c6efb",
+        "states": 32,
+        "callerContracts": 8,
+        "capturedPixelsAudited": 2048000,
+        "negativeCasesRejected": 10,
+        "displayScalingVerified": false,
+        "nativeARM64RuntimeVerified": false,
+        "nativeComponentAccepted": false,
+        "notApplicable": "No text, empty/error content, animation or keyboard/pointer action; runtime checks verify no tab stop and the decorative/semantic UIA distinction"
+      }
     },
     {
       "id": "sheet",

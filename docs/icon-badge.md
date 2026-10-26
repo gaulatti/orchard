@@ -86,10 +86,13 @@ global cursor, while WinUI selects Hand. This is not a complete full-suite
 pass. The last complete passing source remains `48d8fd3`; the new candidate
 still needs the unchanged full test with a connected mouse.
 
-Acceptance remains in progress. Required evidence includes exact raster parity,
-remaining customization/RTL/disabled/overflow pointer cases, external UIA and
-Narrator, isolated text/display scaling and contrast, native ARM64 runtime,
+Acceptance remains in progress. Required evidence includes complete visual review,
+remaining customization/RTL/disabled/overflow pointer cases, external UIA,
+isolated text/display scaling, native ARM64 runtime,
 and the full catalog and independent package consumer. See [parity](parity.md).
+Existing exact raster diagnostics retain their thresholds and actual failures;
+they do not replace the [component acceptance contract](acceptance-contract.md).
+Narrator and OS contrast campaigns are excluded by the current library scope.
 
 The current version `0.1.0-77f387a` passes the full 477-second x64 replay using a scoped Windows MouseKeys virtual mouse, plus a fresh x64 consumer in both themes. MouseKeys configuration is restored after each scope. This supersedes the earlier missing-mouse replay failure; see the [current checkpoint](native-validation-checkpoint.md).
 

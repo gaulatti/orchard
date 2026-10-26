@@ -19,4 +19,8 @@ The registered fixture covers all variants, optional descriptions, international
 
 The rendered Bleecker Live reference measures 57.625 × 24px, with the typography, dot, padding and gaps above. A 320px fixture with label `REGIONAL COVERAGE TEMPORARILY DEGRADED` and description `Updates continue during local review` gives the browser badge 190.203125 × 39px and the description 121.796875px of width. The native regression checks the same 39px badge height and both allocated widths within 3px, then widens to 640px and narrows again to verify reflow. It retains a visible fixture and captures in `artifacts/smoke-status-layout-dot`.
 
-Full baseline/shaping and gamut comparison, widths below unbreakable-word minima, actual contrast settings, Narrator, text/display scaling, physical keyboard traversal and ARM64 runtime remain open. The inventory entry remains in progress.
+Full baseline/shaping and gamut comparison, widths below unbreakable-word minima,
+text/display scaling and current native ARM64 runtime remain open. The badge is
+display-only; its input contract is the absence of an unwanted focus stop.
+Narrator and OS contrast campaigns are excluded by the current
+[library scope](library-scope.md). The inventory entry remains in progress.
