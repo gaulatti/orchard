@@ -406,7 +406,10 @@ consumer data. Use a separate label and description composition. Password
 masking and native HTML input-type adaptations are not provided by this preview.
 The later `0.1.0-text-media-v3-local` NuGet has the same Orchard DLL bytes as
 that source-tested host and passes fresh isolated x64 and ARM64 consumer builds;
-the Input validity path has not been separately exercised in the package host.
+the independent x64 package host now also passes 17 hidden Input, Textarea and
+Field validity transitions at `artifacts/current/text-media-v3-validity-x64-v2`.
+The fixture checks the native edit peers and caller-owned attached validity
+without showing a window or sending input. Native ARM64 runtime remains open.
 
 The template owns background, border, focus ring, shadow and placeholder colors; it
 omits the Windows underline and clear button. The focus palette includes the
