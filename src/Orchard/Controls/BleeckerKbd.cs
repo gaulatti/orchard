@@ -22,6 +22,7 @@ public sealed class BleeckerKbd : ContentControl
         Loaded += (_, _) => { ObserveKeys(); UpdateKeys(); };
         Unloaded += (_, _) => DetachKeys();
         SizeChanged += (_, _) => UpdateShadow();
+        RegisterPropertyChangedCallback(CornerRadiusProperty, (_, _) => UpdateShadow());
     }
 
     public static readonly DependencyProperty KeysProperty = DependencyProperty.Register(nameof(Keys), typeof(object), typeof(BleeckerKbd),
@@ -97,25 +98,35 @@ public sealed class BleeckerKbd : ContentControl
 
     private void UpdateShadow()
     {
-        if (GetTemplateChild("PART_Shadow") is not Microsoft.UI.Xaml.Shapes.Path shadow || ActualWidth < 8 || ActualHeight < 8) return;
+        if (GetTemplateChild("PART_Shadow") is not Microsoft.UI.Xaml.Shapes.Path shadow) return;
         // Difference between the rounded keycap translated down 1px and the
         // original keycap: no shadow tint beneath its translucent background.
         var w = ActualWidth;
         var h = ActualHeight;
-        var figure = new PathFigure { StartPoint = new(0, h - 4), IsClosed = true, IsFilled = true };
-        figure.Segments.Add(new LineSegment { Point = new(0, h - 3) });
-        Arc(4, h + 1, SweepDirection.Counterclockwise);
-        figure.Segments.Add(new LineSegment { Point = new(w - 4, h + 1) });
-        Arc(w, h - 3, SweepDirection.Counterclockwise);
-        figure.Segments.Add(new LineSegment { Point = new(w, h - 4) });
-        Arc(w - 4, h, SweepDirection.Clockwise);
-        figure.Segments.Add(new LineSegment { Point = new(4, h) });
-        Arc(0, h - 4, SweepDirection.Clockwise);
+        if (w <= 0 || h <= 0) { shadow.Data = null; return; }
+        var corners = CornerRadius;
+        var scale = Math.Min(1, Math.Min(Math.Min(Ratio(w, corners.TopLeft + corners.TopRight), Ratio(w, corners.BottomLeft + corners.BottomRight)),
+            Math.Min(Ratio(h, corners.TopLeft + corners.BottomLeft), Ratio(h, corners.TopRight + corners.BottomRight))));
+        var left = corners.BottomLeft * scale;
+        var right = corners.BottomRight * scale;
+        var figure = new PathFigure { StartPoint = new(0, h - left), IsClosed = true, IsFilled = true };
+        figure.Segments.Add(new LineSegment { Point = new(0, h + 1 - left) });
+        Arc(left, h + 1, left, SweepDirection.Counterclockwise);
+        figure.Segments.Add(new LineSegment { Point = new(w - right, h + 1) });
+        Arc(w, h + 1 - right, right, SweepDirection.Counterclockwise);
+        figure.Segments.Add(new LineSegment { Point = new(w, h - right) });
+        Arc(w - right, h, right, SweepDirection.Clockwise);
+        figure.Segments.Add(new LineSegment { Point = new(left, h) });
+        Arc(0, h - left, left, SweepDirection.Clockwise);
         var geometry = new PathGeometry();
         geometry.Figures.Add(figure);
         shadow.Data = geometry;
-        void Arc(double x, double y, SweepDirection direction) => figure.Segments.Add(new ArcSegment
-        { Point = new(x, y), Size = new(4, 4), SweepDirection = direction });
+        void Arc(double x, double y, double radius, SweepDirection direction)
+        {
+            if (radius == 0) figure.Segments.Add(new LineSegment { Point = new(x, y) });
+            else figure.Segments.Add(new ArcSegment { Point = new(x, y), Size = new(radius, radius), SweepDirection = direction });
+        }
+        static double Ratio(double size, double radii) => radii == 0 ? 1 : size / radii;
     }
 
     protected override AutomationPeer OnCreateAutomationPeer() => new KbdPeer(this);
