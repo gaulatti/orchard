@@ -505,6 +505,7 @@
     </Style>
     <Style TargetType="local:BleeckerSeparator">
         <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="UseLayoutRounding" Value="False" />
         <Setter Property="Background" Value="{ThemeResource BleeckerSeparatorBrush}" />
         <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerSeparator">
             <Border Background="{TemplateBinding Background}" />

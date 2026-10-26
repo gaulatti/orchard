@@ -12,6 +12,11 @@ The default is horizontal and decorative. The line is one logical pixel thick, u
 
 The long axis fills its finite available space. Give a vertical separator an explicit Height or place it in a height-constrained container. An unbounded long axis has no intrinsic length, so a separator with no available length requires a consumer constraint. Width/Height can override the default thickness. Orientation changes remeasure without replacing dimension bindings. Surrounding layout owns spacing.
 
+The default style disables `UseLayoutRounding` so fractional native rasterization
+keeps the one-logical-pixel edge coverage instead of snapping away or filling
+the last device pixel. A caller value or binding can set it to `True` to opt
+into native pixel snapping. The 100% geometry and brush recipe are unchanged.
+
 Decorative separators are omitted from UI Automation control/content views. Set Decorative to false for a semantic boundary; its peer reports Separator and the current orientation, retaining a consumer's localized accessible name. Neither mode is a keyboard stop. The reference has no selected, hovered, pressed, disabled, loading, empty, error or motion variant; disabling does not dim the line. It contains no text or user content.
 
 ## Evidence and remaining acceptance
@@ -22,7 +27,7 @@ The current [library scope](library-scope.md) excludes Narrator and OS contrast
 campaigns. Separator has no keyboard or pointer action and is not a tab stop;
 its applicable input contract is the absence of an unwanted focus stop and the
 decorative/semantic automation distinction. It has no text, empty/error content
-or animation states. Fractional display scaling, current native ARM64 execution
+or animation states. Real monitor-DPI transitions, current native ARM64 execution
 and complete visual/runtime qualification remain open.
 
 The shared `--probe-hidden-separator` fixture runs against the source catalog or
@@ -59,6 +64,34 @@ now packages this probe in the catalog ZIP. Source, exact NuGet and archive
 hosts also rerun all 32 states, eight caller contracts and ten negative cases
 with library `87755ce3…`. The Separator implementation itself is unchanged.
 
-Source catalog and independent consumer compilation also pass for x64 and ARM64.
-This distinguishes architecture build coverage from the x64 native runs above;
-current native ARM64 execution and actual fractional DPI remain unverified.
+The earlier source catalog and independent consumer compilation passed for x64
+and ARM64. Those builds cover the pre-repair identity; the isolated fractional
+native checks below establish a separate scope.
+
+## Isolated native rasterization
+
+`--probe-hidden-content-scale` uses an owned `DesktopWindowXamlSource` and its
+`SiteBridge.OverrideScale`. It checks actual `XamlRoot.RasterizationScale` values
+and physical PNG dimensions at 100%, 125%, 150% and 200% in both themes. It covers
+both orientations and caller snapping bindings; it changes no monitor, Windows
+text-scale or accessibility setting and never shows or activates its window.
+The pinned browser reference records the matching stateless Separator CSS recipe
+at those device scales.
+
+The published `87755ce3…` baseline rounds the last device pixel at fractional
+scale. Its actual 125% default misses the source's partial edge coverage. A
+caller `UseLayoutRounding=False` restores that coverage, establishing the repair
+through the existing WinUI property rather than a custom renderer. Existing
+zero-tolerance color diagnostics retain their results independently of source
+coverage and native behavior checks.
+
+```powershell
+./scripts/verify-content-scale.ps1 -AppDirectory <frozen-catalog-app> -Output <new-output-directory>
+```
+
+Recovered historical ARM64 reports prove a genuine Arm64 process/OS and the same
+WinUI/CoreLib binaries for the unchanged pre-repair Separator baseline. The new
+fractional default is outside that historical scope. Native ARM64 execution of
+this repair, real monitor-DPI transitions and Windows text-scale changes remain
+unverified. The entry remains in progress. See the
+[native rasterization scope](native-rasterization.md).

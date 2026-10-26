@@ -1,0 +1,195 @@
+{
+  "format": "orchard-separator-scale-reference-v1",
+  "source": "tests/Reference/FileInput/Source/src/components/separator.tsx",
+  "sourceSha256": "c6fb193ba83ae952419e55819543f153c267af3a70d06c95dee3eda8a1b2155d",
+  "css": "tests/Reference/FileInput/source.css",
+  "cssSha256": "cfd13751dc6e4053f6af77a807c9c4248252f98948d82efd005f5bd049fe8a26",
+  "scope": "Pinned stateless Separator DOM/CSS recipe in both orientations; isolated browser device scale with exact computed source geometry and paint",
+  "browser": "headless msedge",
+  "frames": [
+    {
+      "theme": "Light",
+      "scale": 1,
+      "measurement": {
+        "dpr": 1,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0 0 0 / 0.05)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0 0 0 / 0.05)"
+        }
+      },
+      "file": "separator-scale-Light-1.png",
+      "sha256": "8f7e77ab8a0cff3192008ab001071675a95050537a7ae81069e69d7f996c5c3a"
+    },
+    {
+      "theme": "Light",
+      "scale": 1.25,
+      "measurement": {
+        "dpr": 1.25,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0 0 0 / 0.05)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0 0 0 / 0.05)"
+        }
+      },
+      "file": "separator-scale-Light-1.25.png",
+      "sha256": "ac9fcb8df562de670baacec1c3ec542cf7e94ab41120c2ec7e6432ac71c777fd"
+    },
+    {
+      "theme": "Light",
+      "scale": 1.5,
+      "measurement": {
+        "dpr": 1.5,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0 0 0 / 0.05)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0 0 0 / 0.05)"
+        }
+      },
+      "file": "separator-scale-Light-1.5.png",
+      "sha256": "78cfd773a63e90fafd4a1cc935dc5c8dd27b384d9a5dafb992715a5653301424"
+    },
+    {
+      "theme": "Light",
+      "scale": 2,
+      "measurement": {
+        "dpr": 2,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0 0 0 / 0.05)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0 0 0 / 0.05)"
+        }
+      },
+      "file": "separator-scale-Light-2.png",
+      "sha256": "52a1ee4e290cc95f835b971bc3ee2f750f24542b14fdc2458ae2b72e19745d2c"
+    },
+    {
+      "theme": "Dark",
+      "scale": 1,
+      "measurement": {
+        "dpr": 1,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        }
+      },
+      "file": "separator-scale-Dark-1.png",
+      "sha256": "6d39cc0e2232cec03376ae184cde7c28d4610b00c71e89961418e5d451303d11"
+    },
+    {
+      "theme": "Dark",
+      "scale": 1.25,
+      "measurement": {
+        "dpr": 1.25,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        }
+      },
+      "file": "separator-scale-Dark-1.25.png",
+      "sha256": "6b0d5e122eec8959cfc689ec3fed8dc6a51c7470c17a5d1d0656e4920e5caa64"
+    },
+    {
+      "theme": "Dark",
+      "scale": 1.5,
+      "measurement": {
+        "dpr": 1.5,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        }
+      },
+      "file": "separator-scale-Dark-1.5.png",
+      "sha256": "c6df2f8d88bdac244f23d0c476f9213c309210169621bf42c618b3a689352b9f"
+    },
+    {
+      "theme": "Dark",
+      "scale": 2,
+      "measurement": {
+        "dpr": 2,
+        "horizontal": {
+          "x": 24,
+          "y": 24,
+          "width": 320,
+          "height": 1,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        },
+        "vertical": {
+          "x": 368,
+          "y": 24,
+          "width": 1,
+          "height": 64,
+          "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)"
+        }
+      },
+      "file": "separator-scale-Dark-2.png",
+      "sha256": "5abc22d65ab8edb3adb49397eb96a80e5a4e39a8884e2d1326358e026fccc0f2"
+    }
+  ]
+}

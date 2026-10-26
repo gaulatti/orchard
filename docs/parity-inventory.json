@@ -4373,21 +4373,26 @@
         "tests/PackageConsumer/SeparatorFixture.cs",
         "scripts/verify-separator.ps1",
         "scripts/verify-separator.mjs",
-        "scripts/test-separator-audit.mjs"
+        "scripts/test-separator-audit.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
+        "scripts/verify-content-scale.ps1",
+        "scripts/verify-content-scale.mjs",
+        "scripts/test-content-scale-audit.mjs",
+        "tests/Reference/SeparatorScale/reference.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Actual fractional display scaling",
+        "Real monitor-DPI transitions (isolated native rasterization at100/125/150/200% is verified)",
         "Current native ARM64 state acceptance"
       ],
       "nativePreview": {
-        "sourceAudit": "artifacts/current/status-badge-separator-source-native-v1/audit.json",
-        "packageAudit": "artifacts/current/status-badge-separator-package-native-v1/audit.json",
-        "archiveAudit": "artifacts/current/status-badge-separator-archive-native-v1/audit.json",
+        "sourceAudit": "artifacts/current/separator-scale-baseline-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/separator-scale-baseline-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/separator-scale-baseline-archive-native-v1/audit.json",
         "previousQualificationAudit": "artifacts/current/separator-source-native-v2/audit.json",
-        "packageVersion": "0.1.0-status-badge-metadata-v1-local",
+        "packageVersion": "0.1.0-separator-scale-v1-local",
         "newProbePackagedInPublicCatalog": true,
-        "sourceLibrarySha256": "87755ce30a712f4ce61957ec9b560bd3cdaee43aa8bf1c78408731b349107985",
+        "sourceLibrarySha256": "01d48777a0c03cb8af5db22a4313b960c0cf6ac4a7b89c0e976db0679672487c",
         "states": 32,
         "callerContracts": 8,
         "capturedPixelsAudited": 2048000,
@@ -4395,7 +4400,18 @@
         "displayScalingVerified": false,
         "nativeARM64RuntimeVerified": false,
         "nativeComponentAccepted": false,
-        "notApplicable": "No text, empty/error content, animation or keyboard/pointer action; runtime checks verify no tab stop and the decorative/semantic UIA distinction"
+        "notApplicable": "No text, empty/error content, animation or keyboard/pointer action; runtime checks verify no tab stop and the decorative/semantic UIA distinction",
+        "isolatedRasterizationScaleVerified": true,
+        "scaleFramesPerHost": 8,
+        "scaleOrientationsPerFrame": 2,
+        "scaleSourceAudit": "artifacts/current/separator-scale-source-native-v1/audit.json",
+        "scalePackageAudit": "artifacts/current/separator-scale-package-native-v1/audit.json",
+        "scaleArchiveAudit": "artifacts/current/separator-scale-archive-native-v1/audit.json",
+        "default100PercentCapturesRetained": 32,
+        "sourceCoverageMasksMatch": true,
+        "strictSourceColorComparisonPassed": false,
+        "strictSourceColorDifferingPixels": 4128,
+        "strictSourceColorMaximumChannelDifference": 1
       }
     },
     {
@@ -6474,11 +6490,11 @@
         "Remaining ARM64 state acceptance and complete rendered parity"
       ],
       "nativePreview": {
-        "sourceAudit": "artifacts/current/status-badge-source-native-v3/audit.json",
-        "packageAudit": "artifacts/current/status-badge-package-native-v1/audit.json",
-        "archiveAudit": "artifacts/current/status-badge-archive-native-v1/audit.json",
-        "packageVersion": "0.1.0-status-badge-metadata-v1-local",
-        "librarySha256": "87755ce30a712f4ce61957ec9b560bd3cdaee43aa8bf1c78408731b349107985",
+        "sourceAudit": "artifacts/current/separator-scale-status-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/separator-scale-status-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/separator-scale-status-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-separator-scale-v1-local",
+        "librarySha256": "01d48777a0c03cb8af5db22a4313b960c0cf6ac4a7b89c0e976db0679672487c",
         "states": 18,
         "callerContracts": 26,
         "negativeCasesRejected": 11,
