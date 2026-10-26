@@ -73,8 +73,7 @@ public sealed partial class MainWindow
         {
             var value = BrandDescendants<ContentPresenter>(size).Single(item => item.Name == "ContentPresenter");
             var text = value.Content is TextBlock block ? block.Text : value.Content?.ToString();
-            var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(item => item.Child is not null && BrandDescendants<Button>(item.Child).Any(option => size.Items.Contains(option)));
-            var border = popup.Child is Border rootBorder && rootBorder.Name == "PopupBorder" ? rootBorder : BrandDescendants<Border>(popup.Child).Single(item => item.Name == "PopupBorder");
+            var border = HostedSelectBorder(size);
             VerifyPackagedSelectShadow(border);
             var trigger = size.TransformToVisual(Root).TransformBounds(new Rect(0, 0, size.ActualWidth, size.ActualHeight)); var bounds = border.TransformToVisual(Root).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
             measuredGap = bounds.Top - trigger.Bottom; measuredWidth = bounds.Width;

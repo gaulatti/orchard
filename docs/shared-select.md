@@ -16,6 +16,18 @@ commits are rejected after that ownership change. The same logical popup scope
 keeps a nested Select inside its parent Popover across either native or shared
 portals. Standalone Select keeps its native Popup path.
 
+The independent package consumer's broad smoke still searched for a native
+`Popup` after opening the page-size and Select-filter menus inside its
+`BleeckerModalHost`. That stale assertion failed at Pagination even though the
+hosted package control worked. Both smoke checks now locate the original
+`PopupBorder` and option buttons in the shared plane and reject a chooser
+escaping to a native popup. A fresh isolated package consumer compiles, and
+its hidden shared-plane fixture passes all eight public-API cases with 16
+software option invokes at `artifacts/current/pagination-package-host-updated-v1`.
+The broad keyboard smoke has not been rerun under the current background-only
+desktop restriction; its original failure is retained at
+`artifacts/current/input-geometry-package-v1/package-smoke-failure-v1.json`.
+
 The native shared-plane fixture verifies 32 frozen open layouts (2,400 geometry
 values), 40 ownership/live-producer/lifecycle cases across all four recipes, and
 two actual nested catalog flows. Its independent gate rejects 66 damaged

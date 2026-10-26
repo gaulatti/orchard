@@ -1053,6 +1053,16 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private Border HostedSelectBorder(ItemsControl chooser)
+    {
+        if (Content is not BleeckerModalHost host) throw new InvalidOperationException("The packaged chooser requires its shared modal host.");
+        Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Any(popup => popup.Child is not null && BrandDescendants<Button>(popup.Child).Any(chooser.Items.Contains)),
+            "The packaged chooser opened a native Popup outside the shared modal host.");
+        var border = BrandDescendants<Border>(host).Single(item => item.Name == "PopupBorder" && BrandDescendants<Button>(item).Any(chooser.Items.Contains));
+        Require(border.IsLoaded && VisualTreeHelper.GetParent(border) is Canvas, "The packaged chooser did not mount its original options in the shared modal plane.");
+        return border;
+    }
+
     private void VerifyAttention()
     {
         PackageAttention.ApplyTemplate();PackageAttentionAction.ApplyTemplate();Root.UpdateLayout();

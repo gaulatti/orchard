@@ -45,7 +45,7 @@ public sealed partial class MainWindow
             var presentation = await AwaitSelectFilterPresentationAsync(chooser, rows);
             await AcquireConsumerInputAsync(); Require(chooser.Focus(FocusState.Keyboard), "Packaged Select refused native keyboard focus.");
             var empty = Item(""); var draft = Item("Draft"); var keys = new List<object>();
-            keys.Add(await PaginationConsumerKeyAsync(0x28, chooser, empty, () => { Require(Expand().ExpandCollapseState == ExpandCollapseState.Expanded && source.Requests == 2, "Packaged Select opening changed original filter state."); var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).Single(item => item.Child is not null && BrandDescendants<Button>(item.Child).Any(option => chooser.Items.Contains(option))); VerifyPackagedSelectShadow((FrameworkElement)popup.Child); }));
+            keys.Add(await PaginationConsumerKeyAsync(0x28, chooser, empty, () => { Require(Expand().ExpandCollapseState == ExpandCollapseState.Expanded && source.Requests == 2, "Packaged Select opening changed original filter state."); VerifyPackagedSelectShadow(HostedSelectBorder(chooser)); }));
             keys.Add(await PaginationConsumerKeyAsync(0x09, empty, empty, () => Require(source.Requests == 2, "Packaged modal Tab changed original filter state.")));
             keys.Add(await PaginationConsumerKeyAsync(0x28, empty, draft, () => Require(source.Requests == 2, "Packaged option highlight committed early.")));
             keys.Add(await PaginationConsumerKeyAsync(0x0D, draft, chooser, () => Require(source.Requests == 3 && rows.Text == "Harbor:Draft" && Expand().ExpandCollapseState == ExpandCollapseState.Collapsed, "Packaged Enter did not commit once through original visible rows.")));
