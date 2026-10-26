@@ -6,9 +6,10 @@ import {verifyHeroCarouselNative} from './verify-hero-carousel.mjs';
 
 const args=process.argv.slice(2),option=name=>{const i=args.indexOf(name);assert(i>=0&&args[i+1],name);return args[i+1];};
 const gold=path.resolve(option('--native')),host=option('--host-assembly'),output=path.resolve(option('--output')),casesRoot=output+'.cases';
-assert(!fs.existsSync(casesRoot),'Use a fresh counterexample output');fs.mkdirSync(casesRoot,{recursive:true});
+assert(!fs.existsSync(casesRoot),'Use a fresh counterexample output');
 const reference=JSON.parse(fs.readFileSync(path.join(gold,'hero-carousel.json'),'utf8'));
 assert.equal(verifyHeroCarouselNative(gold,host,output+'.baseline.json').passed,true);
+fs.mkdirSync(casesRoot,{recursive:true});
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const first=report=>report.states.find(s=>s.id==='single-project'&&s.scheme==='Light').snapshot.slides[0];
 const multi=report=>report.states.find(s=>s.id==='multiple'&&s.scheme==='Light').snapshot;
@@ -76,3 +77,6 @@ for(const [index,[name,mutate]]of mutations.entries()){
 }
 const result={format:'orchard-hero-carousel-native-rejections-v1',passed:true,negativeCasesRejected:rejected.length,rejected,sourceReportSha256:hash(path.join(gold,'hero-carousel.json')),sourceRasterParityVerified:false,nativeComponentAccepted:false};
 fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({passed:true,negativeCasesRejected:rejected.length,output}));
+// The rejected cases are reproducible from the source report. Keep them only when
+// an assertion fails, so successful audits do not retain dozens of hard links.
+fs.rmSync(casesRoot,{recursive:true,force:true});
