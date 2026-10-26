@@ -73,6 +73,8 @@ An image decoding failure does not select another source. The preview uses only
 the full URL, so a thumbnail-only item has an empty image frame in the modal.
 For a failed tile thumbnail, the original alt text remains visible with a small
 image-failure marker at its start, matching the source's broken-image affordance.
+At narrow widths, later lines of the alt text wrap back to the tile edge instead
+of staying indented beneath the marker.
 The marker uses Orchard's secondary text brush in each theme and adds no pointer
 or accessibility stop. This is an intentional Windows rendering of the browser's
 default broken-image icon rather than a replacement image or URL fallback.
@@ -186,3 +188,11 @@ erased marker. Its successful scratch copy is removed after the audit. Both x64
 and ARM64 catalog builds pass without warnings. This is source-host evidence;
 fresh NuGet delivery, physical input, full visual comparison and ARM64 runtime
 remain open, so the component is not accepted.
+
+The following narrow-width repair places the marker and alt text in one rich
+paragraph so wrapped lines return to the tile edge. The 319px light and dark
+captures are checked for text ink at that edge, in addition to marker placement.
+`artifacts/current/media-library-inline-failure-v4` passes 100 hidden x64
+states, 38 behavior checks and 102 rendered PNGs. The 319px light capture was
+compared with the pinned source capture. This evidence is for the source host;
+the pending delivery and physical-input checks above still apply.
