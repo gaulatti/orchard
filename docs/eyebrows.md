@@ -52,7 +52,9 @@ Turkish/English display changes across both themes, preserving the caller's
 `Content` and accessible name. The shared host also passes its existing 352 name
 and 20 help-text cases with 349 hidden-window guards, zero focus or activation,
 and no hardware input. Ten focused casing tests and the current x64/ARM64 catalog
-builds pass without warnings. Native ARM64 execution of this repair remains open.
+builds pass without warnings. The fresh `0.1.0-title-language-v1-local` package
+also builds in isolated x64/ARM64 consumers; the x64 consumer passes the same
+hidden casing and metadata checks. Native ARM64 execution of this repair remains open.
 
 The rendered pinned Bleecker audit confirms the same five regression outputs:
 `STRASSE`, `FFI · FFL`, Greek iota plus diaeresis/acute, Armenian `ԵՒ`, and

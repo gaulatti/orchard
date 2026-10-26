@@ -94,7 +94,10 @@ The native component must satisfy these observable requirements:
   brand baseline's contribution to block height when integrating the existing
   native brand component.
 - Section headings use 14/20 medium text, uppercase and .05em tracking, with
-  32 DIPs below. Links use 16/24 regular text, secondary ink and 16-DIP row
+  32 DIPs below. Casing follows the footer's live `Language`. The original section title
+  remains the model value and the heading's accessible name; `istanbul`
+  displays as `İSTANBUL` under `tr-TR` and `ISTANBUL` under `en-US`.
+  Links use 16/24 regular text, secondary ink and 16-DIP row
   gaps. These differ from the standalone vertical Nav Menu's 18/28 medium
   recipe; interaction behavior can be shared while keeping Footer typography.
 - Bottom content follows a 64-DIP top gap, a one-DIP rule and 28-DIP top

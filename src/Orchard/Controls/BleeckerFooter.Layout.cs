@@ -44,7 +44,7 @@ public sealed partial class BleeckerFooter
         }
         internal void Update(BleeckerFooterSection model)
         {
-            Model = model; Heading.FlowDirection = owner.FlowDirection; Heading.Language = owner.Language; Heading.Text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; Heading.Set(BleeckerTextCasing.Uppercase(model.Title), null); AutomationProperties.SetName(Heading, model.Title);
+            Model = model; Heading.FlowDirection = owner.FlowDirection; Heading.Language = owner.Language; Heading.Text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; Heading.Set(BleeckerTextCasing.Uppercase(model.Title, owner.Language), null); AutomationProperties.SetName(Heading, model.Title);
             var unused = rows.ToList(); var next = new List<FooterLink>();
             foreach (var item in model.Items)
             {

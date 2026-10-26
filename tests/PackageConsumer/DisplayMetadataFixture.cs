@@ -23,7 +23,7 @@ internal static class DisplayMetadataFixture
     private static IEnumerable<DependencyObject> Descendants(DependencyObject node){for(var i=0;i<VisualTreeHelper.GetChildrenCount(node);i++){var child=VisualTreeHelper.GetChild(node,i);yield return child;foreach(var nested in Descendants(child))yield return nested;}}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var defaults=new List<object>();var cases=new List<object>();var helpCases=new List<object>();var eyebrowCasing=new List<object>();var guards=0;var focus=0;var activations=0;var matches=true;var stage="initial";
+        var defaults=new List<object>();var cases=new List<object>();var helpCases=new List<object>();var eyebrowCasing=new List<object>();var titleCasing=new List<object>();var guards=0;var focus=0;var activations=0;var matches=true;var stage="initial";
         try
         {
             var root=new Canvas{Width=480,Height=240};window.Content=root;root.GotFocus+=(_,_)=>focus++;window.Activated+=(_,e)=>{if(e.WindowActivationState!=WindowActivationState.Deactivated)activations++;};
@@ -55,8 +55,28 @@ internal static class DisplayMetadataFixture
                 }
                 root.Children.Clear();await Layout();
             }
-            Guard();await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-display-metadata-v2",passed=true,metadataContractPassed=matches,defaults,cases,helpCases,eyebrowCasing,guards,focus,activations,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerKbd).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            var titleFactories=new (Func<Control> Create,string TextName)[]{
+                (()=>new BleeckerFeedColumn{Title="istanbul",Width=440,Height=200},"FeedColumnTitleText"),
+                (()=>new BleeckerPanel{Title="istanbul",Width=440,Height=200},"PanelTitleText"),
+                (()=>new BleeckerStatCard{Title="istanbul",Value=42,Width=440,Height=200},"PART_Title"),
+                (()=>new BleeckerFooter{Brand=new BleeckerFooterBrand{BrandName="Fictional brand"},Sections=new[]{new BleeckerFooterSection{Title="istanbul"}},Width=440,Height=200},"FooterSectionHeadingText")};
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})foreach(var (create,textName) in titleFactories)
+            {
+                root.RequestedTheme=theme;var owner=create();var type=owner.GetType().Name;owner.Language="tr-TR";stage=$"{theme}/{type}/title-mount";root.Children.Add(owner);await Layout();
+                var displayText=Descendants(owner).OfType<TextBlock>().Single(text=>text.Name==textName);
+                foreach(var (language,expected) in new[]{("tr-TR","İSTANBUL"),("en-US","ISTANBUL")})
+                {
+                    stage=$"{theme}/{type}/title-language-{language}";owner.Language=language;await Layout();
+                    var originalTitle=owner switch{BleeckerFeedColumn feed=>feed.Title,BleeckerPanel panel=>panel.Title,BleeckerStatCard stat=>stat.Title,BleeckerFooter footer=>footer.Sections.Single().Title,_=>throw new InvalidOperationException(type)};
+                    var expectedName=owner is BleeckerStatCard?expected:"istanbul";
+                    var name=owner is BleeckerFooter?AutomationProperties.GetName(Descendants(owner).OfType<FrameworkElement>().Single(element=>element.Name=="FooterSectionHeading")):FrameworkElementAutomationPeer.CreatePeerForElement(owner).GetName();
+                    var actual=displayText.Text;var passed=actual==expected&&originalTitle=="istanbul"&&name==expectedName;matches&=passed;
+                    titleCasing.Add(new{theme=theme.ToString(),type,language,expected,actual,originalTitle,expectedName,name,passed});
+                }
+                root.Children.Clear();await Layout();
+            }
+            Guard();await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-display-metadata-v3",passed=true,metadataContractPassed=matches,defaults,cases,helpCases,eyebrowCasing,titleCasing,guards,focus,activations,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerKbd).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{passed=false,stage,error=error.ToString(),defaults,cases,helpCases,eyebrowCasing,guards,focus,activations}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{passed=false,stage,error=error.ToString(),defaults,cases,helpCases,eyebrowCasing,titleCasing,guards,focus,activations}));Environment.Exit(1);}
     }
 }

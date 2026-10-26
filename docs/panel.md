@@ -23,6 +23,9 @@ the caller's controls, input values, bindings and commands.
 The source geometry is a physical 2 DIP left accent, 1 DIP right border, a
 transparent body surface, and a square header with a 56 DIP minimum title row.
 Titles render uppercase at 11/16.5 DIP, semibold with 0.1em tracking. The
+plain title uses the control's live `Language` for casing; `istanbul` renders
+as `İSTANBUL` under `tr-TR` and `ISTANBUL` under `en-US`. `Title` and the
+default group name keep the original caller string. The
 optional count badge uses tabular figures, 8/2 DIP padding, a 1 DIP border and a
 5 DIP radius. `Count` is nullable: null omits the badge, while zero, fractions,
 negative values, NaN and infinities retain the source number formatting.

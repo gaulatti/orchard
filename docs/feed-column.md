@@ -20,6 +20,9 @@ border, count pill and shadows belong to the component's presentation.
 templates/selectors and inherited content templates/selectors are bindable.
 The original consumer objects, controls and bindings are retained. Updating
 the header does not replace body/filter controls or reset their scroll state.
+The plain `Title` display uppercases using the control's live `Language`
+(for example, `istanbul` becomes `İSTANBUL` under `tr-TR`). The original
+`Title` and default group name remain caller-owned.
 There are no services, filtering algorithms or model mutations in the control.
 The Feed columns catalog fixture demonstrates composition with fictional local
 data and consumer event handlers.

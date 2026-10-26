@@ -17,7 +17,10 @@ checked against the source package lock.
 
 Title and Description retain consumer strings. Rendering collapses CSS ASCII
 whitespace and uppercases Title using Orchard's existing Unicode casing
-contract. Value accepts scalar content, a native element or a ValueTemplate.
+contract and the control's live `Language`. For example, `istanbul` renders
+as `İSTANBUL` under `tr-TR` and `ISTANBUL` under `en-US`; its caller-owned
+`Title` is unchanged. The default group name follows the rendered title.
+Value accepts scalar content, a native element or a ValueTemplate.
 Icon/IconTemplate and Footer/FooterTemplate retain consumer content and native
 child commands. BleeckerStatTrend owns observable Value, Direction and Label
 dependency properties; Up, Down and Neutral select the source Lucide vector

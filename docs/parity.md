@@ -429,6 +429,15 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | segmented-control (Sabella) | `BleeckerSegmentedControl` / `BleeckerSegmentOption` | SegmentedControlsFixture; both hosts 40 cases/8 layouts/8 rendered probes; wrong RTL captures rejected | In progress: [contract](segmented-control.md); full input/visual/platform acceptance |
 | app-tab-bar (Sabella) | Native compact preview with typed selection, equal tracks, icons and badges | Registered fictional catalog, source/NuGet native cases and rendered checks | Physical input, actual scaling, full visual/customization and ARM64 runtime acceptance |
 
+The focused title-language repair renders `istanbul` as `İSTANBUL` under
+`tr-TR` and `ISTANBUL` under `en-US` in Eyebrow, Feed Column, Panel, Stat Card
+and Footer section headings. A shared hidden Catalog/consumer fixture verifies
+live language changes across both themes, preserving the original caller titles
+and existing automation names. All 16 new title cases and four Eyebrow cases pass
+in source and the exact x64 NuGet consumer. Both catalog architectures and
+isolated package consumers build; native ARM64 runtime and full component
+acceptance remain open.
+
 ## Compositions
 
 Monitoring: suite-selector slot, sidebar, live columns, attention cards, search, stable selection and processing review. Editorial: filters, sortable/selectable rows, page editing, media/category/author selection and inline confirmation. Both use fictional local data, without product APIs or authentication.

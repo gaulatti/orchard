@@ -29,6 +29,7 @@ public sealed partial class BleeckerStatCard : Control
         Loaded+=(_,_)=>UpdatePresentation();
         Unloaded+=(_,_)=>{StopObserving();DispatcherQueue.TryEnqueue(()=>{if(IsLoaded)UpdatePresentation();});};
         ActualThemeChanged+=(_,_)=>UpdatePresentation();
+        RegisterPropertyChangedCallback(LanguageProperty,(_,_)=>UpdatePresentation());
     }
     private static DependencyProperty Property(string name,Type type)=>DependencyProperty.Register(name,type,typeof(BleeckerStatCard),new PropertyMetadata(null,(owner,_)=>((BleeckerStatCard)owner).UpdatePresentation()));
     public static readonly DependencyProperty TitleProperty=Property(nameof(Title),typeof(string));
@@ -96,7 +97,7 @@ public sealed partial class BleeckerStatCard : Control
     private void UpdatePresentation()
     {
         if(!ReferenceEquals(observedTrend,IsLoaded?Trend:null)){StopObserving();if(IsLoaded&&Trend is not null){observedTrend=Trend;observedTrend.Changed+=TrendChanged;}}
-        SetText(title,BleeckerTextCasing.Uppercase(Text(Title)));
+        SetText(title,BleeckerTextCasing.Uppercase(Text(Title),Language));
         var plain=ValueTemplate is null&&Value is not UIElement;
         SetText(value,plain?ScalarText(Value):"");
         if(value is not null)value.Visibility=plain?Visibility.Visible:Visibility.Collapsed;
@@ -147,7 +148,7 @@ public sealed partial class BleeckerStatCard : Control
     {
         protected override string GetClassNameCore()=>nameof(BleeckerStatCard);
         protected override AutomationControlType GetAutomationControlTypeCore()=>AutomationControlType.Group;
-        protected override string GetNameCore()=>BleeckerAutomationMetadata.TryGetName(owner,this,out var name)?name:string.IsNullOrEmpty(base.GetNameCore())?BleeckerTextCasing.Uppercase(Text(owner.Title)):base.GetNameCore();
+        protected override string GetNameCore()=>BleeckerAutomationMetadata.TryGetName(owner,this,out var name)?name:string.IsNullOrEmpty(base.GetNameCore())?BleeckerTextCasing.Uppercase(Text(owner.Title),owner.Language):base.GetNameCore();
     }
     private sealed class TrendPanel:Panel
     {

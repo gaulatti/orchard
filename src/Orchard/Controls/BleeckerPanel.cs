@@ -126,7 +126,7 @@ public sealed partial class BleeckerPanel : ContentControl
         if (!Enum.IsDefined(Variant)) throw new ArgumentOutOfRangeException(nameof(Variant)); var count = Count;
         if (surface is null || titleText is null || countText is null || filterText is null || toolbarText is null || dragText is null || bodyText is null) return;
         surface.FlowDirection = FlowDirection;
-        SetSlot(titleText, BleeckerTextCasing.Uppercase(Title ?? ""), null, null); SetSlot(countText, count is { } value ? BleeckerNumberText.Format(value) : null, null, null);
+        SetSlot(titleText, BleeckerTextCasing.Uppercase(Title ?? "", Language), null, null); SetSlot(countText, count is { } value ? BleeckerNumberText.Format(value) : null, null, null);
         countHost!.Visibility = count.HasValue ? Visibility.Visible : Visibility.Collapsed;
         SetSlot(filterText, Filter, FilterTemplate, FilterTemplateSelector); filterHost!.Visibility = Present(Filter, FilterTemplate, FilterTemplateSelector) ? Visibility.Visible : Visibility.Collapsed;
         SetSlot(toolbarText, Toolbar, ToolbarTemplate, ToolbarTemplateSelector); toolbarHost!.Visibility = Present(Toolbar, ToolbarTemplate, ToolbarTemplateSelector) ? Visibility.Visible : Visibility.Collapsed;

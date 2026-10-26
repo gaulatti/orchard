@@ -82,7 +82,7 @@ public sealed partial class BleeckerFeedColumn : ContentControl
     private void Render()
     {
         var count = Count; if (titleText is null) return;
-        SetSlot(titleText, BleeckerTextCasing.Uppercase(Title ?? ""), null, null); SetSlot(countText!, count is { } number ? BleeckerNumberText.Format(number) : null, null, null); countHost!.Visibility = count.HasValue ? Visibility.Visible : Visibility.Collapsed;
+        SetSlot(titleText, BleeckerTextCasing.Uppercase(Title ?? "", Language), null, null); SetSlot(countText!, count is { } number ? BleeckerNumberText.Format(number) : null, null, null); countHost!.Visibility = count.HasValue ? Visibility.Visible : Visibility.Collapsed;
         SetSlot(filterText!, Filter, FilterTemplate, FilterTemplateSelector); SetSlot(bodyText!, Content, ContentTemplate, ContentTemplateSelector);
         surface!.Child.SetValue(FrameworkElement.FlowDirectionProperty, FlowDirection);
         foreach (var text in new[] { titleText.Text, countText!.Text, filterText!.Text, bodyText!.Text }) { text.IsTextScaleFactorEnabled = IsTextScaleFactorEnabled; text.Language = Language; }
