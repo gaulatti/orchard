@@ -21,6 +21,7 @@ public sealed class BleeckerEyebrow : ContentControl
         ApplyTone();
         RegisterPropertyChangedCallback(ContentTemplateProperty, (_, _) => UpdateContent());
         RegisterPropertyChangedCallback(ContentTemplateSelectorProperty, (_, _) => UpdateContent());
+        RegisterPropertyChangedCallback(LanguageProperty, (_, _) => UpdateContent());
     }
 
     public static readonly DependencyProperty ToneProperty = DependencyProperty.Register(nameof(Tone), typeof(BleeckerEyebrowTone), typeof(BleeckerEyebrow),
@@ -52,7 +53,7 @@ public sealed class BleeckerEyebrow : ContentControl
     {
         if (text is null || rich is null) return;
         var plain = (Content is null || Content is string) && ContentTemplate is null && ContentTemplateSelector is null;
-        text.Text = plain ? BleeckerTextCasing.Uppercase(Content as string ?? string.Empty) : string.Empty;
+        text.Text = plain ? BleeckerTextCasing.Uppercase(Content as string ?? string.Empty, Language) : string.Empty;
         text.Visibility = plain ? Visibility.Visible : Visibility.Collapsed;
         rich.Visibility = plain ? Visibility.Collapsed : Visibility.Visible;
         rich.ContentTemplate = ContentTemplate;

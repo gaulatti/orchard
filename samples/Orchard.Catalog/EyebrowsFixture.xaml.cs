@@ -29,7 +29,7 @@ public sealed partial class EyebrowsFixture : UserControl
         Require(peer.GetAutomationControlType() == AutomationControlType.Text && !Accent.IsTabStop,
             "Eyebrow lost its noninteractive text role.");
         Require(Wrapped.ActualHeight > 16 && Disabled.Opacity == 1, "Wrapped or disabled eyebrow appearance differs.");
-        var original = (Accent.Content, Accent.Tone, Accent.Rule);
+        var original = (Accent.Content, Accent.Tone, Accent.Rule, Accent.Language);
         try
         {
             foreach (var tone in Enum.GetValues<BleeckerEyebrowTone>())
@@ -54,12 +54,21 @@ public sealed partial class EyebrowsFixture : UserControl
             Accent.Tone = BleeckerEyebrowTone.Muted;
             Require(Hex(Accent.Foreground) == "#FF0C2238", "Tone changes replaced the consumer foreground override.");
             Accent.ClearValue(Control.ForegroundProperty);
+            Accent.Content = "istanbul";
+            Accent.Language = "tr-TR";
+            UpdateLayout();
+            Require(text.Text == "İSTANBUL" && (string)Accent.Content == "istanbul" && peer.GetName() == "istanbul",
+                "Eyebrow did not apply the caller's Turkish language to displayed uppercase while retaining the original content and accessible name.");
+            Accent.Language = "en-US";
+            UpdateLayout();
+            Require(text.Text == "ISTANBUL", "Eyebrow did not update displayed uppercase after a live language change.");
         }
         finally
         {
             Accent.Content = original.Content;
             Accent.Tone = original.Tone;
             Accent.Rule = original.Rule;
+            Accent.Language = original.Language;
             Accent.ClearValue(Control.ForegroundProperty);
             UpdateLayout();
         }

@@ -14,4 +14,10 @@ public sealed class TextCasingTests
     [DataRow("\U00010D70", "\U00010D50")]
     public void UppercasePreservesFullMappingsAndUncasedContent(string source, string expected) =>
         Assert.AreEqual(expected, BleeckerTextCasing.Uppercase(source));
+
+    [TestMethod]
+    [DataRow("istanbul", "tr-TR", "İSTANBUL")]
+    [DataRow("istanbul", "en-US", "ISTANBUL")]
+    public void UppercaseUsesTheRequestedLanguage(string source, string language, string expected) =>
+        Assert.AreEqual(expected, BleeckerTextCasing.Uppercase(source, language));
 }

@@ -19,7 +19,10 @@ explicit consumer foreground overrides and do not mutate other instances.
 Plain string content is displayed in uppercase while the original `Content`
 value remains consumer-owned. Unicode's unconditional special casing supplements
 .NET's simple invariant mappings, so sharp-s, ligatures and Greek combinations
-can expand into multiple characters. The template uses bundled Encode Sans semibold,
+can expand into multiple characters. Plain display casing follows the control's
+`Language`, including live language changes; for example, `istanbul` displays as
+`İSTANBUL` under `tr-TR` and `ISTANBUL` under `en-US`. Its accessible name remains
+the caller's original content. The template uses bundled Encode Sans semibold,
 11px font size, 600 weight, a 16px line box and 0.12em tracking. `Rule` adds a
 28×1px decorative line, a 12px content gap and 60% rule opacity. The line follows
 the current foreground and is excluded from accessibility. The control is not
@@ -43,6 +46,13 @@ exercises sharp-s expansion through the embedded resource.
 The registered fixture and independent consumer, including the embedded casing
 table, pass on native ARM64 as well as x64. See
 [runtime evidence](runtime-evidence.md) for architecture reports and scope.
+Those earlier ARM64 results predate the live `Language` repair. The current hidden
+x64 source run at `artifacts/current/eyebrow-language-source-v1` verifies four
+Turkish/English display changes across both themes, preserving the caller's
+`Content` and accessible name. The shared host also passes its existing 352 name
+and 20 help-text cases with 349 hidden-window guards, zero focus or activation,
+and no hardware input. Ten focused casing tests and the current x64/ARM64 catalog
+builds pass without warnings. Native ARM64 execution of this repair remains open.
 
 The rendered pinned Bleecker audit confirms the same five regression outputs:
 `STRASSE`, `FFI · FFL`, Greek iota plus diaeresis/acute, Armenian `ԵՒ`, and
@@ -52,8 +62,8 @@ and the reference capture are retained at
 `artifacts/eyebrow-uppercase-reference.png`. This verifies these text outputs;
 native glyph and baseline parity still need the runtime comparison.
 
-Acceptance remains open. Context-sensitive and language-specific CSS casing
-still require reconciliation. Consumer rich content/templates retain their
+Acceptance remains open. Broader context-sensitive CSS casing still requires
+reconciliation. Consumer rich content/templates retain their
 text and must currently supply uppercase content themselves. This does not yet
 match the reference's inherited CSS text transform. Exact native/browser glyph
 and tracking comparison, inline/baseline behavior, template/RTL edge cases,
