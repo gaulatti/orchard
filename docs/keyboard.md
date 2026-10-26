@@ -20,7 +20,11 @@ observation, and reloading refreshes it from the current collection.
 
 The control does not register keyboard shortcuts or accept tab focus. Single
 content exposes a Text role; a nonempty key sequence exposes a Group named by
-joining the labels with `+`. `AutomationProperties.Name` overrides that name.
+joining the labels with `+`. `AutomationProperties.Name` overrides that name,
+including explicit empty values, live bindings and explicit/BasedOn/ancestor
+implicit styles. Clearing an override restores the generated name. An associated
+label is authoritative when no caller Name is supplied; an empty associated label
+stays empty. Content and Keys bindings remain consumer-owned.
 Rich single content supports `ContentTemplate` and `ContentTemplateSelector`.
 Consumer `CornerRadius` values and bindings apply to the keycap and its 1px
 downward shadow, including generated keys in a combination. Square and asymmetric
@@ -90,3 +94,13 @@ regression; all four default Light/Dark and LTR/RTL keycap captures are unchange
 ```powershell
 ./scripts/verify-kbd-content.ps1 -AppDirectory <frozen-catalog-app> -Output <new-output-directory>
 ```
+
+The same fixture now exercises actual isolated native XAML rasterization at
+100%, 125%, 150% and 200% in both themes. It checks physical PNG dimensions,
+caller content against native Border layout, default keycap/group geometry and
+names, and caller bindings. This uses the existing owned XAML island mechanism;
+it does not change monitor DPI or Windows text scale. Metadata cases cover single
+content and key groups, local/bound/style names, label associations, template
+replacement and remounting. The registered catalog includes an explicitly empty
+caller name. Full rendered typography/fallback, physical scaling, native ARM64
+execution and remaining lifecycle acceptance stay open.

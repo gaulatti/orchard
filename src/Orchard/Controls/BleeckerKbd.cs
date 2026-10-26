@@ -130,6 +130,23 @@ public sealed class BleeckerKbd : ContentControl
         static double Ratio(double size, double radii) => radii == 0 ? 1 : size / radii;
     }
 
+    private bool HasSuppliedName()
+    {
+        var property = Microsoft.UI.Xaml.Automation.AutomationProperties.NameProperty;
+        if (ReadLocalValue(property) != DependencyProperty.UnsetValue) return true;
+        static bool Sets(Style? style, DependencyProperty property)
+        {
+            for (; style is not null; style = style.BasedOn)
+                if (style.Setters.OfType<Setter>().Any(setter => setter.Property == property)) return true;
+            return false;
+        }
+        if (Style is { } explicitStyle) return Sets(explicitStyle, property);
+        for (DependencyObject? scope = this; scope is not null; scope = VisualTreeHelper.GetParent(scope))
+            if (scope is FrameworkElement element && element.Resources.TryGetValue(typeof(BleeckerKbd), out var resource) && resource is Style implicitStyle)
+                return Sets(implicitStyle, property);
+        return Application.Current.Resources.TryGetValue(typeof(BleeckerKbd), out var applicationStyle) && applicationStyle is Style style && Sets(style, property);
+    }
+
     protected override AutomationPeer OnCreateAutomationPeer() => new KbdPeer(this);
     private sealed class KbdPeer(BleeckerKbd owner) : FrameworkElementAutomationPeer(owner)
     {
@@ -138,7 +155,8 @@ public sealed class BleeckerKbd : ContentControl
         protected override string GetNameCore()
         {
             var explicitName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(owner);
-            if (!string.IsNullOrEmpty(explicitName)) return explicitName;
+            if (owner.HasSuppliedName() || !string.IsNullOrEmpty(explicitName)) return explicitName;
+            if (Microsoft.UI.Xaml.Automation.AutomationProperties.GetLabeledBy(owner) is not null) return GetLabeledBy()?.GetName() ?? "";
             return owner.displayedKeys.Length > 0 ? string.Join("+", owner.displayedKeys) : owner.Content as string ?? base.GetNameCore();
         }
     }

@@ -62,10 +62,14 @@ acceptance check.
   exact keycap and separator spacing, baseline alignment and shadow corners.
 - Normal consumer overrides, rich content/templates, collection replacement,
   collection mutation, unload/reload and retained consumer ownership.
-- Accessible names/roles, absence of unwanted focus stops, contrast, constrained
+- Accessible names/roles, absence of unwanted focus stops, constrained
   widths, RTL, isolated text/display scaling, and x64/ARM64 runtime.
 - Registered catalog fixtures and independent NuGet consumer verification.
 
 Scaling checks must use an isolated environment; do not change desktop-wide
 settings on the developer's workstation. Successful builds or source-value
 assertions alone do not establish visual parity.
+
+Narrator and OS contrast campaigns are excluded by the current
+[library scope](library-scope.md); existing component accessibility metadata and
+theme support remain in scope.

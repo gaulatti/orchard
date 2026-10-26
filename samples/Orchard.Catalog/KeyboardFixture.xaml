@@ -3,6 +3,7 @@
     <StackPanel Spacing="16" Margin="0,0,0,40">
         <TextBlock Text="Keyboard shortcuts" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
         <orchard:BleeckerKbd x:Name="Single" Content="K" />
+        <orchard:BleeckerKbd x:Name="CallerOwnedName" Content="Esc" AutomationProperties.Name="" />
         <orchard:BleeckerKbd x:Name="Combo" Content="Esc" />
         <orchard:BleeckerKbd x:Name="ThreeKeys" />
         <orchard:BleeckerKbd x:Name="Empty" Content="" />

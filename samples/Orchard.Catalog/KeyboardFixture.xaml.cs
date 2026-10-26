@@ -24,6 +24,8 @@ public sealed partial class KeyboardFixture : UserControl
         Require(Single.ActualHeight == 20 && Single.ActualWidth >= 20 && Empty.ActualWidth == 20 && Single.Padding.Left == 6,
             "Keycap geometry differs from the pinned contract.");
         var peer = FrameworkElementAutomationPeer.CreatePeerForElement(Combo);
+        Require(FrameworkElementAutomationPeer.CreatePeerForElement(CallerOwnedName).GetName() == "",
+            "The caller-empty keycap automation name was replaced by its content.");
         Require(peer.GetAutomationControlType() == AutomationControlType.Group && peer.GetName() == "⌘+K" && !Combo.IsTabStop,
             "Shortcut group lost its accessible name, role or display-only contract.");
         var group = Find<StackPanel>(Combo, "PART_Combination");
