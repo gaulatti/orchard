@@ -91,6 +91,7 @@ public sealed class BleeckerEyebrow : ContentControl
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Text;
         protected override string GetNameCore()
         {
+            if (BleeckerAutomationMetadata.TryGetName(owner, this, out var callerName)) return callerName;
             var name = base.GetNameCore();
             return string.IsNullOrEmpty(name) && owner.Content is string value ? value : name;
         }

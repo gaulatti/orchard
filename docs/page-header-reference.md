@@ -78,3 +78,6 @@ Remaining acceptance: exact glyph baselines/widths, CSS `text-wrap: balance` and
 Narrator and complete x64/ARM64 visual evidence. The title-only native width is
 119.7433px versus 119.1094px in the browser; passing block heights does not
 accept that width difference. Do not treat this component as fully accepted.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

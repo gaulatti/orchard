@@ -205,6 +205,6 @@ public sealed class BleeckerMetric : Control
     {
         protected override string GetClassNameCore() => nameof(BleeckerMetric);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Text;
-        protected override string GetNameCore() => string.IsNullOrEmpty(base.GetNameCore()) ? owner.accessibleText : base.GetNameCore();
+        protected override string GetNameCore() => BleeckerAutomationMetadata.TryGetName(owner, this, out var name) ? name : string.IsNullOrEmpty(base.GetNameCore()) ? owner.accessibleText : base.GetNameCore();
     }
 }

@@ -153,3 +153,6 @@ The current source, exact NuGet consumer and catalog archive hosts each pass
 Each run records 1,757 isolation guards with zero focus or activation. The ten
 Light/LTR default initials/silhouette images across all five sizes are unchanged.
 These checks do not establish complete image, visual or platform acceptance.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

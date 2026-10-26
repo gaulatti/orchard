@@ -63,3 +63,6 @@ unverified. HTML
 semantics still require acceptance evidence. No desktop-wide settings should
 be changed for scaling verification. Narrator and OS contrast campaigns are
 excluded by the current [library scope](library-scope.md).
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

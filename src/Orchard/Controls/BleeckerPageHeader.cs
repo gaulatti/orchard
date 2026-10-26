@@ -188,7 +188,7 @@ public sealed class BleeckerPageHeader : Control
         protected override string GetClassNameCore() => nameof(BleeckerPageHeader);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
         protected override bool IsKeyboardFocusableCore() => false;
-        protected override string GetNameCore() => string.IsNullOrEmpty(AutomationProperties.GetName(owner)) && AutomationProperties.GetLabeledBy(owner) is null ? owner.Title ?? "" : base.GetNameCore();
+        protected override string GetNameCore() => BleeckerAutomationMetadata.TryGetName(owner, this, out var name) ? name : string.IsNullOrEmpty(AutomationProperties.GetName(owner)) && AutomationProperties.GetLabeledBy(owner) is null ? owner.Title ?? "" : base.GetNameCore();
     }
     private sealed class BackAction(BleeckerPageHeader owner) : Button
     {

@@ -223,3 +223,6 @@ inputs. Versioned x64 and ARM64 catalog archives retain the build output, with
 every archive entry compared to the source file. These are local drafts: normal
 visible startup, full source raster/input and native ARM64 runtime remain
 unverified. See `artifacts/current/footer-expanded-checkpoint.json`.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

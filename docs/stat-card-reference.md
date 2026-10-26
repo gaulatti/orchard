@@ -243,3 +243,6 @@ catalog passes all 80 layout/content cases, 54 composed typography results,
 The package README remains accurate; no public API or font resource changed.
 Push-triggered Actions remain paused at the user's request; these are local
 verification results and do not establish native ARM64 or hosted acceptance.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

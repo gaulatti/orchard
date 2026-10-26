@@ -113,3 +113,6 @@ native ownership and public `MenuFlyout` contract remain unchanged.
 - Component theme foregrounds, text/display scaling and ARM64 runtime remain unverified. Existing contrast-theme resources stay supported without an OS contrast campaign. ARM64 hardware is unavailable on this Intel host.
 
 The rendered Bleecker selection-controls fixture confirms 32px rows, 16px check vectors, 8px radio vectors and a separator reaching the popup's inner border. The radio uses a filled Lucide circle with radius 10 and stroke 2 in a 24-unit viewbox; its visible extent is 22/24 of the 8px icon box. Indicator alignment uses the reference 14px slot, including the check icon's 1px overhang.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

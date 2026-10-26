@@ -1471,14 +1471,30 @@
         "tests/Reference/StatCardLayout.json",
         "tests/Reference/StatCardContent.json",
         "tests/Reference/StatCardTypography.json",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Exact glyph advances and curve/surface raster, including the recorded RTL trend residual",
         "Complete content/template/override and intrinsic wrapping matrix; reference surface motion",
         "Display/text scaling and native ARM64 acceptance"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "dashboard-grid",
@@ -1612,14 +1628,30 @@
       "regressionTests": [
         "samples/Orchard.Catalog/PageHeadersFixture.xaml.cs",
         "tests/Reference/PageHeaderLayout.json",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Exact glyph baselines/widths and CSS text balancing/pretty",
         "Complete minimum-content and consumer override matrix",
         "Scaling and complete x64/ARM64 visual acceptance"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "sidebar",
@@ -2195,7 +2227,11 @@
         "samples/Orchard.Catalog/ErrorStatesFixture.xaml.cs",
         "samples/Orchard.Catalog/Reference/ErrorStateLayout.json",
         "tests/PackageConsumer/MainWindow.xaml.cs",
-        "tests/Orchard.Tests/CatalogCoverageTests.cs"
+        "tests/Orchard.Tests/CatalogCoverageTests.cs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -2203,7 +2239,19 @@
         "Verify display/text scaling",
         "Verify hosted native x64/ARM64 runtime and independent consumption for the new component",
         "Verify all lifecycle, custom-template and live-theme edge cases"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 10,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "loading-overlay",
@@ -2516,7 +2564,11 @@
         "scripts/reference/capture-menu.cjs",
         "scripts/reference/menu-client.tsx",
         "scripts/reference/verify-menu-source.mjs",
-        "scripts/reference/test-menu-source-audit.mjs"
+        "scripts/reference/test-menu-source-audit.mjs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -2525,7 +2577,19 @@
         "All physical pointer/keyboard/focus states and closed-menu selection persistence",
         "Scaling, constrained content and remaining ARM64 state acceptance",
         "See docs/menus.md for detailed acceptance limitations"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Menu Label subcomponent only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "metric",
@@ -2571,7 +2635,11 @@
         "scripts/reference/capture-metric-rich.cjs",
         "scripts/verify-metric.mjs",
         "samples/Orchard.Catalog/MetricsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.Metric.cs"
+        "tests/PackageConsumer/MainWindow.Metric.cs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -2579,7 +2647,19 @@
         "Full rich-content, customization and lifecycle matrix",
         "Actual scaling",
         "Current native ARM64 runtime and independent consumer evidence"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "notification-badge",
@@ -2860,7 +2940,11 @@
         "samples/Orchard.Catalog/AvatarsFixture.xaml.cs: VerifyAsync",
         "tests/PackageConsumer/MainWindow.xaml.cs: OnLoaded",
         "tests/PackageConsumer/AvatarSizingFixture.cs",
-        "scripts/verify-avatar-sizing.ps1"
+        "scripts/verify-avatar-sizing.ps1",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -2869,7 +2953,19 @@
         "Display/text scaling and constrained-width acceptance",
         "Complete remaining image/customization lifecycle acceptance; current x64 caller sizing regression covers280 states/32 contracts including bindings, equal values, explicit/BasedOn/implicit styles and retained group children; ten default captures unchanged",
         "See docs/avatar-reference.md for the pinned source and API contract"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "breadcrumb",
@@ -3330,14 +3426,30 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/EyebrowsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Reconcile Unicode and rich-content casing; finish rendered reference comparison in docs/eyebrows.md",
         "Verify template, RTL, accessibility, isolated scaling and remaining ARM64 state acceptance",
         "Verify runtime, accessibility and visuals"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "hover-card",
@@ -3548,14 +3660,30 @@
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "tests/PackageConsumer/LabelAssociationFixture.cs",
         "scripts/verify-label-association.mjs",
-        "scripts/test-label-association-audit.mjs"
+        "scripts/test-label-association-audit.mjs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
         "Verify the full physical label activation and nested-action matrix",
         "Verify scaling, remaining ARM64 state acceptance and full reference parity"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "menubar",
@@ -7704,14 +7832,30 @@
         "tests/PackageConsumer/FooterContractFixture.cs",
         "scripts/verify-hidden-footer-contracts.ps1",
         "scripts/verify-hidden-footer-contracts.mjs",
-        "scripts/test-hidden-footer-contracts-audit.mjs"
+        "scripts/test-hidden-footer-contracts-audit.mjs",
+        "tests/PackageConsumer/DisplayMetadataFixture.cs",
+        "scripts/verify-display-metadata.ps1",
+        "scripts/verify-display-metadata.mjs",
+        "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Broader original-content/custom-renderer/style and long/unbroken/fractional-width matrices",
         "Fresh visible pointer/keyboard, full raster and current-binary Nav Menu visible source audit after shared changes",
         "Native motion/scaling, integration and native ARM64 runtime acceptance"
-      ]
+      ],
+      "metadataPreview": {
+        "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
+        "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
+        "archiveAudit": "artifacts/current/display-metadata-archive-native-v1/audit.json",
+        "packageVersion": "0.1.0-display-metadata-v1-local",
+        "librarySha256": "5cc92ba21798ae61014c639207784fe0ac034a5abb8408b1dc005c0ff30bf4fa",
+        "nameCasesPerControl": 32,
+        "helpCases": 0,
+        "scope": "Caller metadata only",
+        "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      }
     },
     {
       "id": "feed-column",

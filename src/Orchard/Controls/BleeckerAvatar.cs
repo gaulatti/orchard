@@ -234,7 +234,7 @@ public sealed class BleeckerAvatar : Control
 internal sealed class BleeckerAvatarAutomationPeer(BleeckerAvatar owner) : FrameworkElementAutomationPeer(owner)
 {
     protected override string GetClassNameCore() => nameof(BleeckerAvatar);
-    protected override string GetNameCore() => string.IsNullOrEmpty(AutomationProperties.GetName(owner)) ? owner.AccessibleText : AutomationProperties.GetName(owner);
+    protected override string GetNameCore() => BleeckerAutomationMetadata.TryGetName(owner, this, out var name) ? name : owner.AccessibleText;
     protected override AutomationControlType GetAutomationControlTypeCore() => owner.ShowsImage ? AutomationControlType.Image : AutomationControlType.Text;
     protected override bool IsControlElementCore() => owner.ShowsImage && GetNameCore().Length > 0;
     protected override bool IsContentElementCore() => GetNameCore().Length > 0;

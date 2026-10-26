@@ -50,6 +50,7 @@ public sealed class BleeckerMenuLabel : MenuFlyoutItem
         protected override bool IsContentElementCore() => true;
         protected override string GetNameCore()
         {
+            if (BleeckerAutomationMetadata.TryGetName(owner, this, out var callerName)) return callerName;
             var name = base.GetNameCore();
             return string.IsNullOrEmpty(name) ? owner.Text : name;
         }

@@ -147,7 +147,7 @@ public sealed partial class BleeckerStatCard : Control
     {
         protected override string GetClassNameCore()=>nameof(BleeckerStatCard);
         protected override AutomationControlType GetAutomationControlTypeCore()=>AutomationControlType.Group;
-        protected override string GetNameCore()=>string.IsNullOrEmpty(base.GetNameCore())?BleeckerTextCasing.Uppercase(Text(owner.Title)):base.GetNameCore();
+        protected override string GetNameCore()=>BleeckerAutomationMetadata.TryGetName(owner,this,out var name)?name:string.IsNullOrEmpty(base.GetNameCore())?BleeckerTextCasing.Uppercase(Text(owner.Title)):base.GetNameCore();
     }
     private sealed class TrendPanel:Panel
     {

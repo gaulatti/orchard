@@ -76,3 +76,6 @@ all five two-way producers. Both repairs pass in source and package, and the
 two label catalog captures are byte-identical after archive extraction.
 Both root/consumer build architectures and all 505 unit/text tests pass.
 All inventory acceptance remains open under the broader platform contract.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

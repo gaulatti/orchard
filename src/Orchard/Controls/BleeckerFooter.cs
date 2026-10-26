@@ -138,7 +138,7 @@ public sealed partial class BleeckerFooter : Control
     {
         protected override string GetClassNameCore() => nameof(BleeckerFooter);
         protected override AutomationControlType GetAutomationControlTypeCore() => AutomationControlType.Group;
-        protected override string GetNameCore() => string.IsNullOrEmpty(base.GetNameCore()) ? "Footer" : base.GetNameCore();
+        protected override string GetNameCore() => BleeckerAutomationMetadata.TryGetName(owner, this, out var name) ? name : string.IsNullOrEmpty(base.GetNameCore()) ? "Footer" : base.GetNameCore();
         protected override string GetLocalizedLandmarkTypeCore() => "content information";
     }
 }

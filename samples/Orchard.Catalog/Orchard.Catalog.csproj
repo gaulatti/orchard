@@ -34,6 +34,7 @@
         <Compile Include="../../tests/PackageConsumer/StatusBadgeFixture.cs" Link="StatusBadgeFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/ContentScaleFixture.cs" Link="ContentScaleFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/ProgressRangeFixture.cs" Link="ProgressRangeFixture.cs" />
+        <Compile Include="../../tests/PackageConsumer/DisplayMetadataFixture.cs" Link="DisplayMetadataFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/AvatarSizingFixture.cs" Link="AvatarSizingFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/NavigationMenuFixture.cs" Link="NavigationMenuFixture.cs" />
         <Compile Include="../../tests/PackageConsumer/HeroCarouselFixture.cs" Link="HeroCarouselFixture.cs" />

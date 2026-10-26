@@ -97,11 +97,13 @@ public sealed class BleeckerErrorState : Control
         protected override bool IsKeyboardFocusableCore() => false;
         protected override string GetNameCore()
         {
+            if (BleeckerAutomationMetadata.TryGetName(owner, this, out var callerName)) return callerName;
             var explicitName = AutomationProperties.GetName(owner);
             if (!string.IsNullOrEmpty(explicitName) || AutomationProperties.GetLabeledBy(owner) is not null) return base.GetNameCore();
             return owner.Title ?? string.Empty;
         }
-        protected override string GetHelpTextCore() => string.IsNullOrEmpty(AutomationProperties.GetHelpText(owner))
+        protected override string GetHelpTextCore() => BleeckerAutomationMetadata.HasSuppliedValue(owner, AutomationProperties.HelpTextProperty)
+            ? AutomationProperties.GetHelpText(owner) : string.IsNullOrEmpty(AutomationProperties.GetHelpText(owner))
             ? owner.Description ?? string.Empty : base.GetHelpTextCore();
     }
 }

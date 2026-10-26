@@ -89,3 +89,6 @@ pixels with zero masks/resampling. Exact baseline/glyph/wrapping parity is open;
 the browser canvas uses the pinned source's actual background variables.
 Earlier rich-slot startup, small-glyph capture and nullable-binding failures
 remain under `artifacts/metric-*` as diagnostics. No component is fully accepted.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).

@@ -185,3 +185,6 @@ State sequence in both themes at `artifacts/smoke-error-state-key-release-final`
 Each theme records thirteen native keys, exactly one down/up per key, with no
 lost target. The new component remains in progress; these checks do not
 establish complete visual/accessibility acceptance or a green full suite.
+
+Caller automation-name overrides, including empty values and styles, follow
+[the shared metadata contract](automation-metadata.md).
