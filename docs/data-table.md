@@ -1,15 +1,17 @@
 # Data Table
 
-The current source-built x64 catalog library (`409b32e7…`) passes the existing
-focused hidden 16,384-row/page-100 replay: all 20 semantic snapshots, bounded
-native rows, caller-owned content and unload checks pass. Its next-page
-three-dispatcher-pass time is **1,678.42 ms**, above the unchanged 1,000 ms
-budget; managed allocation is 18,599,680 bytes. This is one process and one
-profile, so it does not replace a three-process median or qualify the full
-120-profile performance matrix. The report is
-`artifacts/current/data-table-current-3939c80-paging-v1`. No library
-optimization or budget change followed this observation. The rejected
-zero-width-measure and row-container-reuse experiments below remain rejected.
+The current source-built x64 catalog library (`205c4521…`, source commit
+`96516e7`) passes the focused hidden 16,384-row/page-100 replay: all 20 semantic
+snapshots, bounded native rows, caller-owned content and unload checks pass.
+Its next-page three-dispatcher-pass time is **1,675.29 ms**, above the unchanged
+1,000 ms budget; managed allocation is 19,186,008 bytes. The prior source run
+at `3939c80` measured 1,678.42 ms and 18,599,680 bytes. These are separate
+single-process observations with different binaries, not an optimization
+comparison or a three-process median. The current report is
+`artifacts/current/data-table-current-96516e7-paging-v1`; it does not qualify
+the full 120-profile performance matrix. No library optimization or budget
+change followed this observation. The rejected zero-width-measure and
+row-container-reuse experiments below remain rejected.
 
 An earlier published `0.1.0-menubar-peer-metadata-v1-local` NuGet library has a full
 performance baseline under `artifacts/current/data-table-container-reuse-full-baseline-v1`
