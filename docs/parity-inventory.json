@@ -2910,7 +2910,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Resolve complete-client raster differences; all 60 source/native layout and paint frames pass with zero geometry error",
+        "Complete source-derived visual review of the complete-client raster differences; all 60 source/native layout and paint frames pass with zero geometry error; retain the strict image diagnostic separately",
         "Resolve motion raster and the complete customization/error/lifecycle matrix; expansion, hover, theme, successive reversals and eight collection/content operations pass numeric checks",
         "Verify native ARM64 runtime, scaling, performance; full x64 catalog and independent package/build delivery pass at 48d8fd3"
       ]
@@ -2961,7 +2961,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Exact rendered reference comparison, shadows and all consumer overrides",
+        "Complete source-derived rendered reference and shadow review plus all consumer overrides; retain exact-raster diagnostics separately",
         "Measured premium close-hover easing and complete enabled/reduced motion evidence",
         "Disabled states, native ARM64, display/text scaling"
       ]

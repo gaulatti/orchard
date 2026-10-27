@@ -13,9 +13,11 @@ and 640 pixels, the exact 640-pixel header-padding boundary, open/closed and ric
 content, hover/focus, independent actions, live collection and metadata changes,
 keyed identity, template/unload cleanup and stale automation peers. Native UIA
 must expose expansion and useful names. Reduced motion, normal/reversed height
-and chevron motion, contrast, text/display scaling, Narrator, performance, x64
-and native ARM64 runtime remain required. Any documented Windows adaptation must
-preserve consumer content and commands.
+and chevron motion, text/display scaling, performance, x64 and native ARM64
+runtime remain required. Existing accessibility metadata and contrast resources
+remain intact; Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). Any documented Windows adaptation
+must preserve consumer content and commands.
 
 `scripts/reference/capture-accordion.cjs` compiles the original component and CSS
 with the pinned toolchain and records full-client PNGs, geometry, text and paint.

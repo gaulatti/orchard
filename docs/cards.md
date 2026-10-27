@@ -27,4 +27,10 @@ Additional native regressions retain a consumer background binding across varian
 
 The consumer-style fixture binds Style, cycles through all five variants, checks retained corner/border setters and variant brush opacity, then updates the binding source to a different style. These native checks pass in light and dark themes; captures are retained in `artifacts/smoke-card-styles-final`. The independent package fixture supplies its asymmetric corners through a consumer style.
 
-This component remains in progress. Outstanding checks include exact shadow rasterization, broader clipping cases with transforms/scaling, 220ms reference surface transitions and reduced motion, consumer template/style lifecycle, actual contrast settings, Narrator and scaling, and ARM64 runtime. The static resource checks do not establish full visual parity.
+This component remains in progress. Outstanding checks include source-derived
+shadow appearance, broader clipping cases with transforms/scaling, 220ms
+reference surface transitions and reduced motion, consumer template/style
+lifecycle, scaling, and ARM64 runtime. Existing accessibility metadata and
+contrast resources remain part of the library; Narrator and OS contrast
+campaigns are excluded by the [current library scope](library-scope.md). The
+static resource checks do not establish full visual parity.

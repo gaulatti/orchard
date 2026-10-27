@@ -96,7 +96,7 @@ actual popup geometry, paint, pointer/keyboard close and accessible message/name
 through the running catalog and an independent package consumer. Opening an
 alert must preserve the consumer's focus; reduced motion must stop transient
 animation without losing the close callback. Native x64/ARM64, rendered reference
-comparison, contrast, scaling and Narrator evidence are required before the
+comparison and scaling evidence are required before the
 inventory can be accepted.
 
 The composed capture exposed a shared `BleeckerOverlaySurface` defect: its
@@ -115,9 +115,9 @@ It interpolates alpha while keeping a fading dark-theme white wash white,
 matching premultiplied color behavior. Live source color/opacity changes settle
 the owned brush, and unloading removes those shared-brush observations.
 
-Exact browser/native raster and shadow comparison, measured close-hover easing, full
-enabled/reduced motion evidence, contrast, scaling, disabled states and Narrator
-remain open. Shared overlay consumers must pass their existing runtime checks
+Source-derived browser/native appearance and shadow review, measured close-hover
+easing, full enabled/reduced motion evidence, scaling and disabled states remain
+open. Shared overlay consumers must pass their existing runtime checks
 after the background repair. No full parity claim is made from the preview.
 
 The focused x64 check at `artifacts/smoke-alerts-keyboard-complete` passes both
@@ -163,7 +163,9 @@ Runtime archive `11837402947` was downloaded and verified against SHA-256
 selected Alert reports and captures are retained under
 `artifacts/ci-770546f-arm64-evidence`. The composed Dark success capture was
 inspected. Enabled endpoints and lifecycle do not establish measured motion
-curves, complete raster parity, contrast/scaling or Narrator acceptance.
+curves, complete rendered appearance or scaling acceptance. Existing
+accessibility metadata and contrast resources remain supported; Narrator and OS
+contrast campaigns are excluded by the [current library scope](library-scope.md).
 
 The public wiki remote is unavailable; this contract is maintained in the
 repository.
