@@ -30,14 +30,16 @@ The consumer-style fixture binds Style, cycles through all five variants, checks
 This component remains in progress. Outstanding checks include source-derived
 shadow appearance, broader clipping cases with transforms/scaling, 220ms
 reference surface transitions and reduced motion, consumer template/style
-lifecycle, scaling, and ARM64 runtime. A separate x64 consumer source copy restored
-the byte-matched `0.1.0-preview.20261027.5` local NuGet package and passed a
+lifecycle, scaling, and ARM64 runtime. A separate framework-dependent x64
+consumer source copy restored the byte-matched `0.1.0-preview.20261027.5`
+local NuGet package with a shared dependency cache and passed a
 focused light/dark runtime check for the 7px style override, the retained 24px
 default, and the existing 16px Small size. After closing an unrelated foreground
 “Open With” dialog, the full x64 package consumer also passed its native-input
 suite, including the Card checks. Its [checkpoint](evidence/card-padding-package-v5/checkpoint.json)
-records the package, consumer assembly and runtime hashes. The package is local
-and unpublished. The consumer's `--verify-card-padding-output <report>` mode
+records the package, consumer assembly and runtime hashes. Fresh-cache and
+self-contained qualification remain open; the package is local and unpublished.
+The consumer's `--verify-card-padding-output <report>` mode
 repeats the focused check without the native-input suite. Existing accessibility metadata and
 contrast resources remain part of the library; Narrator and OS contrast
 campaigns are excluded by the [current library scope](library-scope.md). The

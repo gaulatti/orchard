@@ -558,7 +558,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Review source-derived shadow appearance, overflow clipping and surface motion under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Remaining consumer template/style lifecycle, accessibility and scaling; consumer style padding override now passes source-built catalog and full local-package x64 light/dark consumer runtime",
+        "Remaining consumer template/style lifecycle, accessibility and scaling; consumer style padding override now passes source-built catalog and framework-dependent local-package x64 light/dark consumer runtime",
         "Remaining ARM64 state acceptance and complete rendered parity"
       ]
     },

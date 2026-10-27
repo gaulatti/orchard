@@ -10,6 +10,8 @@
     "separateSourceCopy": true,
     "packageReferenceOnly": true,
     "sharedDependencyCache": true,
+    "frameworkDependentBuild": true,
+    "freshCacheVerified": false,
     "x64ReleaseBuildWarnings": 0,
     "x64ReleaseBuildErrors": 0,
     "focusedRuntimeResult": "result.json",
