@@ -1,0 +1,38 @@
+{
+  "format": "orchard-theme-toggle-package-input-v1",
+  "passed": true,
+  "packageConsumerExeSha256": "2ea540bbadc31bbdd292ce481aedda3a6f54eebae24b6158917f8cd9c91bb907",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "physicalPointerInputSent": true,
+  "physicalKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "initialName": "Switch to light theme",
+  "pointer": {
+    "name": "Switch to light theme",
+    "x": 479,
+    "y": 153
+  },
+  "pointerResult": "Theme request 1: Light (not applied)",
+  "space": {
+    "key": 32,
+    "focused": true
+  },
+  "spaceResult": "Theme request 2: Light (not applied)",
+  "enter": {
+    "key": 13,
+    "focused": true
+  },
+  "enterResult": "Theme request 3: Light (not applied)",
+  "rejectedName": "Switch to light theme",
+  "button": {
+    "name": "Package component",
+    "x": 541,
+    "y": 209
+  },
+  "buttonResult": "Saved: Harbor update",
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}

@@ -48,8 +48,12 @@ internal static class BleeckerAttentionPointer
         private void OnFrame(object? sender, object args)
         {
             var xamlRoot = root.XamlRoot;
+            // WinUI can retain XamlRoot for a frame after its island is torn
+            // down. A visible consumer window must still close cleanly.
             if (xamlRoot is null) return;
-            var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(xamlRoot.ContentIslandEnvironment.AppWindowId);
+            var island = xamlRoot.ContentIslandEnvironment;
+            if (island is null) return;
+            var window = Microsoft.UI.Win32Interop.GetWindowFromWindowId(island.AppWindowId);
             var visible = GetCursorPos(out var screen) && GetAncestor(WindowFromPoint(screen), 2) == window;
             var point = screen;
             visible &= ScreenToClient(window, ref point);

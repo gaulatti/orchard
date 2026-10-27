@@ -1,0 +1,46 @@
+{
+  "format": "orchard-theme-toggle-package-accepted-input-v1",
+  "passed": true,
+  "packageConsumerExeSha256": "2ea540bbadc31bbdd292ce481aedda3a6f54eebae24b6158917f8cd9c91bb907",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "physicalPointerInputSent": true,
+  "physicalKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "initialName": "Switch to light theme",
+  "systemBackgroundPixel": "28221A",
+  "pointer": {
+    "name": "Switch to light theme",
+    "x": 687,
+    "y": 361,
+    "tooltip": "Switch to light theme"
+  },
+  "pointerResult": "Theme accepted 1: Light",
+  "lightBackgroundPixel": "FFFFFF",
+  "lightScreenshotSha256": "3f57dde7ae5b11cbe89ced473126308dc5a597051983b404f9971ccd84211bdc",
+  "lightNextModeTooltip": "Switch to dark theme",
+  "space": {
+    "key": 32,
+    "focused": true
+  },
+  "spaceResult": "Theme accepted 2: Dark",
+  "darkBackgroundPixel": "28221A",
+  "darkScreenshotSha256": "3ff6b56487cb0a2e55aa2689c4f063996619c6213a086de4d4e006ef5b2d9a5b",
+  "enter": {
+    "key": 13,
+    "focused": true
+  },
+  "enterResult": "Theme accepted 3: System",
+  "returnedToSystemName": "Switch to light theme",
+  "button": {
+    "name": "Package component",
+    "x": 749,
+    "y": 417,
+    "tooltip": ""
+  },
+  "buttonResult": "Saved: Harbor update",
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}

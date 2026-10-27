@@ -349,3 +349,13 @@ The complete published Light/Dark catalog then passes at
 124/124 expected glyph positions in both themes. Its 352.436-second runtime
 stays within the original 360-second limit. Native ARM64 retesting remains
 deferred while push-triggered Actions are paused.
+
+The [v7 local package checkpoint](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+also covers the Attention pointer observer's consumer lifecycle. A normal
+close of the earlier v5 package consumer exited with `0xC000027B`: WinUI
+retained a `XamlRoot` after its content island was torn down, and the render
+observer read `ContentIslandEnvironment` as if it were still present. The
+observer now stops when that environment is absent. Separate v7 NuGet
+consumers complete both accepted and rejected Theme Toggle input routes and
+close with exit code zero. The x64 and ARM64 library builds have no warnings;
+native ARM64 runtime and the remaining Attention visual matrix are still open.

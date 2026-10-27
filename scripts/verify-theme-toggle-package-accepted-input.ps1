@@ -16,6 +16,7 @@ public static class OrchardThemePackageInput
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
     [DllImport("user32.dll")] public static extern bool GetCursorPos(out Point point);
     [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+    [DllImport("user32.dll")] public static extern int GetSystemMetrics(int index);
     [DllImport("user32.dll")] public static extern IntPtr GetDC(IntPtr window);
     [DllImport("user32.dll")] public static extern int ReleaseDC(IntPtr window, IntPtr context);
     [DllImport("gdi32.dll")] public static extern uint GetPixel(IntPtr context, int x, int y);
@@ -50,6 +51,13 @@ function ByButtonName($root, [string]$name) {
     $all = $root.FindAll([System.Windows.Automation.TreeScope]::Descendants, [System.Windows.Automation.Condition]::TrueCondition)
     @($all | Where-Object { $_.Current.Name -eq $name -and $_.Current.ControlType -eq [System.Windows.Automation.ControlType]::Button -and -not $_.Current.IsOffscreen }) | Select-Object -First 1
 }
+function VisibleToolTipName([int]$processId) {
+    $condition = [System.Windows.Automation.AndCondition]::new(
+        [System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::ProcessIdProperty, $processId),
+        [System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::ControlTypeProperty, [System.Windows.Automation.ControlType]::ToolTip))
+    $tips = [System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Descendants, $condition)
+    @($tips | ForEach-Object { $_.Current.Name })
+}
 function BackgroundPixel($root) {
     $bounds = $root.Current.BoundingRectangle
     $x = [int][Math]::Floor($bounds.Right - 25)
@@ -69,18 +77,33 @@ function CaptureWindow($root, [string]$path) {
         $bitmap.Save($path, [System.Drawing.Imaging.ImageFormat]::Png)
     } finally { $bitmap.Dispose() }
 }
-function Click($element, [IntPtr]$window) {
+function MovePointer($element, [IntPtr]$window, [string]$expectedTip = '') {
     if ([OrchardThemePackageInput]::GetForegroundWindow() -ne $window) { throw 'Consumer lost foreground; no pointer input was sent.' }
     $bounds = $element.Current.BoundingRectangle
     if ($element.Current.IsOffscreen -or $bounds.IsEmpty -or $bounds.Width -le 0 -or $bounds.Height -le 0) { throw 'Pointer target is not visible.' }
     $x = [int][Math]::Floor($bounds.X + $bounds.Width / 2)
     $y = [int][Math]::Floor($bounds.Y + $bounds.Height / 2)
-    if (-not [OrchardThemePackageInput]::SetCursorPos($x, $y)) { throw 'Windows rejected the pointer position.' }
+    $virtualX = [OrchardThemePackageInput]::GetSystemMetrics(76)
+    $virtualY = [OrchardThemePackageInput]::GetSystemMetrics(77)
+    $virtualWidth = [OrchardThemePackageInput]::GetSystemMetrics(78)
+    $virtualHeight = [OrchardThemePackageInput]::GetSystemMetrics(79)
+    if ($virtualWidth -le 1 -or $virtualHeight -le 1) { throw 'Windows virtual desktop bounds are invalid.' }
+    $absoluteX = [uint32][Math]::Round(($x - $virtualX) * 65535 / ($virtualWidth - 1))
+    $absoluteY = [uint32][Math]::Round(($y - $virtualY) * 65535 / ($virtualHeight - 1))
+    [OrchardThemePackageInput]::mouse_event(0xC001, $absoluteX, $absoluteY, 0, [UIntPtr]::Zero)
     Start-Sleep -Milliseconds 80
+    if ([OrchardThemePackageInput]::GetForegroundWindow() -ne $window) { throw 'Consumer lost foreground after pointer movement.' }
+    if ($expectedTip) {
+        Wait-Until { @(VisibleToolTipName $element.Current.ProcessId | Where-Object { $_ -eq $expectedTip }).Count -gt 0 } "Visible tooltip did not show '$expectedTip'." | Out-Null
+    }
+    [ordered]@{ name = $element.Current.Name; x = $x; y = $y; tooltip = $expectedTip }
+}
+function Click($element, [IntPtr]$window, [string]$expectedTip = '') {
+    $position = MovePointer $element $window $expectedTip
     [OrchardThemePackageInput]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero)
     Start-Sleep -Milliseconds 40
     [OrchardThemePackageInput]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero)
-    [ordered]@{ name = $element.Current.Name; x = $x; y = $y }
+    $position
 }
 function PressKey($element, [IntPtr]$window, [byte]$key) {
     if ([OrchardThemePackageInput]::GetForegroundWindow() -ne $window) { throw 'Consumer lost foreground; no keyboard input was sent.' }
@@ -120,7 +143,7 @@ try {
     $report.initialName = $toggle.Current.Name
     $report.systemBackgroundPixel = BackgroundPixel $root
     Start-Sleep -Seconds 2
-    $report.pointer = Click $toggle $process.MainWindowHandle
+    $report.pointer = Click $toggle $process.MainWindowHandle 'Switch to light theme'
     $report.physicalPointerInputSent = $true
     Wait-Until { $result.Current.Name -eq 'Theme accepted 1: Light' -and $toggle.Current.Name -eq 'Switch to dark theme' } 'Pointer click did not accept Light mode.' | Out-Null
     $report.pointerResult = $result.Current.Name
@@ -130,6 +153,8 @@ try {
     $lightScreenshot = Join-Path (Split-Path -Parent $outputPath) 'accepted-light.png'
     CaptureWindow $root $lightScreenshot
     $report.lightScreenshotSha256 = (Get-FileHash -LiteralPath $lightScreenshot -Algorithm SHA256).Hash.ToLowerInvariant()
+    MovePointer $button $process.MainWindowHandle | Out-Null
+    $report.lightNextModeTooltip = (MovePointer $toggle $process.MainWindowHandle 'Switch to dark theme').tooltip
 
     $report.space = PressKey $toggle $process.MainWindowHandle 0x20
     $report.physicalKeyboardInputSent = $true
@@ -158,8 +183,13 @@ try {
         $process.CloseMainWindow() | Out-Null
         if (-not $process.WaitForExit(5000)) { Stop-Process -Id $process.Id -Force }
     }
+    if ($process) { $process.Refresh() }
     $report.processExited = if ($process) { -not [bool](Get-Process -Id $process.Id -ErrorAction SilentlyContinue) } else { $true }
+    $report.processExitCode = if ($process -and $process.HasExited) { $process.ExitCode } else { $null }
+    $report.cleanShutdown = $report.processExited -and $report.processExitCode -eq 0
+    $report.passed = $report.passed -and $report.cleanShutdown
     if ($cursorSaved) { [OrchardThemePackageInput]::SetCursorPos($cursor.X, $cursor.Y) | Out-Null }
     New-Item -ItemType Directory -Path (Split-Path -Parent $outputPath) -Force | Out-Null
     $report | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $outputPath -Encoding utf8
 }
+if (-not $report.passed) { throw 'Package consumer input or clean shutdown failed; inspect the report.' }

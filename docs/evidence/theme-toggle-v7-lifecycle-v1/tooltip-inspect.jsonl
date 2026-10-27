@@ -1,0 +1,5 @@
+{"pointerX":531,"pointerY":205,"targetX":531,"targetY":205,"underPointer":"","foregroundMatches":true}
+{"pid":19268,"toggleName":"Switch to light theme","hoverTips":["Switch to light theme"],"bounds":"511,185,40,40"}
+{"focused":true,"name":"Switch to light theme"}
+{"afterInvoke":"Theme accepted 1: Light","toggleName":"Switch to dark theme","hoverTips":["Switch to dark theme"]}
+{"processExitCode":0,"cleanShutdown":true}

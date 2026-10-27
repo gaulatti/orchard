@@ -337,6 +337,7 @@
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAttentionSurface.cs",
         "src/Orchard/Controls/BleeckerAttentionSurface.Rendering.cs",
+        "src/Orchard/Controls/BleeckerAttentionPointer.cs",
         "src/Orchard/Colors/BleeckerAttentionGradient.cs",
         "src/Orchard/Themes/Attention.xaml"
       ],
@@ -351,12 +352,14 @@
         "samples/Orchard.Catalog/AttentionSurfacesFixture.xaml.cs",
         "samples/Orchard.Catalog/ContrastFixture.xaml.cs",
         "tests/Orchard.Tests/CatalogCoverageTests.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "scripts/verify-theme-toggle-package-input.ps1",
+        "scripts/verify-theme-toggle-package-accepted-input.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Full native/browser gradient, border, radius, shadow and glyph raster parity",
-        "Exact motion, interrupted reversals, all consumer overrides and lifecycle/constraint boundaries",
+        "Exact motion, interrupted reversals, and remaining consumer overrides and lifecycle/constraint boundaries; normal x64 NuGet consumer close now exits zero after the pointer-observer fix (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)",
         "Display/text scaling acceptance",
         "Complete independent-consumer contract beyond initial x64/ARM64 checks and the full native ARM64 visual/input/accessibility matrix"
       ]
@@ -7859,7 +7862,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Published v5 package-matching extracted x64 catalog pointer, Space, Enter, rejected Invoke, binding/metadata, template and remount checks pass in both themes (docs/evidence/theme-toggle-v5-published-foreground-v1/checkpoint.json); independent v5 NuGet consumer rejected-request route passes (docs/evidence/theme-toggle-package-consumer-input-v1/checkpoint.json), and physical pointer, Space and Enter accepted-mode transitions plus visible Light/Dark surfaces pass (docs/evidence/theme-toggle-package-accepted-input-v1/checkpoint.json); remaining focus/tooltip matrix remains",
+        "Published v5 catalog input and package-consumer mode requests were observed, but its normal close exited 0xC000027B and routed tooltip hover crashed WinUI; the local v7 NuGet consumer fixes both and passes accepted/rejected input, visible tooltip update, hidden ownership checks and clean close (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json); v7 publication, matching catalog qualification and broader focus/tooltip matrix remain",
         "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
         "Complete broader library integration and release acceptance"
       ]

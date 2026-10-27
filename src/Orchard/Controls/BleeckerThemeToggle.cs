@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
@@ -13,8 +14,8 @@ public sealed record BleeckerThemeRequestedEventArgs(BleeckerThemeMode Mode);
 /// <summary>A native icon button that requests the next consumer-owned theme mode.</summary>
 public sealed class BleeckerThemeToggle : BleeckerIconButton
 {
+    private static readonly ConditionalWeakTable<Style, BleeckerThemeToggle> defaultStyles = new();
     private ToolTip? defaultTip;
-    private ResourceDictionary? tooltipDefaults;
     private readonly ContentControl icon = new() { Name = "ThemeIcon", IsHitTestVisible = false, FlowDirection = FlowDirection.LeftToRight };
     private bool applyingDefaultStyle;
 
@@ -63,17 +64,15 @@ public sealed class BleeckerThemeToggle : BleeckerIconButton
 
     private void ApplyPaletteDefaults()
     {
-        if (applyingDefaultStyle || !ReferenceEquals(Style, VariantStyle) || GetBindingExpression(StyleProperty) is not null) return;
-        // Keep the default below native local/style overrides. The theme resource
-        // resolves against each target's resources when a caller shares its style.
-        var defaults = (ResourceDictionary)XamlReader.Load("<ResourceDictionary xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'><ToolTip x:Key='BleeckerThemeToggleDefaultToolTip'/><Style x:Key='BleeckerThemeToggleTooltipRecipe' TargetType='Button'><Setter Property='ToolTipService.ToolTip' Value='{ThemeResource BleeckerThemeToggleDefaultToolTip}'/></Style></ResourceDictionary>");
-        defaultTip = (ToolTip)defaults["BleeckerThemeToggleDefaultToolTip"];
-        defaultTip.Content = BleeckerThemeToggleModel.Label(Mode);
-        if (tooltipDefaults is not null) Resources.MergedDictionaries.Remove(tooltipDefaults);
-        tooltipDefaults = defaults;
-        Resources.MergedDictionaries.Add(defaults);
-        var style = (Style)defaults["BleeckerThemeToggleTooltipRecipe"];
-        style.BasedOn = VariantStyle;
+        if (applyingDefaultStyle || GetBindingExpression(StyleProperty) is not null) return;
+        var borrowedDefault = Style is { } current && defaultStyles.TryGetValue(current, out var owner) && !ReferenceEquals(owner, this);
+        if (!ReferenceEquals(Style, VariantStyle) && !borrowedDefault) return;
+        // A popup must not open a ToolTip element owned by a ResourceDictionary.
+        // Keep the style and ToolTip per instance, including a borrowed default.
+        defaultTip = new ToolTip { Content = BleeckerThemeToggleModel.Label(Mode) };
+        var style = new Style(typeof(Button)) { BasedOn = VariantStyle };
+        style.Setters.Add(new Setter(ToolTipService.ToolTipProperty, defaultTip));
+        defaultStyles.Add(style, this);
         applyingDefaultStyle = true;
         try
         {

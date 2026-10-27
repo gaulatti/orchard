@@ -1,0 +1,4266 @@
+{
+  "passed": false,
+  "scope": "hidden-component-contracts",
+  "hiddenWindow": true,
+  "activateCalled": false,
+  "showCalled": false,
+  "focusCalled": false,
+  "inputSent": false,
+  "enabledButtonInvoked": false,
+  "visible": false,
+  "nativeVisible": false,
+  "activationEvents": 0,
+  "guardChecks": 830,
+  "isolated": true,
+  "foregroundBefore": 1444342,
+  "foregroundAfter": 1444342,
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "displayScale": 1,
+  "referenceSha256": "0f0a9ed3dff03838849e9cc14169d8a6d3d60134f9b934c84606b76f3c350d8d",
+  "libraryAssembly": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-card-v5-consumer\\bin\\x64\\Release\\net10.0-windows10.0.26100.0\\win-x64\\Orchard.dll",
+  "librarySha256": "09b65e17736707fff882c7258cea33d6d19867a2793e2dc4fe63304fc54a0c56",
+  "frames": [
+    {
+      "id": "light-sm-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-default-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-default-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-subtle-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-subtle-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-ghost-false",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-ghost-true",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "defaults",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "custom",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "light",
+        "label": "Appearance \u2014 \u6771\u4EAC",
+        "title": "Consumer tooltip",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "empty",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "dark",
+        "label": "",
+        "title": "",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "rtl",
+      "scheme": "Light",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          74,
+          85,
+          101,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-sm-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-md-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "light-lg-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Switch to dark theme",
+        "title": "Switch to dark theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-sm-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-md-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "dark-lg-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "Switch to system theme",
+        "title": "Switch to system theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-sm-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 32,
+          "height": 32
+        },
+        "icon": {
+          "x": 31,
+          "y": 31,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-md-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-default-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-default-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-subtle-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-subtle-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-ghost-false",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "system-lg-ghost-true",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": true,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 44,
+          "height": 44
+        },
+        "icon": {
+          "x": 37,
+          "y": 37,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 0.44999998807907104,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "defaults",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "custom",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "light",
+        "label": "Appearance \u2014 \u6771\u4EAC",
+        "title": "Consumer tooltip",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 9,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "empty",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "dark",
+        "label": "",
+        "title": "",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 1,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    },
+    {
+      "id": "rtl",
+      "scheme": "Dark",
+      "measurement": {
+        "mode": "system",
+        "label": "Switch to light theme",
+        "title": "Switch to light theme",
+        "disabled": false,
+        "box": {
+          "x": 24,
+          "y": 24,
+          "width": 40,
+          "height": 40
+        },
+        "icon": {
+          "x": 35,
+          "y": 35,
+          "width": 18,
+          "height": 18
+        },
+        "strokeRgba": [
+          209,
+          213,
+          220,
+          255
+        ],
+        "strokeOpacity": 1,
+        "strokeWidth": 1.5,
+        "iconOpacity": 1,
+        "paths": 3,
+        "tabStop": true,
+        "role": "Button",
+        "loaded": true
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "Light/default-name-tip",
+      "passed": true
+    },
+    {
+      "id": "Light/style-empty-name",
+      "passed": true
+    },
+    {
+      "id": "Light/style-tooltip",
+      "passed": true
+    },
+    {
+      "id": "Light/style-mode-update",
+      "passed": true
+    },
+    {
+      "id": "Light/local-bindings-win",
+      "passed": true
+    },
+    {
+      "id": "Light/bound-empty-values",
+      "passed": true
+    },
+    {
+      "id": "Light/clear-restores-style",
+      "passed": true
+    },
+    {
+      "id": "Light/style-empty-tooltip",
+      "passed": true
+    },
+    {
+      "id": "Light/invalid-null-style-setter",
+      "passed": true
+    },
+    {
+      "id": "Light/style-removal-restores-default",
+      "passed": true
+    },
+    {
+      "id": "Light/local-null-tooltip",
+      "passed": true
+    },
+    {
+      "id": "Light/clear-restores-default-tip",
+      "passed": true
+    },
+    {
+      "id": "Light/caller-label",
+      "passed": true
+    },
+    {
+      "id": "Light/shared-style-metadata",
+      "passed": false,
+      "error": "A shared style reused another control\u0027s default tooltip."
+    },
+    {
+      "id": "Light/content-binding",
+      "passed": true
+    },
+    {
+      "id": "Light/empty-name-with-content",
+      "passed": true
+    },
+    {
+      "id": "Light/style-empty-name-with-content",
+      "passed": true
+    },
+    {
+      "id": "Light/disabled-invoke",
+      "passed": true
+    },
+    {
+      "id": "Light/template-binding",
+      "passed": true
+    },
+    {
+      "id": "Light/detached-invoke",
+      "passed": true
+    },
+    {
+      "id": "Light/remount-binding",
+      "passed": true
+    },
+    {
+      "id": "Dark/default-name-tip",
+      "passed": true
+    },
+    {
+      "id": "Dark/style-empty-name",
+      "passed": true
+    },
+    {
+      "id": "Dark/style-tooltip",
+      "passed": true
+    },
+    {
+      "id": "Dark/style-mode-update",
+      "passed": true
+    },
+    {
+      "id": "Dark/local-bindings-win",
+      "passed": true
+    },
+    {
+      "id": "Dark/bound-empty-values",
+      "passed": true
+    },
+    {
+      "id": "Dark/clear-restores-style",
+      "passed": true
+    },
+    {
+      "id": "Dark/style-empty-tooltip",
+      "passed": true
+    },
+    {
+      "id": "Dark/invalid-null-style-setter",
+      "passed": true
+    },
+    {
+      "id": "Dark/style-removal-restores-default",
+      "passed": true
+    },
+    {
+      "id": "Dark/local-null-tooltip",
+      "passed": true
+    },
+    {
+      "id": "Dark/clear-restores-default-tip",
+      "passed": true
+    },
+    {
+      "id": "Dark/caller-label",
+      "passed": true
+    },
+    {
+      "id": "Dark/shared-style-metadata",
+      "passed": false,
+      "error": "A shared style reused another control\u0027s default tooltip."
+    },
+    {
+      "id": "Dark/content-binding",
+      "passed": true
+    },
+    {
+      "id": "Dark/empty-name-with-content",
+      "passed": true
+    },
+    {
+      "id": "Dark/style-empty-name-with-content",
+      "passed": true
+    },
+    {
+      "id": "Dark/disabled-invoke",
+      "passed": true
+    },
+    {
+      "id": "Dark/template-binding",
+      "passed": true
+    },
+    {
+      "id": "Dark/detached-invoke",
+      "passed": true
+    },
+    {
+      "id": "Dark/remount-binding",
+      "passed": true
+    }
+  ],
+  "failures": [
+    "Light/shared-style-metadata: A shared style reused another control\u0027s default tooltip.",
+    "Dark/shared-style-metadata: A shared style reused another control\u0027s default tooltip."
+  ],
+  "failure": null,
+  "isolationFailure": null,
+  "visibleRuntimeVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false
+}

@@ -26,9 +26,9 @@ explicit empty name or tooltip keeps its meaning; WinUI represents an empty
 styled tooltip as absent. Local null tooltips suppress the default. Local
 bindings win over style setters. Clearing local metadata reveals the style, and removing a style
 override restores the mode's default metadata without replacing the mode or
-style binding. The default tooltip is a native style value resolved through
-per-control resources, so sharing a style does not share another instance's
-mode. These boundaries are covered by a hidden native diagnostic that
+style binding. The default tooltip is a per-instance style value; borrowing a
+generated default style re-owns its tooltip for the receiving toggle, so one
+instance cannot show another's mode. These boundaries are covered by a hidden native diagnostic that
 never shows/activates a window, focuses a control or sends input. That diagnostic
 does not replace visible rendering and physical input checks.
 
@@ -94,6 +94,19 @@ The consumer queues its own model and root theme update after input. Physical
 pointer, Space and Enter now cycle System to Light to Dark to System; the
 next-mode names update, visible backgrounds change from white to Orchard's dark
 surface, and the existing package Button still works. The full x64 consumer
-suite passes in both themes. The remaining consumer focus/tooltip matrix,
-normal animation, display scaling, full visual review and native ARM64 runtime
-are still open; this evidence does not accept the component.
+suite passes in both themes. A later normal-close test exposed a gap in both v5
+physical probes: they recorded process disappearance but missed exit code
+`0xC000027B`. A separate routed hover over the v5 default tooltip also crashed
+WinUI. The archived input actions remain observed, but those v5 probes are not
+clean end-to-end consumer passes.
+
+The [local v7 package follow-up](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+fixes both crashes. Its separate package consumer shows the initial and updated
+native tooltip, accepts pointer/Space/Enter through all three modes, preserves
+the rejected-request path, and closes with exit code zero. The hidden package
+diagnostic passes 116 normal frames and 42 ownership/style/lifecycle checks;
+the full consumer suite passes in both themes. The x64 and ARM64 library builds
+have no warnings. The package has not yet been published, the v7 catalog is not
+qualified, and broader focus/tooltip variants, normal animation, display
+scaling, full visual review and native ARM64 runtime remain open. The component
+is still unaccepted.
