@@ -1,6 +1,8 @@
-param([Parameter(Mandatory)][string]$AppDirectory,[Parameter(Mandatory)][string]$Output,[ValidateSet('Orchard.Catalog','PackageConsumer')][string]$HostName='Orchard.Catalog',[switch]$PagingOnly,[string]$ImmutableManifest)
+param([Parameter(Mandatory)][string]$AppDirectory,[Parameter(Mandatory)][string]$Output,[ValidateSet('Orchard.Catalog','PackageConsumer')][string]$HostName='Orchard.Catalog',[switch]$PagingOnly,[string]$ImmutableManifest,[string]$IdentityDirectory)
 $ErrorActionPreference='Stop'
 $taskApp=(Resolve-Path -LiteralPath $AppDirectory).Path
+$taskIdentitySource=if($IdentityDirectory){(Resolve-Path -LiteralPath $IdentityDirectory).Path}else{$null}
+if($taskIdentitySource -and $ImmutableManifest){throw 'Choose one immutable identity source'}
 $taskManifest=$null
 if($ImmutableManifest){
  $taskImmutableRoot=[IO.Path]::GetFullPath('artifacts/current')+[IO.Path]::DirectorySeparatorChar
@@ -18,13 +20,21 @@ $taskTarget=[IO.Path]::GetFullPath($Output);New-Item -ItemType Directory -Path $
 if($LASTEXITCODE -ne 0){throw 'Could not mark benchmark output compressed'}
 $taskReport=Join-Path $taskTarget 'data-table-performance.json';if(Test-Path -LiteralPath $taskReport){throw 'Use a fresh Data Table performance output directory'}
 $taskIdentity=Join-Path $taskTarget 'app-identity';New-Item -ItemType Directory -Path $taskIdentity -Force|Out-Null
+$taskIdentityHashes=@{}
 foreach($taskFile in @('Orchard.dll',"$HostName.dll",'Microsoft.UI.Xaml.dll','resources.pri')){
  $taskFrom=Join-Path $taskApp $taskFile
+ $taskHash=(Get-FileHash -LiteralPath $taskFrom -Algorithm SHA256).Hash.ToLowerInvariant()
  if($taskManifest){
   $taskEntry=@($taskManifest.files|Where-Object file -eq $taskFile)
-  if($taskEntry.Count -ne 1 -or (Get-FileHash -LiteralPath $taskFrom).Hash.ToLowerInvariant() -ne $taskEntry[0].sha256){throw 'Frozen benchmark identity differs from its manifest'}
-  New-Item -ItemType HardLink -Path (Join-Path $taskIdentity $taskFile) -Target $taskFrom|Out-Null
- }else{Copy-Item -LiteralPath $taskFrom -Destination $taskIdentity}
+  if($taskEntry.Count -ne 1 -or $taskHash -ne $taskEntry[0].sha256){throw 'Frozen benchmark identity differs from its manifest'}
+ }
+ $taskIdentityHashes[$taskFile]=$taskHash
+ if($taskIdentitySource){
+  $taskFrozen=Join-Path $taskIdentitySource $taskFile
+  if((Get-FileHash -LiteralPath $taskFrozen -Algorithm SHA256).Hash.ToLowerInvariant() -ne $taskHash){throw "Saved benchmark identity differs from the app: $taskFile"}
+  New-Item -ItemType HardLink -Path (Join-Path $taskIdentity $taskFile) -Target $taskFrozen|Out-Null
+ }elseif($taskManifest){New-Item -ItemType HardLink -Path (Join-Path $taskIdentity $taskFile) -Target $taskFrom|Out-Null}
+ else{Copy-Item -LiteralPath $taskFrom -Destination $taskIdentity}
 }
 $taskExe=Join-Path $taskApp "$HostName.exe"
 $taskScope=if($PagingOnly){' --paging-only'}else{''}
@@ -35,6 +45,11 @@ while(-not $taskDone){$taskDone=$taskProcess.WaitForExit(10000)}
 @{exited=$taskDone;exitCode=if($taskDone){$taskProcess.ExitCode}else{$null};timedOut=$false;observationExpired=(-not $taskDone)}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $taskTarget 'process-exit.json')
 if(-not $taskDone){throw 'Observation expired; inspect the same owned benchmark process before follow-up'}
 if($taskProcess.ExitCode -ne 0){throw "Data Table benchmark failed: $taskReport"}
+foreach($taskFile in $taskIdentityHashes.Keys){
+ $taskHash=(Get-FileHash -LiteralPath (Join-Path $taskApp $taskFile) -Algorithm SHA256).Hash.ToLowerInvariant()
+ if($taskHash -ne $taskIdentityHashes[$taskFile]){throw "Data Table benchmark host changed during measurement: $taskFile"}
+ if($taskIdentitySource -and (Get-FileHash -LiteralPath (Join-Path $taskIdentitySource $taskFile) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $taskHash){throw "Saved benchmark identity changed during measurement: $taskFile"}
+}
 $taskAuditScope=if($PagingOnly){'paging'}else{'full'}
 node (Join-Path $PSScriptRoot 'verify-data-table-performance.mjs') --native $taskTarget --host-assembly "$HostName.dll" --output (Join-Path $taskTarget 'data-table-performance-audit.json') --scope $taskAuditScope
 if($LASTEXITCODE -ne 0){throw 'Data Table benchmark audit failed'}

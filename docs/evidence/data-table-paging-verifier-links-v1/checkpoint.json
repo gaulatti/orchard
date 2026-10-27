@@ -1,0 +1,30 @@
+{
+  "scope": "Data Table focused verifier reuses a saved byte-matching host identity without copying large binaries per run",
+  "libraryAndFixtureUnchanged": true,
+  "librarySha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",
+  "catalogSha256": "ca94a15f0023c291978378df1a36c8a8b9eec24226c542fb531953907d54741f",
+  "savedIdentityDirectory": "artifacts/current/data-table-v4-paging-baseline/app-identity",
+  "linkedIdentityFiles": [
+    "Orchard.dll",
+    "Orchard.Catalog.dll",
+    "Microsoft.UI.Xaml.dll",
+    "resources.pri"
+  ],
+  "allFourLinksTargetSavedCopyAndNotActiveBuild": true,
+  "sourceAndSavedSha256MatchedBeforeAndAfter": true,
+  "baselineReportSha256": "f7d87c22c489ef9f00df7a137c1a303c07d91efe6b0ade9dcd6bf674b364e4df",
+  "replayReportSha256": "d3e5b45381c7e8db1d314d1b79ec52b93339521837211a59f83af83a04ea4b1c",
+  "replayAuditSha256": "ffc92cc801dfbaeb4bd86451e27670f477d1d04aa4e1fdf92a1c37038deaf414",
+  "focusedAuditPassed": true,
+  "operations": 20,
+  "semanticSnapshotsIdentical": true,
+  "contractsIdentical": true,
+  "containerContractsIdentical": true,
+  "containerDiagnosticsIdentical": true,
+  "loadingDiagnosticsIdentical": false,
+  "loadingDiagnosticsNote": "The initial loaded-state observation differed; both runs passed the lifecycle audit.",
+  "replayNextPageMilliseconds": 1733.7805,
+  "budgetMilliseconds": 1000,
+  "performanceAccepted": false,
+  "nativeArm64RuntimeVerified": false
+}

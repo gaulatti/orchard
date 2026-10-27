@@ -1002,3 +1002,12 @@ That is a single observation, not a stable median or a full performance audit.
 The [v4 paging baseline](evidence/data-table-v4-paging-baseline/checkpoint.json)
 records the exact assembly identity and report hashes. Performance acceptance
 remains open; this check did not exercise native ARM64 runtime.
+
+The focused verifier now accepts `-IdentityDirectory` to hardlink its four
+identity files from a saved byte-matching copy instead of copying roughly 37 MB
+into every subsequent result directory. Default runs still make their own copy.
+It checks source and saved SHA-256 hashes before and after the run, and fails if
+either changes during measurement. A current v4 replay passed the same
+20-operation audit with identical semantic snapshots and contracts. Next-page
+timing still exceeded the budget. See the
+[verifier checkpoint](evidence/data-table-paging-verifier-links-v1/checkpoint.json).
