@@ -994,3 +994,11 @@ at its enabled or disabled opacity. Actual pre-repair opaque arrows and blank
 glyphs are rejected in both themes. This is a foreground/visibility check;
 full-image parity keeps all original pixels and remains a separate requirement.
 The original failed audit log and its captures remain retained.
+
+The current v4 package-matching x64 catalog build passed the focused 20-operation
+Data Table paging semantic audit, but its 16,384-row, page-size-100 next-page
+operation took 2,110.13 ms against the unchanged 1,000 ms budget in one process.
+That is a single observation, not a stable median or a full performance audit.
+The [v4 paging baseline](evidence/data-table-v4-paging-baseline/checkpoint.json)
+records the exact assembly identity and report hashes. Performance acceptance
+remains open; this check did not exercise native ARM64 runtime.

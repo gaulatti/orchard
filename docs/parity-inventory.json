@@ -7464,7 +7464,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Focused v5 x64 foreground Count sort, Ash search, page selection retention and pointer/keyboard pagination pass; complete source-derived visual review, scaling/motion, remaining input/focus paths and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
-        "Meet unchanged local performance budgets: the earlier DAE NuGet library fails 24 of 120 timing profiles across three sequential full runs (360 measurements); all allocation budgets pass. Its 16,384-row/page-100 next-page median is 1,715.0988 ms versus 1,000 ms. The later text-media-v3 package takes 1,727.45 ms in one focused process, and the 96516e7 source-built catalog takes 1,675.29 ms in a separate one-process replay. Neither result establishes performance acceptance for the current v5 delivery",
+        "Meet unchanged local performance budgets: the earlier DAE NuGet library fails 24 of 120 timing profiles across three sequential full runs (360 measurements); all allocation budgets pass. Its 16,384-row/page-100 next-page median is 1,715.0988 ms versus 1,000 ms. The later text-media-v3 package takes 1,727.45 ms in one focused process, and the 96516e7 source-built catalog takes 1,675.29 ms in a separate one-process replay. The current v4 package-matching x64 catalog takes 2,110.13 ms in one focused next-page measurement; its semantic audit passes, but performance acceptance remains open (docs/evidence/data-table-v4-paging-baseline/checkpoint.json)",
         "Complete broader component acceptance beyond the navigation-foreground repair: version0.1.0-table-navigation-v1-local passes independent x64/ARM64 consumer builds and96states/264observations in each x64package/catalog host, with66fictional-demo checks; native ARM64 runtime remains unverified"
       ],
       "sourcePreparation": {
@@ -7726,6 +7726,17 @@
         "semanticOperationsPassed": 20,
         "nextPage16384Page100Milliseconds": 1727.45,
         "nextPage16384Page100ManagedAllocatedBytes": 19854616,
+        "nextPageBudgetMilliseconds": 1000,
+        "fullPerformanceMatrixVerified": false,
+        "performancePassed": false
+      },
+      "currentV4FocusedPagingObservation": {
+        "checkpoint": "docs/evidence/data-table-v4-paging-baseline/checkpoint.json",
+        "librarySha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",
+        "host": "current v4 package-matching x64 catalog build",
+        "independentProcesses": 1,
+        "semanticOperationsPassed": 20,
+        "nextPage16384Page100Milliseconds": 2110.1293,
         "nextPageBudgetMilliseconds": 1000,
         "fullPerformanceMatrixVerified": false,
         "performancePassed": false

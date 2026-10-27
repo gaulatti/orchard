@@ -1,0 +1,191 @@
+{
+  "scope": "Focused native x64 Data Table paging baseline for the current v4 package-matching catalog build",
+  "sourceCommit": "c7f75886833c740cad2572a1e782e4f525e1d532",
+  "librarySha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",
+  "catalogSha256": "ca94a15f0023c291978378df1a36c8a8b9eec24226c542fb531953907d54741f",
+  "packageSha256": "3bd5b0a534eae065e054757955b5060a7095f5e79368433a59c57ac9a8abd48e",
+  "rawReportSha256": "f7d87c22c489ef9f00df7a137c1a303c07d91efe6b0ade9dcd6bf674b364e4df",
+  "rawAuditSha256": "c3587a752bfcacd07b9ac1274dde120de70719f70f0e9c554a15d50af8531df0",
+  "semanticAuditPassed": true,
+  "measuredOperations": 20,
+  "profile": {
+    "rows": 16384,
+    "pageSize": 100,
+    "operation": "next-page",
+    "mutationMilliseconds": 387.1331,
+    "threePassMilliseconds": 2110.1293,
+    "managedAllocatedBytes": 19348752,
+    "gcPauseMilliseconds": 551.722,
+    "budgetMilliseconds": 1000,
+    "timingBudgetPassed": false
+  },
+  "measurementLimit": "One focused x64 process, one next-page measurement; no stable median and no full 120-profile budget audit for v4.",
+  "nativeArm64RuntimeVerified": false,
+  "dataTableAccepted": false,
+  "committedAudit": {
+    "path": "docs/evidence/data-table-v4-paging-baseline/audit.json",
+    "sha256": "c3587a752bfcacd07b9ac1274dde120de70719f70f0e9c554a15d50af8531df0"
+  },
+  "measurements": [
+    {
+      "operation": "bind-data",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1244.3939,
+      "managedAllocatedBytes": 26857432,
+      "gcPauseMilliseconds": 108.721
+    },
+    {
+      "operation": "sort-descending",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 92.7289,
+      "managedAllocatedBytes": 3602216,
+      "gcPauseMilliseconds": 11.904
+    },
+    {
+      "operation": "sort-ascending",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1570.8348,
+      "managedAllocatedBytes": 24416440,
+      "gcPauseMilliseconds": 211.428
+    },
+    {
+      "operation": "next-page",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 2110.1293,
+      "managedAllocatedBytes": 19348752,
+      "gcPauseMilliseconds": 551.722
+    },
+    {
+      "operation": "select-page",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 66.5961,
+      "managedAllocatedBytes": 479032,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "deselect-page",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 32.9593,
+      "managedAllocatedBytes": 457184,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "select-all",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 54.7434,
+      "managedAllocatedBytes": 1383456,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "deselect-all",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 48.9235,
+      "managedAllocatedBytes": 465000,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "notify-hidden",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1165.3251,
+      "managedAllocatedBytes": 18890928,
+      "gcPauseMilliseconds": 204.006
+    },
+    {
+      "operation": "notify-visible",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 228.7924,
+      "managedAllocatedBytes": 8365168,
+      "gcPauseMilliseconds": 37.923
+    },
+    {
+      "operation": "range-filter",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1666.5365,
+      "managedAllocatedBytes": 24681024,
+      "gcPauseMilliseconds": 415.356
+    },
+    {
+      "operation": "clear-range",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1166.4759,
+      "managedAllocatedBytes": 13170240,
+      "gcPauseMilliseconds": 230.127
+    },
+    {
+      "operation": "search-group",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1675.4577,
+      "managedAllocatedBytes": 19388160,
+      "gcPauseMilliseconds": 483.798
+    },
+    {
+      "operation": "clear-search",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1155.7369,
+      "managedAllocatedBytes": 14904440,
+      "gcPauseMilliseconds": 289.75
+    },
+    {
+      "operation": "global-group",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1095.268,
+      "managedAllocatedBytes": 14438952,
+      "gcPauseMilliseconds": 241.958
+    },
+    {
+      "operation": "clear-global",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1220.9525,
+      "managedAllocatedBytes": 10829672,
+      "gcPauseMilliseconds": 328.69
+    },
+    {
+      "operation": "reverse-source",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 1278.7614,
+      "managedAllocatedBytes": 21696896,
+      "gcPauseMilliseconds": 317.925
+    },
+    {
+      "operation": "clear-sort",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 13.1342,
+      "managedAllocatedBytes": 1621992,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "remove-first",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 406.4683,
+      "managedAllocatedBytes": 8682736,
+      "gcPauseMilliseconds": 57.867
+    },
+    {
+      "operation": "append-original",
+      "rows": 16384,
+      "pageSize": 100,
+      "threePassMilliseconds": 57.5283,
+      "managedAllocatedBytes": 7436704,
+      "gcPauseMilliseconds": 39.261
+    }
+  ]
+}
