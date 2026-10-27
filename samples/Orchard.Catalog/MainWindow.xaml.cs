@@ -383,7 +383,7 @@ public sealed partial class MainWindow : Window
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
                 {
                     await SelectFixtureAsync(Foundation); CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Checkboxes);
-                    await Checkboxes.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                    await Checkboxes.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, CatalogRoot);
                     await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "checkboxes", environment = RuntimeEnvironment() }));
@@ -963,7 +963,7 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(Progress);
             await Progress.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Checkboxes);
-            await Checkboxes.VerifyAsync(scheme, folder);
+            await Checkboxes.VerifyAsync(scheme, folder, CatalogRoot);
             await SelectFixtureAsync(RadioGroups);
             await RadioGroups.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Accordions);

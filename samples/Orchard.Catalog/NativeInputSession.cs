@@ -208,7 +208,10 @@ internal sealed partial class NativeInputSession : IDisposable
         pointerMoves.Add(new { target = target.Name, bounds, finalBounds, localPoint, requested = new { x, y },
             positioned, actual = new { actual.X, actual.Y },
             hit = NativeScreenCapture.DescribePoint(Window, actual.X, actual.Y), stationary, delivered = delivered.Task.IsCompletedSuccessfully, deliveryMilliseconds = receiptWatch.Elapsed.TotalMilliseconds, receipts });
-        Require(positioned && bounds.Contains(new Point(actual.X, actual.Y)) && finalBounds.Contains(new Point(actual.X, actual.Y)) &&
+        // The cursor is addressed by integer pixel, while WinUI bounds can start on a
+        // fractional coordinate. Test the addressed pixel's center at edge samples.
+        var pixelCenter = new Point(actual.X + .5, actual.Y + .5);
+        Require(positioned && bounds.Contains(pixelCenter) && finalBounds.Contains(pixelCenter) &&
             NativeScreenCapture.OwnsScreenPoint(Window, actual.X, actual.Y), "Physical pointer movement missed its owned target.");
         if (localPoint is not null) Require(actual.X == x && actual.Y == y, "Physical pointer movement missed its exact boundary sample.");
     }

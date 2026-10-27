@@ -622,6 +622,21 @@ variant. Local desktop text, display and animation preferences must remain
 unchanged. The repository wiki remote is unavailable, so this contract is
 documented here.
 
+The 2026-10-27 extracted v7 x64 catalog's focused Checkbox run failed before
+physical input because its live-theme fixture changed the outer modal host,
+while `CatalogRoot` owns the fixture theme. The corrected fixture now receives
+that owner from the catalog. A source-built rerun reached the disabled-pointer
+matrix and exposed a second fixture error: an integer cursor pixel at Y=277
+was rejected against a WinUI bound starting at Y=277.18, even though Orchard
+owned the hit and received the pointer event. Native input validation now tests
+the addressed pixel center against fractional element bounds. With these two
+catalog-only corrections, the focused source-built x64 run passes Light and
+Dark, including 10 physical-input stages and 90 disabled-pointer samples per
+theme. The [checkpoint](evidence/checkbox-theme-root-pixel-center-v1/checkpoint.json)
+retains both failures and the passing report hashes. The existing v7 package
+was not rebuilt or requalified; full visual, motion, scaling, consumer and
+native ARM64 acceptance remain open.
+
 Shared cursor diagnostics now record per-root refresh/publication counts and
 the retained/restored producer cursor alongside disabled Checkbox failures.
 They use the same catalog-only observer as Input. The native displayed-cursor

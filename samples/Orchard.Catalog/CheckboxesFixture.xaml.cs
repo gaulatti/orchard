@@ -22,7 +22,7 @@ public sealed partial class CheckboxesFixture : UserControl
     private readonly List<string> physicalInputSteps = [];
     public CheckboxesFixture() { InitializeComponent(); DataContext = state; }
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, FrameworkElement themeRoot)
     {
         var controls = Rows.Children.OfType<BleeckerCheckbox>().ToArray();
         var passed = false;
@@ -263,16 +263,16 @@ public sealed partial class CheckboxesFixture : UserControl
             verifiedSteps.Add("Plain and rich hide/show retained the branded template, consumer content and native state");
             await VerifyMotionAsync();
             verifiedSteps.Add("Applicable intermediate/reversed or reduced glyph motion");
-            var original = ((FrameworkElement)XamlRoot.Content).RequestedTheme;
+            var original = themeRoot.RequestedTheme;
             var values = controls.Select(control => control.IsChecked).ToArray();
             try
             {
-                ((FrameworkElement)XamlRoot.Content).RequestedTheme = scheme == BleeckerColorScheme.Light ? ElementTheme.Dark : ElementTheme.Light;
+                themeRoot.RequestedTheme = scheme == BleeckerColorScheme.Light ? ElementTheme.Dark : ElementTheme.Light;
                 foreach (var control in controls) await SettleAsync(control);
                 foreach (var control in controls) VerifyPresentation(control, scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light);
                 Require(controls.Select(control => control.IsChecked).SequenceEqual(values), "Appearance change altered checkbox consumer state.");
             }
-            finally { ((FrameworkElement)XamlRoot.Content).RequestedTheme = original; }
+            finally { themeRoot.RequestedTheme = original; }
             foreach (var control in controls) await SettleAsync(control);
             foreach (var control in controls) VerifyPresentation(control, scheme);
             verifiedSteps.Add("All rows changed and restored appearance with retained consumer state");

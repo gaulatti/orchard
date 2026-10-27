@@ -1,0 +1,46 @@
+{
+  "scope": "Source-built x64 catalog Checkbox live-theme and physical-input fixture",
+  "sourceBaseCommit": "a6cb561",
+  "sourceFilesSha256": {
+    "samples/Orchard.Catalog/CheckboxesFixture.xaml.cs": "4a9fde11bb5c257b8752e597411ef95138e66b8d199e5ec5c0f9596f54c4766d",
+    "samples/Orchard.Catalog/MainWindow.xaml.cs": "aba1bd52b8d8243bc6eeab63358be8d87c2ac9a24489908333e474d53769b655",
+    "samples/Orchard.Catalog/NativeInputSession.cs": "4506edf5bb211e1b04425550c12d33ea0a31aed5505d3b2985e0ce82f3b7c08b"
+  },
+  "sourceBuild": {
+    "command": "dotnet build samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 -p:BuildProjectReferences=false --no-restore -v:minimal",
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "catalogDllSha256": "18736ef5f6e52aa71507326e98551d2b0d31af550209c901e0e5506ea7ea253d",
+    "orchardDllSha256": "3c2eb1ceab9c213e07bf122c83815af8860a836774815acef6012a1847190fb6"
+  },
+  "retainedFailures": [
+    {
+      "report": "artifacts/current/components-v7-checkbox-physical-x64/result.json",
+      "sha256": "c6a60da1ec294092202947c4d6328c0ac115c9b652b9ca8caa5c12c4e90e04d8",
+      "reason": "The v7 extracted catalog's Checkbox fixture changed the outer modal host theme rather than CatalogRoot; focus colors did not switch."
+    },
+    {
+      "report": "artifacts/current/components-v7-checkbox-theme-root-source-x64/result.json",
+      "sha256": "a2006fcece391836fd6956bf7f52a0b270df35ee4c0477f7a6cbf2cd2cee8a64",
+      "reason": "After correcting theme ownership, a fractional top edge at Y=277.18 made the physical pixel Y=277 fail integer-corner containment despite a delivered event and Orchard-owned hit."
+    }
+  ],
+  "passingSourceRuntime": {
+    "report": "artifacts/current/components-v7-checkbox-theme-root-pixel-center-source-x64/result.json",
+    "sha256": "a4d9e00f763d7b726840fa872b2f20b7d194b47bbd2fa8b530c2d945b76fb93c",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "physicalInputStepsPerTheme": 10,
+    "disabledPointerSamplesPerTheme": 90,
+    "lightDisabledPointerReportSha256": "21fef61c333a1b3a78caa6380a4aeb016fcc070338c66e1cfdc1518ef408f760",
+    "darkDisabledPointerReportSha256": "59251ba92b44c8c345258ef914643b1b58a856699624f8c14d85f9cda5c972a0"
+  },
+  "v7PackageRequalified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}
