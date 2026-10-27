@@ -42,6 +42,13 @@ standalone styles and command gating, and rejected retired/disabled UI Automatio
 actions. Physical input, visual parity, scaling and ARM64 runtime remain open;
 see the [Toggle Group contract](../toggle-groups.md).
 
+Footer's pinned hidden layout/paint audit passes on the extracted x64 catalog
+and independent package consumer. Each host checks 192 frames, 15,216 source
+geometry values and 1,890 paint values with zero error, including the pinned
+long/unbroken text cases. The package auditor rejects 50 damaged reports. See
+the [Footer contract](../footer.md); visible interaction, full raster review,
+scaling and native ARM64 runtime remain open.
+
 A separate general x64 package smoke test **failed** at the Data Table toolbar
 held-Reset geometry assertion. That fixture activates a foreground window and
 sends native keyboard input; it was run outside the authorized desktop window

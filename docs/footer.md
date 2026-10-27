@@ -54,6 +54,18 @@ README match the tested inputs. Package SHA-256:
 `81b7e538f2515ec682928e7047e6770d3670761b9c488e62e64acace39c1aefd`.
 This package remains an unaccepted local draft; no publication is claimed.
 
+The later `0.1.0-text-media-v4-local` package and extracted x64 catalog pass the
+complete pinned hidden Footer layout/paint audit on the same current Orchard
+DLL. Each host repeats all 64 source states three times, including the existing
+long and unbroken text cases, with 15,216 geometry checks at zero error, 1,890
+paint checks at zero error, seven ownership checks and 1,877 isolation guards.
+The independent package auditor also rejects 50 damaged reports. The
+v4 checkpoint at `artifacts/current/text-media-v4-footer-layout-checkpoint-v1.json`
+pins the package, report and audit hashes. This closes the current-package gap
+for those pinned layout cases; broader custom rendering and fractional-width
+cases, visible interaction, full client raster review, scaling and native ARM64
+runtime remain open.
+
 The existing BrandLockup now exposes internal preferred-width metrics for its
 Footer host. Those metrics apply after its template exists and support the
 source's shrink-to-fit brand width and inline baseline. Existing public brand

@@ -8019,10 +8019,24 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Broader original-content/custom-renderer/style and long/unbroken/fractional-width matrices",
+        "Broader original-content/custom-renderer/style and fractional-width matrices; the pinned long/unbroken cases now pass current x64 catalog and package geometry/paint audits",
         "Fresh visible pointer/keyboard, full raster and current-binary Nav Menu visible source audit after shared changes",
         "Native motion/scaling, integration and native ARM64 runtime acceptance"
       ],
+      "currentDelivery": {
+        "checkpoint": "artifacts/current/text-media-v4-footer-layout-checkpoint-v1.json",
+        "checkpointSha256": "b6fbf0984eccdb4f321788dda5c87da96ca089a3853c483243a0b4bb19513801",
+        "packageVersion": "0.1.0-text-media-v4-local",
+        "packageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+        "catalogX64SourceLayoutPaintPassed": true,
+        "independentNugetConsumerX64SourceLayoutPaintPassed": true,
+        "framesPerHost": 192,
+        "geometryChecksPerHost": 15216,
+        "paintChecksPerHost": 1890,
+        "visibleInteractionVerified": false,
+        "nativeArm64RuntimeVerified": false,
+        "nativeComponentAccepted": false
+      },
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",

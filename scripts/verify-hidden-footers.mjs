@@ -14,7 +14,13 @@ if(packageConsumer){const build=JSON.parse(await fs.readFile(path.join(native,'r
  // verify-package emits either its explicit build-only receipt or a complete
  // generic consumer runtime receipt. Footer runtime is checked separately here.
  if(Object.hasOwn(build,'buildPassed')){assert.equal(build.buildPassed,true);assert.equal(build.runtimeVerified,false);}else{assert.equal(build.passed,true);assert.equal(build.runtime.passed,true);assert.equal(build.runtime.architecture.toLowerCase(),report.processArchitecture.toLowerCase());}
- assert.equal(build.packageSha256,packageSha256);assert.equal(build.platform.toLowerCase(),report.processArchitecture.toLowerCase());assert.equal(cleanup.removed,true);assert.equal(build.isolatedConsumer,cleanup.isolatedConsumer);await assert.rejects(fs.access(cleanup.isolatedConsumer));}
+ assert.equal(build.packageSha256,packageSha256);assert.equal(build.platform.toLowerCase(),report.processArchitecture.toLowerCase());assert.equal(cleanup.removed,true);
+ // The current isolated package builder records isolatedProject/cleanup.path;
+ // earlier Footer builders recorded isolatedConsumer in both receipts.
+ const currentReceipt=Object.hasOwn(build,'isolatedProject');
+ const isolated=currentReceipt?build.isolatedProject:build.isolatedConsumer;
+ const cleaned=currentReceipt?cleanup.path:cleanup.isolatedConsumer;
+ assert.equal(typeof isolated,'string');assert(isolated.length>0);assert.equal(isolated,cleaned);await assert.rejects(fs.access(isolated));}
 for(const flag of ['passed','diagnosticOnly','hiddenWindow','isolated'])assert.equal(report[flag],true,flag);
 for(const flag of ['activateCalled','showCalled','focusCalled','inputSent','visible','nativeVisible','visibleRuntimeVerified','sourceRasterParityVerified','nativeComponentAccepted'])assert.equal(report[flag],false,flag);
 assert.equal(report.activationEvents,0);assert.equal(report.focusEvents,0);assert.equal(report.failure,null);assert.equal(report.isolationFailure,null);assert.equal(report.exceptionCount,0);assert(Number.isInteger(report.guardChecks)&&report.guardChecks>=reference.cases.length*3*9+reference.cases.reduce((sum,row)=>sum+(row.spec.mutations?.length??0),0)*3*4);assert.equal(report.processArchitecture,report.osArchitecture);assert(['X64','Arm64'].includes(report.processArchitecture));assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);
