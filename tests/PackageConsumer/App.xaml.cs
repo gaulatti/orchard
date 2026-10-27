@@ -336,6 +336,13 @@ public partial class App : Application
             if(hidden+1>=arguments.Length){Report(false,"Missing hidden ProgressStack reference directory.");return;}
             RunHiddenProgressStacksAsync(arguments[hidden+1]);return;
         }
+        if(arguments.Contains("--probe-select-foreground"))
+        {
+            var themeIndex=Array.IndexOf(arguments,"--select-theme");
+            if(themeIndex<0||themeIndex+1>=arguments.Length||!Enum.TryParse<ElementTheme>(arguments[themeIndex+1],out var theme)||theme is not (ElementTheme.Light or ElementTheme.Dark))
+                throw new ArgumentException("Select foreground probe requires --select-theme Light or Dark.");
+            window=new SelectForegroundWindow(theme);window.Activate();return;
+        }
         try { window = new MainWindow(); window.Activate(); }
         catch (Exception error) { Report(false, error.ToString()); throw; }
     }

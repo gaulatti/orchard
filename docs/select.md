@@ -126,6 +126,16 @@ implementation and its theme files are unchanged since v7. This establishes
 those physical routes for that package-matched catalog, but not foreground
 input in the separate consumer or the latest package build.
 
+The [latest independent NuGet-consumer foreground check](evidence/select-latest-package-consumer-foreground-v1/checkpoint.json)
+closes that specific gap for x64. The consumer restores the current local
+package and runs its byte-matched Orchard DLL. In explicit Light and Dark,
+physical pointer choice reaches each caller-owned `ValueRequested` handler
+for Select and Header Select. Closed Select prefix input cycles the accepted
+value; open prefix input only focuses the next option, and an outside click
+dismisses without changing the caller's value. The normal consumer preview
+also opens. Complete input, focused-option source paint, full open raster,
+scaling, motion and native ARM64 runtime checks remain open.
+
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.

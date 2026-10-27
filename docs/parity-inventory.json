@@ -5601,6 +5601,7 @@
         "tests/Orchard.Tests/SelectPortalPlacementTests.cs",
         "tests/Native/SelectModalBranchProbe.cs",
         "tests/PackageConsumer/SelectModalRootFixture.cs",
+        "tests/PackageConsumer/SelectForegroundWindow.cs",
         "scripts/verify-select-modal-branch.mjs",
         "scripts/test-select-modal-branch-audit.mjs",
         "scripts/verify-package-select-modal-root.mjs",
@@ -5608,8 +5609,9 @@
       ],
       "status": "in-progress",
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-expanded-v1/checkpoint.json",
+      "packageForegroundCheckpoint": "docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json",
       "remainingGaps": [
-        "Current source-built x64 Header Select keyboard and pointer selection/Escape pass in Light/Dark (docs/evidence/select-foreground-expanded-v1/checkpoint.json); finish typeahead, outside dismissal, independent package foreground input, focused-option source paint and complete open raster",
+        "Source-built x64 Header Select keyboard and pointer selection/Escape pass in Light/Dark; current independent x64 NuGet consumer pointer choice reaches the caller in both themes (docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json); finish Header Select typeahead, outside dismissal, focused-option source paint and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },
@@ -6693,6 +6695,7 @@
         "tests/Orchard.Tests/SelectPortalPlacementTests.cs",
         "tests/Native/SelectModalBranchProbe.cs",
         "tests/PackageConsumer/SelectModalRootFixture.cs",
+        "tests/PackageConsumer/SelectForegroundWindow.cs",
         "scripts/verify-select-modal-branch.mjs",
         "scripts/test-select-modal-branch-audit.mjs",
         "scripts/verify-package-select-modal-root.mjs",
@@ -6700,8 +6703,9 @@
       ],
       "status": "in-progress",
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-typeahead-v1/checkpoint.json",
+      "packageForegroundCheckpoint": "docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json",
       "remainingGaps": [
-        "Source-built x64 Select pointer, keyboard, prefix typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-foreground-typeahead-v1/checkpoint.json); the unchanged v7 package-matched catalog also passes focused physical prefix/Enter/outside routes (docs/evidence/select-package-foreground-v1/checkpoint.json); finish separate consumer and latest-package foreground input, focused-option source paint and complete open raster",
+        "Current independent x64 NuGet consumer Select pointer choice, closed/open prefix typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json); finish complete input matrix, focused-option source paint and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },

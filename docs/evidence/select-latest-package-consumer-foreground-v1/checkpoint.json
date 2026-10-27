@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T15:20:47Z",
+  "scope": "Focused physical Select and Header Select input in an independent x64 WinUI consumer restored from the latest local NuGet package",
+  "package": {
+    "version": "0.1.0-feed-hover-v1-local",
+    "path": "artifacts/current/Gaulatti.Orchard.0.1.0-feed-hover-v1-local.nupkg",
+    "sha256": "302273ce2ab0d9f603aeaf7cb579cab8ad57ffbde37f3ba2d1f88ed2efe10323",
+    "orchardDllSha256": "5774a072cc38a1a8c605a3c985802d4c5ec08778c19722bb07852e50f011fe73",
+    "independentConsumerExe": "tests/PackageConsumer/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64/PackageConsumer.exe",
+    "independentConsumerExeSha256": "90323ccc7b3407dc1eaf57be02f9c87ef4e4a3f270067b1aa2b39b43183b3d06",
+    "independentConsumerOrchardDllMatchesPackage": true
+  },
+  "build": {
+    "restorePassed": true,
+    "releaseX64BuildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "normalConsumerPreviewOpened": true
+  },
+  "method": "Visible WinUI package consumer, physical Sky pointer and keyboard actions, and settled Windows UI Automation status/value observations",
+  "observations": {
+    "light": {
+      "appearanceExplicit": true,
+      "selectPointerBetaRequestedAndAccepted": true,
+      "selectClosedPrefixLCycledToAlpha": true,
+      "selectOpenPrefixLFocusedBetaWithoutChangingAcceptedAlpha": true,
+      "selectOutsideClickDismissedWithoutChangingAlpha": true,
+      "headerSelectPointerBetaRequestedAndAccepted": true
+    },
+    "dark": {
+      "appearanceExplicit": true,
+      "selectPointerBetaRequestedAndAccepted": true,
+      "selectClosedPrefixLCycledToAlpha": true,
+      "selectOpenPrefixLFocusedBetaWithoutChangingAcceptedAlpha": true,
+      "selectOutsideClickDismissedWithoutChangingAlpha": true,
+      "headerSelectPointerBetaRequestedAndAccepted": true
+    }
+  },
+  "limitations": {
+    "completeInputMatrixVerified": false,
+    "focusedOptionSourcePaintVerified": false,
+    "completeOpenRasterVerified": false,
+    "scalingAndMotionVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentsAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}
