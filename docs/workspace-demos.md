@@ -183,4 +183,6 @@ retained with the reports in the [v5 demo checkpoint](evidence/catalog-v5-demos/
 An initial Monitoring Light run could not activate the catalog while a stale
 “Open With” dialog held foreground; the unchanged retry passed. This is
 source-built catalog evidence, not extracted archive runtime or native ARM64
-acceptance. Broader visual/scaling and package catalog qualification remain open.
+acceptance. The v5 ARM64 catalog [builds with both demo XBF files](evidence/preview-v5-arm64-build/checkpoint.json),
+but has not run on ARM64 hardware. Broader visual/scaling and package catalog
+qualification remain open.

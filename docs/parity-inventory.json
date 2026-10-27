@@ -555,6 +555,11 @@
         "samples/Orchard.Catalog/CardsFixture.xaml.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
+      "currentV5Arm64BuildEvidence": {
+        "checkpoint": "docs/evidence/preview-v5-arm64-build/checkpoint.json",
+        "libraryCatalogAndPackageConsumerBuilt": true,
+        "nativeArm64RuntimeVerified": false
+      },
       "status": "in-progress",
       "remainingGaps": [
         "Review source-derived shadow appearance, overflow clipping and surface motion under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
@@ -8916,6 +8921,7 @@
         "checkpoint": "docs/evidence/catalog-v5-demos/checkpoint.json",
         "themes": ["Light", "Dark"],
         "physicalReviewFocusEscapeAndLocalUpdatePassed": true,
+        "arm64CatalogBuildPassed": true,
         "extractedCatalogRuntimeVerified": false,
         "fullCompositionAccepted": false
       },
@@ -8969,6 +8975,7 @@
         "checkpoint": "docs/evidence/catalog-v5-demos/checkpoint.json",
         "themes": ["Light", "Dark"],
         "physicalSearchSelectionAndEditDecisionPassed": true,
+        "arm64CatalogBuildPassed": true,
         "extractedCatalogRuntimeVerified": false,
         "fullCompositionAccepted": false
       },

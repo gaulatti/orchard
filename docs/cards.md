@@ -44,3 +44,10 @@ repeats the focused check without the native-input suite. Existing accessibility
 contrast resources remain part of the library; Narrator and OS contrast
 campaigns are excluded by the [current library scope](library-scope.md). The
 static resource checks do not establish full visual parity.
+
+The same local v5 package also restores and builds in a separate ARM64
+framework-dependent consumer; the ARM64 library and catalog builds pass with
+zero warnings and errors. The package contains AnyCPU IL, and the ARM64 catalog
+contains the current library output and the Card/Monitoring/Editorial XBF files.
+See the [ARM64 build checkpoint](evidence/preview-v5-arm64-build/checkpoint.json).
+This x64 host cannot verify native ARM64 runtime.

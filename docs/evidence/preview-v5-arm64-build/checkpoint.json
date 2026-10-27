@@ -1,0 +1,44 @@
+{
+  "scope": "Current v5 Card fix through ARM64 library, catalog and separate package consumer builds",
+  "sourceCommit": "2869087e0bc9f09d4702a6f339c6b56e35e976b8",
+  "packageVersion": "0.1.0-preview.20261027.5",
+  "packagePublished": false,
+  "packageSha256": "367a9864c63927af56a6f0fc5590d7cc56649b1eaa37066b3f6950d266c09932",
+  "packageLibrarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "packageLibraryAnyCpuIl": true,
+  "arm64LibraryBuild": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "librarySha256": "7d9858268ae38c09f1943499a1b6fa5ef2b469c38136821248193aec42594dd9"
+  },
+  "arm64CatalogBuild": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "exeMachine": "Arm64",
+    "exeSha256": "cd5ea307b048363130eb6d7ca841f11119cfb83228daf4544aeea734fe2cecfb",
+    "assemblySha256": "4d2809b547f86025ae5f1045509fa1328f93d42c676a478b0328b246a9ba2cb5",
+    "libraryMatchesArm64Build": true,
+    "cardsMonitoringEditorialXbfPresent": true
+  },
+  "arm64PackageConsumerBuild": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "separateSourceCopy": true,
+    "packageReferenceOnly": true,
+    "frameworkDependentBuild": true,
+    "sharedDependencyCache": true,
+    "exeMachine": "Arm64",
+    "exeSha256": "e94051dd4ac93f054ddd668c8b0964c1aff3013929c4ffdf2a7a8c85174c2fbe",
+    "assemblySha256": "a57229b96d0e14754e8c7e76b0dec714786be04a810d83d55de362aa4ded6489",
+    "libraryMatchesPackage": true
+  },
+  "nativeArm64RuntimeVerified": false,
+  "freshCacheConsumerVerified": false,
+  "selfContainedConsumerVerified": false,
+  "catalogArchivesBuilt": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
