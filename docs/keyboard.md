@@ -104,3 +104,12 @@ content and key groups, local/bound/style names, label associations, template
 replacement and remounting. The registered catalog includes an explicitly empty
 caller name. Full rendered typography/fallback, physical scaling, native ARM64
 execution and remaining lifecycle acceptance stay open.
+
+The consolidated v7 extracted x64 catalog and exact independent NuGet consumer
+both pass the content probe with Orchard DLL hash `ff3e8379…`. Each verifies
+64 alignment states, 16 caller contracts, eight isolated rasterization-scale
+frames and 64 metadata contracts, with zero focus or activation. Reports are
+under `artifacts/current/components-v7-kbd-content-catalog-x64` and
+`artifacts/current/components-v7-kbd-content-consumer-x64`. This closes the
+current x64 delivery check for those behaviors; it does not verify physical
+monitor/text scaling, complete rendered parity or native ARM64 execution.

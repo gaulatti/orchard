@@ -36,6 +36,17 @@ for `artifacts/current/components-v7-progress-range-consumer-x64/audit.json`.
 These hidden checks sent no physical input or OS-setting changes and do not
 establish Progress motion, complete visual, scaling or ARM64 runtime acceptance.
 
+Keyboard shortcuts also passed the existing content probe on both extracted x64
+hosts: 64 alignment states, 16 caller contracts, eight isolated-scale captures
+and 64 metadata contracts per host, with zero focus/activation. The catalog and
+consumer audit SHA-256 values are
+`47231c66a5381ecceb9c40f66089e0205031c150e336e7515e1f96d46067425b`
+and `3b9c52e033086e99a7d45de43fe62c3e127b5f321e112572bf31a85ebebc32a6`.
+Reports are under `artifacts/current/components-v7-kbd-content-catalog-x64`
+and `artifacts/current/components-v7-kbd-content-consumer-x64`. Isolated XAML
+scale is verified here; physical monitor/text scaling, full visual parity and
+native ARM64 runtime remain open.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore
