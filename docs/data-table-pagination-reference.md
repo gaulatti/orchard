@@ -108,7 +108,7 @@ This is an initial preview, not accepted pagination parity. The page-size
 chooser currently uses the existing native ComboBox foundation. Complete
 source-derived selector/popup appearance, complete keyboard input timing,
 all constrained/RTL visual layouts, enabled-state input matrix, ARM64 runtime,
-contrast/Narrator/scaling and collection performance remain unverified. The
+display/text scaling and collection performance remain unverified. The
 new source consumer model regressions do not stand in for those UI checks.
 Push-triggered Actions remain paused; no workflow dispatch was requested.
 
@@ -394,7 +394,7 @@ audited in `artifacts/pagination-popup-validated-artifacts-report.json`.
 This checkpoint does not accept Pagination or any other inventory entry.
 The exact browser/native pixel comparison still fails, including the source
 scroll controls and long-popup height. Zero-delay keys, the complete disabled
-input/motion/lifecycle matrix, contrast/Narrator/scaling, collection performance
+input/motion/lifecycle matrix, display/text scaling, collection performance
 and native ARM64 acceptance remain open. The fixed inventory stays at 51 in
 progress, 61 pending and zero accepted. This is a native library with no backend
 or metrics surface. The public wiki remains unavailable, so the contract and
@@ -479,8 +479,8 @@ The chooser exposes native UI Automation ComboBox/ExpandCollapse/Selection and
 read-only Value patterns, its viewport exposes List/Scroll, and its options
 expose ListItem/SelectionItem. Native disabled and detached selection requests
 are rejected. Lifecycle checks retain the original observer, template,
-unlisted-value, unload and reparent boundaries. These providers and tests do
-not establish Narrator acceptance.
+unlisted-value, unload and reparent boundaries. Narrator and OS contrast
+campaigns are excluded by the current component-library scope.
 
 The clean targeted native outputs are:
 
@@ -516,7 +516,7 @@ or tolerance (`artifacts/pagination-owned-final-pixels.json` and
 `artifacts/pagination-owned-final-pillow.json`). Both architecture builds have
 zero warnings/errors; all 89 regressions and generated-token checks pass.
 Zero-delay key release, full disabled/motion coverage,
-contrast/Narrator/scaling, measured collection performance and native ARM64
+display/text scaling, measured collection performance and native ARM64
 runtime are also open. These targeted outputs do not replace the full catalog
 and package checkpoint until that separate validation is recorded. No inventory
 entry is accepted; the fixed count remains 51 in progress, 61 pending and zero
@@ -595,7 +595,7 @@ The correspondence, exact keyboard owners, visible presentation and cache
 cleanup are audited in `artifacts/pagination-owned-validated-artifacts-report.json`.
 
 This checkpoint does not establish exact paint, outside-popup pointer behavior,
-zero-delay keys, the full disabled/motion matrix, contrast/Narrator/scaling,
+zero-delay keys, the full disabled/motion matrix, display/text scaling,
 collection performance or native ARM64 runtime. All 112 inventory statuses
 remain unchanged (51 in progress, 61 pending, zero accepted). There is no backend
 or metrics change. The public wiki remains unavailable; push-triggered Actions
@@ -643,6 +643,14 @@ raw source and native owner records and reports `sourceReleaseOwnerParityVerifie
 as false. It does not substitute final focus for the observed release target.
 The native functional assertions do not claim DOM/native route equivalence,
 pixel parity or component acceptance.
+
+The key-up owner is an internal event-routing detail across two UI frameworks.
+The original rapid replay already checks the user-visible outcomes after each
+pair: settled focus, popup state, displayed page size, paging/counts, callback
+count and original visible rows. Those outcomes pass. The owner difference stays
+in the diagnostic trace; matching the browser's DOM dispatch target is not an
+additional Orchard component requirement. Complete enabled-state input coverage
+and the visual, scaling, performance and native ARM64 checks remain open.
 
 Both architecture builds have zero warnings/errors; all 89 regressions and the
 token check pass. Final rapid and held audits each cover 138 PNGs, 16 original
