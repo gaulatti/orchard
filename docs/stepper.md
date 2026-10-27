@@ -16,9 +16,10 @@ activation must respect the same ownership and disabled checks.
 Live collection/model/command changes, keyed replacement, reorder, removal,
 template replacement and unload/reload must update the actual UI without stale
 activation or retained subscriptions. Verification must cover text scaling,
-Windows contrast, reduced motion, accessible names/status/position, an independent
-package consumer and the existing catalog regression sequence. Native ARM64 and
-Narrator acceptance still require suitable runtime evidence.
+contrast-theme appearance, reduced motion, accessible names/status/position, an
+independent package consumer and the existing catalog regression sequence.
+Native ARM64 runtime remains open. The [current library scope](library-scope.md)
+excludes Narrator and OS contrast campaigns.
 
 The source uses physical left offsets for connectors even in RTL. Its vertical
 circles can shrink below 32 pixels under severe width constraints. These are
@@ -46,9 +47,12 @@ evidence alone does not establish native parity.
 Current runtime regression uses a 0.05-DIP geometry bound against the captured
 DOM. Browser canvas conversion of CSS OKLab can differ by up to two channel
 values; brush checks allow that conversion difference and one alpha value.
-These checks are not a claim of exact screenshot equality. Exact pixel parity,
-complete reversal/override motion matrices, Windows contrast, text/display scaling, Narrator,
-native ARM64 runtime and final visual acceptance remain open.
+These checks are not a claim of exact screenshot equality. Source-derived visual
+review of the differing states, complete reversal/override motion matrices,
+contrast-theme appearance, text/display scaling, native ARM64 runtime and final
+visual acceptance remain open. The strict zero-tolerance pixel failures remain
+diagnostics under the [acceptance contract](acceptance-contract.md), not a
+byte-identical public-component delivery gate.
 
 The x64 focused replay currently passes all 44 normal cases and both themes'
 physical pointer, Space/Enter/Tab, held-Space scale, UIA invocation, command
@@ -60,6 +64,14 @@ frames match exactly. Keep the component **in progress**. Local evidence is in
 `artifacts/stepper-release-full-pixel-audit.json`. The full catalog run retains
 all 1,034 earlier captures plus 46 Stepper captures; see
 [the current checkpoint](native-validation-checkpoint.md).
+
+The [exact published v7 NuGet-consumer check](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+also runs Stepper in its [full Light/Dark consumer result](evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json).
+It verifies two 32-DIP native actions, derived status/name/ordinal metadata,
+Space-release invocation of the original step without changing controlled
+state, live status/name updates and disabled UIA state. This closes a focused
+current-package input path, while the full independent-consumer visual/override
+matrix and native ARM64 runtime remain open.
 
 ## Press and color motion
 
@@ -78,9 +90,11 @@ reduced-motion floor is complete before a displayed frame; the regression
 compares reduced-mode presented samples after that floor, while retaining the
 browser's time-zero record.
 
-`scripts/smoke-stepper-motion.ps1` scopes the real Windows client-area animation
-preference, runs `stepper-motion` in enabled and reduced modes, and restores the
-original preference in its outer `finally`. It uses the documented
+The historical `scripts/smoke-stepper-motion.ps1` campaign scoped the real
+Windows client-area animation preference, ran `stepper-motion` in enabled and
+reduced modes, and restored the original preference in its outer `finally`.
+The current goal does not rerun an OS accessibility-setting campaign. The script
+uses the documented
 [SystemParametersInfo client-area animation flags](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-systemparametersinfoa).
 The fixture checks 42 source status/theme transitions, intermediate native
 frames, the sRGB trajectory, callback removal and immediate press/release scale

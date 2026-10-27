@@ -85,6 +85,17 @@ format/culture/prefix updates and deliberate outside focus, with zero consumer
 focus/load/unload events. Eight slot-layout checks cover 140/320-DIP widths and
 both directions/themes with zero placement error. The expanded audit rejects
 eight corruptions, including lost focus and missing lifecycle verification.
+
+The [exact published v7 NuGet-consumer check](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+also runs Metric in its full [Light/Dark consumer result](evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json).
+Its package-reference x64 assembly uses the released `Orchard.dll` and verifies
+compact, JPY and EUR formatting, bound null/live values, accessible text and
+tabular typography. It mounts an original consumer button as a rich suffix,
+changes Metric's value, and asserts that the button remains loaded and focused
+without focus or unload events. This closes the current independent x64
+consumer evidence gap; it does not close the full visual, customization,
+scaling or native ARM64 matrices.
+
 Twelve raw whole-frame comparisons show 12,286 differing
 pixels with zero masks/resampling. Exact baseline/glyph/wrapping parity is open;
 the browser canvas uses the pinned source's actual background variables.

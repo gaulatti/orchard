@@ -2188,10 +2188,12 @@
         "scripts/test-stepper-raster-audit.mjs"
       ],
       "status": "in-progress",
+      "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
+      "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
       "remainingGaps": [
-        "Complete exact source pixels, reversal/override motion matrices, scaling",
+        "Complete source-derived visual review of the 42/44 differing normal-state frames, reversal/override motion matrices and scaling; retain strict zero-tolerance raster failures as diagnostics rather than a public-component delivery gate",
         "Verify native ARM64 runtime",
-        "Final independent consumer and visual acceptance"
+        "Complete independent-consumer visual/override matrix and final acceptance; the exact published v7 package consumer already passes focused Stepper geometry, metadata, native Space release, original-step invocation and disabled UIA checks in Light/Dark"
       ]
     },
     {
@@ -2760,11 +2762,13 @@
         "scripts/verify-rich-content-layout.mjs"
       ],
       "status": "in-progress",
+      "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
+      "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
       "remainingGaps": [
         "Complete source-derived visual review and verify inline baseline/wrapping under docs/acceptance-contract.md; retain exact native/browser raster diagnostics separately",
         "Full rich-content, customization and lifecycle matrix",
         "Actual scaling",
-        "Current native ARM64 runtime and independent consumer evidence"
+        "Current native ARM64 runtime; exact published v7 independent x64 consumer formatting, binding, metadata and retained-child focus checks pass in Light/Dark"
       ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
