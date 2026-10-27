@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "message": "System.InvalidOperationException: Packaged held Reset differs from source geometry or invoked before release: normal=808.5385,6564.3945,84.96149,36, held=808.5385,6564.3945,84.96149,36, downOwned=True, resetsBefore=0, resetsNow=0, isPressed=True.\r\n   at PackageConsumer.MainWindow.Require(Boolean condition, String message) in C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-5ddeec0fa4514119817bf131017e888f\\source\\MainWindow.xaml.cs:line 329\r\n   at PackageConsumer.MainWindow.VerifyToolbarPressAsync(Button reset) in C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-5ddeec0fa4514119817bf131017e888f\\source\\MainWindow.DataTableToolbar.Press.cs:line 34\r\n   at PackageConsumer.MainWindow.VerifyToolbarAsync() in C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-5ddeec0fa4514119817bf131017e888f\\source\\MainWindow.DataTableToolbar.cs:line 52\r\n   at PackageConsumer.MainWindow.OnLoaded(Object sender, RoutedEventArgs e) in C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-5ddeec0fa4514119817bf131017e888f\\source\\MainWindow.xaml.cs:line 238",
+  "assembly": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\data-table-toolbar-v4-press-diagnostic-v1\\app\\Orchard.dll",
+  "architecture": "X64",
+  "osArchitecture": "X64",
+  "osDescription": "Microsoft Windows 10.0.26200",
+  "framework": ".NET 10.0.12"
+}

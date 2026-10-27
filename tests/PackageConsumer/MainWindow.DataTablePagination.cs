@@ -77,7 +77,13 @@ public sealed partial class MainWindow
             VerifyPackagedSelectShadow(border);
             var trigger = size.TransformToVisual(Root).TransformBounds(new Rect(0, 0, size.ActualWidth, size.ActualHeight)); var bounds = border.TransformToVisual(Root).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
             measuredGap = bounds.Top - trigger.Bottom; measuredWidth = bounds.Width;
-            Require(text == "10" && value.Opacity == 1 && Math.Abs(measuredGap - 4) <= 1d / 32 && measuredWidth == 80 && Math.Abs(bounds.Left - trigger.Left) <= 1d / 32, $"Packaged popup did not preserve its controlled value, source gap, width or alignment: text={text}, opacity={value.Opacity:R}, gap={measuredGap:R}, width={measuredWidth:R}, trigger={trigger}, popup={bounds}, root={Root.ActualWidth:R}x{Root.ActualHeight:R}.");
+            var scale = Root.XamlRoot.RasterizationScale;
+            Require(double.IsFinite(scale) && scale > 0, "Packaged popup has no usable physical-pixel scale.");
+            // The native Popup origin can snap to a physical pixel even when
+            // the trigger's XAML layout starts at a fractional effective pixel.
+            var horizontalError = Math.Abs(bounds.Left - trigger.Left);
+            var horizontalTolerance = .5 / scale + 1d / 32;
+            Require(text == "10" && value.Opacity == 1 && Math.Abs(measuredGap - 4) <= 1d / 32 && measuredWidth == 80 && horizontalError <= horizontalTolerance, $"Packaged popup did not preserve its controlled value, source gap, width or pixel-aligned placement: text={text}, opacity={value.Opacity:R}, gap={measuredGap:R}, width={measuredWidth:R}, horizontalError={horizontalError:R}, horizontalTolerance={horizontalTolerance:R}, scale={scale:R}, trigger={trigger}, popup={bounds}, root={Root.ActualWidth:R}x{Root.ActualHeight:R}.");
             Require(trigger.Left >= 0 && trigger.Top >= 0 && trigger.Right <= Root.ActualWidth && trigger.Bottom <= Root.ActualHeight && bounds.Left >= 0 && bounds.Top >= 0 && bounds.Right <= Root.ActualWidth && bounds.Bottom <= Root.ActualHeight, "Packaged chooser or popup is outside the painted consumer window.");
             var viewport = BrandDescendants<ContentControl>(border).Single(item => item.Name == "PART_Listbox"); var viewportPeer = FrameworkElementAutomationPeer.CreatePeerForElement(viewport);
             Require(viewportPeer.GetAutomationControlType() == AutomationControlType.List && viewportPeer.GetPattern(PatternInterface.Scroll) is IScrollProvider && size.Items.OfType<Button>().All(item => FrameworkElementAutomationPeer.CreatePeerForElement(item).GetAutomationControlType() == AutomationControlType.ListItem), "Packaged chooser lost its native list, scroll or option roles.");

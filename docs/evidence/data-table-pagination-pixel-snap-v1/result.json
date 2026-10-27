@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "version": "0.1.0-text-media-v4-local",
+  "packageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+  "platform": "x64",
+  "isolatedConsumer": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-27d030aa9f5a40da988538fc5ba20f19",
+  "runtime": {
+    "passed": true,
+    "message": "Package resources, fonts, light/dark themes, layout and native action verified.",
+    "assembly": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\data-table-toolbar-v4-press-diagnostic-v1\\app\\Orchard.dll",
+    "architecture": "X64",
+    "osArchitecture": "X64",
+    "osDescription": "Microsoft Windows 10.0.26200",
+    "framework": ".NET 10.0.12"
+  }
+}

@@ -12,13 +12,20 @@ report SHA-256 `e7ddad2b9a27bdd5fa949eef6aa09f70833a41ba496f5a984a35da127703bf6f
 This focused result is that package's functional evidence, not a three-process
 median or full 120-profile performance acceptance. The Data Table remains open.
 
-The newer `0.1.0-text-media-v4-local` package passed Media Library checks, but
-its separate general consumer smoke test failed at the Data Table toolbar's
-held-Reset geometry/early-invocation assertion. The fixture previously omitted
-the measured bounds and event counts from its failure report; the next
-authorized foreground run will include those diagnostics. This unresolved
-failure does not establish a Data Table regression or a passing v4 general
-consumer runtime. See the [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
+The newer `0.1.0-text-media-v4-local` package passes the independent general
+x64 consumer smoke in three foreground runs with the corrected fixture. The
+initial run failed because it required the native popup's left edge to match a
+fractional-DIP trigger within 1/32 DIP; the popup landed 0.375 DIP to the
+right, within half a physical pixel. A second run captured the held-Reset
+failure: native Space reached the button and `IsPressed` became true, but the
+fixture sampled its bounds before a presented frame. The fixture now allows
+half a physical pixel of popup-origin snap and waits for two composition frames
+before measuring the held and released Reset. All other popup value, gap,
+width, bounds and keyboard checks remain. These are consumer-test corrections;
+the NuGet package and Orchard library are unchanged. The initial failures and
+three passes are pinned in the [consumer evidence](evidence/data-table-pagination-pixel-snap-v1/checkpoint.json).
+This smoke pass does not resolve the Data Table performance budget or broader
+component acceptance. See the [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
 
 A source-built x64 catalog library (`205c4521…`, source commit
 `96516e7`) passes the focused hidden 16,384-row/page-100 replay: all 20 semantic

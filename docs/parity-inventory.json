@@ -1878,7 +1878,8 @@
         "tests/PackageConsumer/ProducerThreadingFixture.cs",
         "scripts/verify-hidden-producer-threading.ps1",
         "scripts/verify-hidden-producer-threading.mjs",
-        "scripts/test-hidden-producer-threading-audit.mjs"
+        "scripts/test-hidden-producer-threading-audit.mjs",
+        "tests/PackageConsumer/MainWindow.DataTablePagination.cs"
       ],
       "status": "in-progress",
       "remainingGaps": [
@@ -1990,7 +1991,15 @@
         "Resolve 132 differing rendered-state pairs and 154 geometry differences, including selector/popup appearance, typography, icons and motion",
         "Verify native ARM64 execution; fresh x64 package consumer and full current-source x64 suite pass",
         "Verify text/display scaling and measured collection performance"
-      ]
+      ],
+      "generalConsumerSmoke": {
+        "evidence": "docs/evidence/data-table-pagination-pixel-snap-v1/checkpoint.json",
+        "package": "0.1.0-text-media-v4-local",
+        "x64ForegroundRunsPassed": 3,
+        "popupPixelSnapChecked": true,
+        "nativeArm64RuntimeVerified": false,
+        "componentAccepted": false
+      }
     },
     {
       "id": "skeleton",

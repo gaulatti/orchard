@@ -58,14 +58,19 @@ The shared fixture also compiles in the ARM64 catalog; ARM64 runtime was not run
 The [small receipts](../evidence/footer-fractional-v1/README.md) remain in Git
 after disposable build output is cleared.
 
-A separate general x64 package smoke test **failed** at the Data Table toolbar
-held-Reset geometry assertion. That fixture activates a foreground window and
-sends native keyboard input; it was run outside the authorized desktop window
-and will not be repeated without renewed desktop availability. The process
-exited and its isolated temporary project was removed. This failed check is
-unresolved; the successful Media Library package audit does not supersede it.
+A separate general x64 package smoke initially failed at Data Table held-Reset
+geometry. After the user renewed desktop-test authorization, the unchanged
+package passed one fresh independent foreground consumer run and two direct
+runtime repeats with a corrected
+fixture. The fixture waits for two presented frames before measuring held and
+released Reset, and permits up to half a physical pixel of native popup-origin
+snap plus 1/32 DIP of measurement tolerance. The original failure, a separate
+overstrict popup-alignment failure, the final pass and two direct repeats are
+retained in the [consumer checkpoint](../evidence/data-table-pagination-pixel-snap-v1/checkpoint.json).
+The fresh isolated restore workspace was removed. These changes qualify only
+the general x64 consumer smoke; no Orchard binary or package bytes changed.
 
-Native ARM64 runtime, foreground input, scaling, full component-by-component
+Native ARM64 runtime, broader foreground input, scaling, full component-by-component
 visual review and Data Table performance remain open. The inventory remains
 112 started and zero accepted; 100% describes entries started, not completion.
 The push-triggered Actions workflow is paused at the user's request. The wiki

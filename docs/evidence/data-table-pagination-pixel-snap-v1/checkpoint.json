@@ -1,0 +1,63 @@
+{
+  "scope": "Independent x64 NuGet consumer general smoke, Data Table pagination popup and toolbar held Reset",
+  "package": "0.1.0-text-media-v4-local",
+  "packageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+  "packagedOrchardDllSha256": "1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b",
+  "librarySourceChanged": false,
+  "fixtureCorrections": [
+    "Allow at most half a physical pixel plus 1/32 DIP of native Popup horizontal origin snap while retaining value, gap, width, window and input checks",
+    "Wait for two composition frames after held Space and after release before measuring Reset bounds"
+  ],
+  "observedPopup": {
+    "triggerLeftDip": 504.625,
+    "popupLeftDip": 505,
+    "horizontalErrorDip": 0.375,
+    "verticalGapDip": 4,
+    "popupWidthDip": 80
+  },
+  "initialFailures": {
+    "overstrictPopupAlignment": {
+      "report": "baseline-runtime.json",
+      "reportSha256": "8b91e4829e041a81331a33d16094ccf8ab7fed47f551f9f84b97013d76614a13"
+    },
+    "prematureHeldResetMeasurement": {
+      "report": "baseline-reset-runtime.json",
+      "reportSha256": "b9f02f7f5d45dda2557ac52220717f8831c070b9226a89b30fc8bcbad6f97cec"
+    }
+  },
+  "finalConsumerRun": {
+    "passed": true,
+    "platform": "x64",
+    "lightAndDarkPassed": true,
+    "result": "result.json",
+    "resultSha256": "390826d0e02e17922bb59ede53c0430f8349e44e18599c6d2bd4d1599526211b",
+    "runtime": "runtime.json",
+    "runtimeSha256": "9742d5104dddd0b25528c13d12e03cf1b673998ffab107e34b218a06e1b310d8",
+    "isolatedRestoreCleanup": "cleanup.json",
+    "isolatedRestoreCleanupSha256": "8c05b0e46593a2463fa75c6dd10a6fdcf59893054e31ad851c82cfd431f6bc9e",
+    "lightPhysicalInput": "consumer-input-Light.json",
+    "lightPhysicalInputSha256": "7c66490acf418c0fb1918ac5fc8de8a5a30f2e75957c6ca53e680a3258f714d5",
+    "darkPhysicalInput": "consumer-input-Dark.json",
+    "darkPhysicalInputSha256": "3dfc512d9009e7137a186dc94c3d813a587a4e1ea340e51329e0a7d609e6a61b",
+    "lightPaginationKeyboard": "consumer-pagination-keyboard-Light.json",
+    "lightPaginationKeyboardSha256": "296aef7132217d61ebbed042ce0c92048f0b47e23015e4305e055cc3b5cf3239",
+    "darkPaginationKeyboard": "consumer-pagination-keyboard-Dark.json",
+    "darkPaginationKeyboardSha256": "04743bf74b337412b2c1d3374eab0964033b4b2b255035f87da22b24cbf5dcc6"
+  },
+  "directRuntimeRepeats": [
+    {
+      "passed": true,
+      "report": "repeat-2-runtime.json",
+      "reportSha256": "9742d5104dddd0b25528c13d12e03cf1b673998ffab107e34b218a06e1b310d8"
+    },
+    {
+      "passed": true,
+      "report": "repeat-3-runtime.json",
+      "reportSha256": "9742d5104dddd0b25528c13d12e03cf1b673998ffab107e34b218a06e1b310d8"
+    }
+  ],
+  "generalX64ConsumerSmokePassed": true,
+  "dataTablePerformancePassed": false,
+  "componentAccepted": false,
+  "nativeArm64RuntimeVerified": false
+}

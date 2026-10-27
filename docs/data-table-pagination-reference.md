@@ -673,3 +673,16 @@ remain unchanged (51 in progress, 61 pending, zero accepted).
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.
+
+The independent consumer's general x64 smoke now measures native popup-origin
+alignment in physical-pixel terms. At the observed 1084×721-DIP host size, the
+page-size trigger began at 504.625 DIP and the Popup at 505 DIP; the prior
+1/32-DIP alignment assertion rejected this 0.375-DIP difference. The test now
+allows at most half a physical pixel plus 1/32 DIP, using the host's
+`XamlRoot.RasterizationScale`. It still requires the controlled value, 4-DIP
+vertical gap, 80-DIP width, on-window bounds, native automation roles and
+physical keyboard ownership. The same unchanged v4 package passed three
+foreground consumer runs after this and the Data Table held-Reset frame-wait
+fixture correction. See the [small consumer checkpoint](evidence/data-table-pagination-pixel-snap-v1/checkpoint.json).
+This does not close the pagination input, visual, scaling, performance or
+native ARM64 runtime gaps.

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "message": "Package resources, fonts, light/dark themes, layout and native action verified.",
+  "assembly": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\data-table-toolbar-v4-press-diagnostic-v1\\app\\Orchard.dll",
+  "architecture": "X64",
+  "osArchitecture": "X64",
+  "osDescription": "Microsoft Windows 10.0.26200",
+  "framework": ".NET 10.0.12"
+}
