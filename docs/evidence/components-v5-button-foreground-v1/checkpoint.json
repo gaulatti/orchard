@@ -1,0 +1,31 @@
+{
+  "scope": "Foreground Button loading, Tab eligibility and command activation in the extracted v5 x64 catalog",
+  "observedAt": "2026-10-27T00:42:53-04:00",
+  "method": "Computer Use @oai/sky foreground SendInput with native window screenshots and UI Automation text",
+  "packageVersion": "0.1.0-components-v5-local",
+  "packageSha256": "6498f772034dd9f66ba9be3270d8b129289fb50657709d6bd724e3a772261a8f",
+  "catalogArchiveSha256": "65cb51a5f3b5e877f1f4ff15c31033b9b3db789a3e9e2dd4bc004e6095ec17bb",
+  "catalogExeSha256": "3a6b5853b28e6d44b9880cbd03e80df2e07a8769ec90860fc094fe50ba05a4be",
+  "orchardDllSha256": "9c50496b46f29fd36b0de029c484013257c5ef880013671d33dc9458081c2ee6",
+  "checks": {
+    "pointerRunPreviewInvokedCommand": true,
+    "readyRunPreviewReceivedKeyboardFocusRing": true,
+    "loadingSwitchDisabledRunPreview": true,
+    "tabFromLoadingSwitchSkippedDisabledRunPreviewToFullWidthAction": true,
+    "shiftTabFromFullWidthActionReturnedToLoadingSwitch": true,
+    "keyboardSpaceEndedLoading": true,
+    "tabFromLoadingSwitchReachedRestoredRunPreview": true,
+    "keyboardSpaceOnRestoredRunPreviewInvokedCommand": true
+  },
+  "observedCommandResultAfterPointer": "Command preview: 2",
+  "observedCommandResultAfterKeyboardSpace": "Command preview: 3",
+  "focusObservation": "The screenshot showed a focus ring on Run preview before toggling. After pointer activation of the loading switch and Tab, the ring appeared on Full-width action. After ending loading and pressing Tab, it appeared on Run preview. UI Automation's focused_element field remained stale on the catalog search edit, so it is not used as focus evidence.",
+  "alreadyFocusedActionBecomingLoadingVerified": false,
+  "independentConsumerForegroundInputVerified": false,
+  "hardwareDeviceInputVerified": false,
+  "fullScalingAndReducedMotionVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

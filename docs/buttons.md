@@ -72,8 +72,12 @@ The same fixture checks native focus eligibility in each case using
 the ready action must be discoverable, loading and caller-disabled actions must
 be skipped, and the action must become discoverable again after loading ends.
 These 112 assertions query the native focus search without calling `Focus`,
-moving focus or sending input. They do not establish Tab-key routing or where
-focus moves when an already focused button becomes busy.
+moving focus or sending input. A later foreground check in the exact v5 x64
+catalog observed Tab skip the loading action, Shift+Tab return to the loading
+switch, and Tab reach the restored action after loading ended. Keyboard Space
+then invoked the restored action. See
+`docs/evidence/components-v5-button-foreground-v1/checkpoint.json`. Focus
+transfer when an already focused button becomes busy remains unverified.
 
 The current catalog validation host and independent x64 consumer of
 `0.1.0-menu-toast-modal-v1-local` each pass all 448 lifecycle checks, including

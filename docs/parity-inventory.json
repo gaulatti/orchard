@@ -411,7 +411,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify focus transfer when an already focused action becomes loading and physical Tab routing; native ready/loading/restored/caller-disabled focus eligibility passes112 assertions in each current x64 catalog/package validation host",
+        "Verify focus transfer when an already focused action becomes loading; foreground Tab skip/restoration and keyboard Space activation pass in the exact v5 x64 catalog, alongside 112 focus-eligibility assertions in each x64 validation host",
         "Complete keyboard/pointer wrapper checks and scaling",
         "Verify reduced motion and remaining ARM64 state acceptance"
       ],
