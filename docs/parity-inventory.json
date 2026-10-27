@@ -6682,11 +6682,13 @@
         "tests/PackageConsumer/FileInputFixture.cs",
         "scripts/verify-file-input.mjs",
         "scripts/verify-file-input-desktop.ps1",
-        "tests/Fixtures/fictional-playlist.m3u"
+        "tests/Fixtures/fictional-playlist.m3u",
+        "tests/Fixtures/fictional-playlist-alt.m3u8",
+        "tests/Fixtures/fictional-note.txt"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Broaden native system picker filtering/multiple-selection and physical input matrix; focused x64 catalog pointer, Tab, Space, Escape, original-file callback and clear pass on the exact v4 package DLL",
+        "Broaden native system picker and physical input matrix; focused x64 catalog pointer, Tab, Space, Escape, two-file Ctrl-click, extension/all-files filters, original-file callbacks and clear pass on the exact v4 package DLL",
         "Native ARM64 runtime and complete display/text scaling, motion and customization acceptance",
         "Strict browser/native component image comparison fails:411684 pixels/max227; source/fresh-package strict comparison fails:7 rounded-border pixels/max14; thresholds remain zero"
       ],
@@ -6694,6 +6696,15 @@
         "evidence": "docs/evidence/file-input-desktop-v1/checkpoint.json",
         "x64CatalogRunsPassed": 2,
         "realOwnerAssociatedPickerVerified": true,
+        "nativeArm64RuntimeVerified": false,
+        "componentAccepted": false
+      },
+      "desktopMultipleCheckpoint": {
+        "evidence": "docs/evidence/file-input-multiple-desktop-v1/checkpoint.json",
+        "x64CatalogRunsPassed": 2,
+        "nativeTwoFileSelectionVerified": true,
+        "extensionAndAllFilesFilteringVerified": true,
+        "selectionRetainedAcrossFilterAndModeChanges": true,
         "nativeArm64RuntimeVerified": false,
         "componentAccepted": false
       },

@@ -1,0 +1,57 @@
+{
+  "scope": "Real Windows File Input picker extension filtering, two-file native selection, live all-files change and selection retention",
+  "test": "scripts/verify-file-input-desktop.ps1",
+  "testFormat": "orchard-file-input-desktop-v2",
+  "priorForegroundCheckpoint": "docs/evidence/file-input-desktop-v1/checkpoint.json",
+  "priorForegroundCheckpointSha256": "64e8c9887bd64764255e7489516a132b106611d37bb563bb01e52a757646e28e",
+  "catalogExeSha256": "5d0843b3565e4d42954cc99c8217e30158d8213e583c487bec44f875935f7008",
+  "orchardDllSha256": "1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b",
+  "v4NugetPackageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+  "fictionalInputs": [
+    {
+      "path": "tests/Fixtures/fictional-playlist.m3u",
+      "sha256": "144659b48f342d02b9298907ab32fcf0479ac9c99a0d293c7c2ebf8df313dd12"
+    },
+    {
+      "path": "tests/Fixtures/fictional-playlist-alt.m3u8",
+      "sha256": "144659b48f342d02b9298907ab32fcf0479ac9c99a0d293c7c2ebf8df313dd12"
+    },
+    {
+      "path": "tests/Fixtures/fictional-note.txt",
+      "sha256": "8e8e4b2256b0cb8d724876a69a094fbf6bb843e372698e1270b9b088324e4db8"
+    }
+  ],
+  "initialHarnessFailure": {
+    "report": "run-6.json",
+    "reportSha256": "c28790a0700e889fec1f67f6944b5493d588525e862d65accd44a4bda95e5bb9",
+    "cause": "A click at the center of the system-dialog row did not retain both selections; the repeatable test now clicks its visible name area"
+  },
+  "successfulRuns": [
+    {
+      "report": "run-7.json",
+      "reportSha256": "8bf3e66f0763a392b1612a806b9e334eca9b1e4c4fbe90bc44fb1c54db579c30",
+      "passed": true
+    },
+    {
+      "report": "run-8.json",
+      "reportSha256": "0c3e073464d318a9ba29386bc092ca2a53c0eff6da3e1d8ab0581913cbbf70af",
+      "passed": true,
+      "allFiveDialogsOwnedByCatalog": true,
+      "extensionFilterHidTxtSentinel": true,
+      "nativeCtrlClickSelectedTwoFiles": true,
+      "twoOriginalFilesReachedCaller": true,
+      "allFilesChangePreservedExistingSelection": true,
+      "allFilesChangeExposedTxtSentinel": true,
+      "txtFileReachedCaller": true,
+      "switchBackToSinglePreservedSelection": true,
+      "catalogProcessExited": true
+    }
+  ],
+  "wrongLibraryShaRejectedBeforeLaunch": true,
+  "librarySourceChanged": false,
+  "osSettingsChanged": false,
+  "fullPickerInputMatrixVerified": false,
+  "displayAndTextScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false
+}

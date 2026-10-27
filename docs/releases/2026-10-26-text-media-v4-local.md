@@ -79,6 +79,13 @@ existing selection, and Clear emptied its automation value. The repeatable
 the exact binary and the earlier script timing failures. This is a catalog-host
 foreground check; it does not establish the full File Input input/visual matrix.
 
+The same x64 catalog DLL subsequently passed two real-dialog File Input runs
+with `.m3u`/`.m3u8` filtering, two native Ctrl-click selections, live switch to
+all file types, original `.txt` selection and retained files across filter and
+multiple-mode changes. The [multiple-picker checkpoint](../evidence/file-input-multiple-desktop-v1/checkpoint.json)
+retains the exact binary, fictional fixtures, one failed test-harness run and
+both passes. This adds no Orchard binary change or native ARM64 claim.
+
 Native ARM64 runtime, broader foreground input, scaling, full component-by-component
 visual review and Data Table performance remain open. The inventory remains
 112 started and zero accepted; 100% describes entries started, not completion.

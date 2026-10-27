@@ -1,0 +1,49 @@
+{
+  "format": "orchard-file-input-desktop-v2",
+  "passed": false,
+  "catalogExeSha256": "5d0843b3565e4d42954cc99c8217e30158d8213e583c487bec44f875935f7008",
+  "orchardDllSha256": "1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b",
+  "fictionalFileSha256": "144659b48f342d02b9298907ab32fcf0479ac9c99a0d293c7c2ebf8df313dd12",
+  "fictionalFileName": "fictional-playlist.m3u",
+  "fictionalAlternateSha256": "144659b48f342d02b9298907ab32fcf0479ac9c99a0d293c7c2ebf8df313dd12",
+  "fictionalNoteSha256": "8e8e4b2256b0cb8d724876a69a094fbf6bb843e372698e1270b9b088324e4db8",
+  "steps": {
+    "pointer": {
+      "position": {
+        "x": 760,
+        "y": 709
+      },
+      "dialogProcess": 4580,
+      "dialogClass": "#32770",
+      "ownerHandle": 1381496
+    },
+    "cancelEmpty": true,
+    "selection": {
+      "dialogProcess": 26636,
+      "dialogClass": "#32770",
+      "ownerHandle": 1381496,
+      "originalFileCallbackRetained": true,
+      "automationValue": "fictional-playlist.m3u"
+    },
+    "keyboard": {
+      "tabFrom": "Small",
+      "tabTo": "Primary",
+      "spaceDialogProcess": 6232,
+      "ownerHandle": 1381496,
+      "previousFileRetained": true
+    },
+    "clear": {
+      "automationValueEmpty": true,
+      "callerResult": "Selection cleared without a SelectionChanged callback"
+    }
+  },
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 16072,
+  "windowHandle": 1381496,
+  "error": "Native Ctrl-click did not retain both file selections.",
+  "resultAtFailure": "Selection cleared without a SelectionChanged callback",
+  "foregroundAtFailure": "Open",
+  "processExited": true
+}

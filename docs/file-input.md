@@ -224,8 +224,28 @@ Run the check on an available, unlocked desktop with the exact catalog app:
 ./scripts/verify-file-input-desktop.ps1 -AppDirectory artifacts/current/text-media-v4-catalog-x64-app -Output artifacts/current/file-input-desktop-new -ExpectedLibrarySha256 1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b
 ```
 
-The first three script-development runs failed on premature dialog/UI Automation
-sampling; their reports remain with the two passing runs. This focused check
-does not verify every filter-dialog behavior, multiple selection, the complete
-pointer/keyboard matrix, native ARM64 runtime, full visual review or scaling.
-The existing hidden selection tests retain their own scope.
+The first three v1 script-development runs failed on premature dialog/UI
+Automation sampling; their reports remain with the two passing runs. The
+expanded check below adds the multiple-selection and filter path. The existing
+hidden selection tests retain their own scope.
+
+## Foreground multiple-selection and filter checkpoint
+
+The same unchanged v4 catalog DLL passed two runs of the expanded
+[desktop check](evidence/file-input-multiple-desktop-v1/checkpoint.json).
+With `IsMultiple` enabled and the catalog's `.m3u`/`.m3u8` extensions, the
+real Windows dialog showed both tracked fictional playlists and hid the tracked
+`.txt` sentinel. Native Ctrl-click selected the two visible files, and the
+catalog received two original native objects with the expected automation value.
+Changing the filter to all files kept the current two-file selection; the next
+dialog exposed the `.txt` sentinel alongside both playlists. Choosing it
+returned the original note. Turning multiple selection off did not discard that
+selection. All five dialogs in the run belonged to the catalog window, and the
+catalog process exited. One earlier test-harness run failed because it clicked
+the blank center of a system-dialog row; the corrected name-area click passes
+twice. The exact package and failed/passing receipts remain pinned.
+
+This establishes those real x64 catalog-host paths, not every filter or picker
+variant, the full pointer/keyboard matrix, display/text scaling, native ARM64
+runtime or complete visual acceptance. The Orchard control and package bytes
+are unchanged.
