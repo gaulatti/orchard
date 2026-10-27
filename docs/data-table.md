@@ -1,6 +1,6 @@
 # Data Table
 
-The current `0.1.0-text-media-v3-local` NuGet library
+The `0.1.0-text-media-v3-local` NuGet library checkpoint
 (`13ab2e380421a2fb0850f1ffe2bcdcb157b1952d4d3175812859c6ed730f0f9e`)
 passes a focused hidden x64 replay in its independently built package consumer:
 20 semantic, original-content and unload operations at 16,384 source rows and
@@ -9,17 +9,25 @@ ms** in this one process, exceeding the unchanged 1,000 ms local budget;
 managed allocation was 19,854,616 bytes. The report is
 `artifacts/current/text-media-v3-data-table-paging-package-x64-v1`, with raw
 report SHA-256 `e7ddad2b9a27bdd5fa949eef6aa09f70833a41ba496f5a984a35da127703bf6f`.
-This focused result is current-package functional evidence, not a three-process
+This focused result is that package's functional evidence, not a three-process
 median or full 120-profile performance acceptance. The Data Table remains open.
 
-The current source-built x64 catalog library (`205c4521…`, source commit
+The newer `0.1.0-text-media-v4-local` package passed Media Library checks, but
+its separate general consumer smoke test failed at the Data Table toolbar's
+held-Reset geometry/early-invocation assertion. The fixture previously omitted
+the measured bounds and event counts from its failure report; the next
+authorized foreground run will include those diagnostics. This unresolved
+failure does not establish a Data Table regression or a passing v4 general
+consumer runtime. See the [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
+
+A source-built x64 catalog library (`205c4521…`, source commit
 `96516e7`) passes the focused hidden 16,384-row/page-100 replay: all 20 semantic
 snapshots, bounded native rows, caller-owned content and unload checks pass.
 Its next-page three-dispatcher-pass time is **1,675.29 ms**, above the unchanged
 1,000 ms budget; managed allocation is 19,186,008 bytes. The prior source run
 at `3939c80` measured 1,678.42 ms and 18,599,680 bytes. These are separate
 single-process observations with different binaries, not an optimization
-comparison or a three-process median. The current report is
+comparison or a three-process median. That report is
 `artifacts/current/data-table-current-96516e7-paging-v1`; it does not qualify
 the full 120-profile performance matrix. No library optimization or budget
 change followed this observation. The rejected zero-width-measure and

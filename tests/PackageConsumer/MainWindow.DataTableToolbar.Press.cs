@@ -28,10 +28,12 @@ public sealed partial class MainWindow
             {
                 await AwaitAsync(()=>reset.IsPressed&&downs==1,"Packaged Reset did not receive a held native Space press.");
                 var held=Bounds();
-                Require(downOwned&&toolbarSource.Resets==before&&
+                var heldMatches=downOwned&&toolbarSource.Resets==before&&
                     Math.Abs(held.Width-normal.Width*.99)<=1d/32&&Math.Abs(held.Height-normal.Height*.99)<=1d/32&&
-                    Math.Abs(held.X-normal.X-normal.Width*.005)<=1d/32&&Math.Abs(held.Y-normal.Y-1-normal.Height*.005)<=1d/32,
-                    "Packaged held Reset differs from source geometry or invoked before release.");
+                    Math.Abs(held.X-normal.X-normal.Width*.005)<=1d/32&&Math.Abs(held.Y-normal.Y-1-normal.Height*.005)<=1d/32;
+                Require(heldMatches,
+                    $"Packaged held Reset differs from source geometry or invoked before release: normal={normal}, held={held}, " +
+                    $"downOwned={downOwned}, resetsBefore={before}, resetsNow={toolbarSource.Resets}, isPressed={reset.IsPressed}.");
             }
             finally{SendSpace(true);}
             await AwaitAsync(()=>!reset.IsPressed&&ups==1&&toolbarSource.Resets==before+1,"Packaged Reset did not invoke exactly once on Space release.");
