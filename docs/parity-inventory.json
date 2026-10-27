@@ -4805,8 +4805,9 @@
         "tests/Reference/SeparatorScale/reference.json"
       ],
       "status": "in-progress",
+      "currentV7CatalogSmokeCheckpoint": "docs/evidence/separator-v7-catalog-foreground-v1/checkpoint.json",
       "remainingGaps": [
-        "Current published v7 x64 catalog and independent consumer runtime smoke; the unchanged non-text Separator's native XamlRoot 100/125/150/200% Light/Dark scale contract is already verified by docs/evidence/separator-preview-v2/checkpoint.json, while physical monitor movement remains untested but is not a component-specific gate",
+        "Current published v7 independent consumer runtime smoke; the extracted v7 x64 catalog displays four Separators in system Dark and explicit Light with only two named semantic peers (docs/evidence/separator-v7-catalog-foreground-v1/checkpoint.json), and the unchanged non-text Separator's native XamlRoot 100/125/150/200% scale contract is verified by docs/evidence/separator-preview-v2/checkpoint.json",
         "Current native ARM64 state acceptance for the fractional-edge default"
       ],
       "nativePreview": {

@@ -27,9 +27,9 @@ The current [library scope](library-scope.md) excludes Narrator and OS contrast
 campaigns. Separator has no keyboard or pointer action and is not a tab stop;
 its applicable input contract is the absence of an unwanted focus stop and the
 decorative/semantic automation distinction. It has no text, empty/error content
-or animation states. The current published v7 catalog and consumer still need a
-Separator runtime smoke, and native ARM64 execution of the fractional-edge
-default remains open.
+or animation states. The published v7 catalog now has a visible Separator smoke;
+its current independent consumer and native ARM64 execution of the
+fractional-edge default remain open.
 
 The shared `--probe-hidden-separator` fixture runs against the source catalog or
 an independent NuGet consumer. It checks the source's two orientations and both
@@ -82,7 +82,17 @@ contract is satisfied by the tested native `XamlRoot` scales and physical PNG
 dimensions across both orientations and themes. A physical monitor move remains
 untested, but adds no Separator-owned transition path: the component has no DPI
 listener or scale-dependent state. This does not establish a current v7 runtime
-smoke or native ARM64 execution, so Separator remains in progress.
+independent v7 consumer runtime or native ARM64 execution, so Separator remains
+in progress.
+
+The [published v7 catalog foreground check](evidence/separator-v7-catalog-foreground-v1/checkpoint.json)
+opens the extracted x64 catalog with the exact released library DLL. In system
+Dark and explicit Light, four divider lines render in the registered fixture.
+UI Automation exposes the named semantic horizontal and vertical separators,
+while the decorative lines are omitted from its control tree. The catalog
+window closes and its process ends; no exit code was captured. This is a
+focused visible smoke, not a replacement for the independent consumer or
+native ARM64 checks.
 
 ## Isolated native rasterization
 
