@@ -6,6 +6,15 @@ Both solution and isolated-consumer architectures build with no solution warning
 
 The [published v7 x64 catalog pointer checkpoint](evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json) verifies the exact released library DLL in the extracted catalog. In system Dark and explicit Light, a physical click in the empty area while the coastal slide is visible invokes the original inactive mountain item and retains its `/fictional/mountain` destination. The catalog window was closed and its process no longer ran; its exit code was not captured. The v7 outside-arrow and inactive Tab/Enter paths were not established by this focused check; their independent local-package evidence above remains separate from published-archive evidence.
 
+The [published v7 independent consumer foreground checkpoint](evidence/hero-carousel-v7-package-foreground-v1/checkpoint.json)
+closes the version gap for the focused owning-window arrow behavior. The
+consumer's DLL and assembly match the v7 package checkpoint. In both explicit
+Dark and Light, physical Right then Left from an outside focused button changed
+index `0 → 1 → 0`; Right from a focused native text editor kept index `0`.
+Both consumer processes closed. Exit codes were not captured, and this check
+does not establish the same arrow path in the published catalog, inactive-slide
+Tab/Enter input, or the full input/focus and visual matrices.
+
 A [separate independent local NuGet-consumer foreground check](evidence/hero-carousel-current-package-foreground-v1/checkpoint.json)
 exercises the user-selected input behavior with the byte-matched
 `0.1.0-feed-hover-v1-local` package DLL. In explicit Light and Dark, physical Right/Left keys from a button
