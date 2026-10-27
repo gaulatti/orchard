@@ -17,6 +17,12 @@ states, 38 contracts and 100 PNG audits; the independent x64 package host
 passes 17 Input, Textarea and Field validity transitions. Temporary consumer
 restore workspaces were removed after successful builds.
 
+The same independently built x64 package consumer passes a focused hidden
+Data Table replay with 20 semantic/ownership/unload operations at 16,384 rows
+and page size 100. Its single-process next-page time is 1,727.45 ms against
+the unchanged 1,000 ms local budget, so collection performance remains open.
+This replay does not cover the full 120-profile matrix.
+
 The catalog archives contain 664 x64 and 660 ARM64 files, each byte-verified
 after extraction. The extracted x64 catalog passes 66 Monitoring/Editorial
 hidden checks, 577 isolation guards, 100 Media Library states, 38 contracts,

@@ -7223,7 +7223,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Complete visual review of source-derived typography, geometry, colors, shadows and states under docs/acceptance-contract.md; verify scaling/motion, physical keyboard/pointer/focus and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
-        "Meet unchanged local performance budgets: current DAE NuGet library fails24of120timing profiles across3sequential full runs (360measurements); all allocation budgets pass.16384-row/page100 next-page median1715.0988ms versus1000ms. Functional snapshots/ownership/unload contracts pass; no latency improvement or performance acceptance is established",
+        "Meet unchanged local performance budgets: the earlier DAE NuGet library fails 24 of 120 timing profiles across three sequential full runs (360 measurements); all allocation budgets pass. Its 16,384-row/page-100 next-page median is 1,715.0988 ms versus 1,000 ms. The current text-media-v3 package passes a one-process focused functional replay but takes 1,727.45 ms for that paging case. Neither result establishes performance acceptance",
         "Complete broader component acceptance beyond the navigation-foreground repair: version0.1.0-table-navigation-v1-local passes independent x64/ARM64 consumer builds and96states/264observations in each x64package/catalog host, with66fictional-demo checks; native ARM64 runtime remains unverified"
       ],
       "sourcePreparation": {
@@ -7476,11 +7476,15 @@
         "nativeComponentAccepted": false
       },
       "currentFocusedPagingObservation": {
-        "librarySha256": "409b32e7bfc9fee28c38ee5ad211acfd579088463eb263d1db1acc84f9d78072",
-        "audit": "artifacts/current/data-table-current-3939c80-paging-v1/data-table-performance-audit.json",
+        "librarySha256": "13ab2e380421a2fb0850f1ffe2bcdcb157b1952d4d3175812859c6ed730f0f9e",
+        "packageVersion": "0.1.0-text-media-v3-local",
+        "host": "independently built x64 PackageConsumer",
+        "audit": "artifacts/current/text-media-v3-data-table-paging-package-x64-v1/data-table-performance-audit.json",
+        "reportSha256": "e7ddad2b9a27bdd5fa949eef6aa09f70833a41ba496f5a984a35da127703bf6f",
         "independentProcesses": 1,
         "semanticOperationsPassed": 20,
-        "nextPage16384Page100Milliseconds": 1678.42,
+        "nextPage16384Page100Milliseconds": 1727.45,
+        "nextPage16384Page100ManagedAllocatedBytes": 19854616,
         "nextPageBudgetMilliseconds": 1000,
         "fullPerformanceMatrixVerified": false,
         "performancePassed": false
