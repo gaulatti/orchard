@@ -42,6 +42,6 @@ async function edit(dir,file,mutate){const p=path.join(dir,file),row=JSON.parse(
 const run=dir=>spawnSync(process.execPath,['scripts/verify-hidden-popovers.mjs','--native',dir,'--app',app,'--host',host,'--architecture',architecture,'--reference',reference,'--output',path.join(dir,'audit.json'),...(packagePath?['--package',packagePath]:[])],{encoding:'utf8'});
 assert.equal(run(input).status,0,'Baseline audit must pass before rejection testing.');
 const rejected=[];
-for(const[name,mutate]of cases){const dir=path.join(output,name);await fs.mkdir(dir);for(const file of files)await fs.copyFile(path.join(input,file),path.join(dir,file));await mutate(dir);const result=run(dir);assert.notEqual(result.status,0,'Malformed evidence was accepted: '+name);assert.equal(result.signal,null,'Audit did not finish: '+name);rejected.push(name);}
-const receipt={passed:true,baseline:input,negativeCasesRejected:rejected.length,rejected};
+for(const[name,mutate]of cases){const dir=path.join(output,name);await fs.mkdir(dir);for(const file of files)await fs.copyFile(path.join(input,file),path.join(dir,file));await mutate(dir);const result=run(dir);assert.notEqual(result.status,0,'Malformed evidence was accepted: '+name);assert.equal(result.signal,null,'Audit did not finish: '+name);rejected.push(name);await fs.rm(dir,{recursive:true,force:true});}
+const receipt={passed:true,baseline:input,negativeCasesRejected:rejected.length,successfulScratchCasesRemoved:true,rejected};
 await fs.writeFile(path.join(output,'result.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));

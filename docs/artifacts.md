@@ -119,6 +119,13 @@ directory after a successful run and leaves a failing copy available for
 diagnosis. This prevents the normal audit from retaining a second copy of all
 100 rendered states.
 
+The Popover and Scroll Area source negative auditors release each copied case
+after its expected rejection. If an unexpected check fails, the current case
+remains available for diagnosis. Rechecks of existing native captures rejected
+14 Popover and 28 Scroll Area cases without retaining successful scratch copies.
+Older negative-audit output directories are historical generated artifacts and
+are not removed by this change.
+
 The File Input negative auditor follows the same rule: its copied native
 capture is removed after the audit receipt is written successfully, while an
 unexpected failure keeps the copy for diagnosis. Older successful
