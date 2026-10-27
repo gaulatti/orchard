@@ -5873,6 +5873,27 @@
         "physicalInputVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "currentDelivery": {
+        "checkpoint": "artifacts/current/text-media-v4-local-delivery-checkpoint-v1.json",
+        "checkpointSha256": "a367f91ed53c349258c0fd03e820a08e72f4080fc9c421179d9c2df550c7a640",
+        "sourceCommit": "e55379b410c3d755c45fc5f5342d49a97a3461d9",
+        "releaseRecord": "docs/releases/2026-10-26-text-media-v4-local.md",
+        "packageVersion": "0.1.0-text-media-v4-local",
+        "packageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+        "freshX64AndArm64ConsumersBuilt": true,
+        "packagedX64MediaStates": 100,
+        "packagedX64MediaContracts": 38,
+        "rtlFailedThumbnailMarkerAtTrailingEdgeInBothThemes": true,
+        "catalogX64Sha256": "c36327a0115edd84fe13a0c08f7a6c2bf885e1994e2480a59ee957cf3b69280c",
+        "extractedX64MediaAndBothFictionalDemosPassed": true,
+        "catalogArm64Sha256": "3d61c1c0199e9f4b5f8ade32752180f4271e1e5d504d3a57a8c8fb9a80677e36",
+        "nativeArm64RuntimeVerified": false,
+        "physicalInputVerified": false,
+        "fullVisualReviewVerified": false,
+        "generalPackageSmokePassed": false,
+        "generalPackageSmokeFailureComponent": "data-table-toolbar",
+        "nativeComponentAccepted": false
       }
     },
     {
