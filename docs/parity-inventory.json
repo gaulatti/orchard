@@ -8599,7 +8599,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify physical typing, selection, pointer, key traversal and actual focus transitions with renewed desktop availability",
+        "Focused x64 catalog physical typing, Ctrl+A selection, Backspace, pointer/Space reveal and Clear pass in Dark with a Light subset; complete input/focus, IME and independent-consumer foreground matrix remains open (docs/evidence/secure-field-foreground-v1/checkpoint.json)",
         "Verify actual OS text/DPI scaling and complete native visual acceptance; Apple rendering was not measured",
         "Verify native ARM64 runtime and final release/CI acceptance without excluded OS campaigns"
       ],
@@ -8621,6 +8621,7 @@
         "actualCatalogCases": 2,
         "actualCatalogCaptures": 4,
         "disabledVisualStateRegressionVerified": true,
+        "focusedPhysicalInputEvidence": "docs/evidence/secure-field-foreground-v1/checkpoint.json",
         "corruptedReportsRejected": 28,
         "packageVersion": "0.1.0-secure-field-v2-local"
       }

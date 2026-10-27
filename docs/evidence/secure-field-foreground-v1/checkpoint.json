@@ -1,0 +1,31 @@
+{
+  "scope": "Visible Secure Field fixture in the source-built x64 catalog using the Orchard DLL included in the v9 local package",
+  "observedAt": "2026-10-27T09:09:57-04:00",
+  "method": "Computer Use @oai/sky foreground pointer, text input and individual keyboard actions; only fictional local values were entered",
+  "sourceCommit": "9282db1c8c1affcdabd2158ceb0e909ea9abbb9b",
+  "catalogExeSha256": "c749b7cd8a8f804ae14fb961098fa43275e58e9c95c58c5ba933b9b59486207e",
+  "catalogDllSha256": "f35cafd09ba258969ea7892b2ed91510801b38c975798070ff6e4d97d761cfc1",
+  "orchardDllSha256": "25cc6d3f61c2db06ab5c13b20d3d69e8e2903bc2a4e237cc983c14ba7d72b4c4",
+  "checks": {
+    "darkPointerFocusedNativeEditor": true,
+    "darkTextInputChangedLengthFromZeroToNineAndStayedConcealed": true,
+    "darkPointerRevealChangedActionNameAndPreservedLength": true,
+    "darkSpaceConcealedAndPreservedLength": true,
+    "darkClearEmptiedValueAndLength": true,
+    "darkIndividualLetterKeysChangedLengthFromZeroToTwo": true,
+    "darkControlASelectedNativeEditorContent": true,
+    "darkBackspaceRemovedSelectedContentAndResetLength": true,
+    "lightIndividualLetterKeyChangedLengthFromZeroToOne": true,
+    "lightPointerRevealChangedActionNameAndPreservedLength": true,
+    "lightClearEmptiedValueButKeptRevealState": true
+  },
+  "limitations": [
+    "The source-built catalog was exercised; independent NuGet consumer foreground input was not.",
+    "The automation tree reported the catalog search as focused even while the native editor visibly held focus. Focus is therefore based on the native underline and selection paint, not a UIA focused-element assertion.",
+    "Only the fictional fixture value length and reveal status are recorded; no password value is retained in this checkpoint.",
+    "IME, full pointer/key traversal, disabled foreground input, actual OS text/DPI scaling, complete visual acceptance and native ARM64 runtime remain open."
+  ],
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

@@ -69,8 +69,14 @@ The component now applies its Normal/Disabled visual state on template creation
 and enabled-state changes. Reenabling must restore opacity 1. The failing
 library identity and report are retained alongside the corrected evidence.
 
-Physical typing, pointer and keyboard traversal, focus transitions, actual OS
-text scaling, complete visual acceptance and ARM64 runtime remain unverified.
-The component remains a preview. Narrator and OS contrast campaigns are excluded
+The [focused x64 catalog foreground check](evidence/secure-field-foreground-v1/checkpoint.json)
+verifies fictional text input, direct letter keys, native Ctrl+A selection and
+Backspace deletion, pointer reveal, Space concealment, and Clear in Dark and
+Light. It observes the catalog's value-length counter and native reveal action
+name without recording the value. The longer sequence ran in Dark; Light covers
+a direct key, reveal and Clear while revealed. Full keyboard/pointer traversal,
+IME, actual OS text/DPI scaling, complete visual acceptance, independent-consumer
+foreground input and ARM64 runtime remain unverified. The component remains a
+preview. Narrator and OS contrast campaigns are excluded
 by [the component-library scope](library-scope.md). Both required fictional-data
 Monitoring and Editorial demos remain in scope.
