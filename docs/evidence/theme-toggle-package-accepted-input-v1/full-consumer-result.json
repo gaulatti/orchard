@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "message": "Package resources, fonts, light/dark themes, layout and native action verified.",
+  "assembly": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-card-v5-consumer\\bin\\x64\\Release\\net10.0-windows10.0.26100.0\\win-x64\\Orchard.dll",
+  "architecture": "X64",
+  "osArchitecture": "X64",
+  "osDescription": "Microsoft Windows 10.0.26200",
+  "framework": ".NET 10.0.12"
+}

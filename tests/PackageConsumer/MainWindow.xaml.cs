@@ -61,7 +61,19 @@ public sealed partial class MainWindow : Window
         {
             var requests = 0;
             PackageThemeToggle.ThemeRequested += (_, request) =>
-                Result.Text = $"Theme request {++requests}: {request.Mode} (not applied)";
+            {
+                if (!DispatcherQueue.TryEnqueue(() =>
+                {
+                    PackageThemeToggle.Mode = request.Mode;
+                    Root.RequestedTheme = request.Mode switch
+                    {
+                        BleeckerThemeMode.Light => ElementTheme.Light,
+                        BleeckerThemeMode.Dark => ElementTheme.Dark,
+                        _ => ElementTheme.Default
+                    };
+                    Result.Text = $"Theme accepted {++requests}: {request.Mode}";
+                })) throw new InvalidOperationException("Could not schedule theme request.");
+            };
             return;
         }
         try

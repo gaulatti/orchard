@@ -86,9 +86,14 @@ differs, and normal animation, actual scaling, independent-consumer physical
 input and native ARM64 runtime remain open.
 
 The [published v5 independent consumer](evidence/theme-toggle-package-consumer-input-v1/checkpoint.json)
-now shows the request-only rejection path without changing the application
-theme. Physical pointer, Space and Enter each deliver a Light request; the
-consumer displays it while retaining System mode and the same next-mode name.
-The existing package Button still works afterward, and the full x64 consumer
-suite passes in both themes. Accepted theme transitions, the remaining
-consumer focus/tooltip matrix and native ARM64 runtime are still open.
+first demonstrated the request-only rejection path. Physical pointer, Space
+and Enter each delivered a Light request while the consumer retained System
+mode. The [accepted-request follow-up](evidence/theme-toggle-package-accepted-input-v1/checkpoint.json)
+uses the same published library bytes and an independent package reference.
+The consumer queues its own model and root theme update after input. Physical
+pointer, Space and Enter now cycle System to Light to Dark to System; the
+next-mode names update, visible backgrounds change from white to Orchard's dark
+surface, and the existing package Button still works. The full x64 consumer
+suite passes in both themes. The remaining consumer focus/tooltip matrix,
+normal animation, display scaling, full visual review and native ARM64 runtime
+are still open; this evidence does not accept the component.
