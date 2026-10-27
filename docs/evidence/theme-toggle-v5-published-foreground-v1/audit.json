@@ -1,0 +1,686 @@
+{
+  "passed": true,
+  "frames": 134,
+  "maximumGeometryError": 0.000003814697265625,
+  "errors": [],
+  "raster": [
+    {
+      "file": "theme-toggle-light-sm-default-false-Light.png",
+      "differingPixels": 362,
+      "absoluteRgbaError": 5399
+    },
+    {
+      "file": "theme-toggle-light-sm-default-true-Light.png",
+      "differingPixels": 325,
+      "absoluteRgbaError": 2483
+    },
+    {
+      "file": "theme-toggle-light-sm-subtle-false-Light.png",
+      "differingPixels": 997,
+      "absoluteRgbaError": 7482
+    },
+    {
+      "file": "theme-toggle-light-sm-subtle-true-Light.png",
+      "differingPixels": 990,
+      "absoluteRgbaError": 3451
+    },
+    {
+      "file": "theme-toggle-light-sm-ghost-false-Light.png",
+      "differingPixels": 89,
+      "absoluteRgbaError": 3808
+    },
+    {
+      "file": "theme-toggle-light-sm-ghost-true-Light.png",
+      "differingPixels": 82,
+      "absoluteRgbaError": 1718
+    },
+    {
+      "file": "theme-toggle-light-md-default-false-Light.png",
+      "differingPixels": 426,
+      "absoluteRgbaError": 5623
+    },
+    {
+      "file": "theme-toggle-light-md-default-true-Light.png",
+      "differingPixels": 389,
+      "absoluteRgbaError": 2619
+    },
+    {
+      "file": "theme-toggle-light-md-subtle-false-Light.png",
+      "differingPixels": 1573,
+      "absoluteRgbaError": 9210
+    },
+    {
+      "file": "theme-toggle-light-md-subtle-true-Light.png",
+      "differingPixels": 1566,
+      "absoluteRgbaError": 4283
+    },
+    {
+      "file": "theme-toggle-light-md-ghost-false-Light.png",
+      "differingPixels": 89,
+      "absoluteRgbaError": 3808
+    },
+    {
+      "file": "theme-toggle-light-md-ghost-true-Light.png",
+      "differingPixels": 82,
+      "absoluteRgbaError": 1718
+    },
+    {
+      "file": "theme-toggle-light-lg-default-false-Light.png",
+      "differingPixels": 458,
+      "absoluteRgbaError": 5735
+    },
+    {
+      "file": "theme-toggle-light-lg-default-true-Light.png",
+      "differingPixels": 421,
+      "absoluteRgbaError": 2687
+    },
+    {
+      "file": "theme-toggle-light-lg-subtle-false-Light.png",
+      "differingPixels": 1909,
+      "absoluteRgbaError": 10170
+    },
+    {
+      "file": "theme-toggle-light-lg-subtle-true-Light.png",
+      "differingPixels": 1902,
+      "absoluteRgbaError": 4747
+    },
+    {
+      "file": "theme-toggle-light-lg-ghost-false-Light.png",
+      "differingPixels": 89,
+      "absoluteRgbaError": 3808
+    },
+    {
+      "file": "theme-toggle-light-lg-ghost-true-Light.png",
+      "differingPixels": 82,
+      "absoluteRgbaError": 1718
+    },
+    {
+      "file": "theme-toggle-dark-sm-default-false-Light.png",
+      "differingPixels": 373,
+      "absoluteRgbaError": 4832
+    },
+    {
+      "file": "theme-toggle-dark-sm-default-true-Light.png",
+      "differingPixels": 342,
+      "absoluteRgbaError": 2204
+    },
+    {
+      "file": "theme-toggle-dark-sm-subtle-false-Light.png",
+      "differingPixels": 999,
+      "absoluteRgbaError": 7027
+    },
+    {
+      "file": "theme-toggle-dark-sm-subtle-true-Light.png",
+      "differingPixels": 990,
+      "absoluteRgbaError": 3283
+    },
+    {
+      "file": "theme-toggle-dark-sm-ghost-false-Light.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 3247
+    },
+    {
+      "file": "theme-toggle-dark-sm-ghost-true-Light.png",
+      "differingPixels": 95,
+      "absoluteRgbaError": 1434
+    },
+    {
+      "file": "theme-toggle-dark-md-default-false-Light.png",
+      "differingPixels": 437,
+      "absoluteRgbaError": 5062
+    },
+    {
+      "file": "theme-toggle-dark-md-default-true-Light.png",
+      "differingPixels": 406,
+      "absoluteRgbaError": 2340
+    },
+    {
+      "file": "theme-toggle-dark-md-subtle-false-Light.png",
+      "differingPixels": 1575,
+      "absoluteRgbaError": 8750
+    },
+    {
+      "file": "theme-toggle-dark-md-subtle-true-Light.png",
+      "differingPixels": 1566,
+      "absoluteRgbaError": 4115
+    },
+    {
+      "file": "theme-toggle-dark-md-ghost-false-Light.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 3247
+    },
+    {
+      "file": "theme-toggle-dark-md-ghost-true-Light.png",
+      "differingPixels": 95,
+      "absoluteRgbaError": 1434
+    },
+    {
+      "file": "theme-toggle-dark-lg-default-false-Light.png",
+      "differingPixels": 469,
+      "absoluteRgbaError": 5174
+    },
+    {
+      "file": "theme-toggle-dark-lg-default-true-Light.png",
+      "differingPixels": 438,
+      "absoluteRgbaError": 2408
+    },
+    {
+      "file": "theme-toggle-dark-lg-subtle-false-Light.png",
+      "differingPixels": 1911,
+      "absoluteRgbaError": 9710
+    },
+    {
+      "file": "theme-toggle-dark-lg-subtle-true-Light.png",
+      "differingPixels": 1902,
+      "absoluteRgbaError": 4579
+    },
+    {
+      "file": "theme-toggle-dark-lg-ghost-false-Light.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 3247
+    },
+    {
+      "file": "theme-toggle-dark-lg-ghost-true-Light.png",
+      "differingPixels": 95,
+      "absoluteRgbaError": 1434
+    },
+    {
+      "file": "theme-toggle-system-sm-default-false-Light.png",
+      "differingPixels": 326,
+      "absoluteRgbaError": 5118
+    },
+    {
+      "file": "theme-toggle-system-sm-default-true-Light.png",
+      "differingPixels": 353,
+      "absoluteRgbaError": 2598
+    },
+    {
+      "file": "theme-toggle-system-sm-subtle-false-Light.png",
+      "differingPixels": 958,
+      "absoluteRgbaError": 7185
+    },
+    {
+      "file": "theme-toggle-system-sm-subtle-true-Light.png",
+      "differingPixels": 990,
+      "absoluteRgbaError": 3573
+    },
+    {
+      "file": "theme-toggle-system-sm-ghost-false-Light.png",
+      "differingPixels": 53,
+      "absoluteRgbaError": 3527
+    },
+    {
+      "file": "theme-toggle-system-sm-ghost-true-Light.png",
+      "differingPixels": 106,
+      "absoluteRgbaError": 1817
+    },
+    {
+      "file": "theme-toggle-system-md-default-false-Light.png",
+      "differingPixels": 390,
+      "absoluteRgbaError": 5342
+    },
+    {
+      "file": "theme-toggle-system-md-default-true-Light.png",
+      "differingPixels": 417,
+      "absoluteRgbaError": 2734
+    },
+    {
+      "file": "theme-toggle-system-md-subtle-false-Light.png",
+      "differingPixels": 1534,
+      "absoluteRgbaError": 8913
+    },
+    {
+      "file": "theme-toggle-system-md-subtle-true-Light.png",
+      "differingPixels": 1566,
+      "absoluteRgbaError": 4405
+    },
+    {
+      "file": "theme-toggle-system-md-ghost-false-Light.png",
+      "differingPixels": 53,
+      "absoluteRgbaError": 3527
+    },
+    {
+      "file": "theme-toggle-system-md-ghost-true-Light.png",
+      "differingPixels": 106,
+      "absoluteRgbaError": 1817
+    },
+    {
+      "file": "theme-toggle-system-lg-default-false-Light.png",
+      "differingPixels": 422,
+      "absoluteRgbaError": 5454
+    },
+    {
+      "file": "theme-toggle-system-lg-default-true-Light.png",
+      "differingPixels": 449,
+      "absoluteRgbaError": 2802
+    },
+    {
+      "file": "theme-toggle-system-lg-subtle-false-Light.png",
+      "differingPixels": 1870,
+      "absoluteRgbaError": 9873
+    },
+    {
+      "file": "theme-toggle-system-lg-subtle-true-Light.png",
+      "differingPixels": 1902,
+      "absoluteRgbaError": 4869
+    },
+    {
+      "file": "theme-toggle-system-lg-ghost-false-Light.png",
+      "differingPixels": 53,
+      "absoluteRgbaError": 3527
+    },
+    {
+      "file": "theme-toggle-system-lg-ghost-true-Light.png",
+      "differingPixels": 106,
+      "absoluteRgbaError": 1817
+    },
+    {
+      "file": "theme-toggle-light-hover-Light.png",
+      "differingPixels": 2100,
+      "absoluteRgbaError": 11022
+    },
+    {
+      "file": "theme-toggle-light-pressed-Light.png",
+      "differingPixels": 1552,
+      "absoluteRgbaError": 13844
+    },
+    {
+      "file": "theme-toggle-light-focus-Light.png",
+      "differingPixels": 794,
+      "absoluteRgbaError": 53928
+    },
+    {
+      "file": "theme-toggle-dark-hover-Light.png",
+      "differingPixels": 2101,
+      "absoluteRgbaError": 10493
+    },
+    {
+      "file": "theme-toggle-dark-pressed-Light.png",
+      "differingPixels": 1552,
+      "absoluteRgbaError": 14373
+    },
+    {
+      "file": "theme-toggle-dark-focus-Light.png",
+      "differingPixels": 805,
+      "absoluteRgbaError": 53367
+    },
+    {
+      "file": "theme-toggle-system-hover-Light.png",
+      "differingPixels": 2088,
+      "absoluteRgbaError": 10803
+    },
+    {
+      "file": "theme-toggle-system-pressed-Light.png",
+      "differingPixels": 1552,
+      "absoluteRgbaError": 18515
+    },
+    {
+      "file": "theme-toggle-system-focus-Light.png",
+      "differingPixels": 758,
+      "absoluteRgbaError": 53647
+    },
+    {
+      "file": "theme-toggle-defaults-Light.png",
+      "differingPixels": 390,
+      "absoluteRgbaError": 5342
+    },
+    {
+      "file": "theme-toggle-custom-Light.png",
+      "differingPixels": 426,
+      "absoluteRgbaError": 5623
+    },
+    {
+      "file": "theme-toggle-empty-Light.png",
+      "differingPixels": 437,
+      "absoluteRgbaError": 5063
+    },
+    {
+      "file": "theme-toggle-rtl-Light.png",
+      "differingPixels": 389,
+      "absoluteRgbaError": 5340
+    },
+    {
+      "file": "theme-toggle-light-sm-default-false-Dark.png",
+      "differingPixels": 266,
+      "absoluteRgbaError": 9463
+    },
+    {
+      "file": "theme-toggle-light-sm-default-true-Dark.png",
+      "differingPixels": 997,
+      "absoluteRgbaError": 6715
+    },
+    {
+      "file": "theme-toggle-light-sm-subtle-false-Dark.png",
+      "differingPixels": 998,
+      "absoluteRgbaError": 12246
+    },
+    {
+      "file": "theme-toggle-light-sm-subtle-true-Dark.png",
+      "differingPixels": 264,
+      "absoluteRgbaError": 4657
+    },
+    {
+      "file": "theme-toggle-light-sm-ghost-false-Dark.png",
+      "differingPixels": 75,
+      "absoluteRgbaError": 4257
+    },
+    {
+      "file": "theme-toggle-light-sm-ghost-true-Dark.png",
+      "differingPixels": 86,
+      "absoluteRgbaError": 1939
+    },
+    {
+      "file": "theme-toggle-light-md-default-false-Dark.png",
+      "differingPixels": 306,
+      "absoluteRgbaError": 10591
+    },
+    {
+      "file": "theme-toggle-light-md-default-true-Dark.png",
+      "differingPixels": 1573,
+      "absoluteRgbaError": 8859
+    },
+    {
+      "file": "theme-toggle-light-md-subtle-false-Dark.png",
+      "differingPixels": 1574,
+      "absoluteRgbaError": 15446
+    },
+    {
+      "file": "theme-toggle-light-md-subtle-true-Dark.png",
+      "differingPixels": 296,
+      "absoluteRgbaError": 5361
+    },
+    {
+      "file": "theme-toggle-light-md-ghost-false-Dark.png",
+      "differingPixels": 75,
+      "absoluteRgbaError": 4257
+    },
+    {
+      "file": "theme-toggle-light-md-ghost-true-Dark.png",
+      "differingPixels": 86,
+      "absoluteRgbaError": 1939
+    },
+    {
+      "file": "theme-toggle-light-lg-default-false-Dark.png",
+      "differingPixels": 326,
+      "absoluteRgbaError": 11155
+    },
+    {
+      "file": "theme-toggle-light-lg-default-true-Dark.png",
+      "differingPixels": 1909,
+      "absoluteRgbaError": 10075
+    },
+    {
+      "file": "theme-toggle-light-lg-subtle-false-Dark.png",
+      "differingPixels": 1910,
+      "absoluteRgbaError": 17190
+    },
+    {
+      "file": "theme-toggle-light-lg-subtle-true-Dark.png",
+      "differingPixels": 312,
+      "absoluteRgbaError": 5713
+    },
+    {
+      "file": "theme-toggle-light-lg-ghost-false-Dark.png",
+      "differingPixels": 75,
+      "absoluteRgbaError": 4257
+    },
+    {
+      "file": "theme-toggle-light-lg-ghost-true-Dark.png",
+      "differingPixels": 86,
+      "absoluteRgbaError": 1939
+    },
+    {
+      "file": "theme-toggle-dark-sm-default-false-Dark.png",
+      "differingPixels": 291,
+      "absoluteRgbaError": 8922
+    },
+    {
+      "file": "theme-toggle-dark-sm-default-true-Dark.png",
+      "differingPixels": 997,
+      "absoluteRgbaError": 6458
+    },
+    {
+      "file": "theme-toggle-dark-sm-subtle-false-Dark.png",
+      "differingPixels": 999,
+      "absoluteRgbaError": 11590
+    },
+    {
+      "file": "theme-toggle-dark-sm-subtle-true-Dark.png",
+      "differingPixels": 274,
+      "absoluteRgbaError": 4532
+    },
+    {
+      "file": "theme-toggle-dark-sm-ghost-false-Dark.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 3693
+    },
+    {
+      "file": "theme-toggle-dark-sm-ghost-true-Dark.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 1633
+    },
+    {
+      "file": "theme-toggle-dark-md-default-false-Dark.png",
+      "differingPixels": 331,
+      "absoluteRgbaError": 10049
+    },
+    {
+      "file": "theme-toggle-dark-md-default-true-Dark.png",
+      "differingPixels": 1573,
+      "absoluteRgbaError": 8602
+    },
+    {
+      "file": "theme-toggle-dark-md-subtle-false-Dark.png",
+      "differingPixels": 1575,
+      "absoluteRgbaError": 14789
+    },
+    {
+      "file": "theme-toggle-dark-md-subtle-true-Dark.png",
+      "differingPixels": 306,
+      "absoluteRgbaError": 5236
+    },
+    {
+      "file": "theme-toggle-dark-md-ghost-false-Dark.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 3693
+    },
+    {
+      "file": "theme-toggle-dark-md-ghost-true-Dark.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 1633
+    },
+    {
+      "file": "theme-toggle-dark-lg-default-false-Dark.png",
+      "differingPixels": 351,
+      "absoluteRgbaError": 10613
+    },
+    {
+      "file": "theme-toggle-dark-lg-default-true-Dark.png",
+      "differingPixels": 1909,
+      "absoluteRgbaError": 9818
+    },
+    {
+      "file": "theme-toggle-dark-lg-subtle-false-Dark.png",
+      "differingPixels": 1911,
+      "absoluteRgbaError": 16533
+    },
+    {
+      "file": "theme-toggle-dark-lg-subtle-true-Dark.png",
+      "differingPixels": 322,
+      "absoluteRgbaError": 5588
+    },
+    {
+      "file": "theme-toggle-dark-lg-ghost-false-Dark.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 3693
+    },
+    {
+      "file": "theme-toggle-dark-lg-ghost-true-Dark.png",
+      "differingPixels": 100,
+      "absoluteRgbaError": 1633
+    },
+    {
+      "file": "theme-toggle-system-sm-default-false-Dark.png",
+      "differingPixels": 242,
+      "absoluteRgbaError": 9191
+    },
+    {
+      "file": "theme-toggle-system-sm-default-true-Dark.png",
+      "differingPixels": 981,
+      "absoluteRgbaError": 6888
+    },
+    {
+      "file": "theme-toggle-system-sm-subtle-false-Dark.png",
+      "differingPixels": 984,
+      "absoluteRgbaError": 11960
+    },
+    {
+      "file": "theme-toggle-system-sm-subtle-true-Dark.png",
+      "differingPixels": 283,
+      "absoluteRgbaError": 5013
+    },
+    {
+      "file": "theme-toggle-system-sm-ghost-false-Dark.png",
+      "differingPixels": 95,
+      "absoluteRgbaError": 3989
+    },
+    {
+      "file": "theme-toggle-system-sm-ghost-true-Dark.png",
+      "differingPixels": 132,
+      "absoluteRgbaError": 2067
+    },
+    {
+      "file": "theme-toggle-system-md-default-false-Dark.png",
+      "differingPixels": 282,
+      "absoluteRgbaError": 10319
+    },
+    {
+      "file": "theme-toggle-system-md-default-true-Dark.png",
+      "differingPixels": 1557,
+      "absoluteRgbaError": 9032
+    },
+    {
+      "file": "theme-toggle-system-md-subtle-false-Dark.png",
+      "differingPixels": 1560,
+      "absoluteRgbaError": 15160
+    },
+    {
+      "file": "theme-toggle-system-md-subtle-true-Dark.png",
+      "differingPixels": 315,
+      "absoluteRgbaError": 5717
+    },
+    {
+      "file": "theme-toggle-system-md-ghost-false-Dark.png",
+      "differingPixels": 95,
+      "absoluteRgbaError": 3989
+    },
+    {
+      "file": "theme-toggle-system-md-ghost-true-Dark.png",
+      "differingPixels": 132,
+      "absoluteRgbaError": 2067
+    },
+    {
+      "file": "theme-toggle-system-lg-default-false-Dark.png",
+      "differingPixels": 302,
+      "absoluteRgbaError": 10883
+    },
+    {
+      "file": "theme-toggle-system-lg-default-true-Dark.png",
+      "differingPixels": 1893,
+      "absoluteRgbaError": 10248
+    },
+    {
+      "file": "theme-toggle-system-lg-subtle-false-Dark.png",
+      "differingPixels": 1896,
+      "absoluteRgbaError": 16904
+    },
+    {
+      "file": "theme-toggle-system-lg-subtle-true-Dark.png",
+      "differingPixels": 331,
+      "absoluteRgbaError": 6069
+    },
+    {
+      "file": "theme-toggle-system-lg-ghost-false-Dark.png",
+      "differingPixels": 95,
+      "absoluteRgbaError": 3989
+    },
+    {
+      "file": "theme-toggle-system-lg-ghost-true-Dark.png",
+      "differingPixels": 132,
+      "absoluteRgbaError": 2067
+    },
+    {
+      "file": "theme-toggle-light-hover-Dark.png",
+      "differingPixels": 455,
+      "absoluteRgbaError": 12751
+    },
+    {
+      "file": "theme-toggle-light-pressed-Dark.png",
+      "differingPixels": 442,
+      "absoluteRgbaError": 14829
+    },
+    {
+      "file": "theme-toggle-light-focus-Dark.png",
+      "differingPixels": 906,
+      "absoluteRgbaError": 76660
+    },
+    {
+      "file": "theme-toggle-dark-hover-Dark.png",
+      "differingPixels": 480,
+      "absoluteRgbaError": 12213
+    },
+    {
+      "file": "theme-toggle-dark-pressed-Dark.png",
+      "differingPixels": 437,
+      "absoluteRgbaError": 15408
+    },
+    {
+      "file": "theme-toggle-dark-focus-Dark.png",
+      "differingPixels": 931,
+      "absoluteRgbaError": 76118
+    },
+    {
+      "file": "theme-toggle-system-hover-Dark.png",
+      "differingPixels": 447,
+      "absoluteRgbaError": 12480
+    },
+    {
+      "file": "theme-toggle-system-pressed-Dark.png",
+      "differingPixels": 462,
+      "absoluteRgbaError": 19987
+    },
+    {
+      "file": "theme-toggle-system-focus-Dark.png",
+      "differingPixels": 882,
+      "absoluteRgbaError": 76388
+    },
+    {
+      "file": "theme-toggle-defaults-Dark.png",
+      "differingPixels": 282,
+      "absoluteRgbaError": 10319
+    },
+    {
+      "file": "theme-toggle-custom-Dark.png",
+      "differingPixels": 306,
+      "absoluteRgbaError": 10591
+    },
+    {
+      "file": "theme-toggle-empty-Dark.png",
+      "differingPixels": 331,
+      "absoluteRgbaError": 10050
+    },
+    {
+      "file": "theme-toggle-rtl-Dark.png",
+      "differingPixels": 282,
+      "absoluteRgbaError": 10321
+    }
+  ],
+  "sourceRasterParityVerified": false,
+  "masks": 0,
+  "resampling": false,
+  "pixelTolerance": 0,
+  "nativeNormalMotionVerified": false,
+  "actualScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

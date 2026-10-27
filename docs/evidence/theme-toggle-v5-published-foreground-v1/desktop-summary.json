@@ -1,0 +1,12 @@
+{
+  "format": "orchard-theme-toggle-desktop-summary-v1",
+  "rawDesktopReceipt": "artifacts/current/theme-toggle-v5-catalog-foreground-v3/theme-toggle-desktop.json",
+  "rawDesktopSha256": "03069f5e63a48a68bb4e8769b28a812d79f15f6ee60fb295ba4289804a5e4061",
+  "foregroundOwned": true,
+  "pointerMoves": 148,
+  "pointerPresentationsPassed": 148,
+  "pointerClicksDelivered": 2,
+  "spaceActions": 2,
+  "enterActions": 2,
+  "osSettingsChanged": false
+}

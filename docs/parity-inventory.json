@@ -7857,9 +7857,9 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Source-built x64 catalog pointer, Space, Enter, rejected Invoke, binding/metadata, template and remount checks pass in both themes; complete independent-consumer physical/focus/tooltip matrix remains",
+        "Published v5 package-matching extracted x64 catalog pointer, Space, Enter, rejected Invoke, binding/metadata, template and remount checks pass in both themes (docs/evidence/theme-toggle-v5-published-foreground-v1/checkpoint.json); complete independent-consumer physical/focus/tooltip matrix remains",
         "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
-        "Full package runtime, library integration and release acceptance"
+        "Complete package-specific consumer physical input, broader library integration and release acceptance"
       ]
     },
     {

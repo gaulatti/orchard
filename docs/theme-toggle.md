@@ -77,3 +77,10 @@ unverified. The v8 artifacts predate this change. The [v9 local preview](release
 contains it: its extracted x64 catalog repeats the physical and 134-state
 geometry checks, and an independent v9 NuGet consumer runs on x64. The
 component remains unaccepted.
+
+The later [published v5 preview](evidence/theme-toggle-v5-published-foreground-v1/checkpoint.json)
+has the same Theme Toggle library bytes in its NuGet package and extracted x64
+catalog. The catalog passed 134 source-state geometry checks and pointer,
+Space and Enter mode requests in both themes. Its exact raster diagnostic still
+differs, and normal animation, actual scaling, independent-consumer physical
+input and native ARM64 runtime remain open.
