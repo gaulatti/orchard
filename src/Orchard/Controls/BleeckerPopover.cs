@@ -35,6 +35,7 @@ public sealed partial class BleeckerPopover : ContentControl
     private bool rendering, renderPending, mountPending, positioning, inputsConnected, outsideInteraction, pointerDismiss, focusPending, focusing, lastOpen;
     private int generation, triggerGeneration;
     private bool presentationQueued, naturalDirty = true;
+    private int focusAttempts;
     private Size naturalContent, naturalSurface;
 
     public BleeckerPopover()
@@ -219,7 +220,7 @@ public sealed partial class BleeckerPopover : ContentControl
             UpdatePosition();
             if (!presented)
             {
-                outsideInteraction = pointerDismiss = false; focusPending = true; generation++;
+                outsideInteraction = pointerDismiss = false; focusPending = true; focusAttempts = 0; generation++;
                 if (modalBranch is not null) PresentationOpened(); else popup.IsOpen = true;
             }
             TryInitialFocus();
@@ -278,7 +279,8 @@ public sealed partial class BleeckerPopover : ContentControl
     private void ClosePresentation(bool restore)
     {
         if (!presented && modalBranch is null && popup?.IsOpen != true) return;
-        var target = restore && InteractionAllowed && observedRoot?.IsHostVisible == true ? TriggerRoot() : null;
+        var trigger = restore && InteractionAllowed && observedRoot?.IsHostVisible == true ? TriggerRoot() : null;
+        var target = trigger is null ? null : FocusManager.FindFirstFocusableElement(trigger) ?? trigger;
         if (modalBranch is { } branch)
         {
             modalBranch = null;
@@ -348,8 +350,25 @@ public sealed partial class BleeckerPopover : ContentControl
         var focused = FocusManager.GetFocusedElement(observedRoot) as DependencyObject;
         if (Contains(focused) && !Within(focused, triggerSlot)) return;
         var target = FocusManager.FindFirstFocusableElement(bodySlot) ?? focusHost; var current = generation; focusing = true;
-        try { if (current == generation && PresentationOpen && InteractionAllowed) await FocusManager.TryFocusAsync(target, FocusState.Programmatic); }
-        finally { focusing = false; }
+        var retry = false;
+        try
+        {
+            if (current == generation && PresentationOpen && InteractionAllowed)
+            {
+                var result = await FocusManager.TryFocusAsync(target, FocusState.Programmatic);
+                retry = !result.Succeeded && current == generation && PresentationOpen && InteractionAllowed && ++focusAttempts < 3;
+            }
+        }
+        finally
+        {
+            focusing = false;
+            if (retry)
+            {
+                focusPending = true;
+                if (!DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, TryInitialFocus))
+                    throw new InvalidOperationException("Popover could not retry native content focus.");
+            }
+        }
     }
 
     private void ReconcileTriggers()

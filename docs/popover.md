@@ -101,15 +101,16 @@ Visible-host opening focuses the first focusable content or the content host.
 Tab navigation cycles inside it. Escape requests close on the topmost popover;
 outside pointer/focus requests preserve outside focus. Controlled requests may
 be ignored. Nested popovers register their content as owned branches. The group
-peer provides ExpandCollapse, and the content uses a native Pane peer. Visible
-focus, nested modal/flyout interoperability and complete accessibility behavior
-still require runtime acceptance evidence.
+peer provides ExpandCollapse, and the content uses a native Pane peer. The x64
+foreground check verifies focus on the original TextBox and restoration to the
+native trigger action. Nested modal/flyout interoperability and complete
+accessibility behavior still require runtime acceptance evidence.
 
 `samples/Orchard.Catalog/PopoversFixture.xaml` registers fictional default,
 controlled, side/alignment and nested examples. Both required Monitoring and
-Editorial demos remain preserved. Native input, complete raster, scaling,
-performance, visible startup and ARM64 runtime acceptance remain open. Current
-background tests must not activate, show or focus a desktop window.
+Editorial demos remain preserved. Broader native input, complete raster,
+scaling, performance and ARM64 runtime acceptance remain open. The focused
+foreground fixture uses the desktop for component pointer and keyboard checks.
 
 ## Verified prototype checkpoint
 
@@ -134,6 +135,24 @@ built file. No Actions were dispatched and nothing was pushed.
 
 The sealed evidence is `artifacts/current/popover-implementation-checkpoint.json`.
 It preserves earlier failed layout/sizing runs and the preparation checkpoint.
-Popover remains in progress: native pointer/keyboard/focus, nested/modal
-integration, complete raster, scaling, performance and visible startup still
-need acceptance. Neither fictional-data demo is accepted yet.
+This historical prototype checkpoint predates the focused foreground follow-up
+below. Neither fictional-data demo is accepted yet.
+
+## Focused foreground follow-up (2026-10-27)
+
+`docs/evidence/popover-foreground-source-v1/checkpoint.json` records a fresh
+source-built x64 catalog run in Light and Dark. Physical pointer opening mounts
+and focuses the caller's original TextBox; Escape closes the surface and restores
+focus to the trigger's native action. Physical Enter opens the controlled example,
+Space activates its original close button, and an outside pointer click dismisses
+the default example without changing the caller's text. Both settled open-surface
+captures were visually reviewed. Five portable Popover reference tests, the x64
+catalog build and the ARM64 library compile passed.
+
+This run found and fixed two focus defects: an early unsuccessful initial-focus
+attempt was never retried, and Escape tried to focus the outer, non-tab-stop
+`BleeckerButton` instead of its native action. The new fixture exercises those
+behaviors at the physical input and visible UI boundary. Broader nested/modal
+input, complete raster and scaling, performance, packaged foreground input, and
+native ARM64 runtime remain open. No new package was qualified by this source
+run.

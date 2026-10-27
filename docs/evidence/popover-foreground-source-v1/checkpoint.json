@@ -1,0 +1,41 @@
+{
+  "scope": "Source-built x64 Popover catalog foreground input and focused repair",
+  "observedAt": "2026-10-27",
+  "catalogExeSha256": "62b9742f13d27043d25afa6fd5440b222dc740039178b78c496e05472d2c230b",
+  "catalogDllSha256": "adb2c3169007ef3298944ef0b69fb193cca8335104080f6305fb7acdb667cef4",
+  "orchardX64DllSha256": "468a4f96bb30df91540c64f69fc3a0a34ebf2d8f3ed391ec149464f6ec395c17",
+  "orchardArm64DllSha256": "3a7fcda967b638cbda828a836871b6191d0686d70efbd391225519fe91757815",
+  "builds": {
+    "catalogReleaseX64": "passed: 0 warnings, 0 errors",
+    "libraryReleaseArm64": "passed after win-arm64 restore: 0 warnings, 0 errors",
+    "portablePopoverReferenceTests": "5 passed, 0 failed"
+  },
+  "run": {
+    "result": "artifacts/current/popover-foreground-source-v11/result.json",
+    "resultSha256": "3f4f6233ddc926fbbbe14199634740987fb7f129d67af0822fd0f26299e709654",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "lightResultSha256": "ce037f5b9d5a1cfd58054690563fdea39f7ce9520d5a02fa3ea00a4569cfcb73",
+    "darkResultSha256": "19dd171f4745cb33fb83414c26f5420bf8061cca67fae52d974a4be824315b6f",
+    "physicalPointerClicksDeliveredPerTheme": 3,
+    "pointerOpeningFocusedOriginalInput": true,
+    "escapeClosedAndRestoredNativeTriggerAction": true,
+    "controlledEnterOpenedAndSpaceClosed": true,
+    "outsidePointerClosed": true,
+    "originalInputRetained": true,
+    "keyboardOutcomeVerifiedByComponentState": true,
+    "keyboardPressReleaseReceiptsCaptured": false,
+    "windowsAnimationsEnabled": false
+  },
+  "captures": {
+    "lightOpenSha256": "c6fdb759bbc5faac898a451b6f431fc6598360b06ce4c73b1e0424d2fb2e5f06",
+    "darkOpenSha256": "3ee78012a3e18db89c6b727e18f8d8ed3ebd1cab657dccd6e4576ac2cab5c5e2",
+    "visuallyReviewed": true,
+    "completeSourceVisualAcceptance": false
+  },
+  "diagnostic": "Initial physical opening left focus on a catalog Button. After initial focus retry, opening focused the original TextBox; Escape then exposed restoration to the outer non-tab-stop BleeckerButton instead of its native action. Both were repaired and the full two-theme run passed.",
+  "packageForegroundInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

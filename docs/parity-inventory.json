@@ -4342,7 +4342,8 @@
         "src/Orchard/Themes/Popover.xaml"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/PopoversFixture.xaml"
+        "samples/Orchard.Catalog/PopoversFixture.xaml",
+        "samples/Orchard.Catalog/PopoversFixture.Foreground.cs"
       ],
       "regressionTests": [
         "tests/Orchard.Tests/PopoverReferenceTests.cs",
@@ -4359,8 +4360,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify physical pointer/keyboard/focus dismissal and delivery; native shared-root ownership is verified only in background layout/metadata and software-invoke checks",
-        "Verify complete raster, scaling, performance, visible startup and native ARM64 runtime acceptance"
+        "Source-built x64 Light/Dark foreground pointer opening, Escape focus restoration, controlled keyboard actions and outside dismissal pass; verify broader nested/modal physical input and packaged foreground delivery",
+        "Verify complete raster, scaling, performance and native ARM64 runtime acceptance"
       ]
     },
     {
