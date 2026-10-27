@@ -127,6 +127,16 @@ source's intentionally retained stray `+`. The
 records hashes and exit code zero. This hidden replay does not establish
 published-archive physical input, complete visual review or native ARM64 runtime.
 
+The [published v7 foreground checkpoint](evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json)
+adds focused physical input in the extracted x64 catalog. In system Dark,
+Ctrl+K was ignored by the catalog search edit and opened Command Spotlight
+from an outside focused navigation button. Typing `beta` left only the original
+beta action; Enter invoked its original callback. Reopening cleared the query,
+Ctrl+K closed from the Spotlight editor, and a physical pointer click on the
+trigger opened the dialog before Escape closed it and visibly restored trigger
+focus. This is focused input evidence; other themes, full focus/Tab and IME
+routing, complete visual review and native ARM64 runtime remain unverified.
+
 Declare the control inside the window's `BleeckerModalHost`. Supply ordered
 `BleeckerCommandSpotlightAction` originals through `Actions`; an observable
 `BleeckerCommandSpotlightActions` collection invalidates filtering/grouping when
