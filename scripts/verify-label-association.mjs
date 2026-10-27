@@ -14,7 +14,7 @@ export function verifyLabelAssociationModel(r){
   add(t+'/retarget-binding/first-released','second','binding','OneWay','second');add(t+'/retarget-binding/second-owned','temporary','element');add(t+'/retarget-binding/second-released','third','binding','OneWay','third');
   add(t+'/unload-reload/released','second','binding','OneWay','second');add(t+'/unload-reload/unloaded-updated','third','binding','OneWay','third');add(t+'/unload-reload/remounted-released','third','binding','OneWay','third');
   for(const stage of ['updated','disabled'])add(t+'/content-rich-disabled/'+stage,'temporary','element',null,null,'Updated temporary caption','Updated temporary caption');
-  add(t+'/content-rich-disabled/rich','temporary','element',null,null,'Explicit input name','Rich temporary caption');add(t+'/content-rich-disabled/plain','temporary','element',null,null,'Plain caption','Plain caption');
+  add(t+'/content-rich-disabled/rich','temporary','element',null,null,'Explicit input name','Rich temporary caption');add(t+'/content-rich-disabled/plain','temporary','element',null,null,'','');
   if(r.catalogFixtureVerified){add(t+'/catalog/active','AssociationLabel','element');add(t+'/catalog/restored','AssociationOriginal','binding','OneWay','AssociationOriginal');add(t+'/catalog/updated','AssociationAlternate','binding','OneWay','AssociationAlternate');}
  }
  assert.deepEqual(r.checks.map(c=>c.id).sort(),['Light','Dark'].flatMap(t=>cases.map(c=>t+'/'+c)).sort());for(const c of r.checks)assert.equal(c.passed,true,c.id);

@@ -87,3 +87,17 @@ changes to Dark and restores Light while preserving geometry and input-label
 association. The run later fails in Input shadow remount; a fresh Dark Labels
 sequence and new package qualification remain unverified. See
 `docs/evidence/catalog-presentation-theme-root-v1/checkpoint.json`.
+
+The extracted v7 x64 catalog's association probe exposed a stale fixture
+expectation in both themes. After explicitly setting the label's automation name
+to empty, native Label and associated Input correctly report empty names while
+retaining their relationship; the fixture had expected the visible `Plain caption`
+instead. Only those two of 28 cases failed. The corrected fixture and independent
+audit now require the empty names and reject fallback to the caption. A rebuilt
+source catalog passes all 28 cases and the 30-case negative audit; the corrected
+consumer compiles from the exact v7 NuGet package, but its framework-dependent
+build does not provide runtime evidence: the thin host cannot resolve
+`BleeckerTextBoxStyle` before Label checks, and a temporary corrected-host overlay
+on the self-contained v7 consumer exited before writing a report. The original
+consumer DLL was restored and hash-checked. The delivered v7 catalog's original
+failed result remains failed. See the [checkpoint](evidence/label-explicit-empty-v7/checkpoint.json).

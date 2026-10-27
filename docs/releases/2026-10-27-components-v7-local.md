@@ -56,6 +56,17 @@ and `304feb75ee6d3db04998f3a681fc805b51f20df0ca24e04664465e2d1b1f79ba`
 for `artifacts/current/components-v7-checkbox-content-consumer-x64/audit.json`.
 Full visual, physical-input, motion, scaling and ARM64 runtime checks remain open.
 
+A subsequent Label association probe against the extracted v7 x64 catalog
+failed two of 28 cases because its test host expected the visible caption after
+the caller set an explicit empty automation name. The native label and associated
+input correctly retained empty names in Light and Dark. The corrected source
+catalog passes 28 cases, and a test consumer compiled from this exact NuGet
+package, but the corrected consumer has no native runtime result. The original
+v7 Label failure is retained in the [focused checkpoint](../evidence/label-explicit-empty-v7/checkpoint.json);
+the framework-dependent and temporary host-overlay runtime attempts also failed
+before a valid Label result. The original self-contained consumer host was
+restored byte for byte. No Label acceptance is claimed.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

@@ -1,0 +1,66 @@
+{
+  "scope": "Label explicit-empty automation name in the current v7 catalog and corrected test hosts",
+  "observedAt": "2026-10-27T03:58:46-04:00",
+  "packageVersion": "0.1.0-components-v7-local",
+  "packageSha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+  "deliveredV7Catalog": {
+    "report": "artifacts/current/components-v7-label-association-catalog-x64/label-association.json",
+    "reportSha256": "d98a2818a4a2ab4b632b93cc334d6ddc1601e3eee71c0695498a9311c014bbf1",
+    "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+    "checks": 28,
+    "passed": false,
+    "failedCases": [
+      "Light/content-rich-disabled",
+      "Dark/content-rich-disabled"
+    ],
+    "observedExplicitEmptyLabelAndInputNames": true,
+    "componentDefectEstablished": false
+  },
+  "correctedSourceCatalog": {
+    "report": "artifacts/current/label-explicit-empty-source-x64/label-association.json",
+    "reportSha256": "70344083af7b3454890caeb1cda2835ab9f59213aca6bc5363abc91409d16ad5",
+    "auditSha256": "fe4f05e70b37cd046472c4e2347f2869cdff79243835037905bdd09648896b8a",
+    "checksPassed": 28,
+    "observations": 76,
+    "catalogThemeCaptures": 2,
+    "nativeComponentAccepted": false
+  },
+  "auditRegression": {
+    "report": "artifacts/current/label-explicit-empty-audit-negatives-v1.json",
+    "reportSha256": "46a05ea1a611097ea677891710d742949a6bcc0d13049525c68d922622224369",
+    "corruptReportsRejected": 30,
+    "explicitEmptyFallbackRejected": true
+  },
+  "correctedPackageConsumer": {
+    "result": "artifacts/current/label-explicit-empty-consumer-compile-x64/result.json",
+    "resultSha256": "a0b82e62f16baf10fffb3eb81b7ddecaa1171010a875eca83d17cf6aa8fa4272",
+    "cleanupSha256": "69d350ff4814f07f58cd3e2daa67f43114e843966f43f32064a4a895acb4e885",
+    "exactV7PackageRestored": true,
+    "compilePassed": true,
+    "runtimeVerified": false
+  },
+  "frameworkDependentRuntimeAttempt": {
+    "report": "artifacts/current/label-explicit-empty-consumer-runtime-x64/label-association.json",
+    "reportSha256": "2c92fa8b777e4a7f18f478e1f77b076fa11cfda2f3349d7475de72bc82617266",
+    "passed": false,
+    "observedError": "BleeckerTextBoxStyle resource not found before Label checks",
+    "thinPublishPriBytes": 405360,
+    "selfContainedV7ConsumerPriBytes": 2589272,
+    "labelBehaviorVerified": false
+  },
+  "hostOverlayAttempt": {
+    "processExit": "artifacts/current/label-explicit-empty-v7-consumer-native-x64/process-exit.json",
+    "processExitSha256": "9b3a2ebc3242c3dfdf05a269d0eed0ff2c231c6f54581f364739d93b0aaa0da6",
+    "exitCode": -1073740286,
+    "labelReportWritten": false,
+    "originalConsumerHostRestoredAndHashVerified": true,
+    "redundantBackupRemovalBlockedByAutomaticReview": true,
+    "runtimeVerified": false
+  },
+  "remaining": [
+    "Run the corrected fixture in a native consumer using the exact v7 package",
+    "Complete Label physical input, visual, scaling and native ARM64 acceptance"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0
+}
