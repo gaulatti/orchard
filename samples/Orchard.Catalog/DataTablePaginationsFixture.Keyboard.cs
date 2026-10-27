@@ -14,7 +14,7 @@ public sealed partial class DataTablePaginationsFixture
     {
         using var bytes = new MemoryStream(); await CatalogReferenceResources.Open(typeof(DataTablePaginationsFixture).Assembly, "Orchard.Catalog.Reference.DataTablePaginationKeyboard.json")!.CopyToAsync(bytes);
         using var reference = JsonDocument.Parse(bytes.ToArray()); var reports = new List<object>(); var failures = new List<string>();
-        var root = (Grid)XamlRoot.Content; var app = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId); var original = app.ClientSize;
+        var root = CatalogFixtureRoot.From(XamlRoot); var app = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId); var original = app.ClientSize;
         try
         {
             foreach (var sample in reference.RootElement.GetProperty("cases").EnumerateArray().Where(item => item.GetProperty("scheme").GetString() == scheme.ToString()))

@@ -20,7 +20,7 @@ public sealed partial class SunburstChartsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Sunburst checks require display/text scale 1.");
-        var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
+        var root = CatalogFixtureRoot.From(XamlRoot); var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SunburstChartsFixture).Assembly, "Orchard.Catalog.Reference.SunburstChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try

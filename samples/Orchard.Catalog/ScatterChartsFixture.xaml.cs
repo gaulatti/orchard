@@ -24,7 +24,7 @@ public sealed partial class ScatterChartsFixture : UserControl
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Scatter checks require display/text scale 1.");
         using var input = new NativeInputSession(XamlRoot, folder, $"scatter-chart-{scheme}"); await input.AcquireAsync(Specimen);
-        var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
+        var root = CatalogFixtureRoot.From(XamlRoot); var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(ScatterChartsFixture).Assembly, "Orchard.Catalog.Reference.ScatterChartLayout.json")!);
         var reports = new List<object>(); var failures = new List<string>();
         try

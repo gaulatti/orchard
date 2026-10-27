@@ -21,7 +21,7 @@ public sealed partial class RadioGroupsFixture:UserControl
     }
     internal async Task VerifyAsync(BleeckerColorScheme scheme,string folder)
     {
-        var root=(Grid)XamlRoot.Content;var host=new StackPanel{Margin=new Thickness(20),Spacing=12,HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Width=280};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
+        var root=CatalogFixtureRoot.From(XamlRoot);var host=new StackPanel{Margin=new Thickness(20),Spacing=12,HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,Width=280};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
         var before=new Button{Content="Before radio"};var group=new BleeckerRadioGroup{Options=Options(),Value="daily"};var after=new Button{Content="After radio"};host.Children.Add(before);host.Children.Add(group);host.Children.Add(after);
         using var input=new NativeInputSession(XamlRoot,folder,"radio-"+scheme);var requests=new List<string>();var accept=true;
         group.ValueRequested+=(_,args)=>{requests.Add(args.Value);if(accept)group.Value=args.Value;};

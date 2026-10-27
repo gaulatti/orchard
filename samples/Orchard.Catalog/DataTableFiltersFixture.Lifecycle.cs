@@ -14,7 +14,7 @@ public sealed partial class DataTableFiltersFixture
 {
     internal async Task VerifyLifecycleAsync(BleeckerColorScheme scheme, string folder)
     {
-        var root = (Grid)XamlRoot.Content; var a = new SelectFilterTable(); var b = new SelectFilterTable(true);
+        var root = CatalogFixtureRoot.From(XamlRoot); var a = new SelectFilterTable(); var b = new SelectFilterTable(true);
         var options = new ObservableCollection<BleeckerSelectOption> { new("Draft", "Draft"), new("Published", "Published") };
         var view = new BleeckerDataTableSelectFilter { Table = a, ColumnId = "status", Options = options, Width = 520, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
         var host = new Grid { Margin = new Thickness(32), VerticalAlignment = VerticalAlignment.Top }; host.Children.Add(view); Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);

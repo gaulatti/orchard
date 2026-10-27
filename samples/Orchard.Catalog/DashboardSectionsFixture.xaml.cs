@@ -25,7 +25,7 @@ public sealed partial class DashboardSectionsFixture : UserControl
         var window = AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);
         var original = window.ClientSize; var presenter = (OverlappedPresenter)window.Presenter;
         var maximized = presenter.State == OverlappedPresenterState.Maximized;
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DashboardSectionsFixture).Assembly, "Orchard.Catalog.Reference.DashboardSectionLayout.json")!);

@@ -18,7 +18,7 @@ public sealed partial class PieChartsFixture : UserControl
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Pie checks require display/text scale 1.");
         using var input = new NativeInputSession(XamlRoot, folder, $"pie-chart-{scheme}"); await input.AcquireAsync(Specimen);
-        var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background };
+        var root = CatalogFixtureRoot.From(XamlRoot); var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(PieChartsFixture).Assembly, "Orchard.Catalog.Reference.PieChartLayout.json")!);
         using var pointerStream=CatalogReferenceResources.Open(typeof(PieChartsFixture).Assembly, "Orchard.Catalog.Reference.PiePointer.json")!;

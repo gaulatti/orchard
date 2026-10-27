@@ -21,7 +21,7 @@ public sealed partial class SparklinesFixture:UserControl
     {
         Require(XamlRoot.RasterizationScale==1&&new Windows.UI.ViewManagement.UISettings().TextScaleFactor==1,"Frozen Sparkline comparison requires display/text scale 1; scaling acceptance remains open.");
         using var input=new NativeInputSession(XamlRoot,folder,$"sparkline-{scheme}");await input.AcquireAsync(Specimen);
-        var root=(Grid)XamlRoot.Content;var host=new Grid{Margin=new Thickness(20),Background=root.Background};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
+        var root=CatalogFixtureRoot.From(XamlRoot);var host=new Grid{Margin=new Thickness(20),Background=root.Background};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
         using var reference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SparklinesFixture).Assembly, "Orchard.Catalog.Reference.SparklineLayout.json")!);
         using var pointerStream=CatalogReferenceResources.Open(typeof(SparklinesFixture).Assembly, "Orchard.Catalog.Reference.SparklinePointer.json")!;
         using var pointerBytes=new MemoryStream();await pointerStream.CopyToAsync(pointerBytes);var pointerData=pointerBytes.ToArray();using var pointerReference=JsonDocument.Parse(pointerData);

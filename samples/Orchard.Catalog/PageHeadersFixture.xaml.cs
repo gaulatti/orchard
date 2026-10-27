@@ -35,7 +35,7 @@ public sealed partial class PageHeadersFixture : UserControl
         var maximized = presenter.State == OverlappedPresenterState.Maximized;
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(PageHeadersFixture).Assembly, "Orchard.Catalog.Reference.PageHeaderLayout.json")!);
         var reports = new List<object>();
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var specimenHost = new Grid { Margin = new Thickness(20), Background = root.Background };
         Grid.SetRowSpan(specimenHost, root.RowDefinitions.Count); Grid.SetColumnSpan(specimenHost, root.ColumnDefinitions.Count);
         root.Children.Add(specimenHost);

@@ -13,7 +13,7 @@ public sealed partial class DataTableColumnTogglesFixture
 {
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var a = new ColumnVisibilityTable(); var b = new ColumnVisibilityTable(second: true);
         var rows = a.Rows.ToArray(); var columns = a.Columns.ToArray();
         var disabled = false;

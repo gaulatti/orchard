@@ -22,7 +22,7 @@ public sealed partial class SectionHeadersFixture : UserControl
         using var input = new NativeInputSession(XamlRoot, folder, $"section-header-{scheme}");
         await input.AcquireAsync(Specimen);
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(SectionHeadersFixture).Assembly, "Orchard.Catalog.Reference.SectionHeaderLayout.json")!);
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var host = new StackPanel { Margin = new Thickness(20), Background = root.Background, VerticalAlignment = VerticalAlignment.Top };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count);
         root.Children.Add(host);

@@ -14,7 +14,7 @@ public sealed partial class DataTableToolbarsFixture
         using var referenceStream=CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarLayout.json")!;
         using var referenceBuffer=new MemoryStream();await referenceStream.CopyToAsync(referenceBuffer);var referenceBytes=referenceBuffer.ToArray();
         var referenceSha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(referenceBytes)).ToLowerInvariant();using var reference=JsonDocument.Parse(referenceBytes);
-        var root=(Grid)XamlRoot.Content;var app=AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);
+        var root=CatalogFixtureRoot.From(XamlRoot);var app=AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);
         var reports=new List<object>();var transfers=new List<object>();var focusDifferences=new List<object>();
         using var input=new NativeInputSession(XamlRoot,folder,$"data-table-toolbar-matrix-{scheme}");await input.AcquireAsync(Outside);
         var original=app.ClientSize;

@@ -6,6 +6,13 @@ and the appearance selector's requested theme. The hidden public-host probe
 loads Foundation, Scroll area, Popover, Hover card, Monitoring and Editorial in
 both themes and opens a diagnostic internal layer. This is root/layout evidence;
 it does not establish foreground input or a public AlertDialog implementation.
+Catalog fixtures that temporarily add native test content now resolve the
+`CatalogRoot` Grid through that modal host. The earlier direct cast from
+`XamlRoot.Content` to Grid failed before Pagination's lifecycle tests ran;
+the same stale cast was replaced in 32 fixture files. Focused x64 smoke passes
+Pagination, Tabs, Area Chart and Stat Card; the other touched fixture modes
+have compiled but have not all been rerun. See the
+[current checkpoint](evidence/data-table-pagination-font-v1/checkpoint.json).
 Header is registered immediately after Footer; its previously declared fixture
 must remain reachable through the same navigation registry as other components.
 The Footer fixture's variant selector presents Default, Custom links with caller

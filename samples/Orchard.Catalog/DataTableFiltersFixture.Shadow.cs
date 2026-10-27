@@ -20,7 +20,7 @@ public sealed partial class DataTableFiltersFixture
         using var stream = CatalogReferenceResources.Open(typeof(DataTableFiltersFixture).Assembly, "Orchard.Catalog.Reference.SelectShadowPointer.json")!;
         using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var bytes = buffer.ToArray(); using var document = JsonDocument.Parse(bytes);
         var sample = document.RootElement.GetProperty("cases").EnumerateArray().Single(item => item.GetProperty("scheme").GetString() == scheme.ToString());
-        var root = (Grid)XamlRoot.Content; var table = new SelectFilterTable();
+        var root = CatalogFixtureRoot.From(XamlRoot); var table = new SelectFilterTable();
         var view = new BleeckerDataTableSelectFilter { Table = table, ColumnId = "status", Options = new[] { new BleeckerSelectOption("Draft", "Draft"), new BleeckerSelectOption("Published", "Published") }, Width = 520, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(16) };
         var outsideClicks = 0;
         var outside = new Button { Name = "ShadowOutside", Width = 16, Height = 16, MinWidth = 0, MinHeight = 0, Padding = new Thickness(0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(192,178,0,0), Template = (ControlTemplate)XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType='Button'><Border Background='Transparent'/></ControlTemplate>") };

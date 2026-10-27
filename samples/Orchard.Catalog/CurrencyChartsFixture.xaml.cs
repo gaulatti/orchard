@@ -23,7 +23,7 @@ public sealed partial class CurrencyChartsFixture : UserControl
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Chart checks require display/text scale 1.");
-        var root = (Grid)XamlRoot.Content; var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
+        var root = CatalogFixtureRoot.From(XamlRoot); var host = new Grid { Margin = new Thickness(20), Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
         var before = new Button { Content = "Before chart", VerticalAlignment = VerticalAlignment.Bottom, HorizontalAlignment = HorizontalAlignment.Right }; host.Children.Add(before);
         using var input = new NativeInputSession(XamlRoot, folder, $"currency-chart-{scheme}"); await input.AcquireAsync(before); await input.MoveAsync(before);
         using var reference = JsonDocument.Parse(CatalogReferenceResources.Open(typeof(CurrencyChartsFixture).Assembly, "Orchard.Catalog.Reference.ChartLayout.json")!);

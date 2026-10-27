@@ -16,7 +16,7 @@ public sealed partial class DataTablePaginationsFixture
         var bytes = await ReadScrollReferenceAsync(); using var reference = JsonDocument.Parse(bytes);
         var table = new PaginationTable(50, pageSize: 10); var options = new ObservableCollection<int>([1,2,3,4,5,10,20,30,40,50,100,200,500]);
         var bar = new BleeckerDataTablePagination { Table = table, PageSizeOptions = options, Width = 800, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
-        var root = (Grid)XamlRoot.Content; var host = new Grid { Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); host.Children.Add(bar); root.Children.Add(host);
+        var root = CatalogFixtureRoot.From(XamlRoot); var host = new Grid { Background = root.Background }; Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); host.Children.Add(bar); root.Children.Add(host);
         using var input = new NativeInputSession(XamlRoot, folder, $"pagination-scroll-{scheme}"); var reports = new List<object>(); var failures = new List<string>();
         try
         {

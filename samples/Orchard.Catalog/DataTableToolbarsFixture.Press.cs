@@ -16,7 +16,7 @@ public sealed partial class DataTableToolbarsFixture
         using var stream = CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarPress.json")!;
         using var buffer = new MemoryStream(); await stream.CopyToAsync(buffer); var referenceBytes = buffer.ToArray(); using var reference = JsonDocument.Parse(referenceBytes);
         var sample = layout.RootElement.GetProperty("cases").EnumerateArray().Single(item => item.GetProperty("id").GetString() == "global-filter" && item.GetProperty("scheme").GetString() == scheme.ToString());
-        var root = (Grid)XamlRoot.Content; var reports = new List<object>(); var transfers = new List<object>(); var failures = new List<string>();
+        var root = CatalogFixtureRoot.From(XamlRoot); var reports = new List<object>(); var transfers = new List<object>(); var failures = new List<string>();
         using var input = new NativeInputSession(XamlRoot, folder, $"data-table-toolbar-press-{scheme}"); await input.AcquireAsync(Outside);
         foreach (var test in reference.RootElement.GetProperty("results").EnumerateArray().Where(item => item.GetProperty("scheme").GetString() == scheme.ToString() && item.GetProperty("reducedMotion").GetString() == "reduce"))
         {

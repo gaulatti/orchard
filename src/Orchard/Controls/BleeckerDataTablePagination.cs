@@ -38,6 +38,7 @@ public sealed partial class BleeckerDataTablePagination : Control
     {
         DefaultStyleKey = typeof(BleeckerDataTablePagination);
         PageSizeOptions = new ObservableCollection<int>([10, 20, 30, 50, 100]);
+        RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => { if (page is not null) page.FontFamily = PageFontFamily(); });
         Loaded += (_, _) => { Observe(); Refresh(); };
         Unloaded += (_, _) => Disconnect();
         RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
@@ -81,11 +82,18 @@ public sealed partial class BleeckerDataTablePagination : Control
     {
         var text = (TextBlock)XamlReader.Load("<TextBlock xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Foreground='{ThemeResource BleeckerTextSecondaryBrush}'/>");
         text.Name = name; text.FontSize = 14; text.LineHeight = 20; text.LineStackingStrategy = LineStackingStrategy.BlockLineHeight; text.TextWrapping = TextWrapping.Wrap; text.UseLayoutRounding = false; text.CharacterSpacing = 0;
-        text.SetBinding(TextBlock.FontFamilyProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontFamily)) });
+        if (medium) text.FontFamily = PageFontFamily();
+        else text.SetBinding(TextBlock.FontFamilyProperty, new Binding { Source = this, Path = new PropertyPath(nameof(FontFamily)) });
         text.FontWeight = medium ? Microsoft.UI.Text.FontWeights.Medium : Microsoft.UI.Text.FontWeights.Normal;
-        if (medium) text.FontFamily = (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"];
         if (medium) text.SetBinding(TextBlock.ForegroundProperty, new Binding { Source = this, Path = new PropertyPath(nameof(Foreground)) });
         return text;
+    }
+    private FontFamily PageFontFamily()
+    {
+        var regular = (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"];
+        return FontFamily is { } chosen && !string.Equals(chosen.Source, regular.Source, StringComparison.Ordinal)
+            ? chosen
+            : (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"];
     }
     private static Button Navigation(string name, string label, string figures, RoutedEventHandler clicked)
     {

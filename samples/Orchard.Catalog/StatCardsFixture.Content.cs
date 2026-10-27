@@ -55,7 +55,7 @@ public sealed partial class StatCardsFixture
         var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Straight,new Windows.Graphics.Imaging.BitmapTransform(),Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
         var name=id.StartsWith("title",StringComparison.Ordinal)?"PART_Title":id.StartsWith("description",StringComparison.Ordinal)?"PART_Description":"PART_Value";
         var text=input.ScreenBounds(Part<TextBlock>(card,name));var lead=input.ScreenBounds(Part<StackPanel>(card,"PART_Lead"));var icon=input.ScreenBounds(Part<Border>(card,"PART_Icon"));var bounds=input.ScreenBounds(card);
-        var fill=((SolidColorBrush)card.Background).Color;var outside=((SolidColorBrush)((Grid)XamlRoot.Content).Background).Color;
+        var fill=((SolidColorBrush)card.Background).Color;var outside=((SolidColorBrush)(CatalogFixtureRoot.From(XamlRoot)).Background).Color;
         int Changed(double left,double right,Windows.UI.Color background)
         {
             var count=0;

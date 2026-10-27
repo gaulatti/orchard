@@ -142,7 +142,7 @@ public sealed partial class TabsFixture : UserControl
 
     private async Task VerifyInputAsync(ElementTheme theme, string folder)
     {
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var host = new StackPanel { Width = 520, Margin = new Thickness(24), Spacing = 12, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count);
         var before = new Button { Content = "Before tabs" };

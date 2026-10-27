@@ -15,7 +15,7 @@ public sealed partial class DataTableToolbarsFixture
     {
         using var reference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarLayout.json")!);
         using var captionReference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DataTableToolbarsFixture).Assembly, "Orchard.Catalog.Reference.DataTableToolbarCaption.json")!);
-        var root=(Grid)XamlRoot.Content;var host=new Grid{Margin=new Thickness(16),Background=root.Background,RequestedTheme=scheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);
+        var root=CatalogFixtureRoot.From(XamlRoot);var host=new Grid{Margin=new Thickness(16),Background=root.Background,RequestedTheme=scheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark};Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);
         var app=AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);var original=app.ClientSize;var reports=new List<object>();root.Children.Add(host);
         try
         {

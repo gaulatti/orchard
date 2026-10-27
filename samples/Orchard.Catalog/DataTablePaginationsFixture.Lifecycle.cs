@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace Orchard.Catalog;
 
@@ -12,7 +13,7 @@ public sealed partial class DataTablePaginationsFixture
 {
     private async Task VerifyLifecycleAsync(BleeckerColorScheme scheme, string folder)
     {
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var a = new PaginationTable(); var b = new PaginationTable(8, pageSize: 2);
         var original = new TrackedPageSizes([10, 20, 30]); var replacement = new TrackedPageSizes([2, 4]);
         var bar = new BleeckerDataTablePagination { Table = a, PageSizeOptions = original, Width = 800, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
@@ -22,6 +23,15 @@ public sealed partial class DataTablePaginationsFixture
             await ReadyAsync(() => bar.IsLoaded); bar.ApplyTemplate(); await MainWindow.AwaitPresentationAsync(bar);
             ItemsControl Size() => Chooser(bar);
             string Page() => Descendants<TextBlock>(bar).Single(item => item.Name == "PART_Page").Text;
+            TextBlock PageLabel() => Descendants<TextBlock>(bar).Single(item => item.Name == "PART_Page");
+            var regular = (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"];
+            var medium = (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"];
+            Require(PageLabel().FontFamily.Source == medium.Source, "Default page label lost Orchard's medium font.");
+            bar.FontFamily = new FontFamily("Segoe UI"); await MainWindow.AwaitPresentationAsync(bar);
+            Require(PageLabel().FontFamily.Source == "Segoe UI" && Descendants<TextBlock>(bar).Single(item => item.Name == "PART_RowsLabel").FontFamily.Source == "Segoe UI", "Caller font did not reach the page and row labels.");
+            await MainWindow.CaptureElementAsync(host, Path.Combine(folder, $"data-table-pagination-font-override-{scheme}.png"));
+            bar.ClearValue(Control.FontFamilyProperty); await MainWindow.AwaitPresentationAsync(bar);
+            Require(bar.FontFamily.Source == regular.Source && PageLabel().FontFamily.Source == medium.Source, "Clearing caller font did not restore Orchard's medium page label.");
             Require(a.Subscribers == 1 && original.Subscribers == 1, "Mounted pagination did not observe its original sources exactly once.");
             var defaults = new BleeckerDataTablePagination(); var otherDefaults = new BleeckerDataTablePagination();
             Require(!ReferenceEquals(defaults.PageSizeOptions, otherDefaults.PageSizeOptions), "Page-size defaults leaked across control instances.");

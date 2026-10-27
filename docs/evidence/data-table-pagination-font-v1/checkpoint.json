@@ -1,0 +1,46 @@
+{
+  "scope": "Current source Pagination caller-font repair and catalog fixture-root regression",
+  "sourceLibrarySha256": "424e6b7fa7a42e2664ccfbe6b970aeb25c346c9d9bdde8ac611ed300c99636a3",
+  "sourceCatalogSha256": "a9c3089128add844e76342d6ac3c39f957caae555e858f0b8fcc0205063c1ceb",
+  "arm64LibrarySha256": "2575ca4b93ae2c03a181ff3505401d45be61213acb524ca61ca1fe3ad80be77a",
+  "builds": {
+    "x64CatalogWarnings": 0,
+    "x64CatalogErrors": 0,
+    "arm64CatalogWarnings": 0,
+    "arm64CatalogErrors": 0,
+    "nativeArm64RuntimeVerified": false
+  },
+  "runtime": {
+    "x64PaginationLightDarkPassed": true,
+    "defaultMediumPageFontVerified": true,
+    "distinctCallerFontReachedPageAndRowsLabels": true,
+    "clearingCallerFontRestoredMediumPageFont": true,
+    "existingLifecycleAndProducerChecksPassed": true,
+    "catalogFixtureRootSampleChecksPassed": ["pagination", "tabs", "area-chart", "stat-card"],
+    "allCatalogFixtureModesRerun": false,
+    "screenshotsVisuallyInspected": true,
+    "osSettingsChanged": false
+  },
+  "evidence": {
+    "paginationResult": {"path": "docs/evidence/data-table-pagination-font-v1/pagination-result.json", "sha256": "4edd26a90d506abef1c341965da4d5ef8054cf3ff76279cf52cb7763b17b1d70"},
+    "lifecycleLight": {"path": "docs/evidence/data-table-pagination-font-v1/lifecycle-light.json", "sha256": "8e9c9ef93c78b013b6fe47a85c78397a7a16e97cd786f9bb6d2bdd25e7b89878"},
+    "lifecycleDark": {"path": "docs/evidence/data-table-pagination-font-v1/lifecycle-dark.json", "sha256": "8e9c9ef93c78b013b6fe47a85c78397a7a16e97cd786f9bb6d2bdd25e7b89878"},
+    "fontOverrideLight": {"path": "docs/evidence/data-table-pagination-font-v1/font-override-Light.png", "sha256": "d48961a7f8afad292d76bba431ee7cbc931e4d9a5a5aa4a916c990d2ce07349b"},
+    "fontOverrideDark": {"path": "docs/evidence/data-table-pagination-font-v1/font-override-Dark.png", "sha256": "2ad283c7b340b0d156044cf634f4089d089ddfdd20d355d65b7804b579ae27eb"},
+    "tabsResult": {"path": "docs/evidence/data-table-pagination-font-v1/tabs-result.json", "sha256": "e1de62f805278e1587156a659d3628c6514253efee74281b5fb5a5f9a79eb59b"},
+    "areaChartResult": {"path": "docs/evidence/data-table-pagination-font-v1/area-chart-result.json", "sha256": "d7db7ae680e0dee0edeaa8c08a97115e58c5127aa90e28be3f0db85d9d21295c"},
+    "statCardResult": {"path": "docs/evidence/data-table-pagination-font-v1/stat-card-result.json", "sha256": "1cf8bfdcfb9bac1b5a4eb0eed93b9039c4df8c687806d21b98d718d72418b9cc"}
+  },
+  "diagnosticFailures": [
+    "The first focused run failed before Pagination lifecycle checks because the fixture cast the catalog's BleeckerModalHost XamlRoot.Content to Grid. The catalog-only root resolver repairs all 32 matching fixture casts.",
+    "A separate same-as-default local font probe did not observe ClearValue when the effective value stayed unchanged; that optional edge case was removed, and the final distinct-font override/reset route passes."
+  ],
+  "limits": [
+    "This source change is newer than the published 0.1.0-preview.20261027.2 NuGet and catalog assets; package consumer and refreshed release validation are pending a meaningful batch milestone.",
+    "The other 28 catalog fixture modes touched by the mechanical root update were compiled but not rerun in this focused check.",
+    "Complete Pagination visual/input/scaling/performance and native ARM64 runtime acceptance remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "nativeComponentAccepted": false
+}

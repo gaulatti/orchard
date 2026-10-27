@@ -21,7 +21,7 @@ public sealed partial class DashboardGridsFixture:UserControl
         using var input=new NativeInputSession(XamlRoot,folder,$"dashboard-grid-{scheme}");await input.AcquireAsync(Specimen);
         var window=AppWindow.GetFromWindowId(XamlRoot.ContentIslandEnvironment.AppWindowId);var original=window.ClientSize;
         var presenter=(OverlappedPresenter)window.Presenter;var maximized=presenter.State==OverlappedPresenterState.Maximized;
-        var root=(Grid)XamlRoot.Content;var host=new Grid{Margin=new Thickness(20),Background=root.Background};
+        var root=CatalogFixtureRoot.From(XamlRoot);var host=new Grid{Margin=new Thickness(20),Background=root.Background};
         Grid.SetRowSpan(host,root.RowDefinitions.Count);Grid.SetColumnSpan(host,root.ColumnDefinitions.Count);root.Children.Add(host);
         using var reference=JsonDocument.Parse(CatalogReferenceResources.Open(typeof(DashboardGridsFixture).Assembly, "Orchard.Catalog.Reference.DashboardGridLayout.json")!);
         var reports=new List<object>();

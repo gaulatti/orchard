@@ -694,3 +694,22 @@ foreground consumer runs after this and the Data Table held-Reset frame-wait
 fixture correction. See the [small consumer checkpoint](evidence/data-table-pagination-pixel-snap-v1/checkpoint.json).
 This does not close the pagination input, visual, scaling, performance or
 native ARM64 runtime gaps.
+
+## Caller font and current catalog root
+
+The page indicator used Orchard's medium font by default, but assigned it after
+binding `FontFamily` to the Pagination control. That assignment replaced the
+binding, so a distinct caller font family reached the row label but not the page
+label. The page label now keeps the medium default and updates when the control's
+effective font family changes. The catalog lifecycle fixture verifies the
+default, a caller `Segoe UI` font on both labels, and restoration after clearing
+the caller value in Light and Dark. It captures both themed caller-font states.
+
+The same run initially failed before those checks because the catalog's window
+root is now `BleeckerModalHost`, while 32 fixtures still cast `XamlRoot.Content`
+directly to Grid. Those fixtures now resolve their content Grid through the
+host. Final x64 Pagination, Tabs, Area Chart and Stat Card smoke checks pass;
+x64 and ARM64 catalog builds have zero warnings or errors. The source change is
+newer than the published preview package, so fresh NuGet delivery, native ARM64
+runtime and the wider Pagination acceptance gaps remain open. See the
+[checkpoint](evidence/data-table-pagination-font-v1/checkpoint.json).

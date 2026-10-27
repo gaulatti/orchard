@@ -26,7 +26,7 @@ public sealed partial class BarChartsFixture : UserControl
     {
         Require(XamlRoot.RasterizationScale == 1 && new Windows.UI.ViewManagement.UISettings().TextScaleFactor == 1, "Frozen Bar Chart checks require display/text scale 1.");
         using var input = new NativeInputSession(XamlRoot, folder, $"bar-chart-{scheme}"); await input.AcquireAsync(Specimen);
-        var root = (Grid)XamlRoot.Content;
+        var root = CatalogFixtureRoot.From(XamlRoot);
         var host = new Grid { Margin = new Thickness(20), Background = root.Background };
         var outside = new Button { Content = "Outside chart", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Style = (Style)Application.Current.Resources["BleeckerSecondaryButtonStyle"] };
         Grid.SetRowSpan(host, root.RowDefinitions.Count); Grid.SetColumnSpan(host, root.ColumnDefinitions.Count); root.Children.Add(host);
