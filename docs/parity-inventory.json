@@ -5524,7 +5524,8 @@
         "src/Orchard/Controls/BleeckerPopupScope.cs"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/SelectsFixture.xaml"
+        "samples/Orchard.Catalog/SelectsFixture.xaml",
+        "samples/Orchard.Catalog/SelectsFixture.Foreground.cs"
       ],
       "regressionTests": [
         "tests/Orchard.Tests/SelectContractTests.cs",
@@ -5547,8 +5548,9 @@
         "scripts/test-package-select-modal-root-audit.mjs"
       ],
       "status": "in-progress",
+      "foregroundInputCheckpoint": "docs/evidence/select-foreground-source-v1/checkpoint.json",
       "remainingGaps": [
-        "Verify actual physical keyboard/pointer/focus behavior, source initial-focused-option paint and complete open raster",
+        "Complete physical input matrix beyond source x64 Header Select keyboard selection/Escape; compare focused-option paint with source and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },
@@ -6613,7 +6615,8 @@
         "src/Orchard/Controls/BleeckerPopupScope.cs"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/SelectsFixture.xaml"
+        "samples/Orchard.Catalog/SelectsFixture.xaml",
+        "samples/Orchard.Catalog/SelectsFixture.Foreground.cs"
       ],
       "regressionTests": [
         "tests/Orchard.Tests/SelectContractTests.cs",
@@ -6636,8 +6639,9 @@
         "scripts/test-package-select-modal-root-audit.mjs"
       ],
       "status": "in-progress",
+      "foregroundInputCheckpoint": "docs/evidence/select-foreground-source-v1/checkpoint.json",
       "remainingGaps": [
-        "Verify actual physical keyboard/pointer/focus behavior, source initial-focused-option paint and complete open raster",
+        "Complete physical input matrix beyond source x64 Select pointer selection; compare focused-option paint with source and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },

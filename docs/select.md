@@ -83,10 +83,19 @@ and the existing table-filter and pagination recipes. All 48 damaged receipts
 are rejected. That historical checkpoint used 248 portable and eight windowless
 font tests. The shared-plane fixture above now verifies geometry for all 32
 open-source states. Focused presentation/input/raster comparison remains open.
-The October 18 desktop window has ended; work is background-only until the user
-extends availability. No visible runtime acceptance is claimed from hidden
-diagnostics. Current package/build evidence is recorded in the latest component
-checkpoint rather than inferred from this older baseline.
+The user has since authorized unattended desktop component tests. A focused
+[source x64 foreground checkpoint](evidence/select-foreground-source-v1/checkpoint.json)
+now exercises Select and Header Select through physical Windows input in both
+themes. Pointer opening of Select focuses its selected original option; a
+pointer choice requests `b` from the fictional caller, which accepts the value,
+closes the menu and restores trigger focus. Keyboard Enter opens Header Select
+with the placeholder focused; Down focuses the first caller-owned option, Enter
+requests and accepts `a`, and Escape dismisses a reopened menu without changing
+the value. Four settled open-menu captures were visually checked for the focused
+row, checkmark, and legible light/dark surface. This is focused x64 source-host
+evidence, not complete source-raster, input-matrix, scaling, motion, package or
+native ARM64 acceptance. Current package/build evidence is recorded in the
+latest component checkpoint rather than inferred from this older baseline.
 
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the

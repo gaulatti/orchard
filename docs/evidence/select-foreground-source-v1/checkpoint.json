@@ -1,0 +1,37 @@
+{
+  "scope": "Source-built x64 Select and Header Select catalog foreground input",
+  "observedAt": "2026-10-27",
+  "catalogExeSha256": "6ae39aae895a1083df0ce92e319faf2314a42da6a678484d26d41f013036e6f0",
+  "catalogDllSha256": "ce869d3a21801df0bfd4ed33c209653dbe630acade306586d5d4a23800f5b961",
+  "orchardDllSha256": "e9a5fde64061d79aa2705d626ee9260c813ff4abeb07e73b2287d2d1f4077d59",
+  "build": "Release x64 catalog build passed with 0 warnings and 0 errors",
+  "run": {
+    "result": "artifacts/current/select-foreground-source-v2/result.json",
+    "resultSha256": "9740db61449aeb0a4fcfcb8bfe854fa216dbb10d4a6fc27eff0187adf192860c",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "lightResultSha256": "5097c80cd8ef577618ef2c8852d8fb3712f5368ea65f11cc63489fa844ae8602",
+    "darkResultSha256": "7694c3b3e76b044f4128e2456bbb0e91f29f6fd2dcf3c969014e66e94918ed5a",
+    "selectPointerSelectionOriginalValue": "b",
+    "selectPointerFocusedOriginalOption": true,
+    "selectPointerRestoredTriggerFocus": true,
+    "headerKeyboardSelectionOriginalValue": "a",
+    "headerKeyboardInitiallyFocusedPlaceholder": true,
+    "headerKeyboardDownFocusedOriginalOption": true,
+    "headerKeyboardRestoredTriggerFocus": true,
+    "headerEscapePreservedCallerValue": true
+  },
+  "captures": {
+    "mediumOpenLightSha256": "929d1febcbd9b3b88b8bd8753b57a1c87d27f7a26d3906f4f0430fb18fc16609",
+    "mediumOpenDarkSha256": "10ea2be9bc95e969b6785a389da087b62f1f3cc672b2119e26addc0531ff5f0f",
+    "headerOpenLightSha256": "0df1373568d2e78766a9750314038c9126245ceb0857aa7c0b6d9631b5601926",
+    "headerOpenDarkSha256": "d108650d4467f4a7314f48c41e143c9488d4b96c89773f58dc474ea8b81fb8f0",
+    "visuallyReviewed": true,
+    "completeSourceVisualAcceptance": false
+  },
+  "firstRunDiagnostic": "v1 passed input but captured the open menu before the settled presentation; v2 waited for two frames and a compositor commit",
+  "packageForegroundInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
