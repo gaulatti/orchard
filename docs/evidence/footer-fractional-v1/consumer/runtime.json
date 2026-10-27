@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "diagnosticOnly": true,
+  "scope": "hidden-footer-public-contracts",
+  "checks": [
+    {
+      "id": "bottom-right-bound-nullish-scalars",
+      "passed": true
+    },
+    {
+      "id": "bottom-left-model-template-binding",
+      "passed": true
+    },
+    {
+      "id": "bottom-right-selector-original-model",
+      "passed": true
+    },
+    {
+      "id": "original-editor-survives-section-mutations",
+      "passed": true
+    },
+    {
+      "id": "original-editors-survive-template-replacement",
+      "passed": true
+    },
+    {
+      "id": "fractional-host-original-slots",
+      "passed": true
+    },
+    {
+      "id": "custom-link-original-item-command-and-style",
+      "passed": true
+    },
+    {
+      "id": "keyed-item-replacement-and-retirement",
+      "passed": true
+    },
+    {
+      "id": "custom-renderer-owned-container-metrics",
+      "passed": true
+    },
+    {
+      "id": "source-raw-first-match-and-explicit-suppression",
+      "passed": true
+    },
+    {
+      "id": "bound-brand-metadata-and-explicit-null-logo",
+      "passed": true
+    },
+    {
+      "id": "custom-template-retired-and-remounted-actions",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "guardChecks": 205,
+  "isolated": true,
+  "hiddenWindow": true,
+  "activateCalled": false,
+  "showCalled": false,
+  "focusCalled": false,
+  "inputSent": false,
+  "activationEvents": 0,
+  "focusEvents": 0,
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "hostSha256": "5dcf6b909c0bcef8b1f70b32f70a74a10fb52b92d27ff1497a06660b9616c599",
+  "librarySha256": "1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b",
+  "visibleRuntimeVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false
+}

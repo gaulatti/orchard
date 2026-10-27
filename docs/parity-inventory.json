@@ -8035,6 +8035,7 @@
         "paintChecksPerHost": 1890,
         "publicContractCheckpoint": "artifacts/current/footer-fractional-contract-checkpoint-v1.json",
         "publicContractCheckpointSha256": "90535c0a86ff040aa7d9aabca16b1fb0a4b3c9a70c76da78a7c7acb212fc3d58",
+        "publicContractEvidenceArchive": "docs/evidence/footer-fractional-v1/checkpoint.json",
         "publicContractChecksPerHost": 12,
         "publicContractGuardsPerHost": 205,
         "publicContractCatalogArm64BuildPassed": true,

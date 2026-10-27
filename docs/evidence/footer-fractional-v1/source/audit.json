@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "scope": "hidden-footer-public-contracts",
+  "checks": 12,
+  "guardChecks": 205,
+  "isolated": true,
+  "activationEvents": 0,
+  "focusEvents": 0,
+  "librarySha256": "e006003c606221a83c41c9803ee8b60b7667bd43a6f04226a67eb61051654cc8",
+  "hostSha256": "ea0bcd2ffd923a17c6069795e6868a3eeb772b097fa89f4edf81bcd00ccf9db2",
+  "processArchitecture": "X64",
+  "visibleRuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

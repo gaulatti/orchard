@@ -256,6 +256,8 @@ isolated restore directory was removed after the build. The new test changes no
 public library code. Evidence and hashes are in
 `artifacts/current/footer-fractional-contract-checkpoint-v1.json`, SHA-256
 `90535c0a86ff040aa7d9aabca16b1fb0a4b3c9a70c76da78a7c7acb212fc3d58`.
+The [small receipt archive](evidence/footer-fractional-v1/README.md) preserves
+byte-identical copies when generated build output is cleared.
 The shared fixture also compiles in the current ARM64 catalog build, with zero
 warnings or errors; native ARM64 execution remains unverified.
 Broader custom content, visible input/raster, motion/scaling and native ARM64

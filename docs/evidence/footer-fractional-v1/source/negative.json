@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "baselineFromActualRuntime": true,
+  "negativeCasesRejected": 24,
+  "rejected": [
+    "failed",
+    "scope",
+    "not-diagnostic",
+    "visible-window",
+    "activation",
+    "show",
+    "focus",
+    "input",
+    "activation-event",
+    "focus-event",
+    "not-isolated",
+    "missing-guards",
+    "visible-claim",
+    "acceptance-claim",
+    "failure",
+    "missing-check",
+    "duplicate-check",
+    "failed-check",
+    "wrong-architecture",
+    "wrong-os",
+    "library",
+    "host",
+    "exit",
+    "raster-claim"
+  ],
+  "nativeComponentAccepted": false
+}

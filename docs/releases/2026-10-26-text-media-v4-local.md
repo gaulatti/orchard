@@ -55,6 +55,8 @@ and 205 isolation guards, including original editors at 640.5- and 768.5-DIP
 host widths. Their auditors reject 28 and 24 damaged receipts. This test adds
 no library change or visible-input claim; see the [Footer contract](../footer.md).
 The shared fixture also compiles in the ARM64 catalog; ARM64 runtime was not run.
+The [small receipts](../evidence/footer-fractional-v1/README.md) remain in Git
+after disposable build output is cleared.
 
 A separate general x64 package smoke test **failed** at the Data Table toolbar
 held-Reset geometry assertion. That fixture activates a foreground window and

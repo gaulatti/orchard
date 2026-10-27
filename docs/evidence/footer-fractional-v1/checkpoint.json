@@ -1,0 +1,35 @@
+{
+  "schema": "orchard-footer-fractional-contract-v1",
+  "scope": "hidden x64 caller-owned bottom slots at fractional constrained and wider widths",
+  "source": {
+    "runtime": "artifacts\\current\\footer-fractional-source-x64-v2/hidden-footer-contracts.json",
+    "runtimeSha256": "20669e1c8467faac523bff05ce90471bf5d217af111d9218444a826a4ba21dc2",
+    "audit": "artifacts\\current\\footer-fractional-source-x64-v2/footer-contracts-audit.json",
+    "auditSha256": "1c3ca9710860f151982fd439d64fbc10eb449345d56a2b4b0abee5b46db2643f",
+    "negative": "artifacts/current/footer-fractional-source-negative-x64-v1/summary.json",
+    "negativeSha256": "70a5314ba6fffaca092f876f2dff009142abbc8419f256f846d0bb7f81b31598"
+  },
+  "independentConsumer": {
+    "runtime": "artifacts\\current\\footer-fractional-consumer-x64-v1/hidden-footer-contracts.json",
+    "runtimeSha256": "3ba09f847fda2198631ed3ea5fce85ef05311d565af979c6d3720cd2d24a0b91",
+    "audit": "artifacts\\current\\footer-fractional-consumer-x64-v1/footer-contracts-audit.json",
+    "auditSha256": "d591a6436561fcb7db182ffdd61a17c677d3e0a775709241aae87c3a79231036",
+    "negative": "artifacts/current/footer-fractional-consumer-negative-x64-v1/summary.json",
+    "negativeSha256": "56fd5676a3a3bc66ec7b4921377767252cc3d703a4771ec483dfb44fd3b22fd1",
+    "packageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+    "isolatedSourceRemoved": true
+  },
+  "checksPerHost": 12,
+  "guardChecksPerHost": 205,
+  "sourceNegativeCases": 24,
+  "consumerNegativeCases": 28,
+  "physicalInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false,
+  "arm64CatalogBuild": {
+    "passed": true,
+    "log": "artifacts/current/footer-fractional-catalog-arm64-build.log",
+    "logSha256": "05972adeeb4e29d70e1df449a617fa36e214bdee9cedef8192719211fc3a2a3a",
+    "nativeRuntimeVerified": false
+  }
+}
