@@ -1,0 +1,25 @@
+{
+  "scope": "Activity Item catalog baseline, composed-ink and inherited-theme verification at a fractional screen origin",
+  "observedAt": "2026-10-27T01:15:43-04:00",
+  "catalogExeSha256": "80e7a640f6fad8605ff79791db62000510b5b39d9e4680a2ee38d7ffae399f95",
+  "orchardDllSha256": "82a2ceb9a0ae186c2566317854c4018551fd7947051b5fc36556f49d9c491388",
+  "sourceBuildPassed": true,
+  "before": "At a 249.859985-DIP row origin the title baseline was 31.140015 DIPs row-relative, or exactly device pixel 281. The old fixture incorrectly required 31 DIPs row-relative and truncated the capture origin, shifting sampled ink extents down one row.",
+  "focusedSmoke": "artifacts/current/activity-pixel-origin-replay-v1/result.json",
+  "focusedSmokePassed": true,
+  "focusedSmokeThemes": ["Light", "Dark"],
+  "composedInk": {
+    "lightTitleRows": [20, 33],
+    "lightTimeRows": [46, 55],
+    "darkTitleRows": [20, 33],
+    "darkTimeRows": [46, 55]
+  },
+  "combinedSmoke": "artifacts/current/presentation-after-activity-origin-v1/result.json",
+  "combinedSmokePassed": false,
+  "combinedSmokeFailure": "Tooltip appearance assertion; its outer host is Dark while the tooltip owner remains Light.",
+  "libraryControlChanged": false,
+  "newPackageQualified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

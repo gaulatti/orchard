@@ -33,8 +33,9 @@ must not retain stale hover or subscriptions.
 
 Acceptance requires normal/hover and both appearances, empty/long/multiline/
 non-Latin/RTL strings, constrained widths, consumer updates, semantic UIA,
-actual pointer and motion/reversal, native/browser rendering, all contrast
-themes, display/text scaling, Narrator, x64/ARM64 and independent NuGet use.
+actual pointer and motion/reversal, meaningful native/browser appearance,
+display/text scaling, x64/ARM64 and independent NuGet use. Narrator and OS
+contrast campaigns are excluded from the [current library scope](library-scope.md).
 The source supplies no error/disabled state; the inventory's generic labels
 must be classified from this actual contract rather than creating new styling.
 The public wiki remote is unavailable; the contract is maintained here.
@@ -85,9 +86,9 @@ Windows Highlight/HighlightText pair and restoration to WindowText. The
 independent package consumer loads the published template/fonts, verifies
 exact strings and UIA, and exercises an empty-title update in both themes.
 
-Complete browser/native text and Avatar raster parity, constrained-width and
-consumer-override matrix, precise motion timing and interrupted reversal,
-all Windows contrast schemes, Narrator and display/text scaling remain open.
+Constrained-width and consumer-override matrix, meaningful text and Avatar
+appearance parity, precise motion timing and interrupted reversal, and
+display/text scaling remain open.
 Successful layout and endpoint checks do not close those acceptance gaps.
 
 The complete x64 catalog passes both appearances at
@@ -124,7 +125,7 @@ animations enabled, the complete ordinary catalog and independent package
 consumption. Its contrast fixture reaches the same ambiguous selector failure.
 This verifies the registered runtime, endpoint/motion-preference and consumer
 checks on both native architectures; it does not close the baseline, complete
-motion, contrast, Narrator or scaling gaps.
+motion or scaling gaps.
 
 The baseline correction now centers the natural font line box in the declared
 line height and aligns the resulting baseline to the current display's pixel
@@ -171,4 +172,18 @@ actual pointer/Tab, lifecycle, UIA and motion endpoint/intermediate checks pass.
 The same run passes live contrast and independent native package consumption.
 The ordinary ARM64 suite fails an unrelated Field Help brush assertion. These
 results verify the row's registered ARM64 checks, leaving complete glyph raster,
-motion/reversal, overrides, scaling, Narrator and full acceptance open.
+motion/reversal, overrides, scaling and full acceptance open.
+
+On 2026-10-27, a source-built x64 catalog failed the focused Activity fixture
+because its row began at a fractional screen Y. The title baseline landed on
+the correct device pixel, but the fixture compared its row-relative coordinate
+to the browser's integer-origin value. The composed-ink sampler likewise
+truncated the screen origin and reported both glyph spans one row low. The
+fixture now compares baselines after pixel alignment and rounds the capture
+origin; the existing browser ink extents still have to match exactly. It also
+changes the catalog's actual theme root during its live-theme check. The
+focused light/dark smoke passes, with title ink rows 20–33 and time rows 46–55
+in both appearances. The combined presentation smoke advances to Tooltip and
+fails there. See `docs/evidence/activity-catalog-pixel-origin-v1/checkpoint.json`.
+This corrects catalog verification, without changing the library control or
+qualifying a new package.

@@ -10,7 +10,7 @@ namespace Orchard.Catalog;
 public sealed partial class ActivityItemsFixture : UserControl
 {
     public ActivityItemsFixture() => InitializeComponent();
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, FrameworkElement themeRoot)
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"activity-{scheme}"); await input.AcquireAsync(Heading); await input.MoveAsync(Heading);
         UpdateLayout(); await MainWindow.AwaitPresentationAsync(this); var measurements = new List<object>();
@@ -39,10 +39,16 @@ public sealed partial class ActivityItemsFixture : UserControl
             if (time.Visibility == Visibility.Visible) Require(Math.Abs(Find<Grid>(control,"PART_TimeParagraph").TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y - expected.GetProperty("timeTop").GetDouble()) < .02, "Activity time paragraph offset differs from the browser.");
             if (ReferenceEquals(control, Normal))
             {
-                Require(Math.Abs(title.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y + title.BaselineOffset - expected.GetProperty("titleBaseline").GetDouble()) < .001,
-                    "Activity title baseline differs from the frozen browser.");
-                Require(Math.Abs(time.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y + time.BaselineOffset - expected.GetProperty("timeBaseline").GetDouble()) < .001,
-                    "Activity time baseline differs from the frozen browser.");
+                var rowOrigin = control.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point()).Y;
+                var scale = XamlRoot.RasterizationScale;
+                var actualTitleBaseline = rowOrigin + title.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y + title.BaselineOffset;
+                var expectedTitleBaseline = Math.Round((rowOrigin + expected.GetProperty("titleBaseline").GetDouble()) * scale) / scale;
+                Require(Math.Abs(actualTitleBaseline - expectedTitleBaseline) < .001,
+                    $"Activity title baseline differs from the browser on the device pixel grid: actual={actualTitleBaseline:R}, expected={expectedTitleBaseline:R}, rowOrigin={rowOrigin:R}.");
+                var actualTimeBaseline = rowOrigin + time.TransformToVisual(control).TransformPoint(new Windows.Foundation.Point()).Y + time.BaselineOffset;
+                var expectedTimeBaseline = Math.Round((rowOrigin + expected.GetProperty("timeBaseline").GetDouble()) * scale) / scale;
+                Require(Math.Abs(actualTimeBaseline - expectedTimeBaseline) < .001,
+                    $"Activity time baseline differs from the browser on the device pixel grid: actual={actualTimeBaseline:R}, expected={expectedTimeBaseline:R}, rowOrigin={rowOrigin:R}.");
             }
             measurements.Add(new { control.Name, control.ActualWidth, control.ActualHeight, titleHeight = title.ActualHeight, timeHeight = time.ActualHeight });
         }
@@ -105,7 +111,7 @@ public sealed partial class ActivityItemsFixture : UserControl
         await AwaitAsync(() => Normal.IsLoaded && Normal.ActualHeight > 0, "Activity did not remount.");
         await input.MoveAsync(Normal); await AwaitAsync(() => Math.Abs(((SolidColorBrush)Find<Border>(Normal, "PART_Surface").Background).Opacity - alpha) < 1e-7, "Remounted activity lost hover observation.");
         await input.MoveAsync(Heading);
-        var owner = (FrameworkElement)XamlRoot.Content; var ownerTheme = owner.RequestedTheme;
+        var owner = themeRoot; var ownerTheme = owner.RequestedTheme;
         try
         {
             owner.RequestedTheme = scheme == BleeckerColorScheme.Light ? ElementTheme.Dark : ElementTheme.Light;
@@ -127,7 +133,7 @@ public sealed partial class ActivityItemsFixture : UserControl
         var decoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
         var pixels = (await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8, Windows.Graphics.Imaging.BitmapAlphaMode.Straight,
             new Windows.Graphics.Imaging.BitmapTransform(), Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
-        var left = checked((int)(row.X - client.X)); var top = checked((int)(row.Y - client.Y));
+        var left = checked((int)Math.Round(row.X - client.X)); var top = checked((int)Math.Round(row.Y - client.Y));
         var samples = new List<object>(); var passed = true;
         foreach (var expected in references.EnumerateArray())
         {
