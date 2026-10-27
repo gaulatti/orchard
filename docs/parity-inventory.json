@@ -3666,7 +3666,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Finish appearance, shadows, motion and input-type contracts documented in docs/inputs.md",
-        "Source x64 disabled Input pointer lifecycle passed with animations off; verify remaining keyboard/pointer, enabled-motion reversal and display/text scaling states",
+        "Extracted v7 x64 disabled Input pointer lifecycle passed with animations off; verify remaining keyboard/pointer, enabled-motion reversal and display/text scaling states",
         "Verify ARM64 runtime and full visual parity"
       ],
       "pointerForegroundCheckpoint": "docs/evidence/input-pointer-foreground-source-v1/checkpoint.json"
@@ -4360,7 +4360,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Source-built x64 Light/Dark foreground pointer opening, Escape focus restoration, controlled keyboard actions and outside dismissal pass; verify broader nested/modal physical input and packaged foreground delivery",
+        "Extracted v7 x64 Light/Dark foreground pointer opening, Escape focus restoration, controlled keyboard actions and outside dismissal pass with the NuGet-matching Orchard DLL; verify broader nested/modal physical input",
         "Verify complete raster, scaling, performance and native ARM64 runtime acceptance"
       ]
     },
@@ -5553,7 +5553,7 @@
       "status": "in-progress",
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-source-v1/checkpoint.json",
       "remainingGaps": [
-        "Complete physical input matrix beyond source x64 Header Select keyboard selection/Escape; compare focused-option paint with source and complete open raster",
+        "Complete physical input matrix beyond extracted v7 x64 Header Select keyboard selection/Escape; compare focused-option paint with source and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },
@@ -5913,7 +5913,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Complete source-derived visual review; historical strict image diagnostics failed at 13349376 pixels/max242 for browser/native, 9171/max102 for source/package and 10366/max102 for source/archive; byte-identical raster is not an acceptance gate",
-        "Source x64 pointer/keyboard/focus/Tab passed; packaged foreground input and native ARM64 runtime remain unverified",
+        "Extracted v7 x64 pointer/keyboard/focus/Tab passed with the NuGet-matching Orchard DLL; broader input and native ARM64 runtime remain unverified",
         "Complete display/text/modal scaling, motion/customization and collection performance acceptance"
       ],
       "sourcePreparation": {
@@ -6644,7 +6644,7 @@
       "status": "in-progress",
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-source-v1/checkpoint.json",
       "remainingGaps": [
-        "Complete physical input matrix beyond source x64 Select pointer selection; compare focused-option paint with source and complete open raster",
+        "Complete physical input matrix beyond extracted v7 x64 Select pointer selection; compare focused-option paint with source and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },

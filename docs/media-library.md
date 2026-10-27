@@ -268,3 +268,8 @@ first run had a pointer-move delivery timeout; later runs reached the checks.
 The final source run passed in both themes. This verifies those x64 source-host
 input paths only; packaged foreground input, broader visual/scaling review,
 collection performance and native ARM64 runtime remain open.
+
+The later [v7 local preview](releases/2026-10-27-components-v7-local.md) repeats
+this focused Light/Dark physical route from an extracted x64 catalog whose
+Orchard DLL matches the independently restored NuGet package. It passes there;
+the broader input and visual matrix and native ARM64 runtime remain open.

@@ -1,0 +1,62 @@
+{
+  "scope": "Local v7 NuGet and runnable x64/ARM64 catalog delivery",
+  "observedAt": "2026-10-27T03:27:34-04:00",
+  "sourceCommit": "aeb338c",
+  "version": "0.1.0-components-v7-local",
+  "package": {
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v7-local.nupkg",
+    "sha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+    "anyCpuPayloadVerified": true
+  },
+  "x64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v7-local-win-x64.zip",
+    "archiveSha256": "308f1e70ecbd3e8d68f857826662bcd6138645644b6e236c2b66e4c523f73d51",
+    "manifestSha256": "4d055c1a4e0528b71232b6248ffde735d9a16ec79c86d6d7141ae6da39ab9032",
+    "fileCount": 664,
+    "allExtractedBytesVerified": true,
+    "orchardDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9"
+  },
+  "arm64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v7-local-win-ARM64.zip",
+    "archiveSha256": "2e6cfc08498cf7e34d75cccc3be22546ded98c05a205028d20bbe61684ac9863",
+    "manifestSha256": "92b4b66869f84cdaf5619d295307ce83eacd6eb72bbbd508aef7d370a58629d8",
+    "fileCount": 660,
+    "allExtractedBytesVerified": true,
+    "orchardDllSha256": "9e32e6893bbf4266b5b50b62fc5abb6eaacb5a95208bd3ff3468933be277fdd1",
+    "nativeRuntimeVerified": false
+  },
+  "independentX64Consumer": {
+    "result": "artifacts/current/components-v7-consumer-x64/result.json",
+    "resultSha256": "cd0b92e97cf23e48d7fb18d381f47e18e66955621a1b526d109d69f09091ced8",
+    "runtimeSha256": "ab8d377d66f4088d01fa0329faac18c6f5a9ef945a8e46d189fbdc515c819f89",
+    "nativeRuntimePassed": true,
+    "restoredPackageSha256Matches": true,
+    "temporaryRestoreWorkspaceRemoved": true,
+    "orchardDllMatchesExtractedCatalog": true
+  },
+  "extractedX64Foreground": {
+    "popoverResultSha256": "3f4f6233ddc926fbbe14199634740987fb7f129d67af0822fd0f26299e709654",
+    "mediaLibraryResultSha256": "185dfd557c0c89d3911b7097b5321c7f04fd2072bb11c2f1dd33f46c043e5991",
+    "selectResultSha256": "9740db61449aeb0a4fcfcb8bfe854fa216dbb10d4a6fc27eff0187adf192860c",
+    "inputPointerResultSha256": "3103b9ef3f165d39117fbeea661e683b81df5b7f54c836f59871719953875f5c",
+    "allFourRoutesPassedLightAndDark": true
+  },
+  "extractedX64FictionalDemos": {
+    "report": "artifacts/current/components-v7-fictional-demos-x64/hidden-workspaces.json",
+    "reportSha256": "0746ec476df1007090ac39161d12c65b0e94525bfe2a78b401084e21cbd6a527",
+    "checksPassed": 66,
+    "visibleRuntimeVerified": false
+  },
+  "independentArm64Consumer": {
+    "publishPassed": false,
+    "failure": "MSB3021: disk full while copying ARM64 runtime files",
+    "temporaryRestoreWorkspaceRemoved": true,
+    "partialAppOutputRemains": true,
+    "nativeRuntimeVerified": false
+  },
+  "dataTablePerformanceBudgetPassed": false,
+  "githubActionsTriggered": false,
+  "packagePublishedExternally": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

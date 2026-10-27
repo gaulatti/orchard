@@ -970,3 +970,9 @@ reported animations disabled, so the reversal-timing branch was not exercised;
 enabled-motion acceptance remains open. This verifies the source-built x64 demo,
 not packaged foreground input, the remaining pointer/keyboard matrix, scaling,
 native ARM64 runtime or full visual acceptance.
+
+The later [v7 local preview](releases/2026-10-27-components-v7-local.md) repeats
+this focused Light/Dark pointer lifecycle from the extracted x64 catalog whose
+Orchard DLL matches the independently restored NuGet package. Windows still
+reports animations disabled, so enabled-motion reversal and the broader input
+matrix remain unverified.

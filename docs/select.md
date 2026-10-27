@@ -97,6 +97,11 @@ evidence, not complete source-raster, input-matrix, scaling, motion, package or
 native ARM64 acceptance. Current package/build evidence is recorded in the
 latest component checkpoint rather than inferred from this older baseline.
 
+The later [v7 local preview](releases/2026-10-27-components-v7-local.md) repeats
+this focused Light/Dark route from the extracted x64 catalog with the same
+Orchard DLL as the independently restored NuGet package. It does not close the
+broader input, scaling, motion or native ARM64 runtime gaps.
+
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.

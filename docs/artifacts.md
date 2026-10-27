@@ -1,9 +1,9 @@
 # Local artifact storage
 
 The current unpublished local NuGet and catalog checkpoint is
-[components v5](releases/2026-10-26-components-v5-local.md). Its exact hashes,
-runtime checks and open limits are recorded there. The root README continues
-to link the separately published preview.
+[components v7](releases/2026-10-27-components-v7-local.md). Its exact hashes,
+runtime checks and failed ARM64 consumer publish are recorded there. The root
+README continues to link the separately published preview.
 
 Reuse the normal project publish directories for local iterations:
 
@@ -69,6 +69,12 @@ below 10 GiB, excluding shared SDK caches and the normal project `bin`/`obj`
 directories. Investigate growth before starting another publish. The catalog
 and two independent consumer applications account for only a few GiB; a large
 increase indicates duplicate outputs or an isolated cache that was not removed.
+The v7 independent ARM64 restore plus self-contained publish exhausted C: with
+less than 3 GB free after catalog publishing. Do not start that verifier again
+on this disk without materially more free space or an explicitly selected
+larger volume.
+Its failed run removed the temporary restore workspace, but a partial app
+directory remains until cleanup is permitted.
 
 ## Resetting generated output
 

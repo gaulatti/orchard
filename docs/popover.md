@@ -156,3 +156,8 @@ behaviors at the physical input and visible UI boundary. Broader nested/modal
 input, complete raster and scaling, performance, packaged foreground input, and
 native ARM64 runtime remain open. No new package was qualified by this source
 run.
+
+The later [v7 local preview](releases/2026-10-27-components-v7-local.md) repeats
+this focused physical route in both themes from the extracted x64 catalog. Its
+Orchard DLL matches the independently restored NuGet package. Broader
+nested/modal input, full visual review and native ARM64 runtime remain open.
