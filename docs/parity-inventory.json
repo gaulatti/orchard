@@ -3645,7 +3645,8 @@
         "src/Orchard/Themes/Generic.xaml"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/InputsFixture.xaml"
+        "samples/Orchard.Catalog/InputsFixture.xaml",
+        "samples/Orchard.Catalog/InputsFixture.PointerForeground.cs"
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/InputsFixture.xaml.cs",
@@ -3665,9 +3666,10 @@
       "status": "in-progress",
       "remainingGaps": [
         "Finish appearance, shadows, motion and input-type contracts documented in docs/inputs.md",
-        "Verify remaining physical keyboard/pointer and display/text scaling states",
+        "Source x64 disabled Input pointer lifecycle passed with animations off; verify remaining keyboard/pointer, enabled-motion reversal and display/text scaling states",
         "Verify ARM64 runtime and full visual parity"
-      ]
+      ],
+      "pointerForegroundCheckpoint": "docs/evidence/input-pointer-foreground-source-v1/checkpoint.json"
     },
     {
       "id": "kbd",

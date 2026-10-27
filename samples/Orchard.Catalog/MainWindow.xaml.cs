@@ -393,6 +393,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-media-library-foreground")) await RunMediaLibraryForegroundAsync(folder);
             else if (args.Contains("--smoke-select-foreground")) await RunSelectForegroundAsync(folder);
+            else if (args.Contains("--smoke-input-pointer-foreground")) await RunInputPointerForegroundAsync(folder);
             else if (args.Contains("--smoke-presentation")) await RunPresentationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);

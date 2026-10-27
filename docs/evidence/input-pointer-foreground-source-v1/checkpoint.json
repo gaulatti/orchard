@@ -1,0 +1,26 @@
+{
+  "scope": "Source-built x64 Input catalog physical pointer lifecycle",
+  "observedAt": "2026-10-27",
+  "catalogExeSha256": "ac678492b841c6f5b50661b9357ad4f572e46a44ef2954d3d92ae96b0e1275e0",
+  "catalogDllSha256": "7c4ea7759b5c7be4d91f78596034ff359eddb66c782cd41fc9f57215a3dcd759",
+  "orchardDllSha256": "a8d8b752f9bd57e8dbc51676e405cbe217efceae8cd2a1266a286b872f70ab4d",
+  "build": "Release x64 catalog build passed with 0 warnings and 0 errors",
+  "run": {
+    "result": "artifacts/current/input-pointer-foreground-source-v1/result.json",
+    "resultSha256": "3103b9ef3f165d39117fbeea661e683b81df5b7f54c836f59871719953875f5c",
+    "lifecycleResult": "artifacts/current/input-pointer-foreground-source-v1/input-pointer-foreground-result.json",
+    "lifecycleResultSha256": "f7a0cb0f1de87d994342edfc27e52b488414326077210142564885beb13af652",
+    "passed": true,
+    "lightSteps": 26,
+    "darkSteps": 26,
+    "shadowSamples": 179,
+    "displayScale": 1,
+    "animationsEnabled": false,
+    "reversalTimingSamples": 0
+  },
+  "enabledMotionReversalVerified": false,
+  "packageForegroundInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

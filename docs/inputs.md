@@ -955,7 +955,18 @@ same `CatalogRoot` theme owner as the appearance selector and automated Input
 checks. It previously changed the outer modal host, leaving the Input specimen
 in its old appearance. The focused source-built x64 Input smoke asserts that
 the manual action resolves its expected theme owner and passes both appearances
-with 164 captures. The full physical-pointer manual action has not been rerun;
-this theme-target check does not accept the broader pointer lifecycle matrix or
-qualify a replacement package. See
+with 164 captures. At that checkpoint the full physical-pointer action had not
+been rerun, so the theme-target check alone did not accept the broader pointer
+lifecycle matrix or qualify a replacement package. See
 `docs/evidence/input-pointer-theme-owner-v1/checkpoint.json`.
+
+The later [source x64 foreground checkpoint](evidence/input-pointer-foreground-source-v1/checkpoint.json)
+physically presses that catalog action and moves the desktop pointer onto the
+disabled invalid Input. Its own lifecycle result passes 52 stages (26 each in
+Light and Dark), with 179 native shadow samples, including disabled/enabled,
+occluded, moved, clipped, scrolled and remounted states. The pointer remained
+stationary throughout the action after being positioned on the Input. Windows
+reported animations disabled, so the reversal-timing branch was not exercised;
+enabled-motion acceptance remains open. This verifies the source-built x64 demo,
+not packaged foreground input, the remaining pointer/keyboard matrix, scaling,
+native ARM64 runtime or full visual acceptance.
