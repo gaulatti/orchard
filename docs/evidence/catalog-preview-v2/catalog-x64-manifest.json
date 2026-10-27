@@ -1,0 +1,17 @@
+{
+  "format": "orchard-catalog-build-archive-v1",
+  "version": "0.1.0-preview.20261027.2",
+  "platform": "x64",
+  "runtime": "win-x64",
+  "archiveSha256": "fac0190b32d174595eddcef504a47f5097fdd934219dbf310cc2d333ef90710e",
+  "archiveBytes": 106259102,
+  "fileCount": 821,
+  "xbfCount": 114,
+  "allArchiveBytesVerified": true,
+  "nestedPublishExcluded": true,
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "catalogSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e",
+  "extractedRuntimeVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

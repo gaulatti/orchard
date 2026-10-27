@@ -241,6 +241,12 @@ Windows App SDK dependencies; launching the resulting output does not require
 an MSIX registration or a separate Windows App SDK runtime installation. Keep
 the complete output directory together.
 
+For a low-disk release ZIP, `scripts/package-catalog-build.ps1` streams the
+current catalog build output into an archive, excludes an older nested
+`publish` directory, and checks every ZIP entry against its source file. The
+script records an archive manifest but does not run the extracted archive;
+runtime qualification is a separate check.
+
 The solution targets the Windows SDK `10.0.26100.0`, with declared minimum
 Windows API version `10.0.17763.0`. WinUI compilation and runtime verification
 require Windows. Pure token contract tests and the generator can also run on

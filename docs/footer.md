@@ -306,9 +306,13 @@ Footer DLL. Its new-version package-reference x64 consumer builds without
 warnings or errors and passes the normal Light/Dark runtime check; the hidden
 Footer probe passes 12 public contracts and 205 isolation guards. The package
 payload is identical to the tested local package apart from version metadata.
-This NuGet-only preview does not update the earlier v11 catalog ZIPs or close
-the isolated-consumer receipt, full visual review, or native ARM64 runtime gaps. See
-`docs/evidence/footer-brand-preview-v2/checkpoint.json`.
+The same release now includes refreshed x64 and ARM64 catalog ZIPs. The current
+x64 build output contains the exact packaged Footer DLL and passes Monitoring
+and Editorial demo input in Light and Dark. Each ZIP entry matches its build
+output; extracted-ZIP execution, the isolated-consumer receipt, full visual
+review, and native ARM64 runtime remain open. See
+`docs/evidence/footer-brand-preview-v2/checkpoint.json` and
+`docs/evidence/catalog-preview-v2/checkpoint.json`.
 
 The published package's exact DLL now passes a focused x64 consumer foreground
 check in Light and Dark. A real pointer click invokes the original section item;

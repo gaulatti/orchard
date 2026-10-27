@@ -1,0 +1,67 @@
+{
+  "scope": "Published x64 and ARM64 catalog archives for the Footer brand preview",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.2",
+  "releaseId": 425808090,
+  "tag": "v0.1.0-preview.20261027.2",
+  "tagTarget": "9349b598b803754bbeb45d95f2d23ec9baeac0d3",
+  "packageSha256": "62e3d1f9f4d78700520ceaa5dcf0d664877484e359bfc9f9f9bbb8119ad0b1df",
+  "catalogArchives": {
+    "x64": {
+      "name": "Gaulatti.Orchard.Catalog.0.1.0-preview.20261027.2-win-x64.zip",
+      "sha256": "fac0190b32d174595eddcef504a47f5097fdd934219dbf310cc2d333ef90710e",
+      "bytes": 106259102,
+      "fileCount": 821,
+      "xbfCount": 114,
+      "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+      "catalogSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e",
+      "libraryMatchesPublishedPackage": true,
+      "manifest": "docs/evidence/catalog-preview-v2/catalog-x64-manifest.json",
+      "manifestSha256": "794902bc9e32e4432b17efae2082f3258bc055b1ac364588f59fb279c0cb3152"
+    },
+    "ARM64": {
+      "name": "Gaulatti.Orchard.Catalog.0.1.0-preview.20261027.2-win-arm64.zip",
+      "sha256": "ee3f8ed7a9f8688548f048c6cdb4e4bbcac63316f10c0433d5578581a7adfa6c",
+      "bytes": 103346240,
+      "fileCount": 817,
+      "xbfCount": 114,
+      "librarySha256": "24a8d478f1a72db237c363e50d33bf0639244aa424d4a193183aa75ea3ec0d6a",
+      "catalogSha256": "4e607c9a1d513fc36e99393e9702bd2848015ce86a6cd6a69e1d5d6806aed725",
+      "manifest": "docs/evidence/catalog-preview-v2/catalog-arm64-manifest.json",
+      "manifestSha256": "62a05df37a212f17fa89373824a2b83d199d60715fc4f7bbdd08b33ed62b4f2b"
+    }
+  },
+  "builds": {
+    "x64": "Existing release build output matched the published package DLL and passed the six current demo checks.",
+    "ARM64": "Catalog restore and Release build passed with zero warnings and zero errors. Native ARM64 runtime was not exercised."
+  },
+  "verification": {
+    "archiveEntryBytesMatchBuildOutput": true,
+    "fullPerFileManifestsRetainedOnlyInLocalIgnoredArtifacts": true,
+    "archiveXbfSetsMatchCurrentFixtureSource": true,
+    "githubAssetDigestsMatchLocalArchives": true,
+    "x64SourceBuildDesktopDemoChecksPassed": 6,
+    "x64SourceBuildDesktopDemoChecksFailedFinal": 0,
+    "reportsNormalizedToLf": true,
+    "physicalPointerAndKeyboardInputSent": true,
+    "osSettingsChanged": false,
+    "reports": {
+      "monitoringLight": {"path": "docs/evidence/catalog-preview-v2/monitoring-light.json", "sha256": "d286a1c8885b87dc422fbd9384b0218e8d3d6348f787f5b18f6e2308dd592bf0"},
+      "monitoringDark": {"path": "docs/evidence/catalog-preview-v2/monitoring-dark.json", "sha256": "f2d156ca1507b25517e501d1dd753119d3838b74a910f1fa6f45423ac779f0f9"},
+      "editorialSearchLight": {"path": "docs/evidence/catalog-preview-v2/editorial-search-light.json", "sha256": "74df53190a49d4060abee15b429ac3e0302e49638dc420a0fa841c14b6e443dd"},
+      "editorialSearchDark": {"path": "docs/evidence/catalog-preview-v2/editorial-search-dark.json", "sha256": "6936dd92b7f9f9f8ab82718bdbc799a3411547166739ec983f017e27fa9591b2"},
+      "editorialEditLight": {"path": "docs/evidence/catalog-preview-v2/editorial-edit-light.json", "sha256": "73d9bda1813fa4fd7ccd75b855bbd7f7de0bf811df943205e586fd2c03f6e0db"},
+      "editorialEditDark": {"path": "docs/evidence/catalog-preview-v2/editorial-edit-dark.json", "sha256": "005785ce9f58ec16b11aeec5e43a8829614d1d1fdb0b8141ed04cf76a7013f10"}
+    }
+  },
+  "transientFailures": [
+    "The first two Monitoring Light foreground attempts were blocked by a stale Open With dialog. The exact owning process was closed; the third Light attempt and all other final checks passed."
+  ],
+  "limits": [
+    "The desktop checks launched the current x64 build output, which contains the exact packaged Orchard DLL; they did not launch an extracted release ZIP.",
+    "The ARM64 archive passed build and byte verification but not native ARM64 runtime.",
+    "The fully isolated NuGet consumer audit, broader visual/scaling review and full component acceptance remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "libraryComplete": false
+}
