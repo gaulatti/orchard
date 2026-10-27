@@ -144,4 +144,16 @@ through each visual state. The [rendered visual audit](visual-audit.md) records
 Bleecker measurements and outstanding appearance work. Published reports and
 captures prove only the checks they exercise.
 
+The exact v7 extracted x64 catalog now passes a focused real-pointer route in
+both Light and Dark. A physical click on Run preview invokes the consumer
+command once; loading disables the native action and rejects a second click;
+turning loading off restores the command. The Start/Finish pair also enters and
+leaves self-loading through pointer clicks without accepting a second busy
+activation. The [v7 Button pointer checkpoint](evidence/components-v7-button-pointer-v1/checkpoint.json)
+binds both reports to the packaged Orchard DLL and preserves two failed probe
+runs: a zero-dwell synthetic click left the loading switch On. The final probe
+uses a short pointer settle and press interval. This route does not cover the
+remaining variants, independent-consumer pointer input, scaling, motion, or
+native ARM64 runtime.
+
 Light Ghost hover/pressed sand uses byte alpha 31 at brush opacity 1, based on the [actual source/native alpha diagnostic](brush-alpha-reference.md). Dark, disabled, contrast and other variant recipes retain their existing representations.

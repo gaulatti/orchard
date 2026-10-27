@@ -85,6 +85,13 @@ reverted scroll/theme experiments that crashed at runtime. Private-cache
 restore ran out of disk, so this is not a new fully isolated dependency restore.
 Explicit Light/Dark consumer physical input remains unverified.
 
+The same extracted v7 x64 catalog later passed real Button pointer activation
+in Light and Dark: consumer command delivery, loading rejection/restoration and
+the self-loading Start/Finish actions. The [Button pointer checkpoint](../evidence/components-v7-button-pointer-v1/checkpoint.json)
+retains both passing reports and the earlier probe timing failures. This adds
+focused runtime evidence to the unchanged package; the full Button matrix and
+independent-consumer pointer route remain open.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

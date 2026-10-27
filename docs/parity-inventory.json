@@ -411,8 +411,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete the foreground keyboard/pointer wrapper matrix; source-built x64 catalog passed focused-action loading transfer and restoration, and the exact v5 catalog passed loading Tab skip/restoration and keyboard Space activation",
-        "Complete keyboard/pointer wrapper checks and scaling",
+        "Complete the remaining foreground keyboard/pointer wrapper matrix; exact v7 extracted x64 catalog passes physical consumer-command and loading rejection/restoration in Light/Dark",
+        "Verify remaining variants and the independent consumer's physical pointer route, plus display/text scaling",
         "Verify reduced motion and remaining ARM64 state acceptance"
       ],
       "buttonTrackingValidation": {

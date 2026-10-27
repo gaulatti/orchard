@@ -1,0 +1,52 @@
+{
+  "scope": "Exact v7 extracted x64 catalog Button physical pointer command and loading route",
+  "packageVersion": "0.1.0-components-v7-local",
+  "packageSha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+  "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+  "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "probe": "scripts/verify-button-desktop.ps1",
+  "probeSha256": "d7d24668155cb65cd4c243ca67b626d976d5cbd4d6e61102fbfc89203594b7f1",
+  "reports": [
+    {
+      "theme": "Light",
+      "path": "artifacts/current/components-v7-button-desktop-light-x64-final/button-desktop.json",
+      "sha256": "2a02ad10ded66b7ea2d0b449cf016ab6ad5c2b35f963c94433b6d66d6f2b23cf",
+      "passed": true,
+      "processExited": true
+    },
+    {
+      "theme": "Dark",
+      "path": "artifacts/current/components-v7-button-desktop-dark-x64-final/button-desktop.json",
+      "sha256": "061f6f7957118a94eeb167ca1b98bbd7487c601b5aeedb690b3279275c173606",
+      "passed": true,
+      "processExited": true
+    }
+  ],
+  "observedRoutes": [
+    "Physical Run preview click reached the consumer command exactly once",
+    "Physical loading-switch click disabled the native action and exposed Loading status",
+    "Physical click on the loading action left the consumer command count unchanged",
+    "Physical loading-switch click restored the action; another click invoked the command exactly once",
+    "Physical Start click entered self-loading, a second click was rejected, and Finish restored the action"
+  ],
+  "earlierProbeResults": [
+    {
+      "path": "artifacts/current/components-v7-button-desktop-light-x64/button-desktop.json",
+      "sha256": "a6411615aae6fceee2be278af874e1f72008d70d2aba07e15c20db12d3509e7a",
+      "failure": "A zero-dwell synthetic second switch click did not toggle the switch Off."
+    },
+    {
+      "path": "artifacts/current/components-v7-button-desktop-light-x64-v2/button-desktop.json",
+      "sha256": "c38992bde024367fc05d55cb5db5f4ae000d11211dd48b77021a7d167ca39d94",
+      "failure": "State diagnostics confirmed the zero-dwell second switch click left ToggleState On."
+    }
+  ],
+  "independentConsumerPhysicalPointerVerified": false,
+  "completeButtonMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}
