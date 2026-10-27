@@ -47,6 +47,15 @@ and `artifacts/current/components-v7-kbd-content-consumer-x64`. Isolated XAML
 scale is verified here; physical monitor/text scaling, full visual parity and
 native ARM64 runtime remain open.
 
+Checkbox rich-content checks passed on the same x64 catalog and independent
+consumer: 72 and 70 Light/Dark checks respectively, covering names, native
+toggle events, caller bindings and implicit styles. Audit SHA-256 values are
+`b55d0a4e2542a83cbea7e6d7bd946ecfab3c44b48beefb98f0f9d6b5270ab6b2`
+for `artifacts/current/components-v7-checkbox-content-catalog-x64/audit.json`
+and `304feb75ee6d3db04998f3a681fc805b51f20df0ca24e04664465e2d1b1f79ba`
+for `artifacts/current/components-v7-checkbox-content-consumer-x64/audit.json`.
+Full visual, physical-input, motion, scaling and ARM64 runtime checks remain open.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

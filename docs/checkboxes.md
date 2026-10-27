@@ -56,6 +56,15 @@ fixture revision is `0.1.0-checkbox-ready-v1-local`. Current evidence is in
 historical campaigns below. Independent consumer builds reuse the previously
 verified package cache; they are not a new fresh restore.
 
+The consolidated v7 extracted x64 catalog and its independent NuGet consumer
+pass the same content probe against Orchard DLL `ff3e8379…`: 72 catalog and 70
+consumer checks in Light and Dark, including rich names, native toggles, caller
+bindings and implicit styles. Reports are under
+`artifacts/current/components-v7-checkbox-content-catalog-x64` and
+`artifacts/current/components-v7-checkbox-content-consumer-x64`. These qualify
+the current x64 package bytes for those contracts; full visual, physical-input,
+motion, scaling and native ARM64 acceptance remain open.
+
 The shared Input cursor handover regression verifies hovered border RGB and
 fractional brush opacity separately during all three stationary remounts:
 opaque sand with `.7` in Light, opaque white with `.25` in Dark. The prior
