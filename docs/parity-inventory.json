@@ -8887,7 +8887,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Archive-identical v8 x64 Monitoring review focus, Escape and retained-update route pass Light/Dark; complete broader visible pointer/keyboard and focus verification in a fresh package, while exact v7 still fails review focus",
+        "Current v5 package-matching source catalog passes Light/Dark Monitoring review focus, Escape and retained update plus 72 hidden demo checks; complete broader visible pointer/keyboard and focus verification in an extracted package catalog",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8903,13 +8903,20 @@
         "fictional local data"
       ],
       "latestQualifiedNativeEvidence": {
-        "report": "artifacts/current/menubar-peer-metadata-archive-workspaces-v1/hidden-workspaces.json",
-        "audit": "artifacts/current/menubar-peer-metadata-archive-workspaces-v1/workspace-audit.json",
-        "librarySha256": "c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483",
-        "checksAcrossBothDemos": 66,
-        "guardsAcrossBothDemos": 577,
+        "report": "docs/evidence/catalog-v5-demos/hidden-workspaces.json",
+        "audit": "docs/evidence/catalog-v5-demos/audit.json",
+        "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+        "checksAcrossBothDemos": 72,
+        "guardsAcrossBothDemos": 589,
         "isolated": true,
         "visibleInteractionVerified": false,
+        "fullCompositionAccepted": false
+      },
+      "currentV5SourceEvidence": {
+        "checkpoint": "docs/evidence/catalog-v5-demos/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "physicalReviewFocusEscapeAndLocalUpdatePassed": true,
+        "extractedCatalogRuntimeVerified": false,
         "fullCompositionAccepted": false
       },
       "v8ArchiveEquivalentEvidence": {
@@ -8935,7 +8942,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Archive-identical v8 x64 edit/save/dirty-decision pointer and keyboard path passes Light/Dark; current source-built x64 status/media/category/author pointer edit, ordering and local save/reopen pass (docs/evidence/editorial-relations-source-v1/checkpoint.json); complete broader visible pointer/keyboard and focus verification in a fresh package",
+        "Current v5 package-matching source catalog passes Light/Dark Editorial search/selection and edit/save/dirty-decision paths; status/media/category/author pointer edit and save/reopen pass in the source fixture (docs/evidence/editorial-relations-source-v1/checkpoint.json); complete broader visible pointer/keyboard and focus verification in an extracted package catalog",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8949,13 +8956,20 @@
         "fictional local data"
       ],
       "latestQualifiedNativeEvidence": {
-        "report": "artifacts/current/menubar-peer-metadata-archive-workspaces-v1/hidden-workspaces.json",
-        "audit": "artifacts/current/menubar-peer-metadata-archive-workspaces-v1/workspace-audit.json",
-        "librarySha256": "c0597e9f4cb9499cc09aafb59da2b321f6e302c7fe11eecf5d08a357a9110483",
-        "checksAcrossBothDemos": 66,
-        "guardsAcrossBothDemos": 577,
+        "report": "docs/evidence/catalog-v5-demos/hidden-workspaces.json",
+        "audit": "docs/evidence/catalog-v5-demos/audit.json",
+        "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+        "checksAcrossBothDemos": 72,
+        "guardsAcrossBothDemos": 589,
         "isolated": true,
         "visibleInteractionVerified": false,
+        "fullCompositionAccepted": false
+      },
+      "currentV5SourceEvidence": {
+        "checkpoint": "docs/evidence/catalog-v5-demos/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "physicalSearchSelectionAndEditDecisionPassed": true,
+        "extractedCatalogRuntimeVerified": false,
         "fullCompositionAccepted": false
       },
       "visibleSearchSelectionEvidence": {

@@ -172,3 +172,15 @@ inspection of the source catalog. In Dark, a pointer click on Record local revie
 changed the fictional summary from zero to one local review. The v9 archive
 predates this fixture change; native ARM64 runtime and broader composition
 acceptance remain open.
+
+The current `0.1.0-preview.20261027.5` local package matches the source-built
+x64 catalog's Orchard DLL. Its Monitoring and Editorial hidden fixture passes
+72 checks and 589 isolation guards; the audit rejects 25 damaged reports.
+Visible desktop checks pass Monitoring review/focus/Escape/update, Editorial
+search/selection, and Editorial edit/save/dirty-decision in Light and Dark with
+physical pointer and keyboard input. All six screenshots were inspected and
+retained with the reports in the [v5 demo checkpoint](evidence/catalog-v5-demos/checkpoint.json).
+An initial Monitoring Light run could not activate the catalog while a stale
+“Open With” dialog held foreground; the unchanged retry passed. This is
+source-built catalog evidence, not extracted archive runtime or native ARM64
+acceptance. Broader visual/scaling and package catalog qualification remain open.

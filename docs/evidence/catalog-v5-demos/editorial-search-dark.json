@@ -1,0 +1,39 @@
+{
+  "format": "orchard-editorial-search-desktop-v1",
+  "passed": true,
+  "requestedTheme": "Dark",
+  "catalogExeSha256": "cea2f7c836c7783fe76f7a01e7d2b76f3f23aebce9d6b4698a3d83d591d89690",
+  "orchardDllSha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "physicalPointerInputSent": true,
+  "physicalKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "steps": {
+    "selectedTheme": "Dark",
+    "initialSummary": "4 matching pages · 0 selected · Local sample",
+    "selectedSummary": "4 matching pages · 1 selected · Local sample",
+    "searchCandidates": [
+      {
+        "id": "Search",
+        "type": "ControlType.Group",
+        "bounds": "798,675,410,101",
+        "offscreen": false
+      },
+      {
+        "id": "SearchEditor",
+        "type": "ControlType.Edit",
+        "bounds": "798,675,410,101",
+        "offscreen": false
+      }
+    ],
+    "focusAfterSearchClick": {
+      "name": "Search fictional pages",
+      "id": "SearchEditor",
+      "type": "ControlType.Edit"
+    },
+    "typedQuery": "garden",
+    "filteredSummary": "1 matching pages · 1 selected · Local sample",
+    "filteredScreenshotSha256": "d8c9afa73415d7187d303428baa71425ef36ed6ed42a6d958ac6ece4f478f4ef",
+    "restoredSummary": "4 matching pages · 1 selected · Local sample"
+  },
+  "processExited": true
+}

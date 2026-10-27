@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "negativeCasesRejected": 25,
+  "rejected": [
+    "passed",
+    "hiddenWindow",
+    "isolated",
+    "activateCalled",
+    "showCalled",
+    "focusCalled",
+    "inputSent",
+    "visible",
+    "nativeVisible",
+    "visibleRuntimeVerified",
+    "sourceRasterParityVerified",
+    "nativeComponentAccepted",
+    "activation event",
+    "isolation failure",
+    "run failure",
+    "resource diagnostic",
+    "binding diagnostic",
+    "foreign architecture",
+    "invalid native architecture",
+    "missing scenario",
+    "duplicate scenario",
+    "failed scenario",
+    "insufficient isolation guards",
+    "unbound library",
+    "unbound catalog"
+  ]
+}

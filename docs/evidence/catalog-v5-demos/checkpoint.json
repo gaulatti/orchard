@@ -1,0 +1,40 @@
+{
+  "scope": "Current v5 package-matching source-built x64 Monitoring and Editorial component demos",
+  "packageVersion": "0.1.0-preview.20261027.5",
+  "packagePublished": false,
+  "packageSha256": "367a9864c63927af56a6f0fc5590d7cc56649b1eaa37066b3f6950d266c09932",
+  "catalogExeSha256": "cea2f7c836c7783fe76f7a01e7d2b76f3f23aebce7d6b4698a3d83d591d89690",
+  "catalogAssemblySha256": "d6ce51b09de7cdb2794860c7a689afc2fc8d0ecabf7399a3dcc9e9d2483f11b6",
+  "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "hiddenFixture": {
+    "report": "hidden-workspaces.json",
+    "sha256": "2a401b43efa187ca3f91aac42859c54c25609cd257653e255052a0520cf76dbd",
+    "audit": "audit.json",
+    "auditSha256": "57bdf883e8162380c1dc38cd766deddd2c52685e76a97395d792a6bc131b8743",
+    "negativeAudit": "negative-audit.json",
+    "negativeAuditSha256": "4360e2d3703bb6918e727fca7d4f55ee063a2380df9077b83232779987e58b6a",
+    "passed": true,
+    "checksPassed": 72,
+    "isolationGuardsPassed": 589,
+    "negativeCasesRejected": 25
+  },
+  "visibleReports": {
+    "monitoring-light": ["monitoring-light.json", "66f2a6b5b81bef6a61396f50a0e68ae9f1832940f92d7f7780afd71ee55bda40", "monitoring-light.png", "e06564cf0aa988c30d0c54b9661191e96aa1ad469fe902da22909d55c1c8c81c"],
+    "monitoring-dark": ["monitoring-dark.json", "d1ea67eadf9b900022adbde6160794378251dfd0574ef55103e5e03a65b75dec", "monitoring-dark.png", "655e1e7dd2d298b740db3407dd18bd706384976239a41c2ea862252c04004f8f"],
+    "editorial-search-light": ["editorial-search-light.json", "b78b255678c840f32f36f336b59cd513f54ef0d6d2ab2d2ba7ebbf6f7ce8b8eb", "editorial-search-light.png", "5720ebe7e084871cf467767124f02dff383bd5812b09420cd256314719b71665"],
+    "editorial-search-dark": ["editorial-search-dark.json", "271791f91da158c3dd33150071cdb49fbeea35bb328346924f39f441e8d3fbb5", "editorial-search-dark.png", "d8c9afa73415d7187d303428baa71425ef36ed6ed42a6d958ac6ece4f478f4ef"],
+    "editorial-edit-light": ["editorial-edit-light.json", "2e304395f9f56b253a2ad094ee91b1e70dffae4a5a1f11d52112affe6f3d547c", "editorial-edit-light.png", "180544ed4025ced54be0b8b44cdbf907057abad53ae6a476cd6beb00140daf32"],
+    "editorial-edit-dark": ["editorial-edit-dark.json", "9a3d89674185b0b07b20f90583a45c629f2dd8cb7741a122c3c94deadf2a3b9a", "editorial-edit-dark.png", "8d0fab6081c45ad6f087166ca7eb4c14e05e873dd5d86afbf83913f31c29fb71"]
+  },
+  "initialMonitoringLightFailure": {
+    "report": "monitoring-light-initial-failed.json",
+    "sha256": "72d69a4185239a3998fdd532a001e2cc0336d3d26b13a7c38696e3dc7f89c61d",
+    "reason": "A foreground Open With dialog prevented catalog activation before input; the unchanged retry passed."
+  },
+  "visiblePhysicalPointerAndKeyboardPassed": true,
+  "osSettingsChanged": false,
+  "extractedArchiveRuntimeVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
