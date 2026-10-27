@@ -106,8 +106,11 @@ navigation, post selection, review Enter/Escape, focus return and an update that
 retains selection in Light and Dark. The focused [checkpoint and screenshots](evidence/monitoring-focus-source-v1/checkpoint.json)
 retain the v7 failure and source-build hashes. Both source screenshots show the
 review editor's focus outline. The unchanged v7 package still contains the
-defect; a new package, broader visible workflow and visual review, scaling and
-native ARM64 runtime remain open. The current hidden Monitoring/Editorial gate
+defect. The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json)
+now passes this same physical review/focus/Escape/update path in Light and Dark
+from a separate runnable directory; its two screenshots were inspected. Broader
+visible workflow and visual review, scaling and native ARM64 runtime remain open.
+The current hidden Monitoring/Editorial gate
 passes 66 checks and 577 isolation guards; its negative auditor rejects 25
 altered receipts.
 
@@ -128,7 +131,10 @@ decision screenshots. Run `scripts/verify-editorial-edit-desktop.ps1` with a
 fresh output directory. Status/media/category/author editing, full visual
 comparison, scaling and native ARM64 runtime remain open. The v7 package
 passes these Editorial flows but still fails the Monitoring review
-focus check described above; the source fix needs a qualified replacement
-catalog. A [v8 NuGet preview](releases/2026-10-27-components-v8-unqualified.md)
-contains the current Orchard DLL but has no qualified consumer runtime or
-catalog archive.
+focus check described above. The archive-identical v8 catalog file set also
+passes the physical edit/save/dirty-decision path in Light and Dark from the
+separate runnable directory; both screenshots were inspected. Its
+[NuGet preview and catalog ZIP](releases/2026-10-27-components-v8-unqualified.md)
+have a passing framework-dependent independent x64 consumer and exact-file-set
+catalog runtime. Clean-cache restore, independent fresh ZIP extraction,
+self-contained consumer delivery and native ARM64 runtime remain open.

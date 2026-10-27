@@ -47,6 +47,10 @@ claiming a component defect. UI Automation programmatic focus alone does not
 model keyboard focus. The control and XAML specimen are unchanged since this
 v7 archive; fresh v8 extraction and the remaining placements/transit, modal,
 timing, visual, scaling and ARM64 checks remain open.
+The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json)
+also passes this focused Top hover/leave, Tab/Shift+Tab and Escape probe in
+both themes from a separate runnable directory. It does not close the broader
+Tooltip matrix or establish a fresh independent ZIP extraction.
 
 The programmatic appearance checks establish a genuine neutral pointer receipt
 at the fixture heading before opening tooltip specimens. At source `ba1434b`,

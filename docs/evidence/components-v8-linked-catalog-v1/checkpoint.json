@@ -1,0 +1,50 @@
+{
+  "scope": "Archive-identical v8 x64 catalog file set materialized with verified hardlinks and launched from a separate directory",
+  "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-x64.zip",
+  "archiveSha256": "40da12696757f38414de8115bc5d1d81a50cc36add1a48a25153405989f74b52",
+  "manifest": "docs/evidence/components-v8-package-preview-v1/v8-x64-catalog-stream-manifest.json",
+  "manifestSha256": "1afd8abb23dcad998580b7b249513039c37f66fe219e44d80d7fc49b4d189657",
+  "materializer": "scripts/materialize-catalog-from-base.py",
+  "materializerSha256": "40443974da568a6bc242aebaab2d5e89c92ddaef73d9fce8f27499159a31c39c",
+  "materializationReport": "docs/evidence/components-v8-linked-catalog-v1/materialization.json",
+  "materializationReportSha256": "0844daee60d84fa645af370c6d0f8b727eaa023b26c4a99d6370a152c1d2f9e4",
+  "baseCatalog": "artifacts/current/components-v7-catalog-x64",
+  "runnableDirectory": "artifacts/current/components-v8-catalog-linked-x64-v1",
+  "fileCount": 664,
+  "verifiedUnchangedHardlinks": 659,
+  "changedArchivePayloadFiles": 5,
+  "changedArchivePayloadBytes": 21502936,
+  "allFileBytesMatchV8ArchiveManifest": true,
+  "catalogExeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+  "orchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "fictionalDemoRuns": [
+    { "demo": "Editorial", "theme": "Light", "report": "docs/evidence/components-v8-linked-catalog-v1/editorial-light.json", "reportSha256": "777fd82645cd0ec376a6e8d9bbbdd093b9bef3212534be5d2e5f5aa72019d416", "screenshot": "docs/evidence/components-v8-linked-catalog-v1/editorial-light.png", "screenshotSha256": "b275aa31850e5f6421840a6493e96eae4b70cc7000b08a7dc7b3a90a0765561d" },
+    { "demo": "Editorial", "theme": "Dark", "report": "docs/evidence/components-v8-linked-catalog-v1/editorial-dark.json", "reportSha256": "05cc2688eebb47604efd2358fbf986a387dc62a7fc6186e4340dc4bb850d2ed2", "screenshot": "docs/evidence/components-v8-linked-catalog-v1/editorial-dark.png", "screenshotSha256": "308648f8656f3da8433b2ad24f0352c7fc6a5f96feec13b7fe1a772d2063407f" },
+    { "demo": "Monitoring", "theme": "Light", "report": "docs/evidence/components-v8-linked-catalog-v1/monitoring-light.json", "reportSha256": "103cc901ffbe427dd7c510ccde290be49ccf2b86c5f99bbf1d615722d80ddcf2", "screenshot": "docs/evidence/components-v8-linked-catalog-v1/monitoring-light.png", "screenshotSha256": "1a0f571d42751fee60ee3170cacbbe64f2eaef61fffc68bc6d49d6df07edccf9" },
+    { "demo": "Monitoring", "theme": "Dark", "report": "docs/evidence/components-v8-linked-catalog-v1/monitoring-dark.json", "reportSha256": "f9f8b6725207193cabfcd584a2b1a1319070b8f1e03e345648ba91e85e187365", "screenshot": "docs/evidence/components-v8-linked-catalog-v1/monitoring-dark.png", "screenshotSha256": "8a6ef14251556856b2c3870b80a89d2608c89a862e9ecfa07c9e8d3faa5210cf" }
+  ],
+  "componentRuns": [
+    { "component": "Icon Button", "theme": "Light", "report": "docs/evidence/components-v8-linked-catalog-v1/icon-button-light.json", "sha256": "9c594114689a210b7a30c5e70efba53d44d84aea5aa6289dce38f50687381b0d" },
+    { "component": "Icon Button", "theme": "Dark", "report": "docs/evidence/components-v8-linked-catalog-v1/icon-button-dark.json", "sha256": "1480187f84627ff9af5014020efb78a89ca3cb30e68fa00389e6de7841065659" },
+    { "component": "Tooltip", "theme": "Light", "report": "docs/evidence/components-v8-linked-catalog-v1/tooltip-light.json", "sha256": "a287d4b3c78618d43f542e1fab9d35cdd5a980f2b5619608d70685a226700d97" },
+    { "component": "Tooltip", "theme": "Dark", "report": "docs/evidence/components-v8-linked-catalog-v1/tooltip-dark.json", "sha256": "6457a2a7f4fd31050184e05135d93174afe7242d930dfdb3ff0069867686aa0b" },
+    { "component": "Modal", "theme": "Light", "report": "docs/evidence/components-v8-linked-catalog-v1/modal-light.json", "sha256": "41dbc269a5148577ac2029c790e78a048c12276bbfebc38cc8318518b7e41d77" },
+    { "component": "Modal", "theme": "Dark", "report": "docs/evidence/components-v8-linked-catalog-v1/modal-dark.json", "sha256": "6ba4e9fbf6a82b0ac0845a8e52150c1366dd510c57601802676c7d11dc4a83ff" }
+  ],
+  "initialIconButtonDiagnostic": {
+    "result": "The one-step synthetic hover failed before the swept pointer probe passed in both themes; cause not established as a component defect",
+    "report": "docs/evidence/components-v8-linked-catalog-v1/icon-button-immediate-hover-failure.json",
+    "reportSha256": "12b5c4cba2f0b663fde03ff4832b59b2dd9e51525a5577ffd08b2ab95a2fd51e",
+    "screenshot": "docs/evidence/components-v8-linked-catalog-v1/icon-button-immediate-hover-failure.png",
+    "screenshotSha256": "039f53a34e09d89738d7f568e1f88353509de6f3a0663adc38f28a0157035a11"
+  },
+  "bothDemosAndThreeComponentsPassedBothThemes": true,
+  "screenshotsVisuallyInspected": true,
+  "freshZipExtractionVerified": false,
+  "selfContainedIndependentConsumerVerified": false,
+  "arm64CatalogArchiveCreated": false,
+  "nativeArm64RuntimeVerified": false,
+  "packageAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

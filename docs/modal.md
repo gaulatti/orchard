@@ -89,6 +89,10 @@ through one caller request, and focus returns to the opener. The Modal, shared
 host and catalog specimen are unchanged since that v7 archive. This is focused
 input and ownership evidence; the remaining physical matrix, fresh v8 archive,
 visual, scaling, motion and ARM64 runtime checks are still open.
+The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json)
+also passes this nested physical ownership and focus-return probe in both themes
+from a separate runnable directory. Fresh full ZIP extraction and the remaining
+Modal matrix remain open.
 
 `ModalsFixture` is registered directly after AlertDialogs and preserves both
 fictional-data Monitoring and Editorial demos. It offers original editable

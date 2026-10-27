@@ -22,6 +22,8 @@
     { "report": "docs/evidence/tooltip-foreground-v1/diagnostic-programmatic-focus.json", "sha256": "4eed56791896e6b49a04c84e2149727239fdaa3c7ce295ff66375ace5ec38d30", "observation": "UI Automation SetFocus alone did not open the tooltip; the control requires keyboard focus, which the final physical Tab path verifies." }
   ],
   "componentCodeAndXamlFixtureUnchangedSinceV7": true,
+  "v8ArchiveEquivalentCatalogTooltipVerified": true,
+  "v8ArchiveEquivalentCheckpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
   "freshV8ArchiveTooltipVerified": false,
   "fullPhysicalMatrixVerified": false,
   "nativeArm64RuntimeVerified": false,

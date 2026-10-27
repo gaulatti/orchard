@@ -1,0 +1,20 @@
+{
+  "format": "orchard-editorial-edit-desktop-v1",
+  "theme": "Dark",
+  "catalogExeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+  "librarySha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "passed": true,
+  "physicalPointerInputSent": true,
+  "physicalKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "steps": {
+    "lastClick": "Discard changes@830,359",
+    "originalTitle": "Harbor reading room",
+    "editedTitle": "Harbor reading room test",
+    "savedTitle": "Harbor reading room test",
+    "dirtyDecisionScreenshotSha256": "308648f8656f3da8433b2ad24f0352c7fc6a5f96feec13b7fe1a772d2063407f",
+    "keepEditingRetainedDraft": true,
+    "discardOpenedRequestedPage": true
+  },
+  "processExited": true
+}

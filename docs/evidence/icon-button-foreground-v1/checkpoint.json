@@ -1,7 +1,8 @@
 {
   "scope": "Icon Button extracted-v7 x64 foreground input in Light and Dark",
   "probe": "scripts/verify-icon-button-desktop.ps1",
-  "probeSha256": "fa6702a32f41342bd3a6e938161e65526b2f8c0b0df44488bcd435357155855b",
+  "probeSha256": "c68f7943791ac3cea2fa2a0922aa4c92d7e5b3dcee5b576442e25e1ff8fb74c2",
+  "previousProbeSha256": "fa6702a32f41342bd3a6e938161e65526b2f8c0b0df44488bcd435357155855b",
   "catalog": "artifacts/current/components-v7-catalog-x64",
   "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
   "orchardDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
@@ -12,6 +13,10 @@
   "tooltipPassedRuns": [
     { "theme": "Light", "report": "docs/evidence/icon-button-foreground-v1/v7-light-tooltip-pass.json", "sha256": "77c199c4f213e185b1b478a5f578571548f0d5719dd089bf052f4fe7d39b65b8" },
     { "theme": "Dark", "report": "docs/evidence/icon-button-foreground-v1/v7-dark-tooltip-pass.json", "sha256": "df9b4bb5007f56c3a54022fe19f2491579f30c5e9079ec4d1a6e026b13438f56" }
+  ],
+  "sweptPointerRuns": [
+    { "theme": "Light", "report": "docs/evidence/icon-button-foreground-v1/v7-light-swept.json", "sha256": "eec6e329d9cb5e1e31e3957f941627fdf43ee94eac3ae542ba82df0d43854a69" },
+    { "theme": "Dark", "report": "docs/evidence/icon-button-foreground-v1/v7-dark-swept.json", "sha256": "e0ad989b3298ad73d98877576cbb9437e9542588f2593d2d7b28c81fede5f9b8" }
   ],
   "verifiedBehavior": [
     "A real pointer click invokes the Edit consumer command exactly once",
@@ -32,6 +37,8 @@
   },
   "broaderPhysicalMatrixVerified": false,
   "tooltipVerifiedExtractedV7": true,
+  "tooltipVerifiedV8ArchiveEquivalentCatalog": true,
+  "v8ArchiveEquivalentCheckpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
   "tooltipVerifiedCurrentPackage": false,
   "nativeArm64RuntimeVerified": false,
   "componentAccepted": false,

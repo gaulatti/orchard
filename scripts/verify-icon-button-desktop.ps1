@@ -84,10 +84,19 @@ try {
     Ensure-Foreground $process.MainWindowHandle
     if ($CheckTooltip) {
         $bounds = $edit.Current.BoundingRectangle
-        [OrchardIconDesktopInput]::SetCursorPos([int]($bounds.X - 20), [int]($bounds.Y - 20)) | Out-Null
-        Start-Sleep -Milliseconds 250
-        [OrchardIconDesktopInput]::SetCursorPos([int]($bounds.X + $bounds.Width / 2), [int]($bounds.Y + $bounds.Height / 2)) | Out-Null
+        $centerX = [int]($bounds.X + $bounds.Width / 2)
+        $centerY = [int]($bounds.Y + $bounds.Height / 2)
+        [OrchardIconDesktopInput]::SetCursorPos($centerX, $centerY - 80) | Out-Null
         [OrchardIconDesktopInput]::mouse_event(1, 1, 0, 0, [UIntPtr]::Zero)
+        Start-Sleep -Milliseconds 250
+        for ($y = $centerY - 60; $y -lt $centerY; $y += 15) {
+            [OrchardIconDesktopInput]::SetCursorPos($centerX, $y) | Out-Null
+            [OrchardIconDesktopInput]::mouse_event(1, 1, 0, 0, [UIntPtr]::Zero)
+            Start-Sleep -Milliseconds 30
+        }
+        [OrchardIconDesktopInput]::SetCursorPos($centerX, $centerY) | Out-Null
+        [OrchardIconDesktopInput]::mouse_event(1, 1, 0, 0, [UIntPtr]::Zero)
+        $report.steps.hoverInput = 'swept pointer entry'
         try {
             $tip = Wait-For { Find-Name ([System.Windows.Automation.AutomationElement]::RootElement) 'Edit story' ([System.Windows.Automation.ControlType]::ToolTip) } 'Hover did not expose the consumer tooltip.'
             $report.steps.tooltipName = $tip.Current.Name

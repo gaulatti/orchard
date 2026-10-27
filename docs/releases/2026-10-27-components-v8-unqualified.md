@@ -57,9 +57,22 @@ An [archive-equivalent overlay replay](../evidence/components-v8-package-preview
 replaced those five files in the hash-verified v7 extraction with the v8 ZIP
 bytes. The Monitoring review passed its physical pointer/keyboard focus checks
 in Light and Dark; the v7 extraction was then restored by hash. Both screenshots
-were inspected. This establishes native behavior for the exact v8 archive file
-set without a second full extraction. The v8 ZIP itself has not been extracted
-and run from a fresh directory because C: has only about 143 MB free.
+were inspected.
+
+A separate [low-disk v8 catalog materialization](../evidence/components-v8-linked-catalog-v1/checkpoint.json)
+now verifies all 664 destination files against that archive manifest. It hardlinks
+659 byte-identical v7 files and writes the five changed binaries from the v8 ZIP
+into `artifacts/current/components-v8-catalog-linked-x64-v1`, without modifying
+the v7 deployment. This adds 21,502,936 bytes of changed payload. The new
+directory runs directly: both fictional Editorial and Monitoring demos pass
+physical input checks in Light and Dark, and their four screenshots were
+inspected. Icon Button, Tooltip and nested Modal also pass focused physical
+checks in both themes against the same exact v8 Orchard DLL. The first
+one-step Icon Button hover diagnostic failed; its report and screenshot remain
+recorded, while the swept-pointer run passed. These checks establish native
+behavior for the archive-identical file set. They do not establish full visual
+or component acceptance. The v8 ZIP has not been unpacked independently into
+a fresh directory; C: still lacks room for that and clean-cache qualification.
 
 This package and catalog remain **unqualified**. Independent self-contained x64
 runtime, a fresh ZIP extraction and replay, an ARM64 catalog archive and native
@@ -69,8 +82,8 @@ v8 has not replaced it as a release. The
 records hashes, verified checks and remaining failures. The inventory remains
 112 entries started and zero accepted; that is not a completion percentage.
 
-The attempted cleanup of the new shared-cache consumer workspaces was rejected
-by automatic approval review as “blocked by policy,” so those generated files
-remain. After the x64 consumer builds and preview ZIP, C: has about 143 MB free.
+The attempted cleanup of generated artifacts was rejected by automatic approval
+review as “blocked by policy,” so those files remain. After low-disk catalog
+materialization, C: has about 119 MB free.
 The public wiki remote is unavailable, so this release note is maintained in
 the repository.

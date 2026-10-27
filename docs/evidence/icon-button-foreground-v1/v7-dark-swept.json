@@ -1,0 +1,21 @@
+{
+  "format": "orchard-icon-button-desktop-v1",
+  "theme": "Dark",
+  "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+  "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "passed": true,
+  "pointerSent": true,
+  "keyboardSent": true,
+  "tooltipChecked": true,
+  "osSettingsChanged": false,
+  "steps": {
+    "selectedTheme": "Dark",
+    "hoverInput": "swept pointer entry",
+    "tooltipName": "Edit story",
+    "pointerResult": "Edit story: 1",
+    "spaceResult": "Edit story: 2",
+    "enterResult": "Edit story: 3",
+    "disabledButtonRejected": true
+  },
+  "processExited": true
+}

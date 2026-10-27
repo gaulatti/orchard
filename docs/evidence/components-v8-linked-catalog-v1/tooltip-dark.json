@@ -1,0 +1,25 @@
+{
+  "format": "orchard-tooltip-desktop-v1",
+  "theme": "Dark",
+  "catalogExeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+  "librarySha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "passed": true,
+  "physicalPointerSent": true,
+  "physicalKeyboardSent": true,
+  "physicalEscapeSent": true,
+  "osSettingsChanged": false,
+  "steps": {
+    "selectedTheme": "Dark",
+    "triggerBounds": {
+      "height": 39.0,
+      "width": 57.0,
+      "x": 697.0,
+      "y": 281.0
+    },
+    "hoverOpened": true,
+    "pointerLeaveClosed": true,
+    "focusOpened": true,
+    "escapeClosed": true
+  },
+  "processExited": true
+}

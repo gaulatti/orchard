@@ -5431,7 +5431,7 @@
       "remainingGaps": [
         "Verify collision corners, very small viewports and source-derived shadow appearance under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
         "Verify rendered entry/exit motion curves and hover/skip timing",
-        "Extracted v7 x64 Top hover/leave, Tab/Shift+Tab and Escape pass in Light/Dark; verify other placements, full physical pointer transit matrix, physical modal focus routing, explicit nested theme overrides and richer consumer templates",
+        "Extracted v7 and archive-identical v8 x64 Top hover/leave, Tab/Shift+Tab and Escape pass in Light/Dark; verify other placements, full physical pointer transit matrix, physical modal focus routing, explicit nested theme overrides and richer consumer templates",
         "Verify rendered reference parity, display/text scaling and remaining ARM64 state acceptance"
       ]
     },
@@ -5865,7 +5865,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Exact extracted v7 x64 foreground pointer, Space and Enter invoke the Icon Button consumer command in Light/Dark; the Edit story tooltip appears in both themes after injected mouse movement, and the disabled button remains disabled. Complete the wider physical matrix and freshly extracted v8 tooltip verification",
+        "Exact extracted v7 and archive-identical v8 x64 foreground pointer, Space and Enter invoke the Icon Button consumer command in Light/Dark; the Edit story tooltip appears in both themes after swept pointer entry, and the disabled button remains disabled. Complete the wider physical matrix and fresh full v8 ZIP extraction",
         "Verify scaling and reduced motion",
         "Verify remaining ARM64 state acceptance"
       ]
@@ -6098,7 +6098,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Extracted v7 x64 nested pointer/Escape/focus restoration passes Light/Dark; complete the remaining physical keyboard/pointer/focus and full raster/motion/scaling/performance acceptance",
+        "Extracted v7 and archive-identical v8 x64 nested pointer/Escape/focus restoration pass Light/Dark; complete the remaining physical keyboard/pointer/focus and full raster/motion/scaling/performance acceptance",
         "Complete broader customization and advanced nested content/portal acceptance",
         "Verify native ARM64 runtime and final package/release acceptance"
       ]
@@ -8801,7 +8801,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Complete visible pointer/keyboard and focus verification in a new package; source-built x64 Monitoring review focus, Escape and retained-update route passes Light/Dark, while exact v7 fails review focus",
+        "Archive-identical v8 x64 Monitoring review focus, Escape and retained-update route pass Light/Dark; complete broader visible pointer/keyboard and focus verification in a fresh package, while exact v7 still fails review focus",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8825,6 +8825,13 @@
         "isolated": true,
         "visibleInteractionVerified": false,
         "fullCompositionAccepted": false
+      },
+      "v8ArchiveEquivalentEvidence": {
+        "checkpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "physicalReviewFocusEscapeAndLocalUpdatePassed": true,
+        "freshZipExtractionVerified": false,
+        "fullCompositionAccepted": false
       }
     },
     {
@@ -8835,7 +8842,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "visible pointer/keyboard and focus verification",
+        "Archive-identical v8 x64 edit/save/dirty-decision pointer and keyboard path passes Light/Dark; complete broader visible pointer/keyboard and focus verification",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8872,6 +8879,13 @@
         "physicalPointerAndKeyboardVerified": true,
         "savedLocalTitleAndDirtyDecisionVerified": true,
         "extractedV7CatalogPassed": true,
+        "fullCompositionAccepted": false
+      },
+      "v8ArchiveEquivalentEvidence": {
+        "checkpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "physicalEditSaveAndDirtyDecisionPassed": true,
+        "freshZipExtractionVerified": false,
         "fullCompositionAccepted": false
       }
     }

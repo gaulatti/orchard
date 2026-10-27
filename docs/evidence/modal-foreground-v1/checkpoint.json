@@ -17,6 +17,8 @@
     "Both catalog processes exit and OS settings remain unchanged"
   ],
   "modalAndHostAndFixtureUnchangedSinceV7": true,
+  "v8ArchiveEquivalentCatalogModalVerified": true,
+  "v8ArchiveEquivalentCheckpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
   "freshV8ArchiveModalVerified": false,
   "fullPhysicalMatrixVerified": false,
   "nativeArm64RuntimeVerified": false,
