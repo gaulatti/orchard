@@ -75,6 +75,16 @@ focus on the input. The [physical-input checkpoint](../evidence/label-physical-v
 binds both reports to this package's Orchard DLL. The complete Label physical,
 visual, scaling, consumer and ARM64 matrices remain open.
 
+A separate consumer project restored this exact NuGet package with a shared
+third-party cache, published x64 and passed its final full runtime smoke after
+moving the existing Label and input into view. Real Tab, pointer and typing
+reach that packaged input in System theme-toggle mode; the native input retains
+its label association. The [consumer physical checkpoint](../evidence/label-consumer-physical-v7/checkpoint.json)
+preserves the exact hashes, an intermittent Column Toggle smoke failure, and
+reverted scroll/theme experiments that crashed at runtime. Private-cache
+restore ran out of disk, so this is not a new fully isolated dependency restore.
+Explicit Light/Dark consumer physical input remains unverified.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

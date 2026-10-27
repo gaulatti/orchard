@@ -116,3 +116,18 @@ nested control, complete rendering, scaling, package-consumer physical input or
 native ARM64 runtime. The initial probe's fixed action-count expectation and a
 PowerShell variable-shadowing error were corrected in the test harness; their
 failed reports remain separate from the two final passes.
+
+The exact v7 NuGet package also publishes in a separate x64 consumer project
+after moving its existing Label and input to the visible top of the consumer
+card. A normal consumer smoke passes resources, fonts, Light/Dark presentation,
+layout and native actions. In System theme-toggle mode, real Tab skips the
+Label, a pointer click focuses the packaged input, and typed text reaches the
+consumer-owned value; the input's automation relationship still points to the
+public Label. The [consumer physical checkpoint](evidence/label-consumer-physical-v7/checkpoint.json)
+binds the report, exact package hash and retained failures. This build reused
+the machine's third-party NuGet cache after a private-cache restore ran out of
+disk, so it is not fresh isolation of all dependencies. An attempted scroll
+wrapper and live theme-toggle wiring crashed during runtime and were reverted.
+One full consumer smoke run also timed out in Column Toggle; the next and final
+runs passed. Explicit Light/Dark consumer physical input and stability of that
+unrelated smoke check remain open.

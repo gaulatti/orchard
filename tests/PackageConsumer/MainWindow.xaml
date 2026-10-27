@@ -35,6 +35,8 @@
             <orchard:BleeckerCard x:Name="PackageCard" Style="{StaticResource ConsumerCardStyle}" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated">
             <StackPanel Spacing="16">
                 <orchard:BleeckerThemeToggle x:Name="PackageThemeToggle"/>
+                <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
+                <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
                 <orchard:BleeckerTabs x:Name="PackageTabs" Width="480" Stretch="True" ActiveTab="overview" AutomationProperties.Name="Package tabs" />
                 <orchard:BleeckerDialogCloseButton x:Name="PackageClose" AutomationProperties.Name="Close package preview" />
                 <orchard:BleeckerField x:Name="PackageField" Label="Consumer field" Required="True" Description="Consumer description" Error="Consumer error" Width="320" HorizontalAlignment="Left">
@@ -107,8 +109,6 @@
                 <orchard:BleeckerBrandLockup x:Name="PackageBrand" Href="/consumer?keep=%2F#section" BrandName="Consumer studio" />
                 <orchard:BleeckerBauhausBackground x:Name="PackageBauhaus" Type="Pompeii" Width="192" Height="96" />
                 <orchard:BleeckerActivityItem x:Name="PackageActivity" Init="Alice Harbor" Title="Consumer-owned activity" Time="opaque time / 07:03" />
-                <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
-                <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
                 <orchard:BleeckerFieldHelpTooltip x:Name="PackageHelp" Text="Use a concise title for this fictional item." HorizontalAlignment="Left" />
                 <ComboBox Header="Category" SelectedIndex="0" Style="{StaticResource BleeckerComboBoxStyle}">
                     <ComboBoxItem Content="Local" />

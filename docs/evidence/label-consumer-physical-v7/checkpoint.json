@@ -1,0 +1,64 @@
+{
+  "scope": "Independent x64 consumer of the exact v7 NuGet package: visible Label and physical input in System mode",
+  "recordedAt": "2026-10-27T08:41:30Z",
+  "packageVersion": "0.1.0-components-v7-local",
+  "packageSha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+  "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "consumerSourceChange": "tests/PackageConsumer/MainWindow.xaml",
+  "consumerXamlSha256": "29c12983939427dd3a28543efff6655b8a0f16a44c6c315c2793242c850cfb5e",
+  "probe": "scripts/verify-label-consumer-desktop.ps1",
+  "probeSha256": "7bb4b978755cb1103e41fb14a10acc313111bc84c195e23e408d32c32216dce9",
+  "build": {
+    "report": "artifacts/current/components-v7-consumer-label-top-x64/build-final.json",
+    "sha256": "eefe6b8cccefb37e6c165822b60f05b770e75ad774c90c278062029358d4e6a9",
+    "published": true,
+    "exactNuGetPackageRestored": true,
+    "thirdPartyGlobalCacheReused": true,
+    "fullyIsolatedDependencyRestore": false
+  },
+  "consumerSmoke": {
+    "report": "artifacts/current/components-v7-consumer-label-top-x64/runtime-final.json",
+    "sha256": "d9037aecf0247c43387714ea0f6ab4fcaee76b2a67c01eb70f159a0c38602f20",
+    "passed": true,
+    "scope": "Existing resources, fonts, Light/Dark themes, layout and native action smoke"
+  },
+  "physicalInput": {
+    "report": "artifacts/current/components-v7-consumer-label-top-x64/label-desktop-system-final.json",
+    "sha256": "84e2c31c696bb743d2e936aa48f378da908ecf7fd2b6b44e67c2a303696839fc",
+    "passed": true,
+    "mode": "System",
+    "tabSkipsLabel": true,
+    "pointerClickFocusesInput": true,
+    "physicalTypingChangesInputValue": true,
+    "inputLabeledByPublicLabel": true,
+    "processExited": true
+  },
+  "visibleConsumerCapture": {
+    "path": "artifacts/current/components-v7-consumer-label-top-x64/consumer-label-top.png",
+    "sha256": "7c75356bc409c836e2f073b74a7911b49e27196657999237bf738306469f5fa0",
+    "sizePixels": [1100, 760],
+    "labelAndInputVisible": true
+  },
+  "retainedFailures": {
+    "scrollWrapper": "A scrollable consumer wrapper published but crashed Microsoft.UI.Xaml.dll during live scroll (0xc000027b); it was reverted. The failed generated app remains at artifacts/current/components-v7-consumer-scroll-shared-x64/app.",
+    "themeWiring": "An experimental consumer ThemeRequested handler crashed Microsoft.UI.Xaml.dll on the second live theme change (0xc000027b); it was reverted. The final consumer does not claim Light/Dark physical input.",
+    "intermittentSmoke": {
+      "report": "artifacts/current/components-v7-consumer-label-top-x64/runtime-theme-v2.json",
+      "sha256": "7fac2360b1640c4ed16089e00074b38cad3f9e607154c2e49517d64076e2f087",
+      "failure": "Column Toggle original-visible-cell check timed out in one run; the next run and final reverted-host smoke passed. Stability remains unproven."
+    },
+    "initialIsolatedRestore": "A fresh private third-party package cache exhausted C: during restore; its temporary workspace was removed. The passing build instead reused the global third-party cache and verified the exact Orchard package hash."
+  },
+  "temporaryWorkspaceRetained": "C:/Users/gaulatti/AppData/Local/Temp/orchard-scroll-v7-shared-20261027",
+  "temporaryWorkspaceCompressed": true,
+  "temporaryWorkspaceRemovalBlockedByAutomaticReview": true,
+  "osSettingsChanged": false,
+  "narratorLaunched": false,
+  "remaining": [
+    "Independent consumer physical input in explicit Light and Dark modes without a crashing live-theme path",
+    "Resolve the intermittent Column Toggle smoke result",
+    "Label disabled-target and broader nested-control input, full rendering and scaling, and native ARM64 runtime"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0
+}

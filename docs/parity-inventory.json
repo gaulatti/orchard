@@ -3789,6 +3789,7 @@
         "scripts/verify-label-association.mjs",
         "scripts/test-label-association-audit.mjs",
         "scripts/verify-label-desktop.ps1",
+        "scripts/verify-label-consumer-desktop.ps1",
         "tests/PackageConsumer/DisplayMetadataFixture.cs",
         "scripts/verify-display-metadata.ps1",
         "scripts/verify-display-metadata.mjs",
@@ -3797,7 +3798,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
-        "Verify remaining disabled-target, nested-control and independent-consumer physical input beyond the passing v7 x64 Light/Dark catalog routes",
+        "Verify remaining disabled-target and nested-control input plus explicit-theme independent-consumer input beyond passing v7 x64 catalog and System-mode consumer routes",
         "Verify scaling, remaining ARM64 state acceptance and full reference parity"
       ],
       "metadataPreview": {
@@ -3818,6 +3819,14 @@
         "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
         "themesPassed": ["Light", "Dark"],
         "physicalInputVerified": true,
+        "fullComponentAcceptance": false
+      },
+      "consumerPhysicalPreview": {
+        "checkpoint": "docs/evidence/label-consumer-physical-v7/checkpoint.json",
+        "packageVersion": "0.1.0-components-v7-local",
+        "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+        "systemModePhysicalInputPassed": true,
+        "explicitLightDarkPhysicalInputPassed": false,
         "fullComponentAcceptance": false
       }
     },
