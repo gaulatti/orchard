@@ -24,7 +24,9 @@ public sealed partial class BleeckerMediaLibrary
         private readonly Image image = new() { Name = "MediaTileImage", Stretch = Stretch.UniformToFill, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, IsHitTestVisible = false, FlowDirection = FlowDirection.LeftToRight };
         private readonly TextBlock missing, filename;
         private readonly RichTextBlock failure;
+        private readonly Paragraph failureParagraph = new();
         private readonly Microsoft.UI.Xaml.Shapes.Path failureGlyph;
+        private readonly InlineUIContainer failureMarker;
         private readonly Run failureLabel = new();
         private readonly Border placeholder = new() { Name = "MediaNoPreview", IsHitTestVisible = false };
         private readonly Grid overlay = new() { Name = "MediaTileOverlay", VerticalAlignment = VerticalAlignment.Bottom, UseLayoutRounding = false };
@@ -52,10 +54,10 @@ public sealed partial class BleeckerMediaLibrary
             var secondary = (FontFamily)Application.Current.Resources["BleeckerSecondaryFontFamily"];
             missing = Text("MediaNoPreviewText", secondary, 12, 16); missing.Text = "No preview"; missing.HorizontalAlignment = HorizontalAlignment.Center; missing.VerticalAlignment = VerticalAlignment.Center; missing.IsHitTestVisible = false; placeholder.Child = missing;
             failure = new() { Name = "MediaFailedImageText", FontFamily = (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"], FontSize = 16, LineHeight = 24, LineStackingStrategy = LineStackingStrategy.BlockLineHeight, TextWrapping = TextWrapping.Wrap, UseLayoutRounding = false, IsHitTestVisible = false, VerticalAlignment = VerticalAlignment.Top, Visibility = Visibility.Collapsed };
-            // A failed browser image retains a visible marker before its original alt text.
+            // A failed browser image retains a visible marker alongside its original alt text.
             failureGlyph = (Microsoft.UI.Xaml.Shapes.Path)XamlReader.Load("<Path xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Name='MediaFailedImageGlyph' Width='16' Height='16' Stretch='None' StrokeThickness='1' Data='M1.5,1.5 H14.5 V14.5 H1.5 Z M3.5,11 L6,8 L8,10 L10,7 L13,11 M10,5 A1,1 0 1 0 8,5 A1,1 0 1 0 10,5'/>");
             failureGlyph.IsHitTestVisible = false; failureGlyph.RenderTransform = new TranslateTransform { Y = -4 }; AutomationProperties.SetAccessibilityView(failureGlyph, AccessibilityView.Raw);
-            var failureParagraph = new Paragraph(); failureParagraph.Inlines.Add(new InlineUIContainer { Child = failureGlyph }); failureParagraph.Inlines.Add(failureLabel); failure.Blocks.Add(failureParagraph);
+            failureMarker = new InlineUIContainer { Child = failureGlyph }; failureParagraph.Inlines.Add(failureMarker); failureParagraph.Inlines.Add(failureLabel); failure.Blocks.Add(failureParagraph);
             filename = Text("MediaTileFilename", (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"], 12, 18); filename.FontWeight = Microsoft.UI.Text.FontWeights.Medium; filename.TextWrapping = TextWrapping.NoWrap; filename.TextTrimming = TextTrimming.CharacterEllipsis; filename.IsHitTestVisible = false;
             overlayContent = new() { Child = overlayStack, UseLayoutRounding = false }; overlayStack.Children.Add(filename); overlayStack.Children.Add(delete); overlay.Children.Add(backdrop.Host); overlay.Children.Add(overlayPaint); overlay.Children.Add(overlayContent); overlay.RenderTransform = shift;
             delete.Content = Icon("M3,6 L21,6 M19,6 L18,20 L6,20 L5,6 M9,6 L9,3 L15,3 L15,6 M10,10 L10,16 M14,10 L14,16", 16, "Delete"); AutomationProperties.SetName(delete, "Delete media item"); ToolTipService.SetToolTip(delete, "Delete"); delete.Click += DeleteClicked;
@@ -90,6 +92,14 @@ public sealed partial class BleeckerMediaLibrary
             filename.Text = item.Filename; var f = owner.RemScale; filename.Margin = new(0, 0, 0, 8 * f); missing.FontSize = 12 * f; missing.LineHeight = 16 * f; overlayContent.Padding = new(12 * f); delete.Width = delete.Height = delete.MinWidth = delete.MinHeight = 40 * f;
             foreach (var text in new[] { missing, filename }) { text.FlowDirection = owner.FlowDirection; text.Language = owner.Language; text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; }
             failure.FlowDirection = owner.FlowDirection; failure.Language = owner.Language; failure.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled;
+            var markerShouldTrail = owner.FlowDirection == FlowDirection.RightToLeft;
+            var markerTrails = ReferenceEquals(failureParagraph.Inlines[1], failureMarker);
+            if (markerTrails != markerShouldTrail)
+            {
+                failureParagraph.Inlines.Clear();
+                if (markerShouldTrail) { failureParagraph.Inlines.Add(failureLabel); failureParagraph.Inlines.Add(failureMarker); }
+                else { failureParagraph.Inlines.Add(failureMarker); failureParagraph.Inlines.Add(failureLabel); }
+            }
             overlay.FlowDirection = owner.FlowDirection; UpdateImage(); UpdateInput(); Paint();
         }
         private void UpdateImage()

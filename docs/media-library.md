@@ -74,7 +74,9 @@ the full URL, so a thumbnail-only item has an empty image frame in the modal.
 When the full preview image fails, its original alt text appears with the same
 small, non-interactive failure marker used by a failed tile thumbnail.
 For a failed tile thumbnail, the original alt text remains visible with a small
-image-failure marker at its start, matching the source's broken-image affordance.
+image-failure marker at its start in left-to-right layouts. In right-to-left
+layouts, the marker follows the alt text at the tile's right edge, matching the
+source's broken-image affordance.
 At narrow widths, later lines of the alt text wrap back to the tile edge instead
 of staying indented beneath the marker.
 The marker uses Orchard's secondary text brush in each theme and adds no pointer
@@ -243,3 +245,11 @@ x64 catalog passes 100 Media Library states, 38 contracts, both catalog themes
 and 102 PNG audits, including the broken-full marker. Its Orchard DLL has a
 different build hash from the NuGet DLL, so these are separate runtime results.
 Physical input, full visual acceptance and native ARM64 runtime remain open.
+
+The subsequent source-only RTL repair places a failed thumbnail's marker after
+the original alt text at the tile's right edge. The hidden x64 catalog fixture
+in `artifacts/current/media-library-rtl-v2` passes 100 states, 38 behavior
+contracts, two catalog themes and 102 rendered PNG audits. The marker starts at
+x=951 inside the x=746..968 tile in both RTL themes; the light capture was
+visually checked against the pinned source. The current NuGet and catalog ZIPs
+predate this repair and have not been requalified with it.
