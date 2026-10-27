@@ -1,0 +1,79 @@
+{
+  "scope": "Versioned local NuGet and runnable catalog preview after Hover Card and Menubar changes",
+  "sourceCommit": "b481395d23d5bdceb5c4437fa6979be82c0ca6b2",
+  "version": "0.1.0-components-v10-local",
+  "package": {
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v10-local.nupkg",
+    "sha256": "89c0027e17cefb9b28be5c6432a20e6f7ba156801efa654f77949ed9cc50c7ac",
+    "bytes": 1733781,
+    "anyCpuAssemblyVerifiedByIndependentConsumer": true
+  },
+  "x64Consumer": {
+    "freshIsolatedRestore": true,
+    "selfContainedPublish": true,
+    "nativeRuntimePassed": true,
+    "packageDllSha256": "1a89f1827c2e6dadb7584b5b9f7b25e7761a364633876d89887e79d093cc5cb4",
+    "result": "artifacts/current/components-v10-consumer-x64/result.json",
+    "resultSha256": "22433f331193b51d588f4d73299a6ba0e4af67470bfb3baecc6bf890f2299a60",
+    "temporaryConsumerCacheRemoved": true
+  },
+  "arm64Consumer": {
+    "freshIsolatedRestore": true,
+    "selfContainedPublish": true,
+    "apphostMachine": "Arm64",
+    "packageDllSha256": "1a89f1827c2e6dadb7584b5b9f7b25e7761a364633876d89887e79d093cc5cb4",
+    "nativeRuntimeVerified": false,
+    "result": "artifacts/current/components-v10-consumer-arm64/result.json",
+    "resultSha256": "cd3e5a3861888321dd427bf9ebaa64f4a8eef799df8139ba06177d6c7dc92395",
+    "temporaryConsumerCacheRemoved": true
+  },
+  "x64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v10-local-win-x64.zip",
+    "archiveSha256": "d5c4b4f66a1677447d40ca6da9c843a4b4cd0515f6cd0ce7362748b9457db3a1",
+    "bytes": 106115242,
+    "manifest": "docs/evidence/components-v10-delivery-v1/catalog-x64-manifest.json",
+    "manifestSha256": "5bfef3ad5474300eba04837799fe2e049bed5575e435e5ed1405375a1934f8bd",
+    "generatedManifestSha256": "b0b80167d3b1b6636af5bde22abd10b6a442944eac19b38ad251fa2db727ede2",
+    "freshExtraction": "artifacts/current/components-v10-catalog-extract-x64",
+    "filesHashVerified": 664,
+    "compiledXamlFixtures": 114,
+    "libraryMatchesNuGetConsumer": true,
+    "nativeMenubarAuditPassed": true,
+    "nativeMenubarStates": 30,
+    "nativeMenubarCallerContracts": 28,
+    "nativeMenubarGeometryValues": 1224,
+    "nativeMenubarAuditSha256": "410781093b32c46e08bd1b145d437b7eaaf3ad69fd8d904c176873232c1132cb",
+    "hiddenMonitoringEditorialChecksPassed": 68,
+    "hiddenIsolationGuardsPassed": 581,
+    "hiddenWorkspacesReportSha256": "87450a1a8d68d14a73762c54ee762175638e4e56b96c0f7b6cd8ded602548c00",
+    "hiddenHoverCardSourceStatesPassed": 44,
+    "hiddenHoverCardGuardChecksPassed": 1184,
+    "hiddenHoverCardAuditSha256": "743b809cebc7d60c26f7aaea21be1114de864dad230a2c36855efe38be75fdf9"
+  },
+  "arm64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v10-local-win-arm64.zip",
+    "archiveSha256": "7044f27b296630a5b0feaf21fcc359b5f6e412a8c683f05d69d0e58b1c635148",
+    "bytes": 103202376,
+    "manifest": "docs/evidence/components-v10-delivery-v1/catalog-arm64-manifest.json",
+    "manifestSha256": "1c45495dabe1c352dbb960eeacf3f60e4e02a4048f8e5c1808ca62a37d3a8bad",
+    "generatedManifestSha256": "fee1494d780a1da108e7183796170ed75dbda2987bf83810c14df33cb97d2896",
+    "freshExtraction": "artifacts/current/components-v10-catalog-extract-arm64",
+    "filesHashVerified": 660,
+    "compiledXamlFixtures": 114,
+    "apphostMachine": "Arm64",
+    "nativeRuntimeVerified": false
+  },
+  "notes": [
+    "The first x64 catalog publish used the default assembly version and produced a DLL different from the v10 NuGet assembly. Republishing with the same Version property produced a byte-identical DLL; only that publish was archived and checked.",
+    "The first ARM64 catalog publish attempt had no restored win-arm64 assets. An explicit ARM64 restore resolved the prerequisite before successful publish.",
+    "The ARM64 catalog's source-built Orchard DLL differs from the AnyCPU package DLL, as in v9. The independent ARM64 consumer uses the exact package DLL; ARM64 catalog and consumer native execution remain unverified on this x64 host."
+  ],
+  "remaining": [
+    "Native ARM64 catalog and independent consumer runtime on an ARM64 Windows host",
+    "Complete public component visual, motion, scaling, input and accessibility-metadata acceptance across the 112-entry inventory",
+    "Required hosted CI remains unrun while user-directed GitHub Actions suppression is in effect"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "packageAccepted": false
+}
