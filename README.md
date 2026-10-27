@@ -11,19 +11,22 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [Windows component-library preview v5](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
-for the NuGet package and x64/ARM64 catalog ZIPs, including the fictional Monitoring
-and Editorial demos. The [v5 artifact record](docs/evidence/catalog-v5-archives/checkpoint.json)
-lists hashes, checks and limits. The release includes the Card fix and
-stream-verified catalog ZIPs. Its extracted x64 ZIP passed hidden demo checks
-and visible Monitoring/Editorial pointer and keyboard paths. Native ARM64
-execution and final component acceptance remain open.
-The v5 NuGet consumer later exposed a normal window-close crash
+Download the [v7 NuGet-only preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7)
+for the latest tested consumer crash fixes. Its
+[checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+records the package hash, input and tooltip checks, and clean shutdown. A
+matching v7 catalog ZIP has not been qualified or published.
+
+The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
+has x64/ARM64 catalog ZIPs with the fictional Monitoring and Editorial demos.
+The [v5 artifact record](docs/evidence/catalog-v5-archives/checkpoint.json)
+lists their hashes and checks. Its extracted x64 ZIP passed hidden demo checks
+and visible pointer and keyboard paths. The v5 NuGet consumer later exposed a
+normal window-close crash
 (`0xC000027B`), and routed hover over Theme Toggle's default tooltip also
 crashed WinUI. Its earlier input probes missed the close exit code; see the
 [corrected consumer record](docs/evidence/theme-toggle-package-accepted-input-v1/checkpoint.json).
-The [local v7 package checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
-passes both paths, but those fixed bytes are not yet in a published release.
+Native ARM64 execution and final component acceptance remain open.
 
 Nine display components preserve caller automation names and label associations;
 Error State also preserves caller HelpText. See [metadata ownership](docs/automation-metadata.md).

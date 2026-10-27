@@ -100,13 +100,13 @@ physical probes: they recorded process disappearance but missed exit code
 WinUI. The archived input actions remain observed, but those v5 probes are not
 clean end-to-end consumer passes.
 
-The [local v7 package follow-up](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+The [published v7 package follow-up](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
 fixes both crashes. Its separate package consumer shows the initial and updated
 native tooltip, accepts pointer/Space/Enter through all three modes, preserves
 the rejected-request path, and closes with exit code zero. The hidden package
 diagnostic passes 116 normal frames and 42 ownership/style/lifecycle checks;
 the full consumer suite passes in both themes. The x64 and ARM64 library builds
-have no warnings. The package has not yet been published, the v7 catalog is not
-qualified, and broader focus/tooltip variants, normal animation, display
+have no warnings. The v7 release contains only the NuGet package; a matching
+catalog is not qualified, and broader focus/tooltip variants, normal animation, display
 scaling, full visual review and native ARM64 runtime remain open. The component
 is still unaccepted.

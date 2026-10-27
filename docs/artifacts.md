@@ -1,9 +1,11 @@
 # Local artifact storage
 
-The current unpublished local NuGet and catalog checkpoint is
-[components v7](releases/2026-10-27-components-v7-local.md). Its exact hashes,
-runtime checks and failed ARM64 consumer publish are recorded there. The root
-README continues to link the separately published preview.
+The current published NuGet-only crash fix is
+[preview v7](releases/2026-10-27-preview-v7.md). Its matching catalog has not
+been qualified. The older unpublished local NuGet and catalog checkpoint is
+[components v7](releases/2026-10-27-components-v7-local.md); its distinct
+version, hashes, runtime checks and failed ARM64 consumer publish are recorded
+there.
 
 Reuse the normal project publish directories for local iterations:
 

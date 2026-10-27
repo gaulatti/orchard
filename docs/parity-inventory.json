@@ -7862,7 +7862,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Published v5 catalog input and package-consumer mode requests were observed, but its normal close exited 0xC000027B and routed tooltip hover crashed WinUI; the local v7 NuGet consumer fixes both and passes accepted/rejected input, visible tooltip update, hidden ownership checks and clean close (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json); v7 publication, matching catalog qualification and broader focus/tooltip matrix remain",
+        "Published v5 catalog input and package-consumer mode requests were observed, but its normal close exited 0xC000027B and routed tooltip hover crashed WinUI; the published v7 NuGet-only preview fixes both and passes accepted/rejected input, visible tooltip update, hidden ownership checks and clean close (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json); matching catalog qualification and broader focus/tooltip matrix remain",
         "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
         "Complete broader library integration and release acceptance"
       ]

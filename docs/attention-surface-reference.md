@@ -350,7 +350,7 @@ The complete published Light/Dark catalog then passes at
 stays within the original 360-second limit. Native ARM64 retesting remains
 deferred while push-triggered Actions are paused.
 
-The [v7 local package checkpoint](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+The [v7 NuGet-only package checkpoint](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
 also covers the Attention pointer observer's consumer lifecycle. A normal
 close of the earlier v5 package consumer exited with `0xC000027B`: WinUI
 retained a `XamlRoot` after its content island was torn down, and the render
