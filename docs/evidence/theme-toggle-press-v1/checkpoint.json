@@ -1,0 +1,69 @@
+{
+  "scope": "Source-built native Icon Button press geometry exercised through Theme Toggle",
+  "baseCommit": "3dcc751ca1c488576d329c1208981a90d411f768",
+  "pinnedSource": {
+    "repository": "gaulatti/bleecker",
+    "commit": "a86059013cd59684ce452849278ea81e734f2066",
+    "component": "src/components/icon-button.tsx",
+    "pressedScale": 0.97,
+    "pressedTranslateYDip": 1
+  },
+  "baseline": {
+    "firstRun": "Initial catalog setup could not establish pointer ownership while an Open With window was foreground; no component input occurred.",
+    "secondRun": "The source-built catalog passed its native interactions, but the independent audit found 1.5999984741210938 DIP maximum pressed-state geometry error."
+  },
+  "change": "Apply the pinned press scale and shift to the default Icon Button template visual root, preserving its public layout/hit target and non-identity caller template transforms.",
+  "x64Build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "catalogDllSha256": "31e88fe1b5d7f163898488b1400b23aa2c6134ea0c226592ae4084d53e4076c7",
+    "orchardDllSha256": "93448d1691bff3da42638846160b46c9b61fb66d8f77c4c8d1ab1d6e0d4853f8"
+  },
+  "arm64Build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "nativeRuntimeVerified": false
+  },
+  "portableTests": {
+    "passed": 498,
+    "failed": 0
+  },
+  "nativeX64": {
+    "report": "artifacts/current/theme-toggle-press-native-v5/theme-toggle.json",
+    "reportSha256": "7bc4b9b61f8913372f50c4a7e515b7f9f543e7e178dd05dec133469aa0e26b21",
+    "audit": "artifacts/current/theme-toggle-press-native-v5/audit.json",
+    "auditSha256": "25cf8ff722e03df5a944ddc97accf35d47aeb1c76b80dd4cb2da18d7cd5c0bac",
+    "referenceStates": 134,
+    "maximumGeometryErrorDip": 0.000003814697265625,
+    "pointerSpaceEnterAndRejectedInvokePassedInLightAndDark": true,
+    "disabledDetachedBindingMetadataTemplateAndRemountChecksPassed": true,
+    "exactRasterFrames": 0,
+    "differingPixelsAcrossFrames": 91025,
+    "nativeNormalMotionVerified": false,
+    "actualScalingVerified": false
+  },
+  "screenshots": [
+    {
+      "file": "source-pressed-light.png",
+      "sha256": "0d7eb5d63db9ac49bdeaa31c4a9dd9c5e50e39248020eb9ecc217362e18fcc0f"
+    },
+    {
+      "file": "native-pressed-light.png",
+      "sha256": "7c4c7062b333ea20ea0b89e3fb915159e0cb7296e549c2eaa119cf5b7c95e5a5"
+    },
+    {
+      "file": "source-pressed-dark.png",
+      "sha256": "cdecf597e7959d50ad5431060e7a6f26add4acd685d2b3f35ac94c9c2259c219"
+    },
+    {
+      "file": "native-pressed-dark.png",
+      "sha256": "10d788bb9d78800a7ee080bf7965b505118af82a25a2167b72a6f4c07d6a000d"
+    }
+  ],
+  "packaging": "The versioned components-v8 NuGet and catalog archives predate this source change; no new package runtime or release qualification is claimed.",
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

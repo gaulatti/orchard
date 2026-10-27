@@ -20,13 +20,27 @@ Variants are `Default`, `Subtle` and `Ghost`. Sizes are `Small` (32×32), `Mediu
 
 Palettes derive from canonical tokens in generated, per-variant theme dictionaries. Native normal/hover/pressed/disabled states resolve within the selected palette. Windows high-contrast resources are defined, and the native template remains responsible for keyboard, pointer and focus behavior. `BleeckerButtonGroup` accepts icon buttons through the native `ButtonBase` contract.
 
+The default native template scales its visual root to 97% and shifts it down
+1 DIP while pressed, matching the pinned source's active geometry. The public
+button keeps its 32/40/44 DIP layout and hit target; a custom template with a
+non-identity root transform keeps that transform. The transition uses the
+shared control duration and easing when Windows animations are enabled, and
+the pressed geometry applies immediately when they are disabled.
+
 ## Verification and remaining acceptance
 
 The catalog registers all nine size/variant combinations plus a disabled action. Published x64 checks assert square dimensions, 18px vector size and round strokes, accessible names/button roles, native command and parameter delivery, and rendered background/foreground/border and icon stroke values across normal, hover, pressed and disabled states for all three variants in both themes. Consumer color/style ownership and content replacement are checked. The light/dark `icon-buttons-*.png` captures are visually inspected. The independent package consumer includes its own Lucide Save vector and checks layout, disabled foreground propagation and invocation.
 
 Physical desktop testing in the dark theme previously verified the Edit fixture: pointer click increments its command result, Tab/Shift+Tab displays its branded focus ring, Space increments the result again, and its Edit story tooltip appears. Historical evidence: `artifacts/icon-keyboard-dark.jpg`.
 
-The [x64 foreground check](evidence/icon-button-foreground-v1/checkpoint.json) runs the exact extracted v7 catalog library in both themes. Real pointer click, Space and Enter each invoke the consumer's Edit command once; the disabled Delete button remains disabled. The script checks the catalog window is foreground before sending input and records process exit. The Edit story tooltip appears after a swept pointer entry in both Light and Dark. Earlier one-step hover failures remain recorded. The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json) passes the same tooltip/pointer/keyboard check in both themes from a separate runnable directory. This verifies the v8 catalog bytes without a fresh full ZIP extraction or a physical independent NuGet-consumer tooltip check.
+The [x64 foreground check](evidence/icon-button-foreground-v1/checkpoint.json) runs the exact extracted v7 catalog library in both themes. Real pointer click, Space and Enter each invoke the consumer's Edit command once; the disabled Delete button remains disabled. The script checks the catalog window is foreground before sending input and records process exit. The Edit story tooltip appears after a swept pointer entry in both Light and Dark. Earlier one-step hover failures remain recorded. The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json) passes the same tooltip/pointer/keyboard check in both themes from a separate runnable directory. A later [delivery checkpoint](evidence/components-v8-delivery-qualification-v1/checkpoint.json) hash-verifies a fresh x64 ZIP extraction and passes a Light/Dark Buttons smoke check there. Physical independent NuGet-consumer tooltip input remains open.
+
+The subsequent [Theme Toggle source checkpoint](evidence/theme-toggle-press-v1/checkpoint.json)
+exercises the same inherited Icon Button press path with physical pointer,
+Space and Enter input in both themes. Its 134 static frames match the pinned
+source geometry, including the 0.97 pressed scale and 1 DIP shift. This is
+source-built evidence; existing v8 packages predate the change. Normal
+animation playback and the wider public Icon Button state matrix remain open.
 
 Still open: the remaining physical keyboard/pointer and tooltip matrix, display/text scaling, reduced motion and ARM64 runtime. ARM64 compilation is separate evidence and does not establish runtime support. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md).
 

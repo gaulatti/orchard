@@ -16,6 +16,12 @@ for(const row of reference.cases){
  const a=report.frames.find(r=>key(r)===key(row)).measurement,e=row.measurement,context=key(row);
  for(const part of['box','icon'])for(const field of['x','y','width','height'])near(a[part][field],e[part][field],context+'/'+part+'/'+field);
  for(const field of['mode','label','title','disabled'])assert.deepEqual(a[field],e[field],context+'/'+field);
+ if(row.spec.state==='pressed'){
+  assert.equal(a.pressed,true,context+'/physical-press');
+  assert.equal(a.transformType,'CompositeTransform',context+'/visual-transform');
+  near(a.transformScale,.97,context+'/visual-scale');
+  near(a.transformY,1,context+'/visual-shift');
+ }
  assert.equal(a.role,'Button');assert.equal(a.tabStop,true);assert.deepEqual(a.strokeRgba,e.strokeRgba);near(a.strokeWidth,1.5,context+'/stroke');near(a.iconOpacity,e.disabled?.45:1,context+'/disabled-icon');if(row.spec.state==='focus')assert.equal(a.focused,true);
  const expectedBytes=await fs.readFile(path.join(source,row.file));assert.equal(hash(expectedBytes),row.pngSha256);
  const actualBytes=await fs.readFile(path.join(native,row.file));assert.equal(hash(actualBytes),report.captures[row.file]);

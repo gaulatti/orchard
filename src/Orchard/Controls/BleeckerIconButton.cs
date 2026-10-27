@@ -1,6 +1,11 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation;
+using Windows.Foundation;
+using Windows.UI.ViewManagement;
 
 namespace Orchard;
 
@@ -15,18 +20,81 @@ public class BleeckerIconButton : Button
     private Binding? foregroundBinding;
     private Control? observedContent;
     private long styleCallback;
+    private readonly UISettings motionSettings = new();
+    private CompositeTransform? pressTransform;
+    private Storyboard? pressMotion;
 
     public BleeckerIconButton()
     {
         ApplyVariant();
         ApplySize();
         RegisterPropertyChangedCallback(ContentProperty, (_, _) => BindContentForeground());
+        RegisterPropertyChangedCallback(ButtonBase.IsPressedProperty, (_, _) => UpdatePressMotion(true));
+        RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => UpdatePressMotion(false));
+        Loaded += (_, _) => UpdatePressMotion(false);
+        Unloaded += (_, _) => { pressMotion?.Stop(); pressMotion = null; };
     }
 
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
         BindContentForeground();
+        pressMotion?.Stop(); pressMotion = null;
+        var pressRoot = VisualTreeHelper.GetChildrenCount(this) > 0 ? VisualTreeHelper.GetChild(this, 0) as FrameworkElement : null;
+        pressTransform = null;
+        if (pressRoot is not null)
+        {
+            var existing = pressRoot.RenderTransform;
+            var identity = existing is MatrixTransform matrix &&
+                matrix.Matrix.M11 == 1 && matrix.Matrix.M22 == 1 &&
+                matrix.Matrix.M12 == 0 && matrix.Matrix.M21 == 0 &&
+                matrix.Matrix.OffsetX == 0 && matrix.Matrix.OffsetY == 0;
+            if (existing is null || identity)
+            {
+                pressTransform = new CompositeTransform();
+                pressRoot.RenderTransformOrigin = new Point(.5, .5);
+                pressRoot.RenderTransform = pressTransform;
+            }
+        }
+        UpdatePressMotion(false);
+    }
+
+    private void UpdatePressMotion(bool animate)
+    {
+        if (pressTransform is null) return;
+        var fromScale = pressTransform.ScaleX;
+        var fromY = pressTransform.TranslateY;
+        var pressed = IsEnabled && IsPressed;
+        var targetScale = pressed ? .97 : 1;
+        var targetY = pressed ? 1 : 0;
+        pressMotion?.Stop(); pressMotion = null;
+        pressTransform.ScaleX = pressTransform.ScaleY = targetScale;
+        pressTransform.TranslateY = targetY;
+        if (!animate || !IsLoaded || !motionSettings.AnimationsEnabled ||
+            (fromScale == targetScale && fromY == targetY)) return;
+        var duration = TimeSpan.FromMilliseconds(BleeckerTokens.Durations["control"]);
+        var storyboard = new Storyboard { Duration = duration };
+        Tween("ScaleX", fromScale, targetScale);
+        Tween("ScaleY", fromScale, targetScale);
+        Tween("TranslateY", fromY, targetY);
+        pressMotion = storyboard;
+        storyboard.Completed += (_, _) => { if (ReferenceEquals(pressMotion, storyboard)) { storyboard.Stop(); pressMotion = null; } };
+        storyboard.Begin();
+
+        void Tween(string property, double from, double to)
+        {
+            if (from == to) return;
+            var animation = new DoubleAnimationUsingKeyFrames { Duration = duration, EnableDependentAnimation = true };
+            animation.KeyFrames.Add(new DiscreteDoubleKeyFrame { KeyTime = TimeSpan.Zero, Value = from });
+            animation.KeyFrames.Add(new SplineDoubleKeyFrame
+            {
+                KeyTime = duration, Value = to,
+                KeySpline = new KeySpline { ControlPoint1 = new Point(.22, 1), ControlPoint2 = new Point(.36, 1) }
+            });
+            Storyboard.SetTarget(animation, pressTransform);
+            Storyboard.SetTargetProperty(animation, property);
+            storyboard.Children.Add(animation);
+        }
     }
 
     private void BindContentForeground()

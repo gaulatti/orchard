@@ -7795,8 +7795,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Foreground pointer/keyboard and complete visible lifecycle/metadata verification; hidden x64 normal-state and ownership checks pass",
-        "Visible raster, inherited Icon Button motion, actual scaling and native ARM64 runtime",
+        "Source-built x64 catalog pointer, Space, Enter, rejected Invoke, binding/metadata, template and remount checks pass in both themes; complete independent-consumer physical/focus/tooltip matrix remains",
+        "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
         "Full package runtime, library integration and release acceptance"
       ]
     },

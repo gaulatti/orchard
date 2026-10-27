@@ -65,8 +65,13 @@ content, template replacement, remounts and disabled/detached rejection. A
 WinUI `Setter` rejects a null constructor value; local null tooltips remain
 supported. No enabled button is invoked by the hidden diagnostic.
 
-This remains a native preview with open acceptance. Visible interaction, full
-raster, normal motion, scaling, full integration/package runtime and native
-ARM64 remain unverified. Existing Icon Button paint/motion acceptance gaps also
-apply to this composition. The native metadata fix keeps the original browser
-reference and complete PNGs unchanged.
+The [source-built x64 checkpoint](evidence/theme-toggle-press-v1/checkpoint.json)
+now passes the focused native catalog run in both themes. Physical pointer,
+Space and Enter cycle the consumer-owned mode, and an Invoke request rejected
+by the consumer leaves the binding and mode intact. Disabled/detached rejection,
+metadata overrides, template replacement and remount checks pass. Across 134
+reference states, the native layout and icon geometry match within 0.000004 DIP,
+including pressed scale/translation. The full raster still differs in every
+frame; native normal animation, actual scaling, independent package runtime
+and ARM64 runtime remain unverified. The catalog and NuGet v8 artifacts predate
+this source change, so the component remains an unaccepted preview.
