@@ -1,0 +1,104 @@
+{
+  "scope": "Fresh v8 x64 catalog extraction, clean-cache independent NuGet consumers, and standalone ARM64 catalog archive",
+  "sourceCommit": "d2495f6fba590ce1a974e4cccf99c413184e29c4",
+  "version": "0.1.0-components-v8-local",
+  "packageSha256": "a37aba0cf848effda102e1479cfc2a8965295cb68996b95ed184ecb7fc121121",
+  "x64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-x64.zip",
+    "archiveSha256": "40da12696757f38414de8115bc5d1d81a50cc36add1a48a25153405989f74b52",
+    "freshExtraction": "artifacts/current/components-v8-catalog-fresh-extract-v1",
+    "filesHashVerified": 664,
+    "buttonsNativeSmokePassed": true,
+    "buttonsLightDarkCapturesInspected": true,
+    "freshExtractionForegroundMonitoringPassed": false,
+    "foregroundMonitoringFailure": "Catalog did not become foreground before pointer or keyboard input; catalog process exited",
+    "archiveNativeRuntimeVerified": true
+  },
+  "x64Consumer": {
+    "cleanDependencyCache": true,
+    "normalSelfContainedPublishPassed": true,
+    "localDotNetRuntimePresent": true,
+    "localWinUiRuntimePresent": true,
+    "nativeRuntimePassed": true,
+    "temporaryCacheRemoved": true,
+    "copiedOrchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb"
+  },
+  "arm64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-arm64.zip",
+    "archiveSha256": "23ab17f6214bb0f1c9ef0c7f015408b6fef0b6ab5c096495f26005417d919b9a",
+    "manifest": "docs/evidence/components-v8-arm64-archive-v1/catalog-manifest.json",
+    "manifestSha256": "52f2cf137c6eeec1cf1906992777cb2028c6d6df178df713a370cb3045185143",
+    "filesHashVerifiedAfterExtraction": 660,
+    "apphostMachine": "Arm64",
+    "nativeRuntimeVerified": false
+  },
+  "arm64Consumer": {
+    "cleanDependencyCacheCompilePassed": true,
+    "compileWarnings": 0,
+    "compileErrors": 0,
+    "apphostMachine": "Arm64",
+    "normalSelfContainedPublishPassed": true,
+    "localDotNetRuntimePresent": true,
+    "localWinUiRuntimePresent": true,
+    "temporaryCachesRemoved": true,
+    "nativeRuntimeVerified": false,
+    "copiedOrchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb"
+  },
+  "trackedEvidence": [
+    {
+      "name": "catalog-buttons-dark-desktop.json",
+      "sha256": "4fbe67a65764bfb12c07d60aded5aefcee6e1617b1879a4faf679f0a486ba94e"
+    },
+    {
+      "name": "catalog-buttons-dark.png",
+      "sha256": "cc51803b88b9a1009b7bffd1c7a5037078bf5d726070560c589781c09e3a0cd5"
+    },
+    {
+      "name": "catalog-buttons-light-desktop.json",
+      "sha256": "337c33dc94df460ec7289a357afeb117ae6461ae9bee674789593b10eb896d71"
+    },
+    {
+      "name": "catalog-buttons-light.png",
+      "sha256": "0603a1a7c7f7e422d139f7dfbab74812721713849aa1d4afb5abc9d115e8b216"
+    },
+    {
+      "name": "catalog-buttons-result.json",
+      "sha256": "79cd8c1aa772462a981a8fff6243b66de0953fb9242ef9cd8ff4703edb221af6"
+    },
+    {
+      "name": "catalog-monitoring-foreground-failure.json",
+      "sha256": "e38b188ad727b367ea198c4df7e264979925da4621fdab5cb81a5d66de804f1d"
+    },
+    {
+      "name": "consumer-arm64-compile-cleanup.json",
+      "sha256": "ae1705d3448554b0ee6e5a42a689390f20b04cba2de8df1e5f59fa604291a047"
+    },
+    {
+      "name": "consumer-arm64-compile-result.json",
+      "sha256": "78c433412aa5f42135fd65a948fb38479f78a494da4b3496ddd12dd72d731599"
+    },
+    {
+      "name": "consumer-arm64-publish-cleanup.json",
+      "sha256": "93527a12fe682d12196fc8375e99c48cd74538b2264062c221518410698cd1be"
+    },
+    {
+      "name": "consumer-arm64-publish-result.json",
+      "sha256": "167eb83b0b8fc849f394fdc2a643842e0713421ba30f88f0f77577f79841073e"
+    },
+    {
+      "name": "consumer-x64-cleanup.json",
+      "sha256": "7d6c0ad13a0e2871a065fa09b775469db3bf8be566b9ac7dfee9dc8335784f63"
+    },
+    {
+      "name": "consumer-x64-result.json",
+      "sha256": "fffb6b431cc426855dacf2fb66fa20198e7bed96a464ed21c15bd1b4173b2a8d"
+    },
+    {
+      "name": "consumer-x64-runtime.json",
+      "sha256": "b90280d75afc794978634069a51fbe8b34625d37620d833725f4526c0e23c91f"
+    }
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "packageAccepted": false
+}

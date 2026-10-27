@@ -10,7 +10,7 @@ The package's single AnyCPU IL `Orchard.dll` has SHA-256
 matching that source-built catalog. Package structure and bundled assets passed
 the repository verifier's checks before its restore step.
 
-The clean-cache independent consumer could not restore: C: ran out of space
+An initial clean-cache independent consumer could not restore: C: ran out of space
 while copying a Windows SDK reference assembly. Its temporary restore workspace
 was removed. A separate consumer source copy outside the repository restored
 the exact v8 package from the local feed using the machine's cached third-party
@@ -52,8 +52,18 @@ its 530 unchanged host files as verified hardlinks. Its local `coreclr.dll`,
 `hostfxr.dll` and WinUI runtime are present. The executable exits 0 after
 checking package resources, fonts, Light/Dark themes, layout and a native
 action with the exact v8 DLL. This directly verifies that self-contained host
-runtime path. It does not prove a fresh v8 restore, compilation or publish;
-those clean delivery steps remain open while C: lacks space.
+runtime path. This earlier overlay did not prove a fresh v8 restore, compilation
+or publish.
+
+After generated-artifact cleanup, the [normal package verifier](../../scripts/verify-package.ps1)
+restored the exact v8 NuGet package into a fresh dependency cache, published an
+independent x64 consumer with local .NET and WinUI runtimes, and passed its
+native resource, font, Light/Dark theme, layout and action checks. The verifier
+removed its temporary cache. A separate clean-cache ARM64 consumer compiled
+with zero warnings/errors and an ARM64 apphost; another invocation published
+a self-contained ARM64 consumer with local .NET and WinUI runtimes. The ARM64
+consumer has **not** run on an ARM64 machine. These results and the preserved
+failed attempt are in the [delivery checkpoint](../evidence/components-v8-delivery-qualification-v1/checkpoint.json).
 
 The [exact v8 package also compiles in an independent ARM64 consumer](../evidence/components-v8-arm64-consumer-compile-v1/checkpoint.json).
 Its 162 source files match the repository fixture and contain no project
@@ -61,8 +71,8 @@ reference. Restore selected the `win-arm64` target and the exact local v8
 package from the shared cache; a framework-dependent build completed with
 zero warnings or errors. The apphost has ARM64 PE machine type and its copied
 Orchard DLL matches the package. This is compile evidence only: no native ARM64
-process ran, no clean dependency cache was used and no self-contained ARM64
-publish occurred.
+process ran in that earlier check. The later clean-cache compile and
+self-contained publish are recorded above.
 
 The local v8 x64 catalog preview ZIP is now available at
 `artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-x64.zip`
@@ -92,8 +102,12 @@ checks in both themes against the same exact v8 Orchard DLL. The first
 one-step Icon Button hover diagnostic failed; its report and screenshot remain
 recorded, while the swept-pointer run passed. These checks establish native
 behavior for the archive-identical file set. They do not establish full visual
-or component acceptance. The v8 ZIP has not been unpacked independently into
-a fresh directory; C: still lacks room for that and clean-cache qualification.
+or component acceptance. The exact ZIP was subsequently unpacked into a fresh
+directory; all 664 files matched the ZIP manifest by length and SHA-256. That
+extracted catalog passed a native Buttons smoke check with Light and Dark
+captures, both inspected. A separate foreground Monitoring attempt stopped
+before physical input because Windows did not grant foreground focus; it is
+recorded as a failed test setup, not a component pass.
 
 The [matching-source ARM64 preview](../evidence/components-v8-linked-arm64-v1/checkpoint.json)
 now builds the current library and catalog with zero warnings or errors. Product
@@ -101,21 +115,28 @@ sources have not changed since the v8 x64 package build. Its separate 660-file
 directory verifies 655 unchanged files against the published v7 ARM64 archive
 and copies five current ARM64 binaries from the new build. A tracked manifest
 pins every resulting file hash; the apphost is ARM64 and local .NET/WinUI
-runtime files are present. This is cross-build and file-set evidence only. No
-ARM64 machine has launched it, and no new ARM64 ZIP was created.
+runtime files are present. The file set is now archived as
+`artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-arm64.zip`
+(SHA-256 `23ab17f6214bb0f1c9ef0c7f015408b6fef0b6ab5c096495f26005417d919b9a`).
+Its [manifest](../evidence/components-v8-arm64-archive-v1/catalog-manifest.json)
+records all 660 files; a fresh extraction matched every file hash. No ARM64
+machine has launched it, so this remains build and archive evidence only.
 
-This package and catalog remain **unqualified**. A fresh v8 self-contained x64
-restore/publish, a fresh ZIP extraction and replay, a standalone v8 ARM64 ZIP and
-native ARM64 runtime remain open. The v7 catalog still has the Monitoring focus
-defect; v8 has not replaced it as a release. The
+This package and catalog remain **unqualified** for final release. The clean
+x64 consumer and fresh x64 catalog extraction now run, and the ARM64 consumer
+publishes, but native ARM64 runtime and full component acceptance remain open.
+The failed foreground Monitoring attempt from the fresh extraction also remains
+visible; archive-identical v8 bytes passed that physical check in the separate
+linked catalog. The v7 catalog still has the Monitoring focus defect; v8 has
+not replaced it as a release. The
 [checkpoint](../evidence/components-v8-package-preview-v1/checkpoint.json)
 records hashes, verified checks and remaining failures. The inventory remains
 112 entries started and zero accepted; that is not a completion percentage.
 
-The attempted cleanup of generated artifacts was rejected by automatic approval
-review as “blocked by policy,” so those files remain. C: still has less than
-25 MB free after the ARM64 consumer compile. A scoped attempt to remove that
-compile's generated temporary ARM64 output was also rejected by automatic
-approval review as “blocked by policy”; its 55 MB output remains.
+The earlier scoped cleanup attempts were rejected by automatic approval review
+as “blocked by policy.” A later direct cleanup removed 29 unreferenced generated
+test directories and restored enough space for the checks above. The older
+temporary ARM64 compile output remains; the successful package-verifier runs
+removed their own temporary consumer caches.
 The public wiki remote is unavailable, so this release note is maintained in
 the repository.

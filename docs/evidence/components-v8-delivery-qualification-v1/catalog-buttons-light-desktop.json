@@ -1,0 +1,717 @@
+{
+  "window": 61539270,
+  "foregroundWindow": 61539270,
+  "virtualDesktop": {
+    "x": 0,
+    "y": 0,
+    "width": 3440,
+    "height": 1440
+  },
+  "sessionId": 1,
+  "desktop": {
+    "station": "WinSta0",
+    "thread": "Default",
+    "input": "Default",
+    "inputError": 0,
+    "activeConsoleSession": 1,
+    "connectionState": 0
+  },
+  "currentPoint": {
+    "x": 1678,
+    "y": 152,
+    "own": {
+      "handle": 61539270,
+      "windowClass": "WinUIDesktopWin32WindowClass",
+      "process": 20776,
+      "thread": 17712,
+      "executable": "Orchard.Catalog",
+      "processReadError": null,
+      "application": {
+        "id": null,
+        "status": 15703
+      },
+      "session": 1,
+      "topmost": true,
+      "visible": true,
+      "cloaked": 0
+    },
+    "hit": {
+      "handle": 53873912,
+      "windowClass": "Microsoft.UI.Content.DesktopChildSiteBridge",
+      "process": 20776,
+      "thread": 17712,
+      "executable": "Orchard.Catalog",
+      "processReadError": null,
+      "application": {
+        "id": null,
+        "status": 15703
+      },
+      "session": 1,
+      "topmost": false,
+      "visible": true,
+      "cloaked": 0
+    },
+    "root": {
+      "handle": 61539270,
+      "windowClass": "WinUIDesktopWin32WindowClass",
+      "process": 20776,
+      "thread": 17712,
+      "executable": "Orchard.Catalog",
+      "processReadError": null,
+      "application": {
+        "id": null,
+        "status": 15703
+      },
+      "session": 1,
+      "topmost": true,
+      "visible": true,
+      "cloaked": 0
+    },
+    "foreground": {
+      "handle": 61539270,
+      "windowClass": "WinUIDesktopWin32WindowClass",
+      "process": 20776,
+      "thread": 17712,
+      "executable": "Orchard.Catalog",
+      "processReadError": null,
+      "application": {
+        "id": null,
+        "status": 15703
+      },
+      "session": 1,
+      "topmost": true,
+      "visible": true,
+      "cloaked": 0
+    }
+  },
+  "pointerMoves": [
+    {
+      "target": "",
+      "bounds": {
+        "X": 1634,
+        "Y": 137.17999267578125,
+        "Width": 88.27197265625,
+        "Height": 29.99999237060547,
+        "Left": 1634,
+        "Top": 137.17999267578125,
+        "Right": 1722.27197265625,
+        "Bottom": 167.17999267578125,
+        "IsEmpty": false
+      },
+      "finalBounds": {
+        "X": 1634,
+        "Y": 137.17999267578125,
+        "Width": 88.27197265625,
+        "Height": 29.99999237060547,
+        "Left": 1634,
+        "Top": 137.17999267578125,
+        "Right": 1722.27197265625,
+        "Bottom": 167.17999267578125,
+        "IsEmpty": false
+      },
+      "localPoint": null,
+      "requested": {
+        "x": 1678,
+        "y": 152
+      },
+      "positioned": true,
+      "actual": {
+        "X": 1678,
+        "Y": 152
+      },
+      "hit": {
+        "x": 1678,
+        "y": 152,
+        "own": {
+          "handle": 61539270,
+          "windowClass": "WinUIDesktopWin32WindowClass",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": true,
+          "visible": true,
+          "cloaked": 0
+        },
+        "hit": {
+          "handle": 53873912,
+          "windowClass": "Microsoft.UI.Content.DesktopChildSiteBridge",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": false,
+          "visible": true,
+          "cloaked": 0
+        },
+        "root": {
+          "handle": 61539270,
+          "windowClass": "WinUIDesktopWin32WindowClass",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": true,
+          "visible": true,
+          "cloaked": 0
+        },
+        "foreground": {
+          "handle": 27661564,
+          "windowClass": "Open With",
+          "process": 21284,
+          "thread": 9904,
+          "executable": "OpenWith",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": true,
+          "visible": true,
+          "cloaked": 0
+        }
+      },
+      "stationary": false,
+      "delivered": true,
+      "deliveryMilliseconds": 16.7797,
+      "receipts": [
+        {
+          "milliseconds": 10.0433,
+          "IsGenerated": false,
+          "position": {
+            "X": 1678,
+            "Y": 129
+          },
+          "screenX": 1678,
+          "screenY": 152,
+          "exact": true
+        },
+        {
+          "milliseconds": 10.8715,
+          "IsGenerated": false,
+          "position": {
+            "X": 1678,
+            "Y": 129
+          },
+          "screenX": 1678,
+          "screenY": 152,
+          "exact": true
+        }
+      ]
+    },
+    {
+      "target": "",
+      "bounds": {
+        "X": 1634,
+        "Y": 137.17999267578125,
+        "Width": 88.27197265625,
+        "Height": 29.99999237060547,
+        "Left": 1634,
+        "Top": 137.17999267578125,
+        "Right": 1722.27197265625,
+        "Bottom": 167.17999267578125,
+        "IsEmpty": false
+      },
+      "finalBounds": {
+        "X": 1634,
+        "Y": 137.17999267578125,
+        "Width": 88.27197265625,
+        "Height": 29.99999237060547,
+        "Left": 1634,
+        "Top": 137.17999267578125,
+        "Right": 1722.27197265625,
+        "Bottom": 167.17999267578125,
+        "IsEmpty": false
+      },
+      "localPoint": null,
+      "requested": {
+        "x": 1678,
+        "y": 152
+      },
+      "positioned": true,
+      "actual": {
+        "X": 1678,
+        "Y": 152
+      },
+      "hit": {
+        "x": 1678,
+        "y": 152,
+        "own": {
+          "handle": 61539270,
+          "windowClass": "WinUIDesktopWin32WindowClass",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": true,
+          "visible": true,
+          "cloaked": 0
+        },
+        "hit": {
+          "handle": 53873912,
+          "windowClass": "Microsoft.UI.Content.DesktopChildSiteBridge",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": false,
+          "visible": true,
+          "cloaked": 0
+        },
+        "root": {
+          "handle": 61539270,
+          "windowClass": "WinUIDesktopWin32WindowClass",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": true,
+          "visible": true,
+          "cloaked": 0
+        },
+        "foreground": {
+          "handle": 61539270,
+          "windowClass": "WinUIDesktopWin32WindowClass",
+          "process": 20776,
+          "thread": 17712,
+          "executable": "Orchard.Catalog",
+          "processReadError": null,
+          "application": {
+            "id": null,
+            "status": 15703
+          },
+          "session": 1,
+          "topmost": true,
+          "visible": true,
+          "cloaked": 0
+        }
+      },
+      "stationary": true,
+      "delivered": false,
+      "deliveryMilliseconds": 1.4968,
+      "receipts": []
+    }
+  ],
+  "pointerPresentations": [
+    {
+      "target": "",
+      "milliseconds": 19.2348,
+      "frames": 3,
+      "stable": 2,
+      "passed": true,
+      "observations": [
+        {
+          "milliseconds": 5.8777,
+          "bounds": {
+            "X": 1634,
+            "Y": 137.17999267578125,
+            "Width": 88.27197265625,
+            "Height": 29.99999237060547,
+            "Left": 1634,
+            "Top": 137.17999267578125,
+            "Right": 1722.27197265625,
+            "Bottom": 167.17999267578125,
+            "IsEmpty": false
+          },
+          "ActualWidth": 88.27200317382812,
+          "ActualHeight": 30,
+          "stable": 0,
+          "viewports": [
+            {
+              "Name": "CatalogScroll",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1254.8199462890625,
+              "ViewportWidth": 3216,
+              "ExtentHeight": 1254.8199462890625,
+              "ExtentWidth": 443.4299621582031
+            },
+            {
+              "Name": "",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1369,
+              "ViewportWidth": 3440,
+              "ExtentHeight": 1369,
+              "ExtentWidth": 3440
+            }
+          ],
+          "requested": {
+            "x": 1678,
+            "y": 152
+          },
+          "client": {
+            "X": 0,
+            "Y": 23,
+            "Width": 3440,
+            "Height": 1369,
+            "Left": 0,
+            "Top": 23,
+            "Right": 3440,
+            "Bottom": 1392,
+            "IsEmpty": false
+          },
+          "owned": true
+        },
+        {
+          "milliseconds": 8.7699,
+          "bounds": {
+            "X": 1634,
+            "Y": 137.17999267578125,
+            "Width": 88.27197265625,
+            "Height": 29.99999237060547,
+            "Left": 1634,
+            "Top": 137.17999267578125,
+            "Right": 1722.27197265625,
+            "Bottom": 167.17999267578125,
+            "IsEmpty": false
+          },
+          "ActualWidth": 88.27200317382812,
+          "ActualHeight": 30,
+          "stable": 1,
+          "viewports": [
+            {
+              "Name": "CatalogScroll",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1254.8199462890625,
+              "ViewportWidth": 3216,
+              "ExtentHeight": 1254.8199462890625,
+              "ExtentWidth": 443.4299621582031
+            },
+            {
+              "Name": "",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1369,
+              "ViewportWidth": 3440,
+              "ExtentHeight": 1369,
+              "ExtentWidth": 3440
+            }
+          ],
+          "requested": {
+            "x": 1678,
+            "y": 152
+          },
+          "client": {
+            "X": 0,
+            "Y": 23,
+            "Width": 3440,
+            "Height": 1369,
+            "Left": 0,
+            "Top": 23,
+            "Right": 3440,
+            "Bottom": 1392,
+            "IsEmpty": false
+          },
+          "owned": true
+        },
+        {
+          "milliseconds": 18.0508,
+          "bounds": {
+            "X": 1634,
+            "Y": 137.17999267578125,
+            "Width": 88.27197265625,
+            "Height": 29.99999237060547,
+            "Left": 1634,
+            "Top": 137.17999267578125,
+            "Right": 1722.27197265625,
+            "Bottom": 167.17999267578125,
+            "IsEmpty": false
+          },
+          "ActualWidth": 88.27200317382812,
+          "ActualHeight": 30,
+          "stable": 2,
+          "viewports": [
+            {
+              "Name": "CatalogScroll",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1254.8199462890625,
+              "ViewportWidth": 3216,
+              "ExtentHeight": 1254.8199462890625,
+              "ExtentWidth": 443.4299621582031
+            },
+            {
+              "Name": "",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1369,
+              "ViewportWidth": 3440,
+              "ExtentHeight": 1369,
+              "ExtentWidth": 3440
+            }
+          ],
+          "requested": {
+            "x": 1678,
+            "y": 152
+          },
+          "client": {
+            "X": 0,
+            "Y": 23,
+            "Width": 3440,
+            "Height": 1369,
+            "Left": 0,
+            "Top": 23,
+            "Right": 3440,
+            "Bottom": 1392,
+            "IsEmpty": false
+          },
+          "owned": true
+        }
+      ],
+      "commits": []
+    },
+    {
+      "target": "",
+      "milliseconds": 10.214,
+      "frames": 3,
+      "stable": 2,
+      "passed": true,
+      "observations": [
+        {
+          "milliseconds": 0.8686,
+          "bounds": {
+            "X": 1634,
+            "Y": 137.17999267578125,
+            "Width": 88.27197265625,
+            "Height": 29.99999237060547,
+            "Left": 1634,
+            "Top": 137.17999267578125,
+            "Right": 1722.27197265625,
+            "Bottom": 167.17999267578125,
+            "IsEmpty": false
+          },
+          "ActualWidth": 88.27200317382812,
+          "ActualHeight": 30,
+          "stable": 0,
+          "viewports": [
+            {
+              "Name": "CatalogScroll",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1254.8199462890625,
+              "ViewportWidth": 3216,
+              "ExtentHeight": 1254.8199462890625,
+              "ExtentWidth": 443.4299621582031
+            },
+            {
+              "Name": "",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1369,
+              "ViewportWidth": 3440,
+              "ExtentHeight": 1369,
+              "ExtentWidth": 3440
+            }
+          ],
+          "requested": {
+            "x": 1678,
+            "y": 152
+          },
+          "client": {
+            "X": 0,
+            "Y": 23,
+            "Width": 3440,
+            "Height": 1369,
+            "Left": 0,
+            "Top": 23,
+            "Right": 3440,
+            "Bottom": 1392,
+            "IsEmpty": false
+          },
+          "owned": true
+        },
+        {
+          "milliseconds": 4.6614,
+          "bounds": {
+            "X": 1634,
+            "Y": 137.17999267578125,
+            "Width": 88.27197265625,
+            "Height": 29.99999237060547,
+            "Left": 1634,
+            "Top": 137.17999267578125,
+            "Right": 1722.27197265625,
+            "Bottom": 167.17999267578125,
+            "IsEmpty": false
+          },
+          "ActualWidth": 88.27200317382812,
+          "ActualHeight": 30,
+          "stable": 1,
+          "viewports": [
+            {
+              "Name": "CatalogScroll",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1254.8199462890625,
+              "ViewportWidth": 3216,
+              "ExtentHeight": 1254.8199462890625,
+              "ExtentWidth": 443.4299621582031
+            },
+            {
+              "Name": "",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1369,
+              "ViewportWidth": 3440,
+              "ExtentHeight": 1369,
+              "ExtentWidth": 3440
+            }
+          ],
+          "requested": {
+            "x": 1678,
+            "y": 152
+          },
+          "client": {
+            "X": 0,
+            "Y": 23,
+            "Width": 3440,
+            "Height": 1369,
+            "Left": 0,
+            "Top": 23,
+            "Right": 3440,
+            "Bottom": 1392,
+            "IsEmpty": false
+          },
+          "owned": true
+        },
+        {
+          "milliseconds": 9.7787,
+          "bounds": {
+            "X": 1634,
+            "Y": 137.17999267578125,
+            "Width": 88.27197265625,
+            "Height": 29.99999237060547,
+            "Left": 1634,
+            "Top": 137.17999267578125,
+            "Right": 1722.27197265625,
+            "Bottom": 167.17999267578125,
+            "IsEmpty": false
+          },
+          "ActualWidth": 88.27200317382812,
+          "ActualHeight": 30,
+          "stable": 2,
+          "viewports": [
+            {
+              "Name": "CatalogScroll",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1254.8199462890625,
+              "ViewportWidth": 3216,
+              "ExtentHeight": 1254.8199462890625,
+              "ExtentWidth": 443.4299621582031
+            },
+            {
+              "Name": "",
+              "VerticalOffset": 0,
+              "HorizontalOffset": 0,
+              "ScrollableHeight": 0,
+              "ScrollableWidth": 0,
+              "ViewportHeight": 1369,
+              "ViewportWidth": 3440,
+              "ExtentHeight": 1369,
+              "ExtentWidth": 3440
+            }
+          ],
+          "requested": {
+            "x": 1678,
+            "y": 152
+          },
+          "client": {
+            "X": 0,
+            "Y": 23,
+            "Width": 3440,
+            "Height": 1369,
+            "Left": 0,
+            "Top": 23,
+            "Right": 3440,
+            "Bottom": 1392,
+            "IsEmpty": false
+          },
+          "owned": true
+        }
+      ],
+      "commits": []
+    }
+  ],
+  "keyActions": [],
+  "pointerClicks": [
+    {
+      "target": "",
+      "expected": {
+        "X": 1678,
+        "Y": 152
+      },
+      "delivered": true,
+      "receipts": [
+        {
+          "milliseconds": 27.5709,
+          "IsGenerated": false,
+          "x": 1678,
+          "y": 152,
+          "exact": true
+        },
+        {
+          "milliseconds": 35.2077,
+          "IsGenerated": false,
+          "x": 1678,
+          "y": 152,
+          "exact": true
+        }
+      ]
+    }
+  ]
+}

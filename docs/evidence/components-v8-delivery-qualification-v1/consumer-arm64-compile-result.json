@@ -1,0 +1,12 @@
+{
+  "compilePassed": true,
+  "publishPassed": false,
+  "runtimeVerified": false,
+  "frameworkDependent": true,
+  "version": "0.1.0-components-v8-local",
+  "platform": "ARM64",
+  "packageSha256": "a37aba0cf848effda102e1479cfc2a8965295cb68996b95ed184ecb7fc121121",
+  "orchardAssemblySha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "apphostMachine": "Arm64",
+  "isolatedConsumer": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-805107de97cf46ce97fab75527001acb"
+}

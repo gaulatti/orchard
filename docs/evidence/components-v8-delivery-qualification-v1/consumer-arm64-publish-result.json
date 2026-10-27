@@ -1,0 +1,8 @@
+{
+  "buildPassed": true,
+  "runtimeVerified": false,
+  "version": "0.1.0-components-v8-local",
+  "platform": "ARM64",
+  "packageSha256": "a37aba0cf848effda102e1479cfc2a8965295cb68996b95ed184ecb7fc121121",
+  "isolatedConsumer": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-c82b42efbf034295946c84fcdf1c9302"
+}

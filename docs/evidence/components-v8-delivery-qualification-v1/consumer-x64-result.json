@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "version": "0.1.0-components-v8-local",
+  "packageSha256": "a37aba0cf848effda102e1479cfc2a8965295cb68996b95ed184ecb7fc121121",
+  "platform": "x64",
+  "isolatedConsumer": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-236ed2a659424c98ab93191cd98ffd88",
+  "runtime": {
+    "passed": true,
+    "message": "Package resources, fonts, light/dark themes, layout and native action verified.",
+    "assembly": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\components-v8-consumer-clean-x64-v1\\app\\Orchard.dll",
+    "architecture": "X64",
+    "osArchitecture": "X64",
+    "osDescription": "Microsoft Windows 10.0.26200",
+    "framework": ".NET 10.0.12"
+  }
+}
