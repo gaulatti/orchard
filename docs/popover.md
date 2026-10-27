@@ -176,3 +176,12 @@ consumer runtime; ARM64 consumer compilation and catalog archive validation
 pass without claiming native ARM64 execution. Hidden reference and modal-branch
 contracts still pass. Full visual, scaling and broader nested/modal input
 acceptance remain open.
+
+The v11 foreground runner's first nested PNG could precede the child's paint;
+the Dark image in that archive is not settled visual evidence. The current
+source fixture now waits for the child editor's presentation before capture.
+Its [Light and Dark source captures](evidence/popover-nested-capture-source-v1/checkpoint.json)
+both show the rendered child surface and original input, and the same physical
+pointer/focus/Escape checks pass. This corrects the catalog's evidence timing;
+the v11 NuGet and catalog ZIPs predate the capture change. It does not add
+complete raster or native ARM64 acceptance.

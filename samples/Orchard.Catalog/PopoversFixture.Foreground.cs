@@ -71,6 +71,7 @@ public sealed partial class PopoversFixture
         await AwaitAsync(() => NestedChild.IsOpen && childInput.IsLoaded && Status.Text == "Child requested open" &&
             ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), childInput),
             "Physical pointer did not open and focus the nested child Popover.");
+        await MainWindow.AwaitPresentationAsync(childInput);
         await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"popover-foreground-nested-{scheme}.png"));
         input.Key(0x1B);
         await AwaitAsync(() => !NestedChild.IsOpen && NestedParent.IsOpen && Status.Text == "Child requested closed" &&

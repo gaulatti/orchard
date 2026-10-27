@@ -1,0 +1,29 @@
+{
+  "scope": "Popover nested foreground capture timing",
+  "baseCommit": "e4720490ef6552c2f62f143dca2f9c24788f6e7d",
+  "observedDefect": "The v11 foreground runner asserted child input state and focus, then captured before the nested popup painted; its Dark PNG omitted the child surface.",
+  "change": "Wait for the original child editor's two-frame composition presentation before taking the nested screenshot.",
+  "sourceBuild": {
+    "platform": "x64",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "catalogDllSha256": "e9763c66c48a9c80dd091c969d44a0702660e2c5ecdae4fbdcb49035e2c97bb6",
+    "orchardDllSha256": "eacc5877e1beb3686f577979040e2402b7d6cb760ec91fc424dcfaf1c6c3ed5f"
+  },
+  "foreground": {
+    "result": "artifacts/current/popover-nested-capture-source-v2/result.json",
+    "resultSha256": "3f4f6233ddc926fbbbe14199634740987fb7f129d67af0822fd0f26299e709654",
+    "lightAndDarkPointerFocusEscapePassed": true,
+    "lightImage": "docs/evidence/popover-nested-capture-source-v1/light.png",
+    "lightImageSha256": "e951d08b539e3bf41d0ed475dab5bcbfd11c6e9dcd63953103d3fddbef9fa1e7",
+    "darkImage": "docs/evidence/popover-nested-capture-source-v1/dark.png",
+    "darkImageSha256": "9a93bb6218b47e6185584233f64a0841778b374e468b0dd5444bde3bd31aa14c",
+    "bothImagesShowSettledChildSurface": true,
+    "bothImagesVisuallyInspected": true
+  },
+  "packaging": "The v11 NuGet package and catalog ZIPs predate this catalog-only capture wait. No new package or ARM64 runtime result is claimed.",
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}
