@@ -49,7 +49,15 @@ public sealed partial class MainWindow : Window
 
     private async void OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (!Environment.GetCommandLineArgs().Contains("--verify-output")) return;
+        var arguments = Environment.GetCommandLineArgs();
+        var cardOutputIndex = Array.IndexOf(arguments, "--verify-card-padding-output");
+        if (cardOutputIndex >= 0)
+        {
+            if (cardOutputIndex + 1 >= arguments.Length) { Environment.Exit(2); return; }
+            await VerifyCardPaddingAsync(arguments[cardOutputIndex + 1]);
+            return;
+        }
+        if (!arguments.Contains("--verify-output")) return;
         try
         {
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "EncodeSans-Bold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf", "OFL-EncodeSans.txt", "OFL-LibreFranklin.txt" })
@@ -203,6 +211,11 @@ public sealed partial class MainWindow : Window
                 Require(Action.ActualWidth > 0 && Heading.ActualHeight > 0, "Consumer controls did not lay out.");
                 Require(PackageCard.Padding.Left == 16 && PackageCard.CornerRadius.TopLeft == 20 && PackageCard.ActualWidth > 0,
                     "Packaged card did not load its geometry and content template.");
+                Require(PackagePaddingStyleCard.ActualWidth > 0 && PackagePaddingStyleCard.Padding.Left == 7 && PackagePaddingStyleCard.Padding.Top == 7 &&
+                        PackagePaddingStyleCard.Padding.Right == 7 && PackagePaddingStyleCard.Padding.Bottom == 7 &&
+                        PackageDefaultStyleCard.ActualWidth > 0 && PackageDefaultStyleCard.Padding.Left == 24 && PackageDefaultStyleCard.Padding.Top == 24 &&
+                        PackageDefaultStyleCard.Padding.Right == 24 && PackageDefaultStyleCard.Padding.Bottom == 24,
+                    "Packaged Card did not preserve consumer style padding and the default padding.");
                 Require(PackageSkeleton.ActualHeight == 16 && PackageSkeleton.ActualWidth == 160 && PackageSkeletonCard.ActualHeight == 88 &&
                     PackageSkeletonTable.ActualHeight == 32 && !FrameworkElementAutomationPeer.CreatePeerForElement(PackageSkeleton).IsControlElement(),
                     "Packaged Skeleton controls lost their independent templates, geometry or decorative semantics.");
@@ -327,6 +340,30 @@ public sealed partial class MainWindow : Window
     private static void Require(bool condition, string message)
     {
         if (!condition) throw new InvalidOperationException(message);
+    }
+
+    private async Task VerifyCardPaddingAsync(string output)
+    {
+        try
+        {
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                Root.RequestedTheme = theme;
+                await AwaitAsync(() => Root.ActualTheme == theme && PackagePaddingStyleCard.ActualWidth > 0 &&
+                    PackageDefaultStyleCard.ActualWidth > 0, "Packaged Card did not lay out in the requested theme.");
+                Require(PackagePaddingStyleCard.Padding == new Thickness(7) &&
+                    PackageDefaultStyleCard.Padding == new Thickness(24) && PackageCard.Padding == new Thickness(16),
+                    "Packaged Card lost style padding or a named padding size.");
+            }
+            await File.WriteAllTextAsync(output, System.Text.Json.JsonSerializer.Serialize(new
+                { passed = true, component = "card-padding", architecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString(), themes = 2 }));
+            Environment.Exit(0);
+        }
+        catch (Exception error)
+        {
+            await File.WriteAllTextAsync(output, System.Text.Json.JsonSerializer.Serialize(new { passed = false, component = "card-padding", message = error.ToString() }));
+            Environment.Exit(1);
+        }
     }
 
     private async Task VerifyMutableBreadcrumbAsync(HyperlinkButton link)

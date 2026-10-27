@@ -16,6 +16,9 @@
             <Style x:Key="ConsumerCardStyle" TargetType="orchard:BleeckerCard">
                 <Setter Property="CornerRadius" Value="20,8,4,16" />
             </Style>
+            <Style x:Key="ConsumerPaddingCardStyle" TargetType="orchard:BleeckerCard">
+                <Setter Property="Padding" Value="7" />
+            </Style>
             <!-- Consumer-owned Lucide 0.563.0 Save geometry; see the package's Lucide notice. -->
             <Style x:Key="SaveIcon" TargetType="ContentControl">
                 <Setter Property="IsTabStop" Value="False" />
@@ -200,6 +203,12 @@
                 <orchard:BleeckerProgress x:Name="PackageProgress" Value="65" ShowLabel="True" AutomationProperties.Name="Package progress" />
                 <orchard:BleeckerSwitch x:Name="PackageSwitch" Label="Package notifications" />
                 <orchard:BleeckerCheckbox x:Name="PackageCheckbox" Content="Package notifications" Description="Consumer-owned checkbox state" />
+                <orchard:BleeckerCard x:Name="PackagePaddingStyleCard" Style="{StaticResource ConsumerPaddingCardStyle}">
+                    <TextBlock Text="Consumer style padding" />
+                </orchard:BleeckerCard>
+                <orchard:BleeckerCard x:Name="PackageDefaultStyleCard" Style="{StaticResource ConsumerCardStyle}">
+                    <TextBlock Text="Consumer default padding" />
+                </orchard:BleeckerCard>
             </StackPanel>
             </orchard:BleeckerCard>
         </NavigationView>

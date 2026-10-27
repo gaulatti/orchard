@@ -1,0 +1,27 @@
+{
+  "scope": "BleeckerCard padding precedence through a local NuGet package and separate x64 consumer source copy",
+  "sourceCommit": "e7b12bee13c2940cf968d2cf0321c7514e9c29a4",
+  "packageVersion": "0.1.0-preview.20261027.5",
+  "packagePublished": false,
+  "packageSha256": "367a9864c63927af56a6f0fc5590d7cc56649b1eaa37066b3f6950d266c09932",
+  "packageLibrarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "consumerLibrarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "consumer": {
+    "separateSourceCopy": true,
+    "packageReferenceOnly": true,
+    "sharedDependencyCache": true,
+    "x64ReleaseBuildWarnings": 0,
+    "x64ReleaseBuildErrors": 0,
+    "focusedRuntimeResult": "result.json",
+    "focusedRuntimeResultSha256": "fb60c28b6dc6b1289118b0a377f917e338ba09beba96419713fa6605587c5d87",
+    "focusedRuntimePassed": true,
+    "themesVerified": 2
+  },
+  "fullConsumerRuntimePassed": true,
+  "fullConsumerRuntimeResult": "full-consumer-result.json",
+  "fullConsumerRuntimeResultSha256": "c70a589a3336a02172adb74f79c8e3709162f6e4721bddc0fbfa843b03df455f",
+  "fullConsumerRuntimeNote": "Two earlier attempts stopped before Card while a foreground Open With dialog held focus; after closing that dialog, the unmodified full x64 input suite passed.",
+  "nativeArm64RuntimeVerified": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
