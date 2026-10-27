@@ -407,12 +407,13 @@
         "tests/PackageConsumer/ButtonDefaultStyleProbe.cs",
         "scripts/verify-button-default-style-probe.ps1",
         "scripts/verify-button-default-style-probe.mjs",
+        "scripts/verify-button-package-pointer.ps1",
         "tests/Reference/DataTableGeometryCounterexamples.json"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete the remaining foreground keyboard/pointer wrapper matrix; exact v7 extracted x64 catalog passes physical consumer-command, loading rejection/restoration, focused Space/Enter activation, and keyboard self-loading Start/Finish in Light/Dark",
-        "Verify remaining variants and the independent consumer's physical pointer route, plus display/text scaling",
+        "Complete the remaining foreground keyboard/pointer wrapper matrix; exact v7 extracted x64 catalog passes physical consumer-command, loading rejection/restoration, focused Space/Enter activation, and keyboard self-loading Start/Finish in Light/Dark; published v5 package consumer physical pointer click reaches its caller handler (docs/evidence/button-package-pointer-v1/checkpoint.json)",
+        "Verify remaining variants and display/text scaling",
         "Verify reduced motion and remaining ARM64 state acceptance"
       ],
       "buttonTrackingValidation": {

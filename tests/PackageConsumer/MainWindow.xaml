@@ -38,6 +38,8 @@
             <orchard:BleeckerCard x:Name="PackageCard" Style="{StaticResource ConsumerCardStyle}" Margin="32" MaxWidth="640" PaddingSize="Small" Variant="Elevated">
             <StackPanel Spacing="16">
                 <orchard:BleeckerThemeToggle x:Name="PackageThemeToggle"/>
+                <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
+                <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
                 <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
                 <orchard:BleeckerTabs x:Name="PackageTabs" Width="480" Stretch="True" ActiveTab="overview" AutomationProperties.Name="Package tabs" />
@@ -185,7 +187,6 @@
                 <orchard:BleeckerStatCard x:Name="PackageStatCard" Title="Independent statistic" Value="42" Description="Consumer-owned summary" Width="320" HorizontalAlignment="Left">
                     <orchard:BleeckerStatCard.Trend><orchard:BleeckerStatTrend Value="+2%" Direction="Neutral" /></orchard:BleeckerStatCard.Trend>
                 </orchard:BleeckerStatCard>
-                <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
                 <orchard:BleeckerSearchInput x:Name="PackageSearch" Text="Independent search" PlaceholderText="Search catalogue" ClearRequested="ClearPackageSearch" AutomationProperties.Name="Independent search" />
                 <orchard:BleeckerTextarea x:Name="PackageTextarea" Text="Independent notes&#10;Second line" PlaceholderText="Write notes" AutomationProperties.Name="Independent notes" />
                 <orchard:BleeckerIconButton x:Name="PackageIcon" Click="OnSave" AutomationProperties.Name="Save with icon">
@@ -196,7 +197,6 @@
                     <orchard:BleeckerToggleGroupItem Value="list" Content="List" />
                     <orchard:BleeckerToggleGroupItem x:Name="PackageGridItem" Value="grid" Content="Grid" />
                 </orchard:BleeckerToggleGroup>
-                <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerMetric x:Name="PackageMetric" Value="1234567" Format="Compact" Language="en-US" Suffix=" reviews" />
                 <orchard:BleeckerKbd x:Name="PackageKeyboard" Content="Esc" />
                 <orchard:BleeckerEyebrow x:Name="PackageEyebrow" Content="Straße" Rule="True" />

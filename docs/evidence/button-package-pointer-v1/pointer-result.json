@@ -1,0 +1,18 @@
+{
+  "format": "orchard-package-button-pointer-v1",
+  "passed": true,
+  "packageConsumerExeSha256": "2ea540bbadc31bbdd292ce481aedda3a6f54eebae24b6158917f8cd9c91bb907",
+  "orchardDllSha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "physicalPointerInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "initialResult": "Ready",
+  "actionClick": {
+    "name": "Package component",
+    "x": 567,
+    "y": 235
+  },
+  "finalResult": "Saved: Harbor update",
+  "processExited": true
+}
