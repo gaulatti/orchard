@@ -76,11 +76,19 @@ actual earlier stale-height package and incomplete native receipt are retained.
 Both architecture catalogs and isolated consumers compile. Package payload,
 138 loose XAML files, native PRI, fonts and README match the tested inputs.
 
-The component remains unaccepted. Full physical input/focus, raster, motion,
+The component remains unaccepted. Remaining physical input/focus, raster, motion,
 scaling/performance, broader customization and content reflow/integration cases,
 and native ARM64 runtime are separate remaining gates. The current style cases
 verify maximum width and radius overrides. Narrator and OS contrast campaigns
 remain excluded by the library scope.
+
+The [extracted-v7 x64 foreground probe](evidence/modal-foreground-v1/checkpoint.json)
+passes in Light and Dark. Physical clicks open the Modal and nested AlertDialog;
+the first Escape closes only the nested surface, the second closes the parent
+through one caller request, and focus returns to the opener. The Modal, shared
+host and catalog specimen are unchanged since that v7 archive. This is focused
+input and ownership evidence; the remaining physical matrix, fresh v8 archive,
+visual, scaling, motion and ARM64 runtime checks are still open.
 
 `ModalsFixture` is registered directly after AlertDialogs and preserves both
 fictional-data Monitoring and Editorial demos. It offers original editable
@@ -96,5 +104,5 @@ restored x64 package, including 90 exact comparisons with the ten source
 histories. The previous package fails six shrink scenarios with the corrected
 probe. The real catalog fixture separately passes eight native button invokes
 across both themes and records four expanded/shrunk PNGs. These are hidden
-software-invocation checks; physical input, focus and full raster acceptance
-remain open.
+software-invocation checks; the separate foreground probe above covers one
+nested physical input/focus path. Full raster acceptance remains open.

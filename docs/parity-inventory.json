@@ -6093,11 +6093,12 @@
         "scripts/verify-modal-content.mjs",
         "scripts/verify-modal-content-source.mjs",
         "scripts/test-modal-content-audit.mjs",
-        "samples/Orchard.Catalog/ModalCatalogProbe.cs"
+        "samples/Orchard.Catalog/ModalCatalogProbe.cs",
+        "scripts/verify-modal-desktop.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete physical keyboard/pointer/focus and full raster/motion/scaling/performance acceptance",
+        "Extracted v7 x64 nested pointer/Escape/focus restoration passes Light/Dark; complete the remaining physical keyboard/pointer/focus and full raster/motion/scaling/performance acceptance",
         "Complete broader customization and advanced nested content/portal acceptance",
         "Verify native ARM64 runtime and final package/release acceptance"
       ]

@@ -1,0 +1,28 @@
+{
+  "scope": "Modal and nested AlertDialog extracted-v7 x64 physical input in Light and Dark",
+  "probe": "scripts/verify-modal-desktop.ps1",
+  "probeSha256": "0e54d72ff35d1f367aa5d8803d3a8c149312ad1f93d1613e9e3992b96665c194",
+  "catalog": "artifacts/current/components-v7-catalog-x64",
+  "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+  "orchardDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "passedRuns": [
+    { "theme": "Light", "report": "docs/evidence/modal-foreground-v1/light.json", "sha256": "36acde27de308c81b02a68c33c91e2f71d15d358cb0a0e62fad6abfb58dba8ca" },
+    { "theme": "Dark", "report": "docs/evidence/modal-foreground-v1/dark.json", "sha256": "3c699da023e85603370ac769656fdb068523039a43cbd5871c5505ce60a7de42" }
+  ],
+  "verifiedBehavior": [
+    "Physical pointer clicks open the Modal and its nested AlertDialog",
+    "The first physical Escape closes only the nested AlertDialog and leaves the parent visible",
+    "The second physical Escape requests parent close exactly once through the catalog caller",
+    "Closing the parent restores keyboard focus to its opener",
+    "Both catalog processes exit and OS settings remain unchanged"
+  ],
+  "modalAndHostAndFixtureUnchangedSinceV7": true,
+  "freshV8ArchiveModalVerified": false,
+  "fullPhysicalMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}
