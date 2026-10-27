@@ -1,8 +1,10 @@
 # Local artifact storage
 
-The current published NuGet-only crash fix is
-[preview v7](releases/2026-10-27-preview-v7.md). Its matching catalog has not
-been qualified. The older unpublished local NuGet and catalog checkpoint is
+The current published crash fix and matching x64 runnable catalog are
+[preview v7](releases/2026-10-27-preview-v7.md). The catalog's released NuGet
+DLL hash, archive bytes, extracted resources, and fictional demos are recorded
+in its [delivery checkpoint](evidence/catalog-v7-x64/checkpoint.json). The
+older unpublished local NuGet and catalog checkpoint is
 [components v7](releases/2026-10-27-components-v7-local.md); its distinct
 version, hashes, runtime checks and failed ARM64 consumer publish are recorded
 there.

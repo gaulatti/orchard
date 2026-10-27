@@ -11,11 +11,13 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [v7 NuGet-only preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7)
+Download the [v7 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7)
 for the latest tested consumer crash fixes. Its
 [checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
-records the package hash, input and tooltip checks, and clean shutdown. A
-matching v7 catalog ZIP has not been qualified or published.
+records the package hash, input and tooltip checks, and clean shutdown. The
+[matching x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261027.7/Orchard.Catalog.0.1.0-preview.20261027.7.win-x64.zip)
+contains the exact NuGet library DLL; its extracted Monitoring and Editorial
+demo checks are recorded in the [catalog checkpoint](docs/evidence/catalog-v7-x64/checkpoint.json).
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
 has x64/ARM64 catalog ZIPs with the fictional Monitoring and Editorial demos.
