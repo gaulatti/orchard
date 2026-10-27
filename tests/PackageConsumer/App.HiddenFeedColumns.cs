@@ -57,6 +57,16 @@ public partial class App
                 frames.Add(new{id=row.GetProperty("id").GetString(),scheme=row.GetProperty("scheme").GetString(),measurement=Snapshot(column,spec)});root.Children.Remove(column);root.UpdateLayout();Guard();
             }
             Assert(frames.Count==154,"Incomplete hidden feed matrix.");
+            root.RequestedTheme=ElementTheme.Light;root.Children.Clear();
+            var nestedItem=new BleeckerFeedItem{Author="Fictional author",Content="Fictional local story",SourceUrl="https://news.example/story"};
+            var contrastColumn=new BleeckerFeedColumn{Title="Local coverage",Count=3,Height=320,Content=nestedItem};root.Children.Add(contrastColumn);await Layout(contrastColumn);
+            Check("Light/dark-feed-surface-contrast",()=>
+            {
+                var title=(SolidColorBrush)HiddenDesc<TextBlock>(contrastColumn).Single(text=>text.Name=="FeedColumnTitleText").Foreground;
+                var count=(SolidColorBrush)HiddenDesc<TextBlock>(contrastColumn).Single(text=>text.Name=="FeedColumnCountTextText").Foreground;
+                var author=(SolidColorBrush)HiddenDesc<TextBlock>(nestedItem).Single(text=>text.Name=="FeedItemAuthorText").Foreground;
+                Assert(root.ActualTheme==ElementTheme.Light&&contrastColumn.ActualTheme==ElementTheme.Dark&&nestedItem.ActualTheme==ElementTheme.Dark&&title.Color.R==0x5B&&title.Color.G==0xA3&&title.Color.B==0xF5&&count.Color.R==0xF0&&count.Color.G==0xF4&&count.Color.B==0xF8&&author.Color.R==0xF0&&author.Color.G==0xF4&&author.Color.B==0xF8,"Light host left dark feed surface with low-contrast Light text.");
+            });root.Children.Clear();Guard();
             foreach(var scheme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {
                 root.RequestedTheme=scheme;root.Children.Clear();var prefix=scheme+"/";var titleProducer=new TextBlock{Tag="Bound title"};var countProducer=new TextBlock{Tag=12d};var accent=Brush(64,127,163);var accentProducer=new TextBlock{Tag=accent};var filter=new TextBox{Text="Consumer filter",Height=32};var input=new TextBox{Text="Consumer body"};var body=new StackPanel{Height=600};body.Children.Add(input);var filterUnloads=0;var bodyUnloads=0;filter.Unloaded+=(_,_)=>filterUnloads++;body.Unloaded+=(_,_)=>bodyUnloads++;

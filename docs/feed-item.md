@@ -62,7 +62,14 @@ and both actual timestamp tooltip bodies. Hidden native diagnostics use an
 internal fixed clock; they do not change Windows time or establish visible
 rendering/input. The component remains an in-progress preview.
 
-The current x64 independent package run matches all 100 source rectangles and
+Foreground x64 catalog input confirms pointer source requests use the original
+URL, including an empty invalid URL, and keyboard Enter invokes the focused
+source link. When a Feed Item is composed in a Feed Column, the column's dark
+surface requests dark theme tokens even in a Light host. This corrects the
+previous dark-on-dark text while preserving standalone Feed Item theming.
+The visible before/after frames are in `docs/evidence/feed-light-contrast-v1/`.
+
+The previous standalone x64 independent package run matches all 100 source rectangles and
 checked paint properties with zero geometry error. Thirty ownership/lifecycle
 checks cover original bindings and category collections, retained parts, command
 rejection, four original-URL requests, Avatar's image error latch, caller names,
@@ -72,3 +79,6 @@ corrupted receipts are rejected. All 243 portable tests and eight windowless
 native font tests pass. The RTL timestamp regression preserves separately
 rounded visual fragments; source physical-left link alignment and the physical
 `margin-left: auto` relevance placement are retained under RTL.
+The fresh `0.1.0-feed-contrast-v2-local` x64 package additionally verifies a
+Feed Item inherits readable dark text tokens inside a Feed Column in a Light
+host; it does not replace the standalone Feed Item package matrix.

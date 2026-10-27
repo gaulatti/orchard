@@ -5483,7 +5483,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Foreground pointer/keyboard, source-link focus, actual tooltip and hover/motion presentation",
+        "Actual tooltip and hover/motion presentation; source-link pointer and keyboard requests were observed in the x64 catalog",
         "Complete source-derived visual review, actual scaling, native ARM64 and broader caller overrides under docs/acceptance-contract.md; retain exact native raster diagnostics separately",
         "Full ECMAScript legacy/extended date parsing and other locale/calendar cases",
         "Complete catalog/package runtime and final library acceptance"
@@ -8249,7 +8249,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Foreground pointer/keyboard, real focus traversal, visible scrolling and full caller/lifecycle interactions",
+        "Further caller/lifecycle interaction coverage; x64 foreground pointer/keyboard, focus traversal, visible scrolling and retained caller controls were observed",
         "Complete source-derived visual review of rounded clipping/shadows/gradient, actual scaling and native ARM64 runtime under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
         "Broader overrides/template selectors and complete catalog/package/runtime integration"
       ]

@@ -3,6 +3,7 @@
  <SolidColorBrush x:Key="FeedColumnCountBorder" Color="White" Opacity="0.08"/>
  <SolidColorBrush x:Key="FeedColumnCountBackground" Color="Black" Opacity="0.15"/>
  <Style TargetType="local:BleeckerFeedColumn">
+  <Setter Property="RequestedTheme" Value="Dark"/>
   <Setter Property="Width" Value="372"/><Setter Property="MinWidth" Value="372"/>
   <Setter Property="Accent" Value="{ThemeResource BleeckerSeaBrush}"/>
   <Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="12"/><Setter Property="Padding" Value="12"/>

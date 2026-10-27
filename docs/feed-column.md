@@ -5,6 +5,10 @@ numeric count and filter slot, and an independent native scrolling body. The
 default width and minimum width are 372 DIP. Its height stretches within a
 bounded parent. The original three-stop 45-degree Oklab gradient, accent dot,
 border, count pill and shadows belong to the component's presentation.
+The gradient remains dark in either host theme. The default control requests
+Orchard's dark theme for its header and content subtree so text, accents and
+composed controls stay readable in a Light host. Callers can set
+`RequestedTheme` explicitly when replacing the default surface recipe.
 
 ```xml
 <orchard:BleeckerFeedColumn Title="Local coverage" Count="{Binding Count}"
@@ -47,19 +51,25 @@ independent scrolling, live bindings, retained slot identity, templates,
 metadata precedence, theme/accent updates, unload/remount, caller overrides,
 visible input and raster behavior, scaling and platform/package integration.
 The reference contains 154 original browser states and 58 complete PNGs.
-Foreground verification remains pending while the desktop is in use; hidden
-geometry and property checks do not prove visible rendering or input.
+Foreground x64 catalog checks now cover physical pointer and keyboard input,
+inner scrolling, header updates and retained caller-owned filter/body state.
+Light and Dark host appearances were inspected. A Light-host contrast defect
+was corrected by scoping dark tokens to the dark surface; the before/after
+frames are in `docs/evidence/feed-light-contrast-v1/`. These source-catalog
+checks do not establish packaged or ARM64 runtime acceptance.
 
-The current packaged x64 hidden run matches every rectangle and checked paint
-property across all 154 states, with zero geometry error. Its 28 ownership and
-lifecycle checks cover live header/accent/name bindings, edited original
-controls, retained scroll, original template models and selectors, template
-removal/reapply, and unload/remount. The run stayed invisible through 968
-guards. Full raster, visible input, actual scaling, native ARM64 and final
-integration acceptance remain open.
+The fresh `0.1.0-feed-contrast-v2-local` x64 package ran all 154 hidden source
+states and passed 29 checks with no failures, including a Light host with a
+dark Feed Column containing a Feed Item. Its 975 isolation guards stayed
+invisible. The adjusted reference audit passed with zero geometry error and
+no paint errors; it compares the Light-host default accent with the source's
+dark accent token because the column has a dark surface. Thirty-five corrupted
+receipts were rejected. Ownership and lifecycle checks cover live
+header/accent/name bindings, edited original controls, retained scroll,
+original template models and selectors, template
+removal/reapply, and unload/remount. Full raster, actual scaling, native ARM64
+and final integration acceptance remain open.
 
-Both catalog architectures and independently restored package consumers compile
-without warnings/errors. The x64 package also replays the existing hidden
-Slider and Theme Toggle checks. Thirty-five corrupted FeedColumn receipts are
-rejected, including altered title text, geometry, scroll, paint, metadata,
-ownership results, architecture, source/assembly hashes and isolation claims.
+Previous x64 and ARM64 catalog and package-consumer builds passed. The current
+contrast package was rebuilt and checked on x64; native ARM64 runtime remains
+unverified on this host.

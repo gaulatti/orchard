@@ -341,6 +341,9 @@ native content/filter templates retain consumer ownership. `Viewport` exposes
 the current ScrollViewer after template application. Width and MinWidth default
 to 372 DIP; set both for another recipe width. Body Padding defaults to 12 DIP.
 Header updates retain controls and scroll state. Full acceptance remains open.
+The default Feed Column keeps its dark gradient and requests dark theme tokens
+for its content subtree, including composed Feed Items, in a Light host. Set
+`RequestedTheme` explicitly when replacing that default surface recipe.
 
 `BleeckerFeedItem` composes retained avatar/timestamp metadata, relevance,
 wrapped content and language/category tags. Bind original `Categories` and
