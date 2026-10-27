@@ -1,0 +1,42 @@
+{
+  "scope": "Catalog Select popup lookup and native outside-pointer replay under BleeckerModalHost",
+  "sourceBaseCommit": "a8f087628a870d6748e3abf837d282d62b0a7633",
+  "builds": {
+    "x64CatalogWarnings": 0,
+    "x64CatalogErrors": 0,
+    "arm64CatalogWarnings": 0,
+    "arm64CatalogErrors": 0,
+    "nativeArm64RuntimeVerified": false
+  },
+  "runtime": {
+    "x64FilterLightPassed": true,
+    "x64FilterLightStates": 138,
+    "x64FilterDarkPassed": true,
+    "x64FilterDarkStates": 138,
+    "x64SelectShadowLightPassed": true,
+    "x64SelectShadowLightStates": 3,
+    "x64SelectShadowDarkPassed": true,
+    "x64SelectShadowDarkStates": 3,
+    "nativeInputSourceAndOutsidePointChecked": true,
+    "openSelectCaptureVisuallyInspected": true,
+    "osSettingsChanged": false
+  },
+  "evidence": {
+    "filterResult": {"path": "filter-result.json", "sha256": "af6632388321bf1ca38848deb6034dc0ee933278e1cce5e2408befd47984755c"},
+    "filterLight": {"path": "data-table-filters-Light.json", "sha256": "1672acb900ac1f25b675a810db2cee5b6f27cad05fd838cdbc5572989cdef5c5"},
+    "filterDark": {"path": "data-table-filters-Dark.json", "sha256": "f58193353957ebbdbe0591e54324cae6ccfae0fbf02e5eeda75fd500db8d229e"},
+    "shadowResult": {"path": "shadow-result.json", "sha256": "15ee6b78068833e5fd8fbf93152df16fb07d57e24f574a45ee3936afae4f1dec"},
+    "shadowLight": {"path": "select-shadow-pointer-Light.json", "sha256": "83e501c1a4fc73d0c44f9418c56ae1ab603a35f1ead1e013ae1225f2195c4be0"},
+    "shadowDark": {"path": "select-shadow-pointer-Dark.json", "sha256": "3be3b939cfbe2a8424cfab7cd5f98fa6094a19e398d9aa3285b4a7e8bb0641bf"},
+    "openLight": {"path": "select-shadow-pointer-open-Light.png", "sha256": "1133c8df336560145c5319143248ed35f598362ee5005a9a384fb47ad1833a9c"},
+    "openDark": {"path": "select-shadow-pointer-open-Dark.png", "sha256": "c4455fdb11d9c6c2d4604b5ead1e6d4b706cc8248d03c7bdbdfc7edc0eceffde"}
+  },
+  "priorFailure": "The current catalog fixture previously required a WinUI Popup object, but the selector uses a BleeckerModalHost border under the catalog root.",
+  "limits": [
+    "This repairs catalog verification, not the public Select or Data Table filter API or appearance.",
+    "Native ARM64 execution, fresh package consumption, and complete component acceptance remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "nativeComponentAccepted": false
+}

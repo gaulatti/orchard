@@ -1886,8 +1886,16 @@
         "Review source-derived visuals and native event/focus behavior under docs/acceptance-contract.md; four browser body/native next-control focus differences remain unresolved and explicitly recorded",
         "Complete collection/content, state/motion/override/RTL matrices; 140 added live-update states verify keyed focus, identity, scrolling and mutation boundaries",
         "Display/text scaling, performance and native ARM64 runtime",
-        "Complete platform acceptance remains open; clean matching-source x64 catalog/package/consumer checks pass, ARM64 builds only"
-      ]
+        "Complete platform acceptance remains open; clean matching-source x64 catalog/package/consumer checks pass for their recorded older binaries, current hosted catalog replay passes, ARM64 builds only"
+      ],
+      "currentHostedSelectFixture": {
+        "checkpoint": "docs/evidence/hosted-select-fixtures-v1/checkpoint.json",
+        "x64FilterStatesPerThemePassed": 138,
+        "x64ShadowStatesPerThemePassed": 3,
+        "arm64BuildPassed": true,
+        "nativeArm64RuntimeVerified": false,
+        "componentAccepted": false
+      }
     },
     {
       "id": "data-table-column-toggle",

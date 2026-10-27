@@ -727,10 +727,10 @@ runtime passed; x64 and ARM64 catalog builds each passed with zero warnings and
 errors. The themed captures were visually inspected. See the
 [option-font checkpoint](evidence/data-table-pagination-options-v1/checkpoint.json).
 
-The broader Data Table filter and select-shadow catalog runs currently fail in
-their fixtures while locating a legacy WinUI `Popup`; the catalog now presents
-that surface through `BleeckerModalHost`. Their frozen source replay remains
-unverified on the current build. A local `0.1.0-preview.20261027.3` package was
+The Data Table filter and select-shadow fixture lookup has since been repaired
+for the catalog's modal host. Both current x64 source replays pass in Light and
+Dark; see the [hosted-select checkpoint](evidence/hosted-select-fixtures-v1/checkpoint.json).
+A local `0.1.0-preview.20261027.3` package was
 made before the option-font change; its isolated consumer restore failed for
 insufficient disk space, and automatic approval review rejected removal of the
 stale local file. It is not a qualified or published package. Native ARM64

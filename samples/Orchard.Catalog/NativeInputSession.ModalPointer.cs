@@ -3,6 +3,7 @@ using System.Text.Json;
 using Microsoft.UI.Content;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
@@ -11,21 +12,35 @@ namespace Orchard.Catalog;
 
 internal sealed partial class NativeInputSession
 {
-    // The same native island receives light-dismiss input before routed XAML.
+    // The same native island receives outside input before routed XAML.
     // Observe it without changing Handled or manufacturing a routed event.
-    internal async Task<object> DismissModalPointerSourceOutsideAsync(FrameworkElement anchor, Popup modal, FrameworkElement outside)
+    internal async Task<object> DismissModalPointerSourceOutsideAsync(FrameworkElement anchor, UIElement modal, FrameworkElement outside)
     {
-        Require(modal.IsOpen && modal.IsLightDismissEnabled && ReferenceEquals(modal.XamlRoot, root), "Outside input requires its original open modal popup.");
-        var ownsAnchor = false;
-        for (DependencyObject? node = modal.PlacementTarget; node is not null; node = VisualTreeHelper.GetParent(node)) if (ReferenceEquals(node, anchor)) { ownsAnchor = true; break; }
-        Require(ownsAnchor && ReferenceEquals(((FrameworkElement)modal.Child).XamlRoot.ContentIslandEnvironment, root.ContentIslandEnvironment), "Modal input lost its exact placement target/environment.");
+        FrameworkElement modalContent;
+        if (modal is Popup popup)
+        {
+            Require(popup.IsOpen && popup.IsLightDismissEnabled && ReferenceEquals(popup.XamlRoot, root), "Outside input requires its original open modal popup.");
+            var ownsAnchor = false;
+            for (DependencyObject? node = popup.PlacementTarget; node is not null; node = VisualTreeHelper.GetParent(node)) if (ReferenceEquals(node, anchor)) { ownsAnchor = true; break; }
+            modalContent = (FrameworkElement)popup.Child;
+            Require(ownsAnchor, "Modal input lost its exact placement target.");
+        }
+        else
+        {
+            Require(modal is Border { Name: "PopupBorder", IsLoaded: true }, "Outside input requires its original hosted popup border.");
+            modalContent = (FrameworkElement)modal;
+            var ownsRoot = false;
+            for (DependencyObject? node = modalContent; node is not null; node = VisualTreeHelper.GetParent(node)) if (ReferenceEquals(node, root.Content)) { ownsRoot = true; break; }
+            Require(ownsRoot && ReferenceEquals(anchor.XamlRoot, root), "Hosted modal input lost its exact catalog root/anchor.");
+        }
+        Require(ReferenceEquals(modalContent.XamlRoot.ContentIslandEnvironment, root.ContentIslandEnvironment), "Modal input lost its exact environment.");
         var island = ContentIsland.FindAllForCurrentThread().SingleOrDefault(item => ReferenceEquals(item.Environment, root.ContentIslandEnvironment)) ?? throw new InvalidOperationException("The exact original input island is unavailable.");
         Require(island.Environment.AppWindowId.Value == root.ContentIslandEnvironment.AppWindowId.Value, "Modal island belongs to another window.");
         var source = InputPointerSource.GetForIsland(island) ?? throw new InvalidOperationException("The original modal input source is unavailable.");
         await RequireForegroundAsync();
         var bounds = await AwaitPointerPresentationAsync(outside, null, JsonSerializer.Serialize(DescribeViewports(outside)));
         var x = (int)(bounds.X + bounds.Width / 2); var y = (int)(bounds.Y + bounds.Height / 2);
-        Require(!ScreenBounds((FrameworkElement)modal.Child).Contains(new Point(x, y)) && NativeScreenCapture.OwnsScreenPoint(Window, x, y), "Modal input lost its exact owned outside point.");
+        Require(!ScreenBounds(modalContent).Contains(new Point(x, y)) && NativeScreenCapture.OwnsScreenPoint(Window, x, y), "Modal input lost its exact owned outside point.");
         Require(ReadPointerPosition() != new Point(x, y), "This source action requires its original changed pointer location.");
         var watch = Stopwatch.StartNew(); var receipts = new List<object>(); var order = new List<string>(); var errors = new List<string>();
         var moves = 0; var downs = 0; var ups = 0; uint? pointerId = null; ulong lastTimestamp = 0; uint lastFrame = 0; var phase = "move";

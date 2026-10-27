@@ -389,3 +389,13 @@ tolerance; complete component acceptance remains open.
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.
+
+## Catalog modal-host fixture repair
+
+The catalog now presents the Select surface through `BleeckerModalHost`.
+The current filter and shadow/pointer fixtures resolve its hosted border while
+retaining their native input-source, outside-point, focus, geometry and shadow
+checks. Current x64 runs pass 138 frozen filter states per theme and three
+shadow/pointer states per theme; the ARM64 catalog build passes. These are
+fixture and build results, not native ARM64 runtime or full component acceptance.
+See the [checkpoint](evidence/hosted-select-fixtures-v1/checkpoint.json).

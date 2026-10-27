@@ -32,7 +32,7 @@ public sealed partial class DataTableFiltersFixture
         {
             await ReadyAsync(() => view.IsLoaded && table.Subscribers == 1); view.ApplyTemplate(); await MainWindow.AwaitPresentationAsync(view); await input.AcquireAsync(outside); outsideClicks = 0;
             var select = Select(view);
-            Popup Popup() => VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Single(item => item.Child is Border { Name: "PopupBorder" });
+            Border Popup() => CatalogFixtureRoot.PopupBorder(XamlRoot);
             foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
             {
                 var phase = point.GetProperty("phase").GetString()!; var expected = point.GetProperty("state"); object? receipt = null;
@@ -45,9 +45,9 @@ public sealed partial class DataTableFiltersFixture
                 object? shadow = null; bool? shadowClosed = null;
                 if (open)
                 {
-                    await MainWindow.AwaitPresentationAsync((FrameworkElement)Popup().Child); var box = Bounds((FrameworkElement)Popup().Child, root);
+                    await MainWindow.AwaitPresentationAsync(Popup()); var box = Bounds(Popup(), root);
                     Require(box.X == 16 && box.Y == 60 && box.Width == 176 && box.Height == 118 && !box.Contains(new Windows.Foundation.Point(200,186)), "Shadow input changed the source popup box or outside point.");
-                    surface = Descendants<BleeckerOverlaySurface>(Popup().Child).Single(item => item.Name == "PopupSurface"); shadow = DescribeShadow((FrameworkElement)Popup().Child);
+                    surface = Descendants<BleeckerOverlaySurface>(Popup()).Single(item => item.Name == "PopupSurface"); shadow = DescribeShadow(Popup());
                 }
                 else if (surface is not null) { shadowClosed = ShadowIsCleared(surface); Require(shadowClosed.Value, "Shadow input dismissal retained its Composition layers."); }
                 var target = Bounds(outside, root); Require(target.X == 192 && target.Y == 178 && target.Width == 16 && target.Height == 16, "Shadow input lost its actual source target rectangle.");

@@ -55,7 +55,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                     await ReadyAsync(() => view.IsLoaded && a.Subscribers == 2); view.ApplyTemplate(); await MainWindow.AwaitPresentationAsync(view); await input.AcquireAsync(outside); outsideClicks = 0;
                     app.ResizeClient(new SizeInt32(width, 745)); await ReadyAsync(() => XamlRoot.Size.Width == width && XamlRoot.Size.Height == 745); await MainWindow.AwaitPresentationAsync(view);
                     var select = Select(view); select.TabIndex = 1;
-                    Popup Popup() => VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Single(item => item.Child is Border { Name: "PopupBorder" });
+                    Border Popup() => CatalogFixtureRoot.PopupBorder(XamlRoot);
                     string Focus(object? node) => node switch { Button option when select.Items.Contains(option) => "option:" + select.Items.IndexOf(option), _ when ReferenceEquals(node, select) => "trigger", Control { Name: "PART_Listbox" } => "listbox", _ when ReferenceEquals(node, outside) => "outside", null => "BODY", _ => node.GetType().Name };
                     var index = 0; var removedFocusedColumn = false; BleeckerOverlaySurface? lastShadowSurface = null;
                     foreach (var point in sample.GetProperty("snapshots").EnumerateArray())
@@ -96,7 +96,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                                 var observe = new PointerEventHandler((_, args) => { var point = args.GetCurrentPoint(root); modalEvents.Add(new { source = args.OriginalSource.GetType().Name, args.IsGenerated, point.Position, point.Properties.IsLeftButtonPressed }); });
                                 modal.AddHandler(UIElement.PointerMovedEvent, observe, true); modal.AddHandler(UIElement.PointerPressedEvent, observe, true); modal.AddHandler(UIElement.PointerReleasedEvent, observe, true);
                                 try { receipt = await input.DismissModalPointerSourceOutsideAsync(select, modal, outside); }
-                                finally { modal.RemoveHandler(UIElement.PointerMovedEvent, observe); modal.RemoveHandler(UIElement.PointerPressedEvent, observe); modal.RemoveHandler(UIElement.PointerReleasedEvent, observe); await File.WriteAllTextAsync(Path.Combine(folder, $"filters-{id}-{scheme}-modal-route.json"), JsonSerializer.Serialize(new { modalEvents, open = modal.IsOpen, outsideClicks })); }
+                                finally { modal.RemoveHandler(UIElement.PointerMovedEvent, observe); modal.RemoveHandler(UIElement.PointerPressedEvent, observe); modal.RemoveHandler(UIElement.PointerReleasedEvent, observe); await File.WriteAllTextAsync(Path.Combine(folder, $"filters-{id}-{scheme}-modal-route.json"), JsonSerializer.Serialize(new { modalEvents, open = Provider(select).ExpandCollapseState == ExpandCollapseState.Expanded, outsideClicks })); }
                                 break;
                             case "external-draft": case "external-published": active.SetExternalFilters([new("status", phase == "external-draft" ? "Draft" : "Published")]); break;
                             case "replace": active = b; view.Table = b; probe.Text = b.VisibleText; break;
@@ -107,7 +107,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                             default: throw new InvalidOperationException("Unknown frozen filter action.");
                         }
                         var open = expected.GetProperty("popupOpen").GetBoolean(); await ReadyAsync(() => select.Visibility == Visibility.Collapsed ? !open : select.IsLoaded && (Provider(select).ExpandCollapseState == ExpandCollapseState.Expanded) == open); await MainWindow.AwaitPresentationAsync(view);
-                        if (open) { await ReadyAsync(() => Popup().Child is FrameworkElement { IsLoaded: true }); await MainWindow.AwaitPresentationAsync((FrameworkElement)Popup().Child); }
+                        if (open) { await ReadyAsync(() => Popup().IsLoaded); await MainWindow.AwaitPresentationAsync(Popup()); }
                         void Equal(bool value, string message) { if (!value) errors.Add(message); }
                         void Near(double actual, double wanted, string message) => Equal(double.IsFinite(actual) && Math.Abs(actual - wanted) <= 1d / 32, $"{message}: {actual:R}/{wanted:R}");
                         var focused = FocusManager.GetFocusedElement(XamlRoot); var sourceFocus = expected.GetProperty("focused").GetString();
@@ -131,7 +131,7 @@ public sealed partial class DataTableFiltersFixture : UserControl
                             var peer = FrameworkElementAutomationPeer.CreatePeerForElement(select); Equal(peer.GetName() == sourceTrigger.GetProperty("name").GetString() && ((IValueProvider)peer.GetPattern(PatternInterface.Value)).Value == sourceTrigger.GetProperty("text").GetString(), "Accessible name or actual controlled value differs.");
                             if (open)
                             {
-                                var popupBox = Bounds((FrameworkElement)Popup().Child, root); var sourcePopup = expected.GetProperty("popup").GetProperty("box"); Near(popupBox.Width, sourcePopup.GetProperty("width").GetDouble(), "Popup width"); Near(popupBox.Height, sourcePopup.GetProperty("height").GetDouble(), "Popup height"); Near(popupBox.X, sourcePopup.GetProperty("x").GetDouble(), "Popup x"); Near(popupBox.Y, sourcePopup.GetProperty("y").GetDouble(), "Popup y");
+                                var popupBox = Bounds(Popup(), root); var sourcePopup = expected.GetProperty("popup").GetProperty("box"); Near(popupBox.Width, sourcePopup.GetProperty("width").GetDouble(), "Popup width"); Near(popupBox.Height, sourcePopup.GetProperty("height").GetDouble(), "Popup height"); Near(popupBox.X, sourcePopup.GetProperty("x").GetDouble(), "Popup x"); Near(popupBox.Y, sourcePopup.GetProperty("y").GetDouble(), "Popup y");
                                 var items = select.Items.OfType<Button>().ToArray(); var original = expected.GetProperty("options").EnumerateArray().ToArray(); Equal(items.Length == original.Length, "Original options count differs.");
                                 foreach (var (item, sourceItem, optionIndex) in items.Zip(original).Select((pair, optionIndex) => (pair.First, pair.Second, optionIndex)))
                                 {
@@ -139,9 +139,9 @@ public sealed partial class DataTableFiltersFixture : UserControl
                                     Equal(item.Tag is BleeckerSelectOption && (optionIndex == 0 || ReferenceEquals(options[optionIndex - 1], item.Tag)), "A consumer option was replaced.");
                                     var mark = Descendants<Viewbox>(item).Single(node => node.Name == "Checkmark"); Equal((mark.Visibility == Visibility.Visible) == (sourceItem.GetProperty("state").GetString() == "checked"), "Controlled checked paint differs.");
                                 }
-                                var scroll = Descendants<ScrollViewer>(Popup().Child).Single(); Near(scroll.VerticalOffset, expected.GetProperty("viewport").GetProperty("scrollTop").GetDouble(), "Source scroll offset"); Near(scroll.ActualHeight, expected.GetProperty("viewport").GetProperty("clientHeight").GetDouble(), "Source viewport height");
-                                lastShadowSurface = Descendants<BleeckerOverlaySurface>(Popup().Child).Single(item => item.Name == "PopupSurface");
-                                geometry = new { trigger = triggerBox, popup = popupBox, viewport = Bounds(scroll, root), scroll.VerticalOffset, shadow = DescribeShadow((FrameworkElement)Popup().Child), options = items.Select(item => new { text = item.Content?.ToString(), item.IsEnabled, box = Bounds(item, root) }).ToArray() };
+                                var scroll = Descendants<ScrollViewer>(Popup()).Single(); Near(scroll.VerticalOffset, expected.GetProperty("viewport").GetProperty("scrollTop").GetDouble(), "Source scroll offset"); Near(scroll.ActualHeight, expected.GetProperty("viewport").GetProperty("clientHeight").GetDouble(), "Source viewport height");
+                                lastShadowSurface = Descendants<BleeckerOverlaySurface>(Popup()).Single(item => item.Name == "PopupSurface");
+                                geometry = new { trigger = triggerBox, popup = popupBox, viewport = Bounds(scroll, root), scroll.VerticalOffset, shadow = DescribeShadow(Popup()), options = items.Select(item => new { text = item.Content?.ToString(), item.IsEnabled, box = Bounds(item, root) }).ToArray() };
                             }
                             else geometry = new { trigger = triggerBox };
                         }
