@@ -92,6 +92,13 @@ retains both passing reports and the earlier probe timing failures. This adds
 focused runtime evidence to the unchanged package; the full Button matrix and
 independent-consumer pointer route remain open.
 
+That same extracted v7 x64 catalog later passed focused physical Space and
+Enter activation of the Run preview Button in Light and Dark. Each key invoked
+the consumer command exactly once after pointer/loading checks. The
+[Button keyboard checkpoint](../evidence/components-v7-button-keyboard-v1/checkpoint.json)
+records the unchanged binary hashes and both passing reports; the broader
+Button matrix and independent-consumer physical input remain open.
+
 The extracted x64 catalog also passed the existing focused Slider foreground
 run with real keyboard, track, and accepted/rejected drag input in both themes.
 Its independent geometry/behavior audit passed all 182 frames with zero geometry

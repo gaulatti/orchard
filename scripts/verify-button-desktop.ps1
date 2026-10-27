@@ -17,6 +17,7 @@ public static class OrchardButtonDesktop
     [DllImport("user32.dll")] public static extern bool GetCursorPos(out Point point);
     [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
     [DllImport("user32.dll")] public static extern void mouse_event(uint flags, uint dx, uint dy, uint data, UIntPtr extra);
+    [DllImport("user32.dll")] public static extern void keybd_event(byte key, byte scan, uint flags, UIntPtr extra);
 }
 '@
 
@@ -77,6 +78,15 @@ function Click($element, [IntPtr]$window) {
     $report.physicalPointerInputSent = $true
     [ordered]@{ x = $x; y = $y; name = $element.Current.Name }
 }
+function PressKey($element, [IntPtr]$window, [byte]$key) {
+    if ([OrchardButtonDesktop]::GetForegroundWindow() -ne $window) { throw 'Catalog lost foreground; no Button key was sent.' }
+    $element.SetFocus()
+    Wait-Until { $element.Current.HasKeyboardFocus } 'Button did not acquire keyboard focus.' | Out-Null
+    [OrchardButtonDesktop]::keybd_event($key, 0, 0, [UIntPtr]::Zero)
+    Start-Sleep -Milliseconds 50
+    [OrchardButtonDesktop]::keybd_event($key, 0, 2, [UIntPtr]::Zero)
+    [ordered]@{ key = $key; name = $element.Current.Name; focused = $element.Current.HasKeyboardFocus }
+}
 
 $originalCursor = [OrchardButtonDesktop+Point]::new()
 $cursorSaved = [OrchardButtonDesktop]::GetCursorPos([ref]$originalCursor)
@@ -132,6 +142,13 @@ try {
     $report.steps.restoredCommandClick = Click $run $process.MainWindowHandle
     Wait-Until { $result.Current.Name -eq 'Command preview: 2' } 'Restored action did not reach its consumer command exactly once.' | Out-Null
     $report.steps.commandAfterRestore = $result.Current.Name
+
+    $report.steps.spaceKey = PressKey $run $process.MainWindowHandle 0x20
+    Wait-Until { $result.Current.Name -eq 'Command preview: 3' } 'Focused Space did not reach the consumer command exactly once.' | Out-Null
+    $report.steps.commandAfterSpace = $result.Current.Name
+    $report.steps.enterKey = PressKey $run $process.MainWindowHandle 0x0D
+    Wait-Until { $result.Current.Name -eq 'Command preview: 4' } 'Focused Enter did not reach the consumer command exactly once.' | Out-Null
+    $report.steps.commandAfterEnter = $result.Current.Name
 
     $report.steps.selfLoadingClick = Click $start $process.MainWindowHandle
     Wait-Until { $result.Current.Name -eq 'Self-loading action busy' -and -not $start.Current.IsEnabled } 'Pointer click did not enter self-loading.' | Out-Null

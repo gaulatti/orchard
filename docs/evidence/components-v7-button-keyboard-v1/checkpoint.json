@@ -1,0 +1,38 @@
+{
+  "scope": "Exact v7 extracted x64 catalog Button foreground Space and Enter activation",
+  "packageVersion": "0.1.0-components-v7-local",
+  "packageSha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+  "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+  "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "probe": "scripts/verify-button-desktop.ps1",
+  "probeSha256": "1923112ff1d31730f1eb6ffb31fa718232090ef11adae3eeceea217956bdb18c",
+  "reports": [
+    {
+      "theme": "Light",
+      "path": "artifacts/current/components-v7-button-keyboard-light-x64/button-desktop.json",
+      "sha256": "b9279c04e88236c93687a21eb9c167d1eafcabcc0ce64fa0bcb3fd2a193dcc4c",
+      "passed": true,
+      "processExited": true,
+      "commandAfterSpace": "Command preview: 3",
+      "commandAfterEnter": "Command preview: 4"
+    },
+    {
+      "theme": "Dark",
+      "path": "artifacts/current/components-v7-button-keyboard-dark-x64/button-desktop.json",
+      "sha256": "250c8acaef06587a7bfcb65233fa4620403caa4c084156adcfd3ec3cdcbe771f",
+      "passed": true,
+      "processExited": true,
+      "commandAfterSpace": "Command preview: 3",
+      "commandAfterEnter": "Command preview: 4"
+    }
+  ],
+  "observedRoute": "A focused native Run preview button received physical Space and Enter input; each reached the catalog consumer command exactly once in both themes after the existing pointer/loading route passed.",
+  "independentConsumerPhysicalInputVerified": false,
+  "completeButtonMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

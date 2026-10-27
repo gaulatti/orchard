@@ -156,4 +156,12 @@ uses a short pointer settle and press interval. This route does not cover the
 remaining variants, independent-consumer pointer input, scaling, motion, or
 native ARM64 runtime.
 
+The same extracted v7 x64 catalog also passes focused physical Space and Enter
+activation in both themes. Each key reaches the consumer's Run preview command
+once after the pointer/loading route, with the command count moving from two to
+three and then four. The [v7 Button keyboard checkpoint](evidence/components-v7-button-keyboard-v1/checkpoint.json)
+binds these reports to the unchanged package. The remaining Button variants,
+independent-consumer physical input, scaling, motion and ARM64 runtime remain
+open.
+
 Light Ghost hover/pressed sand uses byte alpha 31 at brush opacity 1, based on the [actual source/native alpha diagnostic](brush-alpha-reference.md). Dark, disabled, contrast and other variant recipes retain their existing representations.

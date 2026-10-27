@@ -411,7 +411,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete the remaining foreground keyboard/pointer wrapper matrix; exact v7 extracted x64 catalog passes physical consumer-command and loading rejection/restoration in Light/Dark",
+        "Complete the remaining foreground keyboard/pointer wrapper matrix; exact v7 extracted x64 catalog passes physical consumer-command, loading rejection/restoration, and focused Space/Enter activation in Light/Dark",
         "Verify remaining variants and the independent consumer's physical pointer route, plus display/text scaling",
         "Verify reduced motion and remaining ARM64 state acceptance"
       ],
