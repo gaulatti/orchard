@@ -8,6 +8,12 @@ both themes and opens a diagnostic internal layer. This is root/layout evidence;
 it does not establish foreground input or a public AlertDialog implementation.
 Header is registered immediately after Footer; its previously declared fixture
 must remain reachable through the same navigation registry as other components.
+The Footer fixture's variant selector presents Default, Custom links with caller
+input, and Minimal with no sections or accent. Each fictional demo remains
+available; presenting one variant at a time avoids a native WinUI crash when
+all three large footers are mounted together in the scrolling catalog. The
+foreground check visits all three variants in both themes and exercises the
+original Home item by physical pointer and keyboard input.
 Alert dialogs follows Header. Its fictional examples cover normal/destructive
 requests, a temporary loading state, and a caller-supplied wide square surface.
 The fixture accepts request events by updating its own open value.

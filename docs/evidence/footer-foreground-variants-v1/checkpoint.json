@@ -1,0 +1,40 @@
+{
+  "scope": "Footer catalog variants and physical foreground input",
+  "baseCommit": "6125cec1b2ecc56e0f59c69a4f662fd89d6df702",
+  "change": "Keep all three fictional Footer demos available through a variant selector after their simultaneous layout caused a native WinUI crash.",
+  "sourceBuild": {
+    "platform": "x64",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "catalogDllSha256": "6635f0896ea81dab6b08c51ee82cd5b771dd800af19fc864323400b22726d38a",
+    "orchardDllSha256": "6f80bd50a383e9fd74245f5d21c7917378461f44c5c6ac64bf8c123b872b891d"
+  },
+  "foreground": {
+    "resultSha256": "256edc9df7862f5df46c6848e0bda55fbf1a34c3f972f855c2a70a5140b476f0",
+    "lightResultSha256": "1860065bdd9485f038bcdc88d0d49a5ac129ff59a8ce7fc09156d9c3046b3062",
+    "darkResultSha256": "c82adccad8e06a623cf27773e2152f3c8c774b6896967ccdf3e637f2aa121eaa",
+    "lightAndDarkPassed": true,
+    "defaultPointerInvokedOriginal": true,
+    "customEnterInvokedOriginal": true,
+    "keyboardFocusAndCallerInputRetained": true,
+    "minimalVariantMountedWithoutSectionsOrAccent": true,
+    "hoverAndFocusPngs": 4,
+    "displayScale": 1,
+    "textScale": 1
+  },
+  "referencePath": {
+    "result": "artifacts/current/footer-reference-post-variant-v1/result.json",
+    "resultSha256": "019a19838c29c248a7c747b1851823f3f746fce9bee4ac3902f45b164c255eea",
+    "capturedStates": 64,
+    "passed": true
+  },
+  "open": [
+    "Full source raster parity and broader Footer acceptance remain unverified.",
+    "Dark custom Footer brand text appears low contrast in the foreground capture.",
+    "Native ARM64 runtime remains unverified."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

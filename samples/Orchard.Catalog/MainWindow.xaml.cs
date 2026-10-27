@@ -82,6 +82,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-pagination-motion")) await RunPaginationMotionAsync(folder);
             else if (args.Contains("--smoke-collection-filters")) await RunCollectionFiltersAsync(folder);
             else if (args.Contains("--smoke-nav-menu")) await RunNavMenuAsync(folder);
+            else if (args.Contains("--smoke-footer-foreground")) await RunFooterForegroundAsync(folder);
             else if (args.Contains("--smoke-footer")) await RunFooterAsync(folder);
             else if (args.Contains("--smoke-panel")) await RunPanelsAsync(folder);
             else if (args.Contains("--smoke-buttons"))

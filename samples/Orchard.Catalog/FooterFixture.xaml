@@ -6,11 +6,18 @@
  </StackPanel.Resources>
  <TextBlock Text="Footer" Style="{StaticResource BleeckerHeadingStyle}"/>
  <TextBlock Text="Viewport-responsive sections and host-owned navigation. All data is fictional." Style="{StaticResource BleeckerBodyStyle}"/>
+ <ComboBox x:Name="VariantPicker" Header="Footer variant" Width="220" HorizontalAlignment="Left" SelectedIndex="0" SelectionChanged="VariantChanged"><ComboBoxItem Content="Default"/><ComboBoxItem Content="Custom links"/><ComboBoxItem Content="Minimal"/></ComboBox>
+ <StackPanel x:Name="DefaultGroup" Spacing="12">
  <orchard:BleeckerFooter x:Name="Default" Brand="{StaticResource Brand}" BottomLeft="© 2026 Fictional library" ItemInvoked="Invoked"/>
  <StackPanel Orientation="Horizontal" Spacing="12"><Button Content="Reorder sections" Click="Reorder"/><Button Content="Toggle long link label" Click="Rename"/><Button Content="Toggle empty bottom-right override" Click="OverrideRight"/><Button Content="Toggle accent" Click="ToggleAccent"/></StackPanel>
+ </StackPanel>
+ <StackPanel x:Name="CustomGroup" Spacing="12" Visibility="Collapsed">
  <TextBlock Text="Custom links and original caller input" Style="{StaticResource BleeckerBodyStyle}"/>
  <orchard:BleeckerFooter x:Name="Custom" Brand="{StaticResource Brand}" LinkTemplate="{StaticResource FooterLink}" ItemInvoked="Invoked"><orchard:BleeckerFooter.BottomLeft><TextBox x:Name="CallerInput" Width="200" Text="Caller note" AutomationProperties.Name="Footer caller note"/></orchard:BleeckerFooter.BottomLeft></orchard:BleeckerFooter>
+ </StackPanel>
+ <StackPanel x:Name="MinimalGroup" Spacing="12" Visibility="Collapsed">
  <TextBlock Text="No sections or accent" Style="{StaticResource BleeckerBodyStyle}"/>
  <orchard:BleeckerFooter x:Name="Minimal" Brand="{StaticResource Brand}" BottomLeft="© 2026 Fictional library" ShowBottomAccent="False" ItemInvoked="Invoked"/>
+ </StackPanel>
  <TextBlock x:Name="Status" Text="Choose a destination" Style="{StaticResource BleeckerBodyStyle}"/>
 </StackPanel>

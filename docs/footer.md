@@ -40,7 +40,7 @@ with the report. See `artifacts/current/footer-hidden-diagnostic-v5/audit.json`.
 Earlier visible sequences failed after one, 41 and 39 completed states; their
 raw images and partial reports remain preserved. The underlying thread-affinity
 failure is fixed and repeated hidden runs now complete, but fresh visible input
-and raster verification still require renewed desktop availability. Work stays
+and raster verification still required renewed desktop availability. That phase stayed
 in background processes. Broader property and customization matrices, native
 motion/scaling and ARM64 runtime remain open.
 
@@ -260,5 +260,22 @@ The [small receipt archive](evidence/footer-fractional-v1/README.md) preserves
 byte-identical copies when generated build output is cleared.
 The shared fixture also compiles in the current ARM64 catalog build, with zero
 warnings or errors; native ARM64 execution remains unverified.
-Broader custom content, visible input/raster, motion/scaling and native ARM64
+Broader custom content, full raster parity, motion/scaling and native ARM64
 runtime remain open.
+
+On 2026-10-27, the catalog's three existing Footer demos were retained behind a
+variant selector. Mounting all three at once caused a native WinUI crash; Default
+and Custom together, and Minimal alone, each mounted. The selector presents one
+variant at a time and keeps the normal, custom-link/caller-input, and no-section
+examples available. A fresh x64 Release catalog build passed with zero warnings
+and errors. The foreground catalog run visited every variant in Light and Dark,
+physically clicked the original Home link in Default, pressed Enter on the
+custom-rendered Home link, verified host `ItemInvoked` received the original
+item, preserved keyboard focus and caller input, and captured hover/focus PNGs.
+The result was `passed: true` in both themes. The component's single-host
+64-state reference capture path passed on the same build. This verifies the
+catalog interaction path; it does not establish full source raster parity,
+native ARM64 behavior, or final Footer acceptance. The dark custom-variant
+capture also shows low-contrast brand text that needs a separate component
+paint correction. See
+`docs/evidence/footer-foreground-variants-v1/checkpoint.json`.
