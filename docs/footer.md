@@ -275,7 +275,16 @@ item, preserved keyboard focus and caller input, and captured hover/focus PNGs.
 The result was `passed: true` in both themes. The component's single-host
 64-state reference capture path passed on the same build. This verifies the
 catalog interaction path; it does not establish full source raster parity,
-native ARM64 behavior, or final Footer acceptance. The dark custom-variant
-capture also shows low-contrast brand text that needs a separate component
-paint correction. See
+native ARM64 behavior, or final Footer acceptance. The initial dark
+custom-variant capture exposed low-contrast brand text. The Footer brand link
+now passes its resolved primary foreground to the nested BrandLockup, so the
+brand name follows the active light or dark token even in a caller link
+template. The corrected dark foreground capture is legible; the x64 catalog and
+ARM64 library build with zero warnings and errors, seven focused Footer unit
+tests pass, and the fresh 64-state source audit reports zero errors across
+5,576 geometry, 630 paint and 1,760 metadata checks. None of the 64 full PNGs
+match byte-for-byte, so complete raster parity remains open. The prior v11
+preview package does not contain this repair; packaging and native ARM64 runtime
+remain separate gates. See
+`docs/evidence/footer-brand-token-foreground-v1/checkpoint.json` and
 `docs/evidence/footer-foreground-variants-v1/checkpoint.json`.

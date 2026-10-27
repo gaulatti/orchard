@@ -1,0 +1,407 @@
+{
+  "passed": true,
+  "scope": "foreground-footer-initial-geometry-paint-audit",
+  "diagnosticOnly": true,
+  "sourceStates": 64,
+  "geometryChecks": 5576,
+  "maximumGeometryError": 0,
+  "geometryErrors": [],
+  "paintChecks": 630,
+  "paintErrors": [],
+  "metadataChecks": 1760,
+  "metadataErrors": [],
+  "exactPngs": 0,
+  "differingPixels": 1067829,
+  "rows": [
+    {
+      "id": "wide",
+      "scheme": "Light",
+      "file": "footer-wide-Light.png",
+      "differingPixels": 16949
+    },
+    {
+      "id": "viewport-320",
+      "scheme": "Light",
+      "file": "footer-viewport-320-Light.png",
+      "differingPixels": 13121
+    },
+    {
+      "id": "viewport-640",
+      "scheme": "Light",
+      "file": "footer-viewport-640-Light.png",
+      "differingPixels": 14362
+    },
+    {
+      "id": "viewport-767",
+      "scheme": "Light",
+      "file": "footer-viewport-767-Light.png",
+      "differingPixels": 14756
+    },
+    {
+      "id": "viewport-768",
+      "scheme": "Light",
+      "file": "footer-viewport-768-Light.png",
+      "differingPixels": 14913
+    },
+    {
+      "id": "viewport-1023",
+      "scheme": "Light",
+      "file": "footer-viewport-1023-Light.png",
+      "differingPixels": 15623
+    },
+    {
+      "id": "viewport-1024",
+      "scheme": "Light",
+      "file": "footer-viewport-1024-Light.png",
+      "differingPixels": 15925
+    },
+    {
+      "id": "viewport-1440",
+      "scheme": "Light",
+      "file": "footer-viewport-1440-Light.png",
+      "differingPixels": 17429
+    },
+    {
+      "id": "constrained-host",
+      "scheme": "Light",
+      "file": "footer-constrained-host-Light.png",
+      "differingPixels": 13360
+    },
+    {
+      "id": "one-section",
+      "scheme": "Light",
+      "file": "footer-one-section-Light.png",
+      "differingPixels": 14091
+    },
+    {
+      "id": "three-sections",
+      "scheme": "Light",
+      "file": "footer-three-sections-Light.png",
+      "differingPixels": 17570
+    },
+    {
+      "id": "four-sections",
+      "scheme": "Light",
+      "file": "footer-four-sections-Light.png",
+      "differingPixels": 17930
+    },
+    {
+      "id": "zero-sections",
+      "scheme": "Light",
+      "file": "footer-zero-sections-Light.png",
+      "differingPixels": 11937
+    },
+    {
+      "id": "empty-sections",
+      "scheme": "Light",
+      "file": "footer-empty-sections-Light.png",
+      "differingPixels": 13093
+    },
+    {
+      "id": "no-description",
+      "scheme": "Light",
+      "file": "footer-no-description-Light.png",
+      "differingPixels": 13264
+    },
+    {
+      "id": "no-accent",
+      "scheme": "Light",
+      "file": "footer-no-accent-Light.png",
+      "differingPixels": 14389
+    },
+    {
+      "id": "empty-right",
+      "scheme": "Light",
+      "file": "footer-empty-right-Light.png",
+      "differingPixels": 16018
+    },
+    {
+      "id": "false-right",
+      "scheme": "Light",
+      "file": "footer-false-right-Light.png",
+      "differingPixels": 16018
+    },
+    {
+      "id": "zero-right",
+      "scheme": "Light",
+      "file": "footer-zero-right-Light.png",
+      "differingPixels": 16078
+    },
+    {
+      "id": "null-right",
+      "scheme": "Light",
+      "file": "footer-null-right-Light.png",
+      "differingPixels": 16949
+    },
+    {
+      "id": "custom",
+      "scheme": "Light",
+      "file": "footer-custom-Light.png",
+      "differingPixels": 16949
+    },
+    {
+      "id": "rtl",
+      "scheme": "Light",
+      "file": "footer-rtl-Light.png",
+      "differingPixels": 18349
+    },
+    {
+      "id": "unicode",
+      "scheme": "Light",
+      "file": "footer-unicode-Light.png",
+      "differingPixels": 14097
+    },
+    {
+      "id": "long-brand",
+      "scheme": "Light",
+      "file": "footer-long-brand-Light.png",
+      "differingPixels": 20101
+    },
+    {
+      "id": "long-links-320",
+      "scheme": "Light",
+      "file": "footer-long-links-320-Light.png",
+      "differingPixels": 18421
+    },
+    {
+      "id": "long-links-768",
+      "scheme": "Light",
+      "file": "footer-long-links-768-Light.png",
+      "differingPixels": 20686
+    },
+    {
+      "id": "empty-values",
+      "scheme": "Light",
+      "file": "footer-empty-values-Light.png",
+      "differingPixels": 6385
+    },
+    {
+      "id": "long-description-320",
+      "scheme": "Light",
+      "file": "footer-long-description-320-Light.png",
+      "differingPixels": 29666
+    },
+    {
+      "id": "long-bottom-768",
+      "scheme": "Light",
+      "file": "footer-long-bottom-768-Light.png",
+      "differingPixels": 20087
+    },
+    {
+      "id": "six-sections",
+      "scheme": "Light",
+      "file": "footer-six-sections-Light.png",
+      "differingPixels": 27225
+    },
+    {
+      "id": "unicode-narrow",
+      "scheme": "Light",
+      "file": "footer-unicode-narrow-Light.png",
+      "differingPixels": 14914
+    },
+    {
+      "id": "mutable-layout",
+      "scheme": "Light",
+      "file": "footer-mutable-layout-Light.png",
+      "differingPixels": 37282
+    },
+    {
+      "id": "wide",
+      "scheme": "Dark",
+      "file": "footer-wide-Dark.png",
+      "differingPixels": 15766
+    },
+    {
+      "id": "viewport-320",
+      "scheme": "Dark",
+      "file": "footer-viewport-320-Dark.png",
+      "differingPixels": 12887
+    },
+    {
+      "id": "viewport-640",
+      "scheme": "Dark",
+      "file": "footer-viewport-640-Dark.png",
+      "differingPixels": 13797
+    },
+    {
+      "id": "viewport-767",
+      "scheme": "Dark",
+      "file": "footer-viewport-767-Dark.png",
+      "differingPixels": 14289
+    },
+    {
+      "id": "viewport-768",
+      "scheme": "Dark",
+      "file": "footer-viewport-768-Dark.png",
+      "differingPixels": 14248
+    },
+    {
+      "id": "viewport-1023",
+      "scheme": "Dark",
+      "file": "footer-viewport-1023-Dark.png",
+      "differingPixels": 15002
+    },
+    {
+      "id": "viewport-1024",
+      "scheme": "Dark",
+      "file": "footer-viewport-1024-Dark.png",
+      "differingPixels": 14998
+    },
+    {
+      "id": "viewport-1440",
+      "scheme": "Dark",
+      "file": "footer-viewport-1440-Dark.png",
+      "differingPixels": 16246
+    },
+    {
+      "id": "constrained-host",
+      "scheme": "Dark",
+      "file": "footer-constrained-host-Dark.png",
+      "differingPixels": 13071
+    },
+    {
+      "id": "one-section",
+      "scheme": "Dark",
+      "file": "footer-one-section-Dark.png",
+      "differingPixels": 12882
+    },
+    {
+      "id": "three-sections",
+      "scheme": "Dark",
+      "file": "footer-three-sections-Dark.png",
+      "differingPixels": 16395
+    },
+    {
+      "id": "four-sections",
+      "scheme": "Dark",
+      "file": "footer-four-sections-Dark.png",
+      "differingPixels": 16752
+    },
+    {
+      "id": "zero-sections",
+      "scheme": "Dark",
+      "file": "footer-zero-sections-Dark.png",
+      "differingPixels": 10705
+    },
+    {
+      "id": "empty-sections",
+      "scheme": "Dark",
+      "file": "footer-empty-sections-Dark.png",
+      "differingPixels": 11854
+    },
+    {
+      "id": "no-description",
+      "scheme": "Dark",
+      "file": "footer-no-description-Dark.png",
+      "differingPixels": 12047
+    },
+    {
+      "id": "no-accent",
+      "scheme": "Dark",
+      "file": "footer-no-accent-Dark.png",
+      "differingPixels": 13206
+    },
+    {
+      "id": "empty-right",
+      "scheme": "Dark",
+      "file": "footer-empty-right-Dark.png",
+      "differingPixels": 14815
+    },
+    {
+      "id": "false-right",
+      "scheme": "Dark",
+      "file": "footer-false-right-Dark.png",
+      "differingPixels": 14815
+    },
+    {
+      "id": "zero-right",
+      "scheme": "Dark",
+      "file": "footer-zero-right-Dark.png",
+      "differingPixels": 14879
+    },
+    {
+      "id": "null-right",
+      "scheme": "Dark",
+      "file": "footer-null-right-Dark.png",
+      "differingPixels": 15766
+    },
+    {
+      "id": "custom",
+      "scheme": "Dark",
+      "file": "footer-custom-Dark.png",
+      "differingPixels": 15766
+    },
+    {
+      "id": "rtl",
+      "scheme": "Dark",
+      "file": "footer-rtl-Dark.png",
+      "differingPixels": 17234
+    },
+    {
+      "id": "unicode",
+      "scheme": "Dark",
+      "file": "footer-unicode-Dark.png",
+      "differingPixels": 12875
+    },
+    {
+      "id": "long-brand",
+      "scheme": "Dark",
+      "file": "footer-long-brand-Dark.png",
+      "differingPixels": 18909
+    },
+    {
+      "id": "long-links-320",
+      "scheme": "Dark",
+      "file": "footer-long-links-320-Dark.png",
+      "differingPixels": 18230
+    },
+    {
+      "id": "long-links-768",
+      "scheme": "Dark",
+      "file": "footer-long-links-768-Dark.png",
+      "differingPixels": 20062
+    },
+    {
+      "id": "empty-values",
+      "scheme": "Dark",
+      "file": "footer-empty-values-Dark.png",
+      "differingPixels": 5096
+    },
+    {
+      "id": "long-description-320",
+      "scheme": "Dark",
+      "file": "footer-long-description-320-Dark.png",
+      "differingPixels": 29860
+    },
+    {
+      "id": "long-bottom-768",
+      "scheme": "Dark",
+      "file": "footer-long-bottom-768-Dark.png",
+      "differingPixels": 19543
+    },
+    {
+      "id": "six-sections",
+      "scheme": "Dark",
+      "file": "footer-six-sections-Dark.png",
+      "differingPixels": 26122
+    },
+    {
+      "id": "unicode-narrow",
+      "scheme": "Dark",
+      "file": "footer-unicode-narrow-Dark.png",
+      "differingPixels": 14734
+    },
+    {
+      "id": "mutable-layout",
+      "scheme": "Dark",
+      "file": "footer-mutable-layout-Dark.png",
+      "differingPixels": 37041
+    }
+  ],
+  "inputSequencesVerified": false,
+  "fullLifecycleVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "librarySha256": "e2312467e169f16be22c79b3b761702d28da3c0ccfd834e15c33449eac50af75",
+  "catalogSha256": "3666e176fefc2d104e8975cd52e4416230e3361df8a8947b36eff2eaa7355e12"
+}

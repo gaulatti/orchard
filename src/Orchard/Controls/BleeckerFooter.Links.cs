@@ -140,10 +140,10 @@ public sealed partial class BleeckerFooter
             {
                 ClearBrushes(); foreach (var brush in sources) brushTokens.Add((brush, brush.RegisterPropertyChangedCallback(SolidColorBrush.ColorProperty, (_, _) => Paint(true)), brush.RegisterPropertyChangedCallback(Brush.OpacityProperty, (_, _) => Paint(true))));
             }
-            if (normalBrush is not SolidColorBrush normalPaint || hover.Foreground is not SolidColorBrush hoverPaint) { Context.Foreground = normalBrush; if (text is not null) text.Text.Foreground = normalBrush; return; }
+            if (normalBrush is not SolidColorBrush normalPaint || hover.Foreground is not SolidColorBrush hoverPaint) { Context.Foreground = normalBrush; if (text is not null) text.Text.Foreground = normalBrush; if (brand is not null) brand.Foreground = normalBrush; return; }
             var source = hovering && owner.IsEnabled && Role != "brand" ? hoverPaint : normalPaint; var color = source.Color;
             motion.Retarget(BleeckerSrgbColorMix.Premultiply((color.R, color.G, color.B, color.A / 255d * source.Opacity)), owner.clock.Elapsed.TotalMilliseconds, Role == "source" ? 190 : 220, animate && owner.IsLoaded && owner.settings.AnimationsEnabled);
-            Context.Foreground = ink; if (text is not null) { text.Text.Foreground = ink; text.Text.TextDecorations = Role == "source" && hovering ? Windows.UI.Text.TextDecorations.Underline : Windows.UI.Text.TextDecorations.None; }
+            Context.Foreground = ink; if (brand is not null) brand.Foreground = ink; if (text is not null) { text.Text.Foreground = ink; text.Text.TextDecorations = Role == "source" && hovering ? Windows.UI.Text.TextDecorations.Underline : Windows.UI.Text.TextDecorations.None; }
             Present(); if (Running) owner.EnsureMotion();
         }
         internal void Present() { var color = BleeckerSrgbColorMix.EncodePremultiplied(motion.ValueAt(owner.clock.Elapsed.TotalMilliseconds)); ink.Color = Windows.UI.Color.FromArgb(255, color.R, color.G, color.B); ink.Opacity = color.Alpha; }

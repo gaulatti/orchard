@@ -1,0 +1,40 @@
+{
+  "scope": "Footer BrandLockup foreground in light and dark custom link templates",
+  "baseCommit": "6172237",
+  "change": "Route the Footer brand link's resolved foreground to its nested BrandLockup, preserving caller LinkStyle and native theme updates.",
+  "sourceBuild": {
+    "x64CatalogPassed": true,
+    "arm64LibraryPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "x64LibrarySha256": "e2312467e169f16be22c79b3b761702d28da3c0ccfd834e15c33449eac50af75",
+    "x64CatalogSha256": "3666e176fefc2d104e8975cd52e4416230e3361df8a8947b36eff2eaa7355e12",
+    "arm64LibrarySha256": "667d36bd2904ac94321988378e82dc9eb70a16c157bcca411e5552169b0dac53"
+  },
+  "foreground": {
+    "resultSha256": "256edc9df7862f5df46c6848e0bda55fbf1a34c3f972f855c2a70a5140b476f0",
+    "lightAndDarkPassed": true,
+    "brandPrimaryTokenVerified": true,
+    "pointerAndKeyboardInputPassed": true,
+    "darkFocusPngSha256": "9fa81709f6659424d8ea7d96f3420e809561ddc492b478a47c0a94e896da2a4b",
+    "darkHoverPngSha256": "d35a90e2f31fac276764e863b18b7a6e32686b834548392177598ed4d048e2a9"
+  },
+  "referenceAudit": {
+    "sha256": "df183e914f1cd941e840323b42fcd3b6053e57c94b6dced72bf97931c0f925e4",
+    "states": 64,
+    "geometryChecks": 5576,
+    "paintChecks": 630,
+    "metadataChecks": 1760,
+    "errors": 0,
+    "exactPngs": 0,
+    "sourceRasterParityVerified": false
+  },
+  "focusedFooterUnitTests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "packaging": "The v11 preview package predates this component repair; no replacement package or native ARM64 runtime result is claimed.",
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

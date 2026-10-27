@@ -2,6 +2,7 @@ using System.Text.Json;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 
 namespace Orchard.Catalog;
 
@@ -31,6 +32,12 @@ public sealed partial class FooterFixture
 
             ShowVariant(1);
             await MainWindow.AwaitPresentationAsync(Custom);
+            var brandName = MainWindow.Desc<BleeckerBrandLockup>(Custom).Single();
+            var expectedBrandInk = scheme == BleeckerColorScheme.Dark
+                ? Windows.UI.Color.FromArgb(255, 240, 244, 248)
+                : Windows.UI.Color.FromArgb(255, 45, 45, 45);
+            if (brandName.Foreground is not SolidColorBrush brandInk || brandInk.Color != expectedBrandInk || brandInk.Opacity != 1)
+                throw new InvalidOperationException("Custom Footer brand name did not use the active primary text token.");
             var customLink = MainWindow.Desc<HyperlinkButton>(Custom).Single(link => ReferenceEquals(link.Tag, home));
             if (!customLink.Focus(FocusState.Keyboard)) throw new InvalidOperationException("Custom Footer link rejected keyboard focus.");
             input.Key(0x0D);
