@@ -3606,8 +3606,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify physical pointer/keyboard/focus, native ancestor stacking and nested popup/modal host integration",
-        "Verify complete raster/shadows, live normal motion, scaling, performance, visible startup and native ARM64 acceptance"
+        "Focused x64 catalog pointer, Space, Enter, dynamic action count and disabled-trigger hover checks pass; move-only hover, full focus traversal, independent consumer, ancestor stacking and nested popup/modal host integration remain open (docs/evidence/hover-card-foreground-v1/checkpoint.json)",
+        "Verify complete raster/shadows, live normal motion, scaling, performance, packaged visible startup and native ARM64 acceptance"
       ]
     },
     {

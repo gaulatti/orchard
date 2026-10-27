@@ -1,0 +1,29 @@
+{
+  "scope": "Visible Hover Card fixture in the source-built x64 catalog",
+  "observedAt": "2026-10-27T09:26:07-04:00",
+  "method": "Computer Use @oai/sky foreground pointer and keyboard actions with catalog text and accessibility-tree observations",
+  "sourceBuilt": true,
+  "catalogExeSha256": "8b4fbec3848bda16794015b9e90560a47c431a3d83a3e5cfb34d3a688781c202",
+  "catalogDllSha256": "a3bb31658e6ff837da08626490b8582a1a2db64c6b3fd9ecf1770c2640a60f7b",
+  "orchardDllSha256": "3ce559f518dd44c2ba2a60cade2e7bef2ccb76938c75c5f54a581358e5372b93",
+  "checks": {
+    "catalogFixtureStartedWithZeroOriginalActions": true,
+    "systemDarkPointerTriggeredOneOriginalActionAndOpenedSurface": true,
+    "systemDarkSpaceTriggeredSecondOriginalAction": true,
+    "systemDarkEnterTriggeredThirdOriginalAction": true,
+    "pointerLeavingClosedSurfaceWithoutChangingActionCount": true,
+    "dynamicActionCountAppearedInAccessibilityTreeAtZeroOneTwoAndThree": true,
+    "lightPointerTriggeredFourthOriginalActionAndOpenedSurface": true,
+    "lightDynamicActionCountAppearedInAccessibilityTreeAtFour": true,
+    "lightDisabledOriginalTriggerStayedDisabledButItsWrapperOpenedHoverSurface": true,
+    "lightDisabledTriggerDidNotChangeOriginalActionCount": true
+  },
+  "limitations": [
+    "The desktop input API supplied a pointer click at the trigger, not a standalone move-only event. The visible surface opened with the pointer there; move-only hover timing is not claimed.",
+    "The source-built catalog was exercised; an independent NuGet consumer foreground run was not.",
+    "Ancestor stacking, nested popup/modal integration, full focus traversal, motion, visual/shadow review, actual scaling, performance and native ARM64 runtime remain open."
+  ],
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

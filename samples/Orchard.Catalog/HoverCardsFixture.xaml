@@ -3,7 +3,7 @@
  <TextBlock Text="Fictional local profiles. Inline surfaces follow pointer hover without taking focus or replacing the original controls." TextWrapping="Wrap"/>
  <StackPanel Orientation="Horizontal" Spacing="100" Margin="120,130,0,140">
   <orchard:BleeckerHoverCard>
-   <orchard:BleeckerHoverCard.Trigger><orchard:BleeckerButton Content="Fictional contributor" Size="Small"/></orchard:BleeckerHoverCard.Trigger>
+   <orchard:BleeckerHoverCard.Trigger><orchard:BleeckerButton Content="Fictional contributor" Size="Small" Click="ContributorClicked"/></orchard:BleeckerHoverCard.Trigger>
    <StackPanel Spacing="8"><TextBlock Text="Mira Quinn" FontWeight="SemiBold"/><TextBlock Text="Fictional component-library contributor" TextWrapping="Wrap"/><TextBox Text="Original caller note" AutomationProperties.Name="Hover card caller note"/></StackPanel>
   </orchard:BleeckerHoverCard>
   <orchard:BleeckerHoverCard Side="Top">
@@ -11,6 +11,7 @@
    <StackPanel Spacing="8"><TextBlock Text="Fictional top-side card"/><TextBlock Text="Placement preserves ancestor clipping and has no collision flip." TextWrapping="Wrap"/></StackPanel>
   </orchard:BleeckerHoverCard>
  </StackPanel>
+ <TextBlock x:Name="ActionStatus" Text="Contributor actions: 0"/>
  <orchard:BleeckerHoverCard Margin="120,0,0,130">
   <orchard:BleeckerHoverCard.Trigger><Button Content="Disabled original trigger" IsEnabled="False"/></orchard:BleeckerHoverCard.Trigger>
   <TextBlock Text="The original disabled button stays disabled; its wrapper still supports hover." TextWrapping="Wrap"/>

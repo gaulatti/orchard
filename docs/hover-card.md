@@ -47,10 +47,15 @@ caller-owned. Template retirement releases old presenters and motion resources;
 unload disconnects the preference observer and rendering clock.
 
 `HoverCardsFixture.xaml` registers fictional default, top-side and disabled
-trigger examples with caller-owned editable content. Monitoring and Editorial
-remain required component demonstrations. Native pointer/focus, nested host
-integration, full raster/shadows, customization, scaling, performance, visible
-startup and ARM64 runtime acceptance remain open.
+trigger examples with caller-owned editable content. Its original contributor
+button now exposes a visible, dynamically named action count. The
+[focused x64 catalog check](evidence/hover-card-foreground-v1/checkpoint.json)
+observes pointer, Space and Enter dispatch to that original action, live count
+text in the accessibility tree, and the disabled original trigger remaining
+disabled while its wrapper opens the hover surface. Monitoring and Editorial
+remain required component demonstrations. Move-only hover timing, full focus
+traversal, nested host integration, full raster/shadows, customization, scaling,
+performance and native ARM64 runtime acceptance remain open.
 
 ## Verified prototype checkpoint
 
