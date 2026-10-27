@@ -118,6 +118,14 @@ the hidden workspace gate; it is **not** in this v7 package. The
 [Monitoring focus checkpoint](../evidence/monitoring-focus-source-v1/checkpoint.json)
 preserves the failing package report and passing source reports/screenshots.
 
+The same extracted v7 x64 catalog passes a focused visible Editorial demo
+search flow in Light and Dark: physical row selection, physical search entry,
+filtering four fictional pages to one while retaining a hidden selection, and
+restoring the selection after clearing search. The
+[Editorial search checkpoint](../evidence/editorial-search-source-v1/checkpoint.json)
+records the exact package and source-built runs. It does not resolve the
+Monitoring focus failure or the remaining Editorial editing and scaling checks.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

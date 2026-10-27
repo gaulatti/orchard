@@ -8855,6 +8855,14 @@
         "isolated": true,
         "visibleInteractionVerified": false,
         "fullCompositionAccepted": false
+      },
+      "visibleSearchSelectionEvidence": {
+        "checkpoint": "docs/evidence/editorial-search-source-v1/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "physicalPointerAndKeyboardVerified": true,
+        "selectionPreservedAcrossFiltering": true,
+        "extractedV7CatalogPassed": true,
+        "fullCompositionAccepted": false
       }
     }
   ],

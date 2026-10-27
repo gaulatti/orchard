@@ -110,3 +110,15 @@ defect; a new package, broader visible workflow and visual review, scaling and
 native ARM64 runtime remain open. The current hidden Monitoring/Editorial gate
 passes 66 checks and 577 isolation guards; its negative auditor rejects 25
 altered receipts.
+
+The source-built and extracted v7 x64 catalogs pass a focused visible Editorial
+check in Light and Dark. Physical pointer input selects a fictional page and focuses the
+search editor; typing `garden` filters four rows to one while keeping the hidden
+Harbor selection. Clearing the query restores all four rows with Harbor still
+selected. The [Editorial checkpoint and screenshots](evidence/editorial-search-source-v1/checkpoint.json)
+identify both catalog library identities and the probe bytes. Run the check with
+`scripts/verify-editorial-search-desktop.ps1` and a fresh output directory.
+This verifies search and selection only; visible editing, decision prompts,
+broader visual comparison, scaling and native ARM64 runtime remain open. The
+v7 package passes this Editorial flow but still fails the Monitoring review
+focus check described above; the source fix needs a new package.

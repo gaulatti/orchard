@@ -1,0 +1,68 @@
+{
+  "scope": "Editorial component demo visible row selection and search in source-built x64 catalog",
+  "sourceCommit": "36a06a6",
+  "catalogExeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+  "librarySha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "desktopProbe": "scripts/verify-editorial-search-desktop.ps1",
+  "desktopProbeSha256": "cf73328a773fb827e0c32bc5f8d3d46d4f86e0eda2c7c218522908bbe9d20407",
+  "sourceDesktop": [
+    {
+      "theme": "Light",
+      "report": "artifacts/current/editorial-search-source-light-x64-v5/editorial-search-desktop.json",
+      "reportSha256": "c1ad0230959eab94122bf8b1d605bb47df18e3b379a5c3cb31be5ac20dccaa79",
+      "screenshot": "docs/evidence/editorial-search-source-v1/editorial-filtered-light.png",
+      "screenshotSha256": "f8c5851561b311b030b0049474df8e7eb4884fbd66ea467b01ee51868560e573",
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "report": "artifacts/current/editorial-search-source-dark-x64-v5/editorial-search-desktop.json",
+      "reportSha256": "576561d8075f277a3a731697803c763bf3283962acf0945e68a29e00eff02ad1",
+      "screenshot": "docs/evidence/editorial-search-source-v1/editorial-filtered-dark.png",
+      "screenshotSha256": "b5a9c5fb3a9ef73e851627c7086cde7fd3842d27f89f0bc21bcef3278847a90a",
+      "passed": true
+    }
+  ],
+  "extractedV7Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v7-local-win-x64.zip",
+    "archiveSha256": "308f1e70ecbd3e8d68f857826662bcd6138645644b6e236c2b66e4c523f73d51",
+    "allExtractedBytesVerifiedByDeliveryCheckpoint": true,
+    "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+    "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+    "sourceMonitoringFocusFixIncluded": false,
+    "sourceDesktop": [
+      {
+        "theme": "Light",
+        "report": "artifacts/current/editorial-search-v7-light-x64-v1/editorial-search-desktop.json",
+        "reportSha256": "a1c7761dd136ac0baf3684f3183e10d1073d35996785c42565c2fe5f079d4a2f",
+        "screenshot": "docs/evidence/editorial-search-source-v1/editorial-filtered-v7-light.png",
+        "screenshotSha256": "168a60f1de90325ab1b76873b1617a8a9396538d411e82740e94556823674b39",
+        "passed": true
+      },
+      {
+        "theme": "Dark",
+        "report": "artifacts/current/editorial-search-v7-dark-x64-v1/editorial-search-desktop.json",
+        "reportSha256": "cc93f8f6cfe03daecfa785225bbf118657323cf4ff5a943c2f998f4b6ae26074",
+        "screenshot": "docs/evidence/editorial-search-source-v1/editorial-filtered-v7-dark.png",
+        "screenshotSha256": "b36f9de73997c55673017bb183fefc2cda5de8cc942f3f31a1e236fc7f9a9caa",
+        "passed": true
+      }
+    ]
+  },
+  "visibleBehavior": [
+    "Physical pointer selected Harbor reading room, updating the summary",
+    "Physical pointer focused the visible Search fictional pages editor",
+    "Physical keyboard entry of garden filtered four pages to one while preserving the hidden Harbor selection",
+    "Physical keyboard clearing restored all four pages and the selected Harbor checkbox"
+  ],
+  "currentPackageQualifiedForFocusedFlow": true,
+  "currentPackageContainsMonitoringFocusFix": false,
+  "fullEditorialVisualReview": false,
+  "actualScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "editorialCompositionAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}
