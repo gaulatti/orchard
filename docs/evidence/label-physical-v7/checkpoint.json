@@ -1,0 +1,48 @@
+{
+  "scope": "Extracted v7 x64 catalog physical Label input in explicitly selected Light and Dark themes",
+  "recordedAt": "2026-10-27T08:14:04Z",
+  "packageVersion": "0.1.0-components-v7-local",
+  "packageSha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+  "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+  "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "probe": "scripts/verify-label-desktop.ps1",
+  "probeSha256": "036edaf0fba90eee44a0ab1f1c7343ecb4ca46ef6ed92f000db626b048978bd2",
+  "reports": [
+    {
+      "theme": "Light",
+      "path": "artifacts/current/components-v7-label-desktop-light-x64-final/label-desktop.json",
+      "sha256": "06003a9518c2ea0ea27835a876f88bf2bcff2f87e55a9108024028fd96d177a4",
+      "passed": true,
+      "processExited": true
+    },
+    {
+      "theme": "Dark",
+      "path": "artifacts/current/components-v7-label-desktop-dark-x64-final/label-desktop.json",
+      "sha256": "074c70a50c2a13a5918637c8a1bea762bbbb9e1c52cbde1778b44fc11a63f4c5",
+      "passed": true,
+      "processExited": true
+    }
+  ],
+  "observedRoutes": [
+    "Physical plain-label click focuses EmailInput and accepts typed x",
+    "Tab from EmailInput skips the remaining labels and focuses NestedAction",
+    "Physical rich-label text click focuses RichInput",
+    "Physical nested Help click invokes the caller action and focuses NestedAction",
+    "Physical non-tabbable Pointer action click invokes the caller action and leaves focus on EmailInput",
+    "Physical linked-label click focuses AssociationInput"
+  ],
+  "earlierHarnessFailures": [
+    "artifacts/current/components-v7-label-desktop-x64-v1/label-desktop.json: fixed action-count expectation",
+    "artifacts/current/components-v7-label-desktop-light-x64-v1/label-desktop.json: Wait-Until local variable shadowed the observed result",
+    "artifacts/current/components-v7-label-desktop-light-x64-v2/label-desktop.json: Wait-Until local variable shadowed the observed result"
+  ],
+  "osSettingsChanged": false,
+  "narratorLaunched": false,
+  "remaining": [
+    "Disabled-target and broader nested-control physical input",
+    "Independent package consumer physical input",
+    "Complete visual, motion, scaling and native ARM64 acceptance"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0
+}

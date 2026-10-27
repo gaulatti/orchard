@@ -67,6 +67,14 @@ the framework-dependent and temporary host-overlay runtime attempts also failed
 before a valid Label result. The original self-contained consumer host was
 restored byte for byte. No Label acceptance is claimed.
 
+The extracted v7 x64 catalog subsequently passed focused real foreground
+Label pointer and keyboard routes in explicitly selected Light and Dark themes:
+plain/rich/linked label focus, typing, Tab skip and both nested-button actions.
+The native Help button took pointer focus; the non-tabbable Pointer action left
+focus on the input. The [physical-input checkpoint](../evidence/label-physical-v7/checkpoint.json)
+binds both reports to this package's Orchard DLL. The complete Label physical,
+visual, scaling, consumer and ARM64 matrices remain open.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

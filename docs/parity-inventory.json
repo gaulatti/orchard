@@ -3788,6 +3788,7 @@
         "tests/PackageConsumer/LabelAssociationFixture.cs",
         "scripts/verify-label-association.mjs",
         "scripts/test-label-association-audit.mjs",
+        "scripts/verify-label-desktop.ps1",
         "tests/PackageConsumer/DisplayMetadataFixture.cs",
         "scripts/verify-display-metadata.ps1",
         "scripts/verify-display-metadata.mjs",
@@ -3796,7 +3797,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
-        "Verify the full physical label activation and nested-action matrix",
+        "Verify remaining disabled-target, nested-control and independent-consumer physical input beyond the passing v7 x64 Light/Dark catalog routes",
         "Verify scaling, remaining ARM64 state acceptance and full reference parity"
       ],
       "metadataPreview": {
@@ -3809,6 +3810,14 @@
         "helpCases": 0,
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
+        "fullComponentAcceptance": false
+      },
+      "desktopInputPreview": {
+        "checkpoint": "docs/evidence/label-physical-v7/checkpoint.json",
+        "packageVersion": "0.1.0-components-v7-local",
+        "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+        "themesPassed": ["Light", "Dark"],
+        "physicalInputVerified": true,
         "fullComponentAcceptance": false
       }
     },

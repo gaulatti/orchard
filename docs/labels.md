@@ -54,7 +54,7 @@ Content and lifecycle regression passes in both themes at artifacts/smoke-label-
 
 Live appearance checks pass in both directions at artifacts/smoke-label-theme-cursor: normal text follows primary text, the consumer error label changes between terracotta/light and primary/dark, and dimensions and association remain unchanged. A separate physical disabled-cursor probe on a fully visible maximized catalog still displayed an arrow despite assigning UniversalNo to ProtectedCursor (artifacts/label-disabled-cursor-full.jpg). That ineffective assignment was removed; disabled-cursor parity remains open.
 
-Nested-action verification: artifacts/smoke-label-nested passes both themes, including UIA invocation of a nested non-tabbable button. Physical dark-theme clicks increment its consumer action count and preserve focus in the previously focused EmailInput rather than redirecting it to RichInput (artifacts/label-nested-pointer-focus.jpg). x64 publish and ARM64 build pass. The complete nested input/control matrix remains unverified.
+Nested-action verification: artifacts/smoke-label-nested passes both themes, including UIA invocation of a nested non-tabbable button. Earlier physical dark-theme clicks incremented the consumer action count without redirecting to RichInput (artifacts/label-nested-pointer-focus.jpg). The current v7 foreground check below distinguishes the tabbable Help button, which receives pointer focus, from the non-tabbable Pointer action, which leaves focus on EmailInput. x64 publish and ARM64 build pass. The complete nested input/control matrix remains unverified.
 
 The catalog's linked-label lifecycle example toggles a temporary label and
 changes the original caption through fictional local state. The shared hidden
@@ -101,3 +101,18 @@ build does not provide runtime evidence: the thin host cannot resolve
 on the self-contained v7 consumer exited before writing a report. The original
 consumer DLL was restored and hash-checked. The delivered v7 catalog's original
 failed result remains failed. See the [checkpoint](evidence/label-explicit-empty-v7/checkpoint.json).
+
+The extracted v7 x64 catalog also passes a real foreground pointer/keyboard
+route in both explicitly selected Light and Dark themes. `scripts/verify-label-desktop.ps1`
+selects the theme through the catalog, opens Labels, clicks the plain label,
+types into its target, Tabs past non-tabbable labels to Help, clicks rich-label
+text and both nested buttons, then clicks the linked lifecycle label. The
+plain/rich/linked labels focus their respective inputs. Both nested buttons
+invoke the consumer's action; Help takes native pointer focus, while the
+non-tabbable Pointer action leaves focus on EmailInput. The [physical-input
+checkpoint](evidence/label-physical-v7/checkpoint.json) binds both reports to
+the exact v7 Orchard DLL. It does not verify disabled-target activation, every
+nested control, complete rendering, scaling, package-consumer physical input or
+native ARM64 runtime. The initial probe's fixed action-count expectation and a
+PowerShell variable-shadowing error were corrected in the test harness; their
+failed reports remain separate from the two final passes.
