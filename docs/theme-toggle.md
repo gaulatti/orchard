@@ -106,7 +106,11 @@ native tooltip, accepts pointer/Space/Enter through all three modes, preserves
 the rejected-request path, and closes with exit code zero. The hidden package
 diagnostic passes 116 normal frames and 42 ownership/style/lifecycle checks;
 the full consumer suite passes in both themes. The x64 and ARM64 library builds
-have no warnings. The v7 release contains only the NuGet package; a matching
-catalog is not qualified, and broader focus/tooltip variants, normal animation, display
-scaling, full visual review and native ARM64 runtime remain open. The component
-is still unaccepted.
+have no warnings. A [matching x64 catalog](releases/2026-10-27-preview-v7.md)
+was subsequently published with the exact package DLL. Its [visible foreground
+check](evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json) confirms
+pointer, Space and Enter requests through System, Light, Dark and back to System
+in system Dark and explicit Light, with the next-mode names and preview
+appearance updating. The catalog window closed; its exit code was not captured.
+Broader focus/tooltip variants, normal animation, display scaling, full visual
+review and native ARM64 runtime remain open. The component is still unaccepted.

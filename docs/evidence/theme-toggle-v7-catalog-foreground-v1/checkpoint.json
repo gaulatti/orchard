@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T23:27:32Z",
+  "scope": "Focused physical Theme Toggle input in the published v7 extracted x64 catalog",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "extractedCatalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "exactPackageLibrarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "independentConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
+  "method": "Visible extracted WinUI catalog with Computer Use physical pointer, Space and Enter input and live UI Automation text and screenshot observations",
+  "observations": {
+    "systemDark": {
+      "initialMode": "System",
+      "pointerAcceptedMode": "Light",
+      "spaceAcceptedMode": "Dark",
+      "enterAcceptedMode": "System",
+      "nextModeAccessibleNamesUpdated": true,
+      "previewChangedAppearance": true
+    },
+    "explicitLight": {
+      "initialMode": "System",
+      "pointerAcceptedMode": "Light",
+      "spaceAcceptedMode": "Dark",
+      "enterAcceptedMode": "System",
+      "nextModeAccessibleNamesUpdated": true,
+      "previewChangedAppearance": true
+    }
+  },
+  "catalogWindowClosed": true,
+  "catalogExitCodeCaptured": false,
+  "fullSizeVariantFocusTooltipMatrixVerified": false,
+  "fullSourceVisualReviewVerified": false,
+  "normalMotionAndScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

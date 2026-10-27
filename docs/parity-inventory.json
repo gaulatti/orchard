@@ -7874,10 +7874,11 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Published v5 catalog input and package-consumer mode requests were observed, but its normal close exited 0xC000027B and routed tooltip hover crashed WinUI; the published v7 preview fixes both and passes accepted/rejected input, visible tooltip update, hidden ownership checks and clean close (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json); its matching x64 catalog passes extracted-byte, resource, Monitoring and Editorial demo checks (docs/evidence/catalog-v7-x64/checkpoint.json), while broader focus/tooltip matrix remains",
+        "Published v5 catalog input and package-consumer mode requests were observed, but its normal close exited 0xC000027B and routed tooltip hover crashed WinUI; the published v7 preview fixes both and passes accepted/rejected input, visible tooltip update, hidden ownership checks and clean close (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json); its matching x64 catalog passes extracted-byte, resource, Monitoring and Editorial demo checks (docs/evidence/catalog-v7-x64/checkpoint.json) and physical pointer/Space/Enter mode requests in system Dark and explicit Light (docs/evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json), while broader focus/tooltip matrix remains",
         "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
         "Complete broader library integration and release acceptance"
-      ]
+      ],
+      "publishedV7CatalogForegroundCheckpoint": "docs/evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json"
     },
     {
       "id": "app-shell",
