@@ -65,7 +65,8 @@ action checks. The [preview record](releases/2026-10-26-toggle-notification-v1-l
 and [small native receipts](evidence/toggle-notification-v1/README.md) survive
 cleanup of disposable build output. Package validation was hidden/background;
 the catalog's visible `VerifyAsync` assertion was compiled but not activated.
-The updated source catalog compiles for ARM64; native ARM64 runtime remains open.
+The updated source catalog and an independent consumer of the same NuGet
+package compile for ARM64; native ARM64 runtime remains open.
 
 Catalog fixtures cover optional single selection, multiple selection, two-way consumer binding, disabled items/groups, both variants, all sizes and constrained multilingual content. Published x64 runtime checks exercise UI Automation selection, collection mutation, removal/reinsertion, disabled inheritance and light/dark rendering. Physical pointer and keyboard checks verify multiple selection, disabled-item skipping, wrapping, Space selection and clearing. The independent NuGet consumer exercises group templates and selection without a project reference. ARM64 compilation is checked separately.
 

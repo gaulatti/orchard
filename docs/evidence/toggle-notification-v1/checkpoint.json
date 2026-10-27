@@ -34,6 +34,14 @@
     "build": "consumer-build.json",
     "buildSha256": "620d6e0d95cb54cbd600032ff1c3c29cad4db9bf72d2c2ea454b86ebfb28e89f"
   },
+  "independentNugetConsumerArm64": {
+    "buildPassed": true,
+    "runtimeVerified": false,
+    "build": "consumer-arm64-build.json",
+    "buildSha256": "6f5e98f810d32c9a3e4d865e855e000bfafc995d1856e50db808d7ab612cbd25",
+    "cleanup": "consumer-arm64-cleanup.json",
+    "cleanupSha256": "78dcd534ddd842deb78d97607fb0ec10aedf2f6d79a9a7d9a744b4a7a64c19f2"
+  },
   "arm64CatalogCompiled": true,
   "visibleCatalogVerifyActivated": false,
   "physicalInputVerified": false,

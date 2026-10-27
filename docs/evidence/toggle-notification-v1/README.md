@@ -19,4 +19,7 @@ physical keyboard/pointer behavior, visual parity, display/text scaling,
 native ARM64 runtime, or full component acceptance. The package and runnable
 apps are disposable and are not stored in this archive. The ARM64 source
 catalog also compiled with zero warnings and errors; it was not executed on
-ARM64 hardware.
+ARM64 hardware. `consumer-arm64-build.json` records a fresh independent
+NuGet consumer build of the same package. Its separate cleanup receipt
+confirms that the temporary restore project was removed; native ARM64
+execution remains unverified.

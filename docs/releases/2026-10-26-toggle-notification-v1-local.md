@@ -18,8 +18,11 @@ built the exact package, then passed 62 hidden checks, 70 observations and
 catalog `VerifyAsync` routine was compiled but not run. Both hosts verified 12
 standalone styles and rejected 32 retired-provider and 16 disabled-provider
 actions. The package builder removed its isolated temporary restore project.
-The source ARM64 catalog compiled with zero warnings and errors; native ARM64
-runtime was not available on this x64 host.
+The source ARM64 catalog compiled with zero warnings and errors. A fresh
+independent ARM64 consumer also restored and built the exact NuGet package;
+its Orchard DLL is byte-identical to the x64 consumer's packaged DLL, and
+its temporary project was removed. Native ARM64 runtime was not available
+on this x64 host.
 The [small receipts](../evidence/toggle-notification-v1/README.md) remain in
 Git after `artifacts/current` is cleared.
 

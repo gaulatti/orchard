@@ -5243,11 +5243,12 @@
       ],
       "currentDelivery": {
         "checkpoint": "docs/evidence/toggle-notification-v1/checkpoint.json",
-        "checkpointSha256": "5d3cf739c05d1b49fed084facbe68e683f5401c15dd6ae6b41a01090efa43f60",
+        "checkpointSha256": "c4114f76979ee01196c306879aeb3c399c3ed33961d0a80ffa5d615aaf47dd64",
         "packageVersion": "0.1.0-toggle-notification-v1-local",
         "packageSha256": "8caaebd48f7817fe050f49ff35218e6c572417e6f7cc67b80f59d6b6505a8811",
         "sourceCatalogX64Passed": true,
         "independentNugetConsumerX64Passed": true,
+        "independentNugetConsumerArm64BuildPassed": true,
         "catalogChecks": 64,
         "consumerChecks": 62,
         "observationsPerHost": 70,
