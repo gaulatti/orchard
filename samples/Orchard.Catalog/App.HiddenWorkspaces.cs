@@ -112,6 +112,14 @@ public partial class App
                 await Navigate(Named<BleeckerSidebar>(monitoring, "Sidebar"), "Live columns");
                 await Invoke(Named<BleeckerButton>(monitoring, "Review"));
                 Check(prefix + "review-snapshot", monitoring.Model.Reviewing && monitoring.Model.ReviewIds.SequenceEqual(["harbor"]) && !Named<BleeckerSidebar>(monitoring, "Sidebar").IsEnabled && !Named<BleeckerHeaderSelect>(monitoring, "Suite").IsEnabled);
+                var reviewPanel = Named<BleeckerPanel>(monitoring, "ReviewPanel");
+                var reviewAction = Named<BleeckerButton>(monitoring, "RecordReview");
+                var actionTop = reviewAction.TransformToVisual(reviewPanel).TransformPoint(new Point()).Y;
+                Check(prefix + "review-bounded-layout", reviewPanel.ActualHeight > 0 && reviewPanel.ActualHeight <= 336 &&
+                    reviewPanel.ActualHeight < Named<Grid>(monitoring, "ReviewOverlay").ActualHeight &&
+                    actionTop >= 0 && actionTop + reviewAction.ActualHeight <= reviewPanel.ActualHeight);
+                Check(prefix + "review-opaque-surface", reviewPanel.Background is SolidColorBrush reviewBrush &&
+                    reviewBrush.Color.A == 255 && reviewBrush.Opacity == 1);
                 var instructions = Named<BleeckerTextarea>(monitoring, "Instructions"); instructions.Text = "Keep this local draft."; await Layout();
                 await Invoke(Named<BleeckerButton>(monitoring, "Back"));
                 Check(prefix + "discard-decision", monitoring.Model.ConfirmCancel && Named<StackPanel>(monitoring, "DiscardReview").Visibility == Visibility.Visible && !instructions.IsEnabled);

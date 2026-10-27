@@ -8840,6 +8840,13 @@
         "physicalReviewFocusEscapeAndLocalUpdatePassed": true,
         "freshZipExtractionVerified": false,
         "fullCompositionAccepted": false
+      },
+      "sourceReviewSurfaceEvidence": {
+        "checkpoint": "docs/evidence/monitoring-review-surface-source-v1/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "boundedOpaqueSurfaceAndLocalReviewVerified": true,
+        "freshPackageRuntimeVerified": false,
+        "fullCompositionAccepted": false
       }
     },
     {

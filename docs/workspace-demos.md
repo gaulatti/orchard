@@ -160,3 +160,15 @@ package predate this demo fix. The [v9 local preview](releases/2026-10-27-compon
 includes it: the freshly extracted x64 catalog passes the same 68 hidden
 Monitoring/Editorial checks and 581 isolation guards. The ARM64 archive is
 hash-verified; its native demo runtime remains open.
+
+The source-built Monitoring review now uses a bounded, opaque themed card surface.
+Previously, the review panel stretched with an empty outlined area and its
+transparent body exposed post cards behind the overlay. The panel stays within
+336 effective pixels and uses `BleeckerCardBrush` in Light and Dark while keeping
+the review action visible. The [review surface checkpoint](evidence/monitoring-review-surface-source-v1/checkpoint.json)
+records a fresh x64 hidden gate (72 checks, 589 isolation guards, 25 rejected
+damaged receipts), warning-free x64 and ARM64 builds, and visible Light/Dark
+inspection of the source catalog. In Dark, a pointer click on Record local review
+changed the fictional summary from zero to one local review. The v9 archive
+predates this fixture change; native ARM64 runtime and broader composition
+acceptance remain open.

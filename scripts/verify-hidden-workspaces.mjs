@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
-const monitoring=['loaded','post-content-contrast','narrow-viewport','native-selection','native-search','retained-update','inspector','sidebar-attention','review-snapshot','discard-decision','keep-review','local-review','explicit-review-discard','review-history','suite-request'];
+const monitoring=['loaded','post-content-contrast','narrow-viewport','native-selection','native-search','retained-update','inspector','sidebar-attention','review-snapshot','review-bounded-layout','review-opaque-surface','discard-decision','keep-review','local-review','explicit-review-discard','review-history','suite-request'];
 const editorial=['loaded','narrow-viewport','native-filters','sort-retention','search-empty','native-edit','relations-order','visible-choice-order','row-discard-decision','keep-exact-draft','catalog-remount','local-save-original','explicit-row-discard','save-validation','suite-discard-decision','section-discard-decision','section-discard','suite-discard','monitoring-remount'];
 export function auditWorkspaceReport(report){
  assert.equal(report.scope,'hidden-workspace-demo-contracts');

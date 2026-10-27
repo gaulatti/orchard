@@ -1,0 +1,40 @@
+{
+  "scope": "Monitoring component-demo review surface",
+  "baseCommit": "1ff5aff92acc38819cd81c41d7e8824d3ddd936d",
+  "observedDefect": "The source-built review panel stretched into an empty outlined area, and its transparent body exposed post cards behind the overlay.",
+  "change": "Bound the panel to 336 effective pixels and apply the themed BleeckerCardBrush to its body.",
+  "sourceBuild": {
+    "configuration": "Release",
+    "x64Warnings": 0,
+    "x64Errors": 0,
+    "arm64Warnings": 0,
+    "arm64Errors": 0,
+    "catalogDllSha256": "063820d668f77882d095f77c4c7fa5c53c1d8cf7cf48ddfe663746ee5d977d61",
+    "orchardDllSha256": "04d241f2e1f68d7a119dc8de80732ed657b000afbb34430ebd52a05922510e23"
+  },
+  "hiddenNativeGate": {
+    "report": "artifacts/current/monitoring-review-bounded-source-v4/hidden-workspaces.json",
+    "reportSha256": "e0d652d423d226297cf232779261f02fe11c053accba458c1c3a4e84ddaf1d2b",
+    "auditSha256": "1ac9cc705ee033fd88067ac86b7fbe1e7194a7984290b332b87cb7be34c39f8b",
+    "negativeAuditSha256": "4360e2d3703bb6918e727fca7d4f55ee063a2380df9077b83232779987e58b6a",
+    "checksPassed": 72,
+    "isolationGuardsPassed": 589,
+    "corruptedReceiptsRejected": 25,
+    "reviewLayoutAndOpacityCheckedIn": ["Light", "Dark"]
+  },
+  "foregroundX64": {
+    "tool": "Computer Use (Sky)",
+    "lightAndDarkSurfaceInspected": true,
+    "panelBoundedAndOpaque": true,
+    "darkPointerLocalReviewPassed": true,
+    "summaryAfterReview": "0 selected · 0 local updates · 1 local reviews"
+  },
+  "previousFailures": [
+    "The first ARM64 --no-restore build lacked win-arm64 assets; normal restore and build passed.",
+    "An intermediate Light-theme check required exact brush identity even though the requirement is opacity; the assertion was narrowed to opacity and both themes passed."
+  ],
+  "packaging": "The components-v9 archive predates this source-only demo fix. No updated package or native ARM64 runtime is claimed here.",
+  "entriesStarted": 112,
+  "accepted": 0,
+  "compositionAccepted": false
+}

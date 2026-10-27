@@ -31,7 +31,7 @@
     </Grid>
     <Grid x:Name="ReviewOverlay" Visibility="Collapsed" TabFocusNavigation="Cycle" KeyDown="ReviewKeyDown">
      <Border Background="{ThemeResource BleeckerBackgroundBrush}" Opacity="0.9"/>
-     <orchard:BleeckerPanel Title="Processing review" Width="480" HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="Local processing review">
+     <orchard:BleeckerPanel x:Name="ReviewPanel" Title="Processing review" Width="480" MaxHeight="336" Background="{ThemeResource BleeckerCardBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" AutomationProperties.Name="Local processing review">
       <StackPanel Spacing="12">
        <TextBlock x:Name="ReviewSummary" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
        <orchard:BleeckerField Label="Local instructions" Optional="True"><orchard:BleeckerTextarea x:Name="Instructions" Rows="3"/></orchard:BleeckerField>
