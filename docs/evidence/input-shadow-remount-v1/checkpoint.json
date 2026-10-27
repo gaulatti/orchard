@@ -1,0 +1,52 @@
+{
+  "scope": "Source-built x64 Input shadow restoration after same-size remount",
+  "observedAt": "2026-10-27T01:44:55-04:00",
+  "catalogExeSha256": "7b168a5ba5f6554c18099e65621bb06003d60180c616b10ef74f21b3d7b6ab05",
+  "catalogDllSha256": "3a6e6ad0b4254cc792f925053363465d092ccce83d482329138ec3b0a4973c67",
+  "orchardDllSha256": "0f05dfe1fe56e241e4c874ea157ef6e37d3c9a0d3eaef3a08c0d48a840d6e590",
+  "change": "Queue one shadow paint after Input Loaded, following synchronous load paint, so a remounted template with unchanged dimensions can restore its cleared composition visual.",
+  "catalogFixture": "Two consecutive unload/reload cycles with detached and restored shadow checks in each theme; failure reports include the host size and child visual.",
+  "focusedInput": {
+    "result": "artifacts/current/input-shadow-remount-v1/result.json",
+    "resultSha256": "732add234b2cf767a9274fe4ef1742509f97f44afda1fc7c7651bf8588733dfc",
+    "passed": true,
+    "pngCaptures": 164
+  },
+  "fullPresentationRuns": [
+    {
+      "result": "artifacts/current/input-shadow-presentation-v1/result.json",
+      "resultSha256": "27d6473b899364fcac1b285bbc17b917e5b4ad25fc3a260f88b2ca6d4b1cc676",
+      "passed": true,
+      "pngCaptures": 256
+    },
+    {
+      "result": "artifacts/current/input-shadow-presentation-repeat-v1/result.json",
+      "resultSha256": "27d6473b899364fcac1b285bbc17b917e5b4ad25fc3a260f88b2ca6d4b1cc676",
+      "passed": true,
+      "pngCaptures": 256
+    }
+  ],
+  "environment": {
+    "processArchitecture": "X64",
+    "osDescription": "Microsoft Windows 10.0.26200",
+    "framework": ".NET 10.0.12",
+    "displayScale": 1,
+    "textScale": 1,
+    "animationsEnabled": false,
+    "highContrast": false
+  },
+  "inputUnitTests": {
+    "passed": 37,
+    "failed": 0
+  },
+  "arm64LibraryBuildPassed": true,
+  "priorIntermittentFailure": {
+    "result": "artifacts/current/presentation-after-input-glyph-v1/result.json",
+    "resultSha256": "4d196323260263a961993f60be66d9d1e5bf70c21142bc4f6b30c582c2ebd0c4",
+    "rootCauseProven": false
+  },
+  "newPackageQualified": false,
+  "nativeArm64RunVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

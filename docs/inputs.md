@@ -935,3 +935,17 @@ display/text scale with animations disabled. The earlier combined Input shadow
 remount failure remains unresolved; the pass does not establish its cause or
 erase it. Neither run qualifies a new NuGet package or native ARM64 behavior.
 See `docs/evidence/catalog-presentation-recheck-v1/checkpoint.json`.
+
+The next source change addresses that same-size remount gap directly. Input
+still paints its shadow during `Loaded` and `SizeChanged`; it now also queues
+one paint after `Loaded` so a template whose dimensions did not change can
+restore the composition visual after the unload cleanup. The catalog fixture
+checks two consecutive detach/reattach cycles in each appearance and records
+the host size and child visual if restoration fails. This does not alter the
+shadow recipe, theme tokens or caller-owned geometry. The source-built x64
+catalog passes focused Input smoke in both appearances, and 37 Input-related
+unit tests and the ARM64 library build pass. Two consecutive full presentation
+rechecks pass all fixtures in both appearances with 256 captures each. The
+original intermittent failure remains retained as evidence; these passes do
+not prove its precise cause or qualify a new package. See
+`docs/evidence/input-shadow-remount-v1/checkpoint.json` for the exact results.

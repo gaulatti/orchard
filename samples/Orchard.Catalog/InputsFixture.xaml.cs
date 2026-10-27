@@ -185,12 +185,18 @@ public sealed partial class InputsFixture : UserControl
         await AwaitAsync(() => Shadow(input)?.IsVisible == true, "Resized input did not restore its shadow.");
         CheckRestShadow(input, 180, 44);
         var shadowHost = Find<Grid>(input, "InputShadowHost");
-        panel.Children.Remove(input);
-        await AwaitAsync(() => !input.IsLoaded && ElementCompositionPreview.GetElementChildVisual(shadowHost) is null, "Unloaded input retained its shadow visual.");
-        panel.Children.Add(input);
-        UpdateLayout();
-        await AwaitAsync(() => input.IsLoaded && Shadow(input) is not null, "Reloaded input did not restore its shadow.");
-        CheckRestShadow(input, 180, 44);
+        for (var remount = 1; remount <= 2; remount++)
+        {
+            panel.Children.Remove(input);
+            await AwaitAsync(() => !input.IsLoaded && ElementCompositionPreview.GetElementChildVisual(shadowHost) is null,
+                $"Unloaded input retained its shadow visual on remount {remount}.");
+            panel.Children.Add(input);
+            UpdateLayout();
+            await AwaitAsync(() => input.IsLoaded && Shadow(input) is not null,
+                $"Reloaded input did not restore its shadow on remount {remount}.",
+                () => $"loaded={input.IsLoaded}; host={shadowHost.ActualWidth}x{shadowHost.ActualHeight}; childVisual={ElementCompositionPreview.GetElementChildVisual(shadowHost)?.GetType().Name ?? "null"}");
+            CheckRestShadow(input, 180, 44);
+        }
         panel.Children.Remove(input);
         UpdateLayout();
 

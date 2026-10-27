@@ -34,7 +34,15 @@ public sealed partial class BleeckerInput
 
     private void InitializeShadow()
     {
-        Loaded += (_, _) => { shadowSettings.ColorValuesChanged += OnShadowColorsChanged; UpdateShadow(); };
+        Loaded += (_, _) =>
+        {
+            shadowSettings.ColorValuesChanged += OnShadowColorsChanged;
+            UpdateShadow();
+            // A remounted template can retain its last size, so SizeChanged may
+            // not run after the old composition visual was cleared on unload.
+            // Repaint once after the load/layout work has been dispatched.
+            DispatcherQueue.TryEnqueue(PaintShadow);
+        };
         Unloaded += (_, _) =>
         {
             shadowSettings.ColorValuesChanged -= OnShadowColorsChanged;
