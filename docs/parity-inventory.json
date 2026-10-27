@@ -5607,7 +5607,7 @@
         "scripts/test-package-select-modal-root-audit.mjs"
       ],
       "status": "in-progress",
-      "foregroundInputCheckpoint": "docs/evidence/select-foreground-source-v1/checkpoint.json",
+      "foregroundInputCheckpoint": "docs/evidence/select-foreground-expanded-v1/checkpoint.json",
       "remainingGaps": [
         "Current source-built x64 Header Select keyboard and pointer selection/Escape pass in Light/Dark (docs/evidence/select-foreground-expanded-v1/checkpoint.json); finish typeahead, outside dismissal, independent package foreground input, focused-option source paint and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
@@ -6699,9 +6699,9 @@
         "scripts/test-package-select-modal-root-audit.mjs"
       ],
       "status": "in-progress",
-      "foregroundInputCheckpoint": "docs/evidence/select-foreground-source-v1/checkpoint.json",
+      "foregroundInputCheckpoint": "docs/evidence/select-foreground-typeahead-v1/checkpoint.json",
       "remainingGaps": [
-        "Current source-built x64 Select pointer and Space/Home/Tab/End/Up/Enter/Escape pass in Light/Dark (docs/evidence/select-foreground-expanded-v1/checkpoint.json); finish typeahead, outside dismissal, independent package foreground input, focused-option source paint and complete open raster",
+        "Current source-built x64 Select pointer, keyboard, closed/open prefix typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-foreground-typeahead-v1/checkpoint.json); finish independent package foreground input, focused-option source paint and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },

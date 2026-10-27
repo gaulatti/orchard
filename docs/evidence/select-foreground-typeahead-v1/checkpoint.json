@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T15:08:18Z",
+  "scope": "Select source-built x64 catalog native typeahead and outside dismissal",
+  "catalog": {
+    "buildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "exeSha256": "1a3c84918d95bd409ba9fbb728323847e08c6deaa07476da3cb9607382baedc9",
+    "catalogDllSha256": "66e6e5586edd7ccc1fbc37fcf4d63f1ec8ff3ab275e9fbfdb2400070ca9522b0",
+    "orchardDllSha256": "dd8409603e3b674007b2c2e48747479ccd42ed8dfc1c5d88e7b5725d144be20e"
+  },
+  "run": {
+    "result": "artifacts/current/select-foreground-source-v5/result.json",
+    "resultSha256": "9740db61449aeb0a4fcfcb8bfe854fa216dbb10d4a6fc27eff0187adf192860c",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "lightReportSha256": "358ab7f42503b39e59802c88786f8acfd0d2f2ecda5a239edde38513f3b39108",
+    "darkReportSha256": "fd435bf3ef5ecf19c72261f96fdbb6b0d4e447a47c3e207bef67df1b9d5ce67a",
+    "closedTypeaheadRequestedNextMatchingCallerOption": true,
+    "openTypeaheadMovedFocusWithoutCommitting": true,
+    "outsidePointerDismissedWithoutChangingCallerValue": true,
+    "displayScale": 1,
+    "textScale": 1,
+    "animationsEnabled": false
+  },
+  "diagnostic": {
+    "result": "artifacts/current/select-foreground-source-v4/result.json",
+    "resultSha256": "2acdc1644f3d41d303b4698bda056304a270610fa4696019c562c62a0419c199",
+    "explanation": "The initial fixture pressed B for the displayed label Local library Beta. Prefix matching correctly requires L; the fixture input was corrected before the passing run. No library code changed."
+  },
+  "sourceRasterParityVerified": false,
+  "independentPackageForegroundVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

@@ -74,6 +74,20 @@ public sealed partial class SelectsFixture
         input.Key(0x1B);
         await AwaitAsync(() => !medium.IsDropDownOpen && Medium.Value == "a" && Status.Text == "Consumer accepted: a",
             "Select Escape changed the caller value or left the menu open.");
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), medium),
+            "Select Escape did not restore trigger focus before typeahead.");
+        input.Key(0x4C); // L cycles to the next label with the same prefix while closed.
+        await AwaitAsync(() => !medium.IsDropDownOpen && Medium.Value == "b" && Status.Text == "Consumer accepted: b",
+            "Closed Select typeahead did not request the matching original option.");
+        input.Key(0x0D);
+        await AwaitAsync(() => medium.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "b")),
+            "Select did not reopen on its typeahead-selected option.");
+        input.Key(0x4C); // L cycles focus to the next matching label without committing.
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "a")) && Medium.Value == "b",
+            "Open Select typeahead changed the value or missed its matching option.");
+        await input.ClickAsync(Status);
+        await AwaitAsync(() => !medium.IsDropDownOpen && Medium.Value == "b" && Status.Text == "Consumer accepted: b",
+            "Select outside click did not dismiss the menu while preserving the caller value.");
 
         var header = Surface(Header);
         Require(header.Focus(FocusState.Keyboard), "Header Select trigger rejected keyboard focus.");
@@ -112,6 +126,7 @@ public sealed partial class SelectsFixture
             passed = true, scheme, pointerSelectValue = "b", pointerFocusedSelectedOption = true,
             pointerRestoredFocus = true, selectKeyboardValue = "a", selectHomeEndUpAndTab = true,
             selectKeyboardRestoredFocus = true, selectEscapePreservedValue = true,
+            selectClosedTypeaheadValue = "b", selectOpenTypeaheadFocusedValue = "a", selectOutsideClickPreservedValue = true,
             headerKeyboardValue = "a", headerInitiallyFocusedPlaceholder = true,
             headerDownFocusedOriginalOption = true, headerRestoredFocus = true, escapePreservedValue = true,
             headerPointerValue = "b", headerPointerRestoredFocus = true

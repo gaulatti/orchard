@@ -108,9 +108,14 @@ and pointer opening and choice on Header Select, in both Light and Dark. The
 original caller accepts each choice and focus returns to the trigger. Four
 settled open-menu captures show readable focused rows and disabled options.
 This check uses the current source-built catalog at 100% display/text scale
-with animations disabled. Independent package foreground input, typeahead,
-outside dismissal, complete raster/motion, scaling and native ARM64 runtime
-remain open; the inventory entries are not accepted.
+with animations disabled. A subsequent [typeahead and outside-dismissal
+check](evidence/select-foreground-typeahead-v1/checkpoint.json) passes physical
+prefix cycling in closed and open Select, caller value requests, focus-only
+navigation, and outside-click dismissal in both themes. The first attempt used
+`B` for a label beginning `Local`; that fixture input was corrected to `L`.
+No library behavior changed. Header Select typeahead/outside input, independent
+package foreground input, complete raster/motion, scaling and native ARM64
+runtime remain open; the inventory entries are not accepted.
 
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
