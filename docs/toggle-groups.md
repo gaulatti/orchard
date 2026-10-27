@@ -78,3 +78,9 @@ Narrator and OS contrast campaigns are excluded by the
 statements describe their original checks; the v4 evidence above is separate.
 Token and interaction checks do not establish visual parity. This component
 remains in progress in the parity inventory.
+
+The later [consolidated v5 package](releases/2026-10-26-components-v5-local.md)
+passed the focused Toggle Group lifecycle/style check in its independent x64
+consumer: 62 checks and 70 observations, including standalone two-way binding
+and command gating. The [package regression checkpoint](evidence/components-v5-package-regressions-v1/checkpoint.json)
+binds the audit to the exact v5 Orchard DLL. The acceptance gaps above remain.

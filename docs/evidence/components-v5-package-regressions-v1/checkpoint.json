@@ -1,0 +1,30 @@
+{
+  "scope": "Changed Navigation Menu and Toggle Group contracts in the exact v5 independent x64 NuGet consumer",
+  "packageVersion": "0.1.0-components-v5-local",
+  "packageSha256": "6498f772034dd9f66ba9be3270d8b129289fb50657709d6bd724e3a772261a8f",
+  "orchardDllSha256": "9c50496b46f29fd36b0de029c484013257c5ef880013671d33dc9458081c2ee6",
+  "navigationMenu": {
+    "test": "scripts/verify-navigation-menu.ps1",
+    "audit": "artifacts/current/components-v5-navigation-menu-consumer-x64/navigation-menu-audit.json",
+    "auditSha256": "dbe2be428f82c7292f3f8a0447179cd8b637e0c62443c1f1f6596fdfe431f9e2",
+    "passed": true,
+    "states": 32,
+    "contracts": 22,
+    "geometryValues": 968,
+    "maximumGeometryError": 0,
+    "physicalInputVerified": false
+  },
+  "toggleGroup": {
+    "test": "scripts/verify-toggle-group.ps1",
+    "audit": "artifacts/current/components-v5-toggle-group-consumer-x64/audit.json",
+    "auditSha256": "143c06d254f4fb0f924def4b2e75d105e4aa686e1c711ca06e93f745622619f1",
+    "passed": true,
+    "checks": 62,
+    "observations": 70,
+    "standaloneTwoWayBindingsVerified": true,
+    "standaloneCommandGatingVerified": true,
+    "physicalInputVerified": false
+  },
+  "nativeArm64RuntimeVerified": false,
+  "componentsAccepted": false
+}

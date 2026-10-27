@@ -45,6 +45,13 @@ five owner-associated dialogs, two original selected files, extension and
 all-files filters, and selection retention. The failure and pass are both
 retained. This does not verify a foreground picker in the independent consumer.
 
+The same exact v5 NuGet consumer later passed the focused
+[Navigation Menu and Toggle Group package regressions](../evidence/components-v5-package-regressions-v1/checkpoint.json).
+Navigation Menu passed 32 native states, 22 contracts and 968 source geometry
+values with zero error. Toggle Group passed 62 lifecycle/style checks and 70
+observations, including standalone two-way binding and command gating. These
+hidden checks do not establish physical input or native ARM64 runtime.
+
 Native ARM64 catalog/consumer runtime, remaining component visual and behavior
 checks, measured collection
 performance, and final package acceptance remain open. The library inventory

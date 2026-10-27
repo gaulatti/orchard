@@ -181,3 +181,9 @@ full metadata/customization, Windows scaling,
 complete visual review and native ARM64 execution remain open. Hidden public API/UIA
 tests do not claim those results. No Narrator, OS setting changes, pointer
 heartbeat or Actions are part of this work.
+
+The later [consolidated v5 package](releases/2026-10-26-components-v5-local.md)
+passed the focused Navigation Menu check in its independent x64 consumer:
+32 states, 22 contracts and 968 source geometry values with zero error. Its
+[package regression checkpoint](evidence/components-v5-package-regressions-v1/checkpoint.json)
+binds the audit to the exact v5 Orchard DLL. The remaining limits above apply.
