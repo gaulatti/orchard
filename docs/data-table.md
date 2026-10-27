@@ -40,6 +40,17 @@ the full 120-profile performance matrix. No library optimization or budget
 change followed this observation. The rejected zero-width-measure and
 row-container-reuse experiments below remain rejected.
 
+The later exact v5 extracted x64 catalog passed a focused foreground Data Table
+path in Orchard dark mode: pointer Count sorting produced 28/27/26 as the first
+values, native search-value setting filtered 23 fictional rows to seven Ash
+rows without losing sort order, pointer page selection selected all seven, and
+clearing search retained those seven original selections among 23 rows. The
+pointer Next arrow reached page two; Shift+Tab focused Previous and keyboard
+Space returned to page one with selection intact. See
+`docs/evidence/components-v5-data-table-foreground-v1/checkpoint.json`.
+This observation does not qualify the performance budget, all input paths or
+the complete visual review.
+
 An earlier published `0.1.0-menubar-peer-metadata-v1-local` NuGet library has a full
 performance baseline under `artifacts/current/data-table-container-reuse-full-baseline-v1`
 through `v3`, summarized by `data-table-container-reuse-full-baseline-budget-v1.json`.

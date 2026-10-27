@@ -7352,8 +7352,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete visual review of source-derived typography, geometry, colors, shadows and states under docs/acceptance-contract.md; verify scaling/motion, physical keyboard/pointer/focus and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
-        "Meet unchanged local performance budgets: the earlier DAE NuGet library fails 24 of 120 timing profiles across three sequential full runs (360 measurements); all allocation budgets pass. Its 16,384-row/page-100 next-page median is 1,715.0988 ms versus 1,000 ms. The current text-media-v3 package passes a one-process focused functional replay but takes 1,727.45 ms for that paging case. Neither result establishes performance acceptance",
+        "Focused v5 x64 foreground Count sort, Ash search, page selection retention and pointer/keyboard pagination pass; complete source-derived visual review, scaling/motion, remaining input/focus paths and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
+        "Meet unchanged local performance budgets: the earlier DAE NuGet library fails 24 of 120 timing profiles across three sequential full runs (360 measurements); all allocation budgets pass. Its 16,384-row/page-100 next-page median is 1,715.0988 ms versus 1,000 ms. The later text-media-v3 package takes 1,727.45 ms in one focused process, and the 96516e7 source-built catalog takes 1,675.29 ms in a separate one-process replay. Neither result establishes performance acceptance for the current v5 delivery",
         "Complete broader component acceptance beyond the navigation-foreground repair: version0.1.0-table-navigation-v1-local passes independent x64/ARM64 consumer builds and96states/264observations in each x64package/catalog host, with66fictional-demo checks; native ARM64 runtime remains unverified"
       ],
       "sourcePreparation": {
