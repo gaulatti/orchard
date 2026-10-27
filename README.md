@@ -11,11 +11,12 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.2)
+Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.4)
 for the NuGet package and x64/ARM64 catalog ZIPs, including the fictional Monitoring
-and Editorial demos. The [artifact record](docs/evidence/catalog-preview-v2/checkpoint.json)
+and Editorial demos. The [artifact record](docs/evidence/catalog-preview-v4/checkpoint.json)
 lists hashes, checks and limits. Native ARM64 execution and final component
-acceptance remain open; newer changes on main are not yet in that release.
+acceptance remain open. The current x64 catalog build passed the six Monitoring
+and Editorial Light/Dark desktop checks; extracted ZIP runtime is unverified.
 
 Nine display components preserve caller automation names and label associations;
 Error State also preserves caller HelpText. See [metadata ownership](docs/automation-metadata.md).

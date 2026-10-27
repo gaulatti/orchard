@@ -1,0 +1,100 @@
+{
+  "scope": "Published current-source NuGet preview and x64/ARM64 catalog archives",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.4",
+  "releaseId": 425889023,
+  "tag": "v0.1.0-preview.20261027.4",
+  "tagTarget": "f7c0ccb78ed3c07fc69aeca35e04d0ba204a889d",
+  "package": {
+    "name": "Gaulatti.Orchard.0.1.0-preview.20261027.4.nupkg",
+    "assetId": 682622374,
+    "sha256": "3bd5b0a534eae065e054757955b5060a7095f5e79368433a59c57ac9a8abd48e",
+    "bytes": 1734094,
+    "staticAuditPassed": true,
+    "x64CachedDependencyConsumerNativePassed": true,
+    "arm64ConsumerBuildPassed": true,
+    "arm64NativeRuntimeVerified": false,
+    "fullyIsolatedConsumerVerified": false,
+    "localCheckpoint": "docs/evidence/preview-v4-local/checkpoint.json"
+  },
+  "catalogArchives": {
+    "x64": {
+      "name": "Gaulatti.Orchard.Catalog.0.1.0-preview.20261027.4-win-x64.zip",
+      "assetId": 682622955,
+      "sha256": "18ae161b591a4c4e3c7a6be43ba8f335e289be46afb233223dd7e9d197e61bfb",
+      "bytes": 106261450,
+      "fileCount": 821,
+      "xbfCount": 114,
+      "librarySha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",
+      "catalogSha256": "ca94a15f0023c291978378df1a36c8a8b9eec24226c542fb531953907d54741f",
+      "entryBytesMatchedBuildOutput": true,
+      "githubDigestMatched": true,
+      "extractedRuntimeVerified": false,
+      "nativeArm64RuntimeVerified": false
+    },
+    "ARM64": {
+      "name": "Gaulatti.Orchard.Catalog.0.1.0-preview.20261027.4-win-arm64.zip",
+      "assetId": 682624014,
+      "sha256": "a0cad6fa813c8a9e10f04729d38f58c4b666ca815a4995682e2da15e8865d513",
+      "bytes": 103348641,
+      "fileCount": 817,
+      "xbfCount": 114,
+      "librarySha256": "bd448b3cbcdaaac4baf419fbeaa81ddc9ef478deb542a49bab7910e095403be5",
+      "catalogSha256": "afe7a83e05387a3bc6586f257d98715b4320e550953fc730592e97da6121b2c5",
+      "entryBytesMatchedBuildOutput": true,
+      "githubDigestMatched": true,
+      "extractedRuntimeVerified": false,
+      "nativeArm64RuntimeVerified": false
+    }
+  },
+  "verification": {
+    "x64SourceBuildMatchesPackageDll": true,
+    "x64MonitoringAndEditorialLightDarkDesktopReportsPassed": 6,
+    "desktopReports": {
+      "monitoring-light": {
+        "path": "docs/evidence/catalog-preview-v4/monitoring-light.json",
+        "sha256": "347b41a394239585eece1e316c2b8338d9de458e7dc3549b9aa239dafdd28f74",
+        "passed": true
+      },
+      "monitoring-dark": {
+        "path": "docs/evidence/catalog-preview-v4/monitoring-dark.json",
+        "sha256": "ef0a228fe3c9141ac4b888bd6c0b34d6ef15d1810a2a4c4199208072193a8764",
+        "passed": true
+      },
+      "editorial-search-light": {
+        "path": "docs/evidence/catalog-preview-v4/editorial-search-light.json",
+        "sha256": "6f48a073d20dc45641e7403e594b1c4948ba56cc398b9d377f43030ae018b9cf",
+        "passed": true
+      },
+      "editorial-search-dark": {
+        "path": "docs/evidence/catalog-preview-v4/editorial-search-dark.json",
+        "sha256": "73fd3bde6adccfa1b18fb2ba471d731464f355423539181604bc0d4d626c63a4",
+        "passed": true
+      },
+      "editorial-edit-light": {
+        "path": "docs/evidence/catalog-preview-v4/editorial-edit-light.json",
+        "sha256": "0aea8eb2d173056775ce4efae18ea453d63dfca4a9052cf25de7df7237b97c37",
+        "passed": true
+      },
+      "editorial-edit-dark": {
+        "path": "docs/evidence/catalog-preview-v4/editorial-edit-dark.json",
+        "sha256": "e3777b923255259f2ca609ee53656be17ca29fd76de01ccb82916dca73cf6d47",
+        "passed": true
+      }
+    },
+    "initialMonitoringLightForegroundFailure": {
+      "path": "docs/evidence/catalog-preview-v4/monitoring-light-initial-failed.json",
+      "sha256": "f2523770f042dda442999dfb60781349c13c159d432eab41bd2efccac25bba36",
+      "reason": "Stale Windows Open With dialog held foreground; exact owning processes were closed and unchanged rerun passed."
+    },
+    "physicalPointerAndKeyboardInputSent": true,
+    "osSettingsChanged": false
+  },
+  "limits": [
+    "Desktop checks launched the current x64 build output containing the exact packaged Orchard DLL; extracted release ZIP runtime was not exercised.",
+    "ARM64 archive passed build and byte verification, but native ARM64 runtime was not exercised.",
+    "Fully isolated NuGet consumer, broader component visual/scaling review and final inventory acceptance remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "libraryComplete": false
+}

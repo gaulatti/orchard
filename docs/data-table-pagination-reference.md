@@ -745,6 +745,9 @@ consumer restored and built against cached dependencies, then passed native
 resource, font, Light/Dark layout and action checks. The ARM64 consumer restored
 and built with zero warnings/errors and an Arm64 apphost; it has not run natively.
 The [local package checkpoint](evidence/preview-v4-local/checkpoint.json)
-preserves both successful and failed attempts. Fresh fully isolated consumption,
-current catalog ZIPs and release publication still need disk headroom. The
-published preview remains `0.1.0-preview.20261027.2`.
+preserves both successful and failed attempts. That package and matching x64
+and ARM64 catalog ZIPs are now in the published
+[`0.1.0-preview.20261027.4` prerelease](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.4).
+The [release checkpoint](evidence/catalog-preview-v4/checkpoint.json) records
+asset hashes and six passing x64 catalog demo checks. Fresh fully isolated
+NuGet consumption, extracted-ZIP runtime and native ARM64 runtime remain open.

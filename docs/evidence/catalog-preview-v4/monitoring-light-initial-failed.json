@@ -1,0 +1,15 @@
+{
+  "format": "orchard-monitoring-desktop-v1",
+  "passed": false,
+  "requestedTheme": "Light",
+  "catalogExeSha256": "611e0de969448f25d84d204a775c0ccc4849d2766c118b3dd411b3612a5b2f7d",
+  "orchardDllSha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",
+  "steps": {},
+  "physicalPointerInputSent": false,
+  "physicalKeyboardInputSent": false,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "compositionAccepted": false,
+  "error": "Catalog did not become foreground.",
+  "processExited": true
+}
