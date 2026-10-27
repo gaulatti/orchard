@@ -3606,8 +3606,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Focused x64 catalog pointer, Space, Enter, dynamic action count and disabled-trigger hover checks pass; move-only hover, full focus traversal, independent consumer, ancestor stacking and nested popup/modal host integration remain open (docs/evidence/hover-card-foreground-v1/checkpoint.json)",
-        "Verify complete raster/shadows, live normal motion, scaling, performance, packaged visible startup and native ARM64 acceptance"
+        "Source-built pointer, Space and Enter trigger actions pass; extracted v10 x64 catalog Bottom/Top gap dismissal and direct surface clicks, caller-note retention, Light/Dark appearance and disabled-wrapper behavior pass (docs/evidence/hover-card-foreground-v1/checkpoint.json; docs/evidence/hover-card-v10-foreground-v1/checkpoint.json). Move-only pointer input, full focus traversal, ancestor stacking and nested popup/modal integration remain open",
+        "Verify complete raster/shadows, live normal motion, scaling, performance, independent NuGet consumer Hover Card foreground behavior and native ARM64 acceptance"
       ]
     },
     {

@@ -73,5 +73,8 @@ query actual native hit testing; they do not deliver physical input. See
 [the native API and fresh independent package evidence](hover-card.md). Native input,
 complete raster/shadows, scaling, performance and x64/ARM64 evidence. Both
 Monitoring and Editorial fictional-data component demos remain required.
-Desktop work stays in the background; Narrator, OS settings, pointer heartbeat,
-Actions and pushes remain excluded from the current work.
+Foreground desktop component tests are authorized. Narrator, OS settings,
+pointer heartbeat and Actions remain excluded; pushes use `[skip ci]`.
+See the current [library scope](library-scope.md) and
+[v10 foreground receipt](evidence/hover-card-v10-foreground-v1/checkpoint.json)
+for the active restrictions and observed pointer behavior.

@@ -53,9 +53,15 @@ button now exposes a visible, dynamically named action count. The
 observes pointer, Space and Enter dispatch to that original action, live count
 text in the accessibility tree, and the disabled original trigger remaining
 disabled while its wrapper opens the hover surface. Monitoring and Editorial
-remain required component demonstrations. Move-only hover timing, full focus
-traversal, nested host integration, full raster/shadows, customization, scaling,
-performance and native ARM64 runtime acceptance remain open.
+remain required component demonstrations. A separate
+[v10 extracted-catalog desktop check](evidence/hover-card-v10-foreground-v1/checkpoint.json)
+shows Bottom and Top gap clicks dismiss the surface while direct clicks inside
+it retain the surface. The original caller note retains a UI Automation edit
+across dismissal and reopening. In Light, the disabled trigger remains disabled
+while its wrapper opens without invoking the action. These checks used pointer
+clicks, not move-only events. Move-only timing, full focus traversal, nested
+host integration, full raster/shadows, customization, scaling, performance and
+native ARM64 runtime acceptance remain open.
 
 ## Verified prototype checkpoint
 
@@ -83,8 +89,10 @@ ARM64 execution remains open. Twenty-one damaged catalog receipts and 25
 damaged package receipts are rejected. Versioned catalog archives match every
 built file, and the package DLL/XAML/PRI/README/license payload is verified.
 
-The sealed evidence is `artifacts/current/hover-card-implementation-checkpoint.json`.
-Physical input/focus, source raster/shadows, broader ancestor stacking and
-nested popup/modal integration, live normal motion, customization, scaling,
-performance and visible startup remain unaccepted. Both fictional-data demos
-remain required and unaccepted. No Actions were dispatched and nothing was pushed.
+The sealed prototype evidence is
+`artifacts/current/hover-card-implementation-checkpoint.json`; the current
+package-level foreground evidence is linked above. Move-only pointer input,
+full keyboard focus, source raster/shadows, broader ancestor stacking and
+nested popup/modal integration, live normal motion, customization, scaling and
+performance remain unaccepted. Both fictional-data demos remain required and
+unaccepted.

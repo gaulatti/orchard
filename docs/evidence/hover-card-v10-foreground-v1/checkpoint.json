@@ -1,0 +1,34 @@
+{
+  "scope": "Visible Hover Card pointer and caller-content behavior in the freshly extracted v10 x64 catalog",
+  "observedAt": "2026-10-27T10:18:02-04:00",
+  "method": "Computer Use @oai/sky foreground clicks and UI Automation value change, inspected through screenshots and accessibility text",
+  "catalogDirectory": "artifacts/current/components-v10-catalog-extract-x64",
+  "catalogExeSha256": "a1d0004d9183563e71cd2a98868e341ddf8c9245ce8c3798bb933d4edf902755",
+  "catalogDllSha256": "f62378904e926f4186ae8a13c1d64c1698e847e0726102b7bd1e260298f969f5",
+  "orchardDllSha256": "1a89f1827c2e6dadb7584b5b9f7b25e7761a364633876d89887e79d093cc5cb4",
+  "orchardDllMatchesIndependentV10NuGetConsumer": true,
+  "v10NuGetSha256": "89c0027e17cefb9b28be5c6432a20e6f7ba156801efa654f77949ed9cc50c7ac",
+  "checks": {
+    "darkBottomTriggerPointerOpenedCardAndInvokedOriginalAction": true,
+    "darkBottomEightDipGapClickDismissedCard": true,
+    "darkBottomDirectSurfaceClickRetainedCard": true,
+    "originalTextBoxAcceptedUiAutomationValueChange": true,
+    "editedCallerValueRetainedAcrossDismissAndReopen": true,
+    "darkTopTriggerPointerOpenedAboveCard": true,
+    "darkTopEightDipGapClickDismissedCard": true,
+    "darkTopDirectSurfaceClickRetainedCard": true,
+    "lightBottomTriggerPointerOpenedCard": true,
+    "lightBottomDirectSurfaceClickRetainedCard": true,
+    "lightBottomEightDipGapClickDismissedCard": true,
+    "lightDisabledOriginalTriggerStayedDisabled": true,
+    "lightDisabledWrapperOpenedCardWithoutInvokingOriginalAction": true
+  },
+  "limitations": [
+    "The desktop input API supplied clicks, not standalone move-only pointer events. Move-only hover timing and a pointer jump without pressing are not claimed.",
+    "The caller editor was changed with UI Automation SetValue; physical text typing, full focus traversal and closed-content tab order remain unverified in this run.",
+    "Ancestor stacking, nested popup/modal integration, complete raster/shadows, live normal motion, scaling, performance and native ARM64 runtime remain open."
+  ],
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
