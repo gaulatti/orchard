@@ -8145,13 +8145,16 @@
         "src/Orchard/Themes/FooterLinks.xaml"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/FooterFixture.xaml"
+        "samples/Orchard.Catalog/FooterFixture.xaml",
+        "samples/Orchard.Catalog/FooterFixture.xaml.cs"
       ],
       "regressionTests": [
         "tests/Orchard.Tests/FooterReferenceTests.cs",
         "scripts/reference/capture-footer.cjs",
         "scripts/reference/footer-client.tsx",
         "samples/Orchard.Catalog/MainWindow.Footer.cs",
+        "samples/Orchard.Catalog/MainWindow.FooterForeground.cs",
+        "samples/Orchard.Catalog/FooterFixture.Foreground.cs",
         "scripts/verify-footer.mjs",
         "samples/Orchard.Catalog/App.HiddenFooters.cs",
         "scripts/verify-hidden-footers.ps1",
@@ -8172,7 +8175,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Broader original-content/custom-renderer/style and fractional-width matrices; a focused 640.5/768.5-DIP caller-owned slot case and pinned long/unbroken cases pass current x64 catalog and package audits",
-        "Fresh visible pointer/keyboard, full raster and current-binary Nav Menu visible source audit after shared changes",
+        "Source-built x64 Footer Light/Dark physical pointer and Enter routes pass through original Home items, custom link template, retained focus and caller input; the three catalog variants mount individually and dark custom brand uses the active text token (docs/evidence/footer-brand-token-foreground-v1/checkpoint.json). A local package-reference consumer passes the 12 hidden Footer contracts and normal x64 runtime (docs/evidence/footer-brand-package-v1/checkpoint.json); verify fully isolated package audit, package-specific Footer foreground input, full visual/raster review and current-binary Nav Menu visible source audit after shared changes",
         "Native motion/scaling, integration and native ARM64 runtime acceptance"
       ],
       "currentDelivery": {
@@ -8192,6 +8195,29 @@
         "publicContractGuardsPerHost": 205,
         "publicContractCatalogArm64BuildPassed": true,
         "visibleInteractionVerified": false,
+        "nativeArm64RuntimeVerified": false,
+        "nativeComponentAccepted": false
+      },
+      "sourceForeground": {
+        "catalogVariantCheckpoint": "docs/evidence/footer-foreground-variants-v1/checkpoint.json",
+        "brandTokenCheckpoint": "docs/evidence/footer-brand-token-foreground-v1/checkpoint.json",
+        "x64LightDarkPhysicalInputPassed": true,
+        "x64SourceStatesAudited": 64,
+        "sourceGeometryChecks": 5576,
+        "sourcePaintChecks": 630,
+        "sourceAuditPassed": true,
+        "arm64LibraryBuildPassed": true,
+        "nativeArm64RuntimeVerified": false,
+        "nativeComponentAccepted": false
+      },
+      "localPackageProbe": {
+        "checkpoint": "docs/evidence/footer-brand-package-v1/checkpoint.json",
+        "packageVersion": "0.1.0-footer-brand-v1-local",
+        "packageSha256": "5f2640333886d8de6ccffbf8b5dd54d60eabbedd26cc7c00bba08c766935d588",
+        "x64PackageReferenceConsumerRuntimePassed": true,
+        "hiddenFooterContractsPassed": 12,
+        "fullyIsolatedConsumerAuditPassed": false,
+        "packageSpecificFooterPhysicalInputVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
       },

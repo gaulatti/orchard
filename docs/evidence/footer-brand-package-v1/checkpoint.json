@@ -1,0 +1,44 @@
+{
+  "scope": "Local NuGet delivery probe for the Footer brand foreground repair",
+  "sourceCommit": "552dff2424b579cd561efbf5eddb704ec6cbf32b",
+  "package": {
+    "path": "artifacts/current/footer-brand-package-v1/Gaulatti.Orchard.0.1.0-footer-brand-v1-local.nupkg",
+    "version": "0.1.0-footer-brand-v1-local",
+    "sha256": "5f2640333886d8de6ccffbf8b5dd54d60eabbedd26cc7c00bba08c766935d588",
+    "orchardDllSha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+    "oneAnyCpuIlAssembly": true,
+    "bundledFonts": 6,
+    "bundledImages": 2,
+    "buildTransitiveTargetsPresent": true
+  },
+  "sourceCatalog": {
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "contractAuditSha256": "e6634655f2282e3b020e4b79b1c3c6b79d84846e31be035b8267bd7a22c44000",
+    "footerContractsPassed": 12,
+    "isolationGuards": 205
+  },
+  "packageConsumer": {
+    "projectReferences": 0,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "publishedX64App": true,
+    "restoredPackageDllMatches": true,
+    "hiddenContractReportSha256": "6fb40eb3c64eaea57519b23f8ee09ec32d036d8d065a31acbb1e2289e25e0476",
+    "footerContractsPassed": 12,
+    "isolationGuards": 205,
+    "normalRuntimeReportSha256": "7590975d8c4d43eb026336f416957cd74c8bf7fef7426a57bdf3ef9aed0d4ab6",
+    "normalRuntimePassed": true,
+    "foregroundAcquired": true,
+    "foregroundAcquisitionSha256": "13557d55272b9b2345f62bb5b4f017fa67955fb1d1cf623259f4a8d47b3664f8"
+  },
+  "limits": [
+    "This is an in-repository consumer project using a package reference, not a fresh isolated checkout and cache.",
+    "The existing Footer package auditor requires an isolated-consumer cleanup receipt, so its package audit did not pass.",
+    "Package-specific Footer physical input and native ARM64 runtime remain unverified.",
+    "This local package has not been published as a replacement for the v11 preview."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

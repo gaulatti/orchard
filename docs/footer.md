@@ -288,3 +288,15 @@ preview package does not contain this repair; packaging and native ARM64 runtime
 remain separate gates. See
 `docs/evidence/footer-brand-token-foreground-v1/checkpoint.json` and
 `docs/evidence/footer-foreground-variants-v1/checkpoint.json`.
+
+The local `0.1.0-footer-brand-v1-local` NuGet package contains the exact
+source-tested Footer DLL. Its package-reference consumer publishes as x64 with
+zero warnings and errors, passes the same 12 hidden public contracts and 205
+isolation guards, and passes its normal resource/theme/native-action runtime
+check. The new contract assertion verifies that a caller-provided link style
+also colors the nested brand. This is a local package probe, not a replacement
+for the published v11 preview: the consumer used the repository's separate
+package-reference project rather than a fresh isolated checkout/cache, and the
+existing package auditor requires a cleanup receipt that this run did not
+produce. Package-specific Footer physical input and native ARM64 runtime remain
+open. See `docs/evidence/footer-brand-package-v1/checkpoint.json`.

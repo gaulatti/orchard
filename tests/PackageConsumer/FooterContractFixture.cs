@@ -120,9 +120,12 @@ internal static class FooterContractFixture
             {
                 var footer = Create(); var command = new Command(); var parameter = new object(); var requests = new List<BleeckerNavItem>(); footer.Command = command; footer.CommandParameter = parameter; footer.ItemInvoked += (_, item) => requests.Add(item);
                 var brush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 40, 80, 120)) { Opacity = .33 }; var style = new Style(typeof(HyperlinkButton)); style.Setters.Add(new Setter(Control.ForegroundProperty, brush)); style.Setters.Add(new Setter(Control.FontSizeProperty, 19d)); footer.LinkStyle = style;
-                footer.LinkTemplate = Template("<HyperlinkButton Content='{Binding Label}' Tag='{Binding Item}' Command='{Binding Command}' Style='{Binding Style}' Foreground='{Binding Foreground}'/>"); await Mount(footer);
+                footer.LinkTemplate = Template("<HyperlinkButton Content='{Binding Content}' Tag='{Binding Item}' Command='{Binding Command}' Style='{Binding Style}' Foreground='{Binding Foreground}'/>"); await Mount(footer);
                 var original = footer.Sections.First().Items.First(); var link = Links(footer).First(button => ReferenceEquals(Context(button).Item, original)); var context = Context(link);
                 Require(ReferenceEquals(link.Tag, original) && context.Item is OriginalItem { Marker: "original" } && ReferenceEquals(context.Style, style) && link.FontSize == 19 && context.Label == "Original source", "Custom link did not retain original item/style/label.");
+                var brandInk = Nodes(footer).OfType<BleeckerBrandLockup>().Single().Foreground as SolidColorBrush;
+                Require(brandInk is not null && brandInk.Color == brush.Color && Math.Abs(brandInk.Opacity - brush.Opacity) < .001,
+                    "Custom Footer brand did not use the caller link foreground.");
                 context.Command.Execute(null); Require(command.Requests == 1 && ReferenceEquals(command.Parameter, parameter) && ReferenceEquals(requests.Single(), original), "Custom link changed the explicit parameter or original event item.");
                 command.Enabled = false; command.Publish(); await Layout(); context.Command.Execute(null); Require(!context.Command.CanExecute(null) && command.Requests == 1, "Disabled custom action executed.");
             });
