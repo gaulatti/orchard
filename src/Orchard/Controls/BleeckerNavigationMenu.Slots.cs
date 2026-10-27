@@ -38,7 +38,7 @@ public sealed partial class BleeckerNavigationMenu
         ScalePadding(surface, scale);
     }
 
-    private sealed class EntrySlot : IDisposable
+    private sealed partial class EntrySlot : IDisposable
     {
         private readonly BleeckerNavigationMenu owner;
         private IBleeckerNavigationMenuEntry? entry;
@@ -55,8 +55,9 @@ public sealed partial class BleeckerNavigationMenu
         internal EntrySlot(BleeckerNavigationMenu owner)
         {
             this.owner = owner;
+            InitializeMotion();
             enter = owner.DispatcherQueue.CreateTimer(); enter.Interval = TimeSpan.FromMilliseconds(20); enter.IsRepeating = false;
-            enter.Tick += (_, _) => { if (!disposed && open && surface is not null) surface.Opacity = 1; };
+            enter.Tick += (_, _) => { if (!disposed && open && surface is not null) BeginSurfaceMotion(true); };
             exit = owner.DispatcherQueue.CreateTimer(); exit.Interval = TimeSpan.FromMilliseconds(150); exit.IsRepeating = false;
             exit.Tick += (_, _) => { if (!disposed && !open) Unmount(); };
         }
@@ -110,18 +111,23 @@ public sealed partial class BleeckerNavigationMenu
             if (value)
             {
                 exit.Stop(); owner.EnsurePresentation();
-                surface ??= new BleeckerOverlaySurface { Name = "NavigationMenuSurface", Content = items, IsTabStop = false, UseLayoutRounding = false };
+                if (surface is null)
+                {
+                    surface = new BleeckerOverlaySurface { Name = "NavigationMenuSurface", Content = items, IsTabStop = false, UseLayoutRounding = false };
+                    motionRoot.Children.Add(surface);
+                }
                 surface.Style = owner.SurfaceStyle; surface.FlowDirection = owner.FlowDirection; surface.RequestedTheme = owner.ActualTheme;
                 ScaleSurface(surface, owner.RemScale);
-                if (!mounted) { owner.plane!.Children.Add(surface); mounted = true; surface.Opacity = 0; foreach (var row in rows.Values) row.Mount(); }
+                if (!mounted) { owner.plane!.Children.Add(motionRoot); mounted = true; foreach (var row in rows.Values) row.Mount(); }
                 enter.Start();
             }
-            else { enter.Stop(); if (surface is not null) surface.Opacity = 0; exit.Start(); }
+            else { enter.Stop(); if (surface is not null) BeginSurfaceMotion(false); exit.Start(); }
             Notify();
         }
         private void Unmount()
         {
-            enter.Stop(); exit.Stop(); if (surface?.Parent is Panel parent) parent.Children.Remove(surface); mounted = false;
+            enter.Stop(); exit.Stop(); StopSurfaceMotion(); if (motionRoot.Parent is Panel parent) parent.Children.Remove(motionRoot); mounted = false;
+            RetargetSurfaceMotion(false, motionClock.Elapsed.TotalMilliseconds, false);
             foreach (var row in rows.Values) row.Unmount();
         }
         internal void RetireSurface() { open = false; if (trigger is not null) trigger.Expanded = false; Unmount(); Paint(); }
@@ -131,9 +137,10 @@ public sealed partial class BleeckerNavigationMenu
             surface.RequestedTheme = owner.ActualTheme;
             // The wrapper anchors the popup; the button's pressed translation never moves it.
             var box = Root.TransformToVisual(target).TransformBounds(new Rect(0, 0, Root.ActualWidth, Root.ActualHeight));
-            if (double.IsNaN(Canvas.GetLeft(surface)) || Math.Abs(Canvas.GetLeft(surface) - box.X) > .000001) Canvas.SetLeft(surface, box.X);
+            if (double.IsNaN(Canvas.GetLeft(motionRoot)) || Math.Abs(Canvas.GetLeft(motionRoot) - box.X) > .000001) Canvas.SetLeft(motionRoot, box.X);
             var gap = 4 * owner.RemScale;
-            if (double.IsNaN(Canvas.GetTop(surface)) || Math.Abs(Canvas.GetTop(surface) - box.Bottom - gap) > .000001) Canvas.SetTop(surface, box.Bottom + gap);
+            if (double.IsNaN(Canvas.GetTop(motionRoot)) || Math.Abs(Canvas.GetTop(motionRoot) - box.Bottom - gap) > .000001) Canvas.SetTop(motionRoot, box.Bottom + gap);
+            PaintSurfaceMotion(motionClock.Elapsed.TotalMilliseconds);
         }
         internal void Paint()
         {
@@ -150,7 +157,7 @@ public sealed partial class BleeckerNavigationMenu
         public void Dispose()
         {
             if (disposed) return; disposed = true; RetireSurface(); direct?.Dispose(); direct = null; foreach (var row in rows.Values) row.Dispose(); rows.Clear(); items.Children.Clear();
-            if (surface is not null) surface.Content = null; surface = null;
+            if (surface is not null) surface.Content = null; motionRoot.Children.Clear(); surface = null;
             if (trigger is not null) { trigger.UnregisterPropertyChangedCallback(Control.ForegroundProperty, foregroundToken); trigger.Request = trigger.ExpandRequest = trigger.CollapseRequest = null; trigger.Content = null; } Root.Children.Clear(); if (Root.Parent is Panel parent) parent.Children.Remove(Root);
         }
     }

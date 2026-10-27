@@ -4093,6 +4093,7 @@
         "src/Orchard/Controls/BleeckerNavigationLinkContext.cs",
         "src/Orchard/Controls/BleeckerNavigationMenu.cs",
         "src/Orchard/Controls/BleeckerNavigationMenu.Slots.cs",
+        "src/Orchard/Controls/BleeckerNavigationMenu.Motion.cs",
         "src/Orchard/Themes/NavigationMenu.xaml"
       ],
       "catalogFixtures": [
@@ -4110,7 +4111,7 @@
       "remainingGaps": [
         "Native ARM64 execution remains unverified; x64/ARM64 solution and clean NuGet consumer builds passed",
         "Native counterparts for individual hover/focus/pressed fixtures remain incomplete",
-        "Normal surface/control/chevron motion, native pointer/keyboard/focus and full metadata/customization/scaling/raster acceptance remain open"
+        "Controlled popup-surface motion and focused pointer/keyboard paths pass; complete control/chevron motion, input/focus, metadata/customization/scaling/raster acceptance remain open"
       ],
       "sourcePreparation": {
         "reference": "tests/Reference/NavigationMenu.json",
@@ -4206,6 +4207,28 @@
         "arm64IndependentConsumerBuildPassed": true,
         "arm64NativeRuntimeVerified": false,
         "packageVerified": true,
+        "nativeComponentAccepted": false
+      },
+      "nativeMotionVerification": {
+        "checkpoint": "docs/evidence/navigation-motion-v1/checkpoint.json",
+        "checkpointSha256": "e70bc92b9cfe3f31f589d36a2ed5558b79d1f2db1748770accc7d4366dd3c3eb",
+        "sourceCatalogAudit": "docs/evidence/navigation-motion-v1/source-audit.json",
+        "packageAudit": "docs/evidence/navigation-motion-v1/consumer-audit.json",
+        "packageVersion": "0.1.0-navigation-motion-v1-local",
+        "librarySha256": "5d1d0517af5dd3aba64096757586f685d5733dfa1d5f4cd539a93bd76722d514",
+        "statesPerHost": 32,
+        "contractsPerHost": 22,
+        "geometryValuesPerHost": 968,
+        "maximumGeometryError": 0,
+        "sourceNegativeCasesRejected": 80,
+        "packageNegativeCasesRejected": 79,
+        "controlledEntryExitInterruptionVerified": true,
+        "callerSurfacePropertiesRetained": true,
+        "focusedPointerAndKeyboardPathsObserved": true,
+        "arm64LibraryBuildPassed": true,
+        "arm64IndependentConsumerBuildPassed": true,
+        "completePhysicalInputMatrixVerified": false,
+        "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
       }
     },

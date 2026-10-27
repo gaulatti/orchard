@@ -1,0 +1,22 @@
+{
+  "format": "orchard-navigation-menu-native-audit-v1",
+  "passed": true,
+  "states": 32,
+  "contracts": 22,
+  "presenceHistories": 2,
+  "standalonePopupHistories": 2,
+  "catalogStates": 0,
+  "pngs": 32,
+  "pixelsValidated": 24320000,
+  "paletteProbes": 52,
+  "geometryValues": 968,
+  "maximumGeometryError": 0,
+  "hiddenBoundaryVerified": true,
+  "physicalInputVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "librarySha256": "5d1d0517af5dd3aba64096757586f685d5733dfa1d5f4cd539a93bd76722d514",
+  "hostSha256": "66232a5cbf24f53b6a43ab5cf5504264f530f6963475154caa0bed566888c82f",
+  "reportSha256": "4d14e349efa9246840295778f5c9c565775b50d57efbb40491cee8427335ec94",
+  "referenceSha256": "91203639eac8fe7bd904a34e46a82cedc3bfeff124adb06c254011906be70f1c"
+}

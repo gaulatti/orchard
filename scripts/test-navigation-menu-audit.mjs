@@ -39,6 +39,9 @@ reject('custom input layout lost',n=>n.states.find(s=>s.kind==='custom-input').m
 for(const key of ['immediateEligibilityRevoked','portedSurfaceRetired','revealStaysClosed'])reject('hidden declaration '+key+' lost',n=>n.contracts.find(c=>c.action==='hidden-declaration-ancestor').details[key]=false);
 for(const key of ['backgroundRejectedProviders','nestedRejectedProviders','backgroundInvocations','ownedInvocations','unopenedInvocations'])reject('modal '+key+' changed',n=>n.contracts.find(c=>c.action==='active-modal-isolation').details[key]++);
 for(const key of ['closingOwnerProviderRejected','ownerRetiredProviderRejected','originalBackgroundDelivered','originalOwnedDelivered','unopenedOriginalDelivered','blockedCommandsIgnored','callerEnabledBindingRetained','nestedOriginalStateRestored','originalModalContentRetained'])reject('modal '+key+' lost',n=>n.contracts.find(c=>c.action==='active-modal-isolation').details[key]=false);
+reject('surface entry motion lost',n=>n.contracts.find(c=>c.action==='surface-motion').details.entryMid=1);
+reject('surface exit motion lost',n=>n.contracts.find(c=>c.action==='surface-motion').details.exitMid=0);
+reject('caller surface state lost',n=>n.contracts.find(c=>c.action==='surface-motion').details.callerRetained=false);
 for(const key of ['originalRetainedAt50','retiredBy190','reopenCancelledExit'])reject('presence '+key+' lost',n=>n.presence[0][key]=false);
 reject('presence invented normal motion',n=>n.presence[0].normalMotionVerified=true);
 reject('standalone popup missing',n=>n.standalone.pop());

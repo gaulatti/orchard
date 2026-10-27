@@ -1,0 +1,53 @@
+{
+  "scope": "Navigation Menu popup surface motion and focused physical input paths",
+  "sourceCatalogX64": {
+    "report": "source-navigation-menu.json",
+    "reportSha256": "7da1a28a25dbcb84358fe55c0deedb770f2bcc48e1dccdd9d937e288ee566190",
+    "audit": "source-audit.json",
+    "auditSha256": "6791e0ce07d69a5d5f6a73495f54d4b30ebf39482a96d39cbb6546c919d660a4",
+    "mutations": "source-audit-mutations.json",
+    "mutationsSha256": "7bd2507213d29eb0f30ce51fc81d43524b12d1383da1da3e0fd6e3e405af3beb",
+    "states": 32,
+    "contracts": 22,
+    "geometryValues": 968,
+    "maximumGeometryError": 0,
+    "paletteProbes": 52,
+    "negativeCasesRejected": 80
+  },
+  "independentNugetConsumerX64": {
+    "version": "0.1.0-navigation-motion-v1-local",
+    "packageSha256": "261fc3af6b8eb1a5f364b71855c72fff975d23b95aa2926fa96a416295193ab1",
+    "build": "consumer-build.json",
+    "buildSha256": "a2edebb6dddb892c2c97de6ec9356a88d5dc0c1467d93057b607e45e968e9045",
+    "report": "consumer-navigation-menu.json",
+    "reportSha256": "4d14e349efa9246840295778f5c9c565775b50d57efbb40491cee8427335ec94",
+    "audit": "consumer-audit.json",
+    "auditSha256": "79b94ef5588c14301a5494b019f6bc1be46fb21e91a95775648f68c79689111a",
+    "mutations": "consumer-audit-mutations.json",
+    "mutationsSha256": "19bec4257b9ec54b2730bb04a2e3a63edd9fb670b005738994a9572223f39580",
+    "states": 32,
+    "contracts": 22,
+    "geometryValues": 968,
+    "maximumGeometryError": 0,
+    "negativeCasesRejected": 79,
+    "sameLibrarySha256AsSource": "5d1d0517af5dd3aba64096757586f685d5733dfa1d5f4cd539a93bd76722d514"
+  },
+  "foregroundCatalogX64": {
+    "pointerTriggerOpensGroup": true,
+    "pointerButtonsDeliversOriginalLink": true,
+    "keyboardReturnOnFocusedHomeDeliversOriginalLink": true,
+    "openGroupRemainsAfterDirectActivation": true,
+    "completePhysicalInputMatrixVerified": false
+  },
+  "controlledEntryExitInterruptionVerified": true,
+  "callerSurfacePropertiesRetained": true,
+  "arm64LibraryBuildPassed": true,
+  "independentNugetConsumerArm64": {
+    "buildPassed": true,
+    "runtimeVerified": false,
+    "build": "consumer-arm64-build.json",
+    "buildSha256": "1262ede2d78f985ad9e4e3396ca7a0318c17ddc8eb6157bae16350f4e73008c8"
+  },
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

@@ -149,14 +149,35 @@ hosts report the same library DLL hash. Native ARM64 execution
 remains unverified. The library and fresh isolated package consumer also build
 for ARM64.
 
+The popup now fades in over the surface token's 220ms and fades out over the
+150ms exit token. Its source translate and scale endpoints switch with the open
+state. The animation runs on a library-owned wrapper, preserving the caller's
+surface opacity binding and render transform. Interrupted exits fade back in
+without replacing the mounted surface; disabling animations settles directly
+at the requested endpoint. The source-catalog x64 native run passes 32 states,
+22 behavior contracts, 968 exact geometry values and 52 flat palette probes.
+Its controlled-clock contract checks entry, exit, interruption, disabled-motion
+endpoints and caller-owned properties; the auditor rejects 80 corrupted
+reports and images. In the visible catalog, a pointer opened the group and
+activated its Buttons link, and keyboard Return activated a focused Home link
+while the open group remained visible. These observations are scoped to those
+inputs and do not claim a complete focus-navigation matrix. A fresh
+`0.1.0-navigation-motion-v1-local` package restored and built in an isolated
+x64 consumer. Its native host passes the same 32 states, 22 contracts and 968
+exact geometry values, and its auditor rejects 79 corruptions. Source and
+consumer report the same Orchard DLL hash. The retained reports are in
+[the motion checkpoint](evidence/navigation-motion-v1/checkpoint.json).
+The updated library and its fresh isolated package consumer also build for
+ARM64; native ARM64 execution remains unverified.
+
 These results cover scoped component behavior. Six source fixture kinds have
 no equivalent native snapshot yet: individual trigger, direct and child hover,
 trigger/child focus and pressed trigger.
 Setting a native visual state for an open/hover combination does not prove
-physical pointer input. The empty 14px popup has browser/native corner
+physical hover input. The empty 14px popup has browser/native corner
 antialiasing differences; palette checks use flat interior padding and do not
-claim edge parity. Normal CSS motion, physical pointer/keyboard/focus, full
-metadata/customization, Windows scaling,
+claim edge parity. Complete control/chevron motion, pointer/keyboard/focus,
+full metadata/customization, Windows scaling,
 complete visual review and native ARM64 execution remain open. Hidden public API/UIA
 tests do not claim those results. No Narrator, OS setting changes, pointer
 heartbeat or Actions are part of this work.

@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -128,7 +130,7 @@ internal static class NavigationMenuFixture
                         menu.FontSize = 32; await Layout();
                         Require(Math.Abs(menu.ActualHeight - 72) <= .02 && ReferenceEquals(scaledLink, Link("Home")) && ReferenceEquals(scaledTrigger, Trigger(menu)), "Live font-size change did not restore 200% geometry and keyed elements.");
                     }
-                    if (kind is not ("closed" or "empty" or "links-only")) { Invoke(Trigger(menu, kind == "layout-open" ? "Layout" : "Components")); await Layout(); }
+                    if (kind is not ("closed" or "empty" or "links-only")) { Invoke(Trigger(menu, kind == "layout-open" ? "Layout" : "Components")); await Layout(250); }
                     if (kind == "custom-input") { PrepareCustomInputs(); await Layout(); }
                     // Exercise the actual open+hover template combination without
                     // sending pointer input or claiming a physical hover test.
@@ -217,9 +219,35 @@ internal static class NavigationMenuFixture
                 Require(backgroundInvocations == 1 && originalBackgroundDelivered && ownedInvocations == 2 && background.IsEnabled && background.GetBindingExpression(Control.IsEnabledProperty) is not null, "Modal close did not restore original background routing and binding.");
                 Contract(scheme, "active-modal-isolation", new { backgroundRejectedProviders, nestedRejectedProviders, closingOwnerProviderRejected, ownerRetiredProviderRejected, backgroundInvocations, ownedInvocations, unopenedInvocations, originalBackgroundDelivered, originalOwnedDelivered, unopenedOriginalDelivered, blockedCommandsIgnored = true, callerEnabledBindingRetained = true, nestedOriginalStateRestored = true, originalModalContentRetained = true });
 
-                stage = scheme + "-presence"; var present = await Add(); Invoke(Trigger(present)); await Layout(); var surface = Surfaces().Single(); Invoke(Trigger(present)); await Task.Delay(50); Guard(); Require(surface.IsLoaded && surface.Opacity == 0, "Exit removed original surface before 150ms."); await Task.Delay(140); Guard(); Require(!surface.IsLoaded && Surfaces().Length == 0, "Exit retained surface past its removal timer."); Invoke(Trigger(present)); await Layout(); var interrupted = Surfaces().Single(); Invoke(Trigger(present)); await Task.Delay(50); Invoke(Trigger(present)); await Layout(180); Require(ReferenceEquals(interrupted, Surfaces().Single()) && interrupted.Opacity == 1, "Reopening failed to cancel exit."); presence.Add(new { scheme, originalRetainedAt50 = true, retiredBy190 = true, reopenCancelledExit = true, normalMotionVerified = false, passed = true });
+                stage = scheme + "-presence"; var present = await Add(); Invoke(Trigger(present)); await Layout(250); var surface = Surfaces().Single(); Invoke(Trigger(present)); await Task.Delay(50); Guard(); Require(surface.IsLoaded && ((Grid)surface.Parent).Opacity < 1, "Exit removed original surface before 150ms or skipped its fade."); await Task.Delay(140); Guard(); Require(!surface.IsLoaded && Surfaces().Length == 0, "Exit retained surface past its removal timer."); Invoke(Trigger(present)); await Layout(250); var interrupted = Surfaces().Single(); Invoke(Trigger(present)); await Task.Delay(50); Invoke(Trigger(present)); await Layout(250); Require(ReferenceEquals(interrupted, Surfaces().Single()) && ((Grid)interrupted.Parent).Opacity == 1, "Reopening failed to cancel exit."); presence.Add(new { scheme, originalRetainedAt50 = true, retiredBy190 = true, reopenCancelledExit = true, normalMotionVerified = false, passed = true });
 
                 stage = scheme + "-template-unload"; var originalEntries = present.Entries; var retired = (IInvokeProvider)Peer(Link("Buttons")).GetPattern(PatternInterface.Invoke); present.Template = (ControlTemplate)XamlReader.Load("<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType='Control'><Border Width='43' Height='29' Background='Purple'/></ControlTemplate>"); await Layout(); Require(Surfaces().Length == 0 && ReferenceEquals(originalEntries, present.Entries), "Template replacement retained a popup or replaced entries."); var rejected = false; try { retired.Invoke(); } catch (ElementNotEnabledException) { rejected = true; } Require(rejected, "Replaced template retained stale provider."); present.ClearValue(Control.TemplateProperty); await Layout(); Invoke(Trigger(present)); await Layout(); scene.Children.Clear(); await Layout(180); scene.Children.Add(present); await Layout(); Require(Surfaces().Length == 0 && ReferenceEquals(originalEntries, present.Entries), "Unload/reload reopened retired state."); Contract(scheme, "template-unload-reload");
+
+                stage = scheme + "-surface-motion"; var motionMenu = await Add(); Invoke(Trigger(motionMenu)); await Layout(250);
+                var motionSurface = Surfaces().Single(); var motionRoot = (Grid)motionSurface.Parent; var motionTransform = (CompositeTransform)motionRoot.RenderTransform;
+                var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+                var slots = (IDictionary)typeof(BleeckerNavigationMenu).GetField("slots", flags)!.GetValue(motionMenu)!;
+                var slot = slots["group:Components"]!;
+                void MotionCall(string name, params object[] args) => slot.GetType().GetMethod(name, flags)!.Invoke(slot, args);
+                MotionCall("StopSurfaceMotion");
+                var carrier = new Border { Opacity = .6 }; var callerTransform = new ScaleTransform { ScaleX = .9, ScaleY = .9 };
+                motionSurface.SetBinding(UIElement.OpacityProperty, new Binding { Source = carrier, Path = new PropertyPath("Opacity"), Mode = BindingMode.OneWay });
+                var callerBinding = motionSurface.GetBindingExpression(UIElement.OpacityProperty); motionSurface.RenderTransform = callerTransform;
+                MotionCall("RetargetSurfaceMotion", false, 0d, false);
+                MotionCall("RetargetSurfaceMotion", true, 20d, true); MotionCall("PaintSurfaceMotion", 130d); var entryMid = motionRoot.Opacity;
+                MotionCall("PaintSurfaceMotion", 240d); var entryEnd = motionRoot.Opacity;
+                Require(entryMid > 0 && entryMid < 1 && entryEnd == 1 && motionTransform.ScaleX == 1 && motionTransform.TranslateY == 0, "Normal surface entry skipped its opacity transition or changed its source transform endpoint.");
+                MotionCall("RetargetSurfaceMotion", false, 300d, true); MotionCall("PaintSurfaceMotion", 350d); var exitMid = motionRoot.Opacity;
+                Require(exitMid > 0 && exitMid < 1 && Math.Abs(motionTransform.ScaleX - .992) <= 1e-5 && motionTransform.TranslateY == -4, $"Normal surface exit skipped its opacity transition or source transform endpoint: opacity={exitMid:R}, scale={motionTransform.ScaleX:R}, translate={motionTransform.TranslateY:R}.");
+                MotionCall("RetargetSurfaceMotion", true, 360d, true); MotionCall("PaintSurfaceMotion", 360d); var reopenStart = motionRoot.Opacity;
+                MotionCall("PaintSurfaceMotion", 580d); var reopenEnd = motionRoot.Opacity;
+                Require(reopenStart > 0 && reopenStart < 1 && reopenEnd == 1, "Interrupted surface exit did not retarget the original presentation.");
+                MotionCall("RetargetSurfaceMotion", false, 800d, false); var reducedClosed = motionRoot.Opacity;
+                MotionCall("RetargetSurfaceMotion", true, 820d, false); var reducedOpen = motionRoot.Opacity;
+                carrier.Opacity = .4; await Layout(0);
+                var callerRetained = ReferenceEquals(callerBinding, motionSurface.GetBindingExpression(UIElement.OpacityProperty)) && ReferenceEquals(callerTransform, motionSurface.RenderTransform) && Math.Abs(motionSurface.Opacity - .4) <= 1e-5;
+                Require(reducedClosed == 0 && reducedOpen == 1 && callerRetained, "Reduced motion or caller surface opacity/transform was changed.");
+                Contract(scheme, "surface-motion", new { entryMid, entryEnd, exitMid, reopenStart, reopenEnd, reducedClosed, reducedOpen, callerRetained, originalSurfaceRetained = ReferenceEquals(motionSurface, Surfaces().Single()), controlledClock = true, normalRealtimeMotionVerified = false });
 
                 stage = scheme + "-standalone"; scene.Children.Clear(); root.Children.Clear(); await Layout(180); var plain = new BleeckerNavigationMenu { Width = 680, Entries = Build(), Margin = new Thickness(20, 20, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top }; root.Children.Add(plain); await Layout(); Invoke(Trigger(plain)); await Layout(); var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot).Single(p => p.Child is Canvas c && c.Name == "NavigationMenuPlane"); Require(popup.IsOpen && popup.ShouldConstrainToRootBounds && !popup.IsLightDismissEnabled, "Standalone navigation lost its scoped native popup."); Invoke(Link("Buttons")); await Layout(190); root.Children.Clear(); await Layout(180); Require(!popup.IsOpen && popup.Child is null, "Standalone popup survived owner unload."); standalone.Add(new { scheme, rootConstrained = true, noNativeLightDismiss = true, unloadedPopupRetired = true, passed = true }); root.Children.Add(host); await Layout();
             }

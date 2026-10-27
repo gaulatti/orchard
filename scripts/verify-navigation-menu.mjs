@@ -7,7 +7,7 @@ import {readRgbaPng} from './reference/read-rgba-png.mjs';
 
 const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 export const navigationStateIds=['closed','empty','links-only','basic','empty-group','no-description','long-description','unicode','narrow','rtl','bottom-right','group-href-unused','layout-open','custom','custom-input','font200'];
-export const navigationContractIds=['route-Buttons','route-Forms','route-External library','route-Home','command-denial-disable','live-indices-originals','custom-original-retention-close','hidden-declaration-ancestor','active-modal-isolation','template-unload-reload'];
+export const navigationContractIds=['route-Buttons','route-Forms','route-External library','route-Home','command-denial-disable','live-indices-originals','custom-original-retention-close','hidden-declaration-ancestor','active-modal-isolation','template-unload-reload','surface-motion'];
 export function verifyNavigationMenu(native,reference,catalogExpected) {
   let geometryValues=0,maximumGeometryError=0;
   const box=(actual,expected,label)=>{for(const key of ['x','y','width','height']){assert(Number.isFinite(actual[key]),label+'.'+key);const error=Math.abs(actual[key]-expected[key]);assert(error<=.02,label+'.'+key+': '+error);maximumGeometryError=Math.max(maximumGeometryError,error);geometryValues++;}};
@@ -42,6 +42,11 @@ export function verifyNavigationMenu(native,reference,catalogExpected) {
     assert.deepEqual(contracts.find(c=>c.action==='custom-original-retention-close').details,{customRequests:1,originalItemRetained:true,sameInputDuringLiveUpdate:true,resetAfterUnmount:true,directCloseIsNull:true});
     assert.deepEqual(contracts.find(c=>c.action==='hidden-declaration-ancestor').details,{immediateEligibilityRevoked:true,portedSurfaceRetired:true,revealStaysClosed:true});
     assert.deepEqual(contracts.find(c=>c.action==='active-modal-isolation').details,{backgroundRejectedProviders:4,nestedRejectedProviders:2,closingOwnerProviderRejected:true,ownerRetiredProviderRejected:true,backgroundInvocations:1,ownedInvocations:2,unopenedInvocations:1,originalBackgroundDelivered:true,originalOwnedDelivered:true,unopenedOriginalDelivered:true,blockedCommandsIgnored:true,callerEnabledBindingRetained:true,nestedOriginalStateRestored:true,originalModalContentRetained:true});
+    const motion=contracts.find(c=>c.action==='surface-motion').details;
+    assert(motion.entryMid>0&&motion.entryMid<1&&motion.entryEnd===1);
+    assert(motion.exitMid>0&&motion.exitMid<1&&motion.reopenStart>0&&motion.reopenStart<1&&motion.reopenEnd===1);
+    assert.equal(motion.reducedClosed,0);assert.equal(motion.reducedOpen,1);
+    assert.equal(motion.callerRetained,true);assert.equal(motion.originalSurfaceRetained,true);assert.equal(motion.controlledClock,true);assert.equal(motion.normalRealtimeMotionVerified,false);
     assert.deepEqual(native.presence.find(p=>p.scheme===scheme),{scheme,originalRetainedAt50:true,retiredBy190:true,reopenCancelledExit:true,normalMotionVerified:false,passed:true});
     assert.deepEqual(native.standalone.find(p=>p.scheme===scheme),{scheme,rootConstrained:true,noNativeLightDismiss:true,unloadedPopupRetired:true,passed:true});
     if(catalogExpected) {const c=native.catalog.find(c=>c.scheme===scheme);assert.equal(c.menus,6);assert.equal(c.originalStylesApplied,true);assert.equal(c.registeredFixture,'Orchard.Catalog.NavigationMenusFixture');}

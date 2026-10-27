@@ -1,0 +1,3928 @@
+{
+  "format": "orchard-navigation-menu-native-v1",
+  "passed": true,
+  "states": [
+    {
+      "scheme": "Light",
+      "kind": "closed",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": []
+      },
+      "file": "navigation-menu-Light-closed.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "empty",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 0
+        },
+        "entries": [],
+        "surfaces": []
+      },
+      "file": "navigation-menu-Light-empty.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "links-only",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 85.765625,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": []
+      },
+      "file": "navigation-menu-Light-links-only.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "basic",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-basic.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "empty-group",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 14
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": []
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-empty-group.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "no-description",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 134
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 40
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 106.75,
+                  "width": 242,
+                  "height": 40
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 146.75,
+                  "width": 242,
+                  "height": 40
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-no-description.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "long-description",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 237.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 100.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 167.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 228.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-long-description.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "unicode",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Stra\u00DFe \u6771\u4EAC e\u0301 \u0627\u0644\u0639\u0631\u0628\u064A\u0629",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-unicode.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "narrow",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-narrow.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "rtl",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 638.234375,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 518.3125,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 431.21875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 305.25,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 518.3125,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 525.3125,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 525.3125,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 525.3125,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-rtl.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "bottom-right",
+      "measurement": {
+        "menu": {
+          "x": 780,
+          "y": 650,
+          "width": 180,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 780,
+              "y": 650,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 845.765625,
+              "y": 650.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 965.6875,
+              "y": 650.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 1052.78125,
+              "y": 650,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 845.765625,
+              "y": 689.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 852.765625,
+                  "y": 696.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 852.765625,
+                  "y": 758.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 852.765625,
+                  "y": 819.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-bottom-right.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "group-href-unused",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-group-href-unused.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "layout-open",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 205.6875,
+              "y": 59.75,
+              "width": 256,
+              "height": 75.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Header",
+                "href": "#fictional-header",
+                "external": false,
+                "box": {
+                  "x": 212.6875,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-layout-open.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "custom",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-custom.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "custom-input",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 151.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": [
+              {
+                "value": "retained original text",
+                "selectionStart": 22,
+                "selectionEnd": 22,
+                "box": {
+                  "x": 69.765625,
+                  "y": 29,
+                  "width": 90,
+                  "height": 18
+                },
+                "role": "Edit"
+              }
+            ]
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 175.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 295.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 382.78125,
+              "y": 20,
+              "width": 211.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": [
+              {
+                "value": "retained original text",
+                "selectionStart": 22,
+                "selectionEnd": 22,
+                "box": {
+                  "x": 492.75,
+                  "y": 29,
+                  "width": 90,
+                  "height": 18
+                },
+                "role": "Edit"
+              }
+            ]
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 175.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 252.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 182.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 79.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": [
+                  {
+                    "value": "retained original text",
+                    "selectionStart": 22,
+                    "selectionEnd": 22,
+                    "box": {
+                      "x": 194.765625,
+                      "y": 118.25,
+                      "width": 90,
+                      "height": 18
+                    },
+                    "role": "Edit"
+                  }
+                ]
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 182.765625,
+                  "y": 146.25,
+                  "width": 242,
+                  "height": 79.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": [
+                  {
+                    "value": "retained original text",
+                    "selectionStart": 22,
+                    "selectionEnd": 22,
+                    "box": {
+                      "x": 194.765625,
+                      "y": 197.75,
+                      "width": 90,
+                      "height": 18
+                    },
+                    "role": "Edit"
+                  }
+                ]
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 182.765625,
+                  "y": 225.75,
+                  "width": 242,
+                  "height": 79.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": [
+                  {
+                    "value": "retained original text",
+                    "selectionStart": 22,
+                    "selectionEnd": 22,
+                    "box": {
+                      "x": 194.765625,
+                      "y": 277.25,
+                      "width": 90,
+                      "height": 18
+                    },
+                    "role": "Edit"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-custom-input.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Light",
+      "kind": "font200",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 72
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 123.515625,
+              "height": 72
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 151.515625,
+              "y": 30.25,
+              "width": 143.921875,
+              "height": 51.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 303.4375,
+              "y": 30.25,
+              "width": 111.09375,
+              "height": 51.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 422.53125,
+              "y": 20,
+              "width": 243.9375,
+              "height": 72
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 151.515625,
+              "y": 89.75,
+              "width": 512,
+              "height": 395
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 164.515625,
+                  "y": 102.75,
+                  "width": 486,
+                  "height": 123
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 164.515625,
+                  "y": 225.75,
+                  "width": 486,
+                  "height": 123
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 164.515625,
+                  "y": 348.75,
+                  "width": 486,
+                  "height": 123
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Light-font200.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "closed",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": []
+      },
+      "file": "navigation-menu-Dark-closed.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "empty",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 0
+        },
+        "entries": [],
+        "surfaces": []
+      },
+      "file": "navigation-menu-Dark-empty.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "links-only",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 85.765625,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": []
+      },
+      "file": "navigation-menu-Dark-links-only.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "basic",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-basic.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "empty-group",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 14
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": []
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-empty-group.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "no-description",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 134
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 40
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 106.75,
+                  "width": 242,
+                  "height": 40
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 146.75,
+                  "width": 242,
+                  "height": 40
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-no-description.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "long-description",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 237.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 100.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 167.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 228.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-long-description.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "unicode",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Stra\u00DFe \u6771\u4EAC e\u0301 \u0627\u0644\u0639\u0631\u0628\u064A\u0629",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-unicode.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "narrow",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 200,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-narrow.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "rtl",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 638.234375,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 518.3125,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 431.21875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 305.25,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 518.3125,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 525.3125,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 525.3125,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 525.3125,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-rtl.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "bottom-right",
+      "measurement": {
+        "menu": {
+          "x": 780,
+          "y": 650,
+          "width": 180,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 780,
+              "y": 650,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 845.765625,
+              "y": 650.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 965.6875,
+              "y": 650.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 1052.78125,
+              "y": 650,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 845.765625,
+              "y": 689.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 852.765625,
+                  "y": 696.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 852.765625,
+                  "y": 758.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 852.765625,
+                  "y": 819.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-bottom-right.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "group-href-unused",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-group-href-unused.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "layout-open",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 205.6875,
+              "y": 59.75,
+              "width": 256,
+              "height": 75.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Header",
+                "href": "#fictional-header",
+                "external": false,
+                "box": {
+                  "x": 212.6875,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-layout-open.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "custom",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 61.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 85.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 205.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 292.78125,
+              "y": 20,
+              "width": 121.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 85.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 198.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 92.765625,
+                  "y": 128.25,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 92.765625,
+                  "y": 189.75,
+                  "width": 242,
+                  "height": 61.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-custom.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "custom-input",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 36
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 151.765625,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": [
+              {
+                "value": "retained original text",
+                "selectionStart": 22,
+                "selectionEnd": 22,
+                "box": {
+                  "x": 69.765625,
+                  "y": 29,
+                  "width": 90,
+                  "height": 18
+                },
+                "role": "Edit"
+              }
+            ]
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 175.765625,
+              "y": 20.25,
+              "width": 115.921875,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 295.6875,
+              "y": 20.25,
+              "width": 83.09375,
+              "height": 35.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 382.78125,
+              "y": 20,
+              "width": 211.96875,
+              "height": 36
+            },
+            "role": "Hyperlink",
+            "inputs": [
+              {
+                "value": "retained original text",
+                "selectionStart": 22,
+                "selectionEnd": 22,
+                "box": {
+                  "x": 492.75,
+                  "y": 29,
+                  "width": 90,
+                  "height": 18
+                },
+                "role": "Edit"
+              }
+            ]
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 175.765625,
+              "y": 59.75,
+              "width": 256,
+              "height": 252.5
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 182.765625,
+                  "y": 66.75,
+                  "width": 242,
+                  "height": 79.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": [
+                  {
+                    "value": "retained original text",
+                    "selectionStart": 22,
+                    "selectionEnd": 22,
+                    "box": {
+                      "x": 194.765625,
+                      "y": 118.25,
+                      "width": 90,
+                      "height": 18
+                    },
+                    "role": "Edit"
+                  }
+                ]
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 182.765625,
+                  "y": 146.25,
+                  "width": 242,
+                  "height": 79.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": [
+                  {
+                    "value": "retained original text",
+                    "selectionStart": 22,
+                    "selectionEnd": 22,
+                    "box": {
+                      "x": 194.765625,
+                      "y": 197.75,
+                      "width": 90,
+                      "height": 18
+                    },
+                    "role": "Edit"
+                  }
+                ]
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 182.765625,
+                  "y": 225.75,
+                  "width": 242,
+                  "height": 79.5
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": [
+                  {
+                    "value": "retained original text",
+                    "selectionStart": 22,
+                    "selectionEnd": 22,
+                    "box": {
+                      "x": 194.765625,
+                      "y": 277.25,
+                      "width": 90,
+                      "height": 18
+                    },
+                    "role": "Edit"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-custom-input.png",
+      "sourceRasterParityVerified": false
+    },
+    {
+      "scheme": "Dark",
+      "kind": "font200",
+      "measurement": {
+        "menu": {
+          "x": 20,
+          "y": 20,
+          "width": 680,
+          "height": 72
+        },
+        "entries": [
+          {
+            "label": "Home",
+            "box": {
+              "x": 20,
+              "y": 20,
+              "width": 123.515625,
+              "height": 72
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          },
+          {
+            "label": "Components",
+            "box": {
+              "x": 151.515625,
+              "y": 30.25,
+              "width": 143.921875,
+              "height": 51.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Layout",
+            "box": {
+              "x": 303.4375,
+              "y": 30.25,
+              "width": 111.09375,
+              "height": 51.5
+            },
+            "role": "Button",
+            "inputs": []
+          },
+          {
+            "label": "Documentation",
+            "box": {
+              "x": 422.53125,
+              "y": 20,
+              "width": 243.9375,
+              "height": 72
+            },
+            "role": "Hyperlink",
+            "inputs": []
+          }
+        ],
+        "surfaces": [
+          {
+            "box": {
+              "x": 151.515625,
+              "y": 89.75,
+              "width": 512,
+              "height": 395
+            },
+            "Opacity": 1,
+            "background": {
+              "a": 255,
+              "r": 24,
+              "g": 37,
+              "b": 51,
+              "opacity": 1
+            },
+            "rows": [
+              {
+                "label": "Buttons",
+                "href": "#fictional-buttons",
+                "external": false,
+                "box": {
+                  "x": 164.515625,
+                  "y": 102.75,
+                  "width": 486,
+                  "height": 123
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "Forms",
+                "href": "/fictional/forms?kind=one%2Ftwo#fields",
+                "external": false,
+                "box": {
+                  "x": 164.515625,
+                  "y": 225.75,
+                  "width": 486,
+                  "height": 123
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              },
+              {
+                "label": "External library",
+                "href": "https://example.invalid/library",
+                "external": true,
+                "box": {
+                  "x": 164.515625,
+                  "y": 348.75,
+                  "width": 486,
+                  "height": 123
+                },
+                "role": "Hyperlink",
+                "navigateUriUnset": true,
+                "inputs": []
+              }
+            ]
+          }
+        ]
+      },
+      "file": "navigation-menu-Dark-font200.png",
+      "sourceRasterParityVerified": false
+    }
+  ],
+  "contracts": [
+    {
+      "scheme": "Light",
+      "action": "route-Buttons",
+      "details": {
+        "href": "#fictional-buttons",
+        "external": false,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": true,
+        "groupRemainsOpen": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "route-Forms",
+      "details": {
+        "href": "/fictional/forms?kind=one%2Ftwo#fields",
+        "external": false,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": true,
+        "groupRemainsOpen": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "route-External library",
+      "details": {
+        "href": "https://example.invalid/library",
+        "external": true,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": true,
+        "groupRemainsOpen": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "route-Home",
+      "details": {
+        "href": "#fictional-home",
+        "external": false,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": false,
+        "groupRemainsOpen": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "command-denial-disable",
+      "details": null,
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "live-indices-originals",
+      "details": null,
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "custom-original-retention-close",
+      "details": {
+        "customRequests": 1,
+        "originalItemRetained": true,
+        "sameInputDuringLiveUpdate": true,
+        "resetAfterUnmount": true,
+        "directCloseIsNull": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "hidden-declaration-ancestor",
+      "details": {
+        "immediateEligibilityRevoked": true,
+        "portedSurfaceRetired": true,
+        "revealStaysClosed": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "active-modal-isolation",
+      "details": {
+        "backgroundRejectedProviders": 4,
+        "nestedRejectedProviders": 2,
+        "closingOwnerProviderRejected": true,
+        "ownerRetiredProviderRejected": true,
+        "backgroundInvocations": 1,
+        "ownedInvocations": 2,
+        "unopenedInvocations": 1,
+        "originalBackgroundDelivered": true,
+        "originalOwnedDelivered": true,
+        "unopenedOriginalDelivered": true,
+        "blockedCommandsIgnored": true,
+        "callerEnabledBindingRetained": true,
+        "nestedOriginalStateRestored": true,
+        "originalModalContentRetained": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "template-unload-reload",
+      "details": null,
+      "passed": true
+    },
+    {
+      "scheme": "Light",
+      "action": "surface-motion",
+      "details": {
+        "entryMid": 0.9613825678825378,
+        "entryEnd": 1,
+        "exitMid": 0.8438360691070557,
+        "reopenStart": 0.7851390838623047,
+        "reopenEnd": 1,
+        "reducedClosed": 0,
+        "reducedOpen": 1,
+        "callerRetained": true,
+        "originalSurfaceRetained": true,
+        "controlledClock": true,
+        "normalRealtimeMotionVerified": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "route-Buttons",
+      "details": {
+        "href": "#fictional-buttons",
+        "external": false,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": true,
+        "groupRemainsOpen": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "route-Forms",
+      "details": {
+        "href": "/fictional/forms?kind=one%2Ftwo#fields",
+        "external": false,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": true,
+        "groupRemainsOpen": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "route-External library",
+      "details": {
+        "href": "https://example.invalid/library",
+        "external": true,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": true,
+        "groupRemainsOpen": false
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "route-Home",
+      "details": {
+        "href": "#fictional-home",
+        "external": false,
+        "originalReceived": true,
+        "order": [
+          "command",
+          "event"
+        ],
+        "retiredRejected": false,
+        "groupRemainsOpen": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "command-denial-disable",
+      "details": null,
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "live-indices-originals",
+      "details": null,
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "custom-original-retention-close",
+      "details": {
+        "customRequests": 1,
+        "originalItemRetained": true,
+        "sameInputDuringLiveUpdate": true,
+        "resetAfterUnmount": true,
+        "directCloseIsNull": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "hidden-declaration-ancestor",
+      "details": {
+        "immediateEligibilityRevoked": true,
+        "portedSurfaceRetired": true,
+        "revealStaysClosed": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "active-modal-isolation",
+      "details": {
+        "backgroundRejectedProviders": 4,
+        "nestedRejectedProviders": 2,
+        "closingOwnerProviderRejected": true,
+        "ownerRetiredProviderRejected": true,
+        "backgroundInvocations": 1,
+        "ownedInvocations": 2,
+        "unopenedInvocations": 1,
+        "originalBackgroundDelivered": true,
+        "originalOwnedDelivered": true,
+        "unopenedOriginalDelivered": true,
+        "blockedCommandsIgnored": true,
+        "callerEnabledBindingRetained": true,
+        "nestedOriginalStateRestored": true,
+        "originalModalContentRetained": true
+      },
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "template-unload-reload",
+      "details": null,
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "action": "surface-motion",
+      "details": {
+        "entryMid": 0.9613825678825378,
+        "entryEnd": 1,
+        "exitMid": 0.8438360691070557,
+        "reopenStart": 0.7851390838623047,
+        "reopenEnd": 1,
+        "reducedClosed": 0,
+        "reducedOpen": 1,
+        "callerRetained": true,
+        "originalSurfaceRetained": true,
+        "controlledClock": true,
+        "normalRealtimeMotionVerified": false
+      },
+      "passed": true
+    }
+  ],
+  "presence": [
+    {
+      "scheme": "Light",
+      "originalRetainedAt50": true,
+      "retiredBy190": true,
+      "reopenCancelledExit": true,
+      "normalMotionVerified": false,
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "originalRetainedAt50": true,
+      "retiredBy190": true,
+      "reopenCancelledExit": true,
+      "normalMotionVerified": false,
+      "passed": true
+    }
+  ],
+  "standalone": [
+    {
+      "scheme": "Light",
+      "rootConstrained": true,
+      "noNativeLightDismiss": true,
+      "unloadedPopupRetired": true,
+      "passed": true
+    },
+    {
+      "scheme": "Dark",
+      "rootConstrained": true,
+      "noNativeLightDismiss": true,
+      "unloadedPopupRetired": true,
+      "passed": true
+    }
+  ],
+  "catalog": [],
+  "pngs": [
+    {
+      "file": "navigation-menu-Light-closed.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "0f14237cb91700a593d6ed9fda265b8ba37a74c891b60a58629424736e297642"
+    },
+    {
+      "file": "navigation-menu-Light-empty.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "8542423d7b2c688e1ef4955ebe439f47d26de2efb201c23af3ff9136f946e506"
+    },
+    {
+      "file": "navigation-menu-Light-links-only.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "06128738e7271c097058bb7817b252e815e14ee52a013e82d281effe0b45cd2f"
+    },
+    {
+      "file": "navigation-menu-Light-basic.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "54bc0ab12b5e40fa00e20d3df20c916f3f692aa56ceeec872b8c437cd0352980"
+    },
+    {
+      "file": "navigation-menu-Light-empty-group.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "9dd011270a194c113ce1e4393bd63846c6846c4f3f16ff8c0ca7cb5755147eb3"
+    },
+    {
+      "file": "navigation-menu-Light-no-description.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "2d9071724293fa6654da959b595f15d599e5cca5d247ec953d0bfeeada3eced3"
+    },
+    {
+      "file": "navigation-menu-Light-long-description.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "abb6a1a93dc6bf9146287d34e524a45f429c2d1195525b6fb08113d67e6e03ca"
+    },
+    {
+      "file": "navigation-menu-Light-unicode.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "79ffa9e9dec334a1ebe1f986d4f127abafa502dab179d7fc3604123070f76670"
+    },
+    {
+      "file": "navigation-menu-Light-narrow.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "54bc0ab12b5e40fa00e20d3df20c916f3f692aa56ceeec872b8c437cd0352980"
+    },
+    {
+      "file": "navigation-menu-Light-rtl.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "db57e2b807a369b7053484931804afefa290e3669edc524900cac78d0c69675c"
+    },
+    {
+      "file": "navigation-menu-Light-bottom-right.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "cda5e40a9e3f4ccd666f79020dd057342485d7c3ba3fc4359fa6e7c38b88b9ee"
+    },
+    {
+      "file": "navigation-menu-Light-group-href-unused.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "54bc0ab12b5e40fa00e20d3df20c916f3f692aa56ceeec872b8c437cd0352980"
+    },
+    {
+      "file": "navigation-menu-Light-layout-open.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "d7d8cca673d4c46521cfc99feaffe60aa725f7aa3482de99e01897b856d662d0"
+    },
+    {
+      "file": "navigation-menu-Light-custom.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "54bc0ab12b5e40fa00e20d3df20c916f3f692aa56ceeec872b8c437cd0352980"
+    },
+    {
+      "file": "navigation-menu-Light-custom-input.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "ef28f38af52c838264a5ddfcb7d08cf119ec12382a2e23980c706b57f1da206f"
+    },
+    {
+      "file": "navigation-menu-Light-font200.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "c68efc12d3eed2b066d48a16c60490cb313f768f7d2318cb6a917e51ab0c04a8"
+    },
+    {
+      "file": "navigation-menu-Dark-closed.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "f233eb1e0417c5fe0d893d91d48820eb6fa4019480d0efdbac00631bbf189b16"
+    },
+    {
+      "file": "navigation-menu-Dark-empty.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "d5fb548bc51d73fa5499d5d97589639c03cf25cc638bef99a3073c9ac56fbdfe"
+    },
+    {
+      "file": "navigation-menu-Dark-links-only.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "8b603230e6de337d6f24f1e203b7a20b8f121d590893f7e30b2f9e0fb8d4e6c9"
+    },
+    {
+      "file": "navigation-menu-Dark-basic.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "4ccf55735453ea7ae3fcb711472ea132b9d311fa29d728ac8c4c0badcf49416c"
+    },
+    {
+      "file": "navigation-menu-Dark-empty-group.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "5190ef26e184844b1b779202f4e7ab4ff6ed001b828df7fc8c87cc4777ba183e"
+    },
+    {
+      "file": "navigation-menu-Dark-no-description.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "9dcf1799a9b48fff04313840e425f3919f5edcb14de282154e6613cb099bfe29"
+    },
+    {
+      "file": "navigation-menu-Dark-long-description.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "e3786f6bda4d9e032520055cbc512d7a86e3332ed6152ff08b9973a5cb5aa296"
+    },
+    {
+      "file": "navigation-menu-Dark-unicode.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "1d9b709ad8ea3395e9f597ccb36bd5bf8b0db3529fbe57e13ace1d0fd3a0e2bc"
+    },
+    {
+      "file": "navigation-menu-Dark-narrow.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "4ccf55735453ea7ae3fcb711472ea132b9d311fa29d728ac8c4c0badcf49416c"
+    },
+    {
+      "file": "navigation-menu-Dark-rtl.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "daef4d8458cc89c0a6a55b4071d38831e97949007b4c926552609bb1c866ecb6"
+    },
+    {
+      "file": "navigation-menu-Dark-bottom-right.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "ccc83f9090e876f68c1bf9b5914463ba053f44cfc6eae6a45718746a92f89484"
+    },
+    {
+      "file": "navigation-menu-Dark-group-href-unused.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "4ccf55735453ea7ae3fcb711472ea132b9d311fa29d728ac8c4c0badcf49416c"
+    },
+    {
+      "file": "navigation-menu-Dark-layout-open.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "94e1ff2892fca2c2245466a4d9048ee148e6d7077b7a48df89c38f190343a008"
+    },
+    {
+      "file": "navigation-menu-Dark-custom.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "4ccf55735453ea7ae3fcb711472ea132b9d311fa29d728ac8c4c0badcf49416c"
+    },
+    {
+      "file": "navigation-menu-Dark-custom-input.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "7f76d7ac47d1edf5d943c61aba165f2641e9a58cc0bb02458f240c363f4e53ca"
+    },
+    {
+      "file": "navigation-menu-Dark-font200.png",
+      "width": 1000,
+      "height": 760,
+      "sha256": "300fdb96dbd05915973ced0a6eaef62bc36779ea7691a8990838e89318ed42d4"
+    }
+  ],
+  "guards": 1694,
+  "focus": 0,
+  "activations": 0,
+  "publicApisOnly": true,
+  "activateCalled": false,
+  "showWindowCalled": false,
+  "focusCalled": false,
+  "hardwareInputSent": false,
+  "physicalInputVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "librarySha256": "5d1d0517af5dd3aba64096757586f685d5733dfa1d5f4cd539a93bd76722d514",
+  "hostSha256": "66232a5cbf24f53b6a43ab5cf5504264f530f6963475154caa0bed566888c82f"
+}
