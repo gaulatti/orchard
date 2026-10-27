@@ -1,0 +1,39 @@
+{
+  "scope": "Current source Pagination option-font propagation",
+  "sourceBaseCommit": "00bd2c7ed8e8e3b9ff122aee9086def6c097af75",
+  "sourceLibraryX64Sha256": "63e3db2172ddf591233777548eb74499a3a76ca5058b1fe3217bcf30bc8ca55e",
+  "sourceLibraryArm64Sha256": "be95863dfce80d4718902cce653bd073e0bc7b4a0d57b678dd9e960bd53758f1",
+  "sourceCatalogX64Sha256": "bf8d733ece8550c15268fd3515ab437f967e7f174eb470172170c774d437bee8",
+  "builds": {
+    "x64CatalogWarnings": 0,
+    "x64CatalogErrors": 0,
+    "arm64CatalogWarnings": 0,
+    "arm64CatalogErrors": 0,
+    "nativeArm64RuntimeVerified": false
+  },
+  "runtime": {
+    "x64PaginationLightDarkPassed": true,
+    "selectedOptionKeepsMediumDefault": true,
+    "otherOptionsKeepRegularDefault": true,
+    "callerFontReachedPageRowsAndOptions": true,
+    "callerFontSurvivedSelectedSizeChange": true,
+    "clearingCallerFontRestoredDefaultPair": true,
+    "screenshotsVisuallyInspected": true,
+    "osSettingsChanged": false
+  },
+  "evidence": {
+    "result": {"path": "result.json", "sha256": "4edd26a90d506abef1c341965da4d5ef8054cf3ff76279cf52cb7763b17b1d70"},
+    "lifecycleLight": {"path": "data-table-pagination-lifecycle-Light.json", "sha256": "8e9c9ef93c78b013b6fe47a85c78397a7a16e97cd786f9bb6d2bdd25e7b89878"},
+    "lifecycleDark": {"path": "data-table-pagination-lifecycle-Dark.json", "sha256": "8e9c9ef93c78b013b6fe47a85c78397a7a16e97cd786f9bb6d2bdd25e7b89878"},
+    "fontOverrideLight": {"path": "data-table-pagination-font-override-Light.png", "sha256": "d48961a7f8afad292d76bba431ee7cbc931e4d9a5a5aa4a916c990d2ce07349b"},
+    "fontOverrideDark": {"path": "data-table-pagination-font-override-Dark.png", "sha256": "2ad283c7b340b0d156044cf634f4089d089ddfdd20d355d65b7804b579ae27eb"}
+  },
+  "unresolvedChecks": [
+    "Current Data Table filter and select-shadow catalog modes fail in their fixtures while locating a legacy WinUI Popup after catalog modal-host integration. Their current source replay is unverified.",
+    "The local 0.1.0-preview.20261027.3 package predates this option-font change. Its isolated consumer restore failed with insufficient disk space. The exact generated package file could not be removed because automatic approval review blocked the command; it is stale and unpublished.",
+    "Current source has no qualified fresh NuGet package or catalog archives; native ARM64 runtime, full Pagination visual/input/scaling/performance and all-inventory acceptance remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "nativeComponentAccepted": false
+}

@@ -63,6 +63,7 @@ internal sealed partial class BleeckerSelectSurface : ItemsControl
         Items.VectorChanged += (_, _) => { if (IsLoaded) RefreshOpenValue(); };
         GotFocus += (_, _) => RenderChooser(); LostFocus += (_, _) => RenderChooser();
         ActualThemeChanged += (_, _) => RenderChooser();
+        RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => RenderChooser());
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { if (!IsEnabled) IsDropDownOpen = false; RenderChooser(); });
         triggerSearchReset = DispatcherQueue.CreateTimer(); triggerSearchReset.Interval = TimeSpan.FromSeconds(1); triggerSearchReset.IsRepeating = false; triggerSearchReset.Tick += (_, _) => triggerSearch = "";
         contentSearchReset = DispatcherQueue.CreateTimer(); contentSearchReset.Interval = TimeSpan.FromSeconds(1); contentSearchReset.IsRepeating = false; contentSearchReset.Tick += (_, _) => contentSearch = "";
@@ -353,7 +354,10 @@ internal sealed class BleeckerSelectItem : Button
     internal void Render()
     {
         if(Chooser.Appearance is not null){Chooser.Appearance.RenderItem(this);return;}
-        FontFamily = Chooser.SelectionMatches(this) ? (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"] : Chooser.FontFamily;
+        var regular = (FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"];
+        FontFamily = Chooser.SelectionMatches(this) && string.Equals(Chooser.FontFamily.Source, regular.Source, StringComparison.Ordinal)
+            ? (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"]
+            : Chooser.FontFamily;
         Foreground = Chooser.Brush(Chooser.tokens,Chooser.SelectionMatches(this) ? "BleeckerSeaBrush" : "BleeckerTextPrimaryBrush");
         Background = Chooser.Brush(Chooser.palette,FocusState != FocusState.Unfocused ? "BleeckerPaginationOptionHighlightBrush" : "BleeckerPaginationOptionBackgroundBrush");
         Opacity = IsEnabled ? 1 : .4;

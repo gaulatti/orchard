@@ -1989,7 +1989,7 @@
       "remainingGaps": [
         "Verify the complete enabled-state pointer/keyboard input matrix; 136 rapid-pair functional states, 136 held-key states, 132 source-state checks, 12 pointer clicks and two Escape transfers pass. Browser DOM and WinUI key-up owner differences remain recorded as diagnostics; settled focus, paging, callback count and visible rows pass the rapid replay",
         "Review and correct observable selector/popup appearance, typography, icons, motion and 154 geometry differences across 132 rendered-state pairs; retain the strict pixel differences as diagnostics rather than a byte-identical acceptance gate",
-        "Verify native ARM64 execution and package delivery of the new caller-font repair; earlier x64 package consumer and source suites pass their recorded binaries",
+        "Verify native ARM64 execution and fresh package delivery of the caller-font and option-font repairs; current x64 Pagination catalog passes, while earlier package consumers pass only their recorded older binaries",
         "Verify text/display scaling and measured collection performance"
       ],
       "generalConsumerSmoke": {
@@ -2008,6 +2008,16 @@
         "arm64BuildPassed": true,
         "nativeArm64RuntimeVerified": false,
         "publishedPackageIncludesRepair": false,
+        "componentAccepted": false
+      },
+      "currentOptionFontPropagation": {
+        "checkpoint": "docs/evidence/data-table-pagination-options-v1/checkpoint.json",
+        "x64LightDarkLifecyclePassed": true,
+        "callerFontReachedSelectedAndUnselectedOptions": true,
+        "selectionChangeAndResetPassed": true,
+        "arm64BuildPassed": true,
+        "nativeArm64RuntimeVerified": false,
+        "currentPackageQualified": false,
         "componentAccepted": false
       }
     },

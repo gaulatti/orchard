@@ -38,11 +38,14 @@ public sealed partial class BleeckerDataTablePagination : Control
     {
         DefaultStyleKey = typeof(BleeckerDataTablePagination);
         PageSizeOptions = new ObservableCollection<int>([10, 20, 30, 50, 100]);
-        RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => { if (page is not null) page.FontFamily = PageFontFamily(); });
+        RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) =>
+        {
+            if (page is not null) page.FontFamily = PageFontFamily();
+            Refresh();
+        });
         Loaded += (_, _) => { Observe(); Refresh(); };
         Unloaded += (_, _) => Disconnect();
         RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
-        RegisterPropertyChangedCallback(FontFamilyProperty, (_, _) => Refresh());
         RegisterPropertyChangedCallback(FontSizeProperty, (_, _) => Refresh());
     }
 

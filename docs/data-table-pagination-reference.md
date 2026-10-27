@@ -713,3 +713,25 @@ x64 and ARM64 catalog builds have zero warnings or errors. The source change is
 newer than the published preview package, so fresh NuGet delivery, native ARM64
 runtime and the wider Pagination acceptance gaps remain open. See the
 [checkpoint](evidence/data-table-pagination-font-v1/checkpoint.json).
+
+## Page-size option font propagation
+
+The caller-font repair also exposed a selector gap: existing page-size options
+kept their original font when the control's `FontFamily` changed. The internal
+chooser now repaints options when its effective font changes. Its selected option
+keeps Orchard's medium font by default; an explicit caller font applies to both
+selected and unselected options, including after a page-size change. Clearing
+the caller value restores the medium/regular pair. The existing lifecycle
+fixture checks those transitions in Light and Dark. The current x64 catalog
+runtime passed; x64 and ARM64 catalog builds each passed with zero warnings and
+errors. The themed captures were visually inspected. See the
+[option-font checkpoint](evidence/data-table-pagination-options-v1/checkpoint.json).
+
+The broader Data Table filter and select-shadow catalog runs currently fail in
+their fixtures while locating a legacy WinUI `Popup`; the catalog now presents
+that surface through `BleeckerModalHost`. Their frozen source replay remains
+unverified on the current build. A local `0.1.0-preview.20261027.3` package was
+made before the option-font change; its isolated consumer restore failed for
+insufficient disk space, and automatic approval review rejected removal of the
+stale local file. It is not a qualified or published package. Native ARM64
+execution and full Pagination acceptance remain open.

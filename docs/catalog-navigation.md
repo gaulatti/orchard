@@ -13,6 +13,10 @@ the same stale cast was replaced in 32 fixture files. Focused x64 smoke passes
 Pagination, Tabs, Area Chart and Stat Card; the other touched fixture modes
 have compiled but have not all been rerun. See the
 [current checkpoint](evidence/data-table-pagination-font-v1/checkpoint.json).
+The current Data Table filter and select-shadow fixtures still expect an open
+WinUI `Popup` and fail when the selector uses the catalog's modal host branch.
+Their current source replay is pending a fixture update; see the
+[option-font checkpoint](evidence/data-table-pagination-options-v1/checkpoint.json).
 Header is registered immediately after Footer; its previously declared fixture
 must remain reachable through the same navigation registry as other components.
 The Footer fixture's variant selector presents Default, Custom links with caller
