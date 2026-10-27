@@ -1,0 +1,13 @@
+{
+  "format": "orchard-v8-self-contained-consumer-overlay-v1",
+  "base": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\components-v7-consumer-x64\\app",
+  "app": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\components-v8-consumer-linked-x64-v1\\app",
+  "files": 531,
+  "hardlinks": 530,
+  "v8PackageSha256": "a37aba0cf848effda102e1479cfc2a8965295cb68996b95ed184ecb7fc121121",
+  "v8OrchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "apphostSha256": "65989ebf098ba212bdfb92b49cf278a438a0fc4665f299698ba257bd4f13edb6",
+  "freshV8Restore": false,
+  "freshV8Compilation": false,
+  "selfContainedV7HostReused": true
+}

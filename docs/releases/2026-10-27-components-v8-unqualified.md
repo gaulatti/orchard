@@ -43,6 +43,18 @@ NuGet-consumer runtime evidence; it does not prove clean-cache restore or
 self-contained delivery. See Microsoft's [deployment modes](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/self-contained-deploy/deploy-self-contained-apps)
 for the separate Windows App SDK and .NET self-contained settings.
 
+A [self-contained consumer overlay](../evidence/components-v8-self-contained-overlay-v1/checkpoint.json)
+now runs the exact v8 package DLL in the independently built v7 x64 consumer
+host. The v7 and v8 packages have the same 186 entries; only the version
+metadata and Orchard DLL differ. The v7 host was published with .NET and
+Windows App SDK self-contained settings, and the separate v8 directory retains
+its 530 unchanged host files as verified hardlinks. Its local `coreclr.dll`,
+`hostfxr.dll` and WinUI runtime are present. The executable exits 0 after
+checking package resources, fonts, Light/Dark themes, layout and a native
+action with the exact v8 DLL. This directly verifies that self-contained host
+runtime path. It does not prove a fresh v8 restore, compilation or publish;
+those clean delivery steps remain open while C: lacks space.
+
 The local v8 x64 catalog preview ZIP is now available at
 `artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-x64.zip`
 (SHA-256 `40da12696757f38414de8115bc5d1d81a50cc36add1a48a25153405989f74b52`).
@@ -74,16 +86,16 @@ behavior for the archive-identical file set. They do not establish full visual
 or component acceptance. The v8 ZIP has not been unpacked independently into
 a fresh directory; C: still lacks room for that and clean-cache qualification.
 
-This package and catalog remain **unqualified**. Independent self-contained x64
-runtime, a fresh ZIP extraction and replay, an ARM64 catalog archive and native
-ARM64 runtime remain open. The v7 catalog still has the Monitoring focus defect;
-v8 has not replaced it as a release. The
+This package and catalog remain **unqualified**. A fresh v8 self-contained x64
+restore/publish, a fresh ZIP extraction and replay, an ARM64 catalog archive and
+native ARM64 runtime remain open. The v7 catalog still has the Monitoring focus
+defect; v8 has not replaced it as a release. The
 [checkpoint](../evidence/components-v8-package-preview-v1/checkpoint.json)
 records hashes, verified checks and remaining failures. The inventory remains
 112 entries started and zero accepted; that is not a completion percentage.
 
 The attempted cleanup of generated artifacts was rejected by automatic approval
-review as “blocked by policy,” so those files remain. After low-disk catalog
-materialization, C: has about 119 MB free.
+review as “blocked by policy,” so those files remain. C: still has less than
+150 MB free after the low-disk runtime checks.
 The public wiki remote is unavailable, so this release note is maintained in
 the repository.

@@ -25,6 +25,11 @@ in Light and Dark. This verifies those specific native outcomes, not full
 component acceptance, fresh ZIP extraction, clean-cache/self-contained NuGet
 delivery or native ARM64 runtime.
 
+The [exact v8 DLL also passes a focused x64 runtime smoke](evidence/components-v8-self-contained-overlay-v1/checkpoint.json)
+inside a previously published independent self-contained consumer host. Its
+unchanged package assets and host files are verified, but this overlay is not
+a fresh v8 restore or publish. The v8 package remains unqualified.
+
 The Checkbox v3 hidden fixture now asserts native readiness after rendering;
 all shared source/consumer/archive raw checks agree, including `IsLoaded`.
 This corrects the earlier harness timing, with no library change. The existing
