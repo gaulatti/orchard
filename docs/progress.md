@@ -113,3 +113,14 @@ in the [range preview notes](releases/2026-10-26-progress-range-preview.md).
 These are hidden x64 checks without hardware input or OS changes. The focused
 range results do not establish enabled-motion, physical scaling, native ARM64
 execution or complete visual acceptance.
+
+The consolidated v7 extracted x64 catalog and its independent NuGet consumer
+both passed this same focused probe with identical Orchard library hash
+`ff3e8379…`. Each host passed 14 range states, 32 invalid-input cases,
+eight live binding contracts, four invalid-bound-data recovery contracts and
+93 audit guards. The retained reports are under
+`artifacts/current/components-v7-progress-range-catalog-x64` and
+`artifacts/current/components-v7-progress-range-consumer-x64`. These results
+verify the shipped x64 bytes for this range contract; motion, complete visual
+comparison, scaling and native ARM64 runtime remain open, so Progress remains
+in progress.

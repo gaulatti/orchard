@@ -25,6 +25,17 @@ Select and Input pointer routes in Light and Dark. Its fictional Monitoring and
 Editorial demos passed 66 hidden checks. These are focused routes, not complete
 per-component acceptance.
 
+An additional focused Progress range probe passed against both extracted x64
+hosts with the same `ff3e8379…` Orchard DLL: 14 value/range states, 32 rejected
+invalid inputs, eight live bindings, four invalid-binding recovery contracts and
+93 audit guards per host. The retained audit SHA-256 values are
+`935a31d6f4869c425867c6b2aab6952412084bd5f3d959999f875721ddc8582c`
+for `artifacts/current/components-v7-progress-range-catalog-x64/audit.json`
+and `e510157125d0ef123cf492cbd4e9f4766fc8769e865cc830cec9d8e26939d90f`
+for `artifacts/current/components-v7-progress-range-consumer-x64/audit.json`.
+These hidden checks sent no physical input or OS-setting changes and do not
+establish Progress motion, complete visual, scaling or ARM64 runtime acceptance.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore
