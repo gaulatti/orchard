@@ -84,3 +84,11 @@ catalog. The catalog passed 134 source-state geometry checks and pointer,
 Space and Enter mode requests in both themes. Its exact raster diagnostic still
 differs, and normal animation, actual scaling, independent-consumer physical
 input and native ARM64 runtime remain open.
+
+The [published v5 independent consumer](evidence/theme-toggle-package-consumer-input-v1/checkpoint.json)
+now shows the request-only rejection path without changing the application
+theme. Physical pointer, Space and Enter each deliver a Light request; the
+consumer displays it while retaining System mode and the same next-mode name.
+The existing package Button still works afterward, and the full x64 consumer
+suite passes in both themes. Accepted theme transitions, the remaining
+consumer focus/tooltip matrix and native ARM64 runtime are still open.

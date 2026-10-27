@@ -57,7 +57,13 @@ public sealed partial class MainWindow : Window
             await VerifyCardPaddingAsync(arguments[cardOutputIndex + 1]);
             return;
         }
-        if (!arguments.Contains("--verify-output")) return;
+        if (!arguments.Contains("--verify-output"))
+        {
+            var requests = 0;
+            PackageThemeToggle.ThemeRequested += (_, request) =>
+                Result.Text = $"Theme request {++requests}: {request.Mode} (not applied)";
+            return;
+        }
         try
         {
             foreach (var font in new[] { "EncodeSans-Regular.ttf", "EncodeSans-Medium.ttf", "EncodeSans-SemiBold.ttf", "EncodeSans-Bold.ttf", "LibreFranklin-Regular.ttf", "LibreFranklin-SemiBold.ttf", "OFL-EncodeSans.txt", "OFL-LibreFranklin.txt" })

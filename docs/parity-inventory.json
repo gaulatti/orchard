@@ -7853,13 +7853,14 @@
         "tests/PackageConsumer/App.HiddenComponentContracts.cs",
         "scripts/verify-hidden-component-contracts.ps1",
         "scripts/verify-hidden-component-contracts.mjs",
-        "scripts/test-hidden-component-contracts-audit.mjs"
+        "scripts/test-hidden-component-contracts-audit.mjs",
+        "scripts/verify-theme-toggle-package-input.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Published v5 package-matching extracted x64 catalog pointer, Space, Enter, rejected Invoke, binding/metadata, template and remount checks pass in both themes (docs/evidence/theme-toggle-v5-published-foreground-v1/checkpoint.json); complete independent-consumer physical/focus/tooltip matrix remains",
+        "Published v5 package-matching extracted x64 catalog pointer, Space, Enter, rejected Invoke, binding/metadata, template and remount checks pass in both themes (docs/evidence/theme-toggle-v5-published-foreground-v1/checkpoint.json); independent v5 NuGet consumer physical pointer, Space and Enter rejected-request route also passes (docs/evidence/theme-toggle-package-consumer-input-v1/checkpoint.json); accepted-mode and remaining focus/tooltip matrix remain",
         "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
-        "Complete package-specific consumer physical input, broader library integration and release acceptance"
+        "Complete accepted-theme package consumer input, broader library integration and release acceptance"
       ]
     },
     {
