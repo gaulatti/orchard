@@ -249,3 +249,27 @@ This establishes those real x64 catalog-host paths, not every filter or picker
 variant, the full pointer/keyboard matrix, display/text scaling, native ARM64
 runtime or complete visual acceptance. The Orchard control and package bytes
 are unchanged.
+
+## Long filename display checkpoint
+
+The pinned light/dark long-file captures show the beginning and `.txt` suffix
+with an ellipsis between them. The previous WinUI rendering used an end ellipsis
+and hid the extension. `BleeckerFileInput` now measures the available selection
+column and shortens only its displayed text by complete Unicode text elements;
+`SelectionText`, `SelectedFiles` and the automation value keep the full name.
+The existing catalog File Input fixture exercises the change in both themes.
+
+The [focused checkpoint](evidence/file-input-middle-ellipsis-v1/checkpoint.json)
+records a warning-free x64 catalog build, a passing hidden native run of 68
+states/34 contracts, source-derived geometry and paint audit, and 71 rejected
+auditor counterexamples. The long-file native captures visibly retain
+`intact.txt` in both themes; the baseline, narrow and other states were also
+captured. The first native run caught a layout-width bug and remains retained.
+The next run passed its native fixture; its initial audit rejected the valid
+`N…` display at the 160-pixel narrow size. The corrected audit passed on those
+unchanged native bytes. Strict browser/native image equality remains failed
+(411,598 differing component pixels; zero identical frames), as a diagnostic.
+This local source build has not been repackaged or independently consumed yet;
+the previous v4 foreground-picker result applies only to its pinned older DLL.
+File Input remains in progress pending its remaining visual, motion, foreground
+and delivery checks, including native ARM64 runtime.

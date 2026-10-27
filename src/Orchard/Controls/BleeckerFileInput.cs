@@ -22,6 +22,7 @@ public sealed class BleeckerFileInput : Button, INotifyPropertyChanged
     private readonly InputSystemCursor arrow = InputSystemCursor.Create(InputSystemCursorShape.Arrow);
     private readonly InputSystemCursor unavailable = InputSystemCursor.Create(InputSystemCursorShape.UniversalNo);
     private TextBlock? chooseText, selectionText;
+    private Grid? selectionLayout;
     private Border? choose, focusRing;
     private bool pointerOver, updating;
     private bool updatingDefaults;
@@ -190,7 +191,12 @@ public sealed class BleeckerFileInput : Button, INotifyPropertyChanged
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate(); choose = GetTemplateChild("FileChooseChrome") as Border; focusRing = GetTemplateChild("FileFocusRing") as Border;
+        if (selectionText is not null) selectionText.SizeChanged -= OnSelectionTextSizeChanged;
+        if (selectionLayout is not null) selectionLayout.SizeChanged -= OnSelectionTextSizeChanged;
         chooseText = GetTemplateChild("FileChooseText") as TextBlock; selectionText = GetTemplateChild("FileSelectionText") as TextBlock;
+        selectionLayout = GetTemplateChild("FileContent") as Grid;
+        if (selectionText is not null) selectionText.SizeChanged += OnSelectionTextSizeChanged;
+        if (selectionLayout is not null) selectionLayout.SizeChanged += OnSelectionTextSizeChanged;
         UpdateParts();
     }
     private void SetPointerOver(bool value) { if (pointerOver == value) return; pointerOver = value; UpdateAppearance(); }
@@ -267,10 +273,56 @@ public sealed class BleeckerFileInput : Button, INotifyPropertyChanged
                 if (FontFamily.Source == ((FontFamily)Application.Current.Resources["BleeckerPrimaryFontFamily"]).Source)
                     chooseText.FontFamily = (FontFamily)Application.Current.Resources["BleeckerPrimaryMediumFontFamily"];
             }
-            if (selectionText is not null) selectionText.Text = SelectionText;
+            UpdateSelectionDisplay();
             UpdateAppearance();
         }
         finally { updating = false; }
+    }
+    private void OnSelectionTextSizeChanged(object sender, SizeChangedEventArgs args) => UpdateSelectionDisplay();
+
+    private void UpdateSelectionDisplay()
+    {
+        if (selectionText is null) return;
+        var full = SelectionText;
+        var width = selectionLayout?.ColumnDefinitions[1].ActualWidth ?? selectionText.ActualWidth;
+        if (width <= 0 || !double.IsFinite(width)) { selectionText.Text = full; return; }
+
+        var measure = new TextBlock
+        {
+            FontFamily = selectionText.FontFamily, FontSize = selectionText.FontSize,
+            FontStyle = selectionText.FontStyle, FontStretch = selectionText.FontStretch,
+            FontWeight = selectionText.FontWeight, CharacterSpacing = selectionText.CharacterSpacing,
+            IsTextScaleFactorEnabled = selectionText.IsTextScaleFactorEnabled,
+            Language = selectionText.Language, FlowDirection = selectionText.FlowDirection,
+            TextWrapping = TextWrapping.NoWrap
+        };
+        double TextWidth(string value)
+        {
+            measure.Text = value;
+            measure.Measure(new(double.PositiveInfinity, double.PositiveInfinity));
+            return measure.DesiredSize.Width;
+        }
+        if (TextWidth(full) <= width) { selectionText.Text = full; return; }
+
+        // Keep the extension visible as Chromium's file input does, without
+        // shortening the original StorageFile name or automation value.
+        var starts = StringInfo.ParseCombiningCharacters(full);
+        string Candidate(int count)
+        {
+            var left = (count + 1) / 2;
+            var right = count / 2;
+            var prefix = left == 0 ? "" : full[..(left == starts.Length ? full.Length : starts[left])];
+            var suffix = right == 0 ? "" : full[starts[starts.Length - right]..];
+            return prefix + "…" + suffix;
+        }
+        var low = 0; var high = starts.Length - 1;
+        while (low < high)
+        {
+            var middle = (low + high + 1) / 2;
+            if (TextWidth(Candidate(middle)) <= width) low = middle;
+            else high = middle - 1;
+        }
+        selectionText.Text = Candidate(low);
     }
     private void UpdateAppearance()
     {
