@@ -52,6 +52,14 @@ values with zero error. Toggle Group passed 62 lifecycle/style checks and 70
 observations, including standalone two-way binding and command gating. These
 hidden checks do not establish physical input or native ARM64 runtime.
 
+Later foreground checks in the extracted x64 catalog cover
+[Button Group](../evidence/components-v5-button-group-foreground-v1/checkpoint.json),
+[Segmented Control](../evidence/components-v5-segmented-foreground-v1/checkpoint.json),
+and [Hero Carousel](../evidence/components-v5-hero-carousel-foreground-v1/checkpoint.json).
+The Hero check directly exercised the user's chosen window-level arrows and
+inactive-slide pointer/Tab input. These focused observations do not accept the
+three components or establish independent-consumer foreground input.
+
 Native ARM64 catalog/consumer runtime, remaining component visual and behavior
 checks, measured collection
 performance, and final package acceptance remain open. The library inventory

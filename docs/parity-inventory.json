@@ -5611,8 +5611,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Strict image gates remain failed: source/package52pixels/max24 and source/archive58pixels/max24, zero allowed; complete browser/native raster, scaling/motion/customization and performance acceptance remain open",
-        "Physical pointer/key routing, focus, Tab traversal and native ARM64 runtime require further authorized evidence",
+        "Strict image gates remain failed: source/package 52 pixels/max 24 and source/archive 58 pixels/max 24, zero allowed; complete browser/native raster, scaling/motion/customization and performance acceptance remain open",
+        "Foreground x64 catalog SendInput verifies outside-arrow routing, native edit exclusion, inactive-slide pointer and Tab/Enter invocation; broader input/focus states, independent consumer foreground input and native ARM64 runtime remain open (docs/evidence/components-v5-hero-carousel-foreground-v1/checkpoint.json)",
         "Full library/release acceptance and all other pending component entries remain open; both fictional demos remain required"
       ],
       "sourcePreparation": {

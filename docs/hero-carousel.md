@@ -1,8 +1,8 @@
 # Hero Carousel native preview
 
-On 2026-10-22 the user explicitly selected the source behavior: arrow keys throughout the owning window, plus Tab and click input on inactive slides. The `0.1.0-hero-carousel-input-v1-local` preview implements that choice. Source, fresh NuGet consumer and extracted catalog pass 82 states and 34 checks in each host, including owning-root subscriptions, direct outside-arrow processing, eleven native INPUT/TEXTAREA exclusions, contenteditable-equivalent RichEditBox, inactive link eligibility and original-item invocation, source empty/visible-content hit ordering and unload/remount cleanup. Physical key routing, pointer gestures and Tab traversal remain unverified without renewed desktop availability. No OS-global keyboard hook is used.
+On 2026-10-22 the user explicitly selected the source behavior: arrow keys throughout the owning window, plus Tab and click input on inactive slides. The `0.1.0-hero-carousel-input-v1-local` preview implements that choice. Source, fresh NuGet consumer and extracted catalog pass 82 states and 34 checks in each host, including owning-root subscriptions, direct outside-arrow processing, eleven native INPUT/TEXTAREA exclusions, contenteditable-equivalent RichEditBox, inactive link eligibility and original-item invocation, source empty/visible-content hit ordering and unload/remount cleanup. The later [v5 foreground input checkpoint](evidence/components-v5-hero-carousel-foreground-v1/checkpoint.json) verifies focused native paths in the extracted x64 catalog. No OS-global keyboard hook is used.
 
-Both solution and isolated-consumer architectures build with no solution warnings; 434 portable and 10 Windows text tests pass. The source auditor rejects 88 corruptions and the package auditor rejects 85. Both fictional demos load in the source and extracted catalog. Native state/contract data match across all three hosts. The strict source/package image gate fails at 52 pixels, maximum channel difference 24, with 78/82 identical PNGs. Source/archive fails at 58 pixels, maximum 24, with 76/82 identical PNGs. The allowed difference remains zero. Full raster, physical-input, scaling/motion/customization and native ARM64 acceptance remain open.
+Both solution and isolated-consumer architectures build with no solution warnings; 434 portable and 10 Windows text tests pass. The source auditor rejects 88 corruptions and the package auditor rejects 85. Both fictional demos load in the source and extracted catalog. Native state/contract data match across all three hosts. The strict source/package image gate fails at 52 pixels, maximum channel difference 24, with 78/82 identical PNGs. Source/archive fails at 58 pixels, maximum 24, with 76/82 identical PNGs. The allowed difference remains zero. Full raster, broader physical input, scaling/motion/customization and native ARM64 acceptance remain open.
 
 The earlier v5 effects preview adds the source's 2px CTA/tag/arrow backdrops and
 inherited tag shadows. Native underlays keep the original styled border and
@@ -71,8 +71,9 @@ properties update automatically; `Refresh()` rereads ordinary mutable
 collections. Original objects, literal destinations, external intent and
 `ImageSource` instances remain intact. Default native links do not set
 `NavigateUri`; `Command`/`CommandParameter` and `ItemInvoked` let the caller own
-routing. They are guarded by loading, enabled/visible ancestors, active slide,
-actual retained element and current modal scope. A caller exception propagates.
+routing. They are guarded by loading, enabled/visible ancestors, the actual
+retained element and current modal scope. Inactive slides keep input. A caller
+exception propagates.
 
 An omitted `Kind` uses project labels and CTA text without displaying tags;
 tags require explicit Project kind. Empty CTA text uses the kind default.
@@ -115,9 +116,11 @@ presentation and must not be used as an input guard in a source-equivalent
 LinkTemplate. Caller command denial still applies to every slide. The group's
 automation children retain the source aria-hidden distinction, so only active
 slide content is exposed there. Keyboard focus reveals navigation arrows.
-Physical routing, focus, Tab traversal and focused visual acceptance still
-require runtime evidence. The original browser histories and focus screenshots
-remain retained in the frozen source reference.
+The v5 foreground checkpoint verifies a pointer click on an inactive slide and
+Tab/Enter activation of another inactive slide in the extracted x64 catalog.
+Broader focus and visual acceptance still require runtime evidence. The original
+browser histories and focus screenshots remain retained in the frozen source
+reference.
 
 The default renderer keeps transparent native hit targets separate from its
 rendered opacity/effect layers. This preserves the source stacking rule:
@@ -126,7 +129,8 @@ the last original sibling. These targets invoke the original context command,
 stay out of Tab order and the group's automation children, and send pointer
 focus to the original link. Custom LinkTemplate content keeps its own native
 pointer targets and original controls. Hidden tests inspect hit ordering and
-native Invoke payloads; they do not establish physical click or Tab routing.
+native Invoke payloads; the focused foreground checkpoint adds actual pointer
+and Tab/Enter observations without proving every input state.
 WinUI documents that [zero opacity retains hit testing](https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.opacity?view=windows-app-sdk-2.0)
 and that [the hit-test stack is returned in descending z-order](https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.visualtreehelper.findelementsinhostcoordinates?view=windows-app-sdk-2.0).
 
