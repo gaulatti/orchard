@@ -1,0 +1,52 @@
+{
+  "scope": "Monitoring component-demo post-card contrast",
+  "baseCommit": "dd2f72fb05d25d8a4e9244f42a3ccea7263b561a",
+  "observedDefect": "The v8 Light-theme catalog rendered FeedItem text directly over AttentionSurface's dark gradient, making the post hard to read.",
+  "change": "Wrap each post's controls and FeedItem in a Border using the theme's BleeckerCardBrush; retain AttentionSurface as the visible outer frame.",
+  "sourceBuild": {
+    "platform": "x64",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "catalogDllSha256": "e1aeb86fc5412a133e0bfb73cf47e08262da91f8eb58e92e03bb7bd4fd61dcd0",
+    "orchardDllSha256": "7d4229d156a7b68e6c7d73daa65d56aaee85f806cc2a2fd3c5e7169bb2ac0f65"
+  },
+  "arm64Build": {
+    "platform": "ARM64",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "nativeRuntimeVerified": false
+  },
+  "hiddenNativeGate": {
+    "report": "artifacts/current/monitoring-card-contrast-hidden-x64-v1/hidden-workspaces.json",
+    "reportSha256": "7af3ea60751e63577a97e6236280b90eaa346f41ffce34ba7040324be7376d09",
+    "auditSha256": "71619ea041a5f777773d40a884f506baa10d7b46e3e20df698d4c3bbda7f6624",
+    "negativeAuditSha256": "4360e2d3703bb6918e727fca7d4f55ee063a2380df9077b83232779987e58b6a",
+    "checksPassed": 68,
+    "isolationGuardsPassed": 581,
+    "corruptedReceiptsRejected": 25,
+    "lightAndDarkPostContentContrastAtLeast7": true
+  },
+  "portableWorkspaceDemoTests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "foregroundX64": {
+    "tool": "Computer Use (Sky)",
+    "darkPostContentInspected": true,
+    "lightPostContentInspected": true,
+    "lightPointerSelectionPassed": true,
+    "lightDetailsPassed": true,
+    "lightLocalReviewPassed": true,
+    "summaryAfterReview": "0 selected · 0 local updates · 1 local reviews"
+  },
+  "previousFailures": [
+    "The first x64 --no-restore build lacked the win-x64 assets target; normal restore and build passed.",
+    "The first hidden receipt audit used a stale 66-check expectation; the verifier was updated for the new Light/Dark checks and passed."
+  ],
+  "packaging": "The components-v8 NuGet and catalog ZIPs predate this source-only demo fix. No updated package is claimed or qualified here.",
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

@@ -28,6 +28,13 @@ public partial class App
         }
         static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
         void Check(string id, bool condition) { Guard(); Require(condition, id); checks.Add(new { id, passed = true }); Guard(); }
+        static double ContrastRatio(Windows.UI.Color first, Windows.UI.Color second)
+        {
+            static double Channel(byte value) { var s = value / 255d; return s <= .04045 ? s / 12.92 : Math.Pow((s + .055) / 1.055, 2.4); }
+            static double Luminance(Windows.UI.Color color) => .2126 * Channel(color.R) + .7152 * Channel(color.G) + .0722 * Channel(color.B);
+            var a = Luminance(first); var b = Luminance(second);
+            return (Math.Max(a, b) + .05) / (Math.Min(a, b) + .05);
+        }
         static T Named<T>(FrameworkElement owner, string name) where T : class => owner.FindName(name) as T ?? throw new InvalidOperationException("Missing demo control: " + name);
         static IEnumerable<DependencyObject> Descendants(DependencyObject parent)
         {
@@ -85,6 +92,10 @@ public partial class App
                 root.Children.Add(monitoring); await Layout();
                 var prefix = theme + "/monitoring/"; var originalPost = monitoring.Model.Post("harbor"); var originalCheckbox = monitoring.Selection("harbor");
                 Check(prefix + "loaded", monitoring.IsLoaded && monitoring.ActualHeight >= 720 && Named<BleeckerAppShell>(monitoring, "Shell").Content is Grid);
+                var postPresentation = monitoring.PostPresentation("harbor");
+                Check(prefix + "post-content-contrast", ReferenceEquals(postPresentation.Surface.Content, postPresentation.Card) &&
+                    postPresentation.Card.Background is SolidColorBrush cardBrush && postPresentation.Feed.Foreground is SolidColorBrush textBrush &&
+                    ContrastRatio(cardBrush.Color, textBrush.Color) >= 7);
                 monitoring.Width = 760; await Viewport(800);
                 Check(prefix + "narrow-viewport", monitoring.ActualWidth == 760 && Named<ScrollViewer>(monitoring, "FeedScroll").ScrollableWidth > 0 && monitoring.XamlRoot.Size.Width == 800);
                 monitoring.Width = 1060; await Viewport(1100);

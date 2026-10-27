@@ -52,17 +52,23 @@ public sealed partial class MonitoringWorkspaceFixture:UserControl
     private void ReviewKeyDown(object sender,KeyRoutedEventArgs args){if(args.Key==Windows.System.VirtualKey.Escape){Model.RequestCancelReview();args.Handled=true;}}
     internal BleeckerCheckbox Selection(string id)=>posts[id].Selection;
     internal BleeckerButton Details(string id)=>posts[id].Details;
+    internal (BleeckerAttentionSurface Surface, Border Card, BleeckerFeedItem Feed) PostPresentation(string id)=>
+        (posts[id].Surface,posts[id].ContentCard,posts[id].Feed);
     internal BleeckerSearchInput Search(string key)=>columns[key].Search;
     private sealed class PostView
     {
         internal BleeckerAttentionSurface Surface{get;}
+        internal Border ContentCard{get;}
+        internal BleeckerFeedItem Feed{get;}
         internal BleeckerCheckbox Selection{get;}=new(){Content="Select"};
         internal BleeckerButton Details{get;}
         internal PostView(MonitoringWorkspaceFixture owner,DemoPost post)
         {
             var content=new StackPanel{Spacing=8};var bar=new StackPanel{Orientation=Orientation.Horizontal,Spacing=12};WorkspaceDemoUi.Name(Selection,"Select fictional post: "+post.Content);
             Selection.Checked+=(_,_)=>{if(!owner.updating)owner.Model.SetSelected(post.Id,true);};Selection.Unchecked+=(_,_)=>{if(!owner.updating)owner.Model.SetSelected(post.Id,false);};Details=WorkspaceDemoUi.Button("Details",()=>owner.Model.Inspect(post.Id),BleeckerButtonVariant.Ghost);WorkspaceDemoUi.Name(Details,"Inspect fictional post: "+post.Content);bar.Children.Add(Selection);bar.Children.Add(Details);content.Children.Add(bar);
-            content.Children.Add(new BleeckerFeedItem{Author=post.Author,Content=post.Content,PostedAt=post.PostedAt,Relevance=post.Relevance,Categories=[post.Column]});Surface=new BleeckerAttentionSurface{Hue=post.Column switch{"Local"=>210,"Signals"=>35,_=>145},Intensity=post.Relevance/10,Content=content};
+            Feed=new BleeckerFeedItem{Author=post.Author,Content=post.Content,PostedAt=post.PostedAt,Relevance=post.Relevance,Categories=[post.Column]};content.Children.Add(Feed);
+            ContentCard=new Border{Style=(Style)owner.Resources["MonitoringPostContentStyle"],Child=content};
+            Surface=new BleeckerAttentionSurface{Hue=post.Column switch{"Local"=>210,"Signals"=>35,_=>145},Intensity=post.Relevance/10,Content=ContentCard};
         }
     }
 }

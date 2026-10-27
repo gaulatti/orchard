@@ -11,6 +11,9 @@ AttentionSurface, SearchInput, Checkbox, Panel, Field, Textarea and Button.
 Each column has its own search. **Simulate local update** inserts a fictional
 post without replacing existing posts or selections. **Details** shows the
 original selected post. The attention section shows high-relevance examples.
+Each post places its interactive controls and FeedItem on the themed card token
+inside AttentionSurface's dark gradient, so their text remains readable in both
+catalog themes.
 **Review selected** locks a snapshot of the selected IDs; instructions can be
 kept or explicitly discarded. **Record local review** adds an in-memory example
 and clears that selection. The local reviews section displays those examples.
@@ -135,6 +138,14 @@ focus check described above. The archive-identical v8 catalog file set also
 passes the physical edit/save/dirty-decision path in Light and Dark from the
 separate runnable directory; both screenshots were inspected. Its
 [NuGet preview and catalog ZIP](releases/2026-10-27-components-v8-unqualified.md)
-have a passing framework-dependent independent x64 consumer and exact-file-set
-catalog runtime. Clean-cache restore, independent fresh ZIP extraction,
-self-contained consumer delivery and native ARM64 runtime remain open.
+have a passing clean-cache, self-contained independent x64 consumer, fresh
+x64 catalog extraction and runtime, and ARM64 catalog extraction and consumer
+publish. Native ARM64 runtime and full component acceptance remain open.
+
+The subsequent source fixture fixes a Light-theme Monitoring contrast defect
+seen in the v8 catalog: dark FeedItem text previously sat directly on the
+AttentionSurface gradient. The [source checkpoint](evidence/monitoring-card-contrast-v1/checkpoint.json)
+records the themed-card composition, the updated 68-check hidden gate with 581
+isolation guards, and visible Light/Dark inspection. The v8 ZIP and NuGet
+package predate this demo fix; package qualification will be batched with the
+next meaningful component milestone.

@@ -1,4 +1,11 @@
 <UserControl x:Class="Orchard.Catalog.Demos.MonitoringWorkspaceFixture" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:orchard="using:Orchard">
+ <UserControl.Resources>
+  <Style x:Key="MonitoringPostContentStyle" TargetType="Border">
+   <Setter Property="Background" Value="{ThemeResource BleeckerCardBrush}"/>
+   <Setter Property="CornerRadius" Value="6"/>
+   <Setter Property="Padding" Value="8"/>
+  </Style>
+ </UserControl.Resources>
  <StackPanel Spacing="16" Margin="0,0,0,32">
   <TextBlock Text="Monitoring component demo" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24"/>
   <TextBlock Text="Fictional local data · updates and reviews stay in memory · no services or accounts" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
