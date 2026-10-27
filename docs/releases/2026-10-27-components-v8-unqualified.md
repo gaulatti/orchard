@@ -127,8 +127,10 @@ x64 consumer and fresh x64 catalog extraction now run, and the ARM64 consumer
 publishes, but native ARM64 runtime and full component acceptance remain open.
 The failed foreground Monitoring attempt from the fresh extraction also remains
 visible; archive-identical v8 bytes passed that physical check in the separate
-linked catalog. The v7 catalog still has the Monitoring focus defect; v8 has
-not replaced it as a release. The
+linked catalog. The earlier local v7 catalog tested here had the Monitoring
+focus defect; the later [published v7 x64 archive](2026-10-27-preview-v7.md)
+passed the focused physical check. The local v8 package has not replaced that
+release. The
 [checkpoint](../evidence/components-v8-package-preview-v1/checkpoint.json)
 records hashes, verified checks and remaining failures. The inventory remains
 112 entries started and zero accepted; that is not a completion percentage.
