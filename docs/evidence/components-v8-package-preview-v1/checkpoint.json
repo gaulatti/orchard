@@ -35,6 +35,34 @@
     "runtimeReport": "artifacts/current/components-v8-framework-dependent-runtime-failure.json",
     "runtimeReportSha256": "36bc468edeb3cf3856961fe3225c6160946d715ed6622a7cadc97fb2fc1261e8"
   },
+  "hostDiagnostic": {
+    "path": "docs/evidence/components-v8-package-preview-v1/host-diagnostic.json",
+    "sha256": "11d30d1865cc1e8522d4f50ba9b2ec45a1855647da2b5dc2719565f0971652d0",
+    "malformedPriKeysConfirmed": true,
+    "v7LibrarySwapAlsoFailed": true,
+    "experimentalHostValidForPackageQualification": false,
+    "v8PackageDefectEstablished": false
+  },
+  "correctedDefaultPathConsumer": {
+    "sourceCopiedOutsideRepository": true,
+    "exactV8PackageRestoredFromLocalFeed": true,
+    "thirdPartyDependenciesFromSharedCache": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "orchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+    "consumerDllSha256": "575dcadb0f118970065a04fbb5992e8df4fa73e22df0bf887ea2795866d40d68",
+    "resourcePriSha256": "3dff30935052e0c63d1feea900271eb956d9ff7472a47bf3da121b4cff1f97a1",
+    "expectedAppAndMainWindowPriKeys": true,
+    "frameworkDependentX64RuntimePassed": true,
+    "fullConsumerRuntimeExitCode": 0,
+    "runtimeReport": "docs/evidence/components-v8-package-preview-v1/v8-x64-consumer-runtime.json",
+    "runtimeReportSha256": "a5f71e101e3048eb3f41c6e390e2286ca57c2ad91b2e91c22abbd16cd68d2f39",
+    "visibleReport": "docs/evidence/components-v8-package-preview-v1/v8-x64-consumer-visible.json",
+    "visibleReportSha256": "8f17292f354b2f6fa9c6409d881674ac0b78ffa71c9df3ddb9c4f675cb3ad722",
+    "visibleScreenshot": "docs/evidence/components-v8-package-preview-v1/v8-x64-consumer-visible.png",
+    "visibleScreenshotSha256": "571e613c7e9fcf80c0616ca25fe5013e96f8d4387062abc33b724db8ac0f68ab",
+    "selfContainedPublishVerified": false
+  },
   "cleanup": {
     "attempted": true,
     "automaticApprovalReview": "blocked by policy",

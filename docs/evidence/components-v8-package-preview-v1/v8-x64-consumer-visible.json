@@ -1,0 +1,20 @@
+{
+  "title": "Orchard package consumer",
+  "orchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "mainWindowVisible": true,
+  "visibleText": [
+    "Title",
+    "Title",
+    "Overview",
+    "Activity",
+    "Unavailable",
+    "Consumer field",
+    "Consumer description",
+    "Consumer error",
+    "PACKAGE PANEL",
+    "0"
+  ],
+  "image": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\components-v8-default-path-visible.png",
+  "imageSha256": "571e613c7e9fcf80c0616ca25fe5013e96f8d4387062abc33b724db8ac0f68ab",
+  "processExited": true
+}
