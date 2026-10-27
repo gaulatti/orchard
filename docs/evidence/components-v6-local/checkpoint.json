@@ -1,0 +1,61 @@
+{
+  "scope": "Local v6 NuGet and runnable x64/ARM64 catalog delivery",
+  "observedAt": "2026-10-27T01:56:45-04:00",
+  "sourceCommit": "d761853",
+  "version": "0.1.0-components-v6-local",
+  "package": {
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v6-local.nupkg",
+    "sha256": "8d3e62fce3db487ba9c67883ee7bd055564b0b855f61c79d6b03f549507ee2df"
+  },
+  "x64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v6-local-win-x64.zip",
+    "archiveSha256": "c53e6bce65f711201452975e96a379060128b566819d6fdfbd2f585de5db8d00",
+    "manifest": "artifacts/current/components-v6-catalog-x64-manifest.json",
+    "manifestSha256": "2d735c07f74e774bda505a64d063af10d5262429490018bb97d9a7b7faf9c48e",
+    "fileCount": 664,
+    "allExtractedBytesVerified": true,
+    "orchardDllSha256": "633efea340501c116ebc06e9a5f358c2192ecc7462579e759592c0e474c6b3e0"
+  },
+  "arm64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v6-local-win-ARM64.zip",
+    "archiveSha256": "1784cd8265db2aab777a24160eda2eac5c9f96cca0660382006b2d53748782e0",
+    "manifest": "artifacts/current/components-v6-catalog-arm64-manifest.json",
+    "manifestSha256": "426d0daa9bf38090b80a610e587102d2e2871610f24c75eb07606bc07a9f30cd",
+    "fileCount": 660,
+    "allExtractedBytesVerified": true,
+    "orchardDllSha256": "5f3f9fb8d6838ec5dc62cf5900f9e5c10122e246d8e95b9837f81f76facb81dc",
+    "nativeRuntimeVerified": false
+  },
+  "independentX64Consumer": {
+    "result": "artifacts/current/components-v6-consumer-x64/result.json",
+    "resultSha256": "e66687f9684123c20d40650bfc77f763c2ddedbeb1acbb5f8727a76e467fbecb",
+    "runtimePassed": true,
+    "orchardDllSha256": "633efea340501c116ebc06e9a5f358c2192ecc7462579e759592c0e474c6b3e0"
+  },
+  "independentArm64Consumer": {
+    "result": "artifacts/current/components-v6-consumer-arm64/result.json",
+    "resultSha256": "65da6394ed7e70629e061c30ce6dd27d5911630e67dc888c03b3b75aba8c5da5",
+    "buildPassed": true,
+    "nativeRuntimeVerified": false
+  },
+  "extractedX64Input": {
+    "result": "artifacts/current/components-v6-input-catalog-x64/result.json",
+    "resultSha256": "732add234b2cf767a9274fe4ef1742509f97f44afda1fc7c7651bf8588733dfc",
+    "passed": true,
+    "pngCaptures": 164
+  },
+  "extractedX64FictionalDemos": {
+    "report": "artifacts/current/components-v6-fictional-demos-x64/hidden-workspaces.json",
+    "reportSha256": "de9a56863a98c3b49ff0207c7d605132fafbea1d8c2ee1069a7c489d3433e93b",
+    "checksPassed": 66,
+    "visibleRuntimeVerified": false
+  },
+  "sourcePresentationPasses": 2,
+  "sourceInputUnitTestsPassed": 37,
+  "arm64LibraryBuildPassed": true,
+  "dataTablePerformanceBudgetPassed": false,
+  "githubActionsTriggered": false,
+  "packagePublishedExternally": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
