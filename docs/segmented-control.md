@@ -21,7 +21,8 @@ individual native actions. Windows exposes a single-selection Group and radio
 SelectionItem semantics, with native button activation. Keyboard entry prefers
 the enabled selection, then the first enabled option. Left/Right and Home/End
 move among enabled options; direction respects RTL. Control+Arrow moves focus
-without changing the value. Physical keyboard routing remains unverified.
+without changing the value. The focused x64 catalog input checks below verify
+the left-to-right paths; RTL routing still needs foreground verification.
 
 The explicit source dimensions are medium Encode Sans 13, minimum button height
 32, horizontal button padding 12, gap 2, frame inset 4 and radii 7/9. Theme tokens
@@ -46,10 +47,20 @@ Each auditor rejects 27 corrupted reports and the two actual wrong RTL captures.
 The real catalog passes both themes, four native invocations and four selection
 provider actions; its auditor rejects 16 corrupt reports. All 344 portable tests
 pass. x64/ARM64 catalog and independent consumer builds pass; ARM64 runtime,
-physical input/focus and full visual/scaling/customization acceptance remain open.
+broader physical input/focus and full visual/scaling/customization acceptance remain open.
 The source host passes 40 behavior cases and eight layout/capture cases. Each
 selected surface is checked against physical root-space bounds and actual PNG
 pixels. Two frozen captures from the earlier double-mirrored RTL candidate are
 rejected even though its in-process report had claimed success.
 Both fictional Monitoring and Editorial component demos remain required.
 Narrator and OS contrast campaigns are excluded by [the library scope](library-scope.md).
+
+The [v5 foreground Segmented Control checkpoint](evidence/components-v5-segmented-foreground-v1/checkpoint.json)
+records SendInput pointer and keyboard observations in the extracted x64 catalog.
+Clicking Detail selected it; clicking it again retained the value. Control+Left
+moved the visible focus outline to Brief while Detail stayed selected, and Space
+then selected Brief. Right selected Detail; another Right at the disabled Archive
+end left Detail selected. Home selected Brief, End selected Detail, and Tab moved
+to the selected Detail enum in the next group. This check does not establish RTL,
+independent-consumer foreground input, display/text scaling, hardware-device
+input or ARM64 runtime.

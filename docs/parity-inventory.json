@@ -8603,7 +8603,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify physical pointer/keyboard, roving focus and Control+Arrow behavior with renewed desktop availability",
+        "Foreground x64 catalog SendInput verifies pointer selection, roving Tab, Control+Left focus without selection, Space/Right/Home/End selection and disabled-end gating; RTL and independent consumer foreground paths remain open (docs/evidence/components-v5-segmented-foreground-v1/checkpoint.json)",
         "Complete native text/DPI scaling, customization, constrained-layout and visual/platform acceptance",
         "Verify native ARM64 runtime and final release/CI delivery without excluded OS campaigns"
       ],
