@@ -117,6 +117,15 @@ No library behavior changed. Header Select typeahead/outside input, independent
 package foreground input, complete raster/motion, scaling and native ARM64
 runtime remain open; the inventory entries are not accepted.
 
+A fresh [extracted v7 catalog foreground pass](evidence/select-package-foreground-v1/checkpoint.json)
+uses the Orchard DLL byte-matched to that preview's independently restored
+NuGet consumer. In explicit Light and Dark appearance, native pointer opening,
+prefix cycling while open and closed, Enter delivery to the fictional caller,
+and outside dismissal preserve the observed value and status. The Select
+implementation and its theme files are unchanged since v7. This establishes
+those physical routes for that package-matched catalog, but not foreground
+input in the separate consumer or the latest package build.
+
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.

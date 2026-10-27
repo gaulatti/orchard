@@ -6701,7 +6701,7 @@
       "status": "in-progress",
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-typeahead-v1/checkpoint.json",
       "remainingGaps": [
-        "Current source-built x64 Select pointer, keyboard, closed/open prefix typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-foreground-typeahead-v1/checkpoint.json); finish independent package foreground input, focused-option source paint and complete open raster",
+        "Source-built x64 Select pointer, keyboard, prefix typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-foreground-typeahead-v1/checkpoint.json); the unchanged v7 package-matched catalog also passes focused physical prefix/Enter/outside routes (docs/evidence/select-package-foreground-v1/checkpoint.json); finish separate consumer and latest-package foreground input, focused-option source paint and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },

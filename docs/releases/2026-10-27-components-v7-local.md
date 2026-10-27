@@ -25,6 +25,13 @@ Select and Input pointer routes in Light and Dark. Its fictional Monitoring and
 Editorial demos passed 66 hidden checks. These are focused routes, not complete
 per-component acceptance.
 
+On October 27, a fresh foreground pass on this unchanged extracted x64 catalog
+also verified Select prefix typeahead while open and closed, Enter delivery to
+the fictional caller, and outside dismissal in explicit Light and Dark
+appearance. The [checkpoint](../evidence/select-package-foreground-v1/checkpoint.json)
+binds the observations to the package and catalog hashes. This is not a physical
+input run of the separate NuGet consumer or of a newer package.
+
 An additional focused Progress range probe passed against both extracted x64
 hosts with the same `ff3e8379…` Orchard DLL: 14 value/range states, 32 rejected
 invalid inputs, eight live bindings, four invalid-binding recovery contracts and

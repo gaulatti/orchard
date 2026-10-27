@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T15:12:47Z",
+  "scope": "Fresh x64 physical input on the extracted components-v7 catalog with a NuGet-matching Orchard DLL",
+  "package": {
+    "version": "0.1.0-components-v7-local",
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v7-local.nupkg",
+    "sha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
+    "extractedCatalog": "artifacts/current/components-v7-catalog-x64/Orchard.Catalog.exe",
+    "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+    "orchardDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+    "independentConsumerDll": "artifacts/current/components-v7-consumer-x64/app/Orchard.dll",
+    "independentConsumerDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9"
+  },
+  "currentSourceComparison": {
+    "selectImplementationAndThemeFilesChangedSinceV7": false,
+    "basis": "git diff --name-only aeb338c HEAD over the Select controls, portal, popup scope and Select theme files returned no paths",
+    "latestPackageForegroundProven": false
+  },
+  "method": "Foreground Windows pointer and keyboard input through the extracted catalog; Sky accessibility-tree and displayed screenshot observations",
+  "observations": {
+    "light": {
+      "appearanceExplicit": true,
+      "openedOriginalMenuWithPointer": true,
+      "openPrefixLFocusedBetaWithoutChangingValue": true,
+      "enterCommittedBetaAndStatusWasConsumerAcceptedB": true,
+      "closedPrefixLCycledToAlphaAndStatusWasConsumerAcceptedA": true,
+      "outsideClickDismissedWithAlphaAndStatusPreserved": true
+    },
+    "dark": {
+      "appearanceExplicit": true,
+      "openedOriginalMenuWithPointer": true,
+      "openPrefixLFocusedBetaWithoutChangingValue": true,
+      "enterCommittedBetaAndStatusWasConsumerAcceptedB": true,
+      "closedPrefixLCycledToAlphaAndStatusWasConsumerAcceptedA": true,
+      "outsideClickDismissedWithAlphaAndStatusPreserved": true
+    }
+  },
+  "limitations": {
+    "separateIndependentConsumerForegroundVerified": false,
+    "latestPackageForegroundVerified": false,
+    "completeInputMatrixVerified": false,
+    "sourceRasterParityVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}
