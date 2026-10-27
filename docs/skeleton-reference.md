@@ -94,6 +94,18 @@ NuGet consumer. Each host retains 40 images, verifies 236 source palette samples
 and 51,200 empty-table pixels, and rejects 18 corrupted reports. The old library
 and the first failing candidate reports remain retained.
 
+The later `0.1.0-text-media-v4-local` package and extracted x64 catalog also pass
+that same hidden Skeleton contract on the current library bytes. Each host passes
+36 default states and 16 caller-content contracts in two themes and directions,
+retains 40 captures, validates 10,416,000 raw pixels and rejects 18 corrupted
+reports. The exact package consumer and extracted catalog load the same Orchard
+DLL (`1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b`).
+The current checkpoint at
+`artifacts/current/text-media-v4-skeleton-content-checkpoint-v1.json` records
+the reports and hashes. The checks used the existing reduced-motion setting and
+hidden windows; they do not establish normal pulse timing, shadow compositor
+raster, actual display/text scaling or native ARM64 execution.
+
 Run `scripts/verify-skeleton-content.ps1 -AppDirectory <current-app> -Output <fresh-directory>`;
 use `-HostName PackageConsumer` for the independent consumer. Add an immutable app
 manifest with `-ImmutableManifest` when using a frozen qualification app. The

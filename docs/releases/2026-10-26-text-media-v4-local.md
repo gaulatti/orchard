@@ -28,6 +28,13 @@ reference resources against their pinned originals. The extracted x64 catalog
 and package consumer have the same Orchard DLL SHA-256,
 `1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b`.
 
+The same extracted x64 catalog and independent package consumer subsequently
+passed the hidden Skeleton caller-content contract: each host verified 36 default
+states, 16 caller-content contracts, two themes and directions, 40 captures and
+18 rejected damaged reports. This is current reduced-motion evidence for the
+exact package bytes, recorded in the [Skeleton contract](../skeleton-reference.md).
+Normal pulse timing, compositor shadow raster and display/text scaling remain open.
+
 A separate general x64 package smoke test **failed** at the Data Table toolbar
 held-Reset geometry assertion. That fixture activates a foreground window and
 sends native keyboard input; it was run outside the authorized desktop window
