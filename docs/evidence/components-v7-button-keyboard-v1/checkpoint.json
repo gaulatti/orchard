@@ -1,32 +1,34 @@
 {
-  "scope": "Exact v7 extracted x64 catalog Button foreground Space and Enter activation",
+  "scope": "Exact v7 extracted x64 catalog Button command and self-loading foreground keyboard activation",
   "packageVersion": "0.1.0-components-v7-local",
   "packageSha256": "32f9566b24115317438ae71a56d6e4b7d8ea358f0aea0a624cc0266e8a11cde4",
   "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
   "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
   "probe": "scripts/verify-button-desktop.ps1",
-  "probeSha256": "1923112ff1d31730f1eb6ffb31fa718232090ef11adae3eeceea217956bdb18c",
+  "probeSha256": "3650286d72f5f0f624c7d92ccf7eb9019d8be05bfbb471fd4bc7a0641fa9f87e",
   "reports": [
     {
       "theme": "Light",
-      "path": "artifacts/current/components-v7-button-keyboard-light-x64/button-desktop.json",
-      "sha256": "b9279c04e88236c93687a21eb9c167d1eafcabcc0ce64fa0bcb3fd2a193dcc4c",
+      "path": "artifacts/current/components-v7-button-lifecycle-keyboard-light-x64/button-desktop.json",
+      "sha256": "2ce02a193d0a28a4454623252fda8a32d1fb27579e1faf84be4e3ce569d8937e",
       "passed": true,
       "processExited": true,
       "commandAfterSpace": "Command preview: 3",
-      "commandAfterEnter": "Command preview: 4"
+      "commandAfterEnter": "Command preview: 4",
+      "selfLoadingKeyboardRestored": "Self-loading action ready"
     },
     {
       "theme": "Dark",
-      "path": "artifacts/current/components-v7-button-keyboard-dark-x64/button-desktop.json",
-      "sha256": "250c8acaef06587a7bfcb65233fa4620403caa4c084156adcfd3ec3cdcbe771f",
+      "path": "artifacts/current/components-v7-button-lifecycle-keyboard-dark-x64/button-desktop.json",
+      "sha256": "b0553f0fdb7f75b53c902ebe6b59c40538b3e73272ef82552f40a0c5a9090fc9",
       "passed": true,
       "processExited": true,
       "commandAfterSpace": "Command preview: 3",
-      "commandAfterEnter": "Command preview: 4"
+      "commandAfterEnter": "Command preview: 4",
+      "selfLoadingKeyboardRestored": "Self-loading action ready"
     }
   ],
-  "observedRoute": "A focused native Run preview button received physical Space and Enter input; each reached the catalog consumer command exactly once in both themes after the existing pointer/loading route passed.",
+  "observedRoute": "A focused native Run preview button received physical Space and Enter input; each reached the catalog consumer command exactly once in both themes. Focused Space on Start entered self-loading and disabled Start; focused Enter on Finish restored it. The existing pointer/loading route also passed.",
   "independentConsumerPhysicalInputVerified": false,
   "completeButtonMatrixVerified": false,
   "nativeArm64RuntimeVerified": false,

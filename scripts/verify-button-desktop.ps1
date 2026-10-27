@@ -158,6 +158,12 @@ try {
     $report.steps.finishClick = Click $finish $process.MainWindowHandle
     Wait-Until { $result.Current.Name -eq 'Self-loading action ready' -and $start.Current.IsEnabled } 'Finish action did not restore the consumer action.' | Out-Null
     $report.steps.selfLoadingRestored = $result.Current.Name
+
+    $report.steps.selfLoadingSpaceKey = PressKey $start $process.MainWindowHandle 0x20
+    Wait-Until { $result.Current.Name -eq 'Self-loading action busy' -and -not $start.Current.IsEnabled } 'Focused Space did not enter self-loading.' | Out-Null
+    $report.steps.selfLoadingEnterFinishKey = PressKey $finish $process.MainWindowHandle 0x0D
+    Wait-Until { $result.Current.Name -eq 'Self-loading action ready' -and $start.Current.IsEnabled } 'Focused Enter did not finish self-loading.' | Out-Null
+    $report.steps.selfLoadingKeyboardRestored = $result.Current.Name
     $report.passed = $true
 }
 catch {

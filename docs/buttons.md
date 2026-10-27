@@ -160,7 +160,9 @@ The same extracted v7 x64 catalog also passes focused physical Space and Enter
 activation in both themes. Each key reaches the consumer's Run preview command
 once after the pointer/loading route, with the command count moving from two to
 three and then four. The [v7 Button keyboard checkpoint](evidence/components-v7-button-keyboard-v1/checkpoint.json)
-binds these reports to the unchanged package. The remaining Button variants,
+binds these reports to the unchanged package. Focused Space on Start also enters
+self-loading and disables Start; focused Enter on Finish restores it in both
+themes. The remaining Button variants,
 independent-consumer physical input, scaling, motion and ARM64 runtime remain
 open.
 

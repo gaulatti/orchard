@@ -94,7 +94,8 @@ independent-consumer pointer route remain open.
 
 That same extracted v7 x64 catalog later passed focused physical Space and
 Enter activation of the Run preview Button in Light and Dark. Each key invoked
-the consumer command exactly once after pointer/loading checks. The
+the consumer command exactly once after pointer/loading checks. Focused Space
+also entered self-loading, and Enter on Finish restored the action. The
 [Button keyboard checkpoint](../evidence/components-v7-button-keyboard-v1/checkpoint.json)
 records the unchanged binary hashes and both passing reports; the broader
 Button matrix and independent-consumer physical input remain open.
