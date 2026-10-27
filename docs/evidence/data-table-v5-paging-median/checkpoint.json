@@ -1,0 +1,66 @@
+{
+  "scope": "Three independent sequential x64 runs of the published v5 package-matching catalog, focused 16,384-row/page-100 Data Table replay",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5",
+  "priorSingleRunCheckpoint": "docs/evidence/data-table-v5-paging-baseline/checkpoint.json",
+  "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "catalogSha256": "d6ce51b09de7cdb2794860c7a689afc2fc8d0ecabf7399a3dcc9e9d2483f11b6",
+  "budgetSource": "tests/Reference/DataTablePerformanceBudgets.json",
+  "budgetSourceSha256": "b53fd05372624ac696d300bb06bc43b307131ad785d904ed85ea9c8d94886643",
+  "runs": [
+    {
+      "folder": "artifacts/current/data-table-v5-paging-baseline",
+      "rawReportSha256": "1e8d87665c5759b41e3e97b7e74e5dbccc43a2fdd431335a67daa2d543494d5a",
+      "auditSha256": "6eb72695fc21e30b931b1838b4a38709d18e429f2a0a1fcb2e9c39dbca44ccb0",
+      "processExitSha256": "6b8bf7777dcf473063a961e6c275028f370ef7451076d5c2866eebfc20eda48b",
+      "nextPageThreePassMilliseconds": 1724.0576,
+      "nextPageManagedAllocatedBytes": 19648816,
+      "nextPageGcPauseMilliseconds": 411.611
+    },
+    {
+      "folder": "artifacts/current/data-table-v5-paging-repeat-1",
+      "rawReportSha256": "942d624fae49a5dcf7a45e58ebaa1e51e170a73c2409c8809ece4b5880994434",
+      "auditSha256": "c11a4916d2936ed5aaa6c4782e5af8cbd9fe11cbd5d243d338e4df3a7c87417d",
+      "processExitSha256": "f5e307cf792a2cd012e37e9c67ee3ce7d84f3aee1e4df85cbf5e6f58678b8026",
+      "nextPageThreePassMilliseconds": 2115.3543,
+      "nextPageManagedAllocatedBytes": 19865904,
+      "nextPageGcPauseMilliseconds": 566.484
+    },
+    {
+      "folder": "artifacts/current/data-table-v5-paging-repeat-2",
+      "rawReportSha256": "abcd24281a6c05fbaef78772ceb8432898f75601135ab0084aee0941e74a679e",
+      "auditSha256": "2c1bf07debb882db53dab751c5e283211dadb257fb3e41e6cb5d805ac8a024e6",
+      "processExitSha256": "077af56eedebe4a5770682dc160fc45ded5861d1d9f5e7134aa4b44111075ebc",
+      "nextPageThreePassMilliseconds": 1688.958,
+      "nextPageManagedAllocatedBytes": 18648512,
+      "nextPageGcPauseMilliseconds": 377.91
+    }
+  ],
+  "sameLibraryHostRuntimeAndSemanticSnapshots": true,
+  "semanticOperationsPerRun": 20,
+  "totalSemanticOperations": 60,
+  "nextPageMedianThreePassMilliseconds": 1724.0576,
+  "nextPageMedianManagedAllocatedBytes": 19648816,
+  "page100ThreePassBudgetMilliseconds": 1000,
+  "page100AllocatedBytesBudget": 67108864,
+  "focusedTimingFailures": {
+    "bind-data": 1268.3982,
+    "sort-ascending": 1675.5099,
+    "next-page": 1724.0576,
+    "notify-hidden": 1142.2977,
+    "range-filter": 1908.6693,
+    "clear-range": 1150.6795,
+    "search-group": 1640.7747,
+    "clear-search": 1181.471,
+    "global-group": 1152.6673,
+    "clear-global": 1137.2075,
+    "reverse-source": 1289.2267
+  },
+  "focusedFailedOperations": 11,
+  "allFocusedAllocationBudgetsPassed": true,
+  "focusedMedianBudgetPassed": false,
+  "full120ProfileMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "dataTableAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

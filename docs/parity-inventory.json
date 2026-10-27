@@ -7470,7 +7470,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Focused v5 x64 foreground Count sort, Ash search, page selection retention and pointer/keyboard pagination pass; complete source-derived visual review, scaling/motion, remaining input/focus paths and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
-        "Meet unchanged local performance budgets: the published v5 package-matching extracted x64 catalog passes 20 semantic operations but takes 1,724.06 ms for 16,384-row/page-100 next-page in one focused process versus the 1,000 ms local target (docs/evidence/data-table-v5-paging-baseline/checkpoint.json). This is not a full three-process median or 120-profile audit; historical v4 and DAE failures remain documented in docs/data-table.md. Performance acceptance remains open",
+        "Meet unchanged local performance budgets: the published v5 package-matching extracted x64 catalog passes all 20 semantic operations in each of three focused processes, but 16,384-row/page-100 next-page takes 1,724.06 ms median versus the 1,000 ms local target; 11 of 20 timing medians fail (docs/evidence/data-table-v5-paging-median/checkpoint.json). The full 120-profile audit and performance acceptance remain open",
         "Complete broader component acceptance beyond the navigation-foreground repair: version0.1.0-table-navigation-v1-local passes independent x64/ARM64 consumer builds and96states/264observations in each x64package/catalog host, with66fictional-demo checks; native ARM64 runtime remains unverified"
       ],
       "sourcePreparation": {
