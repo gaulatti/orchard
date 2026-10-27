@@ -1,0 +1,1437 @@
+{
+  "format": "orchard-toggle-group-native-v1",
+  "passed": true,
+  "checks": [
+    {
+      "id": "Light/single-binding",
+      "passed": true
+    },
+    {
+      "id": "Light/multiple-binding",
+      "passed": true
+    },
+    {
+      "id": "Light/multiple-select-single-notification",
+      "passed": true
+    },
+    {
+      "id": "Light/inactive-model",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/removed/Select",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/removed/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/removed/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/removed/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/unloaded/Select",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/unloaded/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/unloaded/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Single/unloaded/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/removed/Select",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/removed/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/removed/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/removed/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/Select",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Light/disabled-item",
+      "passed": true
+    },
+    {
+      "id": "Light/disabled-group",
+      "passed": true
+    },
+    {
+      "id": "Light/reattach",
+      "passed": true
+    },
+    {
+      "id": "Light/styles",
+      "passed": true
+    },
+    {
+      "id": "Light/empty",
+      "passed": true
+    },
+    {
+      "id": "Light/standalone/BleeckerSmallToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Light/standalone/BleeckerToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Light/standalone/BleeckerLargeToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Light/standalone/BleeckerSmallOutlineToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Light/standalone/BleeckerOutlineToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Light/standalone/BleeckerLargeOutlineToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Light/catalog",
+      "passed": true
+    },
+    {
+      "id": "Dark/single-binding",
+      "passed": true
+    },
+    {
+      "id": "Dark/multiple-binding",
+      "passed": true
+    },
+    {
+      "id": "Dark/multiple-select-single-notification",
+      "passed": true
+    },
+    {
+      "id": "Dark/inactive-model",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/removed/Select",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/removed/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/removed/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/removed/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/unloaded/Select",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/unloaded/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/unloaded/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Single/unloaded/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/removed/Select",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/removed/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/removed/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/removed/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/Select",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/AddToSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/RemoveFromSelection",
+      "passed": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/Toggle",
+      "passed": true
+    },
+    {
+      "id": "Dark/disabled-item",
+      "passed": true
+    },
+    {
+      "id": "Dark/disabled-group",
+      "passed": true
+    },
+    {
+      "id": "Dark/reattach",
+      "passed": true
+    },
+    {
+      "id": "Dark/styles",
+      "passed": true
+    },
+    {
+      "id": "Dark/empty",
+      "passed": true
+    },
+    {
+      "id": "Dark/standalone/BleeckerSmallToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Dark/standalone/BleeckerToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Dark/standalone/BleeckerLargeToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Dark/standalone/BleeckerSmallOutlineToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Dark/standalone/BleeckerOutlineToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Dark/standalone/BleeckerLargeOutlineToggleStyle",
+      "passed": true
+    },
+    {
+      "id": "Dark/catalog",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "observations": [
+    {
+      "id": "Light/single-binding",
+      "selectedValue": "missing",
+      "selectedValues": [],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 0,
+      "items": [
+        {
+          "Value": "a",
+          "selected": false,
+          "IsLoaded": true,
+          "IsEnabled": true
+        },
+        {
+          "Value": "b",
+          "selected": false,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Light/multiple-binding",
+      "selectedValue": "a",
+      "selectedValues": [
+        "b",
+        "a"
+      ],
+      "groupLoaded": true,
+      "canSelectMultiple": true,
+      "selectionCount": 2,
+      "items": [
+        {
+          "Value": "a",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        },
+        {
+          "Value": "b",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Light/inactive-model",
+      "selectedValue": "a",
+      "selectedValues": [
+        "b"
+      ],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 1,
+      "items": [
+        {
+          "Value": "a",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        },
+        {
+          "Value": "b",
+          "selected": false,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Light/Single/removed/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/removed/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/removed/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/removed/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/unloaded/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/unloaded/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/unloaded/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Single/unloaded/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/removed/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/removed/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/removed/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/removed/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/Multiple/unloaded/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Light/disabled-item/Select",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-item/AddToSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-item/RemoveFromSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-item/Toggle",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-group/Select",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-group/AddToSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-group/RemoveFromSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/disabled-group/Toggle",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Light/reattach",
+      "selectedValue": "b",
+      "selectedValues": [],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 1,
+      "items": [
+        {
+          "Value": "b",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Light/style/Small/Default",
+      "size": "Small",
+      "variant": "Default",
+      "height": 32,
+      "MinHeight": 32,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 0,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 44
+    },
+    {
+      "id": "Light/style/Small/Outline",
+      "size": "Small",
+      "variant": "Outline",
+      "height": 32,
+      "MinHeight": 32,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 1,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 46
+    },
+    {
+      "id": "Light/style/Medium/Default",
+      "size": "Medium",
+      "variant": "Default",
+      "height": 36,
+      "MinHeight": 36,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 0,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 48
+    },
+    {
+      "id": "Light/style/Medium/Outline",
+      "size": "Medium",
+      "variant": "Outline",
+      "height": 36,
+      "MinHeight": 36,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 1,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 50
+    },
+    {
+      "id": "Light/style/Large/Default",
+      "size": "Large",
+      "variant": "Default",
+      "height": 40,
+      "MinHeight": 40,
+      "FontSize": 16,
+      "radius": 8,
+      "border": 0,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 59
+    },
+    {
+      "id": "Light/style/Large/Outline",
+      "size": "Large",
+      "variant": "Outline",
+      "height": 40,
+      "MinHeight": 40,
+      "FontSize": 16,
+      "radius": 8,
+      "border": 1,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 61
+    },
+    {
+      "id": "Light/empty",
+      "selectedValue": null,
+      "selectedValues": [],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 0,
+      "items": []
+    },
+    {
+      "id": "Dark/single-binding",
+      "selectedValue": "missing",
+      "selectedValues": [],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 0,
+      "items": [
+        {
+          "Value": "a",
+          "selected": false,
+          "IsLoaded": true,
+          "IsEnabled": true
+        },
+        {
+          "Value": "b",
+          "selected": false,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Dark/multiple-binding",
+      "selectedValue": "a",
+      "selectedValues": [
+        "b",
+        "a"
+      ],
+      "groupLoaded": true,
+      "canSelectMultiple": true,
+      "selectionCount": 2,
+      "items": [
+        {
+          "Value": "a",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        },
+        {
+          "Value": "b",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Dark/inactive-model",
+      "selectedValue": "a",
+      "selectedValues": [
+        "b"
+      ],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 1,
+      "items": [
+        {
+          "Value": "a",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        },
+        {
+          "Value": "b",
+          "selected": false,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Dark/Single/removed/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/removed/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/removed/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/removed/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/unloaded/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/unloaded/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/unloaded/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Single/unloaded/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/removed/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/removed/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/removed/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/removed/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/Select",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/AddToSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/RemoveFromSelection",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/Multiple/unloaded/Toggle",
+      "expectedException": "ElementNotAvailableException",
+      "expectedHResult": -2147220991,
+      "exception": "ElementNotAvailableException",
+      "exceptionHResult": -2144665569,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": false,
+      "itemLoaded": false,
+      "itemEnabled": true
+    },
+    {
+      "id": "Dark/disabled-item/Select",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-item/AddToSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-item/RemoveFromSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-item/Toggle",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-group/Select",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-group/AddToSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-group/RemoveFromSelection",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/disabled-group/Toggle",
+      "expectedException": "ElementNotEnabledException",
+      "expectedHResult": -2147220992,
+      "exception": "ElementNotEnabledException",
+      "exceptionHResult": -2144665570,
+      "stateUnchanged": true,
+      "events": 0,
+      "groupLoaded": true,
+      "itemLoaded": true,
+      "itemEnabled": false
+    },
+    {
+      "id": "Dark/reattach",
+      "selectedValue": "b",
+      "selectedValues": [],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 1,
+      "items": [
+        {
+          "Value": "b",
+          "selected": true,
+          "IsLoaded": true,
+          "IsEnabled": true
+        }
+      ]
+    },
+    {
+      "id": "Dark/style/Small/Default",
+      "size": "Small",
+      "variant": "Default",
+      "height": 32,
+      "MinHeight": 32,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 0,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 44
+    },
+    {
+      "id": "Dark/style/Small/Outline",
+      "size": "Small",
+      "variant": "Outline",
+      "height": 32,
+      "MinHeight": 32,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 1,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 46
+    },
+    {
+      "id": "Dark/style/Medium/Default",
+      "size": "Medium",
+      "variant": "Default",
+      "height": 36,
+      "MinHeight": 36,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 0,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 48
+    },
+    {
+      "id": "Dark/style/Medium/Outline",
+      "size": "Medium",
+      "variant": "Outline",
+      "height": 36,
+      "MinHeight": 36,
+      "FontSize": 14,
+      "radius": 8,
+      "border": 1,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 50
+    },
+    {
+      "id": "Dark/style/Large/Default",
+      "size": "Large",
+      "variant": "Default",
+      "height": 40,
+      "MinHeight": 40,
+      "FontSize": 16,
+      "radius": 8,
+      "border": 0,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 59
+    },
+    {
+      "id": "Dark/style/Large/Outline",
+      "size": "Large",
+      "variant": "Outline",
+      "height": 40,
+      "MinHeight": 40,
+      "FontSize": 16,
+      "radius": 8,
+      "border": 1,
+      "font": "ms-appx:///Orchard/Assets/Fonts/EncodeSans-Medium.ttf#Encode Sans",
+      "width": 61
+    },
+    {
+      "id": "Dark/empty",
+      "selectedValue": null,
+      "selectedValues": [],
+      "groupLoaded": true,
+      "canSelectMultiple": false,
+      "selectionCount": 0,
+      "items": []
+    }
+  ],
+  "standaloneToggles": [
+    {
+      "id": "Light/standalone/BleeckerSmallToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerLargeToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerSmallOutlineToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerOutlineToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerLargeOutlineToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerSmallToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerLargeToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerSmallOutlineToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerOutlineToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerLargeOutlineToggleStyle",
+      "checkedBindingRetained": true,
+      "commandBindingRetained": true,
+      "parameterBindingRetained": true,
+      "enabledBindingRetained": true,
+      "canExecuteDisabled": true,
+      "callerDisablePreserved": true,
+      "replacementParameterValidated": true,
+      "oldCommandDetached": true,
+      "selected": false,
+      "callerSelected": false,
+      "callerEnabled": true,
+      "IsEnabled": true,
+      "events": 6,
+      "disabledHResult": -2147220992,
+      "disabledError": "COMException",
+      "commandExecutions": 2,
+      "replacementCommandExecutions": 2
+    }
+  ],
+  "guards": 1777,
+  "focus": 0,
+  "activations": 0,
+  "hostVisible": false,
+  "activateCalled": false,
+  "focusCalled": false,
+  "hardwareInputSent": false,
+  "enabledButtonInvoked": false,
+  "catalogFixtureVerified": true,
+  "sourceSha256": "461435efe96948a3cbb453bcbf9674b3c4fd107a34e67613efe95912d15da755",
+  "librarySha256": "bc76d3e668b719cbade63316e2530450634cfbedb4a8ffa33960a911efafcaae",
+  "hostSha256": "b146bc0ab943f2fcc6a856310b79b3220d22903889fa79646a9bf079cced0b64",
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "physicalInputVerified": false,
+  "actualDisplayOrTextScalingVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false
+}

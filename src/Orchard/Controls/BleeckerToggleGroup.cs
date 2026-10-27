@@ -18,6 +18,7 @@ public sealed class BleeckerToggleGroup : ItemsControl
 {
     private readonly HashSet<BleeckerToggleGroupItem> containers = [];
     private bool synchronizing;
+    private bool selectingExclusively;
 
     public BleeckerToggleGroup()
     {
@@ -95,6 +96,7 @@ public sealed class BleeckerToggleGroup : ItemsControl
 
     private void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs args)
     {
+        if (selectingExclusively) return;
         Synchronize();
         if (SelectionMode == BleeckerSelectionMode.Multiple) NotifySelection();
     }
@@ -152,7 +154,21 @@ public sealed class BleeckerToggleGroup : ItemsControl
             SelectedValue = selected ? item.Value : SelectedValue == item.Value ? null : SelectedValue;
         else
         {
-            if (exclusive) SelectedValues.Clear();
+            if (exclusive)
+            {
+                var unchanged = selected ? SelectedValues.Count == 1 && SelectedValues[0] == item.Value : SelectedValues.Count == 0;
+                if (unchanged) { Synchronize(); return; }
+                selectingExclusively = true;
+                try
+                {
+                    SelectedValues.Clear();
+                    if (selected) SelectedValues.Add(item.Value);
+                }
+                finally { selectingExclusively = false; }
+                Synchronize();
+                NotifySelection();
+                return;
+            }
             if (selected && !SelectedValues.Contains(item.Value)) SelectedValues.Add(item.Value);
             else if (!selected) SelectedValues.Remove(item.Value);
         }

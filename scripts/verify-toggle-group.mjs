@@ -12,7 +12,7 @@ export function verifyToggleGroupModel(r){
  const lifecycle=themes.flatMap(t=>modes.flatMap(m=>stages.flatMap(s=>actions.map(a=>`${t}/${m}/${s}/${a}`))));
  const standaloneStyles=['BleeckerSmallToggleStyle','BleeckerToggleStyle','BleeckerLargeToggleStyle','BleeckerSmallOutlineToggleStyle','BleeckerOutlineToggleStyle','BleeckerLargeOutlineToggleStyle'];
  const standaloneIds=themes.flatMap(t=>standaloneStyles.map(s=>t+'/standalone/'+s));
- const cases=themes.flatMap(t=>['single-binding','multiple-binding','inactive-model','disabled-item','disabled-group','reattach','styles','empty',...(r.catalogFixtureVerified?['catalog']:[])].map(c=>t+'/'+c)).concat(lifecycle,standaloneIds);
+ const cases=themes.flatMap(t=>['single-binding','multiple-binding','multiple-select-single-notification','inactive-model','disabled-item','disabled-group','reattach','styles','empty',...(r.catalogFixtureVerified?['catalog']:[])].map(c=>t+'/'+c)).concat(lifecycle,standaloneIds);
  assert.deepEqual(r.checks.map(c=>c.id).sort(),cases.sort());assert(r.checks.every(c=>c.passed===true));
  const disabled=themes.flatMap(t=>['item','group'].flatMap(k=>actions.map(a=>`${t}/disabled-${k}/${a}`)));
  const rejected=r.observations.filter(o=>o.expectedException);

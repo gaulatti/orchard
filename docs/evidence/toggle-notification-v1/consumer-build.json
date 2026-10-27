@@ -1,0 +1,8 @@
+{
+  "buildPassed": true,
+  "runtimeVerified": false,
+  "version": "0.1.0-toggle-notification-v1-local",
+  "platform": "x64",
+  "packageSha256": "8caaebd48f7817fe050f49ff35218e6c572417e6f7cc67b80f59d6b6505a8811",
+  "isolatedConsumer": "C:\\Users\\gaulatti\\AppData\\Local\\Temp\\orchard-consumer-d936300f962d42058b2857e91728ef74"
+}

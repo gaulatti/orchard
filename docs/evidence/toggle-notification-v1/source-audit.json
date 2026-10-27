@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "checks": 64,
+  "observations": 70,
+  "standaloneToggleCases": 12,
+  "standaloneTwoWayBindingsVerified": true,
+  "standaloneCommandGatingVerified": true,
+  "automationCommandExecutionVerified": true,
+  "standaloneCommandExecutions": [
+    {
+      "id": "Light/standalone/BleeckerSmallToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerLargeToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerSmallOutlineToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerOutlineToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Light/standalone/BleeckerLargeOutlineToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerSmallToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerLargeToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerSmallOutlineToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerOutlineToggleStyle",
+      "original": 2,
+      "replacement": 2
+    },
+    {
+      "id": "Dark/standalone/BleeckerLargeOutlineToggleStyle",
+      "original": 2,
+      "replacement": 2
+    }
+  ],
+  "lifecycleActionsRejected": 32,
+  "disabledActionsRejected": 16,
+  "styles": 12,
+  "guards": 1777,
+  "catalogFixtureVerified": true,
+  "librarySha256": "bc76d3e668b719cbade63316e2530450634cfbedb4a8ffa33960a911efafcaae",
+  "hostSha256": "b146bc0ab943f2fcc6a856310b79b3220d22903889fa79646a9bf079cced0b64",
+  "physicalInputVerified": false,
+  "actualDisplayOrTextScalingVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "reportSha256": "435a9b022c91ac4f5cd75c128e40a2d74268a0757fba445af45a640eaf25aa9f"
+}

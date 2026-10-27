@@ -72,9 +72,14 @@ public sealed partial class ToggleGroupsFixture : UserControl
         Require(LocalItem.IsChecked == true && CultureItem.IsChecked == false, "Removing selection changed the wrong item.");
         MultipleGroup.SelectedValues.Add("culture");
         Require(CultureItem.IsChecked == true && SelectionResult.Text.Contains("culture", StringComparison.Ordinal), "External collection changes did not update the UI.");
-        culture.Select();
+        var selectionEvents = 0;
+        EventHandler selectionListener = (_, _) => selectionEvents++;
+        MultipleGroup.SelectionChanged += selectionListener;
+        try { culture.Select(); }
+        finally { MultipleGroup.SelectionChanged -= selectionListener; }
         Require(MultipleGroup.SelectedValues.SequenceEqual(new[] { "culture" }) && LocalItem.IsChecked == false,
             "SelectionItem.Select did not replace the multi-selection.");
+        Require(selectionEvents == 1, $"SelectionItem.Select raised {selectionEvents} notifications for one action.");
         MultipleGroup.IsEnabled = false;
         Require(!CultureItem.IsEnabled, "Disabled group did not disable its children.");
         MultipleGroup.IsEnabled = true;

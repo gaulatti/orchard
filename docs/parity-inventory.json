@@ -5242,15 +5242,16 @@
         "Verify remaining ARM64 state acceptance on ARM64 hardware; current host is Intel x64"
       ],
       "currentDelivery": {
-        "checkpoint": "artifacts/current/text-media-v4-toggle-group-checkpoint-v1.json",
-        "checkpointSha256": "9adada651e098e3f0cc1cd8fd68a163af90b86058650564acfbaa59767301719",
-        "packageVersion": "0.1.0-text-media-v4-local",
-        "packageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
-        "extractedCatalogX64Passed": true,
+        "checkpoint": "docs/evidence/toggle-notification-v1/checkpoint.json",
+        "checkpointSha256": "5d3cf739c05d1b49fed084facbe68e683f5401c15dd6ae6b41a01090efa43f60",
+        "packageVersion": "0.1.0-toggle-notification-v1-local",
+        "packageSha256": "8caaebd48f7817fe050f49ff35218e6c572417e6f7cc67b80f59d6b6505a8811",
+        "sourceCatalogX64Passed": true,
         "independentNugetConsumerX64Passed": true,
-        "catalogChecks": 62,
-        "consumerChecks": 60,
+        "catalogChecks": 64,
+        "consumerChecks": 62,
         "observationsPerHost": 70,
+        "arm64CatalogCompiled": true,
         "physicalInputVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false

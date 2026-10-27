@@ -13,6 +13,12 @@
 
 In `Single` mode, `SelectedValue` is authoritative; null or empty means no selection. In `Multiple` mode, bind `SelectedValues` to a non-null `ObservableCollection<string>`. Collection changes update the controls, and activation updates that same collection. `SelectionChanged` reports changes to the active model. Changing modes does not translate or erase the inactive model.
 
+In `Multiple` mode, an item's UI Automation `SelectionItem.Select` replaces the
+active selection in the original consumer collection. The group raises one
+`SelectionChanged` notification after the final selection is synchronized. An
+already exclusive selection is a no-op. Consumers that subscribe to their own
+`ObservableCollection` still receive its ordinary clear/add collection events.
+
 Item values must be unique and nonblank. Selected collection values must also be unique and nonblank. Invalid configuration fails explicitly. Unknown selected values are retained so temporarily absent items regain selection when reinserted. Removal and reordering do not discard consumer state. Items or `ItemsSource` must contain `BleeckerToggleGroupItem` instances; bind each item's content to application data as needed. The group owns `IsChecked` and two-state behavior; bind the group's selection properties rather than item `IsChecked`.
 
 Group variants are `Default` and `Outline`; sizes are `Small`, `Medium` (default), and `Large`. An explicit item style overrides the inherited group style. `IsEnabled="False"` on a group disables its items; individual items may also be disabled. The horizontal strip scrolls at constrained widths. Content, accessible group/item names and localization belong to the consumer.
@@ -48,6 +54,18 @@ style/command cases, 32 rejected retired-provider actions and 16 rejected
 disabled actions. The [v4 checkpoint](../artifacts/current/text-media-v4-toggle-group-checkpoint-v1.json)
 pins both audited reports and the package bytes. These runs do not exercise
 physical input, source raster parity, display scaling or native ARM64 execution.
+
+The `0.1.0-toggle-notification-v1-local` preview fixes the multiple-selection
+`SelectionItem.Select` event count. Before the fix, the new hidden boundary
+case failed in both light and dark themes because one action raised two group
+notifications. The repaired source catalog passes 64 checks and 1,777 guards;
+an independent consumer of the new NuGet package passes 62 checks and 1,749
+guards. Both record 70 observations and retain the prior lifecycle and disabled
+action checks. The [preview record](releases/2026-10-26-toggle-notification-v1-local.md)
+and [small native receipts](evidence/toggle-notification-v1/README.md) survive
+cleanup of disposable build output. Package validation was hidden/background;
+the catalog's visible `VerifyAsync` assertion was compiled but not activated.
+The updated source catalog compiles for ARM64; native ARM64 runtime remains open.
 
 Catalog fixtures cover optional single selection, multiple selection, two-way consumer binding, disabled items/groups, both variants, all sizes and constrained multilingual content. Published x64 runtime checks exercise UI Automation selection, collection mutation, removal/reinsertion, disabled inheritance and light/dark rendering. Physical pointer and keyboard checks verify multiple selection, disabled-item skipping, wrapping, Space selection and clearing. The independent NuGet consumer exercises group templates and selection without a project reference. ARM64 compilation is checked separately.
 

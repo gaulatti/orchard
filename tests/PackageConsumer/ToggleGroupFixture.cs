@@ -68,6 +68,18 @@ internal static class ToggleGroupFixture
                 {
                     var (group, a, b) = Make(BleeckerSelectionMode.Multiple); var original = new ObservableCollection<string> { "a" }; var producer = new Border { Tag = original }; var binding = Bind(producer, "Tag"); group.SetBinding(BleeckerToggleGroup.SelectedValuesProperty, binding); await Mount(group); Selection(b).AddToSelection(); Require(ReferenceEquals(group.SelectedValues, original) && original.SequenceEqual(new[] { "a", "b" }), "Multiple selection replaced caller collection."); Selection(a).RemoveFromSelection(); Require(original.SequenceEqual(new[] { "b" }), "Removing one value changed another."); Selection(a).Select(); Require(original.SequenceEqual(new[] { "a" }), "Select did not replace multiple selection."); var replacement = new ObservableCollection<string> { "b" }; producer.Tag = replacement; await Layout(); var events = 0; group.SelectionChanged += (_, _) => events++; original.Add("b"); Require(events == 0 && a.IsChecked == false && b.IsChecked == true, "Replaced collection remained observed."); replacement.Add("a"); Require(events == 1 && a.IsChecked == true && ReferenceEquals(group.GetBindingExpression(BleeckerToggleGroup.SelectedValuesProperty)?.ParentBinding, binding), "Current collection change did not reach the group."); Snapshot(theme + "/multiple-binding", group, a, b);
                 });
+                await Case(theme + "/multiple-select-single-notification", async () =>
+                {
+                    var (group, a, b) = Make(BleeckerSelectionMode.Multiple);
+                    var original = group.SelectedValues;
+                    original.Add("a"); original.Add("b");
+                    await Mount(group);
+                    var events = 0; group.SelectionChanged += (_, _) => events++;
+                    Selection(b).Select(); await Layout();
+                    Require(events == 1 && ReferenceEquals(group.SelectedValues, original) &&
+                        original.SequenceEqual(new[] { "b" }) && a.IsChecked == false && b.IsChecked == true,
+                        $"One exclusive selection raised {events} notifications or replaced caller state.");
+                });
                 await Case(theme + "/inactive-model", async () => { var (group, a, b) = Make(); group.SelectedValues.Add("b"); await Mount(group); group.SelectionMode = BleeckerSelectionMode.Multiple; Require(a.IsChecked == false && b.IsChecked == true && group.SelectedValue == "a", "Changing mode erased inactive single selection."); group.SelectionMode = BleeckerSelectionMode.Single; Require(a.IsChecked == true && b.IsChecked == false && group.SelectedValues.SequenceEqual(new[] { "b" }), "Changing mode erased inactive multiple selection."); Snapshot(theme + "/inactive-model", group, a, b); });
                 foreach (var mode in new[] { BleeckerSelectionMode.Single, BleeckerSelectionMode.Multiple })
                 foreach (var lifecycle in new[] { "removed", "unloaded" })

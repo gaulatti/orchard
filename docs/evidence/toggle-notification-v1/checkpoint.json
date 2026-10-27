@@ -1,0 +1,42 @@
+{
+  "scope": "Toggle Group multiple-selection SelectionItem.Select notification",
+  "packageVersion": "0.1.0-toggle-notification-v1-local",
+  "packageSha256": "8caaebd48f7817fe050f49ff35218e6c572417e6f7cc67b80f59d6b6505a8811",
+  "baseline": {
+    "file": "baseline-toggle-group.json",
+    "sha256": "f6cb1a9358df22025a3d0b628657f3aba1b2dd3a79d26e7db664cc7e7e364cdc",
+    "failedCases": [
+      "Light/multiple-select-single-notification",
+      "Dark/multiple-select-single-notification"
+    ]
+  },
+  "sourceCatalogX64": {
+    "passed": true,
+    "checks": 64,
+    "observations": 70,
+    "guards": 1777,
+    "librarySha256": "bc76d3e668b719cbade63316e2530450634cfbedb4a8ffa33960a911efafcaae",
+    "report": "source-toggle-group.json",
+    "reportSha256": "435a9b022c91ac4f5cd75c128e40a2d74268a0757fba445af45a640eaf25aa9f",
+    "audit": "source-audit.json",
+    "auditSha256": "6600cc43b35ec81b267e56164d45dfa84e7200bb7fcdfafbed34b5ae0f6674e6"
+  },
+  "independentNugetConsumerX64": {
+    "passed": true,
+    "checks": 62,
+    "observations": 70,
+    "guards": 1749,
+    "librarySha256": "1f927d862e77e9b0c445f9fb095b03d4d5bfa0f84ecd781cef29f885a5314854",
+    "report": "consumer-toggle-group.json",
+    "reportSha256": "421955b1c360732be54d9bab78533b59046469c867f62e74bf87347ad090853b",
+    "audit": "consumer-audit.json",
+    "auditSha256": "c670d12f06f102d44511da28b7e5578de1776e385d01a628226c7605b517ee48",
+    "build": "consumer-build.json",
+    "buildSha256": "620d6e0d95cb54cbd600032ff1c3c29cad4db9bf72d2c2ea454b86ebfb28e89f"
+  },
+  "arm64CatalogCompiled": true,
+  "visibleCatalogVerifyActivated": false,
+  "physicalInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}
