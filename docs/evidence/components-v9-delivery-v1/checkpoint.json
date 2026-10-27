@@ -1,0 +1,69 @@
+{
+  "scope": "Versioned local NuGet and runnable catalog preview after Monitoring contrast and Icon Button press fixes",
+  "sourceCommit": "23302df24a5ed10714a700d05c658c7e7a7b7624",
+  "version": "0.1.0-components-v9-local",
+  "package": {
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v9-local.nupkg",
+    "sha256": "b4b6eecfd9a5bf072e060833f35f2d00b3f3eb085fae2b14481e9a424df935a4",
+    "bytes": 1733664,
+    "anyCpuAssemblyVerified": true
+  },
+  "x64Consumer": {
+    "cleanCacheRestore": true,
+    "selfContainedPublish": true,
+    "nativeRuntimePassed": true,
+    "packageDllSha256": "25cc6d3f61c2db06ab5c13b20d3d69e8e2903bc2a4e237cc983c14ba7d72b4c4",
+    "result": "artifacts/current/components-v9-consumer-x64/result.json",
+    "resultSha256": "5e817665c87cce47f6aab99dba2adee3ebe11810559503acf00f9705823538e8",
+    "temporaryConsumerCacheRemoved": true
+  },
+  "arm64Consumer": {
+    "cleanCacheRestore": true,
+    "selfContainedPublish": true,
+    "apphostMachine": "Arm64",
+    "nativeRuntimeVerified": false,
+    "result": "artifacts/current/components-v9-consumer-arm64/result.json",
+    "resultSha256": "3dd19cfa984c24258002eb1bac9fa11b22e8b50c51bb694ef96a995cf5b843ae",
+    "temporaryConsumerCacheRemoved": true
+  },
+  "x64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v9-local-win-x64.zip",
+    "archiveSha256": "2e0560bb13361b1aa366f2e6f47e5cd3fe84dc85e50ece85a5baf0c2c83bd1e9",
+    "bytes": 106111747,
+    "manifest": "docs/evidence/components-v9-delivery-v1/catalog-x64-manifest.json",
+    "manifestSha256": "7dfc6bb311577fdb1afa5b97bc8de1b2594887e3756706ba6d65909ca1f0ee98",
+    "freshExtraction": "artifacts/current/components-v9-catalog-extract-x64",
+    "filesHashVerified": 664,
+    "compiledXamlFixtures": 114,
+    "bothFictionalDemosPresent": true,
+    "libraryMatchesNuGetConsumer": true,
+    "nativeThemeTogglePassed": true,
+    "nativeThemeToggleReferenceStates": 134,
+    "nativeThemeToggleAuditSha256": "c7cf038b8a669fb3685ffb6ac87bd4b404153533b18492e4e37fd682b05f40e8",
+    "hiddenMonitoringEditorialChecksPassed": 68,
+    "hiddenIsolationGuardsPassed": 581,
+    "hiddenWorkspacesAuditSha256": "1bf461f0a771cb105eff2e58b23a0f7b4f5f99f89384603a059083b2fad34956"
+  },
+  "arm64Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v9-local-win-arm64.zip",
+    "archiveSha256": "a837ad65bff5f9629425ea07ada6d018794c06d47be478e5227ed2ed0fb29677",
+    "bytes": 103198957,
+    "manifest": "docs/evidence/components-v9-delivery-v1/catalog-arm64-manifest.json",
+    "manifestSha256": "d7e80f209f2f6a1ee1b412a0ee932f4177878246d930bce30246c985e83da3d8",
+    "freshExtraction": "artifacts/current/components-v9-catalog-extract-arm64",
+    "filesHashVerified": 660,
+    "compiledXamlFixtures": 114,
+    "bothFictionalDemosPresent": true,
+    "apphostMachine": "Arm64",
+    "selfContainedDotNetAndWinUiRuntimeFilesPresent": true,
+    "nativeRuntimeVerified": false
+  },
+  "remaining": [
+    "Native ARM64 catalog and independent consumer runtime on an ARM64 Windows host",
+    "Complete public component visual, motion, scaling, input and accessibility-metadata acceptance across the 112-entry inventory",
+    "Required hosted CI remains unrun while user-directed GitHub Actions suppression is in effect"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "packageAccepted": false
+}

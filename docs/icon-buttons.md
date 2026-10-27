@@ -39,8 +39,10 @@ The subsequent [Theme Toggle source checkpoint](evidence/theme-toggle-press-v1/c
 exercises the same inherited Icon Button press path with physical pointer,
 Space and Enter input in both themes. Its 134 static frames match the pinned
 source geometry, including the 0.97 pressed scale and 1 DIP shift. This is
-source-built evidence; existing v8 packages predate the change. Normal
-animation playback and the wider public Icon Button state matrix remain open.
+source-built evidence. The [v9 local preview](releases/2026-10-27-components-v9-unqualified.md)
+contains the change, and its extracted x64 catalog repeats the focused native
+check. Normal animation playback and the wider public Icon Button state matrix
+remain open.
 
 Still open: the remaining physical keyboard/pointer and tooltip matrix, display/text scaling, reduced motion and ARM64 runtime. ARM64 compilation is separate evidence and does not establish runtime support. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md).
 

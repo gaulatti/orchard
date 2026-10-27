@@ -72,6 +72,8 @@ by the consumer leaves the binding and mode intact. Disabled/detached rejection,
 metadata overrides, template replacement and remount checks pass. Across 134
 reference states, the native layout and icon geometry match within 0.000004 DIP,
 including pressed scale/translation. The full raster still differs in every
-frame; native normal animation, actual scaling, independent package runtime
-and ARM64 runtime remain unverified. The catalog and NuGet v8 artifacts predate
-this source change, so the component remains an unaccepted preview.
+frame; native normal animation, actual scaling and ARM64 runtime remain
+unverified. The v8 artifacts predate this change. The [v9 local preview](releases/2026-10-27-components-v9-unqualified.md)
+contains it: its extracted x64 catalog repeats the physical and 134-state
+geometry checks, and an independent v9 NuGet consumer runs on x64. The
+component remains unaccepted.

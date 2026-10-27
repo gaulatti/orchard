@@ -147,5 +147,7 @@ seen in the v8 catalog: dark FeedItem text previously sat directly on the
 AttentionSurface gradient. The [source checkpoint](evidence/monitoring-card-contrast-v1/checkpoint.json)
 records the themed-card composition, the updated 68-check hidden gate with 581
 isolation guards, and visible Light/Dark inspection. The v8 ZIP and NuGet
-package predate this demo fix; package qualification will be batched with the
-next meaningful component milestone.
+package predate this demo fix. The [v9 local preview](releases/2026-10-27-components-v9-unqualified.md)
+includes it: the freshly extracted x64 catalog passes the same 68 hidden
+Monitoring/Editorial checks and 581 isolation guards. The ARM64 archive is
+hash-verified; its native demo runtime remains open.
