@@ -350,6 +350,15 @@ public partial class App : Application
                 throw new ArgumentException("Hero foreground probe requires --hero-theme Light or Dark.");
             window=new HeroCarouselForegroundWindow(theme);window.Activate();return;
         }
+        if(arguments.Contains("--probe-footer-foreground"))
+        {
+            var themeIndex=Array.IndexOf(arguments,"--footer-theme");
+            var outputIndex=Array.IndexOf(arguments,"--verify-output");
+            if(themeIndex<0||themeIndex+1>=arguments.Length||outputIndex<0||outputIndex+1>=arguments.Length||
+                !Enum.TryParse<ElementTheme>(arguments[themeIndex+1],out var theme)||theme is not (ElementTheme.Light or ElementTheme.Dark))
+                throw new ArgumentException("Footer foreground probe requires --footer-theme Light or Dark and --verify-output path.");
+            window=new FooterForegroundWindow(theme,Path.GetFullPath(arguments[outputIndex+1]));window.Activate();return;
+        }
         try { window = new MainWindow(); window.Activate(); }
         catch (Exception error) { Report(false, error.ToString()); throw; }
     }

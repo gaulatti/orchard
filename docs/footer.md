@@ -307,6 +307,15 @@ warnings or errors and passes the normal Light/Dark runtime check; the hidden
 Footer probe passes 12 public contracts and 205 isolation guards. The package
 payload is identical to the tested local package apart from version metadata.
 This NuGet-only preview does not update the earlier v11 catalog ZIPs or close
-the isolated-consumer receipt, package-specific physical Footer input, full
-visual review, or native ARM64 runtime gaps. See
+the isolated-consumer receipt, full visual review, or native ARM64 runtime gaps. See
 `docs/evidence/footer-brand-preview-v2/checkpoint.json`.
+
+The published package's exact DLL now passes a focused x64 consumer foreground
+check in Light and Dark. A real pointer click invokes the original section item;
+physical Enter on a caller-rendered link invokes that same item and retains
+keyboard focus. The caller's editor text remains intact, and the nested brand
+uses the active theme foreground. The verifier matches the restored consumer
+DLL to the package and records both process exits. This closes the focused
+package-input gap, while broader visual, scaling, motion, isolated-consumer and
+native ARM64 checks remain open. See
+`docs/evidence/footer-package-physical-input-v1/checkpoint.json`.

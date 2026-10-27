@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "component": "BleeckerFooter",
+  "scope": "x64-package-consumer-physical-pointer-keyboard-light-dark",
+  "packageSha256": "62e3d1f9f4d78700520ceaa5dcf0d664877484e359bfc9f9f9bbb8119ad0b1df",
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "hostSha256": "a6ad71bd9419597acc41483349d9750a8ba6a82ba5198de70978a154950d3c78",
+  "reports": [
+    {
+      "theme": "Light",
+      "report": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\footer-brand-preview-v2\\physical-input-audit-v2\\footer-foreground-Light.json",
+      "sha256": "3d146fa57d9a73a25575c5c77558db1e4ee0f437edf581ebdd9c57c5fed5c0a3",
+      "processId": 9776
+    },
+    {
+      "theme": "Dark",
+      "report": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\footer-brand-preview-v2\\physical-input-audit-v2\\footer-foreground-Dark.json",
+      "sha256": "70fbc9b2425fa9cf2d938c39ed03a881f1bfe2dcf256c7f1b2a208fde3bcc14e",
+      "processId": 14564
+    }
+  ],
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

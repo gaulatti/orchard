@@ -1,0 +1,43 @@
+{
+  "scope": "Published NuGet package x64 Footer physical input in an independent package-reference consumer",
+  "packageRelease": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.2",
+  "packageSha256": "62e3d1f9f4d78700520ceaa5dcf0d664877484e359bfc9f9f9bbb8119ad0b1df",
+  "packageLibrarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "consumerHostSha256": "a6ad71bd9419597acc41483349d9750a8ba6a82ba5198de70978a154950d3c78",
+  "consumerBuild": {
+    "platform": "x64",
+    "warnings": 0,
+    "errors": 0,
+    "projectReferences": 0
+  },
+  "verification": {
+    "script": "scripts/verify-footer-package-foreground.ps1",
+    "audit": "docs/evidence/footer-package-physical-input-v1/footer-foreground-audit.json",
+    "auditSha256": "315d1b2c33ac0878a221d2430162bcaed48c9dcdc4266c94e7cb257bbc4ebd02",
+    "lightReport": "docs/evidence/footer-package-physical-input-v1/footer-foreground-Light.json",
+    "lightReportSha256": "6a9ff732338d4b399af3dcc54e4698477d0b5107838d51bf2ed8af24b12d4d82",
+    "darkReport": "docs/evidence/footer-package-physical-input-v1/footer-foreground-Dark.json",
+    "darkReportSha256": "28afbe0302520b4f255316c9795623294d094b37374df06e55e4c89ce26324ac",
+    "lightExitCode": 0,
+    "darkExitCode": 0,
+    "pointerInvokedOriginalItemBothThemes": true,
+    "physicalEnterInvokedCallerRenderedOriginalItemBothThemes": true,
+    "keyboardFocusAndCallerInputRetainedBothThemes": true,
+    "nestedBrandThemeInkVerifiedBothThemes": true,
+    "packageDllMatchesConsumerDll": true,
+    "rawReportHashesInAuditReferToLocalCRLFOutputs": true,
+    "archivedReportsNormalizedToLf": true
+  },
+  "earlierDiagnosticFailures": [
+    "Windows Open With held foreground; its exact foreground process was closed before the final run.",
+    "The first caller-link focus attempt ran before layout settled; the fixture now waits for a loaded, measured link."
+  ],
+  "limits": [
+    "This closes the focused x64 package pointer/keyboard Footer route; it does not establish the complete visual, scaling, motion, or native ARM64 matrix.",
+    "The fully isolated package auditor still requires a separate fresh-checkout/cache cleanup receipt.",
+    "The v11 catalog ZIPs predate this Footer repair."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "nativeComponentAccepted": false
+}

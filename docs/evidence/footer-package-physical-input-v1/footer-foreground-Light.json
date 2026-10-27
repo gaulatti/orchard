@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "stage": "custom-keyboard",
+  "error": null,
+  "theme": "Light",
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "foregroundOwnerPid": 9776,
+  "originalItemInvokedByPointer": true,
+  "originalItemInvokedByKeyboard": true,
+  "customRendererUsed": true,
+  "keyboardFocusRetained": true,
+  "callerInputRetained": true,
+  "themeBrandInkVerified": true,
+  "pointerSent": true,
+  "keyboardSent": true,
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "hostSha256": "a6ad71bd9419597acc41483349d9750a8ba6a82ba5198de70978a154950d3c78",
+  "nativeComponentAccepted": false
+}
