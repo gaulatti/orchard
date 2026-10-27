@@ -8799,7 +8799,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "visible pointer/keyboard and focus verification",
+        "Complete visible pointer/keyboard and focus verification in a new package; source-built x64 Monitoring review focus, Escape and retained-update route passes Light/Dark, while exact v7 fails review focus",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"

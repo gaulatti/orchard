@@ -45,7 +45,7 @@ public sealed partial class MonitoringWorkspaceFixture:UserControl
             ReviewSummary.Text=Model.Reviewing?string.Join("\n",Model.ReviewIds.Select(id=>Model.Post(id).Content))+"\nThis records a local example only. Nothing is sent.":"";
             DiscardReview.Visibility=Model.ConfirmCancel?Visibility.Visible:Visibility.Collapsed;Instructions.IsEnabled=!Model.ConfirmCancel;Back.IsEnabled=!Model.ConfirmCancel;
             foreach(var button in new[]{Update,Review,Back,RecordReview,KeepReview,ConfirmDiscard})((DemoCommand)button.Command!).Refresh();
-            if(XamlRoot?.IsHostVisible==true&&reviewWasOpen!=Model.Reviewing){if(Model.Reviewing)Instructions.Focus(FocusState.Programmatic);else Review.Focus(FocusState.Programmatic);}reviewWasOpen=Model.Reviewing;
+            if(XamlRoot?.IsHostVisible==true&&reviewWasOpen!=Model.Reviewing){if(Model.Reviewing){ReviewOverlay.UpdateLayout();Instructions.Focus(FocusState.Programmatic);}else Review.Focus(FocusState.Programmatic);}reviewWasOpen=Model.Reviewing;
         }
         finally{updating=false;}
     }

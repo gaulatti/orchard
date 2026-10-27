@@ -96,3 +96,17 @@ The extracted `0.1.0-text-media-v4-local` x64 catalog archive also passes the
 catalog architectures compile and their ZIP entries match the extracted files;
 the ARM64 archive has no native runtime result on this x64 host. See the
 [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
+
+The exact v7 x64 catalog exposed a visible Monitoring focus defect: after
+selecting a fictional post and opening Processing review with Enter, keyboard
+focus stayed on the background Review selected button. Escape therefore did not
+reach the review. The source fixture now measures the visible overlay before
+focusing Local instructions. A source-built x64 catalog passes physical
+navigation, post selection, review Enter/Escape, focus return and an update that
+retains selection in Light and Dark. The focused [checkpoint and screenshots](evidence/monitoring-focus-source-v1/checkpoint.json)
+retain the v7 failure and source-build hashes. Both source screenshots show the
+review editor's focus outline. The unchanged v7 package still contains the
+defect; a new package, broader visible workflow and visual review, scaling and
+native ARM64 runtime remain open. The current hidden Monitoring/Editorial gate
+passes 66 checks and 577 isolation guards; its negative auditor rejects 25
+altered receipts.

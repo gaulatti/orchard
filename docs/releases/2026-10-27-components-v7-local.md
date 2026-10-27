@@ -110,6 +110,14 @@ same Orchard DLL. The [Slider checkpoint](../evidence/components-v7-slider-input
 records both boundaries. Full visual, motion, scaling, consumer foreground input
 and native ARM64 runtime remain open.
 
+The extracted v7 x64 catalog also reveals a Monitoring demo focus failure:
+keyboard Enter opens Processing review, but focus stays on its background
+trigger, so Escape does not close the unchanged review. A source-only fixture
+repair passes visible pointer/keyboard focus and Escape in Light and Dark, plus
+the hidden workspace gate; it is **not** in this v7 package. The
+[Monitoring focus checkpoint](../evidence/monitoring-focus-source-v1/checkpoint.json)
+preserves the failing package report and passing source reports/screenshots.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

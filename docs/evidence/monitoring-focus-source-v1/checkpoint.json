@@ -1,0 +1,80 @@
+{
+  "scope": "Monitoring component demo visible review focus and local selection/update in source-built x64 catalog",
+  "sourceBaseCommit": "1ddff15",
+  "fixture": "samples/Orchard.Catalog/Demos/MonitoringWorkspaceFixture.xaml.cs",
+  "fixtureSha256": "eb880290e534b577e7ed5806486ebfc41d394b77c5dd4f3339f9aa451cc44bac",
+  "desktopProbe": "scripts/verify-monitoring-desktop.ps1",
+  "desktopProbeSha256": "0a91c3d9a5ac8a3a34732dc8b4f727276a6cdf5d9977cefd49c2324b6a9a6b8a",
+  "sourceBuild": {
+    "command": "dotnet build samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore -v:minimal",
+    "log": "artifacts/current/monitoring-focus-source-build-x64.log",
+    "logSha256": "cdddf6575ae3110c0356ccbe64a47374a9eac50046fa96eafd8b286898c50bf3",
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "catalogExeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+    "catalogDllSha256": "30242755e34df1951eef9b6e0f81ef557ec05ef781dd4df4207d9d6e7106ea92",
+    "librarySha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb"
+  },
+  "sourceDesktop": [
+    {
+      "theme": "Light",
+      "report": "artifacts/current/monitoring-focus-source-light-x64-v2/monitoring-desktop.json",
+      "reportSha256": "3fd2001ce0b03c40cc29b8d733cf1a94c397b96d7e21660970ce15e18e29049d",
+      "screenshot": "docs/evidence/monitoring-focus-source-v1/monitoring-review-focus-light.png",
+      "screenshotSha256": "ba8ab81efa2bf7fdad4b9871846bdc968cfab356dee9a887547d1ec20de144d9",
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "report": "artifacts/current/monitoring-focus-source-dark-x64-v2/monitoring-desktop.json",
+      "reportSha256": "fc67353548d55ba9940823d9238da5ebbe516050f0f32e4a5556bcafff63241b",
+      "screenshot": "docs/evidence/monitoring-focus-source-v1/monitoring-review-focus-dark.png",
+      "screenshotSha256": "027852c3d079706d79025d3aff869b74d3eef75a7203046f24671fe784265ae9",
+      "passed": true
+    }
+  ],
+  "visibleBehavior": [
+    "Physical catalog navigation and post checkbox click selected one fictional post",
+    "Physical Enter opened the local review and automatically focused Local instructions",
+    "Physical Escape closed the unchanged review and returned focus to Review selected",
+    "Physical local update click retained the selected post"
+  ],
+  "unchangedV7Negative": {
+    "packageVersion": "0.1.0-components-v7-local",
+    "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+    "report": "artifacts/current/monitoring-focus-v7-negative-light-x64-v2/monitoring-desktop.json",
+    "reportSha256": "90d2c55b483d215244cd043b7b1a215709577f8997b6475e434fc9d637bec26f",
+    "failure": "The visible review did not move focus into its editor."
+  },
+  "workspaceRegression": {
+    "hiddenReport": "artifacts/current/monitoring-focus-source-hidden-x64-v1/hidden-workspaces.json",
+    "hiddenReportSha256": "90ae3245fa481a0435f2781f1ecc29b8a105ae8d24d32e25c15417b3b20a9420",
+    "audit": "artifacts/current/monitoring-focus-source-hidden-x64-v1/workspace-audit.json",
+    "auditSha256": "f397546392b0fb1fe8cccdfe340fd2b26b0c1440d9bff4b8ef055ded35db3085",
+    "negativeAudit": "artifacts/current/monitoring-focus-source-hidden-x64-v1/negative-audit.json",
+    "negativeAuditSha256": "4360e2d3703bb6918e727fca7d4f55ee063a2380df9077b83232779987e58b6a",
+    "negativeAuditProbe": "scripts/test-hidden-workspaces-audit.mjs",
+    "negativeAuditProbeSha256": "f107320b931d8c7e5a5edb9abf03adde998b45aee7ea5714b0260483fba56370",
+    "checks": 66,
+    "guards": 577,
+    "negativeCasesRejected": 25,
+    "passed": true,
+    "hidden": true
+  },
+  "workspaceModelTests": {
+    "log": "artifacts/current/monitoring-focus-source-unit-x64.log",
+    "logSha256": "fec186fb5db6c1c720a38b8b2821cddafa55aee55647f52bf87b44827437fbe0",
+    "passed": 11,
+    "failed": 0
+  },
+  "sourceFixPackaged": false,
+  "fullMonitoringVisualReview": false,
+  "actualScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "monitoringCompositionAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}
