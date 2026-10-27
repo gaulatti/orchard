@@ -1,0 +1,323 @@
+{
+  "passed": true,
+  "scope": "foreground-nav-menu-source-audit",
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "catalogSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e",
+  "sourceStates": 42,
+  "rawPngs": 42,
+  "geometryChecks": 888,
+  "maximumGeometryError": 0,
+  "geometryErrors": [],
+  "paintChecks": 138,
+  "metadataChecks": 1794,
+  "interactionSequences": 8,
+  "inputSamples": 24,
+  "lifecycleChecks": 26,
+  "originalItemsVerified": true,
+  "hostNavigationRequestsOnly": true,
+  "externalNavigationLaunched": false,
+  "exactPngs": 4,
+  "differingPixels": 88562,
+  "rows": [
+    {
+      "id": "horizontal",
+      "scheme": "Light",
+      "file": "nav-menu-horizontal-Light.png",
+      "sha256": "237ab2ce194530ba84a90c5ce065956cd58df876bcf54c69f71b79411d0cb62e",
+      "differingPixels": 2181
+    },
+    {
+      "id": "vertical",
+      "scheme": "Light",
+      "file": "nav-menu-vertical-Light.png",
+      "sha256": "993740c4f22f699c6d3836464b5a94d6ecc1e664226d97c8761a9ecdcd3821f4",
+      "differingPixels": 2452
+    },
+    {
+      "id": "empty-horizontal",
+      "scheme": "Light",
+      "file": "nav-menu-empty-horizontal-Light.png",
+      "sha256": "446f6ea514bdbf343bdfc9030eeb4ac76170ccd63852688e7f73db54415231fe",
+      "differingPixels": 0
+    },
+    {
+      "id": "empty-vertical",
+      "scheme": "Light",
+      "file": "nav-menu-empty-vertical-Light.png",
+      "sha256": "446f6ea514bdbf343bdfc9030eeb4ac76170ccd63852688e7f73db54415231fe",
+      "differingPixels": 0
+    },
+    {
+      "id": "one-horizontal",
+      "scheme": "Light",
+      "file": "nav-menu-one-horizontal-Light.png",
+      "sha256": "dccbc1ed1ff5c89a73d2bde33bda57dcc15bd40d780b187c4392ea1762543498",
+      "differingPixels": 271
+    },
+    {
+      "id": "one-vertical",
+      "scheme": "Light",
+      "file": "nav-menu-one-vertical-Light.png",
+      "sha256": "6d2729cc5eeae9cb56d43ab165c781429aa06c371115266ddc7e4bed1114b80d",
+      "differingPixels": 307
+    },
+    {
+      "id": "constrained-horizontal",
+      "scheme": "Light",
+      "file": "nav-menu-constrained-horizontal-Light.png",
+      "sha256": "90e2334cc54cccd29a711ca3d9dfb01bff1f603bd90f30c3728e32615c1b1f91",
+      "differingPixels": 2569
+    },
+    {
+      "id": "constrained-vertical",
+      "scheme": "Light",
+      "file": "nav-menu-constrained-vertical-Light.png",
+      "sha256": "32ed4b75f52c4c3d53f34c01d805ee2a0d3be3d09bd28f094574c363d8e0b84a",
+      "differingPixels": 2882
+    },
+    {
+      "id": "overflow",
+      "scheme": "Light",
+      "file": "nav-menu-overflow-Light.png",
+      "sha256": "8c725b6c31eb3a9ec4e57249aa687b5cbbf2c4259521640a170dc2dfbe06defb",
+      "differingPixels": 1721
+    },
+    {
+      "id": "rtl-horizontal",
+      "scheme": "Light",
+      "file": "nav-menu-rtl-horizontal-Light.png",
+      "sha256": "1073c63cb52506909308425ee2ac451a566f30af40bc850875989d88a75881eb",
+      "differingPixels": 2438
+    },
+    {
+      "id": "rtl-vertical",
+      "scheme": "Light",
+      "file": "nav-menu-rtl-vertical-Light.png",
+      "sha256": "cab7d1bb561a19daa9477000ba0956baaa3716e3656186563aab94e4fcf17c25",
+      "differingPixels": 2451
+    },
+    {
+      "id": "same-href",
+      "scheme": "Light",
+      "file": "nav-menu-same-href-Light.png",
+      "sha256": "bb0b69e5f5969b78430b188f635f5949359ef7beff3a71a21845b42be104e075",
+      "differingPixels": 533
+    },
+    {
+      "id": "relative",
+      "scheme": "Light",
+      "file": "nav-menu-relative-Light.png",
+      "sha256": "27e0bcabe4ff64c1918898ace690879102bf37726da4cbd4ebe3c9997972a736",
+      "differingPixels": 583
+    },
+    {
+      "id": "custom",
+      "scheme": "Light",
+      "file": "nav-menu-custom-Light.png",
+      "sha256": "237ab2ce194530ba84a90c5ce065956cd58df876bcf54c69f71b79411d0cb62e",
+      "differingPixels": 2181
+    },
+    {
+      "id": "unicode",
+      "scheme": "Light",
+      "file": "nav-menu-unicode-Light.png",
+      "sha256": "c209b47eec353b92b509ad73069bcfe7e8d1288cfdec99c3d8678eaf8550a6e6",
+      "differingPixels": 1025
+    },
+    {
+      "id": "horizontal-hover",
+      "scheme": "Light",
+      "file": "nav-menu-horizontal-hover-Light.png",
+      "sha256": "051ef410cd54a85f31fe6b731654589ca3078a761a9cbafce59127984e90a918",
+      "differingPixels": 2179
+    },
+    {
+      "id": "horizontal-pressed",
+      "scheme": "Light",
+      "file": "nav-menu-horizontal-pressed-Light.png",
+      "sha256": "051ef410cd54a85f31fe6b731654589ca3078a761a9cbafce59127984e90a918",
+      "differingPixels": 2179
+    },
+    {
+      "id": "horizontal-focus",
+      "scheme": "Light",
+      "file": "nav-menu-horizontal-focus-Light.png",
+      "sha256": "1d8308fd574de735e7d9c804fd78bc39479c5635310c4c2889a3d361af86cdef",
+      "differingPixels": 2693
+    },
+    {
+      "id": "vertical-hover",
+      "scheme": "Light",
+      "file": "nav-menu-vertical-hover-Light.png",
+      "sha256": "bce71aae74096243e0c44e31d1cfc7297e14bacddeefbadbcd141328dcf8d372",
+      "differingPixels": 2446
+    },
+    {
+      "id": "vertical-pressed",
+      "scheme": "Light",
+      "file": "nav-menu-vertical-pressed-Light.png",
+      "sha256": "bce71aae74096243e0c44e31d1cfc7297e14bacddeefbadbcd141328dcf8d372",
+      "differingPixels": 2446
+    },
+    {
+      "id": "vertical-focus",
+      "scheme": "Light",
+      "file": "nav-menu-vertical-focus-Light.png",
+      "sha256": "757fc711f439d0df446cf735f333693b8cf92a5daf64905b39cab9295463c400",
+      "differingPixels": 9859
+    },
+    {
+      "id": "horizontal",
+      "scheme": "Dark",
+      "file": "nav-menu-horizontal-Dark.png",
+      "sha256": "58ac52d7fd0f8316c251d16e9ecca16df28150474cc50bd6be5075d69af6848b",
+      "differingPixels": 2145
+    },
+    {
+      "id": "vertical",
+      "scheme": "Dark",
+      "file": "nav-menu-vertical-Dark.png",
+      "sha256": "1ab3ba54c8e45317bc389ca21c7ded526f8c50b0ad796bb5712e119700df4832",
+      "differingPixels": 2446
+    },
+    {
+      "id": "empty-horizontal",
+      "scheme": "Dark",
+      "file": "nav-menu-empty-horizontal-Dark.png",
+      "sha256": "ab1c0e9e1e96b4b0af146138e5ea2086ee95883be0ecec454a51c2387e3c6778",
+      "differingPixels": 0
+    },
+    {
+      "id": "empty-vertical",
+      "scheme": "Dark",
+      "file": "nav-menu-empty-vertical-Dark.png",
+      "sha256": "ab1c0e9e1e96b4b0af146138e5ea2086ee95883be0ecec454a51c2387e3c6778",
+      "differingPixels": 0
+    },
+    {
+      "id": "one-horizontal",
+      "scheme": "Dark",
+      "file": "nav-menu-one-horizontal-Dark.png",
+      "sha256": "cbe60241e297a02af801c8589a1e12e3f6a6591a023ead03f6658f28e52f1655",
+      "differingPixels": 267
+    },
+    {
+      "id": "one-vertical",
+      "scheme": "Dark",
+      "file": "nav-menu-one-vertical-Dark.png",
+      "sha256": "2165d88b134b4df5070d83ea53743199dea064d9bcf7a4a3e4e1e097b3850994",
+      "differingPixels": 306
+    },
+    {
+      "id": "constrained-horizontal",
+      "scheme": "Dark",
+      "file": "nav-menu-constrained-horizontal-Dark.png",
+      "sha256": "cfb6e3d66eada0c2a9767817e6a7e8324cf5b16f38dbe66d363bf8d6be81ac82",
+      "differingPixels": 2549
+    },
+    {
+      "id": "constrained-vertical",
+      "scheme": "Dark",
+      "file": "nav-menu-constrained-vertical-Dark.png",
+      "sha256": "9216ed132204144496e9c98b01e662923a8f5f96e10746b61016887990aa6c19",
+      "differingPixels": 2866
+    },
+    {
+      "id": "overflow",
+      "scheme": "Dark",
+      "file": "nav-menu-overflow-Dark.png",
+      "sha256": "36447a0fa45dafe9ca85aae43c1ac2b385b6cad5c8fc9c65cf212caaa9963dd7",
+      "differingPixels": 1718
+    },
+    {
+      "id": "rtl-horizontal",
+      "scheme": "Dark",
+      "file": "nav-menu-rtl-horizontal-Dark.png",
+      "sha256": "a2346450edb4ed38976948d059f69b0c5c04033626c504a5bb77f69e9afc57ab",
+      "differingPixels": 2434
+    },
+    {
+      "id": "rtl-vertical",
+      "scheme": "Dark",
+      "file": "nav-menu-rtl-vertical-Dark.png",
+      "sha256": "dfc261213e5ef8e242d5571fb1f948d454fd28cb0871b4685654e2aff4652c7e",
+      "differingPixels": 2441
+    },
+    {
+      "id": "same-href",
+      "scheme": "Dark",
+      "file": "nav-menu-same-href-Dark.png",
+      "sha256": "468f7afd30605582b3aa597c516ba6746d337e449f47bcd8e7e6ffc6b31ace1c",
+      "differingPixels": 528
+    },
+    {
+      "id": "relative",
+      "scheme": "Dark",
+      "file": "nav-menu-relative-Dark.png",
+      "sha256": "9b9b420fac569220189baeaf8f4ffa35800c952caad484f8bd1978e8f9270145",
+      "differingPixels": 580
+    },
+    {
+      "id": "custom",
+      "scheme": "Dark",
+      "file": "nav-menu-custom-Dark.png",
+      "sha256": "58ac52d7fd0f8316c251d16e9ecca16df28150474cc50bd6be5075d69af6848b",
+      "differingPixels": 2145
+    },
+    {
+      "id": "unicode",
+      "scheme": "Dark",
+      "file": "nav-menu-unicode-Dark.png",
+      "sha256": "498bf4d6d500cc2541263201802b6891a1dff86ab8ab3333e26fb67018352472",
+      "differingPixels": 1023
+    },
+    {
+      "id": "horizontal-hover",
+      "scheme": "Dark",
+      "file": "nav-menu-horizontal-hover-Dark.png",
+      "sha256": "ee1815a850954feafbbcfc57d99cb509f71940e6965ead70833889ca163f9e1a",
+      "differingPixels": 2147
+    },
+    {
+      "id": "horizontal-pressed",
+      "scheme": "Dark",
+      "file": "nav-menu-horizontal-pressed-Dark.png",
+      "sha256": "ee1815a850954feafbbcfc57d99cb509f71940e6965ead70833889ca163f9e1a",
+      "differingPixels": 2147
+    },
+    {
+      "id": "horizontal-focus",
+      "scheme": "Dark",
+      "file": "nav-menu-horizontal-focus-Dark.png",
+      "sha256": "6c04106deed0219b7feed010eb5e16b080ede621dbc25c6527c723bbc2171d80",
+      "differingPixels": 2809
+    },
+    {
+      "id": "vertical-hover",
+      "scheme": "Dark",
+      "file": "nav-menu-vertical-hover-Dark.png",
+      "sha256": "a7640896dd6603258eadddfe4e98cdfbb97916b6f1814297c2d58437d4ac1111",
+      "differingPixels": 2443
+    },
+    {
+      "id": "vertical-pressed",
+      "scheme": "Dark",
+      "file": "nav-menu-vertical-pressed-Dark.png",
+      "sha256": "a7640896dd6603258eadddfe4e98cdfbb97916b6f1814297c2d58437d4ac1111",
+      "differingPixels": 2443
+    },
+    {
+      "id": "vertical-focus",
+      "scheme": "Dark",
+      "file": "nav-menu-vertical-focus-Dark.png",
+      "sha256": "fad0732da77e93ef6175e2f71238f97c9895f0996dd12c073d6eb2060be4db74",
+      "differingPixels": 11729
+    }
+  ],
+  "masks": 0,
+  "pixelTolerance": 0,
+  "resampling": false,
+  "sourceRasterParityVerified": false,
+  "nativeARM64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

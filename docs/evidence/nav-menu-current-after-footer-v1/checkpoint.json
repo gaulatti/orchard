@@ -1,0 +1,41 @@
+{
+  "scope": "Current x64 Nav Menu foreground replay after shared Footer/Nav Menu changes",
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "catalogSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e",
+  "catalogProcessExitCode": 0,
+  "foregroundAuditPassed": true,
+  "sourceStates": 42,
+  "rawClientPngsCaptured": 42,
+  "geometryChecks": 888,
+  "maximumGeometryError": 0,
+  "paintChecks": 138,
+  "metadataChecks": 1794,
+  "physicalInputHistories": 8,
+  "inputSamples": 24,
+  "lifecycleChecks": 26,
+  "originalItemsVerified": true,
+  "hostNavigationRequestsOnly": true,
+  "externalNavigationLaunched": false,
+  "exactPngs": 4,
+  "differingPixels": 88562,
+  "sourceRasterParityVerified": false,
+  "evidence": {
+    "nativeReport": "docs/evidence/nav-menu-current-after-footer-v1/nav-menu.json",
+    "nativeReportSha256": "42bc65dc73f9e10fef73d85b2a590d42fdc133fd4539d4c3969dcf4b0cfd6e13",
+    "audit": "docs/evidence/nav-menu-current-after-footer-v1/nav-menu-audit.json",
+    "auditSha256": "cdb62db01c69b26d8adff2ae59331c3d893ac0e78dc09c922be55e3bd504d488",
+    "layoutDiagnostic": "docs/evidence/nav-menu-current-after-footer-v1/layout-diagnostic.json",
+    "layoutDiagnosticSha256": "680650a13784db1ea5f16eb5f697c47f1957252fb2c8abc9dd7c58e0780845dd",
+    "resultSha256": "379c02c49cbadef2f2fe8f8b7f811fa9c7e4391d8a23ccd3745305fa128aecee",
+    "processExitSha256": "c2bb98b1298b89200818bfc8e50dde050f840cdd7a18087f47ccbd15ad8549eb",
+    "rawPngDirectory": "artifacts/current/nav-menu-current-after-footer-v1",
+    "rawPngsAreLocalIgnoredArtifacts": true
+  },
+  "limits": [
+    "Strict raw image differences remain and full visual acceptance is open.",
+    "Native enabled-motion, scaling, broader integration, and ARM64 runtime remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "nativeComponentAccepted": false
+}

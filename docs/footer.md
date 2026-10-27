@@ -319,3 +319,10 @@ DLL to the package and records both process exits. This closes the focused
 package-input gap, while broader visual, scaling, motion, isolated-consumer and
 native ARM64 checks remain open. See
 `docs/evidence/footer-package-physical-input-v1/checkpoint.json`.
+
+The Nav Menu foreground source replay also passes on the same current Orchard
+DLL used by Footer: 42 states, 888 exact geometry checks, 138 paint checks,
+eight physical input histories and 26 lifecycle checks. This verifies the
+shared navigation change did not break those observed routes. Its strict image
+diagnostic still reports 88,562 differing pixels, and full Nav Menu acceptance
+remains open. See `docs/evidence/nav-menu-current-after-footer-v1/checkpoint.json`.

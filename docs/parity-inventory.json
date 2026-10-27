@@ -6166,7 +6166,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete source-derived visual review of all 42 native frames under docs/acceptance-contract.md; strict diagnostics retain 38 differing PNGs and 88562 differing pixels, without masks/tolerance/resampling",
+        "Current Footer-shared DLL foreground replay passes 42 source states, 888 geometry checks, 138 paint checks, eight physical input histories and 26 lifecycle checks (docs/evidence/nav-menu-current-after-footer-v1/checkpoint.json). Complete visual review remains open; strict diagnostics retain 38 differing PNGs and 88562 differing pixels without masks/tolerance/resampling",
         "Complete native enabled-motion timelines, actual scaling, broader customization and integration",
         "Verify native ARM64 runtime before final acceptance"
       ]
@@ -8177,7 +8177,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Broader original-content/custom-renderer/style and fractional-width matrices; a focused 640.5/768.5-DIP caller-owned slot case and pinned long/unbroken cases pass current x64 catalog and package audits",
-        "Source-built x64 Footer Light/Dark physical pointer and Enter routes pass through original Home items, custom link template, retained focus and caller input; the three catalog variants mount individually and dark custom brand uses the active text token (docs/evidence/footer-brand-token-foreground-v1/checkpoint.json). A published versioned NuGet preview has the same tested Footer DLL; its package-reference x64 consumer passes normal Light/Dark runtime and 12 hidden Footer contracts (docs/evidence/footer-brand-preview-v2/checkpoint.json). Focused package-specific Light/Dark physical pointer and Enter routes now pass with the original item, caller renderer, retained focus/input and theme brand ink (docs/evidence/footer-package-physical-input-v1/checkpoint.json). Verify fully isolated package audit, broader visual/raster review, matching refreshed catalog ZIPs and current-binary Nav Menu visible source audit after shared changes",
+        "Source-built x64 Footer Light/Dark physical pointer and Enter routes pass through original Home items, custom link template, retained focus and caller input; the three catalog variants mount individually and dark custom brand uses the active text token (docs/evidence/footer-brand-token-foreground-v1/checkpoint.json). A published versioned NuGet preview has the same tested Footer DLL; its package-reference x64 consumer passes normal Light/Dark runtime and 12 hidden Footer contracts (docs/evidence/footer-brand-preview-v2/checkpoint.json). Focused package-specific Light/Dark physical pointer and Enter routes pass with the original item, caller renderer, retained focus/input and theme brand ink (docs/evidence/footer-package-physical-input-v1/checkpoint.json). The same current DLL passes the Nav Menu visible source replay (docs/evidence/nav-menu-current-after-footer-v1/checkpoint.json). Verify fully isolated package audit, broader visual/raster review and matching refreshed catalog ZIPs",
         "Native motion/scaling, integration and native ARM64 runtime acceptance"
       ],
       "currentDelivery": {

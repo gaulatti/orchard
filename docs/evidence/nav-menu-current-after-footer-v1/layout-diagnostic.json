@@ -1,0 +1,9 @@
+{
+  "diagnosticOnly": true,
+  "fullAuditPassed": false,
+  "sourceStates": 42,
+  "geometryChecks": 888,
+  "maximumGeometryError": 0,
+  "geometryErrors": [],
+  "nativeComponentAccepted": false
+}

@@ -55,6 +55,12 @@ unload. Forty deliberately damaged native reports are rejected. Four of the
 42 raw client images are exact; 88,562 pixels differ across the full matrix.
 The images are unmodified and use no masks or pixel tolerance.
 
+A fresh foreground replay on the current Footer-shared Orchard DLL repeats the
+42-state x64 result: all 888 geometry, 138 paint, eight physical input histories
+and 26 lifecycle checks pass. The strict image diagnostic still has four exact
+PNGs and 88,562 differing pixels, so complete visual acceptance remains open.
+See `docs/evidence/nav-menu-current-after-footer-v1/checkpoint.json`.
+
 Shared intrinsic measurement preserves connected cursive scripts when applying
 CSS letter spacing. Latin spacing still applies; Arabic connections and spacing
 on whitespace match CSS Text and the native XAML renderer. All nine Windows
