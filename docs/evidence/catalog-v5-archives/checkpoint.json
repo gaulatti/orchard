@@ -1,8 +1,20 @@
 {
   "scope": "Versioned v5 x64 and ARM64 catalog ZIPs from current Release builds; extracted x64 runtime",
   "packageVersion": "0.1.0-preview.20261027.5",
-  "packagePublished": false,
+  "packagePublished": true,
   "packageSha256": "367a9864c63927af56a6f0fc5590d7cc56649b1eaa37066b3f6950d266c09932",
+  "release": {
+    "url": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5",
+    "id": 425958983,
+    "tag": "v0.1.0-preview.20261027.5",
+    "targetCommit": "3364f04c4e4da34894f41a479b4d13636f01837a",
+    "prerelease": true,
+    "packageAssetId": 682805736,
+    "x64CatalogAssetId": 682806079,
+    "arm64CatalogAssetId": 682806839,
+    "allThreeGitHubDigestsMatchLocalSha256": true,
+    "requiredCiRunForV5Verified": false
+  },
   "x64Archive": {
     "path": "artifacts/current/catalog-v5-archives/Orchard.Catalog.0.1.0-preview.20261027.5.win-x64.zip",
     "sha256": "27d3f86f85822b90154583c57b7056b818d4d043bf4fdea6c1369b7354c9c0c9",

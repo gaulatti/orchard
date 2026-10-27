@@ -173,7 +173,7 @@ changed the fictional summary from zero to one local review. The v9 archive
 predates this fixture change; native ARM64 runtime and broader composition
 acceptance remain open.
 
-The current `0.1.0-preview.20261027.5` local package matches the source-built
+The now-published `0.1.0-preview.20261027.5` package matches the source-built
 x64 catalog's Orchard DLL. Its Monitoring and Editorial hidden fixture passes
 72 checks and 589 isolation guards; the audit rejects 25 damaged reports.
 Visible desktop checks pass Monitoring review/focus/Escape/update, Editorial

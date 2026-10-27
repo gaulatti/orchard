@@ -32,20 +32,21 @@ shadow appearance, broader clipping cases with transforms/scaling, 220ms
 reference surface transitions and reduced motion, consumer template/style
 lifecycle, scaling, and ARM64 runtime. A separate framework-dependent x64
 consumer source copy restored the byte-matched `0.1.0-preview.20261027.5`
-local NuGet package with a shared dependency cache and passed a
+NuGet package with a shared dependency cache and passed a
 focused light/dark runtime check for the 7px style override, the retained 24px
 default, and the existing 16px Small size. After closing an unrelated foreground
 “Open With” dialog, the full x64 package consumer also passed its native-input
 suite, including the Card checks. Its [checkpoint](evidence/card-padding-package-v5/checkpoint.json)
 records the package, consumer assembly and runtime hashes. Fresh-cache and
-self-contained qualification remain open; the package is local and unpublished.
+self-contained qualification remain open; the package is now in the
+[v5 prerelease](releases/2026-10-27-preview-v5.md).
 The consumer's `--verify-card-padding-output <report>` mode
 repeats the focused check without the native-input suite. Existing accessibility metadata and
 contrast resources remain part of the library; Narrator and OS contrast
 campaigns are excluded by the [current library scope](library-scope.md). The
 static resource checks do not establish full visual parity.
 
-The same local v5 package also restores and builds in a separate ARM64
+The same v5 package also restores and builds in a separate ARM64
 framework-dependent consumer; the ARM64 library and catalog builds pass with
 zero warnings and errors. The package contains AnyCPU IL, and the ARM64 catalog
 contains the current library output and the Card/Monitoring/Editorial XBF files.

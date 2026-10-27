@@ -11,14 +11,13 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [Windows component-library preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.4)
+Download the [Windows component-library preview v5](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
 for the NuGet package and x64/ARM64 catalog ZIPs, including the fictional Monitoring
-and Editorial demos. The [artifact record](docs/evidence/catalog-preview-v4/checkpoint.json)
-lists hashes, checks and limits. Native ARM64 execution and final component
-acceptance remain open. A newer [v5 local preview](docs/releases/2026-10-27-preview-v5-local.md)
-includes the Card fix and stream-verified x64/ARM64 catalog ZIPs. Its extracted
-x64 ZIP passed hidden demo checks and visible Monitoring/Editorial pointer and
-keyboard paths; v5 has not been published.
+and Editorial demos. The [v5 artifact record](docs/evidence/catalog-v5-archives/checkpoint.json)
+lists hashes, checks and limits. The release includes the Card fix and
+stream-verified catalog ZIPs. Its extracted x64 ZIP passed hidden demo checks
+and visible Monitoring/Editorial pointer and keyboard paths. Native ARM64
+execution and final component acceptance remain open.
 
 Nine display components preserve caller automation names and label associations;
 Error State also preserves caller HelpText. See [metadata ownership](docs/automation-metadata.md).
