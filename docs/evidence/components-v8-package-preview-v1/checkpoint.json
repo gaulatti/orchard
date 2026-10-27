@@ -1,0 +1,49 @@
+{
+  "scope": "Unqualified v8 local NuGet preview after the Monitoring source focus repair",
+  "sourceCommit": "f0eaf15",
+  "package": {
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v8-local.nupkg",
+    "version": "0.1.0-components-v8-local",
+    "sha256": "a37aba0cf848effda102e1479cfc2a8965295cb68996b95ed184ecb7fc121121",
+    "bytes": 1732840,
+    "entries": 186,
+    "orchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+    "matchesSourceBuiltX64Catalog": true,
+    "anyCpuIlOnly": true,
+    "packageStructurePassed": true,
+    "independentNativeRuntimeQualified": false
+  },
+  "freshIsolatedConsumer": {
+    "restorePassed": false,
+    "failure": "Disk full while copying Microsoft.Windows.SDK.NET.dll into the clean dependency cache",
+    "temporaryRestoreWorkspaceRemoved": true,
+    "cleanupReceipt": "artifacts/current/components-v8-consumer-x64-compile/cleanup.json",
+    "cleanupReceiptSha256": "085b2557cf164a1af73c61b92c6209bad04b9ec33bb5b621d93e3b11f8857167"
+  },
+  "sharedDependencyCacheConsumer": {
+    "sourceCopiedOutsideRepository": true,
+    "orchardPackageRestoredFromLocalFeed": true,
+    "restoredPackageSha256Matches": true,
+    "frameworkDependentX64BuildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "consumerDllSha256": "bf364489790df3b752ddd2bc9540df5e4b3e8d5d2c5fbc8ec59b504533b85eb7",
+    "orchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+    "apphostMachine": "Amd64",
+    "runtimePassed": false,
+    "runtimeFailure": "Framework-dependent WinUI consumer exited during MainWindow.InitializeComponent with XamlParseException",
+    "runtimeReport": "artifacts/current/components-v8-framework-dependent-runtime-failure.json",
+    "runtimeReportSha256": "36bc468edeb3cf3856961fe3225c6160946d715ed6622a7cadc97fb2fc1261e8"
+  },
+  "cleanup": {
+    "attempted": true,
+    "automaticApprovalReview": "blocked by policy",
+    "generatedSharedCacheConsumerWorkspacesRemain": true
+  },
+  "x64CatalogArchiveCreated": false,
+  "arm64CatalogArchiveCreated": false,
+  "nativeArm64RuntimeVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "packageAccepted": false
+}

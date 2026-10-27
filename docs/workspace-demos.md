@@ -121,4 +121,7 @@ identify both catalog library identities and the probe bytes. Run the check with
 This verifies search and selection only; visible editing, decision prompts,
 broader visual comparison, scaling and native ARM64 runtime remain open. The
 v7 package passes this Editorial flow but still fails the Monitoring review
-focus check described above; the source fix needs a new package.
+focus check described above; the source fix needs a qualified replacement
+catalog. A [v8 NuGet preview](releases/2026-10-27-components-v8-unqualified.md)
+contains the current Orchard DLL but has no qualified consumer runtime or
+catalog archive.
