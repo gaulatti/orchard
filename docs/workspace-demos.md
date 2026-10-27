@@ -90,3 +90,9 @@ open; the demos are not yet accepted.
 
 No backend, environment variables or metrics are involved. GitHub's wiki remote
 is unavailable; this document is the in-repository usage and verification source.
+
+The extracted `0.1.0-text-media-v4-local` x64 catalog archive also passes the
+66 hidden Monitoring and Editorial checks with 577 isolation guards. Both v4
+catalog architectures compile and their ZIP entries match the extracted files;
+the ARM64 archive has no native runtime result on this x64 host. See the
+[v4 local preview record](releases/2026-10-26-text-media-v4-local.md).

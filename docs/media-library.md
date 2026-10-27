@@ -251,5 +251,9 @@ the original alt text at the tile's right edge. The hidden x64 catalog fixture
 in `artifacts/current/media-library-rtl-v2` passes 100 states, 38 behavior
 contracts, two catalog themes and 102 rendered PNG audits. The marker starts at
 x=951 inside the x=746..968 tile in both RTL themes; the light capture was
-visually checked against the pinned source. The current NuGet and catalog ZIPs
-predate this repair and have not been requalified with it.
+visually checked against the pinned source. The subsequent
+`0.1.0-text-media-v4-local` NuGet and both catalog ZIPs include this repair.
+Fresh x64 and ARM64 package consumers build; the packaged and extracted x64
+catalog hosts pass the same 100 Media Library states and 38 contracts, with the
+RTL marker at x=951 in both themes. Native ARM64 runtime and foreground input
+remain unverified. See the [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
