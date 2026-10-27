@@ -1,5 +1,10 @@
 # Local artifact storage
 
+The current unpublished local NuGet and catalog checkpoint is
+[components v5](releases/2026-10-26-components-v5-local.md). Its exact hashes,
+runtime checks and open limits are recorded there. The root README continues
+to link the separately published preview.
+
 Reuse the normal project publish directories for local iterations:
 
 ```powershell

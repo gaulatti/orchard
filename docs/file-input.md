@@ -269,7 +269,9 @@ The next run passed its native fixture; its initial audit rejected the valid
 `N…` display at the 160-pixel narrow size. The corrected audit passed on those
 unchanged native bytes. Strict browser/native image equality remains failed
 (411,598 differing component pixels; zero identical frames), as a diagnostic.
-This local source build has not been repackaged or independently consumed yet;
-the previous v4 foreground-picker result applies only to its pinned older DLL.
-File Input remains in progress pending its remaining visual, motion, foreground
-and delivery checks, including native ARM64 runtime.
+The later [v5 local package](releases/2026-10-26-components-v5-local.md) includes
+this repair. Its exact NuGet consumer and extracted x64 catalog pass the same
+68 native states and 34 contracts; the consumer passes its general native smoke
+test. The previous v4 foreground-picker result still applies only to its pinned
+older DLL. File Input remains in progress pending its remaining visual, motion,
+fresh foreground and native ARM64 runtime checks.
