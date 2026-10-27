@@ -27,8 +27,9 @@ The current [library scope](library-scope.md) excludes Narrator and OS contrast
 campaigns. Separator has no keyboard or pointer action and is not a tab stop;
 its applicable input contract is the absence of an unwanted focus stop and the
 decorative/semantic automation distinction. It has no text, empty/error content
-or animation states. Real monitor-DPI transitions, current native ARM64 execution
-and complete visual/runtime qualification remain open.
+or animation states. The current published v7 catalog and consumer still need a
+Separator runtime smoke, and native ARM64 execution of the fractional-edge
+default remains open.
 
 The shared `--probe-hidden-separator` fixture runs against the source catalog or
 an independent NuGet consumer. It checks the source's two orientations and both
@@ -75,8 +76,13 @@ eight caller contracts, full-line pixel audit and isolation checks. Both pass
 the isolated 100%, 125%, 150% and 200% rasterization audit in Light and Dark.
 The strict source-image diagnostic still differs at 4,128 pixels by at most one
 channel value; coverage masks match. This refreshes the source/package evidence
-without proving physical monitor-DPI changes, system text scaling or native
-ARM64 execution. Separator remains in progress.
+without proving a physical monitor-DPI change or native ARM64 execution.
+Separator has no text, so system text scaling does not apply. Its component-scale
+contract is satisfied by the tested native `XamlRoot` scales and physical PNG
+dimensions across both orientations and themes. A physical monitor move remains
+untested, but adds no Separator-owned transition path: the component has no DPI
+listener or scale-dependent state. This does not establish a current v7 runtime
+smoke or native ARM64 execution, so Separator remains in progress.
 
 ## Isolated native rasterization
 
@@ -102,6 +108,7 @@ coverage and native behavior checks.
 Recovered historical ARM64 reports prove a genuine Arm64 process/OS and the same
 WinUI/CoreLib binaries for the unchanged pre-repair Separator baseline. The new
 fractional default is outside that historical scope. Native ARM64 execution of
-this repair, real monitor-DPI transitions and Windows text-scale changes remain
-unverified. The entry remains in progress. See the
+this repair and physical monitor-DPI transitions remain unverified. The latter
+is a broader integration observation, not a component-specific gate for this
+stateless non-text control. The entry remains in progress. See the
 [native rasterization scope](native-rasterization.md).

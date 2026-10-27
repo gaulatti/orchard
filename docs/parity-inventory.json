@@ -4806,8 +4806,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Real monitor-DPI transitions (isolated native rasterization at100/125/150/200% is verified)",
-        "Current native ARM64 state acceptance"
+        "Current published v7 x64 catalog and independent consumer runtime smoke; the unchanged non-text Separator's native XamlRoot 100/125/150/200% Light/Dark scale contract is already verified by docs/evidence/separator-preview-v2/checkpoint.json, while physical monitor movement remains untested but is not a component-specific gate",
+        "Current native ARM64 state acceptance for the fractional-edge default"
       ],
       "nativePreview": {
         "sourceAudit": "artifacts/current/separator-scale-baseline-source-native-v1/audit.json",
@@ -4842,6 +4842,7 @@
         "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
         "x64CatalogAndIndependentConsumerPassed": true,
         "isolatedRasterizationScalesVerified": [1, 1.25, 1.5, 2],
+        "componentSpecificScalingAccepted": true,
         "physicalMonitorDpiChangeVerified": false,
         "nativeARM64RuntimeVerified": false,
         "nativeComponentAccepted": false
