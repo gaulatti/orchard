@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T23:30:11Z",
+  "scope": "Focused physical Command Spotlight input in explicit Light in the published v7 extracted x64 catalog",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "extractedCatalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "exactPackageLibrarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "priorSystemDarkCheckpoint": "docs/evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json",
+  "method": "Visible extracted WinUI catalog in explicit Light with Computer Use physical keyboard and pointer input plus live UI Automation result observations",
+  "observations": {
+    "explicitLight": {
+      "controlKIgnoredFromFocusedCatalogSearchEdit": true,
+      "controlKOpenedFromOutsideFocusedNavigationButton": true,
+      "typedBetaFilteredToOriginalAction": true,
+      "enterInvokedOriginalBetaCallback": true,
+      "callbackResult": "Own callback: original beta command",
+      "queryEmptyOnReopen": true,
+      "controlKClosedFromSpotlightSearchEditor": true,
+      "physicalPointerTriggerOpened": true,
+      "escapeClosedPointerOpenedDialog": true,
+      "triggerFocusRingRestoredAfterEscape": true
+    }
+  },
+  "catalogWindowClosed": true,
+  "catalogExitCodeCaptured": false,
+  "explicitDarkAndSystemLightPhysicalInputVerified": false,
+  "fullFocusTabAndImeMatrixVerified": false,
+  "fullSourceVisualReviewVerified": false,
+  "largeCollectionPerformanceVerified": false,
+  "scalingMotionAndCallerTemplateMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

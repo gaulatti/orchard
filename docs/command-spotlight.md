@@ -134,8 +134,18 @@ from an outside focused navigation button. Typing `beta` left only the original
 beta action; Enter invoked its original callback. Reopening cleared the query,
 Ctrl+K closed from the Spotlight editor, and a physical pointer click on the
 trigger opened the dialog before Escape closed it and visibly restored trigger
-focus. This is focused input evidence; other themes, full focus/Tab and IME
-routing, complete visual review and native ARM64 runtime remain unverified.
+focus. That checkpoint covers system Dark only; full focus/Tab and IME routing,
+complete visual review and native ARM64 runtime remain unverified.
+
+The [explicit-Light published v7 check](evidence/command-spotlight-v7-light-foreground-v1/checkpoint.json)
+repeats that physical path in the same exact package-matching catalog. Ctrl+K
+stays ignored in the focused catalog search, opens from an outside focused
+navigation button, filters `beta` to its original action and invokes the
+original callback on Enter. Reopening clears the query; Ctrl+K closes from
+the Spotlight editor. Pointer opening and Escape closing restore the trigger
+focus ring. This closes that focused Light-theme gap. Explicit Dark and system
+Light, broader focus/Tab and IME routes, full visual/motion/scaling review,
+large-collection performance and native ARM64 runtime remain open.
 
 Declare the control inside the window's `BleeckerModalHost`. Supply ordered
 `BleeckerCommandSpotlightAction` originals through `Actions`; an observable

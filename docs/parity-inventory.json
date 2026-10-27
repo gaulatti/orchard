@@ -6445,9 +6445,10 @@
       ],
       "status": "in-progress",
       "publishedV7ForegroundCheckpoint": "docs/evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json",
+      "publishedV7LightForegroundCheckpoint": "docs/evidence/command-spotlight-v7-light-foreground-v1/checkpoint.json",
       "remainingGaps": [
         "Complete source-derived visual review; preserve failed strict browser/native and native-host raster comparisons with zero thresholds, but do not require byte-identical raster for public-component acceptance",
-        "Focused published v7 x64 catalog Ctrl+K input exclusion/open/close, beta callback, query reset, physical trigger and Escape/focus restoration pass in system Dark (docs/evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json); verify remaining focus/Tab routing, other themes, broader installed/custom keyboard layouts and IME behavior",
+        "Focused published v7 x64 catalog Ctrl+K input exclusion/open/close, beta callback, query reset, physical trigger and Escape/focus restoration pass in system Dark (docs/evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json) and explicit Light (docs/evidence/command-spotlight-v7-light-foreground-v1/checkpoint.json); verify remaining focus/Tab routing, explicit Dark/system Light, broader installed/custom keyboard layouts and IME behavior",
         "Complete caller template/overlay combinations, full display/text scaling/motion and native ARM64 runtime",
         "Measured refreshes improved; large native unique-group refreshes and full collection performance acceptance remain open"
       ],
