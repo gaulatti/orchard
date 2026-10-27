@@ -1,0 +1,37 @@
+{
+  "scope": "Foreground pointer and keyboard input in the extracted v5 x64 Buttons catalog fixture",
+  "observedAt": "2026-10-27T00:11:02-04:00",
+  "method": "Computer Use @oai/sky foreground SendInput and Windows UI observations",
+  "packageVersion": "0.1.0-components-v5-local",
+  "packageSha256": "6498f772034dd9f66ba9be3270d8b129289fb50657709d6bd724e3a772261a8f",
+  "catalogArchiveSha256": "65cb51a5f3b5e877f1f4ff15c31033b9b3db789a3e9e2dd4bc004e6095ec17bb",
+  "catalogExeSha256": "3a6b5853b28e6d44b9880cbd03e80df2e07a8769ec90860fc094fe50ba05a4be",
+  "orchardDllSha256": "9c50496b46f29fd36b0de029c484013257c5ef880013671d33dc9458081c2ee6",
+  "packagedConsumerOrchardDllMatched": true,
+  "checks": {
+    "pointerClickInvokedHorizontalCallerCommand": true,
+    "enterInvokedFocusedHorizontalCallerCommand": true,
+    "tabVisiblyFocusedSecondAndThirdHorizontalActions": true,
+    "tabVisiblyFocusedVerticalAction": true,
+    "enterInvokedVerticalCallerCommand": true,
+    "tabSkippedDisabledVerticalAction": true,
+    "callerDisabledHorizontalActionRejectedPointerClick": true,
+    "callerEnabledStateRestored": true
+  },
+  "observedResultSequence": [
+    "Command international-review: 1",
+    "Command international-review: 2",
+    "Command international-save: 3",
+    "Command international-save: 3 after clicking the caller-disabled Review action"
+  ],
+  "uiAutomationFocusedElementWasStale": true,
+  "focusTraversalEvidence": "Visible focus outline moved through the Japanese, Arabic, RTL vertical and following standalone actions; UI Automation still reported focus on the search edit and was not used as focus evidence.",
+  "hardwareDeviceInputVerified": false,
+  "independentConsumerForegroundInputVerified": false,
+  "lightThemeForegroundInputVerified": false,
+  "displayOrTextScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

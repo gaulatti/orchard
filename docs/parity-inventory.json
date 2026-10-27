@@ -509,7 +509,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify physical keyboard/pointer and focus traversal; hidden metadata/ownership checks do not establish input routing",
+        "Foreground x64 catalog SendInput verifies pointer/Enter commands, Tab focus traversal and disabled gating; independent consumer foreground input and other applicable states remain open (docs/evidence/components-v5-button-group-foreground-v1/checkpoint.json)",
         "Verify actual text/display scaling and native ARM64 runtime acceptance",
         "Complete visual review against the pinned source, remaining motion and final catalog/release integration"
       ]
