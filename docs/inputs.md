@@ -949,3 +949,13 @@ rechecks pass all fixtures in both appearances with 256 captures each. The
 original intermittent failure remains retained as evidence; these passes do
 not prove its precise cause or qualify a new package. See
 `docs/evidence/input-shadow-remount-v1/checkpoint.json` for the exact results.
+
+The catalog's manual “Verify disabled pointer lifecycle” action now changes the
+same `CatalogRoot` theme owner as the appearance selector and automated Input
+checks. It previously changed the outer modal host, leaving the Input specimen
+in its old appearance. The focused source-built x64 Input smoke asserts that
+the manual action resolves its expected theme owner and passes both appearances
+with 164 captures. The full physical-pointer manual action has not been rerun;
+this theme-target check does not accept the broader pointer lifecycle matrix or
+qualify a replacement package. See
+`docs/evidence/input-pointer-theme-owner-v1/checkpoint.json`.

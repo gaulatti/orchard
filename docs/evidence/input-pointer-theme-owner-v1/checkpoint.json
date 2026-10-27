@@ -1,0 +1,20 @@
+{
+  "scope": "Source-built x64 Input catalog manual pointer theme owner",
+  "observedAt": "2026-10-27T02:02:50-04:00",
+  "catalogExeSha256": "ca4f8631fec0d69aa799adb4905ae839872610ee882b8906236bd9f7d4b56ae9",
+  "catalogDllSha256": "b4b62f256ff488f77f922615ceb3bd216a00d5aab0dbe1fa1aa52e82ed33f942",
+  "orchardDllSha256": "fe7cddb6b08c54d0281407ef293f912b12194161a6e512629e017505390c7536",
+  "change": "The manual Input pointer action resolves CatalogRoot instead of XamlRoot.Content's outer modal host and restores its original RequestedTheme.",
+  "focusedInput": {
+    "result": "artifacts/current/input-pointer-theme-owner-v1/result.json",
+    "resultSha256": "732add234b2cf767a9274fe4ef1742509f97f44afda1fc7c7651bf8588733dfc",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "pngCaptures": 164,
+    "manualThemeOwnerMatchesCatalogRoot": true
+  },
+  "fullManualPointerActionRerun": false,
+  "newPackageQualified": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

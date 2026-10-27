@@ -15,8 +15,8 @@ public sealed partial class InputsFixture
 {
     private async void OnVerifyPointerLifecycle(object sender, RoutedEventArgs args)
     {
+        var host = PointerThemeOwner();
         PointerCheckButton.IsEnabled = false;
-        var host = (FrameworkElement)XamlRoot.Content;
         var originalTheme = host.RequestedTheme;
         DependencyObject? ancestor = VisualTreeHelper.GetParent(this);
         while (ancestor is not null && ancestor is not ScrollViewer) ancestor = VisualTreeHelper.GetParent(ancestor);
@@ -210,6 +210,13 @@ public sealed partial class InputsFixture
         var output = Path.Combine(Path.GetTempPath(), "orchard-input-pointer-result.json");
         File.WriteAllText(output, JsonSerializer.Serialize(new { passed, steps, shadowFrames, reversals, animationsEnabled, error, scale }));
         PointerCheckStatus.Text = passed ? "Pointer lifecycle passed in light and dark." : $"Pointer check failed: {error}";
+    }
+
+    private FrameworkElement PointerThemeOwner()
+    {
+        for (DependencyObject? current = this; current is not null; current = VisualTreeHelper.GetParent(current))
+            if (current is FrameworkElement { Name: "CatalogRoot" } root) return root;
+        throw new InvalidOperationException("The Input pointer demo requires the catalog theme root.");
     }
 
     private static bool PointerInside(FrameworkElement element)
