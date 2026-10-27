@@ -185,3 +185,11 @@ both show the rendered child surface and original input, and the same physical
 pointer/focus/Escape checks pass. This corrects the catalog's evidence timing;
 the v11 NuGet and catalog ZIPs predate the capture change. It does not add
 complete raster or native ARM64 acceptance.
+
+The [v11 x64 package hidden audit](evidence/popover-package-hidden-v1/checkpoint.json)
+now accepts the already verified independent consumer's full-runtime receipt as
+well as the existing build-only receipt. It checks the same package hash,
+architecture, Orchard DLL, and removed isolated consumer before comparing 122
+reference states. The package probe passed, and 20 damaged evidence cases were
+rejected. This is a hidden layout/contract result; the separate foreground
+pointer and settled visual evidence above remains the runtime evidence.

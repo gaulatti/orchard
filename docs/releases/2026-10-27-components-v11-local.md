@@ -28,3 +28,9 @@ before the popup had necessarily painted. The later
 [source capture repair](../evidence/popover-nested-capture-source-v1/checkpoint.json)
 adds a presentation wait and provides settled Light/Dark images. The published
 v11 package and ZIP hashes above are unchanged.
+
+The later [x64 package Popover audit](../evidence/popover-package-hidden-v1/checkpoint.json)
+also passed against the same v11 package and independent consumer runtime
+receipt, with 122 reference states and 20 damaged-evidence rejections. This
+qualifies the hidden Popover contract only; native ARM64 runtime and full
+component acceptance remain open.
