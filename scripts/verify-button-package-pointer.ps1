@@ -15,6 +15,7 @@ public static class OrchardPackagePointer
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
     [DllImport("user32.dll")] public static extern bool GetCursorPos(out Point point);
     [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+    [DllImport("user32.dll")] public static extern int GetSystemMetrics(int index);
     [DllImport("user32.dll")] public static extern void mouse_event(uint flags, uint dx, uint dy, uint data, UIntPtr extra);
 }
 '@
@@ -51,8 +52,16 @@ function Click($element, [IntPtr]$window) {
     if ($element.Current.IsOffscreen -or $bounds.IsEmpty -or $bounds.Width -le 0 -or $bounds.Height -le 0) { throw "Target $($element.Current.Name) is not visible." }
     $x = [int][Math]::Floor($bounds.X + $bounds.Width / 2)
     $y = [int][Math]::Floor($bounds.Y + $bounds.Height / 2)
-    if (-not [OrchardPackagePointer]::SetCursorPos($x, $y)) { throw 'Windows rejected the pointer position.' }
+    $virtualX = [OrchardPackagePointer]::GetSystemMetrics(76)
+    $virtualY = [OrchardPackagePointer]::GetSystemMetrics(77)
+    $virtualWidth = [OrchardPackagePointer]::GetSystemMetrics(78)
+    $virtualHeight = [OrchardPackagePointer]::GetSystemMetrics(79)
+    if ($virtualWidth -le 1 -or $virtualHeight -le 1) { throw 'Windows virtual desktop bounds are invalid.' }
+    $absoluteX = [uint32][Math]::Round(($x - $virtualX) * 65535 / ($virtualWidth - 1))
+    $absoluteY = [uint32][Math]::Round(($y - $virtualY) * 65535 / ($virtualHeight - 1))
+    [OrchardPackagePointer]::mouse_event(0xC001, $absoluteX, $absoluteY, 0, [UIntPtr]::Zero)
     Start-Sleep -Milliseconds 80
+    if ([OrchardPackagePointer]::GetForegroundWindow() -ne $window) { throw 'Consumer lost foreground after pointer movement.' }
     [OrchardPackagePointer]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero)
     Start-Sleep -Milliseconds 40
     [OrchardPackagePointer]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero)
@@ -96,8 +105,13 @@ try {
         $process.CloseMainWindow() | Out-Null
         if (-not $process.WaitForExit(5000)) { Stop-Process -Id $process.Id -Force }
     }
+    if ($process) { $process.Refresh() }
     $report.processExited = if ($process) { -not [bool](Get-Process -Id $process.Id -ErrorAction SilentlyContinue) } else { $true }
+    $report.processExitCode = if ($process -and $process.HasExited) { $process.ExitCode } else { $null }
+    $report.cleanShutdown = $report.processExited -and $report.processExitCode -eq 0
+    $report.passed = $report.passed -and $report.cleanShutdown
     if ($cursorSaved) { [OrchardPackagePointer]::SetCursorPos($cursor.X, $cursor.Y) | Out-Null }
     New-Item -ItemType Directory -Path (Split-Path -Parent $outputPath) -Force | Out-Null
     $report | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $outputPath -Encoding utf8
 }
+if (-not $report.passed) { throw 'Package Button pointer input or clean shutdown failed; inspect the report.' }

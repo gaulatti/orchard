@@ -144,8 +144,8 @@ through each visual state. The [rendered visual audit](visual-audit.md) records
 Bleecker measurements and outstanding appearance work. Published reports and
 captures prove only the checks they exercise.
 
-The exact v7 extracted x64 catalog now passes a focused real-pointer route in
-both Light and Dark. A physical click on Run preview invokes the consumer
+The earlier `0.1.0-components-v7-local` extracted x64 catalog passes a focused
+real-pointer route in both Light and Dark. A physical click on Run preview invokes the consumer
 command once; loading disables the native action and rejects a second click;
 turning loading off restores the command. The Start/Finish pair also enters and
 leaves self-loading through pointer clicks without accepting a second busy
@@ -156,8 +156,8 @@ uses a short pointer settle and press interval. This route does not cover the
 remaining variants, independent-consumer pointer input, scaling, motion, or
 native ARM64 runtime.
 
-The same extracted v7 x64 catalog also passes focused physical Space and Enter
-activation in both themes. Each key reaches the consumer's Run preview command
+The same local extracted x64 catalog also passes focused physical Space and
+Enter activation in both themes. Each key reaches the consumer's Run preview command
 once after the pointer/loading route, with the command count moving from two to
 three and then four. The [v7 Button keyboard checkpoint](evidence/components-v7-button-keyboard-v1/checkpoint.json)
 binds these reports to the unchanged package. Focused Space on Start also enters
@@ -165,5 +165,14 @@ self-loading and disables Start; focused Enter on Finish restores it in both
 themes. The remaining Button variants,
 independent-consumer physical input, scaling, motion and ARM64 runtime remain
 open.
+
+The [published v7 independent consumer](evidence/button-v7-package-pointer-v1/checkpoint.json)
+now passes a real pointer click on the package Button: the caller's result
+changes from `Ready` to `Saved: Harbor update`, and normal window close exits
+zero. The corrected probe sends a routed pointer move and rejects a nonzero
+exit code. The earlier [v5 Button probe](evidence/button-package-pointer-v1/checkpoint.json)
+observed the click but did not inspect its close exit code. Other variants,
+keyboard input in the independent consumer, scaling, motion and native ARM64
+runtime remain open.
 
 Light Ghost hover/pressed sand uses byte alpha 31 at brush opacity 1, based on the [actual source/native alpha diagnostic](brush-alpha-reference.md). Dark, disabled, contrast and other variant recipes retain their existing representations.

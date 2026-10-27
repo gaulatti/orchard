@@ -415,7 +415,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete the remaining foreground keyboard/pointer wrapper matrix; exact v7 extracted x64 catalog passes physical consumer-command, loading rejection/restoration, focused Space/Enter activation, and keyboard self-loading Start/Finish in Light/Dark; published v5 package consumer physical pointer click reaches its caller handler (docs/evidence/button-package-pointer-v1/checkpoint.json)",
+        "Complete the remaining foreground keyboard/pointer wrapper matrix; the earlier 0.1.0-components-v7-local extracted x64 catalog passes physical consumer-command, loading rejection/restoration, focused Space/Enter activation, and keyboard self-loading Start/Finish in Light/Dark; the distinct published 0.1.0-preview.20261027.7 package consumer physical Button click reaches its caller handler and closes with exit code zero (docs/evidence/button-v7-package-pointer-v1/checkpoint.json)",
         "Verify remaining variants and display/text scaling",
         "Verify reduced motion and remaining ARM64 state acceptance"
       ],
