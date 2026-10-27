@@ -3736,6 +3736,19 @@
         "nativeARM64RuntimeVerified": false,
         "displayScalingVerified": false,
         "nativeComponentAccepted": false
+      },
+      "currentV7X64": {
+        "packageVersion": "0.1.0-components-v7-local",
+        "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+        "catalogAudit": "artifacts/current/components-v7-kbd-content-catalog-x64/audit.json",
+        "catalogAuditSha256": "47231c66a5381ecceb9c40f66089e0205031c150e336e7515e1f96d46067425b",
+        "consumerAudit": "artifacts/current/components-v7-kbd-content-consumer-x64/audit.json",
+        "consumerAuditSha256": "3b9c52e033086e99a7d45de43fe62c3e127b5f321e112572bf31a85ebebc32a6",
+        "alignmentStatesPerHost": 64,
+        "metadataContractsPerHost": 64,
+        "isolatedScaleFramesPerHost": 8,
+        "nativeARM64RuntimeVerified": false,
+        "nativeComponentAccepted": false
       }
     },
     {
@@ -4432,6 +4445,18 @@
         "nativeARM64RuntimeVerified": false,
         "displayScalingVerified": false,
         "nativeComponentAccepted": false
+      },
+      "currentV7X64": {
+        "packageVersion": "0.1.0-components-v7-local",
+        "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+        "catalogAudit": "artifacts/current/components-v7-progress-range-catalog-x64/audit.json",
+        "catalogAuditSha256": "935a31d6f4869c425867c6b2aab6952412084bd5f3d959999f875721ddc8582c",
+        "consumerAudit": "artifacts/current/components-v7-progress-range-consumer-x64/audit.json",
+        "consumerAuditSha256": "e510157125d0ef123cf492cbd4e9f4766fc8769e865cc830cec9d8e26939d90f",
+        "rangeStatesPerHost": 14,
+        "invalidInputCasesPerHost": 32,
+        "nativeARM64RuntimeVerified": false,
+        "nativeComponentAccepted": false
       }
     },
     {
@@ -4605,7 +4630,19 @@
         "Full physical pointer/keyboard/focus and disabled cursor matrix",
         "Rich-content edges, non-Latin fallback glyphs, lifecycle and isolated scaling",
         "Component theme-response and interrupted-motion appearance/timing verification under docs/acceptance-contract.md; no OS accessibility or contrast changes; retain exact-raster diagnostics separately"
-      ]
+      ],
+      "currentV7X64": {
+        "packageVersion": "0.1.0-components-v7-local",
+        "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+        "catalogAudit": "artifacts/current/components-v7-checkbox-content-catalog-x64/audit.json",
+        "catalogAuditSha256": "b55d0a4e2542a83cbea7e6d7bd946ecfab3c44b48beefb98f0f9d6b5270ab6b2",
+        "consumerAudit": "artifacts/current/components-v7-checkbox-content-consumer-x64/audit.json",
+        "consumerAuditSha256": "304feb75ee6d3db04998f3a681fc805b51f20df0ca24e04664465e2d1b1f79ba",
+        "catalogChecks": 72,
+        "consumerChecks": 70,
+        "nativeARM64RuntimeVerified": false,
+        "nativeComponentAccepted": false
+      }
     },
     {
       "id": "scroll-area",
