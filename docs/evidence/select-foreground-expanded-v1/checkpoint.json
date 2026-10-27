@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T14:59:59Z",
+  "scope": "Select and Header Select source-built x64 catalog foreground input",
+  "sourceCatalog": {
+    "buildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "exeSha256": "56b0483afd8aa2efc44c89f6f9d9b6320daac10d00c87c5a914fbec3e05ade03",
+    "catalogDllSha256": "c43bc2aecfeab626548696145345fdbeaf12f0032c5adcff1c81e1ac2784e6c5",
+    "orchardDllSha256": "a9709b5b03241e6489062c71694cabd3ee17d92b3645f84fad3c65583eb052ff"
+  },
+  "run": {
+    "result": "artifacts/current/select-foreground-source-v3/result.json",
+    "resultSha256": "9740db61449aeb0a4fcfcb8bfe854fa216dbb10d4a6fc27eff0187adf192860c",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "lightReportSha256": "9adfe07546b81f3ad1c42998aec0c27d4a8622cb8bad4fdf261477f4a9f3cc28",
+    "darkReportSha256": "0377c4cad05d8d694c87e0808ce05b1b09ce50acc2c221e0179b9bf4954110fd",
+    "selectKeyboardSpaceHomeTabEndUpEnterEscape": true,
+    "selectPointerSelection": true,
+    "headerKeyboardEnterDownEscape": true,
+    "headerPointerSelection": true,
+    "consumerValueRequestsAndFocusRestoration": true,
+    "displayScale": 1,
+    "textScale": 1,
+    "animationsEnabled": false
+  },
+  "captures": {
+    "mediumOpenLightSha256": "929d1febcbd9b3b88b8bd8753b57a1c87d27f7a26d3906f4f0430fb18fc16609",
+    "mediumOpenDarkSha256": "768eea5a23148c76831dc7eb03cac0a3838e5e18ac8b09d1a2a7fc35873f2e99",
+    "headerOpenLightSha256": "5b7b1080250165c4462e3c2833619bddb99428b2288f3661f7b8287d84ebe18e",
+    "headerOpenDarkSha256": "11903167601938220454227c8bd4d6b1625636f431cc5eb409fc8bb494db0272",
+    "focusedRowsAndLightDarkLegibilityReviewed": true,
+    "completeSourceRasterAcceptance": false
+  },
+  "independentPackageForegroundVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

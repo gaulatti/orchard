@@ -102,6 +102,16 @@ this focused Light/Dark route from the extracted x64 catalog with the same
 Orchard DLL as the independently restored NuGet package. It does not close the
 broader input, scaling, motion or native ARM64 runtime gaps.
 
+The [expanded x64 foreground check](evidence/select-foreground-expanded-v1/checkpoint.json)
+also passes native Space, Home, Tab, End, Up, Enter and Escape on ordinary Select,
+and pointer opening and choice on Header Select, in both Light and Dark. The
+original caller accepts each choice and focus returns to the trigger. Four
+settled open-menu captures show readable focused rows and disabled options.
+This check uses the current source-built catalog at 100% display/text scale
+with animations disabled. Independent package foreground input, typeahead,
+outside dismissal, complete raster/motion, scaling and native ARM64 runtime
+remain open; the inventory entries are not accepted.
+
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.

@@ -49,6 +49,32 @@ public sealed partial class SelectsFixture
         await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), medium),
             "Pointer selection did not restore trigger focus.");
 
+        input.Key(0x20); // Space reopens the focused Select.
+        await AwaitAsync(() => medium.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "b")),
+            "Select Space did not reopen with its current option focused.");
+        input.Key(0x24); // Home reaches the first enabled option.
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "a")),
+            "Select Home did not focus the first option.");
+        input.Key(0x09); // Tab stays within the open chooser.
+        await AwaitAsync(() => medium.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "a")),
+            "Select Tab left the open chooser.");
+        input.Key(0x23); // End skips the disabled option.
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "b")),
+            "Select End focused a disabled option or missed the last enabled option.");
+        input.Key(0x26); // Up returns to the first option.
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "a")),
+            "Select Up did not focus the previous option.");
+        input.Key(0x0D);
+        await AwaitAsync(() => !medium.IsDropDownOpen && Medium.Value == "a" && Status.Text == "Consumer accepted: a",
+            "Select keyboard choice did not reach the original consumer.");
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), medium),
+            "Select keyboard selection did not restore trigger focus.");
+        input.Key(0x0D);
+        await AwaitAsync(() => medium.IsDropDownOpen, "Select did not reopen for Escape dismissal.");
+        input.Key(0x1B);
+        await AwaitAsync(() => !medium.IsDropDownOpen && Medium.Value == "a" && Status.Text == "Consumer accepted: a",
+            "Select Escape changed the caller value or left the menu open.");
+
         var header = Surface(Header);
         Require(header.Focus(FocusState.Keyboard), "Header Select trigger rejected keyboard focus.");
         await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), header),
@@ -72,11 +98,23 @@ public sealed partial class SelectsFixture
         await AwaitAsync(() => !header.IsDropDownOpen && Header.Value == "a" && Status.Text == "Consumer accepted: a",
             "Header Select Escape changed the caller value or left the menu open.");
 
+        await input.ClickAsync(header);
+        await AwaitAsync(() => header.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(header, "a")),
+            "Pointer opening Header Select did not focus its current option.");
+        await input.ClickAsync(Option(header, "b"));
+        await AwaitAsync(() => !header.IsDropDownOpen && Header.Value == "b" && Status.Text == "Consumer accepted: b",
+            "Header Select pointer choice did not reach the original consumer.");
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), header),
+            "Header Select pointer selection did not restore trigger focus.");
+
         await File.WriteAllTextAsync(Path.Combine(folder, $"select-foreground-{scheme}.json"), JsonSerializer.Serialize(new
         {
             passed = true, scheme, pointerSelectValue = "b", pointerFocusedSelectedOption = true,
-            pointerRestoredFocus = true, headerKeyboardValue = "a", headerInitiallyFocusedPlaceholder = true,
-            headerDownFocusedOriginalOption = true, headerRestoredFocus = true, escapePreservedValue = true
+            pointerRestoredFocus = true, selectKeyboardValue = "a", selectHomeEndUpAndTab = true,
+            selectKeyboardRestoredFocus = true, selectEscapePreservedValue = true,
+            headerKeyboardValue = "a", headerInitiallyFocusedPlaceholder = true,
+            headerDownFocusedOriginalOption = true, headerRestoredFocus = true, escapePreservedValue = true,
+            headerPointerValue = "b", headerPointerRestoredFocus = true
         }));
     }
 }
