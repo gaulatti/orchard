@@ -1,0 +1,47 @@
+{
+  "scope": "Versioned v5 x64 and ARM64 catalog ZIPs from current Release builds; extracted x64 runtime",
+  "packageVersion": "0.1.0-preview.20261027.5",
+  "packagePublished": false,
+  "packageSha256": "367a9864c63927af56a6f0fc5590d7cc56649b1eaa37066b3f6950d266c09932",
+  "x64Archive": {
+    "path": "artifacts/current/catalog-v5-archives/Orchard.Catalog.0.1.0-preview.20261027.5.win-x64.zip",
+    "sha256": "27d3f86f85822b90154583c57b7056b818d4d043bf4fdea6c1369b7354c9c0c9",
+    "manifest": "x64-report.json",
+    "manifestSha256": "905ebbe1210d263083578b8b07f9dd685000ef4144c973bd4fabe3a6e8bfa065",
+    "fileCount": 821,
+    "xbfCount": 114,
+    "allArchiveAndExtractedBytesVerified": true,
+    "extractedLibraryMatchesPackage": true
+  },
+  "arm64Archive": {
+    "path": "artifacts/current/catalog-v5-archives/Orchard.Catalog.0.1.0-preview.20261027.5.win-arm64.zip",
+    "sha256": "dd4405560a7132ecff4ceb91fe22062f937fc7c724b503f78ac6decec9686964",
+    "manifest": "arm64-report.json",
+    "manifestSha256": "cff4fb57158936d6bbde022283a6a5921242c3b8e05ded0a14c2ad603442214e",
+    "fileCount": 817,
+    "xbfCount": 114,
+    "allArchiveBytesVerified": true,
+    "nativeRuntimeVerified": false
+  },
+  "extractedX64HiddenDemo": {
+    "report": "extracted-hidden-workspaces.json",
+    "audit": "extracted-hidden-audit.json",
+    "passed": true,
+    "checksPassed": 72,
+    "isolationGuardsPassed": 589
+  },
+  "extractedX64VisibleDemo": {
+    "monitoringLightReport": "monitoring-light.json",
+    "monitoringLightScreenshot": "monitoring-review-focus.png",
+    "editorialEditDarkReport": "editorial-edit-dark.json",
+    "editorialEditDarkScreenshot": "editorial-dirty-decision.png",
+    "physicalPointerAndKeyboardPassed": true,
+    "initialMonitoringLightFailure": "monitoring-light-initial-failed.json",
+    "initialFailureReason": "A stale foreground Open With dialog prevented catalog activation before input; the unchanged retry passed."
+  },
+  "freshCacheConsumerVerified": false,
+  "selfContainedConsumerVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

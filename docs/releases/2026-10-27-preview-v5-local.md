@@ -1,0 +1,32 @@
+# Orchard preview v5 local artifacts
+
+`0.1.0-preview.20261027.5` is a local, unpublished component-library preview.
+The NuGet package at
+`artifacts/current/card-package-v5/Gaulatti.Orchard.0.1.0-preview.20261027.5.nupkg`
+(SHA-256 `367a9864c63927af56a6f0fc5590d7cc56649b1eaa37066b3f6950d266c09932`)
+contains the Card padding precedence fix. A separate package-only x64 consumer
+passed its focused Card Light/Dark and full native-input checks using the shared
+dependency cache. A package-only ARM64 consumer compiled with zero warnings and
+errors; it has not run on ARM64 hardware. See the [consumer](../evidence/card-padding-package-v5/checkpoint.json)
+and [ARM64 build](../evidence/preview-v5-arm64-build/checkpoint.json) records.
+
+The runnable catalog ZIPs are local at
+`artifacts/current/catalog-v5-archives/Orchard.Catalog.0.1.0-preview.20261027.5.win-x64.zip`
+(SHA-256 `27d3f86f85822b90154583c57b7056b818d4d043bf4fdea6c1369b7354c9c0c9`)
+and `artifacts/current/catalog-v5-archives/Orchard.Catalog.0.1.0-preview.20261027.5.win-arm64.zip`
+(SHA-256 `dd4405560a7132ecff4ceb91fe22062f937fc7c724b503f78ac6decec9686964`).
+The [archive checkpoint](../evidence/catalog-v5-archives/checkpoint.json) records
+the 821 x64 and 817 ARM64 files, 114 XBF fixtures in each, and per-entry byte
+verification. Every extracted x64 file also matches its ZIP manifest. The
+extracted x64 catalog passed 72 hidden Monitoring/Editorial checks and 589
+isolation guards, plus visible physical pointer and keyboard checks for
+Monitoring Light and Editorial editing Dark. The first Monitoring run stopped
+before input because a stale Open With dialog held foreground; the unchanged
+retry passed. The source-built catalog separately passed six Light/Dark demo
+paths in the [v5 demo record](../evidence/catalog-v5-demos/checkpoint.json).
+
+These are preview artifacts, not accepted component-library completion. Fresh
+dependency-cache and self-contained consumer qualification, native ARM64
+execution, broader component acceptance and publication of v5 remain open.
+The inventory remains 112 entries started and zero accepted; started is not a
+completion percentage.

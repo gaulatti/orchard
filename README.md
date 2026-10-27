@@ -15,8 +15,10 @@ Download the [Windows component-library preview](https://github.com/gaulatti/orc
 for the NuGet package and x64/ARM64 catalog ZIPs, including the fictional Monitoring
 and Editorial demos. The [artifact record](docs/evidence/catalog-preview-v4/checkpoint.json)
 lists hashes, checks and limits. Native ARM64 execution and final component
-acceptance remain open. The current x64 catalog build passed the six Monitoring
-and Editorial Light/Dark desktop checks; extracted ZIP runtime is unverified.
+acceptance remain open. A newer [v5 local preview](docs/releases/2026-10-27-preview-v5-local.md)
+includes the Card fix and stream-verified x64/ARM64 catalog ZIPs. Its extracted
+x64 ZIP passed hidden demo checks and visible Monitoring/Editorial pointer and
+keyboard paths; v5 has not been published.
 
 Nine display components preserve caller automation names and label associations;
 Error State also preserves caller HelpText. See [metadata ownership](docs/automation-metadata.md).

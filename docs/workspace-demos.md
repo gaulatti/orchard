@@ -182,7 +182,13 @@ physical pointer and keyboard input. All six screenshots were inspected and
 retained with the reports in the [v5 demo checkpoint](evidence/catalog-v5-demos/checkpoint.json).
 An initial Monitoring Light run could not activate the catalog while a stale
 “Open With” dialog held foreground; the unchanged retry passed. This is
-source-built catalog evidence, not extracted archive runtime or native ARM64
-acceptance. The v5 ARM64 catalog [builds with both demo XBF files](evidence/preview-v5-arm64-build/checkpoint.json),
+source-built catalog evidence. The versioned v5 x64 and ARM64 catalog ZIPs are
+now [stream-verified](evidence/catalog-v5-archives/checkpoint.json), and every
+extracted x64 file matches its archive manifest. The extracted x64 catalog
+passes the 72 hidden demo checks and 589 isolation guards, visible Monitoring
+Light review/focus/Escape/update, and Editorial Dark edit/save/dirty-decision
+with physical pointer and keyboard input. An initial extracted Monitoring run
+also stopped before input on a stale foreground “Open With” dialog; the
+unchanged retry passed. The v5 ARM64 catalog [builds with both demo XBF files](evidence/preview-v5-arm64-build/checkpoint.json)
 but has not run on ARM64 hardware. Broader visual/scaling and package catalog
 qualification remain open.

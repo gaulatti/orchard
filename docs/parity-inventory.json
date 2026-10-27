@@ -8892,7 +8892,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Current v5 package-matching source catalog passes Light/Dark Monitoring review focus, Escape and retained update plus 72 hidden demo checks; complete broader visible pointer/keyboard and focus verification in an extracted package catalog",
+        "Current v5 package-matching source catalog passes Light/Dark Monitoring review focus, Escape and retained update; extracted x64 v5 ZIP passes 72 hidden checks and Monitoring Light pointer/keyboard review path (docs/evidence/catalog-v5-archives/checkpoint.json); complete broader extracted-catalog focus and input matrix",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8925,6 +8925,16 @@
         "extractedCatalogRuntimeVerified": false,
         "fullCompositionAccepted": false
       },
+      "currentV5ArchiveEvidence": {
+        "checkpoint": "docs/evidence/catalog-v5-archives/checkpoint.json",
+        "x64ArchiveAndExtractionBytesVerified": true,
+        "arm64ArchiveBytesVerified": true,
+        "extractedX64HiddenChecksPassed": 72,
+        "extractedX64VisibleTheme": "Light",
+        "extractedX64PhysicalMonitoringPathPassed": true,
+        "nativeArm64RuntimeVerified": false,
+        "fullCompositionAccepted": false
+      },
       "v8ArchiveEquivalentEvidence": {
         "checkpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
         "themes": ["Light", "Dark"],
@@ -8948,7 +8958,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Current v5 package-matching source catalog passes Light/Dark Editorial search/selection and edit/save/dirty-decision paths; status/media/category/author pointer edit and save/reopen pass in the source fixture (docs/evidence/editorial-relations-source-v1/checkpoint.json); complete broader visible pointer/keyboard and focus verification in an extracted package catalog",
+        "Current v5 package-matching source catalog passes Light/Dark Editorial search/selection and edit/save/dirty-decision paths; extracted x64 v5 ZIP passes 72 hidden checks and Editorial Dark pointer/keyboard edit path (docs/evidence/catalog-v5-archives/checkpoint.json); status/media/category/author source-fixture paths pass (docs/evidence/editorial-relations-source-v1/checkpoint.json); complete broader extracted-catalog input and focus matrix",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8977,6 +8987,16 @@
         "physicalSearchSelectionAndEditDecisionPassed": true,
         "arm64CatalogBuildPassed": true,
         "extractedCatalogRuntimeVerified": false,
+        "fullCompositionAccepted": false
+      },
+      "currentV5ArchiveEvidence": {
+        "checkpoint": "docs/evidence/catalog-v5-archives/checkpoint.json",
+        "x64ArchiveAndExtractionBytesVerified": true,
+        "arm64ArchiveBytesVerified": true,
+        "extractedX64HiddenChecksPassed": 72,
+        "extractedX64VisibleTheme": "Dark",
+        "extractedX64PhysicalEditorialEditPathPassed": true,
+        "nativeArm64RuntimeVerified": false,
         "fullCompositionAccepted": false
       },
       "visibleSearchSelectionEvidence": {

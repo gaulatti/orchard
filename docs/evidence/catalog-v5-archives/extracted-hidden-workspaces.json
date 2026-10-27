@@ -1,0 +1,315 @@
+{
+  "passed": true,
+  "scope": "hidden-workspace-demo-contracts",
+  "checks": [
+    {
+      "id": "Light/monitoring/loaded",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/post-content-contrast",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/narrow-viewport",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/native-selection",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/native-search",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/retained-update",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/inspector",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/sidebar-attention",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/review-snapshot",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/review-bounded-layout",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/review-opaque-surface",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/keep-review",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/local-review",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/explicit-review-discard",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/review-history",
+      "passed": true
+    },
+    {
+      "id": "Light/monitoring/suite-request",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/loaded",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/narrow-viewport",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/native-filters",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/sort-retention",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/search-empty",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/native-edit",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/relations-order",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/visible-choice-order",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/row-discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/keep-exact-draft",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/catalog-remount",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/local-save-original",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/explicit-row-discard",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/save-validation",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/suite-discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/section-discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/section-discard",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/suite-discard",
+      "passed": true
+    },
+    {
+      "id": "Light/editorial/monitoring-remount",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/loaded",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/post-content-contrast",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/narrow-viewport",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/native-selection",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/native-search",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/retained-update",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/inspector",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/sidebar-attention",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/review-snapshot",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/review-bounded-layout",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/review-opaque-surface",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/keep-review",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/local-review",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/explicit-review-discard",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/review-history",
+      "passed": true
+    },
+    {
+      "id": "Dark/monitoring/suite-request",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/loaded",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/narrow-viewport",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/native-filters",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/sort-retention",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/search-empty",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/native-edit",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/relations-order",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/visible-choice-order",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/row-discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/keep-exact-draft",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/catalog-remount",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/local-save-original",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/explicit-row-discard",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/save-validation",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/suite-discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/section-discard-decision",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/section-discard",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/suite-discard",
+      "passed": true
+    },
+    {
+      "id": "Dark/editorial/monitoring-remount",
+      "passed": true
+    }
+  ],
+  "failure": null,
+  "isolationFailure": null,
+  "hiddenWindow": true,
+  "activateCalled": false,
+  "showCalled": false,
+  "focusCalled": false,
+  "inputSent": false,
+  "visible": false,
+  "nativeVisible": false,
+  "activationEvents": 0,
+  "isolated": true,
+  "guardChecks": 589,
+  "resourceErrors": [],
+  "bindingErrors": [],
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "catalogSha256": "d6ce51b09de7cdb2794860c7a689afc2fc8d0ecabf7399a3dcc9e9d2483f11b6",
+  "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "visibleRuntimeVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false
+}
