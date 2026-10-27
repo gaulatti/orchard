@@ -27,9 +27,9 @@ The current [library scope](library-scope.md) excludes Narrator and OS contrast
 campaigns. Separator has no keyboard or pointer action and is not a tab stop;
 its applicable input contract is the absence of an unwanted focus stop and the
 decorative/semantic automation distinction. It has no text, empty/error content
-or animation states. The published v7 catalog now has a visible Separator smoke;
-its current independent consumer and native ARM64 execution of the
-fractional-edge default remain open.
+or animation states. The published v7 catalog and exact-package independent
+consumer have focused runtime smokes. Native ARM64 execution of the
+fractional-edge default remains open.
 
 The shared `--probe-hidden-separator` fixture runs against the source catalog or
 an independent NuGet consumer. It checks the source's two orientations and both
@@ -81,9 +81,9 @@ Separator has no text, so system text scaling does not apply. Its component-scal
 contract is satisfied by the tested native `XamlRoot` scales and physical PNG
 dimensions across both orientations and themes. A physical monitor move remains
 untested, but adds no Separator-owned transition path: the component has no DPI
-listener or scale-dependent state. This does not establish a current v7 runtime
-independent v7 consumer runtime or native ARM64 execution, so Separator remains
-in progress.
+listener or scale-dependent state. The Separator implementation, style and
+brush tokens used by this test remain unchanged in the published v7 source.
+This does not establish native ARM64 execution, so Separator remains in progress.
 
 The [published v7 catalog foreground check](evidence/separator-v7-catalog-foreground-v1/checkpoint.json)
 opens the extracted x64 catalog with the exact released library DLL. In system
@@ -91,8 +91,16 @@ Dark and explicit Light, four divider lines render in the registered fixture.
 UI Automation exposes the named semantic horizontal and vertical separators,
 while the decorative lines are omitted from its control tree. The catalog
 window closes and its process ends; no exit code was captured. This is a
-focused visible smoke, not a replacement for the independent consumer or
-native ARM64 checks.
+focused visible smoke, not a replacement for native ARM64 checks.
+
+The [exact v7 NuGet-consumer qualification](evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+also includes Separator. Its [full consumer result](evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json)
+passes with the released `Orchard.dll` hash in a separate package-reference x64
+application. The Light/Dark loop asserts that the packaged semantic horizontal
+Separator is one logical pixel tall, has positive width and exposes the native
+Separator automation role. This is a focused current-package smoke; the earlier
+32-state and eight-contract v2 source/package reports remain the broader
+Separator-specific evidence. Neither x64 result establishes native ARM64 runtime.
 
 ## Isolated native rasterization
 

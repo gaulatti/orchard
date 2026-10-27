@@ -23,7 +23,7 @@
   },
   "catalogProcessExited": true,
   "catalogExitCodeChecked": false,
-  "independentV7ConsumerVerified": false,
+  "independentV7ConsumerVerifiedByThisCheck": false,
   "nativeArm64RuntimeVerified": false,
   "componentAccepted": false,
   "entriesStarted": 112,
