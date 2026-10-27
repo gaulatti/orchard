@@ -351,6 +351,8 @@ wrapped content and language/category tags. Bind original `Categories` and
 display tag. `SourceCommand`/`SourceRequested` route original source navigation
 through the consumer. `PostedAt` accepts DateTimeOffset or timestamp strings;
 legacy/extended date and broader locale acceptance remains open.
+The source link stays on the readable sea accent when hovered on a dark feed
+surface; its underline supplies the hover cue.
 
 `BleeckerPanelLayout` lays out fixed-width children and equally growing children
 in one horizontally scrolling row. `BleeckerPanelColumn` stacks fixed-height

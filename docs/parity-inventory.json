@@ -5483,7 +5483,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Actual tooltip and hover/motion presentation; source-link pointer and keyboard requests were observed in the x64 catalog",
+        "Complete hover/motion and scaling review; source-link pointer/keyboard requests and the ISO timestamp tooltip were observed in the x64 catalog",
         "Complete source-derived visual review, actual scaling, native ARM64 and broader caller overrides under docs/acceptance-contract.md; retain exact native raster diagnostics separately",
         "Full ECMAScript legacy/extended date parsing and other locale/calendar cases",
         "Complete catalog/package runtime and final library acceptance"

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T14:52:02Z",
+  "goalStatus": "active",
+  "turnClassification": "progress",
+  "scope": "reusable UI component library and fictional local demos only",
+  "change": "Keep Feed Item source links on the readable sea accent during hover on dark feed surfaces",
+  "sourceCatalog": {
+    "platform": "x64",
+    "buildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "timestampTooltipPhysicalHoverVerified": true,
+    "linkHoverDarkAndLightHostVisible": true,
+    "hoverDidNotInvokeSourceRequest": true,
+    "subsequentPointerSourceRequestVerified": true,
+    "screenshots": "docs/evidence/feed-item-foreground-v1/README.md"
+  },
+  "package": {
+    "path": "artifacts/current/Gaulatti.Orchard.0.1.0-feed-hover-v1-local.nupkg",
+    "version": "0.1.0-feed-hover-v1-local",
+    "sha256": "302273ce2ab0d9f603aeaf7cb579cab8ad57ffbde37f3ba2d1f88ed2efe10323",
+    "librarySha256": "5774a072cc38a1a8c605a3c985802d4c5ec08778c19722bb07852e50f011fe73",
+    "independentX64ConsumerBuilt": true,
+    "hiddenNativeFrames": 100,
+    "hiddenNativeChecksPassed": 31,
+    "hiddenIsolationGuards": 715,
+    "referenceAuditPassed": true,
+    "referenceGeometryMaxError": 0,
+    "negativeAuditCasesRejected": 43,
+    "hiddenReportSha256": "87c9f2bd65cd5560dfc4ba7390dd5c15e8267f7171a03daf7bc999da8a29659b",
+    "referenceAuditSha256": "5d4581b78b56f2768cdf8e1352c479fa87ddc78afd6995d95887beb51e3fdd1b",
+    "negativeAuditSha256": "b04c870d46ff0f6ac474e9c7637b737e50de19ff1920b20e794c7700bbc6b161"
+  },
+  "sourceRasterParityVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "remaining": "broader motion/visual review, actual scaling, native ARM64 runtime and final integration"
+}

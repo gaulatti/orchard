@@ -25,7 +25,7 @@
     <Border x:Name="PART_Surface" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" BackgroundSizing="OuterBorderEdge" UseLayoutRounding="False"><Grid x:Name="PART_Root" UseLayoutRounding="False"/></Border>
     <TextBlock x:Name="PART_HoverSource" Visibility="Collapsed" Foreground="{ThemeResource FeedItemHover}"/>
     <TextBlock x:Name="PART_LinkSource" Visibility="Collapsed" Foreground="{ThemeResource BleeckerSeaBrush}"/>
-    <TextBlock x:Name="PART_LinkHoverSource" Visibility="Collapsed" Foreground="{ThemeResource BleeckerDeepSeaBrush}"/>
+    <TextBlock x:Name="PART_LinkHoverSource" Visibility="Collapsed" Foreground="{ThemeResource BleeckerSeaBrush}"/>
    </Grid>
   </ControlTemplate></Setter.Value></Setter>
  </Style>

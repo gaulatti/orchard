@@ -68,17 +68,23 @@ source link. When a Feed Item is composed in a Feed Column, the column's dark
 surface requests dark theme tokens even in a Light host. This corrects the
 previous dark-on-dark text while preserving standalone Feed Item theming.
 The visible before/after frames are in `docs/evidence/feed-light-contrast-v1/`.
+The original web hover turns source links deep-sea even on a dark feed surface,
+where the link disappears. Orchard keeps the readable sea accent and applies
+the link underline on hover. A physical hover displayed the complete original
+ISO timestamp tooltip; source-built x64 before/after hover frames are in
+`docs/evidence/feed-item-foreground-v1/`.
 
-The previous standalone x64 independent package run matches all 100 source rectangles and
-checked paint properties with zero geometry error. Thirty ownership/lifecycle
+The fresh `0.1.0-feed-hover-v1-local` x64 independent package run matches all
+100 source rectangles and
+checked paint properties with zero geometry error. Thirty-one ownership/lifecycle
 checks cover original bindings and category collections, retained parts, command
 rejection, four original-URL requests, Avatar's image error latch, caller names,
 template/unload/remount resource cleanup and an unbounded native parent. Its
-708 guards kept the window invisible without focus or physical input. Forty-three
+715 guards kept the window invisible without focus or physical input. Forty-three
 corrupted receipts are rejected. All 243 portable tests and eight windowless
 native font tests pass. The RTL timestamp regression preserves separately
 rounded visual fragments; source physical-left link alignment and the physical
 `margin-left: auto` relevance placement are retained under RTL.
-The fresh `0.1.0-feed-contrast-v2-local` x64 package additionally verifies a
+The earlier `0.1.0-feed-contrast-v2-local` x64 package additionally verifies a
 Feed Item inherits readable dark text tokens inside a Feed Column in a Light
 host; it does not replace the standalone Feed Item package matrix.

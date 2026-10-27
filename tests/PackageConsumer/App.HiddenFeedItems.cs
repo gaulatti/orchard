@@ -57,6 +57,13 @@ public partial class App
                 if(spec.TryGetProperty("image",out var image))item.AvatarSource=image.GetString()=="valid"?Portrait():new BitmapImage(new Uri("ms-appx:///Missing-FeedItem-Portrait.png"));root.Children.Clear();Mount(item);await Layout(item);if(spec.TryGetProperty("image",out _)){await Task.Delay(40);Guard();await Layout(item);}frames.Add(new{id=row.GetProperty("id").GetString(),scheme=row.GetProperty("scheme").GetString(),measurement=Snapshot(item)});root.Children.Remove(item);root.UpdateLayout();Guard();
             }
             Assert(frames.Count==100,"Incomplete FeedItem matrix.");
+            root.RequestedTheme=ElementTheme.Dark;root.Children.Clear();var hoverItem=new BleeckerFeedItem{Author="Fictional author",Content="Fictional story",SourceUrl="https://news.example/story"};Clock(hoverItem);Mount(hoverItem);await Layout(hoverItem);
+            Check("Dark/source-link-hover-contrast",()=>
+            {
+                var source=((SolidColorBrush)((TextBlock)Part(hoverItem,"PART_LinkSource")).Foreground).Color;
+                var hover=((SolidColorBrush)((TextBlock)Part(hoverItem,"PART_LinkHoverSource")).Foreground).Color;
+                Assert(source.R==0x5B&&source.G==0xA3&&source.B==0xF5&&hover.R==source.R&&hover.G==source.G&&hover.B==source.B,"Source-link hover color disappears against a dark feed surface.");
+            });root.Children.Clear();Guard();
             foreach(var scheme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {
                 root.RequestedTheme=scheme;root.Children.Clear();var prefix=scheme+"/";var author=new TextBlock{Tag="Original author"};var url=new TextBlock{Tag="https://news.example/original?q=1"};var content=new TextBlock{Tag="Original consumer content"};var categories=new ObservableCollection<string>{"  LOCAL ","ΟΣ",""};var categoryProducer=new TextBlock{Tag=categories};var parameter=new object();var command=new FeedItemCommand();var item=new BleeckerFeedItem{Width=320,PostedAt="2026-10-18T15:00:00Z",SourceCommand=command,SourceCommandParameter=parameter};Clock(item);
