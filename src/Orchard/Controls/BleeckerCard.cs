@@ -26,7 +26,6 @@ public sealed class BleeckerCard : ContentControl
     {
         DefaultStyleKey = typeof(BleeckerCard);
         ApplyVariant();
-        ApplyPadding();
         SizeChanged += (_, _) => UpdateShadow();
         RegisterPropertyChangedCallback(CornerRadiusProperty, (_, _) => UpdateShadow());
         Loaded += (_, _) => { uiSettings.ColorValuesChanged += OnColorsChanged; UpdateShadow(); };

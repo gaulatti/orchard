@@ -13,7 +13,7 @@
 
 Variants are `Surface` (default), `Outlined`, `Elevated`, `Subtle` and `Transparent`. The pinned Bleecker recipes supply the per-theme fill and border alpha, 12px corners and a 1px border. Padding sizes are `None` (0), `Small` (16), `Medium` (24, default) and `Large` (32). Changing PaddingSize sets Padding; applications can instead supply an explicit Thickness for custom composition. Content and ContentTemplate remain consumer-owned. Local Background and BorderBrush overrides retain normal WinUI precedence.
 
-Consumer Style values and bindings also retain normal precedence. Changing Variant updates instance-owned light/dark palette brushes without replacing Style. A style can override corners or border thickness while retaining the variant's fill and border colors. The generic default style supplies the Bleecker template and typography; the generated variant dictionaries contain only palette resources. Windows contrast resources remain system-owned.
+Consumer Style values and bindings also retain normal precedence. The default Medium padding comes from the generic style, so a consumer style can set `Padding` on a card without setting `PaddingSize`. Explicit non-default `PaddingSize` values continue to set the corresponding local padding. Changing Variant updates instance-owned light/dark palette brushes without replacing Style. A style can override corners or border thickness while retaining the variant's fill and border colors. The generic default style supplies the Bleecker template and typography; the generated variant dictionaries contain only palette resources. Windows contrast resources remain system-owned.
 
 Elevated uses two custom composition shadow layers from Bleecker's raised-shadow recipe: `(0,2,5,0)` at .045 alpha and `(0,18,42,-22)` at .24, in RGB(26,55,77). Negative spread contracts the second mask. Windows ThemeShadow is not used. Shadows are removed on unload and rebuilt on resize or corner changes; all four corner values are honored, with proportional normalization when radii overlap. Windows contrast mode disables shadows. Composition shadow rasterization still requires comparison against the browser blur, including small cards and overridden corners. Framework bitmap captures do not prove composition-shadow rendering; inspect a desktop capture as well.
 
@@ -25,12 +25,13 @@ The light-theme desktop capture `artifacts/cards-desktop-light.jpg` confirms tha
 
 Additional native regressions retain a consumer background binding across variant changes and update it from its source. Pixel assertions in both themes verify that oversized child content is present inside the card but absent beyond its right edge and rounded corner. The visible overflow fixture and asymmetric-corner fixture retain these cases for visual inspection. A corner-change regression first reproduced a stale elevation mask and now verifies each of the four updated arc radii.
 
-The consumer-style fixture binds Style, cycles through all five variants, checks retained corner/border setters and variant brush opacity, then updates the binding source to a different style. These native checks pass in light and dark themes; captures are retained in `artifacts/smoke-card-styles-final`. The independent package fixture supplies its asymmetric corners through a consumer style.
+The consumer-style fixture binds Style, cycles through all five variants, checks retained corner/border setters and variant brush opacity, then updates the binding source to a different style. A visible companion fixture sets `Padding=7` through a consumer style; another style changes corners while retaining the 24px default. The named padding sizes also retain their values. The native presentation smoke passed in light and dark themes after the padding fix, and the final focused check passed both added assertions; its [result and light/dark captures](evidence/card-padding-style-v1) are retained. Earlier captures remain in `artifacts/smoke-card-styles-final`. The independent package fixture supplies its asymmetric corners through a consumer style. Use `./scripts/smoke-catalog.ps1 -Component cards` for a focused light/dark Card check and captures.
 
 This component remains in progress. Outstanding checks include source-derived
 shadow appearance, broader clipping cases with transforms/scaling, 220ms
 reference surface transitions and reduced motion, consumer template/style
-lifecycle, scaling, and ARM64 runtime. Existing accessibility metadata and
+lifecycle, scaling, and ARM64 runtime. The new padding-style change has not yet
+been qualified in an independent NuGet consumer. Existing accessibility metadata and
 contrast resources remain part of the library; Narrator and OS contrast
 campaigns are excluded by the [current library scope](library-scope.md). The
 static resource checks do not establish full visual parity.

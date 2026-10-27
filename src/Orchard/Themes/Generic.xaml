@@ -576,6 +576,7 @@
     <Style TargetType="local:BleeckerCard">
         <Setter Property="Background" Value="{ThemeResource CardBackground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource CardBorderBrush}" />
+        <Setter Property="Padding" Value="24" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />

@@ -396,6 +396,17 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-select-foreground")) await RunSelectForegroundAsync(folder);
             else if (args.Contains("--smoke-input-pointer-foreground")) await RunInputPointerForegroundAsync(folder);
             else if (args.Contains("--smoke-popover-foreground")) await RunPopoverForegroundAsync(folder);
+            else if (args.Contains("--smoke-cards"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme;
+                    await SelectFixtureAsync(Cards);
+                    await Cards.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+                    await CaptureFixtureAsync(Cards, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "cards", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-presentation")) await RunPresentationSmokeAsync(folder);
             else if (args.Contains("--smoke-chart-theme")) await RunChartThemeSmokeAsync(folder);
             else if (args.Contains("--smoke-line-chart")) await RunLineChartSmokeAsync(folder);

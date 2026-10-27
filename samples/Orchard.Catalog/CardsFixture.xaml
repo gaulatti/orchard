@@ -7,6 +7,9 @@
             <Setter Property="CornerRadius" Value="20" />
             <Setter Property="BorderThickness" Value="2" />
         </Style>
+        <Style x:Key="ConsumerPaddingCardStyle" TargetType="orchard:BleeckerCard">
+            <Setter Property="Padding" Value="7" />
+        </Style>
     </UserControl.Resources>
     <StackPanel Spacing="16">
         <TextBlock Text="Cards" Style="{StaticResource BleeckerHeadingStyle}" FontSize="24" />
@@ -26,6 +29,12 @@
             <orchard:BleeckerCard Grid.Column="2"><TextBlock Text="Medium" /></orchard:BleeckerCard>
             <orchard:BleeckerCard Grid.Column="3" PaddingSize="Large"><TextBlock Text="Large" /></orchard:BleeckerCard>
         </Grid>
+        <orchard:BleeckerCard x:Name="StyledPaddingCard" Style="{StaticResource ConsumerPaddingCardStyle}" HorizontalAlignment="Left">
+            <TextBlock Text="Consumer style padding: 7" />
+        </orchard:BleeckerCard>
+        <orchard:BleeckerCard x:Name="StyledDefaultCard" Style="{StaticResource ConsumerCardStyle}" HorizontalAlignment="Left">
+            <TextBlock Text="Consumer style, default padding" />
+        </orchard:BleeckerCard>
         <orchard:BleeckerCard x:Name="Composition" Width="320" HorizontalAlignment="Left">
             <StackPanel Spacing="16">
                 <TextBlock Text="Local coverage · 東京 · São Paulo · القاهرة" TextWrapping="Wrap" Style="{StaticResource BleeckerHeadingStyle}" FontSize="20" />

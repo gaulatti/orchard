@@ -1,0 +1,28 @@
+{
+  "scope": "BleeckerCard consumer style padding precedence, source-built x64 catalog",
+  "sourceRelease": "unreleased; v0.1.0-preview.20261027.4 does not contain this change",
+  "build": "x64 Release catalog, 0 warnings, 0 errors",
+  "presentation": {
+    "result": "presentation-result.json",
+    "sha256": "27d6473b899364fcac1b285bbc17b917e5b4ad25fc3a260f88b2ca6d4b1cc676",
+    "passed": true
+  },
+  "focused": {
+    "result": "result.json",
+    "sha256": "8575cd126d2ae37349d9105048a0e7722b0d368819f71fe61f7251fe5781b59b",
+    "lightCapture": "catalog-light.png",
+    "lightSha256": "b9f7f0cc4286810e295124fcd78487b596f1a700181bd95937d59094d288599d",
+    "darkCapture": "catalog-dark.png",
+    "darkSha256": "5abe2529a74bf27906418d37f2dfe6b8f1a841ad38e7074d59a57aeae5246aa4",
+    "passed": true,
+    "assertions": [
+      "consumer style Padding=7 on a Medium card",
+      "consumer style without Padding retains default 24",
+      "all named padding sizes and existing Card behavior"
+    ]
+  },
+  "independentPackageConsumerVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

@@ -39,6 +39,12 @@ public sealed partial class CardsFixture : UserControl
         }
         foreach (var card in Paddings.Children.OfType<BleeckerCard>())
             Require(card.Padding.Left == (card.PaddingSize switch { BleeckerCardPadding.None => 0, BleeckerCardPadding.Small => 16, BleeckerCardPadding.Medium => 24, _ => 32 }), "Card padding mismatch.");
+        Require(StyledPaddingCard.Padding.Left == 7 && StyledPaddingCard.Padding.Top == 7 &&
+                StyledPaddingCard.Padding.Right == 7 && StyledPaddingCard.Padding.Bottom == 7,
+            "Card constructor overrode consumer style padding.");
+        Require(StyledDefaultCard.Padding.Left == 24 && StyledDefaultCard.Padding.Top == 24 &&
+                StyledDefaultCard.Padding.Right == 24 && StyledDefaultCard.Padding.Bottom == 24,
+            "Card lost default padding under a consumer style.");
         var original = Composition.ActualHeight;
         Composition.Width = 240;
         await MainWindow.AwaitPresentationAsync(this);
