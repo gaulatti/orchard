@@ -1,0 +1,38 @@
+{
+  "format": "orchard-monitoring-desktop-v1",
+  "passed": true,
+  "requestedTheme": "Light",
+  "catalogExeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+  "orchardDllSha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb",
+  "steps": {
+    "navigationClick": {
+      "x": 458,
+      "y": 580,
+      "name": "Show Monitoring demo"
+    },
+    "initialSummary": "0 selected · 0 local updates · 0 local reviews",
+    "selectClick": {
+      "x": 864,
+      "y": 894,
+      "name": "Select fictional post: Harbor volunteers open a fictional reading room."
+    },
+    "selectedSummary": "1 selected · 0 local updates · 0 local reviews",
+    "reviewOpenedByEnter": "Record local review",
+    "automaticReviewFocus": "Local instructions",
+    "reviewFocusScreenshotSha256": "8a93769fb689c425316bcd9c205fde9e030cfca1b694e46260405d1ad7712729",
+    "reviewClosedByEscape": true,
+    "focusAfterEscape": "Review selected",
+    "updateClick": {
+      "x": 1178,
+      "y": 592,
+      "name": "Simulate local update"
+    },
+    "updatedSummary": "1 selected · 1 local updates · 0 local reviews"
+  },
+  "physicalPointerInputSent": true,
+  "physicalKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "compositionAccepted": false,
+  "processExited": true
+}

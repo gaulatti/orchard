@@ -63,12 +63,38 @@
     "visibleScreenshotSha256": "571e613c7e9fcf80c0616ca25fe5013e96f8d4387062abc33b724db8ac0f68ab",
     "selfContainedPublishVerified": false
   },
+  "x64CatalogArchive": {
+    "path": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-x64.zip",
+    "sha256": "40da12696757f38414de8115bc5d1d81a50cc36add1a48a25153405989f74b52",
+    "bytes": 106110524,
+    "entryCount": 664,
+    "sourceXbfCount": 114,
+    "allEntriesStreamVerifiedAgainstSourceBuild": true,
+    "changedFromV7": ["Orchard.Catalog.dll", "Orchard.Catalog.exe", "Orchard.Catalog.pdb", "Orchard.dll", "Orchard.pdb"],
+    "manifest": "docs/evidence/components-v8-package-preview-v1/v8-x64-catalog-stream-manifest.json",
+    "manifestSha256": "1afd8abb23dcad998580b7b249513039c37f66fe219e44d80d7fc49b4d189657",
+    "overlayReplay": {
+      "method": "Verified v7 extracted 664-file set with the five changed files replaced from the v8 archive, then restored the original v7 bytes by hash",
+      "lightReport": "docs/evidence/components-v8-package-preview-v1/v8-catalog-overlay-light.json",
+      "lightReportSha256": "0d9aba7aaf4ef56e3c627a39b7c9f5b9b48fbfcb0b461b3764c8c06ba809679a",
+      "lightScreenshot": "docs/evidence/components-v8-package-preview-v1/v8-catalog-overlay-light.png",
+      "lightScreenshotSha256": "8a93769fb689c425316bcd9c205fde9e030cfca1b694e46260405d1ad7712729",
+      "darkReport": "docs/evidence/components-v8-package-preview-v1/v8-catalog-overlay-dark.json",
+      "darkReportSha256": "9393ba417b925398c88623fa1dffe25ad76d2c3a18681ce5fa5f90f2a58aea4e",
+      "darkScreenshot": "docs/evidence/components-v8-package-preview-v1/v8-catalog-overlay-dark.png",
+      "darkScreenshotSha256": "0a339495fcae729b7107e700ad9bcae169828e3ca0155e1ed44b97b3694ad44c",
+      "bothNativeRunsPassed": true,
+      "bothScreenshotsVisuallyInspected": true
+    },
+    "independentExtractionVerified": false,
+    "nativeExtractedArchiveReplayVerified": false
+  },
   "cleanup": {
     "attempted": true,
     "automaticApprovalReview": "blocked by policy",
     "generatedSharedCacheConsumerWorkspacesRemain": true
   },
-  "x64CatalogArchiveCreated": false,
+  "x64CatalogArchiveCreated": true,
   "arm64CatalogArchiveCreated": false,
   "nativeArm64RuntimeVerified": false,
   "entriesStarted": 112,
