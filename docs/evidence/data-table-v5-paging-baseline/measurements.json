@@ -1,0 +1,187 @@
+{
+  "format": "orchard-data-table-v5-focused-measurements-v1",
+  "rawReportSha256": "1e8d87665c5759b41e3e97b7e74e5dbccc43a2fdd431335a67daa2d543494d5a",
+  "scope": "paging-16384-100",
+  "measurements": [
+    {
+      "operation": "bind-data",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 209.7187,
+      "threePassMilliseconds": 1360.3497,
+      "managedAllocatedBytes": 27763488,
+      "gcPauseMilliseconds": 126.606
+    },
+    {
+      "operation": "sort-descending",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 100.342,
+      "threePassMilliseconds": 107.3384,
+      "managedAllocatedBytes": 3602192,
+      "gcPauseMilliseconds": 22.113
+    },
+    {
+      "operation": "sort-ascending",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 402.7037,
+      "threePassMilliseconds": 1613.0521,
+      "managedAllocatedBytes": 22488536,
+      "gcPauseMilliseconds": 237.475
+    },
+    {
+      "operation": "next-page",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 381.5903,
+      "threePassMilliseconds": 1724.0576,
+      "managedAllocatedBytes": 19648816,
+      "gcPauseMilliseconds": 411.611
+    },
+    {
+      "operation": "select-page",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 21.2432,
+      "threePassMilliseconds": 51.8666,
+      "managedAllocatedBytes": 478552,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "deselect-page",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 17.9495,
+      "threePassMilliseconds": 31.7199,
+      "managedAllocatedBytes": 1112648,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "select-all",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 21.8423,
+      "threePassMilliseconds": 38.3939,
+      "managedAllocatedBytes": 1383456,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "deselect-all",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 17.9465,
+      "threePassMilliseconds": 41.5049,
+      "managedAllocatedBytes": 465480,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "notify-hidden",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 264.7447,
+      "threePassMilliseconds": 1437.9817,
+      "managedAllocatedBytes": 19433304,
+      "gcPauseMilliseconds": 263.739
+    },
+    {
+      "operation": "notify-visible",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 86.0245,
+      "threePassMilliseconds": 307.8089,
+      "managedAllocatedBytes": 7709056,
+      "gcPauseMilliseconds": 60.422
+    },
+    {
+      "operation": "range-filter",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 587.1073,
+      "threePassMilliseconds": 2112.7804,
+      "managedAllocatedBytes": 24557784,
+      "gcPauseMilliseconds": 705.718
+    },
+    {
+      "operation": "clear-range",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 154.7169,
+      "threePassMilliseconds": 1127.6521,
+      "managedAllocatedBytes": 11810960,
+      "gcPauseMilliseconds": 202.481
+    },
+    {
+      "operation": "search-group",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 19.1443,
+      "threePassMilliseconds": 1640.7747,
+      "managedAllocatedBytes": 20529792,
+      "gcPauseMilliseconds": 484.451
+    },
+    {
+      "operation": "clear-search",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 19.7908,
+      "threePassMilliseconds": 1181.471,
+      "managedAllocatedBytes": 14931112,
+      "gcPauseMilliseconds": 295.609
+    },
+    {
+      "operation": "global-group",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 439.2987,
+      "threePassMilliseconds": 1155.3025,
+      "managedAllocatedBytes": 12956952,
+      "gcPauseMilliseconds": 315.227
+    },
+    {
+      "operation": "clear-global",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 200.6012,
+      "threePassMilliseconds": 1116.5574,
+      "managedAllocatedBytes": 10899256,
+      "gcPauseMilliseconds": 263.788
+    },
+    {
+      "operation": "reverse-source",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 194.1318,
+      "threePassMilliseconds": 1266.1103,
+      "managedAllocatedBytes": 24287408,
+      "gcPauseMilliseconds": 330.733
+    },
+    {
+      "operation": "clear-sort",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 10.5265,
+      "threePassMilliseconds": 11.8959,
+      "managedAllocatedBytes": 311064,
+      "gcPauseMilliseconds": 0
+    },
+    {
+      "operation": "remove-first",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 110.2301,
+      "threePassMilliseconds": 393.7283,
+      "managedAllocatedBytes": 8687424,
+      "gcPauseMilliseconds": 38.71
+    },
+    {
+      "operation": "append-original",
+      "rows": 16384,
+      "pageSize": 100,
+      "mutationMilliseconds": 44.4406,
+      "threePassMilliseconds": 47.8459,
+      "managedAllocatedBytes": 6130464,
+      "gcPauseMilliseconds": 30.241
+    }
+  ]
+}

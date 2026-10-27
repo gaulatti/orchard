@@ -1,0 +1,32 @@
+{
+  "scope": "Published v5 package-matching extracted x64 catalog, focused 16,384-row Data Table paging replay",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5",
+  "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "catalogSha256": "d6ce51b09de7cdb2794860c7a689afc2fc8d0ecabf7399a3dcc9e9d2483f11b6",
+  "rawReport": "artifacts/current/data-table-v5-paging-baseline/data-table-performance.json",
+  "rawReportSha256": "1e8d87665c5759b41e3e97b7e74e5dbccc43a2fdd431335a67daa2d543494d5a",
+  "audit": "audit.json",
+  "auditSha256": "6eb72695fc21e30b931b1838b4a38709d18e429f2a0a1fcb2e9c39dbca44ccb0",
+  "measurements": "measurements.json",
+  "measurementsSha256": "4abbca615ffb0a731c2afb062da73a0afd151f835e7dd83005ff94a9d7df3186",
+  "processExit": "process-exit.json",
+  "processExitSha256": "5f00759e3d4cef92e939a9f742bc0165df7d2c261241c19ab17328158923dbae",
+  "singleProcessAuditPassed": true,
+  "semanticOperationsPassed": 20,
+  "nextPage": {
+    "rows": 16384,
+    "pageSize": 100,
+    "mutationMilliseconds": 381.5903,
+    "threePassMilliseconds": 1724.0576,
+    "managedAllocatedBytes": 19648816,
+    "gcPauseMilliseconds": 411.611,
+    "existingLocalBudgetMilliseconds": 1000,
+    "budgetPassed": false
+  },
+  "threeProcessMedianVerified": false,
+  "full120ProfileMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "dataTableAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

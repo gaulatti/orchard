@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "component": "BleeckerDataTable",
+  "sourceRowCounts": [
+    16384
+  ],
+  "pageSizes": [
+    100
+  ],
+  "verificationScope": "focused-paging",
+  "fullPerformanceMatrixVerified": false,
+  "operationsPerProfile": 20,
+  "measurements": 20,
+  "renderedRows": 2000,
+  "retainedNativeRows": 948,
+  "paginatedNativeRowsBounded": true,
+  "originalDataControlsAndNotificationsVerified": true,
+  "retainedRowsRemainLoaded": true,
+  "unloadedProducerSubscriptionsReleased": true,
+  "absolutePerformanceBudgetEstablished": false,
+  "completeMotionTimingVerified": false,
+  "physicalInputVerified": false,
+  "nativeComponentAccepted": false,
+  "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+  "hostSha256": "d6ce51b09de7cdb2794860c7a689afc2fc8d0ecabf7399a3dcc9e9d2483f11b6",
+  "rawPixelsValidated": 0,
+  "reportSha256": "1e8d87665c5759b41e3e97b7e74e5dbccc43a2fdd431335a67daa2d543494d5a"
+}

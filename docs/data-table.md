@@ -1,5 +1,16 @@
 # Data Table
 
+The published `0.1.0-preview.20261027.5` package-matching x64 catalog ZIP was
+extracted and run through the focused hidden 16,384-row, page-100 replay.
+All 20 semantic, original-content and unload operations passed. Next-page
+mutation plus three dispatcher passes took **1,724.06 ms** in this one process,
+above the unchanged 1,000 ms local target; managed allocation was 19,648,816
+bytes. The [v5 checkpoint](evidence/data-table-v5-paging-baseline/checkpoint.json)
+retains the audit and all 20 measurements. This is neither a three-process
+median nor the full 120-profile performance matrix, and it does not establish
+an improvement over earlier binaries. Data Table performance acceptance remains
+open.
+
 The `0.1.0-text-media-v3-local` NuGet library checkpoint
 (`13ab2e380421a2fb0850f1ffe2bcdcb157b1952d4d3175812859c6ed730f0f9e`)
 passes a focused hidden x64 replay in its independently built package consumer:
