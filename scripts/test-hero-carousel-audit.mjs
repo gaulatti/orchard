@@ -74,9 +74,10 @@ for(const [index,[name,mutate]]of mutations.entries()){
  const candidate=structuredClone(reference);mutate(candidate,folder);fs.writeFileSync(path.join(folder,'hero-carousel.json'),JSON.stringify(candidate,null,2)+'\n');
  let failure=null;try{verifyHeroCarouselNative(folder,host,path.join(folder,'audit.json'));}catch(error){failure=error;}
  assert(failure&&failure.code==='ERR_ASSERTION',name+' was accepted or failed for an unrelated reason');rejected.push({name,error:failure.message});
+ fs.rmSync(folder,{recursive:true,force:true});
 }
 const result={format:'orchard-hero-carousel-native-rejections-v1',passed:true,negativeCasesRejected:rejected.length,rejected,sourceReportSha256:hash(path.join(gold,'hero-carousel.json')),sourceRasterParityVerified:false,nativeComponentAccepted:false};
 fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({passed:true,negativeCasesRejected:rejected.length,output}));
-// The rejected cases are reproducible from the source report. Keep them only when
-// an assertion fails, so successful audits do not retain dozens of hard links.
+// Each proven rejection is removed immediately; an unexpected failure keeps
+// only its current case for diagnosis instead of every preceding hard-link tree.
 fs.rmSync(casesRoot,{recursive:true,force:true});

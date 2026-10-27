@@ -106,10 +106,11 @@ which deliverables and evidence have actually been regenerated.
 On 2026-10-26, retained `artifacts/current` outputs measured about 396 GiB in
 logical file lengths across 3,326 test-run directories, far above the intended
 working set. That sum includes hard-linked negative-audit cases and therefore
-overstates physical disk use. The Hero Carousel negative auditor now removes
-those scratch cases after a successful audit; it retains them if an assertion
-fails so the failure can be examined. Old successful runs and their copied
-application binaries still need pruning or a full artifact reset. After any
+overstates physical disk use. The Hero Carousel negative auditor removes each
+proven rejection immediately; if an assertion fails, it retains only that case
+for diagnosis. This prevents one late failure from retaining dozens of earlier
+hard-link trees. Old successful runs and their copied application binaries
+still need pruning or a full artifact reset. After any
 reset, regenerate the evidence needed for active acceptance checks rather than
 claiming that old checkpoint paths still exist.
 
