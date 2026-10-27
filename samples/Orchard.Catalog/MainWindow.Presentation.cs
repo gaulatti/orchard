@@ -20,7 +20,7 @@ public sealed partial class MainWindow
             (IconButtons, scheme => IconButtons.VerifyAsync(scheme)), (IconBadges, scheme => IconBadges.VerifyAsync(scheme)), (Empties, _ => Empties.VerifyAsync()), (ProgressStacks, _ => ProgressStacks.VerifyAsync()), (ToggleGroups, _ => ToggleGroups.VerifyAsync()),
             (Cards, scheme => Cards.VerifyAsync(scheme)), (Separators, scheme => Separators.VerifyAsync(scheme)),
             (StatusBadges, scheme => StatusBadges.VerifyAsync(scheme)), (Menus, scheme => Menus.VerifyAsync(scheme, folder)),
-            (Notifications, scheme => Notifications.VerifyAsync(scheme, folder)), (ActivityItems, scheme => ActivityItems.VerifyAsync(scheme, folder)),
+            (Notifications, scheme => Notifications.VerifyAsync(scheme, folder, CatalogRoot)), (ActivityItems, scheme => ActivityItems.VerifyAsync(scheme, folder)),
             (Tooltips, scheme => Tooltips.VerifyAsync(scheme, folder)), (FieldHelp, scheme => FieldHelp.VerifyAsync(scheme, folder)),
             (Labels, scheme => Labels.VerifyAsync(scheme, folder)), (Inputs, scheme => Inputs.VerifyAsync(scheme, folder)),
             (Keyboard, scheme => Keyboard.VerifyAsync(scheme, folder)), (Eyebrows, scheme => Eyebrows.VerifyAsync(scheme, folder)),

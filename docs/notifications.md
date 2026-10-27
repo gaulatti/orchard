@@ -55,6 +55,19 @@ title. The focused route is `./scripts/smoke-catalog.ps1 -Component notification
 the ordinary full catalog still includes the fixture. Fresh native x64/ARM64
 runtime and package verification remain required before accepting the fix.
 
+The catalog's theme regression must change `CatalogRoot`, the element that
+actually owns the fixture's inherited theme. `XamlRoot.Content` is the outer
+modal host; changing only that host can leave an explicitly Light `CatalogRoot`
+and all of its descendants Light while the test expects Dark. On 2026-10-27,
+the source-built x64 catalog failed that incorrect route twice. After passing
+the catalog root into the fixture, the focused notification smoke passed both
+appearances and its existing open-popup palette, focus and geometry assertions.
+The combined presentation smoke then reached Activity Items and failed its
+title-baseline assertion. See
+`docs/evidence/notifications-catalog-theme-root-v1/checkpoint.json`. This is a
+catalog regression-target correction; it does not change the library control
+or qualify a new package.
+
 Focused x64 verification passes both appearances at
 `artifacts/smoke-notifications-rendered-owner-theme`. The complete local catalog
 also passes at `artifacts/smoke-notifications-theme-composed-ink-all`, with

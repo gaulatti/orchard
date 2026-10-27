@@ -696,7 +696,7 @@ public sealed partial class MainWindow : Window
         foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
         {
             await SelectFixtureAsync(Foundation);CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(Notifications);
-            await Notifications.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder);
+            await Notifications.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder,CatalogRoot);
             await CaptureAsync(Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
         await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="notifications",environment=RuntimeEnvironment()}));
@@ -864,7 +864,7 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(Menus);
             await Menus.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Notifications);
-            await Notifications.VerifyAsync(scheme, folder);
+            await Notifications.VerifyAsync(scheme, folder, CatalogRoot);
             await SelectFixtureAsync(Alerts);
             await Alerts.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(BrandLockups);

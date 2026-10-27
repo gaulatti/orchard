@@ -1,0 +1,20 @@
+{
+  "scope": "Notifications catalog inherited-theme regression target",
+  "observedAt": "2026-10-27T01:07:06-04:00",
+  "catalogExeSha256": "1b9d0a5e035855c22a0f8398cb80ec8a5df7e95aa9873a8403bf0efe632f3cae",
+  "orchardDllSha256": "c5b2d6a9f002a237f88d76d273bc968ea38e6dcbe686e733d3611abeaccda67e",
+  "sourceBuildPassed": true,
+  "focusedSmoke": "artifacts/current/notifications-theme-root-focused-v1/result.json",
+  "focusedSmokePassed": true,
+  "focusedSmokeThemes": ["Light", "Dark"],
+  "regressionBoundary": "NotificationsFixture now changes CatalogRoot, the explicit theme owner of the loaded fixture, rather than the outer XamlRoot.Content modal host.",
+  "before": "The source-built focused Notifications smoke failed twice with root Dark but fixture, badge, trigger and popup Light because CatalogRoot remained explicitly Light.",
+  "combinedSmoke": "artifacts/current/presentation-after-notification-root-v1/result.json",
+  "combinedSmokePassed": false,
+  "combinedSmokeFailure": "Activity Items title-baseline assertion after Notifications passed in the Light sequence.",
+  "libraryControlChanged": false,
+  "newPackageQualified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
