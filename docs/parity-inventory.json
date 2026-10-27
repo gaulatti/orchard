@@ -7484,7 +7484,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Focused v5 x64 foreground Count sort, Ash search, page selection retention and pointer/keyboard pagination pass; complete source-derived visual review, scaling/motion, remaining input/focus paths and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
-        "Meet unchanged local performance budgets: the published v5 package-matching extracted x64 catalog passes all 20 semantic operations in each of three focused processes, but 16,384-row/page-100 next-page takes 1,724.06 ms median versus the 1,000 ms local target; 11 of 20 timing medians fail (docs/evidence/data-table-v5-paging-median/checkpoint.json). The full 120-profile audit and performance acceptance remain open",
+        "Meet unchanged local performance budgets: the published v7 package-matching extracted x64 catalog passes all 20 semantic operations in each of three focused processes, but 16,384-row/page-100 next-page takes 1,751.42 ms median versus the 1,000 ms local target; 11 of 20 timing medians fail (docs/evidence/data-table-v7-paging-median/checkpoint.json). The full 120-profile audit and performance acceptance remain open",
         "Complete broader component acceptance beyond the navigation-foreground repair: version0.1.0-table-navigation-v1-local passes independent x64/ARM64 consumer builds and96states/264observations in each x64package/catalog host, with66fictional-demo checks; native ARM64 runtime remains unverified"
       ],
       "sourcePreparation": {
@@ -7750,6 +7750,7 @@
         "fullPerformanceMatrixVerified": false,
         "performancePassed": false
       },
+      "publishedV7PagingMedianCheckpoint": "docs/evidence/data-table-v7-paging-median/checkpoint.json",
       "currentV4FocusedPagingObservation": {
         "checkpoint": "docs/evidence/data-table-v4-paging-baseline/checkpoint.json",
         "librarySha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",

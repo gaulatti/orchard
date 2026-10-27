@@ -1,5 +1,18 @@
 # Data Table
 
+The published `0.1.0-preview.20261027.7` package-matching x64 catalog passes
+three independent sequential focused 16,384-row/page-100 replays: all 20
+semantic, original-content and unload operations pass in each process, with
+matching snapshots and bounded native rows. Next-page mutation plus three
+dispatcher passes took **1,751.42 ms median** (1,743.47–1,850.29 ms), above
+the unchanged 1,000 ms local target. Eleven of 20 focused timing medians fail;
+all allocation medians pass. The [v7 three-run
+checkpoint](evidence/data-table-v7-paging-median/checkpoint.json) pins the
+package, catalog, reports, audits and budget. Its range overlaps the v5 range,
+so it does not establish a performance improvement or regression. The full
+120-profile matrix remains unverified for v7, and Data Table performance
+acceptance remains open.
+
 The published `0.1.0-preview.20261027.5` package-matching x64 catalog ZIP was
 extracted and run through three independent sequential focused 16,384-row,
 page-100 replays. All 20 semantic, original-content and unload operations
