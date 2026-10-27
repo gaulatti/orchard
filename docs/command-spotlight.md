@@ -117,6 +117,16 @@ stopped at the native editor's managed automation-pattern boundary. Its failed
 report is retained. The subsequent run follows the real TextChanged path and
 records hidden-window guards with zero focus/activation or hardware input.
 
+The [published v7 x64 archive](releases/2026-10-27-preview-v7.md) passes the
+existing extracted-catalog replay with its exact NuGet DLL: 100 states, 24
+contracts, 168 hotkey states and 38 Windows-key checks. The native 319px and
+639px triggers hide the entire shortcut hint in both themes; the hint returns
+at 640px. Light and Dark 639px captures were visually inspected against the
+source's intentionally retained stray `+`. The
+[checkpoint](evidence/command-spotlight-v7-published-archive-v1/checkpoint.json)
+records hashes and exit code zero. This hidden replay does not establish
+published-archive physical input, complete visual review or native ARM64 runtime.
+
 Declare the control inside the window's `BleeckerModalHost`. Supply ordered
 `BleeckerCommandSpotlightAction` originals through `Actions`; an observable
 `BleeckerCommandSpotlightActions` collection invalidates filtering/grouping when

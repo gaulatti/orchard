@@ -6436,7 +6436,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Resolve strict browser/native and native host raster differences with zero thresholds unchanged",
+        "Complete source-derived visual review; preserve failed strict browser/native and native-host raster comparisons with zero thresholds, but do not require byte-identical raster for public-component acceptance",
         "Focused v5 foreground trigger, search-edit hotkey, action keyboard/pointer dispatch and editor-close checks passed; verify remaining focus/Tab routing, broader installed/custom keyboard layouts and IME behavior",
         "Complete caller template/overlay combinations, full display/text scaling/motion and native ARM64 runtime",
         "Measured refreshes improved; large native unique-group refreshes and full collection performance acceptance remain open"
@@ -6463,7 +6463,7 @@
         "showStrayPlus": false,
         "sourceReferencePreservesStrayPlus": true,
         "nativeImplementationVerified": true,
-        "status": "Whole narrow hint is hidden in 100-state hidden source preview; physical input and full raster acceptance remain open"
+        "status": "Whole narrow hint is hidden in the published v7 extracted x64 catalog at 319px and 639px in Light and Dark (docs/evidence/command-spotlight-v7-published-archive-v1/checkpoint.json); published-archive physical input and full visual review remain open"
       },
       "nativePreview": {
         "status": "local v2 NuGet/catalog preview; full acceptance open",
