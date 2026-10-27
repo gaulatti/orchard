@@ -106,7 +106,9 @@ The later exact v5 extracted x64 catalog passed focused foreground checks for
 the trigger: at 1086px the label and Ctrl+K hint were visible and pointer input
 opened the dialog; at 603px the icon-only trigger omitted the entire hint and
 still opened the dialog. Escape closed it at both widths. Ctrl+K from a directly
-focused catalog search edit did not open the dialog. See
+focused catalog search edit did not open the dialog. In the narrow dialog,
+ArrowDown then Enter invoked the original ungrouped action, pointer selection
+invoked beta's own callback, and Ctrl+K from the focused editor closed it. See
 `docs/evidence/components-v5-command-spotlight-foreground-v1/checkpoint.json`.
 This is targeted WinUI input evidence, not complete Command Spotlight acceptance.
 

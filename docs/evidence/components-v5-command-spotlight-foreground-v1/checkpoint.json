@@ -19,9 +19,13 @@
     "narrowTriggerShowsSearchIconOnly": true,
     "narrowTriggerOpenedSpotlightAfterWindowSizingEnded": true,
     "narrowSpotlightFocusedSearchEditor": true,
-    "escapeClosedNarrowSpotlight": true
+    "escapeClosedNarrowSpotlight": true,
+    "arrowDownThenEnterInvokedOriginalUngroupedAction": true,
+    "pointerSelectionInvokedOriginalBetaOwnCallback": true,
+    "controlKFromFocusedSpotlightEditorClosedDialog": true
   },
   "windowSizingNote": "The system Size command remained active through initial attempted clicks. Return ended sizing; the subsequent narrow trigger click opened Spotlight. Those sizing-mode clicks are not counted as trigger failures.",
+  "settlingNote": "One immediate post-click observation preceded dialog opening; the subsequent settled UI observation showed the open editor before the Control+K close check.",
   "allActionDispatchAndTabRoutesVerified": false,
   "independentConsumerForegroundInputVerified": false,
   "hardwareDeviceInputVerified": false,
