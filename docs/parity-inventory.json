@@ -6320,7 +6320,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Resolve strict browser/native and native host raster differences with zero thresholds unchanged",
-        "Verify physical key/pointer/focus/Tab routing, broader installed/custom keyboard layouts and IME behavior",
+        "Focused v5 foreground trigger and search-edit hotkey checks passed; verify remaining key/pointer/focus/Tab routing, broader installed/custom keyboard layouts and IME behavior",
         "Complete caller template/overlay combinations, full display/text scaling/motion and native ARM64 runtime",
         "Measured refreshes improved; large native unique-group refreshes and full collection performance acceptance remain open"
       ],

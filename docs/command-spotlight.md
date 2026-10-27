@@ -93,14 +93,22 @@ The source auditor rejects 64 corruptions and the package auditor rejects 62.
 Both fictional demos pass the shared host checks. The whole narrow hint is
 hidden as explicitly requested.
 
-Strict browser/native image equality fails at 29,631,022 pixels/max239, with
+The v2 qualification's strict browser/native image equality fails at 29,631,022 pixels/max239, with
 zero difference allowed. Source/package equality fails at 351/max5 and
-source/archive at 345/max5. These failed gates are retained; no actual keyboard,
-pointer, focus or native ARM64 acceptance is claimed. The current source captures
+source/archive at 345/max5. These failed gates are retained; that v2 run did not
+verify foreground keyboard, pointer or focus input, or native ARM64 runtime. Its source captures
 1,617 hidden-window guards and the package 1,593, with zero focus/activation or
 hardware input. Source/archive each retain 102 actual PNGs; the package retains
 100. The earlier v1 delivery remains historical: the expanded dispatch audit
 found and corrected eager callback/href lookup before the outer callback.
+
+The later exact v5 extracted x64 catalog passed focused foreground checks for
+the trigger: at 1086px the label and Ctrl+K hint were visible and pointer input
+opened the dialog; at 603px the icon-only trigger omitted the entire hint and
+still opened the dialog. Escape closed it at both widths. Ctrl+K from a directly
+focused catalog search edit did not open the dialog. See
+`docs/evidence/components-v5-command-spotlight-foreground-v1/checkpoint.json`.
+This is targeted WinUI input evidence, not complete Command Spotlight acceptance.
 
 The first hidden runtime attempt retained 23 states before its test harness
 stopped at the native editor's managed automation-pattern boundary. Its failed
