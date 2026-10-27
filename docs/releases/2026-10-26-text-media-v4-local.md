@@ -35,6 +35,13 @@ states, 16 caller-content contracts, two themes and directions, 40 captures and
 exact package bytes, recorded in the [Skeleton contract](../skeleton-reference.md).
 Normal pulse timing, compositor shadow raster and display/text scaling remain open.
 
+Toggle Group's hidden lifecycle contract also passes on the same packaged DLL:
+the extracted x64 catalog passes 62 checks and the independent NuGet consumer
+passes 60, with 70 observations per host. These cover selection bindings,
+standalone styles and command gating, and rejected retired/disabled UI Automation
+actions. Physical input, visual parity, scaling and ARM64 runtime remain open;
+see the [Toggle Group contract](../toggle-groups.md).
+
 A separate general x64 package smoke test **failed** at the Data Table toolbar
 held-Reset geometry assertion. That fixture activates a foreground window and
 sends native keyboard input; it was run outside the authorized desktop window
