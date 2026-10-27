@@ -55,6 +55,15 @@ action with the exact v8 DLL. This directly verifies that self-contained host
 runtime path. It does not prove a fresh v8 restore, compilation or publish;
 those clean delivery steps remain open while C: lacks space.
 
+The [exact v8 package also compiles in an independent ARM64 consumer](../evidence/components-v8-arm64-consumer-compile-v1/checkpoint.json).
+Its 162 source files match the repository fixture and contain no project
+reference. Restore selected the `win-arm64` target and the exact local v8
+package from the shared cache; a framework-dependent build completed with
+zero warnings or errors. The apphost has ARM64 PE machine type and its copied
+Orchard DLL matches the package. This is compile evidence only: no native ARM64
+process ran, no clean dependency cache was used and no self-contained ARM64
+publish occurred.
+
 The local v8 x64 catalog preview ZIP is now available at
 `artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v8-local-win-x64.zip`
 (SHA-256 `40da12696757f38414de8115bc5d1d81a50cc36add1a48a25153405989f74b52`).
@@ -105,6 +114,8 @@ records hashes, verified checks and remaining failures. The inventory remains
 
 The attempted cleanup of generated artifacts was rejected by automatic approval
 review as “blocked by policy,” so those files remain. C: still has less than
-100 MB free after the ARM64 file-set materialization.
+25 MB free after the ARM64 consumer compile. A scoped attempt to remove that
+compile's generated temporary ARM64 output was also rejected by automatic
+approval review as “blocked by policy”; its 55 MB output remains.
 The public wiki remote is unavailable, so this release note is maintained in
 the repository.

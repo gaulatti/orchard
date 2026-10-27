@@ -8,7 +8,13 @@ Its versioned 660-file directory combines 655 verified, unchanged v7 ARM64
 deployment files with five ARM64 binaries compiled from the same product source
 as the v8 x64 package. The manifest pins all file hashes, and the apphost has
 the ARM64 PE machine type. This x64 host cannot execute ARM64; native runtime,
-independent ARM64 package consumption and a standalone v8 ARM64 ZIP remain open.
+independent ARM64 package runtime and a standalone v8 ARM64 ZIP remain open.
+The subsequent [independent package consumer compile](evidence/components-v8-arm64-consumer-compile-v1/checkpoint.json)
+uses the exact v8 NuGet DLL and a matching 162-file fixture outside the
+repository. Its `win-arm64` framework-dependent build passes with zero warnings
+or errors and an ARM64 apphost. This narrows the open boundary to clean-cache
+and self-contained ARM64 delivery plus actual native ARM64 execution; none of
+those is inferred from the compile.
 
 ## Render-pass table alignment styles, 2026-10-24
 

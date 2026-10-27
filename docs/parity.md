@@ -34,6 +34,11 @@ The [matching v8 source also builds for ARM64](evidence/components-v8-linked-arm
 with zero warnings or errors. A separate manifest verifies all 660 files in a
 versioned ARM64 catalog directory, including five new ARM64 binaries. It has
 not run on native ARM64 hardware or been packaged as a standalone v8 ZIP.
+An [independent consumer of the exact v8 NuGet package](evidence/components-v8-arm64-consumer-compile-v1/checkpoint.json)
+also restores from the shared cache and cross-compiles for ARM64 with zero
+warnings or errors. Its apphost is ARM64 and its Orchard DLL matches the
+package. Clean-cache and self-contained ARM64 delivery and native runtime
+remain unverified.
 
 The Checkbox v3 hidden fixture now asserts native readiness after rendering;
 all shared source/consumer/archive raw checks agree, including `IsLoaded`.
