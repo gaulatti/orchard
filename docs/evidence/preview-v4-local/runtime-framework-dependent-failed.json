@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "message": "Microsoft.UI.Xaml.Markup.XamlParseException: XAML parsing failed.\r\n   at WinRT.ExceptionHelpers.\u003CThrowExceptionForHR\u003Eg__Throw|38_0(Int32 hr)\r\n   at WinRT.ExceptionHelpers.ThrowExceptionForHR(Int32 hr)\r\n   at ABI.Microsoft.UI.Xaml.IApplicationStaticsMethods.LoadComponent(IObjectReference _obj, Object component, Uri resourceLocator, ComponentResourceLocation componentResourceLocation)\r\n   at Microsoft.UI.Xaml.Application.LoadComponent(Object component, Uri resourceLocator, ComponentResourceLocation componentResourceLocation)\r\n   at PackageConsumer.MainWindow.InitializeComponent() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\obj\\x64\\Release\\net10.0-windows10.0.26100.0\\win-x64\\MainWindow.g.i.cs:line 243\r\n   at PackageConsumer.MainWindow..ctor() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\MainWindow.xaml.cs:line 23\r\n   at PackageConsumer.App.OnLaunched(LaunchActivatedEventArgs args) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\App.xaml.cs:line 362",
+  "assembly": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\preview-v4\\cached-consumer-x64\\Orchard.dll",
+  "architecture": "X64",
+  "osArchitecture": "X64",
+  "osDescription": "Microsoft Windows 10.0.26200",
+  "framework": ".NET 10.0.12"
+}

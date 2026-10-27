@@ -735,3 +735,16 @@ made before the option-font change; its isolated consumer restore failed for
 insufficient disk space, and automatic approval review rejected removal of the
 stale local file. It is not a qualified or published package. Native ARM64
 execution and full Pagination acceptance remain open.
+
+## Current-source local package check
+
+The `0.1.0-preview.20261027.4` local NuGet package contains the current
+Pagination and Select font changes. Its assembly matches the current x64 catalog
+and both package-consumer outputs byte for byte. A package-reference-only x64
+consumer restored and built against cached dependencies, then passed native
+resource, font, Light/Dark layout and action checks. The ARM64 consumer restored
+and built with zero warnings/errors and an Arm64 apphost; it has not run natively.
+The [local package checkpoint](evidence/preview-v4-local/checkpoint.json)
+preserves both successful and failed attempts. Fresh fully isolated consumption,
+current catalog ZIPs and release publication still need disk headroom. The
+published preview remains `0.1.0-preview.20261027.2`.

@@ -2025,6 +2025,8 @@
         "selectionChangeAndResetPassed": true,
         "arm64BuildPassed": true,
         "nativeArm64RuntimeVerified": false,
+        "currentLocalPackageX64RuntimePassed": true,
+        "currentLocalPackageArm64BuildPassed": true,
         "currentPackageQualified": false,
         "componentAccepted": false
       }

@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "message": "System.InvalidOperationException: Independent consumer did not acquire its own foreground window for native input.\r\n   at PackageConsumer.MainWindow.Require(Boolean condition, String message) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\MainWindow.xaml.cs:line 329\r\n   at PackageConsumer.MainWindow.AcquireConsumerInputAsync() in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\MainWindow.xaml.cs:line 842\r\n   at PackageConsumer.MainWindow.OnLoaded(Object sender, RoutedEventArgs e) in C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\tests\\PackageConsumer\\MainWindow.xaml.cs:line 120",
+  "assembly": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\preview-v4\\cached-consumer-x64\\Orchard.dll",
+  "architecture": "X64",
+  "osArchitecture": "X64",
+  "osDescription": "Microsoft Windows 10.0.26200",
+  "framework": ".NET 10.0.12"
+}

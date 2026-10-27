@@ -1,0 +1,58 @@
+{
+  "scope": "Current-source local NuGet package and cached dependency consumers",
+  "sourceCommit": "d8cba66",
+  "version": "0.1.0-preview.20261027.4",
+  "packageSha256": "3bd5b0a534eae065e054757955b5060a7095f5e79368433a59c57ac9a8abd48e",
+  "packageAssemblySha256": "87f46ccff5ba4629b92fd854a72bf382a6b66e45df498bc6492bb7580f82ad41",
+  "catalogX64AssemblyMatchesPackage": true,
+  "staticAudit": {
+    "passed": true,
+    "requiredEntriesPresent": 20,
+    "fontFiles": 6,
+    "unexpectedDevelopmentEntries": 0,
+    "assemblyMachine": "I386",
+    "assemblyFlags": "ILOnly",
+    "nuspecVersionMatches": true
+  },
+  "consumers": {
+    "x64": {
+      "packageReferenceOnly": true,
+      "globalDependencyCacheUsed": true,
+      "windowsAppSdkSelfContained": true,
+      "dotnetSelfContained": false,
+      "restorePassed": true,
+      "buildPassedZeroWarningsErrors": true,
+      "restoredPackageHashMatchesSource": true,
+      "copiedAssemblyHashMatchesPackage": true,
+      "nativeRuntimePassed": true,
+      "processAndOsArchitecture": "X64"
+    },
+    "arm64": {
+      "packageReferenceOnly": true,
+      "globalDependencyCacheUsed": true,
+      "frameworkDependentBuildPassedZeroWarningsErrors": true,
+      "copiedAssemblyHashMatchesPackage": true,
+      "apphostMachine": "Arm64",
+      "nativeRuntimeVerified": false
+    }
+  },
+  "runtimeEvidence": {
+    "x64": {"path": "runtime.json", "sha256": "89a4d547f68c5e7c8cae83e6501976b5f5b1ea99e47a6a77d4fadd6b7752a94a"},
+    "inputLight": {"path": "consumer-input-Light.json", "sha256": "8b3c1d4b4d24b82a33487810918c6aa3a531eb498edd256cb67951afc5c7f8cb"},
+    "inputDark": {"path": "consumer-input-Dark.json", "sha256": "451d5ce0696d6275404f92111ea44daf565e723fc155f22b9a74450b3b5355e6"},
+    "initialFrameworkDependentFailure": {"path": "runtime-framework-dependent-failed.json", "sha256": "c88894bfcc1f35ab5fda8771198d87f41bbb695b3c3dc38fd550a2013e0fd1d0"},
+    "initialForegroundFailure": {"path": "runtime-foreground-openwith-failed.json", "sha256": "3a6089393d47750455bfe4584be90dcca4ee3ca245162c6d03253f7782730f96"}
+  },
+  "transientFailures": [
+    "A framework-dependent Windows App SDK build failed XAML parsing; publishing with the Windows App SDK self-contained reached runtime checks.",
+    "An old Open With window owned foreground, so native input initially failed; after closing that exact dialog, the unchanged packaged consumer passed."
+  ],
+  "limits": [
+    "The consumer project ran in the repository with cached dependencies, not in the clean isolated temporary workspace; full isolated qualification still needs disk headroom.",
+    "This package is local and unpublished. Updated x64 and ARM64 catalog ZIPs and a versioned release remain pending.",
+    "Native ARM64 runtime and full component acceptance remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "libraryComplete": false
+}
