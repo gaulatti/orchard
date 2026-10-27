@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T23:57:24Z",
+  "scope": "Physical Tab and Enter input on an inactive slide in an independent x64 consumer of the published v7 NuGet package",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerLibrarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerAssemblySha256": "2ae498a27889275ed8495ad1813b4efec744865075d2140e1478e1681b28b702",
+  "sourceFixture": "tests/PackageConsumer/HeroCarouselForegroundWindow.cs",
+  "parentConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
+  "method": "Launched the existing --probe-hero-foreground consumer separately with explicit Dark and Light themes; used physical Tab and Enter through Computer Use and observed the live WinUI index, visible slide, and caller result text",
+  "observations": {
+    "Dark": {
+      "visibleSlideBeforeInactiveActivation": "Fictional coastal project",
+      "activeSlideEnterResult": "Original item retained: True; destination /fictional/coast; external False",
+      "inactiveSlideEnterResult": "Original item retained: True; destination /fictional/article#original; external True",
+      "indexBeforeAndAfterInactiveActivation": [0, 0]
+    },
+    "Light": {
+      "visibleSlideBeforeInactiveActivation": "Fictional coastal project",
+      "activeSlideEnterResult": "Original item retained: True; destination /fictional/coast; external False",
+      "inactiveSlideEnterResult": "Original item retained: True; destination /fictional/article#original; external True",
+      "indexBeforeAndAfterInactiveActivation": [0, 0]
+    }
+  },
+  "processesClosed": true,
+  "exitCodesCaptured": false,
+  "limitations": {
+    "publishedCatalogInactiveTabEnterVerified": false,
+    "fullInputFocusMatrixVerified": false,
+    "fullSourceVisualReviewVerified": false,
+    "scalingMotionPerformanceVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}

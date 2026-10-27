@@ -12,8 +12,17 @@ consumer's DLL and assembly match the v7 package checkpoint. In both explicit
 Dark and Light, physical Right then Left from an outside focused button changed
 index `0 → 1 → 0`; Right from a focused native text editor kept index `0`.
 Both consumer processes closed. Exit codes were not captured, and this check
-does not establish the same arrow path in the published catalog, inactive-slide
-Tab/Enter input, or the full input/focus and visual matrices.
+does not establish the same arrow path in the published catalog or the full
+input/focus and visual matrices.
+
+The [published v7 independent consumer inactive keyboard checkpoint](evidence/hero-carousel-v7-package-inactive-keyboard-v1/checkpoint.json)
+uses the same byte-matched package in separate Dark and Light runs. With the
+coastal slide still visible at index `0`, physical Tab reached the next inactive
+slide; Enter delivered the original second item's `/fictional/article#original`
+destination and external flag to the caller without changing the visible index.
+The active first item also responded to Enter in both themes. The consumer
+windows closed, but exit codes were not captured. Published catalog keyboard
+input, the full focus matrix and complete component acceptance remain open.
 
 A [separate independent local NuGet-consumer foreground check](evidence/hero-carousel-current-package-foreground-v1/checkpoint.json)
 exercises the user-selected input behavior with the byte-matched
