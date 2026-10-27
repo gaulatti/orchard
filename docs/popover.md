@@ -193,3 +193,12 @@ architecture, Orchard DLL, and removed isolated consumer before comparing 122
 reference states. The package probe passed, and 20 damaged evidence cases were
 rejected. This is a hidden layout/contract result; the separate foreground
 pointer and settled visual evidence above remains the runtime evidence.
+
+The [source x64 modal foreground follow-up](evidence/popover-modal-foreground-source-v1/checkpoint.json)
+exercises the catalog's caller-owned confirmation with physical pointer and
+Escape input in Light and Dark. Pointer opening keeps the Popover open; the first
+Escape closes only the confirmation, and the second closes the Popover and
+restores trigger focus. The original caller input stays intact. This focused
+route passes from a fresh source catalog build; the v11 package predates the
+fixture check. Other modal input combinations, scaling, performance and native
+ARM64 runtime remain open.

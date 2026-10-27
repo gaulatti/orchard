@@ -1,0 +1,29 @@
+{
+  "scope": "Popover caller-owned confirmation physical pointer and Escape route",
+  "baseCommit": "8b233a2613c9c31cb38f67d0818072203e6a7735",
+  "change": "Extend the existing catalog foreground fixture to open its original confirmation button with a physical pointer and dismiss the confirmation and parent Popover in order with physical Escape keys.",
+  "sourceBuild": {
+    "platform": "x64",
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "catalogDllSha256": "c00def02a980af897e2e1d2573e5da18b7f91bdfdb42ac31865db1c9b5365b50",
+    "orchardDllSha256": "79fbdead09e2ae76e23350a17d814cadbea700f4541fdc3f53a8e4cc537d723a"
+  },
+  "foreground": {
+    "result": "artifacts/current/popover-modal-foreground-source-v1/result.json",
+    "resultSha256": "3f4f6233ddc926fbbbe14199634740987fb7f129d67af0822fd0f26299e709654",
+    "lightResultSha256": "8f1cceaf1aa6519745ca560fb71b051abef887c1c9b445e6c44aa295b1108632",
+    "darkResultSha256": "7f9293cc5a43721cff28d2540bb79ec86ffaac20163f09e5eb4928db82590f7e",
+    "lightAndDarkPassed": true,
+    "modalPointerOpened": true,
+    "modalEscapeClosedInOrder": true,
+    "originalInputRetained": true,
+    "displayScale": 1,
+    "textScale": 1
+  },
+  "packaging": "The v11 NuGet package and catalog ZIPs predate this catalog-only fixture extension. No new package or native ARM64 runtime result is claimed.",
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

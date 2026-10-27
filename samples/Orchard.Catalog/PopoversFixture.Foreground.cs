@@ -61,6 +61,23 @@ public sealed partial class PopoversFixture
             "Physical outside click did not request Popover close.");
         Require(callerInput.Text == "Original caller input", "Outside dismissal changed the caller input.");
 
+        var confirmationTrigger = ((StackPanel)Default.Content).Children.OfType<Button>()
+            .Single(button => Equals(button.Content, "Confirm fictional settings"));
+        await input.ClickAsync(defaultTrigger);
+        await AwaitAsync(() => Default.IsOpen && callerInput.IsLoaded,
+            "Popover did not reopen for its caller-owned confirmation.");
+        await input.ClickAsync(confirmationTrigger);
+        await AwaitAsync(() => PopupConfirmation.IsOpen && Default.IsOpen,
+            "Physical pointer did not open confirmation above the Popover.");
+        await MainWindow.AwaitPresentationAsync(PopupConfirmation);
+        input.Key(0x1B);
+        await AwaitAsync(() => !PopupConfirmation.IsOpen && Default.IsOpen,
+            "Escape did not close only the confirmation dialog.");
+        input.Key(0x1B);
+        await AwaitAsync(() => !Default.IsOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), defaultAction),
+            "Second Escape did not close the Popover and restore trigger focus.");
+        Require(callerInput.Text == "Original caller input", "Confirmation changed the caller's original input.");
+
         var parentTrigger = (Button)NestedParent.Trigger!;
         var childTrigger = (Button)NestedChild.Trigger!;
         var childInput = (TextBox)NestedChild.Content;
@@ -88,6 +105,7 @@ public sealed partial class PopoversFixture
             passed = true, scheme, pointerOpenedOriginalInput = true, escapeClosed = true,
             escapeRestoredTriggerFocus = true, controlledKeyboardRequest = true,
             controlledContentClosed = true, outsidePointerClosed = true, originalInputRetained = true,
+            modalPointerOpened = true, modalEscapeClosedInOrder = true,
             nestedPointerOpenedAndFocused = true, nestedEscapeClosedInOrder = true
         }));
     }
