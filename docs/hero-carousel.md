@@ -4,6 +4,17 @@ On 2026-10-22 the user explicitly selected the source behavior: arrow keys throu
 
 Both solution and isolated-consumer architectures build with no solution warnings; 434 portable and 10 Windows text tests pass. The source auditor rejects 88 corruptions and the package auditor rejects 85. Both fictional demos load in the source and extracted catalog. Native state/contract data match across all three hosts. The strict source/package image gate fails at 52 pixels, maximum channel difference 24, with 78/82 identical PNGs. Source/archive fails at 58 pixels, maximum 24, with 76/82 identical PNGs. The allowed difference remains zero. Full raster, broader physical input, scaling/motion/customization and native ARM64 acceptance remain open.
 
+A [current independent NuGet-consumer foreground check](evidence/hero-carousel-current-package-foreground-v1/checkpoint.json)
+now exercises the user-selected input behavior with the byte-matched current
+package DLL. In explicit Light and Dark, physical Right/Left keys from a button
+outside the carousel change its index, while Right in a native text editor does
+not. Clicking the empty area over the visible first slide invokes the original
+inactive third item; Tab and Enter also invoke the original second item while
+the third is visible. The caller receives the original item's destination, and
+the normal consumer preview still opens. This closes the focused independent
+x64 package-input gap, not the complete focus/input matrix, full visual review,
+scaling, motion, performance or native ARM64 runtime acceptance.
+
 The earlier v5 effects preview adds the source's 2px CTA/tag/arrow backdrops and
 inherited tag shadows. Native underlays keep the original styled border and
 foreground separate; four-corner clipping follows the live border geometry.

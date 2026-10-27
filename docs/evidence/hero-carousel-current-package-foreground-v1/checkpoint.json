@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T15:27:18Z",
+  "scope": "Focused physical Hero Carousel input in an independent x64 WinUI consumer restored from the current local NuGet package",
+  "package": {
+    "version": "0.1.0-feed-hover-v1-local",
+    "path": "artifacts/current/Gaulatti.Orchard.0.1.0-feed-hover-v1-local.nupkg",
+    "sha256": "302273ce2ab0d9f603aeaf7cb579cab8ad57ffbde37f3ba2d1f88ed2efe10323",
+    "orchardDllSha256": "5774a072cc38a1a8c605a3c985802d4c5ec08778c19722bb07852e50f011fe73",
+    "independentConsumerExe": "tests/PackageConsumer/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64/PackageConsumer.exe",
+    "independentConsumerExeSha256": "babf0a7dc88b94b4b42119a6bffffc08a50e4c986da8df4efc014b7a8c3d420c",
+    "independentConsumerOrchardDllMatchesPackage": true
+  },
+  "build": {
+    "releaseX64Passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "normalConsumerPreviewOpened": true
+  },
+  "method": "Visible independent WinUI package consumer, physical Sky pointer and keyboard actions, settled UI Automation status/index observations, and Light/Dark screenshot inspection",
+  "observations": {
+    "dark": {
+      "outsideRightAdvancedZeroToOne": true,
+      "nativeTextInputRightKeptIndexOne": true,
+      "outsideLeftReturnedToZero": true,
+      "inactiveEmptyAreaPointerInvokedOriginalThirdWhileIndexZero": true,
+      "visibleCtaInvokedOriginalFirst": true,
+      "tabEnterInvokedOriginalSecondWhileIndexTwo": true
+    },
+    "light": {
+      "outsideRightAdvancedZeroToOne": true,
+      "nativeTextInputRightKeptIndexOne": true,
+      "outsideLeftReturnedToZero": true,
+      "inactiveEmptyAreaPointerInvokedOriginalThirdWhileIndexZero": true,
+      "tabEnterInvokedOriginalSecondWhileIndexTwo": true
+    }
+  },
+  "limitations": {
+    "completePhysicalInputAndFocusMatrixVerified": false,
+    "fullSourceVisualReviewVerified": false,
+    "scalingMotionAndPerformanceVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}

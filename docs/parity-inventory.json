@@ -5669,13 +5669,15 @@
         "tests/PackageConsumer/HeroCarouselFixture.cs",
         "tests/PackageConsumer/HeroCarouselFixture.Input.cs",
         "tests/PackageConsumer/HeroCarouselFixture.Effects.cs",
+        "tests/PackageConsumer/HeroCarouselForegroundWindow.cs",
         "scripts/verify-hero-carousel.mjs",
         "scripts/test-hero-carousel-audit.mjs"
       ],
       "status": "in-progress",
+      "packageForegroundCheckpoint": "docs/evidence/hero-carousel-current-package-foreground-v1/checkpoint.json",
       "remainingGaps": [
         "Strict image gates remain failed: source/package 52 pixels/max 24 and source/archive 58 pixels/max 24, zero allowed; complete browser/native raster, scaling/motion/customization and performance acceptance remain open",
-        "Foreground x64 catalog SendInput verifies outside-arrow routing, native edit exclusion, inactive-slide pointer and Tab/Enter invocation; broader input/focus states, independent consumer foreground input and native ARM64 runtime remain open (docs/evidence/components-v5-hero-carousel-foreground-v1/checkpoint.json)",
+        "Current independent x64 NuGet consumer physical input verifies outside-window arrows, native edit exclusion and inactive-slide pointer and Tab/Enter invocation in Light/Dark (docs/evidence/hero-carousel-current-package-foreground-v1/checkpoint.json); broader input/focus states and native ARM64 runtime remain open",
         "Full library/release acceptance and all other pending component entries remain open; both fictional demos remain required"
       ],
       "sourcePreparation": {

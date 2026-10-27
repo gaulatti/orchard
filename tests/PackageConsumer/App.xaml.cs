@@ -343,6 +343,13 @@ public partial class App : Application
                 throw new ArgumentException("Select foreground probe requires --select-theme Light or Dark.");
             window=new SelectForegroundWindow(theme);window.Activate();return;
         }
+        if(arguments.Contains("--probe-hero-foreground"))
+        {
+            var themeIndex=Array.IndexOf(arguments,"--hero-theme");
+            if(themeIndex<0||themeIndex+1>=arguments.Length||!Enum.TryParse<ElementTheme>(arguments[themeIndex+1],out var theme)||theme is not (ElementTheme.Light or ElementTheme.Dark))
+                throw new ArgumentException("Hero foreground probe requires --hero-theme Light or Dark.");
+            window=new HeroCarouselForegroundWindow(theme);window.Activate();return;
+        }
         try { window = new MainWindow(); window.Activate(); }
         catch (Exception error) { Report(false, error.ToString()); throw; }
     }
