@@ -5864,7 +5864,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Exact extracted v7 x64 foreground pointer, Space and Enter invoke the Icon Button consumer command in Light/Dark; disabled button remains disabled. Complete the wider physical matrix; a separate Light hover diagnostic did not expose the consumer tooltip and remains unresolved",
+        "Exact extracted v7 x64 foreground pointer, Space and Enter invoke the Icon Button consumer command in Light/Dark; the Edit story tooltip appears in both themes after injected mouse movement, and the disabled button remains disabled. Complete the wider physical matrix and freshly extracted v8 tooltip verification",
         "Verify scaling and reduced motion",
         "Verify remaining ARM64 state acceptance"
       ]
