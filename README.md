@@ -18,6 +18,12 @@ lists hashes, checks and limits. The release includes the Card fix and
 stream-verified catalog ZIPs. Its extracted x64 ZIP passed hidden demo checks
 and visible Monitoring/Editorial pointer and keyboard paths. Native ARM64
 execution and final component acceptance remain open.
+The v5 NuGet consumer later exposed a normal window-close crash
+(`0xC000027B`), and routed hover over Theme Toggle's default tooltip also
+crashed WinUI. Its earlier input probes missed the close exit code; see the
+[corrected consumer record](docs/evidence/theme-toggle-package-accepted-input-v1/checkpoint.json).
+The [local v7 package checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
+passes both paths, but those fixed bytes are not yet in a published release.
 
 Nine display components preserve caller automation names and label associations;
 Error State also preserves caller HelpText. See [metadata ownership](docs/automation-metadata.md).
