@@ -21,6 +21,8 @@
    </orchard:BleeckerNavigationMenuLinks></orchard:BleeckerNavigationMenuGroup.Items></orchard:BleeckerNavigationMenuGroup>
    </orchard:BleeckerNavigationMenuEntries></orchard:BleeckerNavigationMenu.Entries>
   </orchard:BleeckerNavigationMenu>
+  <TextBlock Text="200% root font preview" Style="{StaticResource BleeckerBodyStyle}"/>
+  <orchard:BleeckerNavigationMenu x:Name="Font200" Width="680" FontSize="32" HorizontalAlignment="Left" ItemInvoked="Invoked"/>
   <TextBlock x:Name="Result" Text="No fictional destination selected" Style="{StaticResource BleeckerBodyStyle}" TextWrapping="Wrap"/>
   <TextBlock Text="Custom content with retained local input" Style="{StaticResource BleeckerBodyStyle}"/>
   <orchard:BleeckerNavigationMenu x:Name="Custom" Width="680" HorizontalAlignment="Left" LinkTemplate="{StaticResource OriginalNavigationLink}" ItemInvoked="Invoked"/>

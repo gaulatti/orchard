@@ -50,7 +50,7 @@ public sealed partial class BleeckerNavigationMenu : Control
         LayoutUpdated += (_, _) => { ConnectInputScope(); UpdatePosition(); };
         RegisterPropertyChangedCallback(TemplateProperty, (_, _) => { if (Template is null) DetachTemplate(); });
         RegisterPropertyChangedCallback(IsEnabledProperty, (_, _) => { if (!IsEnabled) { activeIndex = null; RetirePresentation(); } Render(); });
-        foreach (var property in new[] { FlowDirectionProperty, LanguageProperty, IsTextScaleFactorEnabledProperty }) RegisterPropertyChangedCallback(property, (_, _) => Render());
+        foreach (var property in new[] { FontSizeProperty, FlowDirectionProperty, LanguageProperty, IsTextScaleFactorEnabledProperty }) RegisterPropertyChangedCallback(property, (_, _) => Render());
     }
     private static DependencyProperty Property(string name, Type type) => DependencyProperty.Register(name, type, typeof(BleeckerNavigationMenu), new PropertyMetadata(null, (owner, _) => ((BleeckerNavigationMenu)owner).Render()));
     public static readonly DependencyProperty EntriesProperty = Property(nameof(Entries), typeof(object));
@@ -70,6 +70,7 @@ public sealed partial class BleeckerNavigationMenu : Control
     public ICommand? Command { get => (ICommand?)GetValue(CommandProperty); set => SetValue(CommandProperty, value); }
     public object? CommandParameter { get => GetValue(CommandParameterProperty); set => SetValue(CommandParameterProperty, value); }
     public event EventHandler<BleeckerNavigationMenuLink>? ItemInvoked;
+    internal double RemScale => FontSize / 16;
     /// <summary>Rereads ordinary mutable collections; notification producers update automatically.</summary>
     public void Refresh() => Render();
 

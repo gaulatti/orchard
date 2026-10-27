@@ -12,6 +12,32 @@ namespace Orchard;
 
 public sealed partial class BleeckerNavigationMenu
 {
+    private static void ScalePadding(Control control, double scale)
+    {
+        control.ClearValue(Control.PaddingProperty);
+        if (scale == 1) return;
+        var value = control.Padding;
+        control.Padding = new(value.Left * scale, value.Top * scale, value.Right * scale, value.Bottom * scale);
+    }
+
+    private static void ScaleLink(HyperlinkButton link, double scale)
+    {
+        link.ClearValue(Control.FontSizeProperty);
+        var fontSize = link.FontSize;
+        if (scale != 1) link.FontSize = fontSize * scale;
+        ScalePadding(link, scale);
+    }
+
+    private static void ScaleSurface(BleeckerOverlaySurface surface, double scale)
+    {
+        surface.ClearValue(FrameworkElement.WidthProperty);
+        surface.ClearValue(FrameworkElement.MinWidthProperty);
+        var width = surface.Width;
+        var minWidth = surface.MinWidth;
+        if (scale != 1) { surface.Width = width * scale; surface.MinWidth = minWidth * scale; }
+        ScalePadding(surface, scale);
+    }
+
     private sealed class EntrySlot : IDisposable
     {
         private readonly BleeckerNavigationMenu owner;
@@ -37,7 +63,7 @@ public sealed partial class BleeckerNavigationMenu
         internal Grid Root { get; } = new() { UseLayoutRounding = false, FlowDirection = FlowDirection.LeftToRight };
         internal int Index { get; private set; }
         internal IEnumerable<LinkSlot> Links => direct is null ? rows.Values : [direct];
-        internal double MinimumWidth => direct?.MinimumWidth ?? (title?.MinimumWidth ?? 0) + 18 + (trigger?.Padding.Left ?? 0) + (trigger?.Padding.Right ?? 0);
+        internal double MinimumWidth => direct?.MinimumWidth ?? (title?.MinimumWidth ?? 0) + 14 + 4 * owner.RemScale + (trigger?.Padding.Left ?? 0) + (trigger?.Padding.Right ?? 0);
         internal void Update(IBleeckerNavigationMenuEntry value, int index)
         {
             entry = value; Index = index;
@@ -60,6 +86,8 @@ public sealed partial class BleeckerNavigationMenu
                 foregroundToken = trigger.RegisterPropertyChangedCallback(Control.ForegroundProperty, (_, _) => Paint());
             }
             trigger.DataContext = group; trigger.Label = group.Trigger; trigger.Style = owner.TriggerStyle; trigger.FlowDirection = owner.FlowDirection; trigger.Language = owner.Language;
+            ScalePadding(trigger, owner.RemScale);
+            ((Grid)trigger.Content).ColumnSpacing = 4 * owner.RemScale;
             title!.FlowDirection = owner.FlowDirection; title.Language = owner.Language; title.Set(group.Trigger, null); title.Text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled;
             title.Text.FontFamily = trigger.FontFamily; title.Text.FontSize = trigger.FontSize; title.Text.FontWeight = trigger.FontWeight; title.Text.LineHeight = trigger.FontSize * 1.5;
             var values = group.Items.ToArray(); var wanted = new HashSet<string>(StringComparer.Ordinal);
@@ -71,7 +99,7 @@ public sealed partial class BleeckerNavigationMenu
                 row.Update(child); if (mounted) row.Mount();
                 var current = items.Children.IndexOf(row.Root); if (current != i) { if (current >= 0) items.Children.RemoveAt(current); items.Children.Insert(i, row.Root); }
             }
-            if (surface is not null) { surface.Style = owner.SurfaceStyle; surface.FlowDirection = owner.FlowDirection; }
+            if (surface is not null) { surface.Style = owner.SurfaceStyle; surface.FlowDirection = owner.FlowDirection; ScaleSurface(surface, owner.RemScale); }
             Paint();
         }
         internal void SetOpen(bool value)
@@ -84,6 +112,7 @@ public sealed partial class BleeckerNavigationMenu
                 exit.Stop(); owner.EnsurePresentation();
                 surface ??= new BleeckerOverlaySurface { Name = "NavigationMenuSurface", Content = items, IsTabStop = false, UseLayoutRounding = false };
                 surface.Style = owner.SurfaceStyle; surface.FlowDirection = owner.FlowDirection; surface.RequestedTheme = owner.ActualTheme;
+                ScaleSurface(surface, owner.RemScale);
                 if (!mounted) { owner.plane!.Children.Add(surface); mounted = true; surface.Opacity = 0; foreach (var row in rows.Values) row.Mount(); }
                 enter.Start();
             }
@@ -103,7 +132,8 @@ public sealed partial class BleeckerNavigationMenu
             // The wrapper anchors the popup; the button's pressed translation never moves it.
             var box = Root.TransformToVisual(target).TransformBounds(new Rect(0, 0, Root.ActualWidth, Root.ActualHeight));
             if (double.IsNaN(Canvas.GetLeft(surface)) || Math.Abs(Canvas.GetLeft(surface) - box.X) > .000001) Canvas.SetLeft(surface, box.X);
-            if (double.IsNaN(Canvas.GetTop(surface)) || Math.Abs(Canvas.GetTop(surface) - box.Bottom - 4) > .000001) Canvas.SetTop(surface, box.Bottom + 4);
+            var gap = 4 * owner.RemScale;
+            if (double.IsNaN(Canvas.GetTop(surface)) || Math.Abs(Canvas.GetTop(surface) - box.Bottom - gap) > .000001) Canvas.SetTop(surface, box.Bottom + gap);
         }
         internal void Paint()
         {
@@ -159,9 +189,15 @@ public sealed partial class BleeckerNavigationMenu
             Validate(value); item = value;
             if (!ReferenceEquals(template, owner.LinkTemplate)) { ResetElement(); template = owner.LinkTemplate; }
             Context.Item = value; Context.Style = (grouped ? owner.GroupLinkStyle : owner.TopLinkStyle) ?? throw new InvalidOperationException("Navigation Menu requires its default or caller link style.");
-            Context.Content = content; Context.IsGrouped = grouped; probe.Style = Context.Style;
+            Context.Content = content; Context.IsGrouped = grouped; probe.Style = Context.Style; ScaleLink(probe, owner.RemScale);
             title.Set(value.Label, null); description.Set(value.Description, null); description.Visibility = string.IsNullOrEmpty(value.Description) ? Visibility.Collapsed : Visibility.Visible;
             foreach (var text in new[] { title, description }) { text.FlowDirection = owner.FlowDirection; text.Language = owner.Language; text.Text.IsTextScaleFactorEnabled = owner.IsTextScaleFactorEnabled; }
+            content.Spacing = 2 * owner.RemScale;
+            if (grouped)
+            {
+                title.Text.FontSize = 14 * owner.RemScale; title.Text.LineHeight = 20 * owner.RemScale;
+                description.Text.FontSize = 12 * owner.RemScale; description.Text.LineHeight = 19.5 * owner.RemScale;
+            }
             if (!grouped) { title.Text.FontFamily = probe.FontFamily; title.Text.FontSize = probe.FontSize; title.Text.FontWeight = probe.FontWeight; title.Text.LineHeight = probe.FontSize * (20d / 14); }
             if (element is not null) UpdateElement(); Paint(); Root.InvalidateMeasure();
         }
@@ -180,7 +216,7 @@ public sealed partial class BleeckerNavigationMenu
         private void UpdateElement()
         {
             if (element is null) return; element.FlowDirection = owner.FlowDirection; element.Language = owner.Language;
-            if (template is null) { ((HyperlinkButton)element).Style = Context.Style; AutomationProperties.SetName(element, item!.Label); AutomationProperties.SetHelpText(element, grouped ? item.Description ?? "" : ""); }
+            if (template is null) { var link = (HyperlinkButton)element; link.Style = Context.Style; ScaleLink(link, owner.RemScale); AutomationProperties.SetName(element, item!.Label); AutomationProperties.SetHelpText(element, grouped ? item.Description ?? "" : ""); }
         }
         internal void Paint()
         {
@@ -205,11 +241,12 @@ public sealed partial class BleeckerNavigationMenu
         {
             measured = owner.entries.Select(e => owner.slots[Key(e)]).ToArray(); boxes.Clear(); var natural = new List<double>(); var minimum = new List<double>();
             foreach (var slot in measured) { slot.Root.Measure(new(double.PositiveInfinity, double.PositiveInfinity)); natural.Add(slot.Root.DesiredSize.Width); minimum.Add(slot.MinimumWidth); }
-            var width = double.IsFinite(available.Width) ? available.Width : natural.Sum() + Math.Max(0, measured.Length - 1) * 4;
-            // The existing flex solver subtracts a 32px gap. Supply equivalent room for this source's 4px gap.
-            var widths = BleeckerNavMenuModel.Widths(natural, minimum, width + Math.Max(0, measured.Length - 1) * 28);
+            var gap = 4 * owner.RemScale;
+            var width = double.IsFinite(available.Width) ? available.Width : natural.Sum() + Math.Max(0, measured.Length - 1) * gap;
+            // The existing flex solver subtracts a 32px gap. Supply equivalent room for this source's rem gap.
+            var widths = BleeckerNavMenuModel.Widths(natural, minimum, width + Math.Max(0, measured.Length - 1) * (32 - gap));
             var left = 0d; var height = 0d;
-            for (var i = 0; i < measured.Length; i++) { measured[i].Root.Measure(new(widths[i], double.PositiveInfinity)); var h = measured[i].Root.DesiredSize.Height; boxes.Add(new(left, 0, widths[i], h)); height = Math.Max(height, h); left += widths[i] + 4; }
+            for (var i = 0; i < measured.Length; i++) { measured[i].Root.Measure(new(widths[i], double.PositiveInfinity)); var h = measured[i].Root.DesiredSize.Height; boxes.Add(new(left, 0, widths[i], h)); height = Math.Max(height, h); left += widths[i] + gap; }
             for (var i = 0; i < boxes.Count; i++) { var b = boxes[i]; b.Y = (height - b.Height) / 2; if (owner.FlowDirection == FlowDirection.RightToLeft) b.X = width - b.X - b.Width; boxes[i] = b; }
             return new(width, height);
         }

@@ -71,6 +71,12 @@ clipping policy; hidden capture fixtures explicitly clip their viewport.
 Neither path adds focus requests, Escape/arrow switching or native menu
 flyout behavior absent from the source.
 
+The default `FontSize` is 16. Set it to 32 to reproduce the pinned 200% root
+font case: rem-based link text, line height, padding, gaps and popup size
+double. The trigger's 13px label and 14px chevron remain pixel-sized. Changes
+to `FontSize` update the live menu. Caller `LinkTemplate` elements retain their
+own layout; the prepared default content follows the menu's scale.
+
 Override `TopLinkStyle`, `GroupLinkStyle`, `TriggerStyle`, `SurfaceStyle` or
 the complete control template. `PART_Entries` is optional; when present it
 must be a `Grid`. Replacing/removing the template retires popup ownership.
@@ -94,7 +100,7 @@ portable regression suite passes all 413 tests. The full public-host regression
 also loads both fictional Monitoring and Editorial demos. Native ARM64 runtime
 has not been exercised.
 
-The current `0.1.0-switch-japanese-v1-local` NuGet library also passes the
+The earlier `0.1.0-switch-japanese-v1-local` NuGet library also passed the
 extended independent x64 consumer fixture: 30 states, 18 behavior contracts,
 896 source geometry values with zero error, and 48 flat palette probes. The
 four added snapshots cover `custom` and `custom-input` in both themes through
@@ -107,7 +113,7 @@ The auditor rejects 60 corrupt reports/images, including missing input, changed
 text, wrong role and wrong bounds. Evidence is retained under
 `artifacts/current/navigation-custom-content-native-v1`.
 
-The current local preview, `0.1.0-navigation-modal-v1-local`, includes both the
+The earlier local preview, `0.1.0-navigation-modal-v1-local`, included both the
 custom-template fixture extension and the modal-isolation repair. Fresh x64
 NuGet and extracted-catalog hosts each pass 30 states, 20 behavior contracts,
 896 source geometry values with zero error and 48 flat palette probes. The
@@ -129,9 +135,23 @@ immediate closing-state behavior. Historical failures remain recorded. These
 software activation checks do not establish physical input or native ARM64
 execution.
 
-These results cover scoped component behavior. Seven source fixture kinds have
+The current source catalog adds the `font200` snapshot in both themes and
+checks a live 16→32 font-size change without replacing keyed link or trigger
+elements. Its hidden x64 run passes 32 states, 20 behavior contracts, two
+catalog states, 968 source geometry values with zero error and 52 flat palette
+probes. The auditor rejects 77 altered reports and frames, including two
+200% geometry mutations. The compact retained reports are in
+[the font-size checkpoint](evidence/navigation-font200-v1/checkpoint.json). A fresh
+`0.1.0-navigation-font200-v1-local` package restored and built in an isolated
+x64 consumer. That host passed the same 32 states, 20 contracts and 968 exact
+geometry values; its auditor rejected 76 mutations. The source and package
+hosts report the same library DLL hash. Native ARM64 execution
+remains unverified. The library and fresh isolated package consumer also build
+for ARM64.
+
+These results cover scoped component behavior. Six source fixture kinds have
 no equivalent native snapshot yet: individual trigger, direct and child hover,
-trigger/child focus, font200 and pressed trigger.
+trigger/child focus and pressed trigger.
 Setting a native visual state for an open/hover combination does not prove
 physical pointer input. The empty 14px popup has browser/native corner
 antialiasing differences; palette checks use flat interior padding and do not

@@ -100,6 +100,7 @@ internal static class NavigationMenuFixture
                 template = (DataTemplate)XamlReader.Load("<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'><HyperlinkButton Name='CustomFixtureLink' Style='{Binding Style}' Foreground='{Binding Foreground}' Command='{Binding Command}' AutomationProperties.Name='{Binding Item.Label}'>" + content + "</HyperlinkButton></DataTemplate>");
             }
             var menu = new BleeckerNavigationMenu { Entries = Build(kind), LinkTemplate = template, Width = kind == "narrow" ? 200 : kind == "bottom-right" ? 180 : 680, Margin = new Thickness(kind == "bottom-right" ? 780 : 20, kind == "bottom-right" ? 650 : 20, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, FlowDirection = kind == "rtl" ? FlowDirection.RightToLeft : FlowDirection.LeftToRight };
+            if (kind == "font200") menu.FontSize = 32;
             scene.Children.Add(menu); await Layout(); return menu;
         }
         void PrepareCustomInputs()
@@ -116,9 +117,17 @@ internal static class NavigationMenuFixture
             foreach (var scheme in new[] { "Light", "Dark" })
             {
                 root.RequestedTheme = Enum.Parse<ElementTheme>(scheme);
-                foreach (var kind in new[] { "closed", "empty", "links-only", "basic", "empty-group", "no-description", "long-description", "unicode", "narrow", "rtl", "bottom-right", "group-href-unused", "layout-open", "custom", "custom-input" })
+                foreach (var kind in new[] { "closed", "empty", "links-only", "basic", "empty-group", "no-description", "long-description", "unicode", "narrow", "rtl", "bottom-right", "group-href-unused", "layout-open", "custom", "custom-input", "font200" })
                 {
                     stage = scheme + "-" + kind; var menu = await Add(kind);
+                    if (kind == "font200")
+                    {
+                        var scaledLink = Link("Home"); var scaledTrigger = Trigger(menu);
+                        menu.FontSize = 16; await Layout();
+                        Require(Math.Abs(menu.ActualHeight - 36) <= .02, "Returning to 100% font size did not restore menu height.");
+                        menu.FontSize = 32; await Layout();
+                        Require(Math.Abs(menu.ActualHeight - 72) <= .02 && ReferenceEquals(scaledLink, Link("Home")) && ReferenceEquals(scaledTrigger, Trigger(menu)), "Live font-size change did not restore 200% geometry and keyed elements.");
+                    }
                     if (kind is not ("closed" or "empty" or "links-only")) { Invoke(Trigger(menu, kind == "layout-open" ? "Layout" : "Components")); await Layout(); }
                     if (kind == "custom-input") { PrepareCustomInputs(); await Layout(); }
                     // Exercise the actual open+hover template combination without
@@ -216,7 +225,7 @@ internal static class NavigationMenuFixture
             }
             if (catalogFactory is not null) foreach (var scheme in new[] { "Light", "Dark" })
             {
-                stage = scheme + "-catalog"; scene.Children.Clear(); root.RequestedTheme = Enum.Parse<ElementTheme>(scheme); var fixture = catalogFactory(); scene.Children.Add(fixture); await Layout(180); var menus = Elements(fixture).OfType<BleeckerNavigationMenu>().ToArray(); Require(menus.Length == 5 && menus.All(m => m.IsLoaded), "Registered navigation fixtures did not load."); var demo = menus.Single(m => m.Name == "Default"); Require(Elements(demo).OfType<HyperlinkButton>().Where(b => b.DataContext is BleeckerNavigationLinkContext).All(b => ReferenceEquals(b.Style, demo.TopLinkStyle)), "Top link style did not reach the native link."); Require(Elements(demo).OfType<Button>().Where(b => b.DataContext is BleeckerNavigationMenuGroup).All(b => ReferenceEquals(b.Style, demo.TriggerStyle)), "Trigger style did not reach the native button."); Invoke(Trigger(demo)); await Layout(); Require(ReferenceEquals(Surfaces().Single().Style, demo.SurfaceStyle) && Elements(Surfaces().Single()).OfType<HyperlinkButton>().Where(b => b.DataContext is BleeckerNavigationLinkContext).All(b => ReferenceEquals(b.Style, demo.GroupLinkStyle)), "Surface/grouped link styles did not reach their rendered consumers."); catalog.Add(new { scheme, menus = menus.Length, originalStylesApplied = true, registeredFixture = fixture.GetType().FullName, file = await Capture("catalog-" + scheme) });
+                stage = scheme + "-catalog"; scene.Children.Clear(); root.RequestedTheme = Enum.Parse<ElementTheme>(scheme); var fixture = catalogFactory(); scene.Children.Add(fixture); await Layout(180); var menus = Elements(fixture).OfType<BleeckerNavigationMenu>().ToArray(); Require(menus.Length == 6 && menus.All(m => m.IsLoaded) && menus.Single(m => m.Name == "Font200").FontSize == 32, "Registered navigation fixtures did not load."); var demo = menus.Single(m => m.Name == "Default"); Require(Elements(demo).OfType<HyperlinkButton>().Where(b => b.DataContext is BleeckerNavigationLinkContext).All(b => ReferenceEquals(b.Style, demo.TopLinkStyle)), "Top link style did not reach the native link."); Require(Elements(demo).OfType<Button>().Where(b => b.DataContext is BleeckerNavigationMenuGroup).All(b => ReferenceEquals(b.Style, demo.TriggerStyle)), "Trigger style did not reach the native button."); Invoke(Trigger(demo)); await Layout(); Require(ReferenceEquals(Surfaces().Single().Style, demo.SurfaceStyle) && Elements(Surfaces().Single()).OfType<HyperlinkButton>().Where(b => b.DataContext is BleeckerNavigationLinkContext).All(b => ReferenceEquals(b.Style, demo.GroupLinkStyle)), "Surface/grouped link styles did not reach their rendered consumers."); catalog.Add(new { scheme, menus = menus.Length, originalStylesApplied = true, registeredFixture = fixture.GetType().FullName, file = await Capture("catalog-" + scheme) });
             }
             string Hash(string file) => Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(file)));
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new { format = "orchard-navigation-menu-native-v1", passed = true, states, contracts, presence, standalone, catalog, pngs, guards, focus, activations, publicApisOnly = true, activateCalled = false, showWindowCalled = false, focusCalled = false, hardwareInputSent = false, physicalInputVerified = false, sourceRasterParityVerified = false, nativeComponentAccepted = false, librarySha256 = Hash(typeof(BleeckerNavigationMenu).Assembly.Location), hostSha256 = Hash(hostAssembly) }, new JsonSerializerOptions { WriteIndented = true })); window.Close(); Environment.Exit(0);

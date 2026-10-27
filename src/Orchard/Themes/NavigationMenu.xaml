@@ -32,7 +32,7 @@
  </Style>
  <Style x:Key="BleeckerNavigationSurfaceStyle" TargetType="local:BleeckerOverlaySurface"><Setter Property="Width" Value="256"/><Setter Property="MinWidth" Value="256"/><Setter Property="Padding" Value="6"/><Setter Property="BorderThickness" Value="1"/></Style>
  <Style TargetType="local:BleeckerNavigationMenu">
-  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="VerticalAlignment" Value="Top"/>
+  <Setter Property="IsTabStop" Value="False"/><Setter Property="UseLayoutRounding" Value="False"/><Setter Property="VerticalAlignment" Value="Top"/><Setter Property="FontSize" Value="16"/>
   <Setter Property="TopLinkStyle" Value="{StaticResource BleeckerNavigationTopLinkStyle}"/><Setter Property="GroupLinkStyle" Value="{StaticResource BleeckerNavigationGroupLinkStyle}"/><Setter Property="TriggerStyle" Value="{StaticResource BleeckerNavigationTriggerStyle}"/><Setter Property="SurfaceStyle" Value="{StaticResource BleeckerNavigationSurfaceStyle}"/>
   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="local:BleeckerNavigationMenu"><Grid x:Name="PART_Entries" FlowDirection="LeftToRight" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" UseLayoutRounding="False"/></ControlTemplate></Setter.Value></Setter>
  </Style>

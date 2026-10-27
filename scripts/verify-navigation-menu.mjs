@@ -6,7 +6,7 @@ import {pathToFileURL} from 'node:url';
 import {readRgbaPng} from './reference/read-rgba-png.mjs';
 
 const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
-export const navigationStateIds=['closed','empty','links-only','basic','empty-group','no-description','long-description','unicode','narrow','rtl','bottom-right','group-href-unused','layout-open','custom','custom-input'];
+export const navigationStateIds=['closed','empty','links-only','basic','empty-group','no-description','long-description','unicode','narrow','rtl','bottom-right','group-href-unused','layout-open','custom','custom-input','font200'];
 export const navigationContractIds=['route-Buttons','route-Forms','route-External library','route-Home','command-denial-disable','live-indices-originals','custom-original-retention-close','hidden-declaration-ancestor','active-modal-isolation','template-unload-reload'];
 export function verifyNavigationMenu(native,reference,catalogExpected) {
   let geometryValues=0,maximumGeometryError=0;
@@ -44,7 +44,7 @@ export function verifyNavigationMenu(native,reference,catalogExpected) {
     assert.deepEqual(contracts.find(c=>c.action==='active-modal-isolation').details,{backgroundRejectedProviders:4,nestedRejectedProviders:2,closingOwnerProviderRejected:true,ownerRetiredProviderRejected:true,backgroundInvocations:1,ownedInvocations:2,unopenedInvocations:1,originalBackgroundDelivered:true,originalOwnedDelivered:true,unopenedOriginalDelivered:true,blockedCommandsIgnored:true,callerEnabledBindingRetained:true,nestedOriginalStateRestored:true,originalModalContentRetained:true});
     assert.deepEqual(native.presence.find(p=>p.scheme===scheme),{scheme,originalRetainedAt50:true,retiredBy190:true,reopenCancelledExit:true,normalMotionVerified:false,passed:true});
     assert.deepEqual(native.standalone.find(p=>p.scheme===scheme),{scheme,rootConstrained:true,noNativeLightDismiss:true,unloadedPopupRetired:true,passed:true});
-    if(catalogExpected) {const c=native.catalog.find(c=>c.scheme===scheme);assert.equal(c.menus,5);assert.equal(c.originalStylesApplied,true);assert.equal(c.registeredFixture,'Orchard.Catalog.NavigationMenusFixture');}
+    if(catalogExpected) {const c=native.catalog.find(c=>c.scheme===scheme);assert.equal(c.menus,6);assert.equal(c.originalStylesApplied,true);assert.equal(c.registeredFixture,'Orchard.Catalog.NavigationMenusFixture');}
   }
   return{geometryValues,maximumGeometryError};
 }

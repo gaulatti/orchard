@@ -4109,7 +4109,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Native ARM64 execution remains unverified; x64/ARM64 solution and clean NuGet consumer builds passed",
-        "Native counterparts for individual hover/focus/pressed and mixed source font200 fixtures remain incomplete",
+        "Native counterparts for individual hover/focus/pressed fixtures remain incomplete",
         "Normal surface/control/chevron motion, native pointer/keyboard/focus and full metadata/customization/scaling/raster acceptance remain open"
       ],
       "sourcePreparation": {
@@ -4180,6 +4180,32 @@
         "closingOwnerRevokedImmediately": true,
         "callerEnabledBindingsRetained": true,
         "physicalInputVerified": false,
+        "nativeComponentAccepted": false
+      },
+      "nativeFont200Verification": {
+        "checkpoint": "docs/evidence/navigation-font200-v1/checkpoint.json",
+        "checkpointSha256": "6bb6d2772606cb5d6c9466022f654f09ea12943faa0ac27499f5b89918348f34",
+        "sourceAudit": "docs/evidence/navigation-font200-v1/source-audit.json",
+        "sourceLibrarySha256": "ec173b508e69c1009d8ceb8548c16391d44920b9f57b191eb2737becf4e149c8",
+        "sourceStates": 32,
+        "sourceContracts": 20,
+        "sourceCatalogStates": 2,
+        "sourceGeometryValues": 968,
+        "sourceMaximumGeometryError": 0,
+        "sourcePaletteProbes": 52,
+        "sourceNegativeCasesRejected": 77,
+        "liveFontSizeMutationPreservesElements": true,
+        "packageAudit": "docs/evidence/navigation-font200-v1/consumer-audit.json",
+        "packageVersion": "0.1.0-navigation-font200-v1-local",
+        "packageStates": 32,
+        "packageContracts": 20,
+        "packageGeometryValues": 968,
+        "packageNegativeCasesRejected": 76,
+        "freshIndependentConsumer": true,
+        "arm64LibraryBuildPassed": true,
+        "arm64IndependentConsumerBuildPassed": true,
+        "arm64NativeRuntimeVerified": false,
+        "packageVerified": true,
         "nativeComponentAccepted": false
       }
     },

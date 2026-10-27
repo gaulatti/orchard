@@ -1,0 +1,53 @@
+{
+  "scope": "Navigation Menu 200% root-font layout and live FontSize mutation",
+  "baseline": {
+    "report": "baseline-navigation-menu.json",
+    "reportSha256": "1faf33bd5fc58ad29dada505b6dba8c43a8b8d725e154f607251e0fe1ac71386",
+    "failedBoundary": "font200 menu height 36 versus pinned 72; popup width 256 versus pinned 512 in both themes"
+  },
+  "sourceCatalogX64": {
+    "report": "source-navigation-menu.json",
+    "reportSha256": "dbc55fa4c3e750afa2ff9552c2997636a62c661652d111b6712821b7605d81b7",
+    "audit": "source-audit.json",
+    "auditSha256": "93fb02419252f1eb4990d5021c02806c3dcbeadb011a2eba6a50e5d5196004fa",
+    "mutations": "source-audit-mutations.json",
+    "mutationsSha256": "d7064bb49d2f0c74228a37d98ceaae05f902f75f436ebae38cc7b89b3c962f3a",
+    "states": 32,
+    "contracts": 20,
+    "catalogStates": 2,
+    "geometryValues": 968,
+    "maximumGeometryError": 0,
+    "paletteProbes": 52,
+    "negativeCasesRejected": 77,
+    "liveFontSizeMutationPreservesElements": true
+  },
+  "independentNugetConsumerX64": {
+    "version": "0.1.0-navigation-font200-v1-local",
+    "packageSha256": "373d9a7130dedf794724b60e0f0a397cf2c13c4c146f5393e92cf78291bf8578",
+    "build": "consumer-build.json",
+    "buildSha256": "0386082adac876d55565d7397ed870036aa708c86d5c0e4fe679fd7c9e6e2621",
+    "report": "consumer-navigation-menu.json",
+    "reportSha256": "703f22ad31306c18ac98378839335f639d8ae41b0f8ffe6fc170b0931d617329",
+    "audit": "consumer-audit.json",
+    "auditSha256": "8e9b476d6348dfc93892967c0eb2761e38a601f01d3e494c6d331041c3795d37",
+    "mutations": "consumer-audit-mutations.json",
+    "mutationsSha256": "97c5f7b5305df165133c21845a17bd5de24deb31e9c17eda48dd7e3b122baf01",
+    "states": 32,
+    "contracts": 20,
+    "geometryValues": 968,
+    "maximumGeometryError": 0,
+    "paletteProbes": 52,
+    "negativeCasesRejected": 76,
+    "sameLibrarySha256AsSource": "ec173b508e69c1009d8ceb8548c16391d44920b9f57b191eb2737becf4e149c8"
+  },
+  "arm64LibraryBuildPassed": true,
+  "independentNugetConsumerArm64": {
+    "buildPassed": true,
+    "runtimeVerified": false,
+    "build": "consumer-arm64-build.json",
+    "buildSha256": "e624c2634bf577e680c093f4d1dfe80e40f0432a6c571525c476e7f0afea02d6"
+  },
+  "physicalInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

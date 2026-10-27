@@ -12,6 +12,8 @@ for(const key of ['activateCalled','showWindowCalled','focusCalled','hardwareInp
 reject('focus escaped',n=>n.focus=1);reject('window activated',n=>n.activations=1);reject('no desktop guards',n=>n.guards=0);
 reject('missing state',n=>n.states.pop());reject('duplicate state',n=>n.states[1]=structuredClone(n.states[0]));
 reject('root geometry changed',n=>n.states[0].measurement.menu.height++);
+reject('200% root geometry changed',n=>n.states.find(s=>s.kind==='font200').measurement.menu.height++);
+reject('200% popup geometry changed',n=>n.states.find(s=>s.kind==='font200').measurement.surfaces[0].box.width++);
 reject('direct link role lost',n=>n.states[0].measurement.entries[0].role='Button');
 reject('group trigger role lost',n=>n.states[0].measurement.entries[1].role='MenuItem');
 for(const key of ['x','y','width','height'])reject('popup '+key+' changed',n=>n.states.find(s=>s.kind==='basic').measurement.surfaces[0].box[key]++);
