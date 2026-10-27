@@ -4,6 +4,8 @@ Version `0.1.0-components-v11-local` packages the nested Popover trigger repair
 and the bounded, opaque Monitoring review demo. The [Popover checkpoint](../evidence/popover-nested-trigger-v1/checkpoint.json)
 and [Monitoring checkpoint](../evidence/monitoring-review-surface-source-v1/checkpoint.json)
 record the observed defects and tests.
+The same three artifacts are now available in the
+[v11 prerelease](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.1).
 
 The local artifacts are `artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v11-local.nupkg`,
 `artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v11-local-win-x64.zip`,

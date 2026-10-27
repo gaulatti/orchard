@@ -4,6 +4,8 @@ This `0.1.0-components-v11-local` preview packages the nested Popover trigger
 repair and the bounded, opaque Monitoring review demonstration. The release
 tag targets source commit `e4720490ef6552c2f62f143dca2f9c24788f6e7d`.
 Monitoring and Editorial remain fictional component-library demos.
+The [published prerelease](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.1)
+contains the three assets below; GitHub reports the same SHA-256 digest for each.
 
 | Artifact | SHA-256 |
 | --- | --- |

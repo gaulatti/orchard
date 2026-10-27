@@ -1,0 +1,32 @@
+{
+  "scope": "Published versioned Orchard component-library preview",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.1",
+  "releaseId": 425752706,
+  "tag": "v0.1.0-preview.20261027.1",
+  "tagTarget": "e4720490ef6552c2f62f143dca2f9c24788f6e7d",
+  "prerelease": true,
+  "draft": false,
+  "assets": [
+    {
+      "name": "Gaulatti.Orchard.0.1.0-components-v11-local.nupkg",
+      "size": 1733899,
+      "sha256": "a19736af4b0ba3faf5dc441776b2ed22120b26e6aa2b5e3bb7083180ed6d0b50"
+    },
+    {
+      "name": "Gaulatti.Orchard.Catalog.0.1.0-components-v11-local-win-x64.zip",
+      "size": 106118652,
+      "sha256": "2a38db427827f25b9eecbe78f7ad2bd550591bab98d6e2c229c292e34ac6d7ec"
+    },
+    {
+      "name": "Gaulatti.Orchard.Catalog.0.1.0-components-v11-local-win-arm64.zip",
+      "size": 103205788,
+      "sha256": "d2b158aecc95ae53e9d15e6b8d78abce5d5d54796845b151585087a7a11516e1"
+    }
+  ],
+  "publicApiVerification": "GitHub release-by-tag API returned published prerelease and three uploaded assets with matching SHA-256 digests.",
+  "githubActionsRunsForTagTarget": 0,
+  "nativeArm64RuntimeVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "libraryComplete": false
+}
