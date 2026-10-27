@@ -595,6 +595,16 @@ CI also builds the solution and clean package consumer for ARM64 on its x64
 runner. `-Platform ARM64 -BuildOnly` records `runtimeVerified: false`; it never
 counts cross-compilation as ARM64 runtime acceptance. Run the same command
 without `-BuildOnly` in a Windows ARM64 session to exercise that runtime.
+For a storage-constrained compilation check, `-Platform ARM64 -CompileOnly`
+uses the same fresh package feed and cleanup path but builds a framework-dependent
+consumer instead of publishing a self-contained application. It verifies the
+restored package hash, the compiled Orchard assembly against the package, and
+the ARM64 apphost PE architecture. Its result explicitly records
+`publishPassed: false` and `runtimeVerified: false`. It does not replace the
+`-BuildOnly` runnable publish or a native ARM64 run.
+This follows [Microsoft's Windows App SDK deployment distinction](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/self-contained-deploy/deploy-self-contained-apps):
+`WindowsAppSDKSelfContained=true` copies the framework into app output, while
+the framework-dependent mode leaves it to the target machine.
 The native ARM64 workflow runs this command without `-BuildOnly` and retains
 the runnable catalog, consumer, package, captures and reports in the separate
 `orchard-windows-arm64-runtime` artifact. These runtime checks cover the

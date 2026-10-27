@@ -75,6 +75,10 @@ on this disk without materially more free space or an explicitly selected
 larger volume.
 Its failed run removed the temporary restore workspace, but a partial app
 directory remains until cleanup is permitted.
+The separate `-Platform ARM64 -CompileOnly` verifier path uses a framework-dependent
+build and a fresh isolated restore, then removes its temporary workspace. The
+v7 compile-only consumer succeeded with about 53 MiB of app output; it does not produce
+a runnable, self-contained ARM64 qualification or native runtime evidence.
 
 ## Resetting generated output
 

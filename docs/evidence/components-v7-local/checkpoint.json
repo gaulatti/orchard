@@ -54,6 +54,20 @@
     "partialAppOutputRemains": true,
     "nativeRuntimeVerified": false
   },
+  "independentArm64CompileOnlyConsumer": {
+    "observedAt": "2026-10-27T03:45:43-04:00",
+    "result": "artifacts/current/components-v7-consumer-arm64-compile-verified/result.json",
+    "resultSha256": "9418b55d7a54618aef7e9b7c190d6735b20236c0d1f2f9e7902a37797edc9f9a",
+    "cleanupSha256": "005eead21facbcbe06cd8c14518a02736e81fcc807c15bdf12dee41929334cfd",
+    "compilePassed": true,
+    "frameworkDependent": true,
+    "apphostMachine": "Arm64",
+    "restoredPackageSha256Matches": true,
+    "orchardDllMatchesExtractedX64Catalog": true,
+    "temporaryRestoreWorkspaceRemoved": true,
+    "selfContainedPublishPassed": false,
+    "nativeRuntimeVerified": false
+  },
   "dataTablePerformanceBudgetPassed": false,
   "githubActionsTriggered": false,
   "packagePublishedExternally": false,

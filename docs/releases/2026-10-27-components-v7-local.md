@@ -60,8 +60,16 @@ The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore
 workspace; a 450-file, 158 MB partial app output remains. The ARM64 catalog
-archive is a verified build artifact, not native ARM64 runtime evidence. There
-is no successful v7 ARM64 consumer result. Data Table's performance budget and
+archive is a verified build artifact, not native ARM64 runtime evidence. A
+separate fresh, framework-dependent `-CompileOnly` ARM64 consumer now **builds**
+from the exact v7 package with zero warnings/errors. It verifies package SHA-256
+`32f9566b…`, byte-identical Orchard DLL `ff3e8379…` and an Arm64 PE apphost;
+its temporary restore workspace was removed. The 59-file, 52.67 MiB output is at
+`artifacts/current/components-v7-consumer-arm64-compile-verified`. The result
+and cleanup SHA-256 values are `9418b55d7a54618aef7e9b7c190d6735b20236c0d1f2f9e7902a37797edc9f9a`
+and `005eead21facbcbe06cd8c14518a02736e81fcc807c15bdf12dee41929334cfd`.
+This does not repair the failed self-contained publish or verify native ARM64
+runtime. Data Table's performance budget and
 other inventory acceptance gaps remain open. The inventory is 112 entries
 started and zero accepted; that is not a completion percentage. GitHub Actions
 were not triggered, and the unavailable wiki remote leaves this record in the

@@ -2,9 +2,11 @@ param(
     [string]$Package = 'artifacts/packages/Gaulatti.Orchard.0.1.0.nupkg',
     [ValidateSet('x64', 'ARM64')][string]$Platform = 'x64',
     [string]$Output = 'artifacts/package-consumer',
-    [switch]$BuildOnly
+    [switch]$BuildOnly,
+    [switch]$CompileOnly
 )
 $ErrorActionPreference = 'Stop'
+if ($BuildOnly -and $CompileOnly) { throw 'Choose BuildOnly or CompileOnly, not both.' }
 $repository = Split-Path $PSScriptRoot -Parent
 $packagePath = (Resolve-Path -LiteralPath $Package).Path
 $outputPath = [IO.Path]::GetFullPath($Output)
@@ -30,6 +32,7 @@ try {
     $entryStream = $assemblyEntries[0].Open()
     try { $entryStream.CopyTo($assemblyStream) } finally { $entryStream.Dispose() }
     $assemblyStream.Position = 0
+    $packageAssemblySha256 = [Convert]::ToHexString([System.Security.Cryptography.SHA256]::HashData($assemblyStream.ToArray())).ToLowerInvariant()
     $pe = [System.Reflection.PortableExecutable.PEReader]::new($assemblyStream)
     try {
         if ($pe.PEHeaders.CoffHeader.Machine -ne [System.Reflection.PortableExecutable.Machine]::I386 -or
@@ -71,15 +74,47 @@ try {
     $config.Save($configPath)
     Push-Location $consumerSource
     try {
-        dotnet restore $project --configfile $configPath --packages "$consumerRoot/packages" -p:Platform=$Platform -p:OrchardPackageVersion=$version
+        $compileProperties = if ($CompileOnly) { @('-p:SelfContained=false', '-p:WindowsAppSDKSelfContained=false') } else { @() }
+        dotnet restore $project --configfile $configPath --packages "$consumerRoot/packages" -p:Platform=$Platform -p:OrchardPackageVersion=$version @compileProperties
         if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer restore failed.' }
-        dotnet publish $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version --no-restore -o "$outputPath/app"
-        if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer publish failed.' }
+        if ($CompileOnly) {
+            dotnet build $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version @compileProperties --no-restore -o "$outputPath/app"
+            if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer compile failed.' }
+        }
+        else {
+            dotnet publish $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version --no-restore -o "$outputPath/app"
+            if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer publish failed.' }
+        }
     }
     finally { Pop-Location }
     $restoredPackage = "$consumerRoot/packages/gaulatti.orchard/$version/gaulatti.orchard.$version.nupkg"
     if ((Get-FileHash -LiteralPath $packagePath).Hash -ne (Get-FileHash -LiteralPath $restoredPackage).Hash) {
         throw 'Consumer restored a different package from the one under test.'
+    }
+    if ($CompileOnly) {
+        foreach ($requiredOutput in @('PackageConsumer.exe', 'PackageConsumer.dll', 'Orchard.dll')) {
+            if (-not (Test-Path -LiteralPath (Join-Path "$outputPath/app" $requiredOutput))) {
+                throw "Compiled consumer is missing $requiredOutput."
+            }
+        }
+        $compiledAssemblySha256 = (Get-FileHash -LiteralPath "$outputPath/app/Orchard.dll").Hash.ToLowerInvariant()
+        if ($compiledAssemblySha256 -ne $packageAssemblySha256) { throw 'Compiled consumer has a different Orchard assembly.' }
+        $apphostStream = [IO.File]::OpenRead("$outputPath/app/PackageConsumer.exe")
+        try {
+            $apphostPe = [System.Reflection.PortableExecutable.PEReader]::new($apphostStream)
+            try { $apphostMachine = $apphostPe.PEHeaders.CoffHeader.Machine.ToString() }
+            finally { $apphostPe.Dispose() }
+        }
+        finally { $apphostStream.Dispose() }
+        $expectedMachine = if ($Platform -eq 'ARM64') { 'Arm64' } else { 'Amd64' }
+        if ($apphostMachine -ne $expectedMachine) { throw "Compiled consumer apphost is $apphostMachine, expected $expectedMachine." }
+        $verificationResult = [ordered]@{ compilePassed = $true; publishPassed = $false; runtimeVerified = $false;
+            frameworkDependent = $true; version = $version; platform = $Platform;
+            packageSha256 = (Get-FileHash -LiteralPath $packagePath).Hash.ToLowerInvariant();
+            orchardAssemblySha256 = $compiledAssemblySha256; apphostMachine = $apphostMachine;
+            isolatedConsumer = $consumerRoot
+        }
+        return
     }
     if ($BuildOnly) {
         $verificationResult = [ordered]@{ buildPassed = $true; runtimeVerified = $false; version = $version; platform = $Platform;
