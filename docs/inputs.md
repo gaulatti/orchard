@@ -915,3 +915,16 @@ within the same two-second limit. The entry trace is retained separately from
 the later stationary disabling and rapid-remount traces. Cursor production and
 native system handles are unchanged; the original failed poll did not record
 enough observations to establish its precise publication timing.
+
+On 2026-10-27, the source-built catalog's focused Input smoke passes both
+appearances after its live-theme probe changes `CatalogRoot`, the fixture's
+actual theme owner. The retained glyph-profile diagnostic still records eight
+of 24 exact-alignment reports whose best vertical shift is −1px. The fixture
+continues to require visible measurable text and native caret, viewport,
+selection, theme, pointer and lifecycle behavior; exact glyph pixel matching
+is recorded but does not gate component delivery. The combined presentation
+run later fails when a temporary Input's shadow does not reappear after
+remount, although that same lifecycle check passed in the focused run. This
+combined-run failure remains unresolved. The manual pointer-lifecycle demo's
+own theme target has not been retested. See
+`docs/evidence/catalog-presentation-theme-root-v1/checkpoint.json`.

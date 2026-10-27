@@ -27,7 +27,7 @@ public sealed partial class InputsFixture : UserControl
         StyledGeometryInput.Style = inputStyle;
     }
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, FrameworkElement themeRoot)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
         await MainWindow.AwaitPresentationAsync(this);
@@ -73,7 +73,7 @@ public sealed partial class InputsFixture : UserControl
         ReadOnlyInput.Focus(FocusState.Keyboard);
         VerifyDynamicGeometry();
         await VerifyDisabledErrorAsync(scheme, folder);
-        await VerifyLiveThemesAsync(scheme, folder);
+        await VerifyLiveThemesAsync(scheme, folder, themeRoot);
         await VerifyMotionAsync(scheme, folder);
         await VerifyShadowLifecycleAsync();
         await VerifyTypographyAsync(scheme, folder);
@@ -87,7 +87,7 @@ public sealed partial class InputsFixture : UserControl
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"inputs-{scheme}.png"));
     }
 
-    private async Task VerifyLiveThemesAsync(BleeckerColorScheme scheme, string folder)
+    private async Task VerifyLiveThemesAsync(BleeckerColorScheme scheme, string folder, FrameworkElement host)
     {
         using var input = new NativeInputSession(XamlRoot, folder, $"input-theme-{scheme}");
         await input.AcquireAsync(Heading);
@@ -113,7 +113,6 @@ public sealed partial class InputsFixture : UserControl
         finally { EnabledPointerOccluder.Visibility = Visibility.Collapsed; }
         await input.MoveAsync(Heading);
         await AwaitAsync(() => Hex(mediumBorder.BorderBrush) == restBorder, "Enabled Input did not leave its physical hover palette.");
-        var host = (FrameworkElement)XamlRoot.Content;
         var originalTheme = host.RequestedTheme;
         var originalText = ErrorInput.Text;
         var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;

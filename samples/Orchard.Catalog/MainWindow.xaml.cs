@@ -726,7 +726,7 @@ public sealed partial class MainWindow : Window
         foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
         {
             await SelectFixtureAsync(Foundation);CatalogRoot.RequestedTheme=theme;await SelectFixtureAsync(Switches);
-            await Switches.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder,physicalInput:true);
+            await Switches.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder,CatalogRoot,physicalInput:true);
             await CaptureAsync(Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
         await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="switches",environment=RuntimeEnvironment()}));
@@ -802,7 +802,7 @@ public sealed partial class MainWindow : Window
             CatalogRoot.RequestedTheme = theme;
             await Task.Delay(250);
             CatalogRoot.UpdateLayout();
-            await Inputs.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+            await Inputs.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, CatalogRoot);
             await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
         await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "input", environment = RuntimeEnvironment() }));
@@ -945,9 +945,9 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(FieldHelp);
             await FieldHelp.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Labels);
-            await Labels.VerifyAsync(scheme, folder);
+            await Labels.VerifyAsync(scheme, folder, CatalogRoot);
             await SelectFixtureAsync(Inputs);
-            await Inputs.VerifyAsync(scheme, folder);
+            await Inputs.VerifyAsync(scheme, folder, CatalogRoot);
             await SelectFixtureAsync(Textareas);
             await Textareas.VerifyAsync(scheme, folder, ComponentSearch);
             await SelectFixtureAsync(DateControls);
@@ -965,7 +965,7 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(Accordions);
             await Accordions.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Switches);
-            await Switches.VerifyAsync(scheme, folder);
+            await Switches.VerifyAsync(scheme, folder, CatalogRoot);
             await SelectFixtureAsync(Contrast);
             await Contrast.VerifyKeyboardEntryAsync(folder, scheme);
             foreach (var (fixture, name) in new (FrameworkElement Fixture, string Name)[]

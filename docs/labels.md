@@ -79,3 +79,11 @@ All inventory acceptance remains open under the broader platform contract.
 
 Caller automation-name overrides, including empty values and styles, follow
 [the shared metadata contract](automation-metadata.md).
+
+The source-built catalog's 2026-10-27 combined presentation run passes the
+Light Labels fixture after its live-theme check targets `CatalogRoot`, the
+fixture's actual theme owner, instead of the outer modal host. That check
+changes to Dark and restores Light while preserving geometry and input-label
+association. The run later fails in Input shadow remount; a fresh Dark Labels
+sequence and new package qualification remain unverified. See
+`docs/evidence/catalog-presentation-theme-root-v1/checkpoint.json`.

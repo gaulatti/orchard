@@ -41,7 +41,7 @@ public sealed partial class LabelsFixture : UserControl
         DispatcherQueue.TryEnqueue(() => NestedResult.Text = $"Nested actions: {nestedActions}; focus: {(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name}");
     }
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, FrameworkElement themeRoot)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });
         await MainWindow.AwaitPresentationAsync(this);
@@ -73,13 +73,12 @@ public sealed partial class LabelsFixture : UserControl
         await AwaitAsync(() => nestedActions == actionCount + 1, "Non-tabbable nested button lost its consumer action.");
         await VerifyContentAsync();
         await VerifyAssociationLifecycleAsync();
-        await VerifyLiveAppearanceAsync(scheme);
+        await VerifyLiveAppearanceAsync(scheme, themeRoot);
         await MainWindow.CaptureElementAsync(this, System.IO.Path.Combine(folder, $"labels-{scheme}.png"));
     }
 
-    private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme)
+    private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme, FrameworkElement host)
     {
-        var host = (FrameworkElement)XamlRoot.Content;
         var original = host.RequestedTheme;
         var alternate = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
         var width = EmailLabel.ActualWidth;

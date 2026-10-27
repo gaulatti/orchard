@@ -1,0 +1,28 @@
+{
+  "scope": "Labels, Inputs and Switches catalog live-theme verification against CatalogRoot",
+  "observedAt": "2026-10-27T01:32:54-04:00",
+  "catalogExeSha256": "ddedbe2d1052c399a104cde3c09b0ac4035da9ce8eb5d235e90e2bb3b88b249d",
+  "orchardDllSha256": "e11f69843c1a428dc20a5d511a2fbbb564497991b0c70415b2a5d51c62f02587",
+  "sourceBuildPassed": true,
+  "inputFocusedSmoke": "artifacts/current/input-theme-root-nongating-glyph-v1/result.json",
+  "inputFocusedSmokePassed": true,
+  "switchesFocusedSmoke": "artifacts/current/switches-theme-root-focused-v1/result.json",
+  "switchesFocusedSmokePassed": true,
+  "focusedSmokeThemes": ["Light", "Dark"],
+  "inputGlyphDiagnostics": {
+    "reports": 24,
+    "exactAlignmentFailures": 8,
+    "observedBestShiftPixels": -1,
+    "gatesComponentDelivery": false
+  },
+  "combinedSmoke": "artifacts/current/presentation-after-input-glyph-v1/result.json",
+  "combinedSmokePassed": false,
+  "combinedSmokeLabelsLightPassed": true,
+  "combinedSmokeFailure": "Temporary Input shadow was not restored after remount; the same lifecycle check passed in the focused Input smoke.",
+  "manualInputPointerLifecycleThemeTargetVerified": false,
+  "libraryControlChanged": false,
+  "newPackageQualified": false,
+  "componentsAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

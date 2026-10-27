@@ -22,9 +22,9 @@ public sealed partial class MainWindow
             (StatusBadges, scheme => StatusBadges.VerifyAsync(scheme)), (Menus, scheme => Menus.VerifyAsync(scheme, folder)),
             (Notifications, scheme => Notifications.VerifyAsync(scheme, folder, CatalogRoot)), (ActivityItems, scheme => ActivityItems.VerifyAsync(scheme, folder, CatalogRoot)),
             (Tooltips, scheme => Tooltips.VerifyAsync(scheme, folder, CatalogRoot)), (FieldHelp, scheme => FieldHelp.VerifyAsync(scheme, folder)),
-            (Labels, scheme => Labels.VerifyAsync(scheme, folder)), (Inputs, scheme => Inputs.VerifyAsync(scheme, folder)),
+            (Labels, scheme => Labels.VerifyAsync(scheme, folder, CatalogRoot)), (Inputs, scheme => Inputs.VerifyAsync(scheme, folder, CatalogRoot)),
             (Keyboard, scheme => Keyboard.VerifyAsync(scheme, folder)), (Eyebrows, scheme => Eyebrows.VerifyAsync(scheme, folder)),
-            (Progress, scheme => Progress.VerifyAsync(scheme, folder)), (Switches, scheme => Switches.VerifyAsync(scheme, folder))
+            (Progress, scheme => Progress.VerifyAsync(scheme, folder)), (Switches, scheme => Switches.VerifyAsync(scheme, folder, CatalogRoot))
         };
         foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
         {

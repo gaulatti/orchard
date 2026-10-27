@@ -24,7 +24,7 @@ public sealed partial class SwitchesFixture : UserControl
 
     public SwitchesFixture() { InitializeComponent(); DataContext = state; }
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, bool physicalInput = false)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, FrameworkElement themeRoot, bool physicalInput = false)
     {
         var untemplated = new BleeckerSwitch { Label = "Unmounted switch metadata" };
         Require(VisualTreeHelper.GetChildrenCount(untemplated) == 0, "Untemplated switch regression already has presentation.");
@@ -122,7 +122,7 @@ public sealed partial class SwitchesFixture : UserControl
         }
         await VerifyLifecycleAsync(scheme);
         var appearanceVerified = false;
-        try { await VerifyLiveAppearanceAsync(scheme); appearanceVerified = true; }
+        try { await VerifyLiveAppearanceAsync(scheme, themeRoot); appearanceVerified = true; }
         finally
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"switch-appearance-{scheme}.json"),
@@ -131,7 +131,7 @@ public sealed partial class SwitchesFixture : UserControl
                     new JsonSerializerOptions { WriteIndented = true }));
         }
         await InspectFontFallbackAsync(scheme, folder);
-        try { await VerifyMotionAsync(scheme); }
+        try { await VerifyMotionAsync(scheme, themeRoot); }
         finally
         {
             await File.WriteAllTextAsync(Path.Combine(folder, $"switch-motion-{scheme}.json"),
@@ -238,7 +238,7 @@ public sealed partial class SwitchesFixture : UserControl
         await SettleAsync(Off, false);
     }
 
-    private async Task VerifyMotionAsync(BleeckerColorScheme scheme)
+    private async Task VerifyMotionAsync(BleeckerColorScheme scheme, FrameworkElement themeRoot)
     {
         motionSamples.Clear();
         var animations = new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
@@ -268,7 +268,7 @@ public sealed partial class SwitchesFixture : UserControl
         await SettleAsync(Off, false);
         if (animations)
         {
-            var host = (FrameworkElement)XamlRoot.Content;
+            var host = themeRoot;
             var originalTheme = host.RequestedTheme;
             var startColor = Hex(Find<Border>(On, "PART_Track").Background);
             var targetColor = scheme == BleeckerColorScheme.Light ? "#FF5BA3F5" : "#FF2C5784";
@@ -290,9 +290,8 @@ public sealed partial class SwitchesFixture : UserControl
         }
     }
 
-    private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme)
+    private async Task VerifyLiveAppearanceAsync(BleeckerColorScheme scheme, FrameworkElement host)
     {
-        var host = (FrameworkElement)XamlRoot.Content;
         var controls = Rows.Children.OfType<BleeckerSwitch>().ToArray();
         var consumerStates = controls.Select(control => control.IsOn).ToArray();
         var originalTheme = host.RequestedTheme;

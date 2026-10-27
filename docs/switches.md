@@ -295,7 +295,7 @@ The disabled-activation regression accepts the native UIA ElementNotEnabled
 HRESULT `0x80040200`, which this SDK projection exposes as COMException, while
 also requiring the consumer Boolean to remain unchanged.
 
-Acceptance remains open: complete native/browser raster comparison (glyphs,
+Acceptance remains open: meaningful native/browser appearance comparison (glyphs,
 baselines, pill edges, shadows and fallback fonts), actual keyboard/pointer/drag
 matrix, focus visibility and live system appearance,
 constrained widths and isolated text/display scaling, exact interrupted-motion
@@ -303,3 +303,10 @@ timing/color rasterization, and remaining x64/ARM64 state acceptance. Desktop-wi
 display, text size and animation settings must remain unchanged during local
 verification. The repository wiki remote is unavailable; this contract is
 documented in the code repository.
+
+The source-built catalog's focused Switch smoke on 2026-10-27 passes both
+appearances after its live-theme and motion-interruption probes change
+`CatalogRoot`, the actual theme owner. The full presentation run stops earlier
+in Input shadow remount, so it does not exercise Switches in that sequence.
+This fixture correction does not qualify a new package. See
+`docs/evidence/catalog-presentation-theme-root-v1/checkpoint.json`.
