@@ -4797,6 +4797,15 @@
         "strictSourceColorComparisonPassed": false,
         "strictSourceColorDifferingPixels": 4128,
         "strictSourceColorMaximumChannelDifference": 1
+      },
+      "currentPreviewRecheck": {
+        "checkpoint": "docs/evidence/separator-preview-v2/checkpoint.json",
+        "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+        "x64CatalogAndIndependentConsumerPassed": true,
+        "isolatedRasterizationScalesVerified": [1, 1.25, 1.5, 2],
+        "physicalMonitorDpiChangeVerified": false,
+        "nativeARM64RuntimeVerified": false,
+        "nativeComponentAccepted": false
       }
     },
     {

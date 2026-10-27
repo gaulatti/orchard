@@ -1,0 +1,1542 @@
+{
+  "format": "orchard-content-scale-native-v3",
+  "passed": true,
+  "scope": "owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",
+  "observations": [
+    {
+      "theme": "Light",
+      "requestedScale": 1,
+      "actualRasterizationScale": 1,
+      "islandScale": 1,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.25,
+      "actualRasterizationScale": 1.25,
+      "islandScale": 1.25,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.5,
+      "actualRasterizationScale": 1.5,
+      "islandScale": 1.5,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 2,
+      "actualRasterizationScale": 2,
+      "islandScale": 2,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1,
+      "actualRasterizationScale": 1,
+      "islandScale": 1,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.25,
+      "actualRasterizationScale": 1.25,
+      "islandScale": 1.25,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.5,
+      "actualRasterizationScale": 1.5,
+      "islandScale": 1.5,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 2,
+      "actualRasterizationScale": 2,
+      "islandScale": 2,
+      "loaded": true,
+      "separatorWidth": 320,
+      "separatorHeight": 1,
+      "separatorLayoutRounding": false,
+      "verticalWidth": 1,
+      "verticalHeight": 64,
+      "verticalLayoutRounding": false,
+      "callerWidth": 320,
+      "callerHeight": 1,
+      "callerVerticalWidth": 1,
+      "callerVerticalHeight": 64,
+      "callerLayoutRounding": true,
+      "callerVerticalLayoutRounding": true,
+      "bindingsRetained": true,
+      "badgeWidth": 184,
+      "badgeHeight": 24,
+      "badgeBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 184,
+        "height": 24
+      },
+      "badgeSurfaceBounds": {
+        "x": 24,
+        "y": 48,
+        "width": 69,
+        "height": 24
+      },
+      "badgeLabel": "LOCAL",
+      "badgeLabelHeight": 16.5,
+      "badgeDescription": "Fictional local status",
+      "badgeDescriptionHeight": 16,
+      "badgeDotWidth": 6,
+      "badgeDotHeight": 6,
+      "badgeTabStop": false,
+      "name": "",
+      "help": "",
+      "switchWidth": 320,
+      "switchHeight": 40,
+      "switchTrackWidth": 36,
+      "switchTrackHeight": 20,
+      "switchThumbWidth": 16,
+      "switchThumbHeight": 16,
+      "switchLabel": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchName": "Enable fictional editorial notifications while reviewing a long draft",
+      "switchLabelBounds": {
+        "x": 72,
+        "y": 104,
+        "width": 235.31903076171875,
+        "height": 40
+      },
+      "switchTrackBounds": {
+        "x": 24,
+        "y": 114,
+        "width": 36,
+        "height": 20
+      },
+      "switchToggles": 0
+    }
+  ],
+  "frames": [
+    {
+      "theme": "Light",
+      "requestedScale": 1,
+      "width": 400,
+      "height": 160,
+      "file": "content-scale-Light-1.png",
+      "sha256": "f7cb8d8f53a0cb546754b6f22aba237b6f81cc5fba106e00179d7bbf8996d2fc"
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.25,
+      "width": 500,
+      "height": 200,
+      "file": "content-scale-Light-1.25.png",
+      "sha256": "7fa5bc2820ff0d7ae5cc64238f15c612cb7149acd98c73f50718fc2ecbab9e3e"
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.5,
+      "width": 600,
+      "height": 240,
+      "file": "content-scale-Light-1.5.png",
+      "sha256": "f7eff0ee5805165f597141b8284ac3e1489dc5029036d11fdcb960b68d080cee"
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 2,
+      "width": 800,
+      "height": 320,
+      "file": "content-scale-Light-2.png",
+      "sha256": "c1990e3932a895544b1774d15e909bca4844d0327032ad7a354feb888bb43669"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1,
+      "width": 400,
+      "height": 160,
+      "file": "content-scale-Dark-1.png",
+      "sha256": "d3a2b78a4dd6027a7b7e9d4478dbdcb889352b30d460425be17af68027eb5e8b"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.25,
+      "width": 500,
+      "height": 200,
+      "file": "content-scale-Dark-1.25.png",
+      "sha256": "415feb9b2bb89f3d371a5704b2f74f478259984b510cbb0e58426743f9822abf"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.5,
+      "width": 600,
+      "height": 240,
+      "file": "content-scale-Dark-1.5.png",
+      "sha256": "061beac0c19b06f3214568794191b662570ba549c8dd8d824e2398bdb84280e0"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 2,
+      "width": 800,
+      "height": 320,
+      "file": "content-scale-Dark-2.png",
+      "sha256": "5659d9a8cac7b5662405722ea3c71f485568614b682dbc5dc1e5c9e1c1adb6a7"
+    }
+  ],
+  "toggleObservations": [
+    {
+      "theme": "Light",
+      "requestedScale": 1,
+      "actualRasterizationScale": 1,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.25,
+      "actualRasterizationScale": 1.25,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.5,
+      "actualRasterizationScale": 1.5,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 2,
+      "actualRasterizationScale": 2,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1,
+      "actualRasterizationScale": 1,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.25,
+      "actualRasterizationScale": 1.25,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.5,
+      "actualRasterizationScale": 1.5,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 2,
+      "actualRasterizationScale": 2,
+      "states": [
+        {
+          "id": "BleeckerSmallToggleStyle",
+          "label": "Small",
+          "name": "Fictional Small toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 12,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerToggleStyle",
+          "label": "Medium",
+          "name": "Fictional Medium toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 12,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeToggleStyle",
+          "label": "Large",
+          "name": "Fictional Large toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 12,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerSmallOutlineToggleStyle",
+          "label": "S outline",
+          "name": "Fictional S outline toggle",
+          "width": 108,
+          "height": 32,
+          "bounds": {
+            "x": 24,
+            "y": 80,
+            "width": 108,
+            "height": 32
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerOutlineToggleStyle",
+          "label": "M outline",
+          "name": "Fictional M outline toggle",
+          "width": 108,
+          "height": 36,
+          "bounds": {
+            "x": 146,
+            "y": 80,
+            "width": 108,
+            "height": 36
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        },
+        {
+          "id": "BleeckerLargeOutlineToggleStyle",
+          "label": "L outline",
+          "name": "Fictional L outline toggle",
+          "width": 108,
+          "height": 40,
+          "bounds": {
+            "x": 268,
+            "y": 80,
+            "width": 108,
+            "height": 40
+          },
+          "checkedState": true,
+          "loaded": true,
+          "tabStop": true
+        }
+      ],
+      "toggleChanges": 0
+    }
+  ],
+  "toggleFrames": [
+    {
+      "theme": "Light",
+      "requestedScale": 1,
+      "width": 400,
+      "height": 160,
+      "file": "toggle-scale-Light-1.png",
+      "sha256": "d6007dd334113585ef171b6a5c3abb97336cfc846b3f810cbea1a2d0a591949f"
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.25,
+      "width": 500,
+      "height": 200,
+      "file": "toggle-scale-Light-1.25.png",
+      "sha256": "7135c02e85ae9f1a5b8d55340cc6f995f6ade1f510493e08680f86c15572194a"
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 1.5,
+      "width": 600,
+      "height": 240,
+      "file": "toggle-scale-Light-1.5.png",
+      "sha256": "9daf1e9d26e5886e645155be6031e986aa371b1181ddd789afc67cf7d21bca2d"
+    },
+    {
+      "theme": "Light",
+      "requestedScale": 2,
+      "width": 800,
+      "height": 320,
+      "file": "toggle-scale-Light-2.png",
+      "sha256": "2ef27faeec9c1f844dbcbd93aac74dd6b082f57af87a64196380df357281a59b"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1,
+      "width": 400,
+      "height": 160,
+      "file": "toggle-scale-Dark-1.png",
+      "sha256": "66f7ea53f70fedc40432bb8cd18b56334e7c196f148b23e89cba200234f61e6d"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.25,
+      "width": 500,
+      "height": 200,
+      "file": "toggle-scale-Dark-1.25.png",
+      "sha256": "0b56467fd3810750f8417a78cfd1b15654f3e51c4964b65b884edef45ac88196"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 1.5,
+      "width": 600,
+      "height": 240,
+      "file": "toggle-scale-Dark-1.5.png",
+      "sha256": "cfe3826f16a85e4875698eaadae6f46c0769faf9f8fea18228d3d3fe7555844e"
+    },
+    {
+      "theme": "Dark",
+      "requestedScale": 2,
+      "width": 800,
+      "height": 320,
+      "file": "toggle-scale-Dark-2.png",
+      "sha256": "0c81911e4e589f62fda5f5d45981b328d7f40512d69d33ce80474527b62bf2e5"
+    }
+  ],
+  "inputOverrides": [
+    {
+      "id": "default-size",
+      "passed": true
+    },
+    {
+      "id": "local-overrides",
+      "passed": true
+    },
+    {
+      "id": "bound-overrides",
+      "passed": true
+    },
+    {
+      "id": "same-valued-local",
+      "passed": true
+    },
+    {
+      "id": "basedon-style",
+      "passed": true
+    },
+    {
+      "id": "textbox-base-style",
+      "passed": true
+    },
+    {
+      "id": "implicit-textbox-base-style",
+      "passed": true
+    },
+    {
+      "id": "template-and-remount",
+      "passed": true
+    },
+    {
+      "id": "clear-restores-default",
+      "passed": true
+    },
+    {
+      "id": "ancestor-implicit-style",
+      "passed": true
+    }
+  ],
+  "guards": 183,
+  "focus": 0,
+  "activations": 0,
+  "isolatedRasterizationScaleVerified": true,
+  "isolatedStatusBadgeRasterizationVerified": true,
+  "isolatedSwitchRasterizationVerified": true,
+  "isolatedToggleRasterizationVerified": true,
+  "inputOverrideContractsVerified": true,
+  "displayScalingVerified": false,
+  "systemTextScalingVerified": false,
+  "osSettingsChanged": false,
+  "hardwareInputSent": false,
+  "nativeARM64RuntimeVerified": false,
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "hostSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e"
+}

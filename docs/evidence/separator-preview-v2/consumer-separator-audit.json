@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "scope": "native source recipe, complete separator pixels, UIA metadata, live resize/orientation/semantics, caller bindings and template/remount; no hardware input or system settings",
+  "states": 32,
+  "callerContracts": 8,
+  "pngs": 32,
+  "pixels": 2048000,
+  "linePixels": 6144,
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "hostSha256": "a6ad71bd9419597acc41483349d9750a8ba6a82ba5198de70978a154950d3c78",
+  "guards": 369,
+  "focus": 0,
+  "activations": 0,
+  "displayScalingVerified": false,
+  "nativeARM64RuntimeVerified": false,
+  "nativeComponentAccepted": false
+}

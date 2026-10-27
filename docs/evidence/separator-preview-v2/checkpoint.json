@@ -1,0 +1,46 @@
+{
+  "scope": "Current preview x64 Separator and isolated rasterization qualification in source catalog and independent NuGet consumer",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.2",
+  "packageSha256": "62e3d1f9f4d78700520ceaa5dcf0d664877484e359bfc9f9f9bbb8119ad0b1df",
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "catalogSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e",
+  "consumerSha256": "a6ad71bd9419597acc41483349d9750a8ba6a82ba5198de70978a154950d3c78",
+  "verification": {
+    "catalogAndConsumerPassed": true,
+    "nativeSeparatorStatesPerHost": 32,
+    "callerContractsPerHost": 8,
+    "fullSeparatorPixelsPerHost": 2048000,
+    "catalogIsolationGuards": 377,
+    "consumerIsolationGuards": 369,
+    "isolatedRasterizationScales": [1, 1.25, 1.5, 2],
+    "isolatedScaleFramesPerHost": 8,
+    "scaleGuardsPerHost": 183,
+    "separatorCoverageMasksMatchSource": true,
+    "strictSourceImageComparisonPassed": false,
+    "strictSourceDifferingPixels": 4128,
+    "strictSourceMaximumChannelDifference": 1,
+    "physicalMonitorDpiChangeVerified": false,
+    "systemTextScalingVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "hardwareInputSent": false,
+    "osSettingsChanged": false
+  },
+  "evidence": {
+    "catalogSeparator": {"path": "docs/evidence/separator-preview-v2/catalog-separator.json", "sha256": "ebe53260ae399ff8d87a1517134aefda3f9daaeaaf3aac1281b69a0ee40f929e"},
+    "catalogSeparatorAudit": {"path": "docs/evidence/separator-preview-v2/catalog-separator-audit.json", "sha256": "911354ee379905a9e67d9e6dc0d13ed405575dcc66a83bc94e851bab004d218d"},
+    "consumerSeparator": {"path": "docs/evidence/separator-preview-v2/consumer-separator.json", "sha256": "bbefe421d85fd849fb4713396193a3fc0cadc8130d1aa460eff094bde567ea41"},
+    "consumerSeparatorAudit": {"path": "docs/evidence/separator-preview-v2/consumer-separator-audit.json", "sha256": "73d406cec5667854d95a442aa339d1362b2d270c3b3134346dc22f38b245103b"},
+    "catalogScale": {"path": "docs/evidence/separator-preview-v2/catalog-scale.json", "sha256": "045c8f906ee00b9ee6d1566e8c17ebe0a6132f3cfb7ed95b928fbb341b4b7aef"},
+    "catalogScaleAudit": {"path": "docs/evidence/separator-preview-v2/catalog-scale-audit.json", "sha256": "955c4302e8f690632d712b354c54d6c91c4aff1d404b4a34444a07ac33fe788f"},
+    "consumerScale": {"path": "docs/evidence/separator-preview-v2/consumer-scale.json", "sha256": "2cc389d6b10456164be0722a308fd9d88edd9aa5300bda691597da7548b8bc1d"},
+    "consumerScaleAudit": {"path": "docs/evidence/separator-preview-v2/consumer-scale-audit.json", "sha256": "1bbacbdb12571949235403f840def5b02cde3d0545a46c9d92901d61eb10f587"}
+  },
+  "limits": [
+    "Current native x64 source and package checks pass, but physical monitor-DPI transitions and Windows text-scale changes were not exercised.",
+    "The isolated native rasterization audit retains its strict image mismatch; byte-identical source raster is not the public-component acceptance gate.",
+    "The current preview has no native ARM64 runtime evidence, so Separator remains in progress."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "nativeComponentAccepted": false
+}

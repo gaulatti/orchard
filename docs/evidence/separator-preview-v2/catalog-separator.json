@@ -1,0 +1,1257 @@
+{
+  "format": "orchard-separator-native-v1",
+  "passed": true,
+  "states": [
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Horizontal-True-True.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Horizontal-True-False.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Horizontal-False-True.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Horizontal-False-False.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Vertical-True-True.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Vertical-True-False.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Vertical-False-True.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-LeftToRight-Vertical-False-False.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Horizontal-True-True.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Horizontal-True-False.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Horizontal-False-True.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Horizontal-False-False.png",
+        "sha256": "7a3f035c1dbc113480c6b00eaadf87c0d76c1d0bd12816d74bf14865cdf5fc20"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Vertical-True-True.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Vertical-True-False.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Vertical-False-True.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Light",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "Opacity": 0.05000000074505806,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Light-RightToLeft-Vertical-False-False.png",
+        "sha256": "711c818c3f662ce72090eceec779c13e6b4a2b0a2dcde2788d90ccdb0ee60e63"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Horizontal-True-True.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Horizontal-True-False.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Horizontal-False-True.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Horizontal-False-False.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Vertical-True-True.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Vertical-True-False.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Vertical-False-True.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "LeftToRight",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-LeftToRight-Vertical-False-False.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Horizontal-True-True.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Horizontal-True-False.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Horizontal-False-True.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Horizontal",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 320,
+        "height": 1
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Horizontal-False-False.png",
+        "sha256": "242a28870c1380dc33c37e3c0a1e60a1e63544947b31bb65c9b5ce4b55fdc3d4"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Vertical-True-True.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": true,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": false,
+      "contentElement": false,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Vertical-True-False.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": true,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Vertical-False-True.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    },
+    {
+      "theme": "Dark",
+      "flow": "RightToLeft",
+      "orientation": "Vertical",
+      "decorative": false,
+      "enabled": false,
+      "box": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "line": {
+        "x": 24,
+        "y": 24,
+        "width": 1,
+        "height": 64
+      },
+      "color": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "Opacity": 0.10000000149011612,
+      "tabStop": false,
+      "controlElement": true,
+      "contentElement": true,
+      "role": "Separator",
+      "name": "Fictional workspace sections",
+      "image": {
+        "file": "separator-Dark-RightToLeft-Vertical-False-False.png",
+        "sha256": "bece15137988a5a7cbafe0a8e59473ccd56b6cb78efeb271765b9c5cd95aa8bb"
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "theme": "Light",
+      "id": "caller-bindings",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 137,
+        "height": 3
+      }
+    },
+    {
+      "theme": "Light",
+      "id": "live-caller-values",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 64
+      }
+    },
+    {
+      "theme": "Light",
+      "id": "retemplate",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 64
+      }
+    },
+    {
+      "theme": "Light",
+      "id": "remount",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 7,
+        "height": 48
+      }
+    },
+    {
+      "theme": "Dark",
+      "id": "caller-bindings",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 137,
+        "height": 3
+      }
+    },
+    {
+      "theme": "Dark",
+      "id": "live-caller-values",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 64
+      }
+    },
+    {
+      "theme": "Dark",
+      "id": "retemplate",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 5,
+        "height": 64
+      }
+    },
+    {
+      "theme": "Dark",
+      "id": "remount",
+      "passed": true,
+      "originalBrushRetained": true,
+      "bindingsRetained": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 7,
+        "height": 48
+      }
+    }
+  ],
+  "catalogs": [
+    {
+      "theme": "Light",
+      "controls": 4,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "controls": 4,
+      "passed": true
+    }
+  ],
+  "guards": 377,
+  "focus": 0,
+  "activations": 0,
+  "rasterizationScale": 1,
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "hardwareInputSent": false,
+  "osSettingsChanged": false,
+  "nativeARM64RuntimeVerified": false,
+  "displayScalingVerified": false,
+  "nativeComponentAccepted": false,
+  "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+  "hostSha256": "a1d134ed116e0a0abb16754f09aff82dabb82c2bd6452f2de14090d75d27006e"
+}

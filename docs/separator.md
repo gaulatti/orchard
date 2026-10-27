@@ -68,6 +68,16 @@ The earlier source catalog and independent consumer compilation passed for x64
 and ARM64. Those builds cover the pre-repair identity; the isolated fractional
 native checks below establish a separate scope.
 
+The [current preview recheck](evidence/separator-preview-v2/checkpoint.json)
+uses the exact Orchard DLL published in `0.1.0-preview.20261027.2`. Both its x64
+catalog and independent NuGet consumer pass the existing 32 native states,
+eight caller contracts, full-line pixel audit and isolation checks. Both pass
+the isolated 100%, 125%, 150% and 200% rasterization audit in Light and Dark.
+The strict source-image diagnostic still differs at 4,128 pixels by at most one
+channel value; coverage masks match. This refreshes the source/package evidence
+without proving physical monitor-DPI changes, system text scaling or native
+ARM64 execution. Separator remains in progress.
+
 ## Isolated native rasterization
 
 `--probe-hidden-content-scale` uses an owned `DesktopWindowXamlSource` and its
