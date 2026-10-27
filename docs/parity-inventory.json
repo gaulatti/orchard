@@ -8740,7 +8740,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Authorized physical keyboard/pointer/focus verification",
+        "Focused x64 catalog physical pointer and keyboard checks pass in Light/Dark, including disabled rejection, focus-only Ctrl+Left and Tab transfer; complete physical/RTL and independent-consumer matrix remains open (docs/evidence/app-tab-bar-foreground-v1/checkpoint.json)",
         "Actual system text-scaling and complete visual/customization acceptance",
         "Native ARM64 runtime verification",
         "Final component acceptance and delivery"
@@ -8751,6 +8751,7 @@
         "source": "artifacts/current/app-tab-bar-native-v4/app-tab-bar-audit.json",
         "actualCatalog": "artifacts/current/app-tab-bar-catalog-v3/app-tab-bar-catalog-audit.json",
         "physicalInputVerified": false,
+        "focusedPhysicalInputEvidence": "docs/evidence/app-tab-bar-foreground-v1/checkpoint.json",
         "appleRenderingVerified": false,
         "accepted": false,
         "publicPackage": "artifacts/current/app-tab-bar-package-native-v2/app-tab-bar-audit.json"

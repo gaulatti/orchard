@@ -48,9 +48,11 @@ the pinned Encode Sans Bold face, bundled as the sixth font asset.
 Native Button Invoke and TabItem SelectionItem activate destinations. The bar
 provides single-selection Tab semantics, supports Left/Right (including RTL),
 Home/End and skips disabled tabs; Ctrl+Arrow moves focus without selecting.
-Removed or unloaded actions reject invocation. Keyboard and pointer routing still
-require an authorized desktop run. No hidden background probe proves physical
-input behavior.
+Removed or unloaded actions reject invocation. A [focused x64 catalog foreground
+check](evidence/app-tab-bar-foreground-v1/checkpoint.json) verifies real pointer
+selection, disabled Archive rejection, Left/Right/End, Ctrl+Left focus without
+selection, Space activation, and Tab/Shift+Tab transfer. The full physical
+input matrix, RTL, and independent-consumer foreground input remain open.
 
 `AppTabBarsFixture.xaml` demonstrates fictional local destinations, typed values,
 badges, constrained width, disabled state and enlarged text. Monitoring and
@@ -58,6 +60,8 @@ Editorial remain required demonstrations. The source host passes 58 behavior,
 badge, icon-source and lifecycle cases plus eight layouts/captures. Actual PNG
 pixels verify selected-icon placement and badge paint, including physical RTL
 bounds. The actual catalog passes both themes and checks equal tracks and centered
-icons for all five examples. Native physical input, actual system text scaling,
-full visual/customization and ARM64 runtime acceptance remain open. Fresh NuGet
-delivery is recorded separately in the current validation checkpoint.
+icons for all five examples. The foreground check covers the longer sequence
+in System dark and focused pointer/keyboard actions in explicit Light and Dark;
+it uses the same Orchard DLL SHA-256 as the v9 local package. Actual system text
+scaling, full visual/customization and ARM64 runtime acceptance remain open.
+Fresh NuGet delivery is recorded separately in the current validation checkpoint.

@@ -1,0 +1,33 @@
+{
+  "scope": "Visible App Tab Bar fixture in the source-built x64 catalog using the Orchard DLL included in the v9 local package",
+  "observedAt": "2026-10-27T09:05:09-04:00",
+  "method": "Computer Use @oai/sky foreground pointer and keyboard input, visible focus outline and catalog selection text",
+  "sourceCommit": "9282db1c8c1affcdabd2158ceb0e909ea9abbb9b",
+  "catalogExeSha256": "c749b7cd8a8f804ae14fb961098fa43275e58e9c95c58c5ba933b9b59486207e",
+  "catalogDllSha256": "f35cafd09ba258969ea7892b2ed91510801b38c975798070ff6e4d97d761cfc1",
+  "orchardDllSha256": "25cc6d3f61c2db06ab5c13b20d3d69e8e2903bc2a4e237cc983c14ba7d72b4c4",
+  "checks": {
+    "systemDarkPointerSelectedQueue": true,
+    "systemDarkLeftSelectedOverview": true,
+    "systemDarkRightSelectedQueue": true,
+    "systemDarkDisabledArchivePointerPreservedQueue": true,
+    "systemDarkControlLeftMovedVisibleFocusToOverviewWithoutChangingQueue": true,
+    "systemDarkSpaceSelectedFocusedOverview": true,
+    "systemDarkEndSelectedQueueSkippingDisabledArchive": true,
+    "systemDarkTabMovedVisibleFocusToTypedSample": true,
+    "systemDarkShiftTabReturnedVisibleFocusToQueue": true,
+    "lightPointerSelectedOverview": true,
+    "lightRightSelectedQueue": true,
+    "explicitDarkPointerSelectedOverview": true,
+    "explicitDarkEndSelectedQueueSkippingDisabledArchive": true
+  },
+  "limitations": [
+    "The source-built catalog was exercised; independent NuGet consumer foreground input was not.",
+    "System theme was dark during the longer matrix; explicit Light and Dark received focused pointer and keyboard checks.",
+    "The automation tree reported the search box as focused after key navigation, so focus was assessed from the visible native focus outline and was not claimed as a UIA focused-element assertion.",
+    "RTL, full physical input states, actual system text scaling, complete visual/customization acceptance and native ARM64 runtime remain open."
+  ],
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
