@@ -788,7 +788,7 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(Foundation);
             CatalogRoot.RequestedTheme = theme;
             await SelectFixtureAsync(Tooltips);
-            await Tooltips.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+            await Tooltips.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, CatalogRoot);
             await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
         await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "tooltips", environment = RuntimeEnvironment() }));
@@ -941,7 +941,7 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(Metrics);
             await Metrics.VerifyAsync(scheme,folder);
             await SelectFixtureAsync(Tooltips);
-            await Tooltips.VerifyAsync(scheme, folder);
+            await Tooltips.VerifyAsync(scheme, folder, CatalogRoot);
             await SelectFixtureAsync(FieldHelp);
             await FieldHelp.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Labels);

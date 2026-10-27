@@ -1,0 +1,25 @@
+{
+  "scope": "Tooltip catalog verification against the current modal host and theme root",
+  "observedAt": "2026-10-27T01:24:53-04:00",
+  "catalogExeSha256": "ec5ca9dc186a350957fbd396ec7063af7b159c85191784ec75a652542fd7dbbe",
+  "orchardDllSha256": "d4ef79fe62ec7142bb402ba0192a1140241722bfaeb5090af0110be344fa9239",
+  "sourceBuildPassed": true,
+  "focusedSmoke": "artifacts/current/tooltip-modal-host-replay-v1/result.json",
+  "focusedSmokePassed": true,
+  "focusedSmokeThemes": ["Light", "Dark"],
+  "verified": [
+    "live appearance changes and restoration on the actual catalog theme root",
+    "visible consumer template update and remeasurement",
+    "collision placement and mounted viewport bounds",
+    "motion lifecycle and single reopened presentation",
+    "wrapped-button activation"
+  ],
+  "combinedSmoke": "artifacts/current/presentation-after-tooltip-host-v1/result.json",
+  "combinedSmokePassed": false,
+  "combinedSmokeFailure": "Labels live-theme palette assertion after Tooltip passed in the Light sequence.",
+  "libraryControlChanged": false,
+  "newPackageQualified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

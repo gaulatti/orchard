@@ -11,7 +11,7 @@ public sealed partial class TooltipsFixture : UserControl
 {
     public TooltipsFixture() => InitializeComponent();
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder, Grid catalogRoot)
     {
         tooltipPresentations.Clear();
         StartBringIntoView();
@@ -48,7 +48,7 @@ public sealed partial class TooltipsFixture : UserControl
                     "Tooltip lost its native role or became a keyboard stop.");
                 Require(!text.IsTextTrimmed && (tip != LongTip || text.ActualHeight > 19.5), "Long tooltip text did not wrap.");
                 await MainWindow.CaptureElementAsync(tip, System.IO.Path.Combine(folder, $"tooltip-{tip.Name}-{scheme.ToString().ToLowerInvariant()}.png"));
-                await VerifyLiveAppearanceAsync(tip, surface, text, arrow, scheme, folder);
+                await VerifyLiveAppearanceAsync(tip, surface, text, arrow, scheme, folder, catalogRoot);
                 if (tip == TemplateTip)
                     Require(FrameworkElementAutomationPeer.CreatePeerForElement(tip).GetName() == "Editorial guidance", "Consumer tooltip name was replaced by its data content.");
                 if (tip == LongTip || tip == TemplateTip)
@@ -56,8 +56,12 @@ public sealed partial class TooltipsFixture : UserControl
                     var original = tip.Content;
                     var longHeight = surface.ActualHeight;
                     tip.Content = "Short update";
-                    await AwaitVerificationAsync(() => Require(surface.ActualHeight < longHeight, "Tooltip did not remeasure a live content change."));
-                    Require(Descendants<TextBlock>(surface).First().Text == "Short update", "Tooltip template did not receive updated consumer content.");
+                    await AwaitVerificationAsync(() =>
+                    {
+                        Require(surface.ActualHeight < longHeight, "Tooltip did not remeasure a live content change.");
+                        Require(Descendants<TextBlock>(surface).Any(block => block.Visibility == Visibility.Visible && block.ActualHeight > 0 && block.Text == "Short update"),
+                            "Tooltip did not render updated consumer content.");
+                    });
                     tip.Content = original;
                     await AwaitVerificationAsync(() => Require(surface.ActualHeight == longHeight, "Tooltip did not restore its wrapped content height."));
                 }
@@ -65,7 +69,7 @@ public sealed partial class TooltipsFixture : UserControl
             finally { tip.IsOpen = false; }
             await AwaitTooltipClosedAsync(tip);
         }
-        await VerifyCollisionsAsync(scheme, folder);
+        await VerifyCollisionsAsync(scheme, folder, catalogRoot);
         TopTip.IsOpen = true;
         BottomTip.IsOpen = true;
         Require(!TopTip.IsOpen && BottomTip.IsOpen, "Opening another tooltip did not dismiss the previous one.");
@@ -79,12 +83,11 @@ public sealed partial class TooltipsFixture : UserControl
             $"Native trigger activation failed: open={BottomTip.IsOpen}, focus={(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement)?.Name}.");
         BottomTip.IsOpen = false;
         await VerifyMotionLifecycleAsync();
-        await VerifyWrappedActivationAsync();
+        await VerifyWrappedActivationAsync(catalogRoot);
     }
 
-    private async Task VerifyWrappedActivationAsync()
+    private async Task VerifyWrappedActivationAsync(Grid host)
     {
-        var host = (Grid)XamlRoot.Content;
         var button = new BleeckerButton { Content = "Wrapped activation", HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
         var tooltip = new BleeckerTooltip { Content = "Wrapped button help" };
         BleeckerTooltipService.SetToolTip(button, tooltip);
@@ -108,9 +111,9 @@ public sealed partial class TooltipsFixture : UserControl
         }
     }
 
-    private async Task VerifyLiveAppearanceAsync(BleeckerTooltip tip, BleeckerOverlaySurface surface, TextBlock text, Polygon arrow, BleeckerColorScheme scheme, string folder)
+    private async Task VerifyLiveAppearanceAsync(BleeckerTooltip tip, BleeckerOverlaySurface surface, TextBlock text, Polygon arrow, BleeckerColorScheme scheme, string folder, FrameworkElement themeRoot)
     {
-        var root = (FrameworkElement)XamlRoot.Content;
+        var root = themeRoot;
         var original = root.RequestedTheme;
         var changed = scheme == BleeckerColorScheme.Light ? BleeckerColorScheme.Dark : BleeckerColorScheme.Light;
         var width = surface.ActualWidth;
@@ -166,20 +169,19 @@ public sealed partial class TooltipsFixture : UserControl
         Require(root.Opacity == 1 && root.RenderTransform is ScaleTransform { ScaleX: 1, ScaleY: 1 }, "Instant tooltip entry animated or retained an old transform.");
         TopTip.IsOpen = false;
         if (!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled)
-            Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), "Reduced-motion dismissal retained a popup.");
+            Require(!TopTip.PresentationMounted, "Reduced-motion dismissal retained the tooltip presentation.");
         else
-            Require(VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), "Normal-motion dismissal removed the popup before its exit animation.");
+            Require(TopTip.PresentationMounted, "Normal-motion dismissal removed the tooltip presentation before its exit animation.");
         TopTip.IsOpen = true;
         await Task.Delay(250);
-        Require(TopTip.IsOpen && VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Count(item => ReferenceEquals(item.Child, TopTip)) == 1,
-            "An interrupted exit removed the reopened tooltip or leaked a popup.");
+        Require(TopTip.IsOpen && TopTip.PresentationMounted && Descendants<BleeckerTooltip>((DependencyObject)XamlRoot.Content).Count(item => ReferenceEquals(item, TopTip)) == 1,
+            "An interrupted exit removed the reopened tooltip or duplicated its presentation.");
         TopTip.IsOpen = false;
-        await AwaitVerificationAsync(() => Require(!VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(item => ReferenceEquals(item.Child, TopTip)), $"Completed tooltip exit retained its popup: open={TopTip.IsOpen}, opacity={root.Opacity}."));
+        await AwaitVerificationAsync(() => Require(!TopTip.PresentationMounted, $"Completed tooltip exit retained its presentation: open={TopTip.IsOpen}, opacity={root.Opacity}."));
     }
 
-    private async Task VerifyCollisionsAsync(BleeckerColorScheme scheme, string folder)
+    private async Task VerifyCollisionsAsync(BleeckerColorScheme scheme, string folder, Grid root)
     {
-        var root = (Grid)XamlRoot.Content;
         var layer = new Canvas();
         var target = new Button { Content = "Target", Width = 80, Height = 40, Style = TopTrigger.Style };
         var tip = new BleeckerTooltip { Content = "Edge tooltip", PlacementTarget = target };
@@ -201,8 +203,9 @@ public sealed partial class TooltipsFixture : UserControl
                 await AwaitTooltipPresentationAsync(tip, scheme, folder);
                 var opposite = side switch { PlacementMode.Top => PlacementMode.Bottom, PlacementMode.Bottom => PlacementMode.Top, PlacementMode.Left => PlacementMode.Right, _ => PlacementMode.Left };
                 Require(tip.ActualPlacement == (edge ? opposite : side), "Tooltip did not resolve the expected collision side.");
-                var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Single(item => ReferenceEquals(item.Child, tip));
-                Require(popup.IsConstrainedToRootBounds, "Tooltip still uses an unconstrained native popup window.");
+                var bounds = tip.TransformToVisual(root).TransformBounds(new Windows.Foundation.Rect(0, 0, tip.ActualWidth, tip.ActualHeight));
+                Require(tip.PresentationMounted && bounds.Left >= -.5 && bounds.Top >= -.5 && bounds.Right <= root.ActualWidth + .5 && bounds.Bottom <= root.ActualHeight + .5,
+                    $"Tooltip escaped its catalog viewport: {side}/{edge}/{bounds}.");
                 var arrow = Descendants<Polygon>(tip).Single();
                 var position = arrow.TransformToVisual(target).TransformPoint(new Windows.Foundation.Point());
                 var gap = tip.ActualPlacement switch

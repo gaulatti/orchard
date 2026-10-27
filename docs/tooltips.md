@@ -84,7 +84,7 @@ The transit checkpoint passes 13 unit tests, x64 published catalog smoke (`artif
 
 Motion now uses the surface and motionExit duration tokens: delayed hover entry fades from 0 to 1 and scales .98 to 1 over 220ms with cubic-bezier(.22,1,.36,1); exit fades to 0 and scales to .98 over 150ms with CSS ease-in. Keyboard/programmatic/skip-window entry remains immediate. The template owns the transform, leaving the consumer's control transform untouched. IsOpen and Closed describe logical dismissal; the popup is removed after exit. Reopening cancels the old exit. Detaching or unloading the owner removes it immediately. Windows disabled animations bypass both animations; disabling animations during motion settles an open tooltip or removes a closing one.
 
-This is still in progress. The complete physical transit matrix, rendered normal-motion timing/curve comparison, measured hover/skip timing, modal ownership, collision corners and very small viewports, explicit nested theme overrides, scaled layouts, actual Windows contrast and Narrator require further work and verification. Exact shadow/font rasterization remains subject to rendered comparison. ARM64 compilation does not establish ARM64 runtime on this Intel host.
+This is still in progress. The complete physical transit matrix, rendered normal-motion timing/curve comparison, measured hover/skip timing, modal ownership, collision corners and very small viewports, explicit nested theme overrides, and scaled layouts require further work and verification. Shadow and font appearance remain subject to meaningful rendered comparison. ARM64 compilation does not establish ARM64 runtime on this Intel host.
 
 Motion checkpoint evidence: reduced-motion smoke at artifacts/smoke-tooltip-motion; final enabled-motion smoke at artifacts/smoke-tooltip-motion-duration; final isolated package consumer at artifacts/package-consumer-tooltip-motion. The catalog checks immediate entry, different reduced/normal dismissal lifetimes, interrupted exit/reopening and eventual popup removal. All pass; 13 unit tests and the final ARM64 build also pass. These checks do not yet measure the physical delayed-hover animation frame by frame.
 
@@ -138,3 +138,17 @@ including LongTip's exact 219 by 75 surface, but times out at the unchanged
 360-second limit after 934 captures. These passes do not establish the cause
 of the preceding LongTip failure or full-suite acceptance. Its diagnostic
 summary is `artifacts/tooltip-theme-diagnostic-full-summary.json`.
+
+On 2026-10-27, the source-built x64 catalog's Tooltip fixture was updated for
+its current `BleeckerModalHost` layout. Live appearance now changes
+`CatalogRoot`, which owns the trigger's inherited theme. The collision and
+wrapped-button specimens mount in that full-size Grid. The content-update
+check observes the visible consumer template instead of the hidden plain-text
+slot, and collision/motion checks inspect the mounted presentation and its
+viewport bounds rather than requiring a native `Popup`. The focused Tooltip
+smoke passes both appearances, including live theme restoration, templated
+content, collision placement, motion lifecycle and wrapped-button activation.
+The combined presentation smoke advances to Labels and fails its live-theme
+palette assertion. See
+`docs/evidence/tooltip-catalog-modal-host-v1/checkpoint.json`. This is a catalog
+regression correction; the library control and current package are unchanged.
