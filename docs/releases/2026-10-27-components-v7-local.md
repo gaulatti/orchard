@@ -124,7 +124,14 @@ filtering four fictional pages to one while retaining a hidden selection, and
 restoring the selection after clearing search. The
 [Editorial search checkpoint](../evidence/editorial-search-source-v1/checkpoint.json)
 records the exact package and source-built runs. It does not resolve the
-Monitoring focus failure or the remaining Editorial editing and scaling checks.
+Monitoring focus failure or the remaining Editorial workflows and scaling checks.
+
+The extracted v7 x64 catalog also passes physical Editorial page editing,
+local save, and Keep editing/Discard changes decisions in Light and Dark. The
+[edit checkpoint](../evidence/editorial-edit-v1/checkpoint.json) includes the
+same focused source-built run and visible decision screenshots. Status and
+relationship editing, full visual review, scaling and native ARM64 runtime
+remain open.
 
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files

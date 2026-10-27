@@ -1,0 +1,71 @@
+{
+  "scope": "Editorial component demo visible edit, local save, keep-editing and discard decisions in x64 catalogs",
+  "sourceBuildCommit": "36a06a6",
+  "probe": "scripts/verify-editorial-edit-desktop.ps1",
+  "probeSha256": "d2fa61b7fa5082b01c8300a2f897d4c62f43da909e7125a08319304962d0419c",
+  "sourceCatalog": {
+    "exeSha256": "d1d1f15ea62c4ea9a28ab04df2c9b84ea652bd88769562ec17d6143e38963a48",
+    "librarySha256": "0dc1d2b6f0683a36d757751bc64be4e7998db3d644a02f72742297b2150104cb"
+  },
+  "extractedV7Catalog": {
+    "archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v7-local-win-x64.zip",
+    "archiveSha256": "308f1e70ecbd3e8d68f857826662bcd6138645644b6e236c2b66e4c523f73d51",
+    "allExtractedBytesVerifiedByDeliveryCheckpoint": true,
+    "exeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+    "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+    "monitoringReviewFocusFixIncluded": false
+  },
+  "runs": [
+    {
+      "catalog": "source",
+      "theme": "Light",
+      "report": "docs/evidence/editorial-edit-v1/source-light.json",
+      "reportSha256": "026baa10bb8a5fb795229e6052476809343a841fe297875797d0615055465183",
+      "screenshot": "docs/evidence/editorial-edit-v1/source-light.png",
+      "screenshotSha256": "9c1b73ddd65a3b0d0bc8b00381358f310becc63012278afd8e80e922497cc4ab",
+      "passed": true
+    },
+    {
+      "catalog": "source",
+      "theme": "Dark",
+      "report": "docs/evidence/editorial-edit-v1/source-dark.json",
+      "reportSha256": "fab7c2c58cc3960e1ccac4cd2a8c8755028d493c673b3338bcadd085fb564c56",
+      "screenshot": "docs/evidence/editorial-edit-v1/source-dark.png",
+      "screenshotSha256": "7a7e18d44666bc6ab7de040498c8957147461d93682e9647ef898de8545ac62a",
+      "passed": true
+    },
+    {
+      "catalog": "v7",
+      "theme": "Light",
+      "report": "docs/evidence/editorial-edit-v1/v7-light.json",
+      "reportSha256": "47aa9946f851b30f287f870526895df09c144fc2099a4c0fcbc6a946a76ef32b",
+      "screenshot": "docs/evidence/editorial-edit-v1/v7-light.png",
+      "screenshotSha256": "d3c4ef7e48e3f20fb2c020bd10e2ff88d10c809182a0f88b75f9f56d3e294c34",
+      "passed": true
+    },
+    {
+      "catalog": "v7",
+      "theme": "Dark",
+      "report": "docs/evidence/editorial-edit-v1/v7-dark.json",
+      "reportSha256": "4dcbd748b94994f0a670c8a586c60200f70562bdbe3ecd944646f7f5dfd86796",
+      "screenshot": "docs/evidence/editorial-edit-v1/v7-dark.png",
+      "screenshotSha256": "0b61fe585f25776239dc727a6780a5ed425459b5fb66e253fd55f5fa4e2899de",
+      "passed": true
+    }
+  ],
+  "observableBehavior": [
+    "Physical pointer opens a fictional page for editing",
+    "Physical keyboard changes its title; Save local sample enables and updates the original in-memory row",
+    "A later unsaved edit requests an inline decision when another page is opened",
+    "Keep editing preserves the unsaved title; Discard changes opens the requested page without changing the saved title"
+  ],
+  "decisionScreenshotsVisuallyInspected": true,
+  "fullVisualParityReviewed": false,
+  "displayAndTextScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "editorialCompositionAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

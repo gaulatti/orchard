@@ -8863,6 +8863,14 @@
         "selectionPreservedAcrossFiltering": true,
         "extractedV7CatalogPassed": true,
         "fullCompositionAccepted": false
+      },
+      "visibleEditDecisionEvidence": {
+        "checkpoint": "docs/evidence/editorial-edit-v1/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "physicalPointerAndKeyboardVerified": true,
+        "savedLocalTitleAndDirtyDecisionVerified": true,
+        "extractedV7CatalogPassed": true,
+        "fullCompositionAccepted": false
       }
     }
   ],

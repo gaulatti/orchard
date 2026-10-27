@@ -112,15 +112,22 @@ passes 66 checks and 577 isolation guards; its negative auditor rejects 25
 altered receipts.
 
 The source-built and extracted v7 x64 catalogs pass a focused visible Editorial
-check in Light and Dark. Physical pointer input selects a fictional page and focuses the
-search editor; typing `garden` filters four rows to one while keeping the hidden
+search check in Light and Dark. Physical pointer input selects a fictional page
+and focuses the search editor; typing `garden` filters four rows to one while keeping the hidden
 Harbor selection. Clearing the query restores all four rows with Harbor still
 selected. The [Editorial checkpoint and screenshots](evidence/editorial-search-source-v1/checkpoint.json)
 identify both catalog library identities and the probe bytes. Run the check with
 `scripts/verify-editorial-search-desktop.ps1` and a fresh output directory.
-This verifies search and selection only; visible editing, decision prompts,
-broader visual comparison, scaling and native ARM64 runtime remain open. The
-v7 package passes this Editorial flow but still fails the Monitoring review
+The same two catalogs also pass a [visible edit-and-decision check](evidence/editorial-edit-v1/checkpoint.json)
+in both themes at a 1600 × 1000 window size. Physical pointer and keyboard
+input opens a page, changes its title and saves the fictional local row. A later
+unsaved title change triggers the inline navigation decision; Keep editing
+preserves the draft, while Discard changes opens the requested page without
+changing the saved row. The checkpoint retains all four runtime reports and
+decision screenshots. Run `scripts/verify-editorial-edit-desktop.ps1` with a
+fresh output directory. Status/media/category/author editing, full visual
+comparison, scaling and native ARM64 runtime remain open. The v7 package
+passes these Editorial flows but still fails the Monitoring review
 focus check described above; the source fix needs a qualified replacement
 catalog. A [v8 NuGet preview](releases/2026-10-27-components-v8-unqualified.md)
 contains the current Orchard DLL but has no qualified consumer runtime or
