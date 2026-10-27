@@ -87,6 +87,7 @@ try {
         [OrchardIconDesktopInput]::SetCursorPos([int]($bounds.X - 20), [int]($bounds.Y - 20)) | Out-Null
         Start-Sleep -Milliseconds 250
         [OrchardIconDesktopInput]::SetCursorPos([int]($bounds.X + $bounds.Width / 2), [int]($bounds.Y + $bounds.Height / 2)) | Out-Null
+        [OrchardIconDesktopInput]::mouse_event(1, 1, 0, 0, [UIntPtr]::Zero)
         try {
             $tip = Wait-For { Find-Name ([System.Windows.Automation.AutomationElement]::RootElement) 'Edit story' ([System.Windows.Automation.ControlType]::ToolTip) } 'Hover did not expose the consumer tooltip.'
             $report.steps.tooltipName = $tip.Current.Name

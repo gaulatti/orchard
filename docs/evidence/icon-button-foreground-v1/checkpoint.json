@@ -1,7 +1,7 @@
 {
   "scope": "Icon Button extracted-v7 x64 foreground input in Light and Dark",
   "probe": "scripts/verify-icon-button-desktop.ps1",
-  "probeSha256": "5ec0145cb99feebfb3d3c214ff4412ccb8b339d931124a4f0fcdbd86eae21753",
+  "probeSha256": "fa6702a32f41342bd3a6e938161e65526b2f8c0b0df44488bcd435357155855b",
   "catalog": "artifacts/current/components-v7-catalog-x64",
   "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
   "orchardDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
@@ -9,9 +9,14 @@
     { "theme": "Light", "report": "docs/evidence/icon-button-foreground-v1/v7-light.json", "sha256": "40cd506ade7f9c9ed552f4cc6dfa5a0f713328b59db1e9549c5d595dc43b664b" },
     { "theme": "Dark", "report": "docs/evidence/icon-button-foreground-v1/v7-dark.json", "sha256": "498a8f6ce287c5761b75efa42ed7dd0c044e86c38f63d79cd99863ba9422d535" }
   ],
+  "tooltipPassedRuns": [
+    { "theme": "Light", "report": "docs/evidence/icon-button-foreground-v1/v7-light-tooltip-pass.json", "sha256": "77c199c4f213e185b1b478a5f578571548f0d5719dd089bf052f4fe7d39b65b8" },
+    { "theme": "Dark", "report": "docs/evidence/icon-button-foreground-v1/v7-dark-tooltip-pass.json", "sha256": "df9b4bb5007f56c3a54022fe19f2491579f30c5e9079ec4d1a6e026b13438f56" }
+  ],
   "verifiedBehavior": [
     "A real pointer click invokes the Edit consumer command exactly once",
     "Space and Enter each invoke the same command exactly once",
+    "Injected mouse movement exposes the consumer-owned Edit story tooltip in Light and Dark",
     "The Delete unavailable icon button remains disabled",
     "Catalog stays foreground during physical input and exits after each check"
   ],
@@ -22,9 +27,11 @@
     "reportSha256": "2efece93b82918ab3acc978b1a5d8c53c86a163a07673c49f6369642063dbc7f",
     "screenshot": "docs/evidence/icon-button-foreground-v1/v7-light-tooltip-diagnostic.png",
     "screenshotSha256": "e8741477cf4d5927a903dc5232b2a49b80da9c1146dad865233128f851aa213e",
-    "causeEstablished": false
+    "causeEstablished": true,
+    "resolution": "The script moved the cursor with SetCursorPos but did not generate the mouse movement needed to trigger this WinUI hover. An injected one-pixel movement produced the tooltip in both themes on the same extracted v7 catalog."
   },
   "broaderPhysicalMatrixVerified": false,
+  "tooltipVerifiedExtractedV7": true,
   "tooltipVerifiedCurrentPackage": false,
   "nativeArm64RuntimeVerified": false,
   "componentAccepted": false,
