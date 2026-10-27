@@ -633,7 +633,8 @@ the addressed pixel center against fractional element bounds. With these two
 catalog-only corrections, the focused source-built x64 run passes Light and
 Dark, including 10 physical-input stages and 90 disabled-pointer samples per
 theme. The [checkpoint](evidence/checkbox-theme-root-pixel-center-v1/checkpoint.json)
-retains both failures and the passing report hashes. The existing v7 package
+retains both failures and the passing report hashes. The shared Input physical
+pointer route also passes against that source build. The existing v7 package
 was not rebuilt or requalified; full visual, motion, scaling, consumer and
 native ARM64 acceptance remain open.
 

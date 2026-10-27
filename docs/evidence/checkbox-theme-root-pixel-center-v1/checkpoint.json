@@ -36,6 +36,13 @@
     "lightDisabledPointerReportSha256": "21fef61c333a1b3a78caa6380a4aeb016fcc070338c66e1cfdc1518ef408f760",
     "darkDisabledPointerReportSha256": "59251ba92b44c8c345258ef914643b1b58a856699624f8c14d85f9cda5c972a0"
   },
+  "sharedPointerRegression": {
+    "component": "Input",
+    "report": "artifacts/current/components-v7-pixel-center-input-regression-source-x64/result.json",
+    "sha256": "3103b9ef3f165d39117fbeea661e683b81df5b7f54c836f59871719953875f5c",
+    "detailReportSha256": "2e37f7e0746e7c1490bc285aafaf59c2039ebd6f00b470580b7e676a230274ba",
+    "passed": true
+  },
   "v7PackageRequalified": false,
   "nativeArm64RuntimeVerified": false,
   "componentAccepted": false,
