@@ -5723,9 +5723,10 @@
       ],
       "status": "in-progress",
       "packageForegroundCheckpoint": "docs/evidence/hero-carousel-current-package-foreground-v1/checkpoint.json",
+      "publishedArchivePointerCheckpoint": "docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json",
       "remainingGaps": [
-        "Strict image gates remain failed: source/package 52 pixels/max 24 and source/archive 58 pixels/max 24, zero allowed; complete browser/native raster, scaling/motion/customization and performance acceptance remain open",
-        "Current independent x64 NuGet consumer physical input verifies outside-window arrows, native edit exclusion and inactive-slide pointer and Tab/Enter invocation in Light/Dark (docs/evidence/hero-carousel-current-package-foreground-v1/checkpoint.json); broader input/focus states and native ARM64 runtime remain open",
+        "Complete source-derived visual review, scaling/motion/customization and performance acceptance remain open; strict source/package 52 pixels/max 24 and source/archive 58 pixels/max 24 failures at zero tolerance remain diagnostics, not a byte-identical public-component delivery gate",
+        "Independent local-package x64 consumer physical input verifies outside-window arrows, native edit exclusion and inactive-slide pointer and Tab/Enter invocation in Light/Dark; published v7 extracted catalog physical inactive-slide pointer input passes in system Dark and explicit Light (docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json); broader published input/focus states and native ARM64 runtime remain open",
         "Full library/release acceptance and all other pending component entries remain open; both fictional demos remain required"
       ],
       "sourcePreparation": {

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-27T22:46:59Z",
+  "scope": "Focused inactive-slide physical pointer input in the published v7 x64 catalog archive",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "archivePath": "artifacts/current/catalog-v7-x64/Orchard.Catalog.0.1.0-preview.20261027.7.win-x64.zip",
+  "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "extractedCatalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "extractedLibrarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "method": "Visible extracted WinUI catalog with Computer Use physical pointer input and live UI Automation result observations",
+  "observations": {
+    "systemDark": {
+      "coastalSlideVisibleBeforeClick": true,
+      "emptyAreaClickInvokedOriginalInactiveMountainItem": true,
+      "result": "Original item retained: True; destination /fictional/mountain; external False"
+    },
+    "explicitLight": {
+      "coastalSlideVisibleBeforeClick": true,
+      "emptyAreaClickInvokedOriginalInactiveMountainItem": true,
+      "result": "Original item retained: True; destination /fictional/mountain; external False"
+    }
+  },
+  "limitations": {
+    "publishedV7OutsideArrowVerified": false,
+    "publishedV7InactiveTabEnterVerified": false,
+    "completePhysicalInputAndFocusMatrixVerified": false,
+    "fullSourceVisualReviewVerified": false,
+    "scalingMotionAndPerformanceVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "catalogProcessExited": true,
+  "catalogExitCodeChecked": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
