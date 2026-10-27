@@ -30,6 +30,11 @@ inside a previously published independent self-contained consumer host. Its
 unchanged package assets and host files are verified, but this overlay is not
 a fresh v8 restore or publish. The v8 package remains unqualified.
 
+The [matching v8 source also builds for ARM64](evidence/components-v8-linked-arm64-v1/checkpoint.json)
+with zero warnings or errors. A separate manifest verifies all 660 files in a
+versioned ARM64 catalog directory, including five new ARM64 binaries. It has
+not run on native ARM64 hardware or been packaged as a standalone v8 ZIP.
+
 The Checkbox v3 hidden fixture now asserts native readiness after rendering;
 all shared source/consumer/archive raw checks agree, including `IsLoaded`.
 This corrects the earlier harness timing, with no library change. The existing

@@ -1,0 +1,36 @@
+{
+  "format": "orchard-v8-arm64-catalog-linked-v1",
+  "baseArchiveSha256": "2e6cfc08498cf7e34d75cccc3be22546ded98c05a205028d20bbe61684ac9863",
+  "baseDirectory": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\components-v7-catalog-arm64",
+  "sourceBuild": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\samples\\Orchard.Catalog\\bin\\ARM64\\Release\\net10.0-windows10.0.26100.0\\win-arm64",
+  "output": "C:\\Users\\gaulatti\\source\\repos\\gaulatti\\orchard\\artifacts\\current\\components-v8-catalog-linked-arm64-v1",
+  "files": 660,
+  "verifiedHardlinks": 655,
+  "changedFiles": {
+    "Orchard.Catalog.dll": {
+      "sha256": "4b001f99b0d067d69f8479416247712a180af3869f8e21f2276c17d455e88c7f",
+      "bytes": 15336448
+    },
+    "Orchard.Catalog.exe": {
+      "sha256": "789e29e195cc77d46ee57dfe2aa3046debb1bbf2353e5eac91b9165d7fb52104",
+      "bytes": 276480
+    },
+    "Orchard.Catalog.pdb": {
+      "sha256": "8069d6ea78fd6c7e672c7e7210e633df8e849afaab0923987b05f01c322f7ce7",
+      "bytes": 1787204
+    },
+    "Orchard.dll": {
+      "sha256": "100ed30759e4c6bbfa7e2a1af66cfa68b1cae7fa1eef7c3fee8af2c82f2cf77b",
+      "bytes": 3092992
+    },
+    "Orchard.pdb": {
+      "sha256": "78783bba86df3f1b530d76522a8532f21a9ebaa403bedbebc1d64f1d1f4d4708",
+      "bytes": 986952
+    }
+  },
+  "changedBytes": 21480076,
+  "apphostMachine": "Arm64",
+  "nativeArm64RuntimeVerified": false,
+  "freshV8ZipCreated": false,
+  "allDestinationFilesVerified": true
+}

@@ -86,8 +86,17 @@ behavior for the archive-identical file set. They do not establish full visual
 or component acceptance. The v8 ZIP has not been unpacked independently into
 a fresh directory; C: still lacks room for that and clean-cache qualification.
 
+The [matching-source ARM64 preview](../evidence/components-v8-linked-arm64-v1/checkpoint.json)
+now builds the current library and catalog with zero warnings or errors. Product
+sources have not changed since the v8 x64 package build. Its separate 660-file
+directory verifies 655 unchanged files against the published v7 ARM64 archive
+and copies five current ARM64 binaries from the new build. A tracked manifest
+pins every resulting file hash; the apphost is ARM64 and local .NET/WinUI
+runtime files are present. This is cross-build and file-set evidence only. No
+ARM64 machine has launched it, and no new ARM64 ZIP was created.
+
 This package and catalog remain **unqualified**. A fresh v8 self-contained x64
-restore/publish, a fresh ZIP extraction and replay, an ARM64 catalog archive and
+restore/publish, a fresh ZIP extraction and replay, a standalone v8 ARM64 ZIP and
 native ARM64 runtime remain open. The v7 catalog still has the Monitoring focus
 defect; v8 has not replaced it as a release. The
 [checkpoint](../evidence/components-v8-package-preview-v1/checkpoint.json)
@@ -96,6 +105,6 @@ records hashes, verified checks and remaining failures. The inventory remains
 
 The attempted cleanup of generated artifacts was rejected by automatic approval
 review as “blocked by policy,” so those files remain. C: still has less than
-150 MB free after the low-disk runtime checks.
+100 MB free after the ARM64 file-set materialization.
 The public wiki remote is unavailable, so this release note is maintained in
 the repository.

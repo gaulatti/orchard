@@ -1,0 +1,43 @@
+{
+  "scope": "Current v8 source ARM64 cross-build and archive-equivalent ARM64 catalog file set; native runtime unverified",
+  "sourceCommit": "f0eaf15",
+  "productSourcesUnchangedThroughCommit": "afb587f8bbf2a7ba72064f7cbd9e11b5bb80a23e",
+  "sdkVersion": "10.0.401",
+  "libraryRestoreTarget": "net10.0-windows10.0.26100.0/win-arm64",
+  "libraryBuild": {
+    "command": "dotnet build src/Orchard/Orchard.csproj -c Release -p:Platform=ARM64 --no-restore -v:minimal",
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "catalogBuild": {
+    "command": "dotnet build samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=ARM64 --no-restore -v:minimal",
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "baseArchive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v7-local-win-ARM64.zip",
+  "baseArchiveSha256": "2e6cfc08498cf7e34d75cccc3be22546ded98c05a205028d20bbe61684ac9863",
+  "baseExtractedDirectory": "artifacts/current/components-v7-catalog-arm64",
+  "runnableFileSetDirectory": "artifacts/current/components-v8-catalog-linked-arm64-v1",
+  "materialization": "docs/evidence/components-v8-linked-arm64-v1/materialization.json",
+  "materializationSha256": "67f2d033e346d95490def16c0f7dc411600a620f413946520fea92d574d66124",
+  "manifest": "docs/evidence/components-v8-linked-arm64-v1/manifest.json",
+  "manifestSha256": "3adb827ff1dbd39b9169d85cfc639e1e64b5003a073cbc85522f96ed58502ce8",
+  "fileCount": 660,
+  "xbfCount": 114,
+  "fictionalEditorialAndMonitoringDemoXbfPresent": true,
+  "verifiedUnchangedHardlinks": 655,
+  "sourceBuiltChangedFiles": 5,
+  "sourceBuiltChangedBytes": 21480076,
+  "apphostMachine": "Arm64",
+  "allFilesHashVerified": true,
+  "looseSourceXamlExcludedFromPublishedFileSet": 157,
+  "selfContainedRuntimeFilesPresent": true,
+  "freshV8Arm64ZipCreated": false,
+  "nativeArm64RuntimeVerified": false,
+  "arm64PackageConsumerVerified": false,
+  "releaseAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
