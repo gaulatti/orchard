@@ -1,0 +1,27 @@
+{
+  "scope": "Source-built x64 Media Library catalog foreground input",
+  "observedAt": "2026-10-27",
+  "catalogExeSha256": "44d4ad194b2f862199464c99339cede6fc55a4960dc7dc04a756a8bd8b7942d8",
+  "catalogDllSha256": "354bb4666878edbbb0637652ea90546930ab2636d6d73307ac98d695f4e32892",
+  "orchardDllSha256": "42af7fa12f1083d2be9b871766ab859747eb0edb1a41b44a71121c2127c1028d",
+  "build": "Release x64 catalog build passed with 0 warnings and 0 errors",
+  "run": {
+    "result": "artifacts/current/media-library-foreground-source-v6/result.json",
+    "resultSha256": "185dfd557c0c89d3911b7097b5321c7f04fd2072bb11c2f1dd33f46c043e5991",
+    "passed": true,
+    "themes": ["Light", "Dark"],
+    "lightResultSha256": "d37bd6d761b764720d183f21902b1bd44b98ba51c0dcab05c5d3a044d77954fc",
+    "darkResultSha256": "34e275613f77a2edd49bcfe83c5a7251f047e41e99ed99227dbc4e6ef935248e",
+    "pointerDeleteOriginalId": "coast",
+    "pointerDeleteDidNotOpenPreview": true,
+    "tabFocusedDelete": true,
+    "keyboardDeleteOriginalId": "portrait",
+    "keyboardDeleteDidNotOpenPreview": true,
+    "pointerOpenOriginalObjectRetained": true
+  },
+  "earlierDiagnostics": "v4 timed out waiting for routed PointerMoved; v5 passed input actions but called ClosePreview before the preview input gate opened",
+  "packageForegroundInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

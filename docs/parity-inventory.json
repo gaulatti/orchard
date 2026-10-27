@@ -5894,7 +5894,8 @@
         "src/Orchard/Themes/MediaLibrary.xaml"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/MediaLibrariesFixture.xaml"
+        "samples/Orchard.Catalog/MediaLibrariesFixture.xaml",
+        "samples/Orchard.Catalog/MediaLibrariesFixture.Foreground.cs"
       ],
       "regressionTests": [
         "tests/Orchard.Tests/MediaLibraryReferenceTests.cs",
@@ -5907,7 +5908,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Complete source-derived visual review; historical strict image diagnostics failed at 13349376 pixels/max242 for browser/native, 9171/max102 for source/package and 10366/max102 for source/archive; byte-identical raster is not an acceptance gate",
-        "Physical pointer/keyboard/focus/Tab and native ARM64 runtime remain unverified",
+        "Source x64 pointer/keyboard/focus/Tab passed; packaged foreground input and native ARM64 runtime remain unverified",
         "Complete display/text/modal scaling, motion/customization and collection performance acceptance"
       ],
       "sourcePreparation": {
@@ -5931,8 +5932,9 @@
         "pointerDeleteOpensPreview": false,
         "keyboardDeleteRequestsDeletion": true,
         "collectionRemainsCallerOwned": true,
-        "status": "verified hidden source/fresh NuGet/extracted catalog hit target and software invocation; physical input remains unverified",
-        "physicalRoutingVerified": false
+        "status": "verified hidden source/fresh NuGet/extracted catalog hit target and software invocation; physical input passed source x64 Light/Dark catalog",
+        "physicalRoutingVerified": true,
+        "physicalRoutingCheckpoint": "docs/evidence/media-library-foreground-source-v1/checkpoint.json"
       },
       "nativePreview": {
         "checkpoint": "artifacts/current/media-library-native-checkpoint-v1.json",

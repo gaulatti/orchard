@@ -124,11 +124,10 @@ altering the source component or CSS. No diagnostic image was promoted.
 
 Browser image requests use explicit local fixture fulfillment, with no external
 network requests. Clipboard calls are explicitly intercepted; the system
-clipboard is unchanged. These are source references, not native runtime or
-physical-input evidence. Complete native/visual acceptance remains required.
-Desktop work, Narrator,
-OS settings, pointer heartbeat and
-GitHub Actions remain unauthorized.
+clipboard is unchanged. These are source references. Complete native/visual
+acceptance remains required. Desktop component testing is authorized; Narrator
+and OS contrast testing are outside the library goal. The pointer heartbeat
+stays paused, and pushes must not trigger GitHub Actions.
 
 The current native source preview is
 `artifacts/current/media-library-native-source-v6`: 100 states and 38 behavior
@@ -257,3 +256,15 @@ Fresh x64 and ARM64 package consumers build; the packaged and extracted x64
 catalog hosts pass the same 100 Media Library states and 38 contracts, with the
 RTL marker at x=951 in both themes. Native ARM64 runtime and foreground input
 remain unverified. See the [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
+
+The [source x64 foreground checkpoint](evidence/media-library-foreground-source-v1/checkpoint.json)
+passes a focused real-pointer and real-keyboard catalog run in Light and Dark.
+The physical pointer reaches the revealed Delete control and requests the
+original `coast` ID from the caller without opening preview. From the tile Open
+control, Tab focuses Delete and Space requests the original `portrait` ID,
+also without preview. Pointer Open on `none` retains the original object in
+preview. The fixture waits for the preview input gate before closing it. The
+first run had a pointer-move delivery timeout; later runs reached the checks.
+The final source run passed in both themes. This verifies those x64 source-host
+input paths only; packaged foreground input, broader visual/scaling review,
+collection performance and native ARM64 runtime remain open.
