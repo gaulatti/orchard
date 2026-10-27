@@ -32,6 +32,10 @@
         <orchard:BleeckerButton x:Name="LoadingAction" Content="Run preview" AutomationProperties.Name="Run preview"
                                IsEnabled="{Binding IsOn, ElementName=ConsumerEnabled}"
                                IsLoading="{Binding IsOn, ElementName=LoadingSwitch}" CommandParameter="preview" />
+        <StackPanel Orientation="Horizontal" Spacing="12">
+            <orchard:BleeckerButton x:Name="SelfLoadingAction" Content="Start loading on activation" />
+            <orchard:BleeckerButton x:Name="FinishSelfLoadingAction" Variant="Secondary" Content="Finish loading" />
+        </StackPanel>
         <orchard:BleeckerButton Variant="Outline" HorizontalAlignment="Stretch" Content="Full-width action" />
         <orchard:BleeckerButtonGroup x:Name="GroupedActions" HorizontalAlignment="Left" AutomationProperties.Name="Preview actions">
             <orchard:BleeckerButton Variant="Secondary" Content="Preview" />

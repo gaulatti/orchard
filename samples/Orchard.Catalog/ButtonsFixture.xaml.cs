@@ -25,6 +25,16 @@ public sealed partial class ButtonsFixture : UserControl
         LoadingAction.Command = previewCommand;
         InternationalReview.Command = previewCommand;
         InternationalSave.Command = previewCommand;
+        SelfLoadingAction.Click += (_, _) =>
+        {
+            SelfLoadingAction.IsLoading = true;
+            ButtonResult.Text = "Self-loading action busy";
+        };
+        FinishSelfLoadingAction.Click += (_, _) =>
+        {
+            SelfLoadingAction.IsLoading = false;
+            ButtonResult.Text = "Self-loading action ready";
+        };
     }
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme)
@@ -206,6 +216,18 @@ public sealed partial class ButtonsFixture : UserControl
         var groupedLast = Find<Button>(GroupedActions.Children[1])!;
         Require(groupedFirst.CornerRadius.TopRight == 0 && groupedFirst.BorderThickness.Right == 0 &&
             groupedLast.CornerRadius.TopRight == BleeckerTokens.Radii["button"], "BleeckerButton did not honor connected group edges.");
+        SelfLoadingAction.ApplyTemplate();
+        FinishSelfLoadingAction.ApplyTemplate();
+        var selfLoadingNative = Find<Button>(SelfLoadingAction)!;
+        var finishSelfLoadingNative = Find<Button>(FinishSelfLoadingAction)!;
+        ((IInvokeProvider)new ButtonAutomationPeer(selfLoadingNative).GetPattern(PatternInterface.Invoke)).Invoke();
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(SelfLoadingAction.IsLoading && !selfLoadingNative.IsEnabled && ButtonResult.Text == "Self-loading action busy",
+            "Activation did not enter the self-loading state and gate repeat activation.");
+        ((IInvokeProvider)new ButtonAutomationPeer(finishSelfLoadingNative).GetPattern(PatternInterface.Invoke)).Invoke();
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(!SelfLoadingAction.IsLoading && selfLoadingNative.IsEnabled && ButtonResult.Text == "Self-loading action ready",
+            "Finishing self-loading did not restore the original action.");
     }
 
     private static T? Find<T>(DependencyObject owner) where T : DependencyObject

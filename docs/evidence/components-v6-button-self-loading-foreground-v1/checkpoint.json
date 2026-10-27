@@ -1,0 +1,29 @@
+{
+  "scope": "Source-built x64 catalog Button self-loading activation and focus transfer",
+  "observedAt": "2026-10-27T00:58:04-04:00",
+  "method": "Focused --smoke-buttons in both themes plus @oai/sky foreground keyboard input and native window screenshots",
+  "sourceCatalogExe": "samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64/Orchard.Catalog.exe",
+  "catalogExeSha256": "98a72f956ad4d47b0bfb1b295f14bae6629c817187e61212012fbedd3e77f74a",
+  "orchardDllSha256": "80d2f4f2c1763cf13d0466483c9bbeea78a9d8931669683eecabe8a189d33203",
+  "build": "dotnet build samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore; passed with zero warnings and errors after win-x64 restore",
+  "focusedSmoke": "artifacts/current/button-self-loading-smoke-v1/result.json",
+  "focusedSmokePassed": true,
+  "checks": {
+    "lightAndDarkSelfLoadingActivationAndRestoration": true,
+    "focusedStartReceivedVisibleFocusRing": true,
+    "keyboardSpaceEnteredLoading": true,
+    "loadingActionDisabledAndSpinnerVisible": true,
+    "visibleFocusRingTransferredToFinish": true,
+    "keyboardSpaceOnFinishRestoredStart": true
+  },
+  "focusObservation": "After clicking Finish and pressing Shift+Tab, the visible focus ring was on Start. Space entered loading; the ring moved to Finish. Space on Finish restored Start. UI Automation focused_element stayed stale on the catalog search edit, so it is not used as focus evidence.",
+  "fullPresentationSmoke": "artifacts/current/button-self-loading-presentation-v1/result.json",
+  "fullPresentationSmokePassed": false,
+  "fullPresentationFailure": "Notifications open flyout retained Light presenter after root requested Dark; the run stopped before the Button fixture.",
+  "newPackageQualified": false,
+  "independentConsumerForegroundInputVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

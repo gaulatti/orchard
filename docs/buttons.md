@@ -1,10 +1,8 @@
 # BleeckerButton
 
-Current unattended checks use a hidden window, real native template parts and
-offscreen rendering. They reject visibility, activation, focus and hardware
-input. The older foreground variant/state matrix requires a separate authorized
-desktop window and is not part of the current background run. Actual hover and
-physical keyboard behavior remain separate acceptance checks.
+Hidden-window checks exercise native template parts and offscreen rendering.
+Foreground catalog checks separately exercise visible pointer and keyboard
+behavior. Neither is a complete variant/state or device-input matrix.
 
 `BleeckerButton` wraps a native WinUI `Button` and preserves native commands, pointer/keyboard activation, focus visuals and automation. Import Orchard's resource dictionary before using it.
 
@@ -72,12 +70,22 @@ The same fixture checks native focus eligibility in each case using
 the ready action must be discoverable, loading and caller-disabled actions must
 be skipped, and the action must become discoverable again after loading ends.
 These 112 assertions query the native focus search without calling `Focus`,
-moving focus or sending input. A later foreground check in the exact v5 x64
+moving focus or sending input. A foreground check in the exact v5 x64
 catalog observed Tab skip the loading action, Shift+Tab return to the loading
 switch, and Tab reach the restored action after loading ended. Keyboard Space
 then invoked the restored action. See
-`docs/evidence/components-v5-button-foreground-v1/checkpoint.json`. Focus
-transfer when an already focused button becomes busy remains unverified.
+`docs/evidence/components-v5-button-foreground-v1/checkpoint.json`.
+
+The catalog also demonstrates an action that enters loading on its own Click,
+with an adjacent Finish action. A source-built x64 catalog passed the focused
+`--smoke-buttons` fixture in both themes. In a visible desktop check, Space on
+the focused Start action entered loading, disabled it, and moved the visible
+focus ring to Finish; Space on Finish restored Start. The UI Automation
+`focused_element` field continued to report the catalog search edit, so the
+focus result is based on the visible ring and keyboard activation. See
+`docs/evidence/components-v6-button-self-loading-foreground-v1/checkpoint.json`.
+This source-build check does not qualify a new NuGet package or independent
+consumer.
 
 The current catalog validation host and independent x64 consumer of
 `0.1.0-menu-toast-modal-v1-local` each pass all 448 lifecycle checks, including
@@ -128,6 +136,12 @@ states, with no explicit style in the construction/restoration states, no
 activation/focus/input and 60 hidden-window guards. This does not establish
 normal visible catalog startup or physical button activation.
 
-Acceptance remains in progress: the complete keyboard/pointer matrix, scaling, reduced motion, busy-state focus transfer and ARM64 runtime. The [current library scope](library-scope.md) excludes Narrator and OS contrast campaigns. Desktop pointer testing confirms the link's hover-only underline; runtime checks verify its text color binding through each visual state. The [rendered visual audit](visual-audit.md) records Bleecker measurements and outstanding appearance work. Published reports and captures prove only the checks they exercise.
+Acceptance remains in progress: the complete keyboard/pointer matrix, scaling,
+reduced motion and ARM64 runtime. The [current library scope](library-scope.md)
+excludes Narrator and OS contrast campaigns. Desktop pointer testing confirms
+the link's hover-only underline; runtime checks verify its text color binding
+through each visual state. The [rendered visual audit](visual-audit.md) records
+Bleecker measurements and outstanding appearance work. Published reports and
+captures prove only the checks they exercise.
 
 Light Ghost hover/pressed sand uses byte alpha 31 at brush opacity 1, based on the [actual source/native alpha diagnostic](brush-alpha-reference.md). Dark, disabled, contrast and other variant recipes retain their existing representations.
