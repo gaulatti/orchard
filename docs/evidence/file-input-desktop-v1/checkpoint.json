@@ -1,0 +1,58 @@
+{
+  "scope": "Foreground x64 File Input catalog test of the real Windows picker, original local file callback, pointer, Tab, Space, Escape and clear",
+  "test": "scripts/verify-file-input-desktop.ps1",
+  "catalog": "artifacts/current/text-media-v4-catalog-x64-app/Orchard.Catalog.exe",
+  "catalogExeSha256": "5d0843b3565e4d42954cc99c8217e30158d8213e583c487bec44f875935f7008",
+  "orchardDllSha256": "1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b",
+  "sameOrchardDllAsV4IndependentConsumer": true,
+  "v4NugetPackageSha256": "8e870673c0dcbefc2cdc9e60c0a9df6581c8de21a5b0998b5c48009b8a1c05eb",
+  "fictionalInput": "tests/Fixtures/fictional-playlist.m3u",
+  "fictionalInputSha256": "144659b48f342d02b9298907ab32fcf0479ac9c99a0d293c7c2ebf8df313dd12",
+  "initialHarnessFailures": [
+    {
+      "report": "run-1.json",
+      "reportSha256": "2dd32c49e82d6002201a29f7145f44d316fbffbac3ce457007e943b5f3ae3b16",
+      "cause": "UI Automation result was read from a stale element after picker cancellation"
+    },
+    {
+      "report": "run-2.json",
+      "reportSha256": "bcec31e3b77532756f421114336e0d0a794db67d681250d69ef644330459f0e4",
+      "cause": "UI Automation result was read from a stale element after picker cancellation"
+    },
+    {
+      "report": "run-3.json",
+      "reportSha256": "dcb6bd08e1bf21e6541614c2c1445b3b86dc637a8ed740b14301538c7e704362",
+      "cause": "The native dialog appeared before its filename edit was ready"
+    }
+  ],
+  "successfulRuns": [
+    {
+      "report": "run-4.json",
+      "reportSha256": "82046f2510ad0d550a3792a355bd691a8974517636e10442ef78edf1a3937051",
+      "passed": true
+    },
+    {
+      "report": "run-5.json",
+      "reportSha256": "5bd125e2dac9b04a004607c106f90c229c0a08b65a9677d54afe701e4b8a1095",
+      "passed": true,
+      "allThreeDialogOwnerHandlesMatchedCatalog": true,
+      "pointerOpenedSystemDialog": true,
+      "escapeCanceledEmptySelection": true,
+      "dialogFilenameSetProgrammatically": true,
+      "enterConfirmedSelection": true,
+      "manualFileBrowsingVerified": false,
+      "selectedOriginalFileReachedCaller": true,
+      "smallToPrimaryTabFocus": true,
+      "spaceOpenedSystemDialog": true,
+      "escapeRetainedPreviousFile": true,
+      "clearEmptiedAutomationValue": true,
+      "catalogProcessExited": true
+    }
+  ],
+  "librarySourceChanged": false,
+  "osSettingsChanged": false,
+  "fileTypeFilterDialogBehaviorFullyVerified": false,
+  "fullPhysicalInputMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false
+}

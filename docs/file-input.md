@@ -196,5 +196,36 @@ and padding across all three sizes, both font scales and both text directions.
 Auditors reject 69 damaged reports/files each. All 34 native states/images reached
 before the preceding package's implicit-style failure remain unchanged.
 Browser/native strict raster diagnostics retain their actual failures and do not
-establish component acceptance. System-picker interaction, physical input,
-native ARM64 execution, scaling and complete visual acceptance stay open.
+establish component acceptance. At that earlier checkpoint, system-picker
+interaction, physical input, native ARM64 execution, scaling and complete visual
+acceptance were still open.
+
+## Foreground picker checkpoint
+
+With renewed desktop-test authorization, the x64 catalog containing the exact
+`0.1.0-text-media-v4-local` Orchard DLL (`1ac7e3d5…`) passed the focused
+[foreground picker check](evidence/file-input-desktop-v1/checkpoint.json) twice.
+A physical pointer click opened a separate Windows `Open` dialog whose owner
+handle matched the catalog window. Escape canceled an empty selection. The same
+dialog returned the tracked fictional `fictional-playlist.m3u` file; the catalog
+observed one original native file, retained the callback list and exposed the
+filename through the File Input automation value. The test sets the native
+dialog's filename field to that tracked path and confirms it with Enter; it does
+not claim manual file browsing. Tab moved focus from the small
+input to the primary input; Space opened another owner-associated dialog, and
+Escape retained the prior selected file. The catalog's Clear action emptied the
+automation value. The test closed its catalog process and changed no OS settings.
+It uses the same Orchard DLL SHA-256 as the v4 independent NuGet consumer, but
+the foreground dialog was tested in the catalog host, not the consumer host.
+
+Run the check on an available, unlocked desktop with the exact catalog app:
+
+```powershell
+./scripts/verify-file-input-desktop.ps1 -AppDirectory artifacts/current/text-media-v4-catalog-x64-app -Output artifacts/current/file-input-desktop-new -ExpectedLibrarySha256 1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b
+```
+
+The first three script-development runs failed on premature dialog/UI Automation
+sampling; their reports remain with the two passing runs. This focused check
+does not verify every filter-dialog behavior, multiple selection, the complete
+pointer/keyboard matrix, native ARM64 runtime, full visual review or scaling.
+The existing hidden selection tests retain their own scope.

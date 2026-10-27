@@ -1,0 +1,29 @@
+{
+  "format": "orchard-file-input-desktop-v1",
+  "passed": false,
+  "catalogExeSha256": "5d0843b3565e4d42954cc99c8217e30158d8213e583c487bec44f875935f7008",
+  "orchardDllSha256": "1ac7e3d5ac2095e7a26db55ceb724dcc054ef2580dbda70173ebd88c90859f6b",
+  "fictionalFileSha256": "144659b48f342d02b9298907ab32fcf0479ac9c99a0d293c7c2ebf8df313dd12",
+  "fictionalFileName": "fictional-playlist.m3u",
+  "steps": {
+    "pointer": {
+      "position": {
+        "x": 500,
+        "y": 449
+      },
+      "dialogProcess": 2040,
+      "dialogClass": "#32770",
+      "ownerHandle": 1447478
+    },
+    "cancelEmpty": true
+  },
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 32224,
+  "windowHandle": 1447478,
+  "error": "The system picker filename field was not unique.",
+  "resultAtFailure": "Selection canceled; previous files retained",
+  "foregroundAtFailure": "Open",
+  "processExited": true
+}

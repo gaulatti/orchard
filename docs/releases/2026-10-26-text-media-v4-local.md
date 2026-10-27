@@ -70,6 +70,15 @@ retained in the [consumer checkpoint](../evidence/data-table-pagination-pixel-sn
 The fresh isolated restore workspace was removed. These changes qualify only
 the general x64 consumer smoke; no Orchard binary or package bytes changed.
 
+The same packaged Orchard DLL also passed two focused x64 catalog runs with a
+real Windows File Input picker. Pointer and Space activation opened dialogs
+owned by the catalog window; a fictional local file reached the original-file
+callback, Tab moved focus between inputs, Escape canceled while retaining the
+existing selection, and Clear emptied its automation value. The repeatable
+[desktop checkpoint](../evidence/file-input-desktop-v1/checkpoint.json) records
+the exact binary and the earlier script timing failures. This is a catalog-host
+foreground check; it does not establish the full File Input input/visual matrix.
+
 Native ARM64 runtime, broader foreground input, scaling, full component-by-component
 visual review and Data Table performance remain open. The inventory remains
 112 started and zero accepted; 100% describes entries started, not completion.
