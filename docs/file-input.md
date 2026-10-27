@@ -272,6 +272,12 @@ unchanged native bytes. Strict browser/native image equality remains failed
 The later [v5 local package](releases/2026-10-26-components-v5-local.md) includes
 this repair. Its exact NuGet consumer and extracted x64 catalog pass the same
 68 native states and 34 contracts; the consumer passes its general native smoke
-test. The previous v4 foreground-picker result still applies only to its pinned
-older DLL. File Input remains in progress pending its remaining visual, motion,
-fresh foreground and native ARM64 runtime checks.
+test. The exact v5 DLL also passed one complete
+[real-dialog catalog run](evidence/components-v5-file-input-desktop-v1/checkpoint.json):
+owner-associated pointer and keyboard opening, cancellation, original single-
+and multiple-file callbacks, extension filtering, live all-files selection and
+selection retention. Its first attempt failed when native Ctrl-click did not
+retain both selected dialog rows; that report remains alongside the full repeat
+pass. This proves the observed catalog path once, not repeatability or an
+independent consumer foreground picker. File Input remains in progress pending
+its remaining visual, motion and native ARM64 runtime checks.

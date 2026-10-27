@@ -37,8 +37,16 @@ The extracted x64 catalog separately passed 66 hidden Monitoring and Editorial
 demo checks with fictional local data. These are hidden runtime checks, not a
 claim of complete visible interaction or visual acceptance.
 
-Native ARM64 catalog/consumer runtime, fresh real-picker interaction for these
-v5 bytes, remaining component visual and behavior checks, measured collection
+The exact extracted v5 x64 catalog later passed a complete
+[real Windows File Input picker run](../evidence/components-v5-file-input-desktop-v1/checkpoint.json).
+The first attempt failed at the dialog's Ctrl-click row selection; its earlier
+pointer, keyboard and single-file checks passed. The second attempt passed all
+five owner-associated dialogs, two original selected files, extension and
+all-files filters, and selection retention. The failure and pass are both
+retained. This does not verify a foreground picker in the independent consumer.
+
+Native ARM64 catalog/consumer runtime, remaining component visual and behavior
+checks, measured collection
 performance, and final package acceptance remain open. The library inventory
 remains 112 entries started, zero accepted. The push-triggered Actions workflow
 remains disabled at the user's request; local checks above do not claim CI.

@@ -1,0 +1,36 @@
+{
+  "scope": "Real Windows File Input picker in the extracted v5 x64 catalog",
+  "test": "scripts/verify-file-input-desktop.ps1",
+  "testFormat": "orchard-file-input-desktop-v2",
+  "packageVersion": "0.1.0-components-v5-local",
+  "packageSha256": "6498f772034dd9f66ba9be3270d8b129289fb50657709d6bd724e3a772261a8f",
+  "catalogArchiveSha256": "65cb51a5f3b5e877f1f4ff15c31033b9b3db789a3e9e2dd4bc004e6095ec17bb",
+  "catalogExeSha256": "3a6b5853b28e6d44b9880cbd03e80df2e07a8769ec90860fc094fe50ba05a4be",
+  "orchardDllSha256": "9c50496b46f29fd36b0de029c484013257c5ef880013671d33dc9458081c2ee6",
+  "firstRun": {
+    "report": "artifacts/current/components-v5-file-input-desktop-v1/file-input-desktop.json",
+    "reportSha256": "e8205db6911e41d715cd1542e3200d8ff55f7595c0a011ae13dd47c0e9c735d9",
+    "passed": false,
+    "failure": "Native Ctrl-click did not retain both file selections",
+    "earlierPassedSteps": ["pointer", "cancelEmpty", "selection", "keyboard", "clear"],
+    "catalogProcessExited": true
+  },
+  "repeat": {
+    "report": "artifacts/current/components-v5-file-input-desktop-v2/file-input-desktop.json",
+    "reportSha256": "6d3f428088c5ba7a06b172299d149873af95ee2e9dddf2797e1c6a1173d2c4e6",
+    "passed": true,
+    "fiveDialogsOwnerVerified": true,
+    "nativeCtrlClickSelectedTwoFiles": true,
+    "twoOriginalFilesReachedCaller": true,
+    "extensionFilterHidTxtSentinel": true,
+    "allFilesChangeRetainedPreviousSelection": true,
+    "allFilesChangeExposedTxtSentinel": true,
+    "txtFileReachedCaller": true,
+    "singleModeRetainedSelection": true,
+    "catalogProcessExited": true
+  },
+  "independentConsumerForegroundPickerVerified": false,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false
+}
