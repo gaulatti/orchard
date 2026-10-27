@@ -8019,7 +8019,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Broader original-content/custom-renderer/style and fractional-width matrices; the pinned long/unbroken cases now pass current x64 catalog and package geometry/paint audits",
+        "Broader original-content/custom-renderer/style and fractional-width matrices; a focused 640.5/768.5-DIP caller-owned slot case and pinned long/unbroken cases pass current x64 catalog and package audits",
         "Fresh visible pointer/keyboard, full raster and current-binary Nav Menu visible source audit after shared changes",
         "Native motion/scaling, integration and native ARM64 runtime acceptance"
       ],
@@ -8033,6 +8033,11 @@
         "framesPerHost": 192,
         "geometryChecksPerHost": 15216,
         "paintChecksPerHost": 1890,
+        "publicContractCheckpoint": "artifacts/current/footer-fractional-contract-checkpoint-v1.json",
+        "publicContractCheckpointSha256": "90535c0a86ff040aa7d9aabca16b1fb0a4b3c9a70c76da78a7c7acb212fc3d58",
+        "publicContractChecksPerHost": 12,
+        "publicContractGuardsPerHost": 205,
+        "publicContractCatalogArm64BuildPassed": true,
         "visibleInteractionVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false

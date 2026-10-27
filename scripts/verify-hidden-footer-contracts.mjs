@@ -11,8 +11,8 @@ assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);assert.equal(report
 for(const name of ['activateCalled','showCalled','focusCalled','inputSent','visibleRuntimeVerified','sourceRasterParityVerified','nativeComponentAccepted'])assert.equal(report[name],false,name);
 assert.equal(report.hiddenWindow,true);assert.equal(report.isolated,true);assert.equal(report.activationEvents,0);assert.equal(report.focusEvents,0);assert(report.guardChecks>=80);
 assert.equal(report.processArchitecture,architecture);assert.equal(report.osArchitecture,architecture);assert.deepEqual(report.failures,[]);
-const ids=['bottom-right-bound-nullish-scalars','bottom-left-model-template-binding','bottom-right-selector-original-model','original-editor-survives-section-mutations','original-editors-survive-template-replacement','custom-link-original-item-command-and-style','keyed-item-replacement-and-retirement','source-raw-first-match-and-explicit-suppression','bound-brand-metadata-and-explicit-null-logo','custom-template-retired-and-remounted-actions','custom-renderer-owned-container-metrics'];
-assert.equal(report.checks.length,11);assert.deepEqual(report.checks.map(row=>row.id).sort(),ids.sort());assert(report.checks.every(row=>row.passed===true));
+const ids=['bottom-right-bound-nullish-scalars','bottom-left-model-template-binding','bottom-right-selector-original-model','original-editor-survives-section-mutations','original-editors-survive-template-replacement','fractional-host-original-slots','custom-link-original-item-command-and-style','keyed-item-replacement-and-retirement','source-raw-first-match-and-explicit-suppression','bound-brand-metadata-and-explicit-null-logo','custom-template-retired-and-remounted-actions','custom-renderer-owned-container-metrics'];
+assert.equal(report.checks.length,12);assert.deepEqual(report.checks.map(row=>row.id).sort(),ids.sort());assert(report.checks.every(row=>row.passed===true));
 
 const library=hash(await fs.readFile(path.join(app,'Orchard.dll'))),application=hash(await fs.readFile(path.join(app,host+'.dll')));
 assert.equal(report.librarySha256,library);assert.equal(report.hostSha256,application);
@@ -22,8 +22,12 @@ if(host==='PackageConsumer'){
  packageSha256=hash(await fs.readFile(path.resolve(option('--package'))));
  const build=await read('result.json'),cleanup=await read('cleanup.json');
  if(Object.hasOwn(build,'buildPassed')){assert.equal(build.buildPassed,true);assert.equal(build.runtimeVerified,false);}else{assert.equal(build.passed,true);assert.equal(build.runtime.passed,true);}
- assert.equal(build.platform.toLowerCase(),architecture.toLowerCase());assert.equal(build.packageSha256,packageSha256);assert.equal(cleanup.removed,true);assert.equal(cleanup.isolatedConsumer,build.isolatedConsumer);
- await assert.rejects(fs.access(cleanup.isolatedConsumer),{code:'ENOENT'});
+ assert.equal(build.platform.toLowerCase(),architecture.toLowerCase());assert.equal(build.packageSha256,packageSha256);assert.equal(cleanup.removed,true);
+ const currentReceipt=Object.hasOwn(build,'isolatedProject');
+ const isolated=currentReceipt?build.isolatedProject:build.isolatedConsumer;
+ const cleaned=currentReceipt?cleanup.path:cleanup.isolatedConsumer;
+ assert.equal(typeof isolated,'string');assert(isolated.length>0);assert.equal(cleaned,isolated);
+ await assert.rejects(fs.access(isolated),{code:'ENOENT'});
 }
-const audit={passed:true,scope:'hidden-footer-public-contracts',checks:11,guardChecks:report.guardChecks,isolated:true,activationEvents:0,focusEvents:0,librarySha256:library,hostSha256:application,packageSha256,processArchitecture:architecture,visibleRuntimeVerified:false,nativeComponentAccepted:false};
+const audit={passed:true,scope:'hidden-footer-public-contracts',checks:12,guardChecks:report.guardChecks,isolated:true,activationEvents:0,focusEvents:0,librarySha256:library,hostSha256:application,packageSha256,processArchitecture:architecture,visibleRuntimeVerified:false,nativeComponentAccepted:false};
 await fs.writeFile(path.resolve(option('--output')),JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify(audit));

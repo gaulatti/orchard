@@ -93,6 +93,29 @@ internal static class FooterContractFixture
                 var footer = Create(); footer.BottomLeft = left; footer.BottomRight = right; await Mount(footer); var template = footer.Template; footer.Template = null; await Layout(); footer.Template = template; await Layout();
                 Require(Nodes(footer).OfType<TextBox>().Contains(left) && Nodes(footer).OfType<TextBox>().Contains(right) && left.SelectionStart == 2 && left.SelectionLength == 4 && right.SelectionStart == 1 && right.SelectionLength == 5, "Template replacement lost original editor identity or selection.");
             });
+            await Check("fractional-host-original-slots", async () =>
+            {
+                var left = new TextBox { Width = 400, Text = "Caller left" }; var right = new TextBox { Width = 250, Text = "Caller right" };
+                left.Select(1, 4); right.Select(2, 3);
+                var footer = Create(); footer.Width = 640.5; footer.BottomLeft = left; footer.BottomRight = right; await Mount(footer);
+                var bottom = Nodes(footer).OfType<FrameworkElement>().Single(element => element.Name == "FooterBottom");
+                var leftSlot = Nodes(footer).OfType<FrameworkElement>().Single(element => element.Name == "FooterBottomLeft");
+                var rightSlot = Nodes(footer).OfType<FrameworkElement>().Single(element => element.Name == "FooterBottomRight");
+                Rect Box(FrameworkElement element) => element.TransformToVisual(bottom).TransformBounds(new Rect(0, 0, element.ActualWidth, element.ActualHeight));
+                void Verify(double width, bool constrained)
+                {
+                    var l = Box(leftSlot); var r = Box(rightSlot);
+                    Require(Math.Abs(bottom.ActualWidth - (width - 32)) <= .01 && Math.Abs(l.X) <= .01 &&
+                        Math.Abs(r.Right - bottom.ActualWidth) <= .01 && r.X - l.Right >= 16 - .01 &&
+                        (!constrained || Math.Abs(r.X - l.Right - 16) <= .01),
+                        $"Fractional host lost bottom-slot spacing: host={width}, bottom={bottom.ActualWidth}, left={l}, right={r}.");
+                    Require(ReferenceEquals(Nodes(footer).OfType<TextBox>().Single(editor => editor.Text == "Caller left"), left) &&
+                        ReferenceEquals(Nodes(footer).OfType<TextBox>().Single(editor => editor.Text == "Caller right"), right) &&
+                        left.SelectionStart == 1 && left.SelectionLength == 4 && right.SelectionStart == 2 && right.SelectionLength == 3,
+                        "Fractional host replaced caller editors or lost their selection.");
+                }
+                Verify(640.5, true); footer.Width = 768.5; await Layout(); Verify(768.5, false);
+            });
             await Check("custom-link-original-item-command-and-style", async () =>
             {
                 var footer = Create(); var command = new Command(); var parameter = new object(); var requests = new List<BleeckerNavItem>(); footer.Command = command; footer.CommandParameter = parameter; footer.ItemInvoked += (_, item) => requests.Add(item);
@@ -138,7 +161,7 @@ internal static class FooterContractFixture
         }
         catch (Exception error) { failures.Add(new { id = "harness", error = error.ToString() }); }
         var isolated = true; try { Guard(); } catch (Exception error) { isolated = false; failures.Add(new { id = "isolation", error = error.ToString() }); }
-        var passed = failures.Count == 0 && checks.Count == 11 && isolated;
+        var passed = failures.Count == 0 && checks.Count == 12 && isolated;
         static string Hash(string path) => Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(path)));
         Directory.CreateDirectory(Path.GetDirectoryName(reportPath)!);
         await File.WriteAllTextAsync(reportPath, JsonSerializer.Serialize(new { passed, diagnosticOnly = true, scope = "hidden-footer-public-contracts", checks, failures, guardChecks = guards, isolated, hiddenWindow = true, activateCalled = false, showCalled = false, focusCalled = false, inputSent = false, activationEvents = activations, focusEvents = focus, processArchitecture = RuntimeInformation.ProcessArchitecture.ToString(), osArchitecture = RuntimeInformation.OSArchitecture.ToString(), hostSha256 = Hash(hostPath), librarySha256 = Hash(typeof(BleeckerFooter).Assembly.Location), visibleRuntimeVerified = false, sourceRasterParityVerified = false, nativeComponentAccepted = false }, new JsonSerializerOptions { WriteIndented = true }));

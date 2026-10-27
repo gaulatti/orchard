@@ -134,7 +134,7 @@ The public wiki is unavailable; documentation remains in this repository.
 
 ## Public slot and link contracts
 
-The shared `tests/PackageConsumer/FooterContractFixture.cs` fixture checks ten
+The shared `tests/PackageConsumer/FooterContractFixture.cs` fixture checks twelve
 public-API scenarios in an unactivated hidden window:
 
 - Bound null/empty/false/zero right slots and their source-link transitions.
@@ -146,8 +146,11 @@ public-API scenarios in an unactivated hidden window:
   section reordering, title changes and brand-description updates.
 - Both original editors and their selection through complete template removal
   and reapplication.
+- Both original editors through a constrained 640.5-DIP host and a wider
+  768.5-DIP host, retaining row spacing and selection at fractional widths.
 - Custom link rendering with the original item, style/font, explicit command
   parameter and original event payload; disabled commands remain inactive.
+- A caller's padded link renderer retaining its own container width.
 - Equal-key item replacement retaining its view while a changed key retires
   the previous action.
 - Raw, case-sensitive, first-match source selection and explicit suppression.
@@ -161,9 +164,9 @@ semantics; the fixture deliberately uses an observable model for template data.
 The initial two model-template failures were fixture errors caused by using
 TextBlock controls as data models; they do not establish library defects.
 
-The fresh isolated x64 consumer passes all ten scenarios with 179 isolation
+The original isolated x64 consumer passed its ten-scenario checkpoint with 179 isolation
 guards, zero activation/focus events and no native input. All 28 damaged
-receipts are rejected. The catalog passes the same ten scenarios and 179 guards;
+receipts were rejected. The catalog passed the same ten scenarios and 179 guards;
 its audit rejects 24 damaged receipts. Both catalog architecture builds and fresh
 x64/ARM64 consumer compilations pass, and their temporary caches are removed.
 Evidence is indexed in `artifacts/current/footer-contract-checkpoint.json`.
@@ -214,8 +217,8 @@ these facts do not establish visible rendering or component acceptance.
 The catalog's item-change action now toggles a long fictional link label. A new
 public contract regression compares a caller's padded renderer with an ordinary
 link, ensuring Footer does not force the private text width onto arbitrary
-caller containers. All prior ten contracts and this eleventh contract pass on
-the current x64 catalog build. Caller LinkStyle objects and explicit dimensions
+caller containers. All prior ten contracts and this eleventh contract passed on
+that x64 catalog build. Caller LinkStyle objects and explicit dimensions
 remain caller-owned. Broader renderer/style, wrapping and motion/scaling cases,
 visible pointer/keyboard/raster, final integration and native ARM64 remain open.
 
@@ -241,3 +244,19 @@ unverified. See `artifacts/current/footer-expanded-checkpoint.json`.
 
 Caller automation-name overrides, including empty values and styles, follow
 [the shared metadata contract](automation-metadata.md).
+
+The current twelfth contract checks fractional host widths and caller-owned
+bottom editors. In the hidden x64 source catalog and an independently restored
+consumer of `0.1.0-text-media-v4-local`, all twelve checks pass with 205 isolation
+guards per host, zero activation/focus events and no native input. Their auditors
+reject 24 and 28 damaged receipts respectively. The narrow host uses the
+wide-viewport row recipe; this does not test a viewport breakpoint or physical
+input. The source catalog reuses its normal build directory, and the consumer's
+isolated restore directory was removed after the build. The new test changes no
+public library code. Evidence and hashes are in
+`artifacts/current/footer-fractional-contract-checkpoint-v1.json`, SHA-256
+`90535c0a86ff040aa7d9aabca16b1fb0a4b3c9a70c76da78a7c7acb212fc3d58`.
+The shared fixture also compiles in the current ARM64 catalog build, with zero
+warnings or errors; native ARM64 execution remains unverified.
+Broader custom content, visible input/raster, motion/scaling and native ARM64
+runtime remain open.
