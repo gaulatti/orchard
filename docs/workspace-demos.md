@@ -131,10 +131,19 @@ unsaved title change triggers the inline navigation decision; Keep editing
 preserves the draft, while Discard changes opens the requested page without
 changing the saved row. The checkpoint retains all four runtime reports and
 decision screenshots. Run `scripts/verify-editorial-edit-desktop.ps1` with a
-fresh output directory. Status/media/category/author editing, full visual
-comparison, scaling and native ARM64 runtime remain open. The v7 package
+fresh output directory. At the time of that v7 run, status/media/category/author
+editing, full visual comparison, scaling and native ARM64 runtime remained open. The v7 package
 passes these Editorial flows but still fails the Monitoring review
-focus check described above. The archive-identical v8 catalog file set also
+focus check described above. The current source-built x64 catalog now has a
+[visible relation-editing checkpoint](evidence/editorial-relations-source-v1/checkpoint.json):
+pointer input selected a local status and media illustration, selected and
+reordered categories and authors, saved the fictional sample, navigated away,
+and reopened the page with those values retained. The Dark run covered all four
+fields; the Light run added another category and author, reordered an author,
+and verified the saved values in the same running local sample. This closes the
+previously open status/media/category/author editing observation for source x64;
+fresh-package runtime, broader keyboard/focus paths, visual comparison, scaling
+and native ARM64 runtime remain open. The archive-identical v8 catalog file set also
 passes the physical edit/save/dirty-decision path in Light and Dark from the
 separate runnable directory; both screenshots were inspected. Its
 [NuGet preview and catalog ZIP](releases/2026-10-27-components-v8-unqualified.md)

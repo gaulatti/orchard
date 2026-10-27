@@ -1,0 +1,39 @@
+{
+  "scope": "Editorial component demo status, media, category and author editing through the visible x64 catalog",
+  "sourceCommit": "05887851c52bebc97c369ac7b3b22e9e22a40f2a",
+  "observedAt": "2026-10-27T11:36:35-04:00",
+  "catalog": {
+    "path": "samples/Orchard.Catalog/bin/x64/Release/net10.0-windows10.0.26100.0/win-x64/Orchard.Catalog.exe",
+    "exeSha256": "404824e4ce6591fa62fe10188a56cd3a606c01aa7b7e3ebdee9ec590bf261639",
+    "librarySha256": "01a5e7e40409be0aeb24597d0b2bb39dc46b5179f1001c6423926d825b2784ba",
+    "processId": 14252,
+    "build": "dotnet build samples/Orchard.Catalog/Orchard.Catalog.csproj -c Release -p:Platform=x64 --no-restore -v:minimal",
+    "buildWarnings": 0,
+    "buildErrors": 0
+  },
+  "darkPointerObservations": [
+    "Opened Harbor reading room, selected Review and Fictional garden illustration, and observed both values in the editor",
+    "Selected Culture after Local, moved Culture before Local, and observed order numbers 1 and 2",
+    "Selected Mira Example after Ada Example, moved Mira before Ada, and observed order numbers 1 and 2",
+    "Saved the local sample; the dirty summary cleared and Save became disabled",
+    "Navigated to Authors and back to Pages; Harbor row displayed review, and the reopened editor retained Review, garden illustration, Culture/Local and Mira/Ada order"
+  ],
+  "lightPointerObservations": [
+    "Switched the same running catalog to Light and visually inspected the reopened editor",
+    "Selected Learning and Sam Example; both received order number 3",
+    "Moved Sam before Ada, observing Mira/Sam/Ada order numbers 1/2/3",
+    "Saved, navigated to Authors and back to Pages, and reopened Harbor; Review, garden illustration, Culture/Local/Learning and Mira/Sam/Ada persisted in the local sample"
+  ],
+  "evidenceMethod": "Visible Windows desktop input with Sky pointer actions and UI Automation state after each settled render; screenshots displayed and inspected during the run but not retained in this checkpoint",
+  "sourceBuiltX64RuntimePassed": true,
+  "freshPackageRuntimeVerified": false,
+  "independentNugetConsumerVerifiedForThisComposition": false,
+  "fullVisualComparisonVerified": false,
+  "displayAndTextScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "editorialCompositionAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

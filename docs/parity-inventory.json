@@ -8850,7 +8850,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Archive-identical v8 x64 edit/save/dirty-decision pointer and keyboard path passes Light/Dark; complete broader visible pointer/keyboard and focus verification",
+        "Archive-identical v8 x64 edit/save/dirty-decision pointer and keyboard path passes Light/Dark; current source-built x64 status/media/category/author pointer edit, ordering and local save/reopen pass (docs/evidence/editorial-relations-source-v1/checkpoint.json); complete broader visible pointer/keyboard and focus verification in a fresh package",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8887,6 +8887,13 @@
         "physicalPointerAndKeyboardVerified": true,
         "savedLocalTitleAndDirtyDecisionVerified": true,
         "extractedV7CatalogPassed": true,
+        "fullCompositionAccepted": false
+      },
+      "visibleRelationEvidence": {
+        "checkpoint": "docs/evidence/editorial-relations-source-v1/checkpoint.json",
+        "themes": ["Light", "Dark"],
+        "sourceBuiltX64PointerEditingAndLocalSaveReopenPassed": true,
+        "freshPackageRuntimeVerified": false,
         "fullCompositionAccepted": false
       },
       "v8ArchiveEquivalentEvidence": {
