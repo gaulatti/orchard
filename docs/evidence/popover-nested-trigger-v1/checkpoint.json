@@ -1,0 +1,58 @@
+{
+  "scope": "Popover nested trigger registration and physical input",
+  "baseCommit": "788022609bc4e112e17385bac140666a3a06cfd3",
+  "observedDefect": "In the visible x64 catalog, the nested child button received Click while its loaded, enabled Popover had zero registered trigger buttons; the child did not open.",
+  "change": "Reconcile native trigger buttons when the Popover trigger slot completes layout, and release that listener with the template.",
+  "version": "0.1.0-components-v11-local",
+  "sourceX64": {
+    "foreground": "artifacts/current/popover-nested-source-v1/result.json",
+    "foregroundSha256": "3f4f6233ddc926fbbe14199634740987fb7f129d67af0822fd0f26299e709654",
+    "lightAndDarkNestedPointerFocusEscapePassed": true,
+    "hiddenPopoverAudit": "artifacts/current/popover-nested-hidden-source-v1/popover-audit.json",
+    "hiddenPopoverAuditSha256": "ae4910f4e8fa21d8cdee3369aecf760df1dba6648abf623aa9f4c53904a44b06",
+    "hiddenReferenceStatesPassed": 122,
+    "hiddenModalBranchAudit": "artifacts/current/popover-nested-modal-source-v1/branch-audit.json",
+    "hiddenModalBranchAuditSha256": "f3925073b985a25ef58d4011cdc30c37e02938e6907aad86fff165914f487201",
+    "hiddenModalCasesPassed": 32,
+    "portableReferenceTestsPassed": 5
+  },
+  "nuget": {
+    "package": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-components-v11-local.nupkg",
+    "sha256": "a19736af4b0ba3faf5dc441776b2ed22120b26e6aa2b5e3bb7083180ed6d0b50",
+    "orchardDllSha256": "36fa58ca6c2fca5a271975c5e05f3f5d33b7716b55c36c97d848f8f147885c57",
+    "independentX64ConsumerRuntimePassed": true,
+    "independentArm64ConsumerCompiled": true,
+    "nativeArm64ConsumerRuntimeVerified": false
+  },
+  "catalog": {
+    "x64Archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v11-local-win-x64.zip",
+    "x64ArchiveSha256": "2a38db427827f25b9eecbe78f7ad2bd550591bab98d6e2c229c292e34ac6d7ec",
+    "x64ExtractedFilesVerified": 664,
+    "x64DllMatchesNuget": true,
+    "x64ExtractedForegroundLightAndDarkPassed": true,
+    "x64ExtractedMonitoringEditorialChecksPassed": 72,
+    "x64ExtractedIsolationGuardsPassed": 589,
+    "x64DamagedReceiptsRejected": 25,
+    "arm64Archive": "artifacts/current/Gaulatti.Orchard.Catalog.0.1.0-components-v11-local-win-arm64.zip",
+    "arm64ArchiveSha256": "d2b158aecc95ae53e9d15e6b8d78abce5d5d54796845b151585087a7a11516e1",
+    "arm64ExtractedFilesVerified": 660,
+    "arm64ApphostMachine": "Arm64",
+    "nativeArm64RuntimeVerified": false
+  },
+  "visualInspection": {
+    "tool": "Computer Use (Sky)",
+    "settledExtractedX64LightAndDarkChildSurfaceInspected": true,
+    "automatedNestedPngsAcceptedAsSettledVisualEvidence": false,
+    "captureLimitation": "The automated nested screenshots were taken before the child surface finished painting; the Dark frame omits it. Settled Light and Dark surfaces were inspected directly in the extracted catalog."
+  },
+  "optionalAuditLimitation": "The extra package Popover auditor expects a build-only consumer result in its probe directory. The final consumer has a full-runtime result in a different directory; native probe completed, but that optional auditor stopped at receipt parsing. No package Popover hidden-audit pass is claimed.",
+  "builds": {
+    "x64Catalog": "passed",
+    "arm64Catalog": "passed",
+    "x64Warnings": 0,
+    "arm64Warnings": 0
+  },
+  "entriesStarted": 112,
+  "accepted": 0,
+  "componentAccepted": false
+}

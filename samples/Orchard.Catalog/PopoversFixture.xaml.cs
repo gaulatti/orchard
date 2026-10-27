@@ -12,4 +12,6 @@ public sealed partial class PopoversFixture : StackPanel
     private void CloseControlled(object sender, RoutedEventArgs args) => Controlled.Close();
     private void OpenConfirmation(object sender, RoutedEventArgs args) => PopupConfirmation.IsOpen = true;
     private void CloseConfirmation(object sender, RoutedEventArgs args) => PopupConfirmation.IsOpen = false;
+    private void NestedRequested(object? sender, bool open) => Status.Text =
+        $"{(ReferenceEquals(sender, NestedChild) ? "Child" : "Parent")} requested {(open ? "open" : "closed")}";
 }

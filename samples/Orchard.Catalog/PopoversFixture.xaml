@@ -17,8 +17,8 @@
   <orchard:BleeckerPopover Side="Left" Align="End"><orchard:BleeckerPopover.Trigger><Button Content="Left / end"/></orchard:BleeckerPopover.Trigger><TextBlock Text="Fictional left content"/></orchard:BleeckerPopover>
   <orchard:BleeckerPopover Side="Right"><orchard:BleeckerPopover.Trigger><Button Content="Right"/></orchard:BleeckerPopover.Trigger><TextBlock Text="Fictional right content"/></orchard:BleeckerPopover>
  </StackPanel>
- <orchard:BleeckerPopover>
+ <orchard:BleeckerPopover x:Name="NestedParent" OpenRequested="NestedRequested">
   <orchard:BleeckerPopover.Trigger><Button Content="Nested popovers"/></orchard:BleeckerPopover.Trigger>
-  <StackPanel Spacing="12"><TextBlock Text="Fictional parent content"/><orchard:BleeckerPopover><orchard:BleeckerPopover.Trigger><Button Content="Open child"/></orchard:BleeckerPopover.Trigger><TextBox Width="180" Text="Original child input" AutomationProperties.Name="Nested popover input"/></orchard:BleeckerPopover></StackPanel>
+  <StackPanel Spacing="12"><TextBlock Text="Fictional parent content"/><orchard:BleeckerPopover x:Name="NestedChild" OpenRequested="NestedRequested"><orchard:BleeckerPopover.Trigger><Button Content="Open child"/></orchard:BleeckerPopover.Trigger><TextBox Width="180" Text="Original child input" AutomationProperties.Name="Nested popover input"/></orchard:BleeckerPopover></StackPanel>
  </orchard:BleeckerPopover>
 </StackPanel>

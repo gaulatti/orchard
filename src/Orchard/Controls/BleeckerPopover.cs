@@ -119,6 +119,7 @@ public sealed partial class BleeckerPopover : ContentControl
         popup = new() { Name = "PopoverPopup", Child = focusHost, ShouldConstrainToRootBounds = true, IsLightDismissEnabled = false, FlowDirection = FlowDirection.LeftToRight, UseLayoutRounding = false };
         popup.Opened += PopupOpened; popup.Closed += PopupClosed;
         root.Children.Add(triggerSlot); root.Children.Add(popup); triggerSlot.Tapped += TriggerTapped;
+        triggerSlot.LayoutUpdated += TriggerSlotLayout;
         // Let the native template finish retiring its old popup before the
         // same original input controls join the replacement popup root.
         var mountedRoot = root; mountPending = true;
@@ -383,6 +384,7 @@ public sealed partial class BleeckerPopover : ContentControl
         foreach (var old in triggers.Where(button => !next.Contains(button)).ToArray()) { Unhook(old); triggers.Remove(old); }
         foreach (var button in next.Where(button => !triggers.Contains(button))) { if (button is ButtonBase native) native.Click += TriggerClick; else ((BleeckerButton)button).Click += TriggerClick; triggers.Add(button); }
     }
+    private void TriggerSlotLayout(object? sender, object args) => ReconcileTriggers();
     private void Unhook(FrameworkElement button) { if (button is ButtonBase native) native.Click -= TriggerClick; else ((BleeckerButton)button).Click -= TriggerClick; }
     private void StopTriggers() { foreach (var button in triggers) Unhook(button); triggers.Clear(); }
     private void TriggerClick(object sender, RoutedEventArgs args)
@@ -406,7 +408,7 @@ public sealed partial class BleeckerPopover : ContentControl
     {
         mountPending = false; naturalDirty = true; triggerGeneration++; ClosePresentation(false); DisconnectInputs(); RemoveOpenRegistration(); StopTriggers();
         if (popup is not null) { popup.Opened -= PopupOpened; popup.Closed -= PopupClosed; popup.Child = null; }
-        if (triggerSlot is not null) triggerSlot.Tapped -= TriggerTapped;
+        if (triggerSlot is not null) { triggerSlot.Tapped -= TriggerTapped; triggerSlot.LayoutUpdated -= TriggerSlotLayout; }
         if (focusHost is not null) { focusHost.KeyDown -= PopupKey; focusHost.RemoveHandler(PointerPressedEvent, new PointerEventHandler(PopupPointer)); focusHost.Content = null; }
         if (surface is not null) { surface.Loaded -= SurfaceLoaded; surface.Content = null; }
         triggerSlot?.Release(); bodySlot?.Release(); root?.Children.Clear(); root = null; triggerSlot = bodySlot = null; surface = null; focusHost = null; popup = null; triggerValue = bodyValue = null; generation++;

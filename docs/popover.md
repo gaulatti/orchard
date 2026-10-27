@@ -161,3 +161,18 @@ The later [v7 local preview](releases/2026-10-27-components-v7-local.md) repeats
 this focused physical route in both themes from the extracted x64 catalog. Its
 Orchard DLL matches the independently restored NuGet package. Broader
 nested/modal input, full visual review and native ARM64 runtime remain open.
+
+The [nested-trigger repair](evidence/popover-nested-trigger-v1/checkpoint.json)
+closes the catalog's physical nested-button path. The child button received a
+native Click while its Popover had no registered trigger buttons: the trigger's
+visual child appeared after the owner's earlier layout reconciliation. Popover
+now reconciles buttons when its trigger slot lays out and removes that listener
+when the template retires. The existing foreground fixture opens parent and
+child with real pointer input, checks focus on the original child editor, then
+uses Escape twice to close child and parent in order with focus restored. The
+Light/Dark source and extracted v11 x64 runs pass. The v11 NuGet DLL is byte
+identical to the extracted x64 catalog DLL and passes an independent x64
+consumer runtime; ARM64 consumer compilation and catalog archive validation
+pass without claiming native ARM64 execution. Hidden reference and modal-branch
+contracts still pass. Full visual, scaling and broader nested/modal input
+acceptance remain open.

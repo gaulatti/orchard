@@ -61,11 +61,33 @@ public sealed partial class PopoversFixture
             "Physical outside click did not request Popover close.");
         Require(callerInput.Text == "Original caller input", "Outside dismissal changed the caller input.");
 
+        var parentTrigger = (Button)NestedParent.Trigger!;
+        var childTrigger = (Button)NestedChild.Trigger!;
+        var childInput = (TextBox)NestedChild.Content;
+        await input.ClickAsync(parentTrigger);
+        await AwaitAsync(() => NestedParent.IsOpen && childTrigger.IsLoaded && Status.Text == "Parent requested open",
+            "Physical pointer did not open the nested parent Popover.");
+        await input.ClickAsync(childTrigger);
+        await AwaitAsync(() => NestedChild.IsOpen && childInput.IsLoaded && Status.Text == "Child requested open" &&
+            ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), childInput),
+            "Physical pointer did not open and focus the nested child Popover.");
+        await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"popover-foreground-nested-{scheme}.png"));
+        input.Key(0x1B);
+        await AwaitAsync(() => !NestedChild.IsOpen && NestedParent.IsOpen && Status.Text == "Child requested closed" &&
+            ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), childTrigger),
+            "Escape did not close only the nested child and restore its trigger focus.");
+        input.Key(0x1B);
+        await AwaitAsync(() => !NestedParent.IsOpen && Status.Text == "Parent requested closed" &&
+            ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), parentTrigger),
+            "Second Escape did not close the parent and restore its trigger focus.");
+        Require(childInput.Text == "Original child input", "Nested Popover changed the caller's original input.");
+
         await File.WriteAllTextAsync(Path.Combine(folder, $"popover-foreground-{scheme}.json"), JsonSerializer.Serialize(new
         {
             passed = true, scheme, pointerOpenedOriginalInput = true, escapeClosed = true,
             escapeRestoredTriggerFocus = true, controlledKeyboardRequest = true,
-            controlledContentClosed = true, outsidePointerClosed = true, originalInputRetained = true
+            controlledContentClosed = true, outsidePointerClosed = true, originalInputRetained = true,
+            nestedPointerOpenedAndFocused = true, nestedEscapeClosedInOrder = true
         }));
     }
 }
