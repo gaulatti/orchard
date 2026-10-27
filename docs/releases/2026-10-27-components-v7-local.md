@@ -92,6 +92,16 @@ retains both passing reports and the earlier probe timing failures. This adds
 focused runtime evidence to the unchanged package; the full Button matrix and
 independent-consumer pointer route remain open.
 
+The extracted x64 catalog also passed the existing focused Slider foreground
+run with real keyboard, track, and accepted/rejected drag input in both themes.
+Its independent geometry/behavior audit passed all 182 frames with zero geometry
+error, 18 keyboard sequences, and 14 fill histories; all 44 exact raster pairs
+still differ. The already built independent v7 consumer passed 182 hidden Slider
+layouts, 36 ownership checks, and four controlled range requests against the
+same Orchard DLL. The [Slider checkpoint](../evidence/components-v7-slider-input-v1/checkpoint.json)
+records both boundaries. Full visual, motion, scaling, consumer foreground input
+and native ARM64 runtime remain open.
+
 The independent ARM64 consumer **did not publish**. Its fresh restore succeeded,
 but the self-contained publish hit `MSB3021` while copying ARM64 runtime files
 after C: reached zero free bytes. The verifier removed its temporary restore

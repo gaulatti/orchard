@@ -89,9 +89,17 @@ node scripts/verify-hidden-slider-contracts.mjs --native <fresh-folder> --output
 node scripts/test-hidden-slider-contracts-audit.mjs --native <fresh-folder> --output <fresh-regression-folder>
 ```
 
-This remains a native preview with open acceptance. Foreground pointer/keyboard,
-visible automation/lifecycle, full raster, normal motion, actual scaling,
-shared-consumer integration and native ARM64 remain unverified. Further desktop
-availability is required for foreground checks. Architecture builds and fresh
-package compilation are recorded separately. No Narrator or OS preference
-changes are used; the original source reference and all 44 PNGs are unchanged.
+The exact v7 extracted x64 catalog now passes the focused visible native Slider
+run. Its real pointer and keyboard route includes accepted and rejected thumb
+drags in both Light and Dark, track/keyboard/range requests, disabled rejection,
+template replacement, remount, and caller binding retention. The independent
+consumer of the same v7 Orchard DLL passes its hidden 182-layout, 14-history,
+36-ownership-check contract and 1,244 audit guards without sending input. The
+[v7 Slider checkpoint](evidence/components-v7-slider-input-v1/checkpoint.json)
+binds both reports and their auditors to the unchanged package. The catalog
+auditor finds zero geometry error across 182 frames and verifies 18 keyboard
+sequences, but none of the 44 source/native image pairs are byte-identical.
+Two representative pairs were inspected; a full visual review remains open.
+Normal/reduced motion, broader visible and independent-consumer input, actual
+scaling, and native ARM64 runtime remain unverified. No Narrator or OS
+preference changes were used.

@@ -4946,9 +4946,9 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Foreground pointer/keyboard and full visible lifecycle/automation checks; 182 hidden source layouts, 14 fill-history states and 36 ownership checks pass",
-        "Visible raster, native normal motion, actual scaling and ARM64 runtime",
-        "Complete library/package runtime, shared text-consumer integration and release acceptance"
+        "Complete remaining visible lifecycle/automation and independent-consumer foreground input; exact v7 extracted x64 catalog passes native pointer/keyboard and accepted/rejected drag in both themes",
+        "Complete visual review, native normal/reduced motion, actual scaling and ARM64 runtime; 182 catalog frames have zero geometry error but 44 exact raster pairs differ",
+        "Finish shared text-consumer integration and release acceptance; exact v7 independent x64 consumer passes 182 hidden layouts, 14 fill histories and 36 ownership checks"
       ]
     },
     {
