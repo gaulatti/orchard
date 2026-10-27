@@ -159,6 +159,15 @@ public sealed partial class BleeckerMenubar
             if (Surface.RequestedTheme != owner.ActualTheme) Surface.RequestedTheme = owner.ActualTheme;
             var bounds = anchor.TransformToVisual(target).TransformBounds(new Rect(0, 0, anchor.ActualWidth, anchor.ActualHeight));
             var left = nested ? bounds.Right + 4 : bounds.X; var top = nested ? bounds.Y : bounds.Bottom + 4;
+            if (owner.plane is { } plane && motionRoot.ActualWidth > 0 && motionRoot.ActualHeight > 0)
+            {
+                if (nested && left + motionRoot.ActualWidth > plane.Width)
+                    left = bounds.Left - motionRoot.ActualWidth - 4;
+                if (!nested && top + motionRoot.ActualHeight > plane.Height && bounds.Top >= motionRoot.ActualHeight + 4)
+                    top = bounds.Top - motionRoot.ActualHeight - 4;
+                left = Math.Clamp(left, 0, Math.Max(0, plane.Width - motionRoot.ActualWidth));
+                top = Math.Clamp(top, 0, Math.Max(0, plane.Height - motionRoot.ActualHeight));
+            }
             if (double.IsNaN(Canvas.GetLeft(motionRoot)) || Math.Abs(Canvas.GetLeft(motionRoot) - left) > .000001) Canvas.SetLeft(motionRoot, left);
             if (double.IsNaN(Canvas.GetTop(motionRoot)) || Math.Abs(Canvas.GetTop(motionRoot) - top) > .000001) Canvas.SetTop(motionRoot, top);
             // Canvas owns measure/arrange. Measuring its child with a second

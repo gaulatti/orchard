@@ -76,6 +76,8 @@ reject('presence mistaken for normal motion',n=>n.presence[0].normalMotionVerifi
 reject('standalone popup not exercised',n=>n.standalone.pop());
 reject('standalone unload leaks popup',n=>n.standalone[0].unloadedPopupRetired=false);
 reject('native light dismiss silently substituted',n=>n.standalone[0].noNativeLightDismiss=false);
+reject('bottom root clips outside viewport',n=>n.standalone[0].viewportPlacement.root.y=n.standalone[0].viewportPlacement.height);
+reject('nested menu stays beyond right edge',n=>n.standalone[0].viewportPlacement.submenu.x=n.standalone[0].viewportPlacement.width);
 if(catalog)reject('catalog styles not applied to native elements',n=>n.catalog[0].originalStylesApplied=false);
 for(const key of ['backgroundProviderRejections','nestedProviderRejections','closingProviderRejections','backgroundCalls','ownedCalls'])reject('modal '+key+' changed',n=>n.contracts.find(c=>c.action==='active-modal-isolation')[key]++);
 for(const key of ['retiredOwnerProviderRejected','originalBackgroundRowsAndBindingRetained','nestedOriginalRowRetained','unopenedTriggerRestored','originalModalContentRetained'])reject('modal '+key+' lost',n=>n.contracts.find(c=>c.action==='active-modal-isolation')[key]=false);

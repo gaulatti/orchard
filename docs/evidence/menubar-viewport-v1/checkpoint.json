@@ -1,0 +1,45 @@
+{
+  "scope": "Source-built x64 Menubar viewport placement and focused desktop input",
+  "observedAt": "2026-10-27T09:50:32-04:00",
+  "catalogExeSha256": "d207647a9f63b16c1529912dae610e7382bbb31b55c7cfd2513c1484d4a5becf",
+  "catalogDllSha256": "00ef8d333287d6761e458aa2204ed6ce3a86d2497ed942c4466da259c5114377",
+  "orchardDllSha256": "f2763dfb5482e4f8fcd75ee9bfab7aa4312bfaf9925951436cfcfa2f4063b97a",
+  "before": "In the preceding source-built catalog, the RTL nested menu at the bottom of the window extended below the visible edge and clipped its last row.",
+  "initialAuditAttempt": "The first full wrapper exited 1 after the native process exited 0: its auditor still expected the source's overflowing bottom-right coordinates, then an unobscured trigger pixel where the flipped menu now casts a shadow. The corrected auditor passed against that same native report; the wrapper was not rerun.",
+  "after": {
+    "x64CatalogBuildSucceeded": true,
+    "nativeReport": "artifacts/current/menubar-viewport-source-x64-v1/menubar.json",
+    "nativeReportSha256": "f104a968ecd9fe97416ce26e3aaa4eea204f46f7197b6087f4e5a4b35f890878",
+    "nativeAuditSha256": "90dcb888e9078bb3798c9e47b138dfc0412fb3810836df3634bfa497ed6e3baf",
+    "negativeAuditSha256": "b2dcdd93f10b96d00821f55da0e42923a7bb6b3d062f86e0ba5f1c44f26223e8",
+    "nativeLightAndDarkBottomRightRootAboveTrigger": true,
+    "nativeLightAndDarkSubmenuFlippedLeftWithinViewport": true,
+    "nativeStates": 30,
+    "nativeCallerContracts": 28,
+    "nativeGeometryValuesWithinPointZeroTwoDip": 1224,
+    "negativeCasesRejected": 96,
+    "foregroundDarkRtlNestedMenuFullyVisible": true,
+    "foregroundDarkRtlNestedPointerActionReachedOriginalCallback": true,
+    "foregroundLightRtlNestedMenuFullyVisible": true,
+    "foregroundLightRtlDeeperMenuFullyVisible": true,
+    "foregroundLightRtlDeepPointerActionReachedOriginalCallback": true,
+    "foregroundBeforeRepairPointerAndKeyboardChecks": [
+      "pointer File and Edit root switching",
+      "disabled row retained its disabled state and did not dismiss the root",
+      "Down skipped the disabled row",
+      "Space updated the caller-owned checkbox and dismissed the root",
+      "Enter reopened File and Escape dismissed it",
+      "RTL Left switched File to Edit and Right returned to File"
+    ],
+    "bottomRightDarkCapture": "docs/evidence/menubar-viewport-v1/bottom-right-dark.png",
+    "bottomRightDarkCaptureSha256": "fe3a01c30767dc39da322364a3c6754597e7f4eda709abaf22a910a0abba97cd"
+  },
+  "limits": [
+    "The source browser's overflowing bottom-right root is intentionally adapted to the WinUI viewport; it is not counted as source-position parity.",
+    "The flipped root casts a shadow over the nearby active trigger, so that one exact trigger-pixel probe is excluded; 30 unobscured palette probes and the unchanged 0.02-DIP geometry tolerance remain.",
+    "The independent NuGet consumer, native ARM64 execution, other constrained sizes, full physical input/focus/UIA delivery, scaling, real-time motion and complete visual acceptance remain open."
+  ],
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}

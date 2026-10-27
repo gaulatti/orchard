@@ -3894,8 +3894,8 @@
       "status": "in-progress",
       "remainingGaps": [
         "Verify normal real-time and nested surface/row motion, interruption and reduced-motion behavior; controlled root-surface and row color timelines pass",
-        "Verify routed keyboard/focus, physical pointer routing and external UIA client traversal/event delivery; scoped Menu/Group roles, controlled-peer links and original radio-group queries pass",
-        "Verify remaining font/display scaling, caller overrides, full visual/placement review and native ARM64 runtime acceptance"
+        "Focused x64 pointer root switching, disabled gating, Down/Space/Enter/Escape, RTL Left/Right and nested original action pass; verify broader routed input/focus and external UIA client traversal/event delivery (docs/evidence/menubar-viewport-v1/checkpoint.json)",
+        "Focused source-built x64 viewport placement passes Light/Dark native checks and dark/light RTL nested/deeper foreground; verify other constrained sizes, font/display scaling, caller overrides, full visual review, independent NuGet consumer and native ARM64 runtime (docs/evidence/menubar-viewport-v1/checkpoint.json)"
       ],
       "sourcePreparation": {
         "reference": "tests/Reference/Menubar.json",

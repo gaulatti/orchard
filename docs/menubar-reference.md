@@ -77,6 +77,9 @@ to its bar width or viewport: the narrow fixture retains a 224px root, and the
 bottom-right fixture overflows below the viewport. Doubling the root font to
 32px produces an 82px bar and a 448×628px basic root.
 
+The WinUI [viewport placement](menubar.md) intentionally adapts that overflow;
+the frozen source capture and its measured coordinates remain unchanged.
+
 `usePresence` delays visibility by 20ms and removes a closing subtree after
 150ms. The CSS tokens specify 220ms entry, 150ms exit and 190ms control
 transitions, matching the exit removal timer. The reduced-motion

@@ -131,6 +131,20 @@ Pointer and UI Automation requests preserve their existing focus behavior.
 Canvas owns surface measurement and arrangement; placement updates only changed
 coordinates. This avoids the native standalone popup layout cycle found when
 the initial renderer remeasured its children from `LayoutUpdated`.
+The [focused viewport repair](evidence/menubar-viewport-v1/checkpoint.json)
+uses the realized menu-surface size: a bottom-edge root opens above its trigger,
+a right-edge submenu flips left, and remaining coordinates stay inside the
+native viewport where the surface fits. The source browser's overflowing
+bottom-right position remains in the reference; this is an intentional Windows
+adaptation. The source-built x64 catalog passes Light/Dark hidden placement
+checks and visible dark/light RTL nested and deeper pointer actions. The
+flipped root's shadow overlays the nearby trigger, so its exact trigger-pixel
+probe is omitted; unobscured palette and row geometry checks remain. The
+independent NuGet consumer, native ARM64 runtime and broader constrained-size
+review remain open.
+The [dark bottom-right capture](evidence/menubar-viewport-v1/bottom-right-dark.png)
+shows the root opening above its trigger.
+
 The keyboard handler uses the existing menu buttons and caller callbacks.
 Left/Right move between top-level menus, with direction reversed in RTL.
 Up/Down wrap among enabled items and skip separators; on a top-level trigger

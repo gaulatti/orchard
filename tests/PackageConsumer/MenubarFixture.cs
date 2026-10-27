@@ -96,7 +96,8 @@ internal static class MenubarFixture
         bool Reject(IInvokeProvider provider) { try { provider.Invoke(); } catch (ElementNotEnabledException) { Guard(); return true; } throw new InvalidOperationException("An inactive Menubar provider accepted invocation."); }
         Button OriginalRow(BleeckerMenubarItem item) => All().OfType<Button>().Single(b => b.IsLoaded && ReferenceEquals(b.DataContext, item));
         BleeckerOverlaySurface[] Surfaces() => All().OfType<BleeckerOverlaySurface>().Where(s => s.IsLoaded && s.Name is "MenubarRootSurface" or "MenubarSubmenuSurface").ToArray();
-        object Box(FrameworkElement e) { var r = e.TransformToVisual(root).TransformBounds(new Rect(0, 0, e.ActualWidth, e.ActualHeight)); return new { x = r.X, y = r.Y, width = r.Width, height = r.Height }; }
+        Rect Bounds(FrameworkElement e) => e.TransformToVisual(root).TransformBounds(new Rect(0, 0, e.ActualWidth, e.ActualHeight));
+        object Box(FrameworkElement e) { var r = Bounds(e); return new { x = r.X, y = r.Y, width = r.Width, height = r.Height }; }
         object BrushData(Brush? brush) => brush is SolidColorBrush s ? new { a = s.Color.A, r = s.Color.R, g = s.Color.G, b = s.Color.B, opacity = s.Opacity } : throw new InvalidOperationException("Expected a concrete Menubar brush.");
         double EffectiveOpacity(BleeckerOverlaySurface surface) => surface.Opacity * ((Grid)surface.Parent).Opacity;
         object Snapshot(BleeckerMenubar bar) => new
@@ -456,8 +457,20 @@ internal static class MenubarFixture
                 Invoke(Trigger(plain, "File")); await Layout(); var nativePopup = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot).Single(p => p.Child is Canvas canvas && canvas.Name == "MenubarPlane");
                 Require(nativePopup.IsOpen && nativePopup.ShouldConstrainToRootBounds && !nativePopup.IsLightDismissEnabled && Surfaces().Length == 1, "Standalone Menubar did not use its scoped native popup.");
                 Invoke(Item("Show fictional guides")); await Layout(190); Require(events.Count == 1 && Surfaces().Length == 0, "Standalone selection request did not invoke and dismiss.");
+                plain.HorizontalAlignment = HorizontalAlignment.Right; plain.VerticalAlignment = VerticalAlignment.Bottom; plain.Margin = new Thickness(0, 0, 10, 10); await Layout();
+                Invoke(Trigger(plain, "File")); await Layout();
+                var triggerBounds = Bounds(Trigger(plain, "File")); var rootBounds = Bounds(Surfaces().Single(s => s.Name == "MenubarRootSurface"));
+                var submenuRow = Item("More fictional choices"); Expand(submenuRow); await Layout();
+                var rowBounds = Bounds(submenuRow); var submenuBounds = Bounds(Surfaces().Single(s => s.Name == "MenubarSubmenuSurface"));
+                Require(rootBounds.Top >= 0 && rootBounds.Bottom <= root.ActualHeight + .5 && rootBounds.Bottom <= triggerBounds.Top &&
+                    submenuBounds.Left >= 0 && submenuBounds.Top >= 0 && submenuBounds.Right <= root.ActualWidth + .5 &&
+                    submenuBounds.Bottom <= root.ActualHeight + .5 && submenuBounds.Right <= rowBounds.Left,
+                    "Bottom-right Menubar surfaces clipped outside the native viewport or failed to flip around their anchors.");
                 root.Children.Clear(); await Layout(180); Require(!nativePopup.IsOpen && nativePopup.Child is null && !plain.IsLoaded, "Standalone unload retained native popup ownership.");
-                standalone.Add(new { scheme, originalCallbackCount = events.Count, rootConstrained = true, noNativeLightDismiss = true, unloadedPopupRetired = true, sourceRasterParityVerified = false, passed = true });
+                standalone.Add(new { scheme, originalCallbackCount = events.Count, rootConstrained = true, noNativeLightDismiss = true, unloadedPopupRetired = true,
+                    viewportPlacement = new { width = root.ActualWidth, height = root.ActualHeight, root = new { x = rootBounds.X, y = rootBounds.Y, width = rootBounds.Width, height = rootBounds.Height },
+                        triggerTop = triggerBounds.Top, submenu = new { x = submenuBounds.X, y = submenuBounds.Y, width = submenuBounds.Width, height = submenuBounds.Height }, parentRowLeft = rowBounds.Left },
+                    sourceRasterParityVerified = false, passed = true });
                 root.Children.Add(host); await Layout();
             }
             var catalog = new List<object>();

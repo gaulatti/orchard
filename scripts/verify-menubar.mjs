@@ -133,13 +133,17 @@ export function verifyMenubar(native,reference,catalogExpected) {
       const count=s.kind==='deep-submenu'?3:s.kind==='submenu'?2:['closed','empty-bar'].includes(s.kind)?0:1;
       assert.equal(m.surfaces.length,count,s.kind);
       for(const [i,surface] of m.surfaces.entries()) {
-        const sourceSurface=original.surfaces[i];box(surface.box,sourceSurface.box,s.kind+'.surface'+i);
+        const sourceSurface=original.surfaces[i];
+        const expectedBox=s.kind==='bottom-right'&&i===0?{...sourceSurface.box,
+          x:reference.viewport.width-sourceSurface.box.width,
+          y:original.triggers[0].box.y-sourceSurface.box.height-4}:sourceSurface.box;
+        box(surface.box,expectedBox,s.kind+'.surface'+i);
         assert.equal(surface.Opacity,1);
         assert.equal(surface.box.width,surface.name==='MenubarRootSurface'?224:192);
         assert(surface.box.height>0);
         assert.deepEqual(surface.background,scheme==='Light'?{a:255,r:255,g:255,b:255,opacity:1}:{a:255,r:24,g:37,b:51,opacity:1});
         const sourceRows=sourceSurface.rows.filter(r=>r.role!=='separator');assert.equal(surface.rows.length,sourceRows.length);
-        for(const [j,row] of surface.rows.entries()){assert.equal(row.role,'MenuItem');assert.equal(row.activeBackgroundOpacity,0);assert.equal(row.name,row.label);assert(row.box.width>0&&row.box.height>0);if(row.label.startsWith('Unavailable'))assert.equal(row.enabled,false);box(row.box,sourceRows[j].box,s.kind+'.surface'+i+'.row'+j);}
+        for(const [j,row] of surface.rows.entries()){assert.equal(row.role,'MenuItem');assert.equal(row.activeBackgroundOpacity,0);assert.equal(row.name,row.label);assert(row.box.width>0&&row.box.height>0);if(row.label.startsWith('Unavailable'))assert.equal(row.enabled,false);const expectedRow={...sourceRows[j].box,x:sourceRows[j].box.x+expectedBox.x-sourceSurface.box.x,y:sourceRows[j].box.y+expectedBox.y-sourceSurface.box.y};box(row.box,expectedRow,s.kind+'.surface'+i+'.row'+j);}
       }
       assert.deepEqual(m.events,[]);
       const checked=m.surfaces.flatMap(s=>s.rows).filter(r=>r.label==='Show fictional guides');
@@ -161,10 +165,17 @@ export function verifyMenubar(native,reference,catalogExpected) {
     const throwing=contracts.find(c=>c.action==='throwing-callback');assert.equal(throwing.passed,true);assert.equal(throwing.after.surfaces.length,1);assert.deepEqual(throwing.after.events,['new']);
     const unload=contracts.find(c=>c.action==='disable-unload-reload');assert(unload.passed&&unload.originalMenusRetained&&unload.templateRetirementVerified);
     assert.deepEqual(native.presence.find(p=>p.scheme===scheme),{scheme,closingOriginalSurfaceRetainedAt50:true,retiredBy190:true,reopenCancelledOriginalExit:true,normalMotionVerified:false,passed:true});
-    assert.deepEqual(native.standalone.find(p=>p.scheme===scheme),{scheme,originalCallbackCount:1,rootConstrained:true,noNativeLightDismiss:true,unloadedPopupRetired:true,sourceRasterParityVerified:false,passed:true});
+    const standalone=native.standalone.find(p=>p.scheme===scheme);
+    const {viewportPlacement,...standaloneContract}=standalone;
+    assert.deepEqual(standaloneContract,{scheme,originalCallbackCount:1,rootConstrained:true,noNativeLightDismiss:true,unloadedPopupRetired:true,sourceRasterParityVerified:false,passed:true});
+    assert.equal(viewportPlacement.width,900);assert.equal(viewportPlacement.height,760);
+    const within=box=>Number.isFinite(box.x)&&Number.isFinite(box.y)&&Number.isFinite(box.width)&&Number.isFinite(box.height)&&box.x>=0&&box.y>=0&&box.x+box.width<=viewportPlacement.width+.5&&box.y+box.height<=viewportPlacement.height+.5;
+    assert(within(viewportPlacement.root)&&within(viewportPlacement.submenu),'Menubar surface escaped the native viewport');
+    assert(viewportPlacement.root.y+viewportPlacement.root.height<=viewportPlacement.triggerTop,'bottom root did not open above its trigger');
+    assert(viewportPlacement.submenu.x+viewportPlacement.submenu.width<=viewportPlacement.parentRowLeft,'right-edge submenu did not flip left');
     if(catalogExpected){const c=native.catalog.find(c=>c.scheme===scheme);assert.equal(c.bars,4);assert.equal(c.originalStylesApplied,true);assert.equal(c.registeredFixture,'Orchard.Catalog.MenubarsFixture');}
   }
-  return{...metadata,geometryValues,maximumGeometryError,geometryTolerance:.02,radioSelectionProviderCases:native.radioSelection.length,keyboardControllerCases:native.keyboard.length,keyboardRoutedEventsVerified:false,keyboardFocusMovementVerified:false,controlledSurfaceMotionSamples:32,controlledSurfaceMotionVerified:true,controlledRowMotionPresentations:rowPresentations,rowMotionColorProperties:rowPresentations*2,rowPaintOwnershipCases:2,rowMotionReferenceSha256:crypto.createHash('sha256').update(rowReferenceBytes).digest('hex'),rowMotionSourceBrowser:rowReference.browser,originalStaticSourceBrowser:reference.browser,normalRealtimeMotionVerified:false,sourceStatesNotExercised:['font200'],documentedSourceAdaptations:['disabled submenu stays closed; UI Automation expand rejects disabled entries'],sourceRasterParityVerified:false,nativeComponentAccepted:false};
+  return{...metadata,geometryValues,maximumGeometryError,geometryTolerance:.02,radioSelectionProviderCases:native.radioSelection.length,keyboardControllerCases:native.keyboard.length,keyboardRoutedEventsVerified:false,keyboardFocusMovementVerified:false,controlledSurfaceMotionSamples:32,controlledSurfaceMotionVerified:true,controlledRowMotionPresentations:rowPresentations,rowMotionColorProperties:rowPresentations*2,rowPaintOwnershipCases:2,rowMotionReferenceSha256:crypto.createHash('sha256').update(rowReferenceBytes).digest('hex'),rowMotionSourceBrowser:rowReference.browser,originalStaticSourceBrowser:reference.browser,normalRealtimeMotionVerified:false,sourceStatesNotExercised:['font200'],documentedSourceAdaptations:['disabled submenu stays closed; UI Automation expand rejects disabled entries','bottom-edge root opens above trigger and right-edge submenu flips left within native viewport'],sourceRasterParityVerified:false,nativeComponentAccepted:false};
 }
 
 export function verifyMenubarPaint(state,png) {
@@ -174,7 +185,9 @@ export function verifyMenubarPaint(state,png) {
   const x=Math.floor(trigger.box.x+10),y=Math.floor(trigger.box.y+3),at=(y*png.width+x)*4;
   assert(x>=0&&x<png.width&&y>=0&&y<png.height);
   const expected=state.scheme==='Light'?[44,87,132,255]:[91,163,245,255];
-  assert.deepEqual([...png.rgba.subarray(at,at+4)],expected,state.kind+' active trigger');probes++;
+  // The flipped root casts its real overlay shadow across the nearby trigger.
+  // All other states retain the unobscured exact-palette probe.
+  if(state.kind!=='bottom-right'){assert.deepEqual([...png.rgba.subarray(at,at+4)],expected,state.kind+' active trigger');probes++;}
   for(const row of state.measurement.surfaces.flatMap(s=>s.rows).filter(row=>row.expanded==='Expanded')) {
     const x=Math.floor(row.box.x+10),y=Math.floor(row.box.y+3),at=(y*png.width+x)*4;
     assert(x>=0&&x<png.width&&y>=0&&y<png.height);
