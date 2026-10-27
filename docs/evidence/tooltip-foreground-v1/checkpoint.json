@@ -1,0 +1,33 @@
+{
+  "scope": "Tooltip extracted-v7 x64 Top trigger foreground input in Light and Dark",
+  "probe": "scripts/verify-tooltip-desktop.ps1",
+  "probeSha256": "2edc20d3d7420b65df2b2050fe2907906ab30521bd52b021d78a969d6c347db0",
+  "catalog": "artifacts/current/components-v7-catalog-x64",
+  "catalogExeSha256": "de7f51b5339492f4459d568cfa6357325ddae494afe21a50b93f8fd1e926b403",
+  "orchardDllSha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
+  "passedRuns": [
+    { "theme": "Light", "report": "docs/evidence/tooltip-foreground-v1/light.json", "sha256": "be94d921ef58f51b99a33200eb3ae04ff7b1b6e2ce43f7bf9e3e3554fa01d866" },
+    { "theme": "Dark", "report": "docs/evidence/tooltip-foreground-v1/dark.json", "sha256": "39ad64995a49f269047840ad0efe038223e0bb4610478ff3efb97d95df455875" }
+  ],
+  "verifiedBehavior": [
+    "A swept real pointer entry opens Top tooltip after the component hover delay",
+    "Moving below the Top trigger closes its tooltip",
+    "Physical Tab and Shift+Tab return keyboard focus to Top and open its tooltip",
+    "Physical Escape closes the tooltip while the catalog remains foreground",
+    "Both theme runs exit their catalog process and leave OS settings unchanged"
+  ],
+  "diagnosticRuns": [
+    { "report": "docs/evidence/tooltip-foreground-v1/diagnostic-immediate-leave.json", "sha256": "72e0cb6f6d88ad496f0dc47a1a2bb16f620e1d91b4809d6419545e7e46ef8c73", "observation": "One-step cursor teleport did not close the tooltip; natural pointer-transit behavior is not established by this synthetic path." },
+    { "report": "docs/evidence/tooltip-foreground-v1/diagnostic-immediate-hover.json", "sha256": "8bb34cc3faec4eeb10e584639ce5c6beac9c39a8628c0d48741c9891c1d1585f", "observation": "One-step cursor entry did not consistently open the tooltip; the cause of the intermittent injected-input result is unestablished." },
+    { "report": "docs/evidence/tooltip-foreground-v1/diagnostic-programmatic-focus.json", "sha256": "4eed56791896e6b49a04c84e2149727239fdaa3c7ce295ff66375ace5ec38d30", "observation": "UI Automation SetFocus alone did not open the tooltip; the control requires keyboard focus, which the final physical Tab path verifies." }
+  ],
+  "componentCodeAndXamlFixtureUnchangedSinceV7": true,
+  "freshV8ArchiveTooltipVerified": false,
+  "fullPhysicalMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

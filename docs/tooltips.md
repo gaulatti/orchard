@@ -1,8 +1,7 @@
 # Tooltip preview
 
 Current scope is the [component library and its fictional-data demos](library-scope.md).
-Narrator and OS accessibility/contrast campaigns are excluded. Historical
-desktop reports below do not authorize new foreground tests.
+Narrator and OS accessibility/contrast campaigns are excluded.
 
 Inside `BleeckerModalHost`, Tooltip and Field Help Tooltip now use the shared
 portal plane. Their original control, consumer content, template/selector,
@@ -37,6 +36,17 @@ background native validation compares both popup paths, modal ownership,
 Select scope changes, field-help removal and loaded-window teardown.
 These checks do not establish full raster, normal motion, hover timing,
 physical input/focus, scaling or native ARM64 acceptance.
+
+The [extracted-v7 x64 foreground probe](evidence/tooltip-foreground-v1/checkpoint.json)
+now verifies the Top specimen in both Light and Dark. A swept physical pointer
+entry opens it; moving below the trigger closes it. Physical Tab and Shift+Tab
+return keyboard focus and open it, and physical Escape dismisses it. The probe
+checks the catalog process identity and foreground window. Earlier one-step
+cursor injection was intermittent, so its failed reports are retained without
+claiming a component defect. UI Automation programmatic focus alone does not
+model keyboard focus. The control and XAML specimen are unchanged since this
+v7 archive; fresh v8 extraction and the remaining placements/transit, modal,
+timing, visual, scaling and ARM64 checks remain open.
 
 The programmatic appearance checks establish a genuine neutral pointer receipt
 at the fixture heading before opening tooltip specimens. At source `ba1434b`,

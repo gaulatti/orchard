@@ -5424,13 +5424,14 @@
         "tests/Native/TooltipModalBranchProbe.cs",
         "tests/PackageConsumer/TooltipModalRootFixture.cs",
         "scripts/verify-tooltip-modal-branch.mjs",
-        "scripts/verify-package-tooltip-modal-root.mjs"
+        "scripts/verify-package-tooltip-modal-root.mjs",
+        "scripts/verify-tooltip-desktop.ps1"
       ],
       "status": "in-progress",
       "remainingGaps": [
         "Verify collision corners, very small viewports and source-derived shadow appearance under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
         "Verify rendered entry/exit motion curves and hover/skip timing",
-        "Verify full physical pointer transit matrix, physical modal focus routing, explicit nested theme overrides and richer consumer templates",
+        "Extracted v7 x64 Top hover/leave, Tab/Shift+Tab and Escape pass in Light/Dark; verify other placements, full physical pointer transit matrix, physical modal focus routing, explicit nested theme overrides and richer consumer templates",
         "Verify rendered reference parity, display/text scaling and remaining ARM64 state acceptance"
       ]
     },
