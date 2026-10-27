@@ -273,3 +273,14 @@ The later [v7 local preview](releases/2026-10-27-components-v7-local.md) repeats
 this focused Light/Dark physical route from an extracted x64 catalog whose
 Orchard DLL matches the independently restored NuGet package. It passes there;
 the broader input and visual matrix and native ARM64 runtime remain open.
+
+The [published v7 x64 archive](releases/2026-10-27-preview-v7.md) now passes
+the same physical pointer Delete, Tab/Space Delete and pointer Open route in
+both themes, directly from its fresh extraction with the exact released NuGet
+DLL. Both foreground runs owned the desktop input and exited with code zero.
+The extracted archive also passes the existing 100-state, 38-contract hidden
+Media Library fixture, with 102 rendered PNGs and process exit zero. The
+[checkpoint](evidence/media-library-v7-published-archive-v1/checkpoint.json)
+records hashes and reports. Broader visual and scaling review, collection
+performance and native ARM64 runtime remain open; Media Library is not yet an
+accepted inventory entry.
