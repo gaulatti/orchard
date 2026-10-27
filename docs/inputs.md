@@ -928,3 +928,10 @@ remount, although that same lifecycle check passed in the focused run. This
 combined-run failure remains unresolved. The manual pointer-lifecycle demo's
 own theme target has not been retested. See
 `docs/evidence/catalog-presentation-theme-root-v1/checkpoint.json`.
+
+A fresh repeat with the same source-built executable passes the complete x64
+presentation smoke in both appearances and retains 256 captures at 100%
+display/text scale with animations disabled. The earlier combined Input shadow
+remount failure remains unresolved; the pass does not establish its cause or
+erase it. Neither run qualifies a new NuGet package or native ARM64 behavior.
+See `docs/evidence/catalog-presentation-recheck-v1/checkpoint.json`.
