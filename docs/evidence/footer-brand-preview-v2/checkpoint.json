@@ -1,0 +1,46 @@
+{
+  "scope": "Published versioned NuGet preview of the Footer brand foreground repair",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.2",
+  "releaseId": 425808090,
+  "tag": "v0.1.0-preview.20261027.2",
+  "tagTarget": "9349b598b803754bbeb45d95f2d23ec9baeac0d3",
+  "prerelease": true,
+  "draft": false,
+  "githubActionsRunsForTagTarget": 0,
+  "package": {
+    "name": "Gaulatti.Orchard.0.1.0-preview.20261027.2.nupkg",
+    "sha256": "62e3d1f9f4d78700520ceaa5dcf0d664877484e359bfc9f9f9bbb8119ad0b1df",
+    "bytes": 1733985,
+    "githubAssetState": "uploaded",
+    "githubAssetDigestMatched": true,
+    "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
+    "payloadEntriesIdenticalToTestedLocalPackage": 182,
+    "payloadDifferences": 0,
+    "bundledFonts": 6,
+    "bundledImages": 2,
+    "buildTransitiveTargets": 1
+  },
+  "packageReferenceConsumer": {
+    "platform": "x64",
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "restoredLibrarySha256MatchedPackage": true,
+    "normalRuntimeReport": "docs/evidence/footer-brand-preview-v2/consumer-runtime.json",
+    "normalRuntimeReportSha256": "7f5381c2ec44ce879efb8d2825b3bff8b639c71b88ebb1cea6bda14f5752cbb4",
+    "normalRuntimePassed": true,
+    "physicalForegroundAcquiredInBothThemes": true,
+    "hiddenFooterContractReport": "docs/evidence/footer-brand-preview-v2/hidden-footer-contracts.json",
+    "hiddenFooterContractReportSha256": "c2674b193a1f82830191e1f171e72ec00a519c7fce68b2f771145d2ad3ad4afe",
+    "hiddenFooterContractsPassed": 12,
+    "hiddenFooterIsolationGuards": 205,
+    "fullyIsolatedFooterPackageAuditPassed": false
+  },
+  "limits": [
+    "This is a NuGet-only update; the existing v11 catalog ZIPs predate the Footer repair.",
+    "The consumer is the repository's separate package-reference project, not a fresh isolated checkout/cache. The isolated package auditor requires a cleanup receipt and did not pass.",
+    "Package-specific physical Footer input, full visual review, and native ARM64 runtime remain open."
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "libraryComplete": false
+}

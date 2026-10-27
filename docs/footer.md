@@ -300,3 +300,13 @@ package-reference project rather than a fresh isolated checkout/cache, and the
 existing package auditor requires a cleanup receipt that this run did not
 produce. Package-specific Footer physical input and native ARM64 runtime remain
 open. See `docs/evidence/footer-brand-package-v1/checkpoint.json`.
+
+The versioned `0.1.0-preview.20261027.2` NuGet package now publishes this exact
+Footer DLL. Its new-version package-reference x64 consumer builds without
+warnings or errors and passes the normal Light/Dark runtime check; the hidden
+Footer probe passes 12 public contracts and 205 isolation guards. The package
+payload is identical to the tested local package apart from version metadata.
+This NuGet-only preview does not update the earlier v11 catalog ZIPs or close
+the isolated-consumer receipt, package-specific physical Footer input, full
+visual review, or native ARM64 runtime gaps. See
+`docs/evidence/footer-brand-preview-v2/checkpoint.json`.
