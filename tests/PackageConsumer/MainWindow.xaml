@@ -53,6 +53,8 @@
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
                 <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
+                <orchard:BleeckerLabel x:Name="PackageDisabledTargetLabel" Content="Unavailable title" Target="{Binding ElementName=PackageDisabledTargetInput}" />
+                <orchard:BleeckerInput x:Name="PackageDisabledTargetInput" Text="Protected draft" IsEnabled="False" />
                 <orchard:BleeckerTabs x:Name="PackageTabs" Width="480" Stretch="True" ActiveTab="overview" AutomationProperties.Name="Package tabs" />
                 <orchard:BleeckerDialogCloseButton x:Name="PackageClose" AutomationProperties.Name="Close package preview" />
                 <orchard:BleeckerField x:Name="PackageField" Label="Consumer field" Required="True" Description="Consumer description" Error="Consumer error" Width="320" HorizontalAlignment="Left">

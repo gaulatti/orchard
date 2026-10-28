@@ -146,6 +146,16 @@ Dark runs. The consumer physically accepts the Light and Dark theme requests
 before Label input; its packaged Input keeps its `LabeledBy` relationship in
 every mode. All three processes exit with code zero. The earlier v7 Theme Toggle
 lifecycle evidence separately confirms visible Light/Dark backgrounds. This
-closes the explicit-theme independent-consumer input gap. Disabled-target and
-broader nested-control input, complete rendering, actual scaling and native
-ARM64 runtime remain open.
+closes the explicit-theme independent-consumer input gap. Broader nested-control
+input, complete rendering, actual scaling and native ARM64 runtime remain open.
+
+The [disabled-target consumer fixture](evidence/label-v7-disabled-target-consumer-v1/checkpoint.json)
+adds an enabled public Label linked to a disabled input. In System, Light and
+Dark, a real click leaves the disabled input unfocused and both input values
+unchanged while preserving the `LabeledBy` relationship; all processes exit
+zero. The independent consumer's existing Light/Dark smoke passes after the
+fixture addition, and both theme captures show the disabled field. The first
+probe incorrectly expected Windows to retain focus on the previously active
+input; its failure is retained separately. Windows cleared focus, without
+focusing the disabled target. Broader nested-control input, complete rendering,
+actual scaling and native ARM64 runtime remain open.

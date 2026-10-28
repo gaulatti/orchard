@@ -1,0 +1,46 @@
+{
+  "format": "orchard-label-consumer-desktop-v1",
+  "passed": true,
+  "consumerExeSha256": "507b1f7c34805c399e1d1b3df489483790fbee7e284452ffd14c7d5b66f983ab",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "mode": "Light",
+  "route": {
+    "toggleName": "Switch to dark theme",
+    "tabToInput": true,
+    "labelPointer": {
+      "x": 535,
+      "y": 427
+    },
+    "pointerFocus": "Input",
+    "valueBefore": "Harbor update",
+    "valueAfter": "xHarbor update",
+    "inputLabeledBy": "PackageFieldLabel"
+  },
+  "physicalPointerAndKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 3808,
+  "themeTransition": "Theme accepted 1: Light",
+  "disabledTarget": {
+    "labelPointer": {
+      "x": 535,
+      "y": 512
+    },
+    "inputEnabled": false,
+    "inputLabeledBy": "PackageDisabledTargetLabel",
+    "valueBefore": "Protected draft",
+    "focusAfterClick": "",
+    "enabledInputValueAfterClick": "xHarbor update",
+    "valueAfterClick": "Protected draft"
+  },
+  "capture": {
+    "file": "label-v7-disabled-target-light-final.png",
+    "width": 1100,
+    "height": 760,
+    "sha256": "0e194f8704029255899fdc755f9d4cb116565a15acfa3ac96ab184a4ee3efe22"
+  },
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}

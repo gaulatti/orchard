@@ -1,0 +1,38 @@
+{
+  "format": "orchard-label-consumer-desktop-v1",
+  "passed": false,
+  "consumerExeSha256": "507b1f7c34805c399e1d1b3df489483790fbee7e284452ffd14c7d5b66f983ab",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "mode": "System",
+  "route": {
+    "toggleName": "Switch to light theme",
+    "tabToInput": true,
+    "labelPointer": {
+      "x": 743,
+      "y": 635
+    },
+    "pointerFocus": "Input",
+    "valueBefore": "Harbor update",
+    "valueAfter": "xHarbor update",
+    "inputLabeledBy": "PackageFieldLabel"
+  },
+  "physicalPointerAndKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 17232,
+  "disabledTarget": {
+    "labelPointer": {
+      "x": 743,
+      "y": 720
+    },
+    "inputEnabled": false,
+    "inputLabeledBy": "PackageDisabledTargetLabel",
+    "focusAfterClick": "",
+    "enabledInputValueAfterClick": "xHarbor update"
+  },
+  "error": "Disabled target Label click changed focus or the active input.",
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}

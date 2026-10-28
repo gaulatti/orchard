@@ -7,6 +7,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName UIAutomationClient
+Add-Type -AssemblyName System.Drawing
 Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
@@ -110,8 +111,11 @@ try {
     }
     $label = ById $root 'PackageFieldLabel'
     $input = ById $root 'Input'
-    if (-not $label -or -not $input -or $label.Current.IsOffscreen -or $input.Current.IsOffscreen) { throw 'Label or input disappeared after theme selection.' }
+    $disabledLabel = ById $root 'PackageDisabledTargetLabel'
+    $disabledInput = ById $root 'PackageDisabledTargetInput'
+    if (-not $label -or -not $input -or -not $disabledLabel -or -not $disabledInput -or $label.Current.IsOffscreen -or $input.Current.IsOffscreen -or $disabledLabel.Current.IsOffscreen) { throw 'Label or input disappeared after theme selection.' }
     if ($input.Current.LabeledBy.Current.AutomationId -ne 'PackageFieldLabel') { throw 'Package input lost its Label automation relationship.' }
+    if ($disabledInput.Current.IsEnabled -or $disabledInput.Current.LabeledBy.Current.AutomationId -ne 'PackageDisabledTargetLabel') { throw 'Disabled package input lost its disabled state or Label relationship.' }
     $value = $input.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
     if ($value.Current.Value -ne 'Harbor update') { throw 'Consumer input did not retain its initial value.' }
     if ([OrchardLabelConsumerDesktop]::GetForegroundWindow() -ne $process.MainWindowHandle) { throw 'Consumer lost foreground; no Label input was sent.' }
@@ -127,6 +131,26 @@ try {
     $after = $value.Current.Value
     if (-not $after.ToLowerInvariant().Contains('x')) { throw 'Physical key did not appear in the packaged Input.' }
     $report.route = [ordered]@{ toggleName = $toggle.Current.Name; tabToInput = $true; labelPointer = $position; pointerFocus = FocusedId; valueBefore = $before; valueAfter = $after; inputLabeledBy = $input.Current.LabeledBy.Current.AutomationId }
+    $disabledValue = $disabledInput.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
+    $disabledBefore = $disabledValue.Current.Value
+    $report.disabledTarget = [ordered]@{ labelPointer = (ClickLabel $disabledLabel); inputEnabled = $disabledInput.Current.IsEnabled; inputLabeledBy = $disabledInput.Current.LabeledBy.Current.AutomationId; valueBefore = $disabledBefore }
+    Start-Sleep -Milliseconds 150
+    $report.disabledTarget.focusAfterClick = FocusedId
+    $report.disabledTarget.enabledInputValueAfterClick = $value.Current.Value
+    $report.disabledTarget.valueAfterClick = $disabledValue.Current.Value
+    if ($report.disabledTarget.focusAfterClick -eq 'PackageDisabledTargetInput' -or $report.disabledTarget.enabledInputValueAfterClick -ne $after -or $report.disabledTarget.valueAfterClick -ne $disabledBefore) { throw 'Disabled target Label click focused or changed the disabled input, or changed the active input.' }
+    if ([OrchardLabelConsumerDesktop]::GetForegroundWindow() -ne $process.MainWindowHandle) { throw 'Consumer lost foreground before its fixture capture.' }
+    $bounds = $root.Current.BoundingRectangle
+    $bitmap = [System.Drawing.Bitmap]::new([int]$bounds.Width, [int]$bounds.Height)
+    try {
+        $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+        try { $graphics.CopyFromScreen([int]$bounds.Left, [int]$bounds.Top, 0, 0, $bitmap.Size) }
+        finally { $graphics.Dispose() }
+        $capturePath = [IO.Path]::ChangeExtension($reportPath, '.png')
+        $bitmap.Save($capturePath, [System.Drawing.Imaging.ImageFormat]::Png)
+        $report.capture = [ordered]@{ file = [IO.Path]::GetFileName($capturePath); width = $bitmap.Width; height = $bitmap.Height; sha256 = (Get-FileHash $capturePath -Algorithm SHA256).Hash.ToLowerInvariant() }
+    }
+    finally { $bitmap.Dispose() }
     $report.passed = $true
 }
 catch {

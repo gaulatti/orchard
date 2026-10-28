@@ -1,0 +1,44 @@
+{
+  "scope": "Physical disabled-target Label behavior in an independent x64 consumer of the published v7 NuGet DLL",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerOrchardDllMatchesPackageEntry": true,
+  "consumerExeSha256": "507b1f7c34805c399e1d1b3df489483790fbee7e284452ffd14c7d5b66f983ab",
+  "consumerAssemblySha256": "b67a77d599ea83fb07399af6895bf1c28342ed9482d94959547668b5ab426620",
+  "consumerFixture": "tests/PackageConsumer/MainWindow.xaml",
+  "consumerFixtureSha256": "e5a8c06b62aacaf675c80d1fcb8f5f31ccddf089fd003bbe476b6a3a86189a05",
+  "probe": "scripts/verify-label-consumer-desktop.ps1",
+  "probeSha256": "053facfeb11874b4d3f63953b421ac72cde8018ddb903a44416c908b80eb0598",
+  "restoreAndPublish": {
+    "platform": "x64",
+    "runtimeIdentifier": "win-x64",
+    "centralPackageManagementOverride": "ManagePackageVersionsCentrally=false",
+    "localPackageFeed": "artifacts/current/catalog-v7-arm64",
+    "thirdPartyGlobalCacheReused": true,
+    "publishExitCode": 0
+  },
+  "runs": {
+    "System": { "report": "system.json", "sha256": "7557db17e8ddbdca3db50479e2a317d4679b5b40cf58f69f2db7f44acc36af08", "passed": true, "cleanExitCode": 0 },
+    "Light": { "report": "light.json", "sha256": "b0baf797a61c00b882b67ee61a3d672dc8bb7c6ea1192d1572487da91bc33260", "passed": true, "cleanExitCode": 0,
+      "capture": "label-v7-disabled-target-light-final.png", "captureSha256": "0e194f8704029255899fdc755f9d4cb116565a15acfa3ac96ab184a4ee3efe22" },
+    "Dark": { "report": "dark.json", "sha256": "0ccaa8152215fc3f81c58b206d2d53ed7cdd2127b2da575678953d3d9fa6700a", "passed": true, "cleanExitCode": 0,
+      "capture": "label-v7-disabled-target-dark-final.png", "captureSha256": "44bc2d8ba8481a494d9dfbeaa2ded9caca3d40d1b4f7769a81b5798165183e87" }
+  },
+  "observedInEveryRun": [
+    "The disabled input stays disabled and retains its public Label association",
+    "Physical Label click does not focus the disabled input",
+    "The disabled input retains Protected draft and the active input retains its typed value",
+    "The consumer process exits with code zero"
+  ],
+  "visualInspection": "The retained Light and Dark captures show both labels and inputs visible, with the disabled field visibly dimmed and Orchard theme surfaces intact.",
+  "smoke": { "report": "smoke.json", "sha256": "6b1b2e8c2128316b6f22e1160799ce1b77ee78f07c9822bec2a495c8959e4234", "passed": true, "exitCode": 0,
+    "scope": "Existing independent consumer resources, fonts, Light/Dark presentation, layout and native action checks" },
+  "retainedHarnessFailure": { "report": "failed-system.json", "sha256": "970d6612c97dbd0b2b29e7f9fbde7b8743e7f335031a3703e2bbc5d0ee37db9a",
+    "reason": "The initial probe incorrectly required the previously focused enabled input to retain focus after a pointer click on a separate label. WinUI cleared focus; the disabled target was not focused and neither input value changed. The final probe checks the required component outcome." },
+  "remaining": [ "Broader nested-control Label input", "Complete rendering and actual display scaling", "Native ARM64 runtime and broader component acceptance" ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}
