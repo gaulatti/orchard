@@ -3,7 +3,8 @@ param(
     [Parameter(Mandatory)][string]$Output,
     [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
     [switch]$Nonmodal,
-    [switch]$CheckOutside
+    [switch]$CheckOutside,
+    [switch]$Owned
 )
 
 $ErrorActionPreference = 'Stop'
@@ -43,6 +44,7 @@ $report = [ordered]@{
     osSettingsChanged = $false
     componentAccepted = $false
     nonmodal = [bool]$Nonmodal
+    owned = [bool]$Owned
     steps = [ordered]@{}
 }
 
@@ -97,19 +99,29 @@ try {
     (ByName $root 'Find a component' ([System.Windows.Automation.ControlType]::Edit)).GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern).SetValue('Context menus')
     $nav = Wait-Until { ByName $root 'Show Context menus' ([System.Windows.Automation.ControlType]::Button) } 'Context Menu navigation unavailable.'
     $nav.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
-    $target = Wait-Until { ByName $root 'Fictional context target' ([System.Windows.Automation.ControlType]::Button) } 'Context Menu target unavailable.'
-    $status = Wait-Until { ByName $root 'No fictional context action yet' ([System.Windows.Automation.ControlType]::Text) } 'Context Menu status unavailable.'
+    if ($Owned) {
+        $open = Wait-Until { ByName $root 'Open owned context example' ([System.Windows.Automation.ControlType]::Button) } 'Owned Context Menu trigger unavailable.'
+        $open.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+    }
+    $targetName = if ($Owned) { 'Fictional owned context target' } else { 'Fictional context target' }
+    $itemName = if ($Owned) { 'Inspect owned fictional item' } else { 'Inspect fictional item' }
+    $statusName = if ($Owned) { 'No owned context action yet' } else { 'No fictional context action yet' }
+    $outsideName = if ($Owned) { 'Fictional owned outside action' } else { 'Fictional outside action' }
+    $outsideStatus = if ($Owned) { 'Owned outside action activated' } else { 'Outside action activated' }
+    $target = Wait-Until { ByName $root $targetName ([System.Windows.Automation.ControlType]::Button) } 'Context Menu target unavailable.'
+    $status = Wait-Until { ByName $root $statusName ([System.Windows.Automation.ControlType]::Text) } 'Context Menu status unavailable.'
     if ($Nonmodal) {
-        $toggle = Wait-Until { ByName $root 'Modal context menu Outside actions are blocked' ([System.Windows.Automation.ControlType]::Button) } 'Context Menu mode switch unavailable.'
+        $toggleName = if ($Owned) { 'Owned modal context menu' } else { 'Modal context menu' }
+        $toggle = Wait-Until { ByName $root "$toggleName Outside actions are blocked" ([System.Windows.Automation.ControlType]::Button) } 'Context Menu mode switch unavailable.'
         $toggle.GetCurrentPattern([System.Windows.Automation.TogglePattern]::Pattern).Toggle()
-        Wait-Until { (ByName $root 'Modal context menu Outside actions remain available' ([System.Windows.Automation.ControlType]::Button)) } 'Catalog did not enter nonmodal mode.' | Out-Null
+        Wait-Until { (ByName $root "$toggleName Outside actions remain available" ([System.Windows.Automation.ControlType]::Button)) } 'Catalog did not enter nonmodal mode.' | Out-Null
     }
     Ensure-Foreground $process.MainWindowHandle
     $outside = $null
     if ($CheckOutside) {
-        $outside = Wait-Until { ByName $root 'Fictional outside action' ([System.Windows.Automation.ControlType]::Button) } 'Catalog outside action unavailable.'
+        $outside = Wait-Until { ByName $root $outsideName ([System.Windows.Automation.ControlType]::Button) } 'Catalog outside action unavailable.'
         $report.steps.outsideBaseline = Pointer $outside $process.MainWindowHandle $false
-        Wait-Until { $status.Current.Name -eq 'Outside action activated' } 'Catalog outside button failed without an open menu.' | Out-Null
+        Wait-Until { $status.Current.Name -eq $outsideStatus } 'Catalog outside button failed without an open menu.' | Out-Null
         $report.steps.outsideBaselineAction = $status.Current.Name
     }
     $target.SetFocus()
@@ -117,28 +129,28 @@ try {
     [OrchardContextMenuDesktopInput]::keybd_event(0x10, 0, 0, [UIntPtr]::Zero)
     Key 0x79
     [OrchardContextMenuDesktopInput]::keybd_event(0x10, 0, 2, [UIntPtr]::Zero)
-    $report.steps.keyboardOpen = [bool](Wait-Until { ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem) } 'Shift+F10 did not expose the Context Menu.')
+    $report.steps.keyboardOpen = [bool](Wait-Until { ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem) } 'Shift+F10 did not expose the Context Menu.')
     Key 0x1B
-    Wait-Until { -not (ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem)) } 'Escape did not dismiss the Context Menu.' | Out-Null
+    Wait-Until { -not (ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem)) } 'Escape did not dismiss the Context Menu.' | Out-Null
     $report.steps.escapeDismissed = $true
     $report.steps.pointerOpen = Pointer $target $process.MainWindowHandle $true
-    $item = Wait-Until { ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem) } 'Physical right-click did not expose the native menu item.'
+    $item = Wait-Until { ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem) } 'Physical right-click did not expose the native menu item.'
     $report.steps.menuItemVisible = -not $item.Current.IsOffscreen
     $report.steps.pointerSelect = Pointer $item $process.MainWindowHandle $false
-    Wait-Until { $status.Current.Name -eq 'Selected: Inspect fictional item' } 'Physical selection did not reach the original catalog Click handler.' | Out-Null
-    Wait-Until { -not (ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem)) } 'Selection did not dismiss the Context Menu.' | Out-Null
+    Wait-Until { $status.Current.Name -eq "Selected: $itemName" } 'Physical selection did not reach the original catalog Click handler.' | Out-Null
+    Wait-Until { -not (ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem)) } 'Selection did not dismiss the Context Menu.' | Out-Null
     $report.steps.originalAction = $status.Current.Name
 
     if ($CheckOutside) {
         $report.steps.pointerReopen = Pointer $target $process.MainWindowHandle $true
-        Wait-Until { ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem) } 'Nonmodal menu did not reopen.' | Out-Null
+        Wait-Until { ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem) } 'Nonmodal menu did not reopen.' | Out-Null
         $report.steps.outsideClick = Pointer $outside $process.MainWindowHandle $false
-        Wait-Until { $status.Current.Name -eq 'Outside action activated' } 'First outside click did not reach the original catalog button.' | Out-Null
-        Wait-Until { -not (ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem)) } 'Outside click did not dismiss the nonmodal menu.' | Out-Null
+        Wait-Until { $status.Current.Name -eq $outsideStatus } 'First outside click did not reach the original catalog button.' | Out-Null
+        Wait-Until { -not (ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem)) } 'Outside click did not dismiss the nonmodal menu.' | Out-Null
         $report.steps.outsideAction = $status.Current.Name
     }
 
-    if ($status.Current.Name -ne $(if ($CheckOutside) { 'Outside action activated' } else { 'Selected: Inspect fictional item' })) { throw 'Caller action status changed unexpectedly.' }
+    if ($status.Current.Name -ne $(if ($CheckOutside) { $outsideStatus } else { "Selected: $itemName" })) { throw 'Caller action status changed unexpectedly.' }
     $report.passed = $true
 } catch {
     $report.error = $_.Exception.Message

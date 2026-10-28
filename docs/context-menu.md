@@ -81,6 +81,14 @@ input through WinUI's flyout pass-through property. On one x64 DLL, physical
 Shift+F10, Escape, right-click, original-item selection and the first outside
 button click passed in the catalog. Active-modal-owner physical input remains
 open, so this does not accept the full Context Menu component.
+The catalog now includes an [active-modal-owner demo and physical regression](evidence/context-menu-owned-physical-v1/checkpoint.json).
+In both modes, Shift+F10, Escape and right-click exposed and dismissed the
+owned menu, but a physical click on its visible action dismissed the menu
+without calling the original handler. A native-presenter trial made the
+pointer action work but let Escape close the parent modal; a portal
+pass-through trial did not fix selection. Both library trials were reverted.
+The owned demo and focused test retain this acceptance boundary while the
+unowned physical paths continue to pass.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.

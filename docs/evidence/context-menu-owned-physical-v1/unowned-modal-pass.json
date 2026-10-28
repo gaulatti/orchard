@@ -1,0 +1,31 @@
+{
+  "format": "orchard-context-menu-desktop-v1",
+  "catalogExeSha256": "1024544f7dafeae6b9c59fc758dbaf17cccedd95e23ab9361ebd8ebc8beaf6b6",
+  "orchardDllSha256": "82c478b697554027307772982c6a5398608c9b2fdce67dc8befee78ea94543f2",
+  "passed": true,
+  "physicalPointerSent": true,
+  "physicalKeyboardSent": true,
+  "osSettingsChanged": false,
+  "componentAccepted": false,
+  "nonmodal": false,
+  "owned": false,
+  "steps": {
+    "keyboardOpen": true,
+    "escapeDismissed": true,
+    "pointerOpen": {
+      "x": 683,
+      "y": 350,
+      "button": "right",
+      "target": "Fictional context target"
+    },
+    "menuItemVisible": true,
+    "pointerSelect": {
+      "x": 786,
+      "y": 375,
+      "button": "left",
+      "target": "Inspect fictional item"
+    },
+    "originalAction": "Selected: Inspect fictional item"
+  },
+  "processExited": true
+}

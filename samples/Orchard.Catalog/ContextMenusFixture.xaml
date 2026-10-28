@@ -13,4 +13,17 @@
  </Button>
  <TextBlock x:Name="Status" Text="No fictional context action yet" Style="{StaticResource BleeckerBodyStyle}"/>
  <Button x:Name="OutsideAction" Content="Fictional outside action" Click="OutsideChanged" HorizontalAlignment="Left" Margin="0,220,0,0" Style="{StaticResource BleeckerSecondaryButtonStyle}"/>
+ <orchard:BleeckerButton Content="Open owned context example" Size="Small" Click="OpenOwned"/>
+ <orchard:BleeckerModal x:Name="OwnedModal" Title="Fictional owned context example" CloseRequested="CloseOwned">
+  <StackPanel Spacing="12">
+   <ToggleSwitch x:Name="OwnedModalMode" Header="Owned modal context menu" IsOn="True" OnContent="Outside actions are blocked" OffContent="Outside actions remain available"/>
+   <Button x:Name="OwnedTarget" Content="Fictional owned context target" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}">
+    <Button.ContextFlyout><orchard:BleeckerContextMenu IsModal="{x:Bind OwnedModalMode.IsOn, Mode=OneWay}" MenuFlyoutPresenterStyle="{StaticResource BleeckerContextMenuPresenterStyle}">
+     <MenuFlyoutItem Text="Inspect owned fictional item" Click="OwnedChanged" Style="{StaticResource BleeckerContextMenuItemStyle}"/>
+    </orchard:BleeckerContextMenu></Button.ContextFlyout>
+   </Button>
+   <TextBlock x:Name="OwnedStatus" Text="No owned context action yet" Style="{StaticResource BleeckerBodyStyle}"/>
+   <Button x:Name="OwnedOutsideAction" Content="Fictional owned outside action" Click="OwnedOutsideChanged" HorizontalAlignment="Left" Style="{StaticResource BleeckerSecondaryButtonStyle}"/>
+  </StackPanel>
+ </orchard:BleeckerModal>
 </StackPanel>

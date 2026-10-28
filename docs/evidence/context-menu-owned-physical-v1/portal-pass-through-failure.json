@@ -1,0 +1,31 @@
+{
+  "format": "orchard-context-menu-desktop-v1",
+  "catalogExeSha256": "1024544f7dafeae6b9c59fc758dbaf17cccedd95e23ab9361ebd8ebc8beaf6b6",
+  "orchardDllSha256": "4df855faa8ec3233c5e07405eba51a5aca5b4b912ac75373fbcd71cc1369bbe8",
+  "passed": false,
+  "physicalPointerSent": true,
+  "physicalKeyboardSent": true,
+  "osSettingsChanged": false,
+  "componentAccepted": false,
+  "nonmodal": false,
+  "owned": true,
+  "steps": {
+    "keyboardOpen": true,
+    "escapeDismissed": true,
+    "pointerOpen": {
+      "x": 610,
+      "y": 550,
+      "button": "right",
+      "target": "Fictional owned context target"
+    },
+    "menuItemVisible": true,
+    "pointerSelect": {
+      "x": 708,
+      "y": 575,
+      "button": "left",
+      "target": "Inspect owned fictional item"
+    }
+  },
+  "error": "Physical selection did not reach the original catalog Click handler.",
+  "processExited": true
+}

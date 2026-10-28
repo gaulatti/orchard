@@ -1,0 +1,36 @@
+{
+  "scope": "x64 Context Menu physical input under an active modal owner",
+  "date": "2026-10-28",
+  "retainedLibrarySha256": "82c478b697554027307772982c6a5398608c9b2fdce67dc8befee78ea94543f2",
+  "retainedCatalogDemoAndPhysicalCheck": true,
+  "trialLibrarySourceRetained": false,
+  "observed": {
+    "unownedModalPhysicalPathPassedAfterCatalogChange": true,
+    "unownedNonmodalPhysicalPathPassedAfterCatalogChange": true,
+    "catalogCasesPassedAfterDemoChange": 4,
+    "ownedModalKeyboardOpenAndEscapeDismissedMenu": true,
+    "ownedNonmodalKeyboardOpenAndEscapeDismissedMenu": true,
+    "ownedModalOriginalItemPointerClickInvokedAction": false,
+    "ownedNonmodalOriginalItemPointerClickInvokedAction": false,
+    "portalPassThroughTrialRepairedPointerClick": false,
+    "allNativeTrialPointerOnlyInvokedAction": true,
+    "allNativeTrialEscapePreservedParentModal": false
+  },
+  "reports": [
+    { "file": "unowned-modal-pass.json", "sha256": "52a1933018d83355c6f18785c0c6df2ca2f43349a27bbe8eee06abb352cf4b81" },
+    { "file": "unowned-nonmodal-pass.json", "sha256": "69c4776a645b7e5dd5b41c6fb4b2303e9ed12514488a52bfb1171022b47b0316" },
+    { "file": "catalog-audit.json", "sha256": "4e5811863ae7f5445633160dda61507c0960dc4e7a99380592d6bc113e2a9a2f" },
+    { "file": "owned-modal-failure.json", "sha256": "1b3dee8ba7f85c104785222c7a19e5d4c5be292be63d8e41a80da8d8cb027d84" },
+    { "file": "owned-nonmodal-failure.json", "sha256": "b2cfe52d0634c0e16a0dd781aca2a0475afb0342ec598ff62090089d58a1629e" },
+    { "file": "portal-pass-through-failure.json", "sha256": "9b2b8e8c6b629b873225df192aef75eb50cc6fb51507a6cace9e8d254c0ba554" },
+    { "file": "native-all-pointer-only-pass.json", "sha256": "e63b5a12ac5cfafcc33dd35f3558da0ccc798a220632f82056f5f2864ea2387c" },
+    { "file": "native-all-escape-failure.json", "sha256": "5e8f60d40bfc17894b3a65bafd8b105a1a2a118067651223f38bae08f109be6b" },
+    { "file": "owned-modal-failure.png", "sha256": "223190b1312175b3cc902856382adf1a29b7317e194ed5eec18ce5a639225a30" }
+  ],
+  "nextAcceptanceBoundary": "A physical click on the active owner's visible menu item invokes its original handler without dismissing the owner; Escape dismisses only the menu; nonmodal outside input remains usable; upper-owner shielding remains intact.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}
