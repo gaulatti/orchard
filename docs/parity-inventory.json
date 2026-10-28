@@ -4362,7 +4362,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Authorized physical keyboard/pointer/focus and Windows clipboard verification",
+        "Published v7 x64 catalog passes focused physical pointer/digit, Backspace, Left Arrow, caller rejection, secure masking and native Ctrl+C/Ctrl+V filtered whole-value paste (docs/evidence/otp-input-v7-physical-v1/checkpoint.json); complete input matrix and independent NuGet consumer physical input remain open",
         "Actual Windows text scaling, complete native visual/customization and normal-motion acceptance",
         "Native ARM64 runtime verification",
         "Final component acceptance and delivery"
@@ -4377,7 +4377,16 @@
         "nativeComponentAccepted": false,
         "actualCatalog": "artifacts/current/otp-input-catalog-v2/otp-input-catalog-audit.json",
         "publicPackage": "artifacts/current/otp-input-package-native-v1/otp-input-audit.json",
-        "externalUiaInputVerified": false
+        "externalUiaInputVerified": false,
+        "physicalPreview": {
+          "checkpoint": "docs/evidence/otp-input-v7-physical-v1/checkpoint.json",
+          "packageVersion": "0.1.0-preview.20261027.7",
+          "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+          "focusedPhysicalRoutesPassed": true,
+          "nativeClipboardPasteVerified": true,
+          "fullPhysicalInputMatrixVerified": false,
+          "nativeComponentAccepted": false
+        }
       }
     },
     {

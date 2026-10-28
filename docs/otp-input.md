@@ -40,7 +40,11 @@ Source Left/Right moves to previous/next logical slot, including RTL. Backspace
 clears a filled slot, or clears and focuses the previous slot when empty. Focus
 selects the slot contents. Paste focuses the first remaining empty slot, or the
 last slot when full. Background verification never moves native desktop focus.
-Real Windows keyboard, pointer, clipboard and focus routing remain unverified.
+The [published v7 x64 foreground checkpoint](evidence/otp-input-v7-physical-v1/checkpoint.json)
+now verifies focused pointer digit entry, Backspace and Left Arrow movement,
+caller rejection, secure masking and a real Windows Ctrl+C/Ctrl+V whole-value
+paste that filters a non-digit. This focused route does not cover the complete
+input matrix, independent NuGet consumer input or native ARM64 execution.
 The background catalog driver edits the real native editor properties. WinUI's
 text pattern implementation is native and requires an external UI Automation
 client; this driver does not verify that external input path. See the
@@ -62,3 +66,11 @@ cases, with the same surface and centered-glyph probes. x64/ARM64 catalog and
 isolated consumer builds pass. The actual catalog passes both themes and eight
 native editor changes across its seven examples. All 353 portable tests pass.
 ARM64 runtime and the unverified native interaction routes above remain open.
+
+The foreground checkpoint uses the extracted published catalog with the exact
+released NuGet library DLL (`839f520e…`). The accepted fictional value visibly
+changed `482` → `4827` → `482`, then a clipboard paste of `73a9` yielded `739`.
+The rejecting example retained `482`; the secure example added a masked digit.
+No new library implementation or fixture was needed. The catalog exited after
+the test, but its exit code was not captured. Full physical interaction,
+scaling, visual and ARM64 acceptance remain open.

@@ -1,0 +1,30 @@
+{
+  "scope": "Focused foreground input in the published v7 x64 catalog OTP fixture",
+  "observedAtUtc": "2026-10-28T01:44:32Z",
+  "version": "0.1.0-preview.20261027.7",
+  "releaseTagCommit": "780c313e919e2fab1c1f3a856b4c19add1c07ffd",
+  "catalog": "artifacts/current/catalog-v7-keyboard/extracted/Orchard.Catalog.exe",
+  "catalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "catalogDllSha256": "7b33721d26d3db0ad4319fdbaf28a69d6897df34bbaed6d66c03a75f199d467c",
+  "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "libraryMatchesReleasedNuget": true,
+  "method": "Foreground pointer and keyboard input through Computer Use; visible catalog state and native accessibility tree inspected after each action",
+  "observations": [
+    "Clicking the accepted example's fourth slot and pressing 7 changed its caller-owned status from 482 to 4827 and moved the caret to the fifth slot.",
+    "Backspace in the empty fifth slot restored the caller-owned status to 482 and moved the caret to the fourth slot.",
+    "Clicking the rejecting example's fourth slot and pressing 9 left its six visible slots at 482 with the fourth slot empty.",
+    "Copying fictional 73a9 from the catalog search with Ctrl+C, then pasting with Ctrl+V into the accepted example's first slot, replaced the whole value with 739; the letter was filtered and the caret moved to the fourth slot.",
+    "Left Arrow from the fourth slot selected the third slot's 9 without changing 739.",
+    "Clicking the secure example's fourth slot and pressing 5 added a fourth masked bullet and moved the caret to the fifth slot."
+  ],
+  "catalogClosedAfterTest": true,
+  "catalogExitCodeObserved": false,
+  "screenshotsSaved": false,
+  "fullPhysicalInputMatrixVerified": false,
+  "independentNugetConsumerPhysicalInputVerified": false,
+  "actualTextScalingVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "nativeComponentAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
