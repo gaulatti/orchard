@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T02:30:10Z",
+  "scope": "Visual review of the original Brand Mark asset and all eight published-v7 independent x64 consumer size/theme captures",
+  "priorAutomatedEvidence": "docs/evidence/brand-mark-v7-fresh-consumer-v1/checkpoint.json",
+  "originalAsset": {
+    "path": "tests/Reference/BrandMark/BleeckerLogo.png",
+    "sha256": "3eadafd84a1f3b37261bad85b8a8e5512ed7aa9b3baae38aa8321cc3a6cbb9c2"
+  },
+  "captureDirectory": "artifacts/current/brand-mark-v7-fresh-consumer-v1",
+  "captureSha256": {
+    "Light-16": "33c2f1cae268c7edc44e99daaeed4c872f8c0a6c8c2255e6733a6187990438d3",
+    "Light-32": "92f4f025f1d3c685ea00e071dff75a4685bb3337a289edffe9b880a6e6668a4c",
+    "Light-64": "44b035453347d98932080ef370b300edae7e53acc3d9773d3962a6b2c809a8b5",
+    "Light-96": "f4dd6cce01fcc395ba84a154d5e6b771e4afa4f7d62190911b4806de2e142e41",
+    "Dark-16": "260b23d742044997a37e911ea42863e1c9d5abd8e6c5f9cc1727b5c6550e2631",
+    "Dark-32": "14e94183af29444cacd63b75259bc5501e0627a0ce48a444ffa82ac7a7503633",
+    "Dark-64": "949e908db1ec7dc323ee722e8afb7663108bac0b01685d8914c9824529d9b959",
+    "Dark-96": "0143567afa8f8c875e0decab7a9d8b9c758b2a2c7f7f94dd043dcf028d36a9d6"
+  },
+  "observations": {
+    "allEightCapturesInspected": true,
+    "originalAssetShapeVisibleAtAllSizes": true,
+    "unexpectedClippingOrStrayInkObserved": false,
+    "lightAndDarkTintReadabilityObserved": true,
+    "priorMinimumMaskIntersectionOverUnion": 0.9704433497536946,
+    "priorMaximumSourceEdgeDistancePixels": 1
+  },
+  "limits": {
+    "byteIdenticalEdgeAntialiasingClaimed": false,
+    "originalSwiftUiRuntimeCaptureClaimed": false,
+    "actualWindowsDisplayOrTextScalingVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}

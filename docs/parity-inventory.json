@@ -8673,9 +8673,9 @@
         "scripts/test-brand-mark-audit.mjs"
       ],
       "status": "in-progress",
+      "visualReviewCheckpoint": "docs/evidence/brand-mark-v7-visual-review-v1/checkpoint.json",
       "remainingGaps": [
-        "The original asset silhouette passes eight current-package x64 sizes/themes with at least 97% overlap and one-pixel edge proximity; finish edge antialiasing review, actual Windows scaling and native ARM64 runtime. Original SwiftUI runtime capture is not claimed",
-        "Decorative source has no built-in command, focus or selection state; preserve caller accessibility metadata"
+        "The original asset silhouette, tint and rendered visual review pass eight published-v7 independent x64 consumer sizes/themes (docs/evidence/brand-mark-v7-visual-review-v1/checkpoint.json); actual Windows scaling and native ARM64 runtime remain open"
       ],
       "sha256": "14cec81653ac61cfc7b0287b512047af6c90f98eadb63a9bc31b24db04f04f2e",
       "nativeValidation": {

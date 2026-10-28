@@ -53,6 +53,14 @@ themes. This reuses the independently restored v7 consumer; it does not claim a
 new package restore, catalog run, exact edge antialiasing, actual Windows
 scaling or native ARM64 execution.
 
+The [eight-size visual review](evidence/brand-mark-v7-visual-review-v1/checkpoint.json)
+inspects the original asset beside all 16/32/64/96-DIP Light/Dark v7 consumer
+captures. Its distinctive top and bottom arcs, central ring and right segment
+remain visible, with no observed clipping or stray ink. Combined with the
+existing tint and silhouette checks, this closes the applicable rendered asset
+review. Native edge antialiasing need not be byte-identical to the source image;
+actual Windows scaling and native ARM64 execution remain open.
+
 These checks do not claim a SwiftUI runtime capture, complete source-edge raster
 parity, physical input/focus behavior or native ARM64 runtime. The decorative
 source has no built-in action or selection state. The entry remains in progress
