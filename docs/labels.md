@@ -102,6 +102,15 @@ on the self-contained v7 consumer exited before writing a report. The original
 consumer DLL was restored and hash-checked. The delivered v7 catalog's original
 failed result remains failed. See the [checkpoint](evidence/label-explicit-empty-v7/checkpoint.json).
 
+The corrected 26-case association fixture now passes in the full x64
+PackageConsumer using the exact published `0.1.0-preview.20261027.7` NuGet DLL.
+Both Light and Dark explicit-empty-name cases, caller binding identity and
+precedence, two-way source preservation and all 566 isolation guards pass; the
+hidden host exits zero. The [independent-consumer checkpoint](evidence/label-v7-independent-association-v1/checkpoint.json)
+retains the report, audit, exit record and package/host hashes. This resolves
+the earlier thin-host runtime gap without changing Label source or the package.
+Physical input, scaling, full rendering and native ARM64 acceptance remain open.
+
 The extracted v7 x64 catalog also passes a real foreground pointer/keyboard
 route in both explicitly selected Light and Dark themes. `scripts/verify-label-desktop.ps1`
 selects the theme through the catalog, opens Labels, clicks the plain label,

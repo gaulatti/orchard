@@ -1,0 +1,902 @@
+{
+  "format": "orchard-label-association-native-v1",
+  "passed": true,
+  "checks": [
+    {
+      "id": "Light/unset",
+      "passed": true
+    },
+    {
+      "id": "Light/null",
+      "passed": true
+    },
+    {
+      "id": "Light/local",
+      "passed": true
+    },
+    {
+      "id": "Light/style",
+      "passed": true
+    },
+    {
+      "id": "Light/OneWay",
+      "passed": true
+    },
+    {
+      "id": "Light/TwoWay",
+      "passed": true
+    },
+    {
+      "id": "Light/newer-local",
+      "passed": true
+    },
+    {
+      "id": "Light/newer-style-same",
+      "passed": true
+    },
+    {
+      "id": "Light/newer-binding-different",
+      "passed": true
+    },
+    {
+      "id": "Light/newer-binding-same",
+      "passed": true
+    },
+    {
+      "id": "Light/retarget-binding",
+      "passed": true
+    },
+    {
+      "id": "Light/unload-reload",
+      "passed": true
+    },
+    {
+      "id": "Light/content-rich-disabled",
+      "passed": true
+    },
+    {
+      "id": "Dark/unset",
+      "passed": true
+    },
+    {
+      "id": "Dark/null",
+      "passed": true
+    },
+    {
+      "id": "Dark/local",
+      "passed": true
+    },
+    {
+      "id": "Dark/style",
+      "passed": true
+    },
+    {
+      "id": "Dark/OneWay",
+      "passed": true
+    },
+    {
+      "id": "Dark/TwoWay",
+      "passed": true
+    },
+    {
+      "id": "Dark/newer-local",
+      "passed": true
+    },
+    {
+      "id": "Dark/newer-style-same",
+      "passed": true
+    },
+    {
+      "id": "Dark/newer-binding-different",
+      "passed": true
+    },
+    {
+      "id": "Dark/newer-binding-same",
+      "passed": true
+    },
+    {
+      "id": "Dark/retarget-binding",
+      "passed": true
+    },
+    {
+      "id": "Dark/unload-reload",
+      "passed": true
+    },
+    {
+      "id": "Dark/content-rich-disabled",
+      "passed": true
+    }
+  ],
+  "observations": [
+    {
+      "id": "Light/unset/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/unset/released",
+      "relationshipId": null,
+      "relationshipName": null,
+      "inputName": "",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/unset/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/null/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/null/released",
+      "relationshipId": null,
+      "relationshipName": null,
+      "inputName": "",
+      "localKind": "null",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/null/future",
+      "relationshipId": null,
+      "relationshipName": null,
+      "inputName": "",
+      "localKind": "null",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/local/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/local/released",
+      "relationshipId": "first",
+      "relationshipName": "First caption",
+      "inputName": "First caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/local/future",
+      "relationshipId": "first",
+      "relationshipName": "First caption",
+      "inputName": "First caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/style/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/style/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/style/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/OneWay/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": "first",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/OneWay/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/OneWay/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/TwoWay/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": "first",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/TwoWay/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "TwoWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/TwoWay/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "TwoWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-local/released",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-style-same/released",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-style-same/updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-binding-different/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-binding-different/updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-binding-same/released",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "temporary",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/newer-binding-same/updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/retarget-binding/first-released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/retarget-binding/second-owned",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/retarget-binding/second-released",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/unload-reload/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/unload-reload/unloaded-updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/unload-reload/remounted-released",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/content-rich-disabled/updated",
+      "relationshipId": "temporary",
+      "relationshipName": "Updated temporary caption",
+      "inputName": "Updated temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/content-rich-disabled/disabled",
+      "relationshipId": "temporary",
+      "relationshipName": "Updated temporary caption",
+      "inputName": "Updated temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/content-rich-disabled/rich",
+      "relationshipId": "temporary",
+      "relationshipName": "Rich temporary caption",
+      "inputName": "Explicit input name",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Light/content-rich-disabled/plain",
+      "relationshipId": "temporary",
+      "relationshipName": "",
+      "inputName": "",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/unset/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/unset/released",
+      "relationshipId": null,
+      "relationshipName": null,
+      "inputName": "",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/unset/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/null/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/null/released",
+      "relationshipId": null,
+      "relationshipName": null,
+      "inputName": "",
+      "localKind": "null",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/null/future",
+      "relationshipId": null,
+      "relationshipName": null,
+      "inputName": "",
+      "localKind": "null",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/local/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/local/released",
+      "relationshipId": "first",
+      "relationshipName": "First caption",
+      "inputName": "First caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/local/future",
+      "relationshipId": "first",
+      "relationshipName": "First caption",
+      "inputName": "First caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/style/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/style/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/style/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/OneWay/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": "first",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/OneWay/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/OneWay/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/TwoWay/mounted",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": "first",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/TwoWay/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "TwoWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/TwoWay/future",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "TwoWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-local/released",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-style-same/released",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-style-same/updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "unset",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-binding-different/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-binding-different/updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-binding-same/released",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "temporary",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/newer-binding-same/updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/retarget-binding/first-released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/retarget-binding/second-owned",
+      "relationshipId": "temporary",
+      "relationshipName": "Temporary caption",
+      "inputName": "Temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/retarget-binding/second-released",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/unload-reload/released",
+      "relationshipId": "second",
+      "relationshipName": "Second caption",
+      "inputName": "Second caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "second",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/unload-reload/unloaded-updated",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/unload-reload/remounted-released",
+      "relationshipId": "third",
+      "relationshipName": "Third caption",
+      "inputName": "Third caption",
+      "localKind": "binding",
+      "originalBindingRetained": true,
+      "bindingMode": "OneWay",
+      "producerId": "third",
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/content-rich-disabled/updated",
+      "relationshipId": "temporary",
+      "relationshipName": "Updated temporary caption",
+      "inputName": "Updated temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/content-rich-disabled/disabled",
+      "relationshipId": "temporary",
+      "relationshipName": "Updated temporary caption",
+      "inputName": "Updated temporary caption",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/content-rich-disabled/rich",
+      "relationshipId": "temporary",
+      "relationshipName": "Rich temporary caption",
+      "inputName": "Explicit input name",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    },
+    {
+      "id": "Dark/content-rich-disabled/plain",
+      "relationshipId": "temporary",
+      "relationshipName": "",
+      "inputName": "",
+      "localKind": "element",
+      "originalBindingRetained": true,
+      "bindingMode": null,
+      "producerId": null,
+      "inputLoaded": true
+    }
+  ],
+  "failures": [],
+  "pngs": [],
+  "guards": 566,
+  "activations": 0,
+  "focus": 0,
+  "hostVisible": false,
+  "hardwareInputSent": false,
+  "activateCalled": false,
+  "focusCalled": false,
+  "enabledButtonInvoked": false,
+  "catalogFixtureVerified": false,
+  "sourceSha256": "d3e029333182d8d9fd6170fb37e47de522b594e928671232dba05937b3276dfe",
+  "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "hostSha256": "54bda88a44218fad0446e73ed261b32e16324e3dd758851e427130a60d2dd92b",
+  "processArchitecture": "X64",
+  "osArchitecture": "X64",
+  "physicalInputVerified": false,
+  "actualDisplayOrTextScalingVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false
+}

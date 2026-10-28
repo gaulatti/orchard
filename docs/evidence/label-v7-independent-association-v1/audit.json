@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": 26,
+  "observations": 70,
+  "catalogFixtureVerified": false,
+  "callerBindingIdentityAndPrecedenceVerified": true,
+  "twoWayCallerSourcePreserved": true,
+  "newerSameValueBindingPreserved": true,
+  "guards": 566,
+  "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "hostSha256": "54bda88a44218fad0446e73ed261b32e16324e3dd758851e427130a60d2dd92b",
+  "pngs": 0,
+  "physicalInputVerified": false,
+  "actualDisplayOrTextScalingVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "reportSha256": "12836d6569a4b5d4dcc39c7a60c086a308fbd9b4ae9adc0c1cadb1d2ecf62ed3"
+}
