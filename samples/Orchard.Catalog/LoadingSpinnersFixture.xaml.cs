@@ -32,6 +32,17 @@ public sealed partial class LoadingSpinnersFixture : UserControl
             ConstrainedLabel.ActualWidth > 0 && ConstrainedLabel.ActualWidth <= 96.5 &&
             ConstrainedSpinner.ActualWidth + ConstrainedStatus.ColumnSpacing + ConstrainedLabel.ActualWidth <= ConstrainedStatus.ActualWidth + 0.5,
             "Constrained status row stretched or clipped its spinner or label.");
+        var dynamicArc = (Microsoft.UI.Xaml.Shapes.Path)((Canvas)VisualTreeHelper.GetChild(DynamicSpinner, 0)).Children.Single();
+        var customBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 211, 78, 91));
+        DynamicSpinner.Foreground = customBrush;
+        DynamicSpinner.UpdateLayout();
+        Require(dynamicArc.Stroke is SolidColorBrush overrideBrush && overrideBrush.Color == customBrush.Color,
+            "Spinner did not apply a consumer Foreground override.");
+        DynamicSpinner.ClearValue(Control.ForegroundProperty);
+        DynamicSpinner.UpdateLayout();
+        Require(dynamicArc.Stroke is SolidColorBrush themeBrush &&
+            $"#{themeBrush.Color.A:X2}{themeBrush.Color.R:X2}{themeBrush.Color.G:X2}{themeBrush.Color.B:X2}" == BleeckerTokens.Colors(scheme)["primary"],
+            "Spinner did not restore its theme color after a consumer Foreground override.");
         var rotation = (RotateTransform)((Canvas)VisualTreeHelper.GetChild(DynamicSpinner, 0)).RenderTransform;
         AnimationsEnabled = new UISettings().AnimationsEnabled;
         var angle = rotation.Angle;

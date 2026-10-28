@@ -1,0 +1,30 @@
+{
+  "scope": "Native x64 Loading Spinner consumer Foreground override and theme restoration",
+  "date": "2026-10-28",
+  "build": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "catalogExeSha256": "85fbef170b4182ad195dcffec21a3c8ec69b01e055592335902bdb472c3a280b",
+    "orchardDllSha256": "e13ea95b8083f1d8b3d64ed7f176352d6b836c2268e82acd9b7fe3179623283b"
+  },
+  "runtime": {
+    "passed": true,
+    "processArchitecture": "X64",
+    "osArchitecture": "X64",
+    "displayScale": 1,
+    "textScale": 1,
+    "animationsEnabled": false,
+    "themes": ["Light", "Dark"],
+    "sameLoadedFixtureAcrossThemes": true,
+    "consumerForegroundOverrideAndClearVerified": true,
+    "report": "artifacts/current/loading-spinner-foreground-v1/result.json",
+    "reportSha256": "58a7741d32fbe506448d99bbe2306970f21fc703cbd46fdd0cd0c9eb896923f3",
+    "lightScreenshot": "artifacts/current/loading-spinner-foreground-v1/catalog-light.png",
+    "lightScreenshotSha256": "4db590da14feb6e5f1509133bda839760299eca608c388cef651602f2e3bc800",
+    "darkScreenshot": "artifacts/current/loading-spinner-foreground-v1/catalog-dark.png",
+    "darkScreenshotSha256": "e292e2e451db17236b2bbf3b3528dcef6aa89e7f3d52992f8f3d3aabbb9f706d"
+  },
+  "componentAccepted": false,
+  "remaining": ["precise and live motion", "display/text scaling", "native ARM64 runtime", "complete visual acceptance"]
+}
