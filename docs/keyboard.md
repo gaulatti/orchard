@@ -113,3 +113,13 @@ under `artifacts/current/components-v7-kbd-content-catalog-x64` and
 `artifacts/current/components-v7-kbd-content-consumer-x64`. This closes the
 current x64 delivery check for those behaviors; it does not verify physical
 monitor/text scaling, complete rendered parity or native ARM64 execution.
+
+The later published v7 package `0.1.0-preview.20261027.7` was also replayed in
+its fresh-cache independent x64 consumer. The content probe passed the same 64
+alignment states, 16 caller contracts, eight isolated-scale frames and 64
+metadata cases. The corner probe passed 32 radius/theme/direction states and
+four lifecycle contexts. Both exited successfully with zero focus or activation;
+the [checkpoint](evidence/kbd-published-v7-consumer-v1/checkpoint.json) binds the
+reports to the exact package and consumer hashes. This verifies those focused
+runtime behaviors in the current package, while full rendered parity, physical
+scaling and native ARM64 runtime remain open.

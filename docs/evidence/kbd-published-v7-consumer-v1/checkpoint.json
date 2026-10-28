@@ -1,0 +1,41 @@
+{
+  "scope": "Focused native Kbd replay in a fresh-cache independent x64 consumer of the published v7 package",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerExeSha256": "65989ebf098ba212bdfb92b49cf278a438a0fc4665f299698ba257bd4f13edb6",
+  "consumerDllSha256": "881bc1c3f77b7adcf536dbca68945b33d89ab1481220e4b87f55c168c1fd2efb",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "content": {
+    "verifier": "scripts/verify-kbd-content.ps1",
+    "output": "artifacts/current/components-v7-kbd-content-package-replay-v1",
+    "processExitCode": 0,
+    "passed": true,
+    "states": 64,
+    "callerContracts": 16,
+    "isolatedScaleFrames": 8,
+    "metadataContracts": 64,
+    "focus": 0,
+    "activations": 0,
+    "reportSha256": "25c7001534380a75902b73f19dc4196dcf687c166060fe6c5b7f19bcd88e9500",
+    "auditSha256": "597c00985681bf659e659b6da02030bef4956e36499037b8267f3be0bb94e824"
+  },
+  "corners": {
+    "verifier": "scripts/verify-kbd-corners.ps1",
+    "output": "artifacts/current/components-v7-kbd-corners-package-replay-v1",
+    "processExitCode": 0,
+    "passed": true,
+    "states": 32,
+    "lifecycleContexts": 4,
+    "focus": 0,
+    "activations": 0,
+    "reportSha256": "c1fb1a02dfb23f03a31611479394dc01a207b1eb673ef662694a2defbcc5c392",
+    "auditSha256": "9459695ab1d7df457a289d2465f3588b3a46d9c2efc43d8db559f46abdda22e4"
+  },
+  "limitations": [
+    "The isolated XAML rasterization scale checks do not verify physical monitor or Windows text scaling.",
+    "This replay does not establish full rendered browser parity or native ARM64 runtime.",
+    "Kbd remains in progress and does not count as an accepted inventory entry."
+  ],
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
