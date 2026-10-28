@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "corruptReportsRejected": 30,
+  "actualRetirementCounterexamplesRejected": 1,
+  "rejectedLibrarySha256": "d872f16c0e5be885294c9d9b9c6915aa6c70cfe3fddfec73a3f081365e832c23"
+}

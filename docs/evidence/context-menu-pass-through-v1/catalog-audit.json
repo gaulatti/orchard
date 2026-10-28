@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "cases": 4,
+  "actualFixtureActions": 5,
+  "nativeInvokes": 16,
+  "captures": 8,
+  "modalitySwitchBindingVerified": true,
+  "guards": 264,
+  "librarySha256": "82c478b697554027307772982c6a5398608c9b2fdce67dc8befee78ea94543f2",
+  "hostSha256": "c4eca48ed18693b09e9d3f04fb0921a4c5ba1b1a873ec099952117270ba94af3",
+  "physicalInputVerified": false,
+  "nativeComponentAccepted": false,
+  "captureScope": "Native popup surfaces and catalog bitmap diagnostics; no full source raster comparison.",
+  "rawPixelsValidated": 2259832,
+  "popupThemePixelProbes": 4
+}

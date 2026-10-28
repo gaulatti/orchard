@@ -12,6 +12,8 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
     private PortalSession? portal;
     private FrameworkElement? nativeTarget;
     private XamlRoot? nativeRoot;
+    private object? priorNativePassThrough;
+    private bool nativePassThroughActive;
     public static readonly DependencyProperty IsModalProperty = DependencyProperty.Register(
         nameof(IsModal), typeof(bool), typeof(BleeckerContextMenu), new PropertyMetadata(true, (owner, _) => ((BleeckerContextMenu)owner).ModalityChanged()));
     /// <summary>Whether the open menu traps input; defaults to the source root's modal behavior.</summary>
@@ -28,12 +30,13 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
             portal?.Dispose(); portal = null;
             if (Target is not { } target) throw new InvalidOperationException("Context Menu requires its native target before opening.");
             var host = BleeckerModalHost.Find(target);
-            if (host?.ActiveSurface is not null || !IsModal)
+            if (host?.ActiveSurface is not null)
                 portal = new PortalSession(this, presenter ?? throw new InvalidOperationException("Context Menu has no native presenter."), target, host);
             else
             {
                 nativeTarget = target;
                 nativeRoot = target.XamlRoot ?? throw new InvalidOperationException("Context Menu requires the target's actual XamlRoot.");
+                if (!IsModal) EnableNativePassThrough();
                 target.Unloaded += NativeTargetUnloaded;
             }
         };
@@ -44,6 +47,11 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
     private void ModalityChanged()
     {
         if (!IsOpen || Target is not { } target || presenter is null) return;
+        if (portal is null && nativeTarget is not null)
+        {
+            if (IsModal) RestoreNativePassThrough(); else EnableNativePassThrough();
+            return;
+        }
         StopNativeTargetObservation();
         portal ??= new PortalSession(this, presenter, target, BleeckerModalHost.Find(target));
         portal.ModalityChanged();
@@ -51,8 +59,30 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
 
     private void StopNativeTargetObservation()
     {
+        RestoreNativePassThrough();
         if (nativeTarget is not null) nativeTarget.Unloaded -= NativeTargetUnloaded;
         nativeTarget = null; nativeRoot = null;
+    }
+
+    private void EnableNativePassThrough()
+    {
+        if (nativePassThroughActive) return;
+        var input = nativeRoot?.Content ?? throw new InvalidOperationException("Nonmodal Context Menu requires root content.");
+        priorNativePassThrough = ReadLocalValue(OverlayInputPassThroughElementProperty);
+        OverlayInputPassThroughElement = input;
+        nativePassThroughActive = true;
+    }
+
+    private void RestoreNativePassThrough()
+    {
+        if (!nativePassThroughActive) return;
+        if (ReferenceEquals(OverlayInputPassThroughElement, nativeRoot?.Content))
+        {
+            if (priorNativePassThrough is DependencyObject prior) OverlayInputPassThroughElement = prior;
+            else ClearValue(OverlayInputPassThroughElementProperty);
+        }
+        nativePassThroughActive = false;
+        priorNativePassThrough = null;
     }
 
     private void NativeTargetUnloaded(object sender, RoutedEventArgs args)

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 14,
+  "captures": 4,
+  "guards": 444,
+  "publicAdapterExercised": true,
+  "automaticOwnerRetirementVerified": true,
+  "nativeMenuItemTreeVerified": true,
+  "liveContentThemeAndBindingVerified": true,
+  "librarySha256": "82c478b697554027307772982c6a5398608c9b2fdce67dc8befee78ea94543f2",
+  "hostSha256": "173d9505f88ee98fd20580d6ebdddd5a4652308ac82b13760fed80df8705380e",
+  "physicalInputVerified": false,
+  "nativeFocusVerified": false,
+  "sourcePlacementVerified": false,
+  "nativeComponentAccepted": false,
+  "pixelsValidated": 133712,
+  "initialAndLiveThemePixelProbes": 4
+}

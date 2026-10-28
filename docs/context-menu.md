@@ -29,14 +29,15 @@ all fourteen cases. Final component acceptance remains open.
 
 `IsModal` is a bindable root option and defaults to `true`. Set it to `false`
 to keep outside controls available while the menu is open. The menu's own
-surface remains hit-testable, and outside pointer/focus handlers request native
-dismissal. A nonmodal menu still belongs to its nearest modal owner; an upper
+surface remains hit-testable. Native pass-through handles outside input for an
+unowned menu; the shared-plane adapter handles outside input for an owned menu.
+A nonmodal menu still belongs to its nearest modal owner; an upper
 modal shields that owner's menu without rewriting caller enabled bindings.
-Standalone nonmodal menus use the same projected original surface without
-requiring a `BleeckerModalHost`. Default modal menus without an active modal
-owner, including targets inside an otherwise idle `BleeckerModalHost`, keep
-their original Windows presentation. An active modal owner and nonmodal mode
-still use the shared-plane adapter.
+Menus without an active modal owner keep their original Windows presentation
+in either mode, including targets inside an otherwise idle `BleeckerModalHost`.
+Nonmodal mode passes outside pointer input to the root content through WinUI's
+`OverlayInputPassThroughElement`; the menu's own surface still handles its
+actions. Menus with an active modal owner use the shared-plane adapter.
 
 Live option changes update the backdrop and focus-scope registration while
 retaining the original native items, public binding and open/close lifecycle.
@@ -73,7 +74,13 @@ check. The committed portal path still closes before Shift+F10 exposes an item.
 An unowned native nonmodal trial made item selection work, but its first outside
 click only dismissed the menu instead of activating that button. A light-dismiss
 and root-pointer trial also failed. Those library changes were reverted; the
-catalog demo and focused test retain the required outside-input contract.
+catalog demo and focused test retain the required outside-input contract. The
+later [native pass-through repair](evidence/context-menu-pass-through-v1/checkpoint.json)
+uses the same native presenter for unowned nonmodal menus and routes outside
+input through WinUI's flyout pass-through property. On one x64 DLL, physical
+Shift+F10, Escape, right-click, original-item selection and the first outside
+button click passed in the catalog. Active-modal-owner physical input remains
+open, so this does not accept the full Context Menu component.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.
@@ -81,7 +88,7 @@ menu.
 `ContextMenuOptions.json` freezes 24 browser histories, 56 snapshots and four
 PNGs, reproduced byte for byte independently. The public native option fixture
 covers 38 cases in both themes across standalone, hosted and modal-owned roots.
-Its 32 WinUI hit-stack samples check the actual menu subtree: WinUI may report
+Its 12 WinUI hit-stack samples check the active-modal-owner menu subtree: WinUI may report
 an internal PopupRoot Canvas outside a null-background popup, so an empty
 global hit stack is not the input contract. Nonmodal samples retain the outside
 target and exclude the menu plane; modal samples include that plane. These are

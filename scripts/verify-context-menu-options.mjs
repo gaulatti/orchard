@@ -23,7 +23,7 @@ export function verifyContextOptions(n) {
   for(const [name,flags] of Object.entries(required)) {
    const rows=n.cases.filter(c=>c.scheme===scheme&&c.placement===placement&&c.modal===modal&&c.name===name);assert.equal(rows.length,1);
    const c=rows[0];assert.equal(c.passed,true);for(const flag of flags)assert.equal(c[flag],true,flag);
-   if(name==='default-and-input-plane')assert.equal(c.nativeOutsideHitStackVerified,!(placement!=='owned'&&modal));
+   if(name==='default-and-input-plane')assert.equal(c.nativeOutsideHitStackVerified,placement==='owned');
    if(name==='cancel-dismiss-and-root-teardown'){assert.equal(c.opens,2);assert.equal(c.closes,2);assert.equal(c.invokes,1);verifyContextRetirement(c.retirement);}
   }
  }
@@ -31,8 +31,8 @@ export function verifyContextOptions(n) {
   const rows=n.cases.filter(c=>c.scheme===scheme&&c.name==='nonmodal-owner-shield');assert.equal(rows.length,1);const c=rows[0];assert.equal(c.placement,'owned');assert.equal(c.modal,false);assert.equal(c.passed,true);
   for(const key of ['nonmodalStillOwned','inactiveTreeShielded','callerEnabledRetained','ownerResumeVerified'])assert.equal(c[key],true,key);
  }
- assert.equal(n.inputSamples.length,32);
- assert.equal(n.inputSamples.filter(s=>s.expectedModal).length,14);
+ assert.equal(n.inputSamples.length,12);
+ assert.equal(n.inputSamples.filter(s=>s.expectedModal).length,6);
  for(const s of n.inputSamples) {
   assert(['Light','Dark'].includes(s.scheme));assert(['standalone','hosted','owned'].includes(s.placement));assert.equal(typeof s.initialModal,'boolean');assert.equal(typeof s.expectedModal,'boolean');
   const {x,y}=s.outsidePoint,b=s.menuBounds;for(const v of [x,y,b.x,b.y,b.width,b.height])assert(Number.isFinite(v));assert(b.width>=160&&b.width<=900&&b.height>0&&b.height<=760);
@@ -40,7 +40,7 @@ export function verifyContextOptions(n) {
   if(s.expectedModal){assert.equal(s.planeHit,true);assert(s.ownOutsideHits>=1);}else{assert.equal(s.planeHit,false);assert.equal(s.ownOutsideHits,0);assert.equal(s.outsideTargetInHitStack,true);}
  }
  for(const key of ['librarySha256','hostSha256'])assert.match(n[key],/^[0-9a-f]{64}$/);
- return {passed:true,cases:38,nativeInputSurfaceSamples:32,nonmodalSamples:18,modalSamples:14,guards:n.guards,publicRootOptionVerified:true,liveModalityBindingVerified:true,nativeLifecycleAndOwnershipVerified:true,nativeOutsideHitStackVerified:true,librarySha256:n.librarySha256,hostSha256:n.hostSha256,actualOutsidePointerRoutingVerified:false,actualFocusRoutingVerified:false,sourceDomRemountSideEffectsReplicated:false,nativeComponentAccepted:false};
+ return {passed:true,cases:38,nativeInputSurfaceSamples:12,nonmodalSamples:6,modalSamples:6,guards:n.guards,publicRootOptionVerified:true,liveModalityBindingVerified:true,nativeLifecycleAndOwnershipVerified:true,nativeOutsideHitStackVerified:true,librarySha256:n.librarySha256,hostSha256:n.hostSha256,actualOutsidePointerRoutingVerified:false,actualFocusRoutingVerified:false,sourceDomRemountSideEffectsReplicated:false,nativeComponentAccepted:false};
 }
 async function main(){
  const option=n=>{const i=process.argv.indexOf(n);assert(i>=0&&process.argv[i+1]);return process.argv[i+1];},folder=option('--native');
