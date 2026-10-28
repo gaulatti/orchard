@@ -147,6 +147,17 @@ focus ring. This closes that focused Light-theme gap. Explicit Dark and system
 Light, broader focus/Tab and IME routes, full visual/motion/scaling review,
 large-collection performance and native ARM64 runtime remain open.
 
+The [published v7 modal Tab check](evidence/command-spotlight-v7-modal-tab-v1/checkpoint.json)
+tests the released x64 catalog with physical keyboard input. In system Dark,
+Tab moves from search through all five enabled original actions, skips the
+disabled action, and wraps back to search. Shift+Tab from search wraps to the
+last action; Escape from that focused action closes the surface and visibly
+returns focus to the trigger. Explicit Light repeats both wrap boundaries and
+Escape return. The action focus outline was visible while UI Automation's
+focused-element field remained on search, so the latter is not treated as
+action-focus evidence. Other modal combinations, keyboard layouts, IME,
+visual/motion/scaling and native ARM64 runtime still require verification.
+
 Declare the control inside the window's `BleeckerModalHost`. Supply ordered
 `BleeckerCommandSpotlightAction` originals through `Actions`; an observable
 `BleeckerCommandSpotlightActions` collection invalidates filtering/grouping when

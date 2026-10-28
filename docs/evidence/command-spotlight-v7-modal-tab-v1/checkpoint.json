@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T00:51:39Z",
+  "scope": "Physical Tab confinement and Escape focus return in the extracted published v7 x64 Command Spotlight catalog",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "extractedCatalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "extractedLibrarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "method": "Opened the hash-verified released catalog's Command Spotlight with physical pointer input; sent Tab, Shift+Tab and Escape through Computer Use; inspected the live WinUI focus outline and modal state in system Dark and explicit Light.",
+  "observations": {
+    "systemDark": {
+      "initialFocusedElement": "SpotlightSearch",
+      "forwardTabVisibleFocusSequence": [
+        "SpotlightSearch",
+        "Original alpha command",
+        "Original gamma command",
+        "Original beta command",
+        "Original ungrouped command",
+        "Straße 東京 é العربية",
+        "SpotlightSearch"
+      ],
+      "disabledActionSkipped": true,
+      "reverseTabFromSearchVisibleFocus": "Straße 東京 é العربية",
+      "escapeFromLastActionClosedModal": true,
+      "escapeRestoredVisibleTriggerFocus": true
+    },
+    "explicitLight": {
+      "initialFocusedElement": "SpotlightSearch",
+      "reverseTabFromSearchVisibleFocus": "Straße 東京 é العربية",
+      "forwardTabFromLastActionFocusedSearch": true,
+      "escapeClosedModal": true,
+      "escapeRestoredVisibleTriggerFocus": true
+    }
+  },
+  "actionFocusUiaFieldWasStale": true,
+  "actionFocusEvidence": "The action's native keyboard-focus border moved in the rendered window; UI Automation continued to report the search editor and was not used to identify action focus.",
+  "catalogProcessExited": true,
+  "exitCodeCaptured": false,
+  "screenshotsRetained": false,
+  "limitations": {
+    "allModalCombinationsVerified": false,
+    "imeAndCustomKeyboardLayoutsVerified": false,
+    "fullVisualMotionScalingVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}
