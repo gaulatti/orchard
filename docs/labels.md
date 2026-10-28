@@ -109,7 +109,7 @@ precedence, two-way source preservation and all 566 isolation guards pass; the
 hidden host exits zero. The [independent-consumer checkpoint](evidence/label-v7-independent-association-v1/checkpoint.json)
 retains the report, audit, exit record and package/host hashes. This resolves
 the earlier thin-host runtime gap without changing Label source or the package.
-Physical input, scaling, full rendering and native ARM64 acceptance remain open.
+Broader physical input, scaling, full rendering and native ARM64 acceptance remain open.
 
 The extracted v7 x64 catalog also passes a real foreground pointer/keyboard
 route in both explicitly selected Light and Dark themes. `scripts/verify-label-desktop.ps1`
@@ -138,5 +138,14 @@ the machine's third-party NuGet cache after a private-cache restore ran out of
 disk, so it is not fresh isolation of all dependencies. An attempted scroll
 wrapper and live theme-toggle wiring crashed during runtime and were reverted.
 One full consumer smoke run also timed out in Column Toggle; the next and final
-runs passed. Explicit Light/Dark consumer physical input and stability of that
-unrelated smoke check remain open.
+runs passed. Stability of that unrelated smoke check remains open.
+
+A later [exact-v7 consumer check](evidence/label-v7-consumer-physical-themes-v1/checkpoint.json)
+passes real Label pointer, Tab and typing routes in separate System, Light and
+Dark runs. The consumer physically accepts the Light and Dark theme requests
+before Label input; its packaged Input keeps its `LabeledBy` relationship in
+every mode. All three processes exit with code zero. The earlier v7 Theme Toggle
+lifecycle evidence separately confirms visible Light/Dark backgrounds. This
+closes the explicit-theme independent-consumer input gap. Disabled-target and
+broader nested-control input, complete rendering, actual scaling and native
+ARM64 runtime remain open.

@@ -1,0 +1,32 @@
+{
+  "scope": "Physical Label input in System, Light and Dark in an independent x64 consumer of the exact published v7 NuGet DLL",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerExeSha256": "bb7f8bd5cad4464fa1bc8087578bcf0744db4c7f4a84a6f7fc652e3f0a9866bb",
+  "consumerAssemblySha256": "54bda88a44218fad0446e73ed261b32e16324e3dd758851e427130a60d2dd92b",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerOrchardDllMatchesPackage": true,
+  "probe": "scripts/verify-label-consumer-desktop.ps1",
+  "probeSha256": "4aa9caddde216b16f4696f32a95d8df824e5475d71e12305000f67c1c8855803",
+  "runs": {
+    "System": { "report": "system.json", "sha256": "7d9d73743f7c27c4d39bc126927c38ae6409f4127ae2a74a0357acd1c289c294", "passed": true, "cleanExitCode": 0 },
+    "Light": { "report": "light.json", "sha256": "b3d3c91d9aac9c0d72a9969fd5d7e92af3a53397a28b58cbe6cb076c77edfcee", "passed": true, "cleanExitCode": 0 },
+    "Dark": { "report": "dark.json", "sha256": "e2e155b8d8302f49d75b3a342af6d716df6d9ef185359db86c0d742d98b936b1", "passed": true, "cleanExitCode": 0 }
+  },
+  "observedInEveryRun": [
+    "The packaged Input's LabeledBy relationship identifies the public PackageFieldLabel",
+    "Physical Tab skips the non-tabbable Label and reaches Input",
+    "Physical Label click focuses Input",
+    "Physical X key adds x to the consumer-owned input value"
+  ],
+  "themeTransitions": "Separate Light and Dark runs physically click the consumer-owned theme toggle before Label input; the accepted mode and next-mode names are observed. The earlier v7 Theme Toggle lifecycle checkpoint independently confirms visible Light/Dark background pixels.",
+  "remaining": [
+    "Disabled-target and broader nested-control Label input",
+    "Full Label rendering and actual display scaling",
+    "Native ARM64 runtime and broader component acceptance"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

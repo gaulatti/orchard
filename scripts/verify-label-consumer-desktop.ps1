@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory)][string]$AppDirectory,
     [Parameter(Mandatory)][string]$Output,
-    [Parameter(Mandatory)][string]$ExpectedLibrarySha256
+    [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
+    [ValidateSet('System', 'Light', 'Dark')][string]$Mode = 'System'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -33,7 +34,7 @@ $report = [ordered]@{
     passed = $false
     consumerExeSha256 = (Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash.ToLowerInvariant()
     orchardDllSha256 = $libraryHash
-    mode = 'System'
+    mode = $Mode
     route = $null
     physicalPointerAndKeyboardInputSent = $false
     osSettingsChanged = $false
@@ -69,6 +70,16 @@ function ClickLabel($element) {
     $report.physicalPointerAndKeyboardInputSent = $true
     return [ordered]@{ x = $x; y = $y }
 }
+function ClickToggle($element) {
+    $bounds = $element.Current.BoundingRectangle
+    if ($element.Current.IsOffscreen -or $bounds.IsEmpty -or $bounds.Width -le 0 -or $bounds.Height -le 0) { throw 'Consumer theme toggle is not visible for pointer input.' }
+    $x = [int][math]::Floor($bounds.X + $bounds.Width / 2)
+    $y = [int][math]::Floor($bounds.Y + $bounds.Height / 2)
+    if (-not [OrchardLabelConsumerDesktop]::SetCursorPos($x, $y)) { throw 'Windows rejected consumer theme-toggle pointer position.' }
+    [OrchardLabelConsumerDesktop]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero)
+    [OrchardLabelConsumerDesktop]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero)
+    $report.physicalPointerAndKeyboardInputSent = $true
+}
 
 $process = $null
 try {
@@ -85,13 +96,25 @@ try {
     } 'Independent consumer Label did not become visible.'
     $input = ById $root 'Input'
     $toggle = ById $root 'PackageThemeToggle'
-    if (-not $input -or -not $toggle -or $input.Current.IsOffscreen) { throw 'Independent consumer input or theme toggle is unavailable.' }
+    $result = ById $root 'Result'
+    if (-not $input -or -not $toggle -or -not $result -or $input.Current.IsOffscreen) { throw 'Independent consumer input, result or theme toggle is unavailable.' }
+    if ([OrchardLabelConsumerDesktop]::GetForegroundWindow() -ne $process.MainWindowHandle) { throw 'Consumer is not foreground; no physical input was sent.' }
+    if ($toggle.Current.Name -ne 'Switch to light theme') { throw 'Consumer did not begin in System theme-toggle mode.' }
+    $transitions = if ($Mode -eq 'Dark') { 2 } elseif ($Mode -eq 'Light') { 1 } else { 0 }
+    for ($step = 1; $step -le $transitions; $step++) {
+        ClickToggle $toggle
+        $requested = if ($step -eq 1) { 'Light' } else { 'Dark' }
+        $nextName = if ($step -eq 1) { 'Switch to dark theme' } else { 'Switch to system theme' }
+        Wait-Until { $result.Current.Name -eq "Theme accepted ${step}: $requested" -and $toggle.Current.Name -eq $nextName } "Consumer did not accept $requested theme." | Out-Null
+        $report.themeTransition = $result.Current.Name
+    }
+    $label = ById $root 'PackageFieldLabel'
+    $input = ById $root 'Input'
+    if (-not $label -or -not $input -or $label.Current.IsOffscreen -or $input.Current.IsOffscreen) { throw 'Label or input disappeared after theme selection.' }
     if ($input.Current.LabeledBy.Current.AutomationId -ne 'PackageFieldLabel') { throw 'Package input lost its Label automation relationship.' }
     $value = $input.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
     if ($value.Current.Value -ne 'Harbor update') { throw 'Consumer input did not retain its initial value.' }
-    if ([OrchardLabelConsumerDesktop]::GetForegroundWindow() -ne $process.MainWindowHandle) { throw 'Consumer is not foreground; no physical input was sent.' }
-
-    if ($toggle.Current.Name -ne 'Switch to light theme') { throw 'Consumer did not begin in System theme-toggle mode.' }
+    if ([OrchardLabelConsumerDesktop]::GetForegroundWindow() -ne $process.MainWindowHandle) { throw 'Consumer lost foreground; no Label input was sent.' }
     $toggle.SetFocus()
     Key 0x09
     Wait-Until { FocusedId -eq 'Input' } 'Tab did not skip the packaged Label.' | Out-Null
@@ -117,6 +140,11 @@ finally {
             if (-not $process.WaitForExit(5000)) { Stop-Process -Id $process.Id -Force }
         }
         $report.processExited = (Get-Process -Id $process.Id -ErrorAction SilentlyContinue) -eq $null
+        $process.Refresh()
+        $report.processExitCode = if ($process.HasExited) { $process.ExitCode } else { $null }
+        $report.cleanShutdown = $report.processExited -and $report.processExitCode -eq 0
+        $report.passed = $report.passed -and $report.cleanShutdown
     }
     $report | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $reportPath -Encoding utf8
 }
+if (-not $report.passed) { throw 'Consumer Label input or clean shutdown failed; inspect the report.' }
