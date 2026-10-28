@@ -41,6 +41,17 @@ retaining the original native items, public binding and open/close lifecycle.
 The browser source remounts its content on a mode change; that can cause focus
 side effects and even dismissal. The native option preserves caller objects
 instead of recreating them. Actual native focus transitions remain unverified.
+The first physical x64 catalog check of the published v7 library (2026-10-28)
+found a foreground failure that hidden `ShowAt` probes cannot cover. A real
+right-click on the Context Menu target left no menu item visible; Shift+F10
+likewise left no menu item in both modal and nonmodal modes. The exact library
+DLL hash, input coordinates, clean process exits, UI Automation trees and
+failure screenshots are recorded in
+[`context-menu-v7-physical-v1`](evidence/context-menu-v7-physical-v1/checkpoint.json).
+`verify-context-menu-desktop.ps1` is the focused repeatable check. The published
+component remains unaccepted until native gesture opening, original pointer
+selection and keyboard dismissal pass together. A local focus experiment was
+reverted because it let the menu open but still failed pointer selection.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.

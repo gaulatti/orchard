@@ -1,0 +1,21 @@
+{
+  "scope": "Physical Context Menu invocation and selection in the published v7 x64 catalog",
+  "date": "2026-10-28",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "catalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "probe": "scripts/verify-context-menu-desktop.ps1",
+  "probeSha256": "3c6cf9cb7e604764442f51976fe0bf6d06d31803bf9a91c56f8c858936890840",
+  "probeRevisionNote": "The retained runs used incremental revisions while isolating pointer and keyboard failures. The listed hash identifies the final combined rerun script, not the exact script bytes of every earlier run.",
+  "runs": {
+    "modalPointer": { "report": "../context-menu-v7-physical-v2/context-menu-desktop.json", "reportSha256": "0372920f71bee65b7c7898352d389a961df39fc90df6f146bb2733a51a018dd0", "capture": "../context-menu-v7-physical-v2/failure.png", "captureSha256": "dd7fec081534bb94a91677e4d9550f4a9a846eeadc8363fb85e7825ef88335fc", "passed": false, "reason": "Physical right-click did not leave an Inspect fictional item menu item visible." },
+    "modalKeyboard": { "report": "../context-menu-v7-physical-v3/context-menu-desktop.json", "reportSha256": "f6ba8dfdccc4dfe176978b78d6b0e95394d307bf09a52ee4837d927ac6a74f08", "capture": "../context-menu-v7-physical-v3/failure.png", "captureSha256": "ce8b133a6b19e5f34d75005ef17f1b415d8ae9dd939d1881e365d3f256a32046", "passed": false, "reason": "Shift+F10 did not leave the menu item visible." },
+    "nonmodalKeyboard": { "report": "../context-menu-v7-physical-v4/context-menu-desktop.json", "reportSha256": "2c696958b40a34aa0a01c5c4ef010d724c208dbd88bf80569cf66f1aa1135735", "capture": "../context-menu-v7-physical-v4/failure.png", "captureSha256": "a0979e0f23fd55eee6dc04d4359fee7e78f282efaceac1fd3c2a421a86ee6198", "passed": false, "reason": "Shift+F10 did not leave the menu item visible in nonmodal mode." }
+  },
+  "localInvestigation": "Temporary gesture-state instrumentation observed a closed flyout after native opening. Removing initial projected focus allowed native opening and Escape but pointer selection still closed the menu without reaching the caller action. Transient show mode allowed keyboard opening but still failed right-click reopening. All code experiments were reverted; no component fix is claimed.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

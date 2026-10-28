@@ -1,0 +1,14 @@
+{
+  "format": "orchard-context-menu-desktop-v1",
+  "catalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "passed": false,
+  "physicalPointerSent": false,
+  "physicalKeyboardSent": true,
+  "osSettingsChanged": false,
+  "componentAccepted": false,
+  "nonmodal": true,
+  "steps": {},
+  "error": "Shift+F10 did not expose the Context Menu.",
+  "processExited": true
+}
