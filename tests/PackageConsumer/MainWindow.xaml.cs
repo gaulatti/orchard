@@ -18,6 +18,7 @@ namespace PackageConsumer;
 
 public sealed partial class MainWindow : Window
 {
+    private int groupedActionCount;
     public MainWindow()
     {
         InitializeComponent();
@@ -46,6 +47,13 @@ public sealed partial class MainWindow : Window
         AppWindow.Resize(new SizeInt32(1100, 760));
     }
     private void OnSave(object sender, RoutedEventArgs e) => Result.Text = $"Saved: {Input.Text}";
+    private void OnGroupAction(object sender, RoutedEventArgs e)
+    {
+        var action = ReferenceEquals(sender, PackageGroupReview) ? "Review"
+            : ReferenceEquals(sender, PackageGroupArchive) ? "Archive"
+            : throw new InvalidOperationException("Unexpected grouped action.");
+        PackageGroupResult.Text = $"{action}: {++groupedActionCount}";
+    }
 
     private async void OnLoaded(object sender, RoutedEventArgs e)
     {

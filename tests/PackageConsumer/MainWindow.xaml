@@ -39,6 +39,17 @@
             <StackPanel Spacing="16">
                 <orchard:BleeckerThemeToggle x:Name="PackageThemeToggle"/>
                 <orchard:BleeckerButton x:Name="PackageAction" Content="Package component" Click="OnSave" />
+                <orchard:BleeckerButtonGroup x:Name="PackageGroupedActions" HorizontalAlignment="Left"
+                                            AutomationProperties.Name="Independent review actions">
+                    <orchard:BleeckerButton x:Name="PackageGroupReview" Content="Review" Click="OnGroupAction"
+                                            AutomationProperties.Name="Review locally" />
+                    <orchard:BleeckerButton x:Name="PackageGroupArchive" Content="Archive" Click="OnGroupAction"
+                                            AutomationProperties.Name="Archive locally" />
+                    <orchard:BleeckerButton Content="Unavailable" IsEnabled="False" />
+                </orchard:BleeckerButtonGroup>
+                <TextBlock x:Name="PackageGroupResult" Text="No grouped action yet"
+                           Style="{StaticResource BleeckerBodyStyle}"
+                           AutomationProperties.LiveSetting="Polite" />
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
                 <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />

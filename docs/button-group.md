@@ -49,3 +49,15 @@ Both solution architectures build, both clean package consumers build, and all
 505 unit/text tests pass. The standalone Button probe retains its ten
 style/template states and twelve spacing-binding states. These scoped results
 do not accept the whole component or replace platform/scaling/input checks.
+
+The [published v7 package consumer foreground check](evidence/button-group-v7-package-foreground-v1/checkpoint.json)
+mounts a visible Button Group in the independent x64 application, using the
+released `0.1.0-preview.20261027.7` NuGet package and its exact Orchard DLL.
+In Dark and Light, physical pointer input invokes Review once, Tab visibly
+focuses Archive, Enter or Space invokes Archive once, the next Tab skips the
+disabled sibling, and clicking that sibling leaves the caller result unchanged.
+The app closes after the check. UI Automation's focused-element field was stale
+for Archive, so the focus claim uses the visible outline and successful keyboard
+activation. This closes the independent-consumer foreground path only; complete
+source visual review, other input states, scaling and native ARM64 execution
+remain open.

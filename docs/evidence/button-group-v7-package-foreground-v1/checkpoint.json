@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T00:44:26Z",
+  "scope": "Physical pointer and keyboard input on a visible Button Group in an independent x64 NuGet consumer",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerExeSha256": "bb7f8bd5cad4464fa1bc8087578bcf0744db4c7f4a84a6f7fc652e3f0a9866bb",
+  "consumerDllSha256": "54bda88a44218fad0446e73ed261b32e16324e3dd758851e427130a60d2dd92b",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerHasPackageReference": true,
+  "consumerHasOrchardProjectReference": false,
+  "build": {
+    "x64Release": "passed",
+    "arm64ReleaseBuild": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "centralPackageManagementOverride": "ManagePackageVersionsCentrally=false"
+  },
+  "method": "Launched the independent package-reference consumer and used Computer Use physical pointer, Tab, Enter and Space input on its visible grouped actions. Inspected the rendered result and focus outline in Dark and Light.",
+  "observations": {
+    "dark": {
+      "pointerReviewResult": "Review: 1",
+      "tabFocusedArchiveVisibly": true,
+      "enterArchiveResult": "Archive: 2",
+      "nextTabFocusedInputAndSkippedDisabledAction": true,
+      "disabledPointerResultUnchanged": "Archive: 2"
+    },
+    "light": {
+      "pointerReviewResult": "Review: 3",
+      "tabFocusedArchiveVisibly": true,
+      "spaceArchiveResult": "Archive: 4",
+      "nextTabFocusedInputAndSkippedDisabledAction": true,
+      "disabledPointerResultUnchanged": "Archive: 4"
+    }
+  },
+  "uiAutomationArchiveFocusWasStale": true,
+  "consumerWindowClosed": true,
+  "exitCodeCaptured": false,
+  "screenshotsRetained": false,
+  "limitations": {
+    "fullInputMatrixVerified": false,
+    "fullSourceVisualReviewVerified": false,
+    "displayTextScalingVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}

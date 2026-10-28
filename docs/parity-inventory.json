@@ -508,12 +508,14 @@
       "regressionTests": [
         "samples/Orchard.Catalog/MainWindow.xaml.cs: VerifyButtonGroup",
         "tests/PackageConsumer/ButtonGroupFixture.cs",
+        "tests/PackageConsumer/MainWindow.xaml",
+        "tests/PackageConsumer/MainWindow.xaml.cs",
         "scripts/verify-button-group.mjs",
         "scripts/test-button-group-audit.mjs"
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Foreground x64 catalog SendInput verifies pointer/Enter commands, Tab focus traversal and disabled gating; independent consumer foreground input and other applicable states remain open (docs/evidence/components-v5-button-group-foreground-v1/checkpoint.json)",
+        "Foreground x64 catalog and published v7 independent NuGet consumer verify pointer/keyboard commands, Tab traversal and disabled gating in Light/Dark (docs/evidence/components-v5-button-group-foreground-v1/checkpoint.json; docs/evidence/button-group-v7-package-foreground-v1/checkpoint.json); broader input states remain open",
         "Verify actual text/display scaling and native ARM64 runtime acceptance",
         "Complete visual review against the pinned source, remaining motion and final catalog/release integration"
       ]
