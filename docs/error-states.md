@@ -36,7 +36,8 @@ when the drive fills during NuGet memory-mapped extraction. It is not a
 passing consumer result. Its exact new cache and failure record are preserved;
 the storage-only verifier wrapper changes directory compression, not package,
 restore, licensing, runtime or architecture checks. Fresh hosted consumption
-and real-contrast verification remain required for this candidate.
+is still required for this candidate. The historical real-contrast run retains
+its failure, but OS contrast campaigns are excluded from current acceptance.
 
 The complete local run at `artifacts/smoke-error-title-full` passes the new
 Error State checks in Light, then fails the unchanged Input reading-direction
@@ -106,9 +107,10 @@ GitHub-hosted Windows, compares painted background and established composed
 title/description ink, then restores the original mode and palette. Local
 invocations refuse before changing preferences.
 
-This is in progress. Full glyph/icon/composed raster parity, scaling, Narrator,
-all Windows contrast schemes and broader custom-template/lifecycle edge cases
-remain required. There is no backend, metrics or production publishing surface.
+This is in progress. Full glyph/icon/composed raster parity, scaling, component
+automation/theme behavior and broader custom-template/lifecycle edge cases
+remain required. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). There is no backend, metrics or production publishing surface.
 The wiki remote remains unavailable; component documentation is kept here.
 
 The focused native x64 suite passes both themes at

@@ -90,7 +90,8 @@ High contrast maps surfaces to system Window, text/rings to WindowText, and
 removes overflow shadows. Named images use the UIA Image role; initials and
 overflow expose text content; silhouettes and explicit empty-alt images are
 decorative. Consumers can supply an explicit AutomationProperties.Name.
-Narrator and real contrast-theme behavior still require verification.
+Component automation metadata and theme resources remain in scope. Narrator and
+OS contrast campaigns are excluded by the [current library scope](library-scope.md).
 
 ## Verification and remaining acceptance
 

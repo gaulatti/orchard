@@ -416,7 +416,8 @@ runtime remains open.
 The template owns background, border, focus ring, shadow and placeholder colors; it
 omits the Windows underline and clear button. The focus palette includes the
 pinned dark error input's blue border/ring. Windows contrast resources provide
-paired system colors, but actual contrast acceptance remains outstanding.
+paired system colors; OS contrast switching is excluded from current acceptance
+by the [library scope](library-scope.md).
 Existing BleeckerTextBoxStyle consumers, especially multiline Summary, remain
 on their previous preview until the applicable input/textarea contracts pass.
 

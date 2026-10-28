@@ -31,7 +31,7 @@ evidence. Keep all current source assertions, tolerances, native exact event
 receipts, two-second presentation deadlines and the full 360-second deadline.
 
 This entry is in progress and not accepted. Exact raster/motion, complete data/
-override/RTL coverage, actual contrast/Narrator/display and text scaling,
+override/RTL coverage, component theme/automation behavior, display and text scaling,
 measured collection performance and native ARM64 runtime remain required.
 The public wiki remains unavailable, so documentation is retained here. This
 native presentation component has no backend or Prometheus surface.

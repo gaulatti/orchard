@@ -46,8 +46,9 @@ and 16px horizontal wrapping gaps use bundled Encode Sans and shared theme
 resources. Whole-option disabled opacity is .5. Stroke and dot transitions use
 the existing CSS transition clock and 190/220ms premium timing; OS reduced motion
 and Windows contrast suppress animation. Source and actual native runtime
-verification, full motion/raster matrices, real scaling/contrast, Narrator and
-native ARM64 execution must all be established before component acceptance.
+verification, full motion/raster matrices, real scaling, component theme and
+automation behavior, and native ARM64 execution must all be established before
+component acceptance.
 
 The reference collector imports the unmodified component from source commit
 `a86059013cd59684ce452849278ea81e734f2066`, verifies source/CSS/lock bytes and
@@ -160,5 +161,5 @@ uses the same `--native` and `--consumer` paths to prove that six altered focus,
 request, key-owner, modifier or scale reports fail the audit. Its temporary
 JSON-only workspace is removed after the test.
 Remaining acceptance includes the complete customization/error/lifecycle matrix,
-normal-motion and reversal raster comparisons, real contrast/text/display
-scaling, Narrator, collection performance and native ARM64 execution.
+normal-motion and reversal raster comparisons, text/display scaling, component
+theme/automation behavior, collection performance and native ARM64 execution.

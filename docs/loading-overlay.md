@@ -45,9 +45,10 @@ required. These checks establish UI Automation exposure, not Narrator speech.
 The template exposes `PART_Popup`, `PART_Portal`, `PART_Backdrop`, `PART_Tint`,
 `PART_Card`, `PART_Body`, `PART_Spinner`, `PART_LabelHost` and `PART_Label`. Default brushes live in
 `Themes/LoadingOverlay.xaml`. Windows contrast colors replace translucent tint
-and border colors and suppress backdrop blur; actual contrast and Narrator
-verification remains required. Spinner motion follows the existing loading
-spinner's system animation preference.
+and border colors and suppress backdrop blur; component theme-resource behavior
+remains in scope. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). Spinner motion follows the existing
+loading spinner's system animation preference.
 
 Replacement templates preserve the named part types and their layout
 relationships. `PART_Popup` is a non-dismissable `Popup`; `PART_Portal` is a
@@ -189,8 +190,8 @@ Avatar presentation timeout remains retained; its cause is not established.
 The original release DLL is rejected by the same Page-root regression: the
 actual button receives Tab focus while the root incorrectly remains a tab stop.
 
-Acceptance remains open: exact raster parity, broader resource and
+Acceptance remains open: full rendered review, broader resource and
 custom-template/cross-window lifecycle, scaling,
-contrast, Narrator, motion and native ARM64
+component theme/automation behavior, motion and native ARM64
 runtime. A successful build or the presence of the catalog example is not
 component acceptance.

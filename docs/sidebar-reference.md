@@ -50,7 +50,7 @@ catalog/navigation/coverage, independent package-consumer and boundary
 regressions; verify both builds and the actual published runtime. Preserve all
 source assertions and the current exact input, presentation and full-run
 deadlines. No component is accepted without complete visual, motion, override,
-RTL, contrast/Narrator/scaling, performance and native ARM64 evidence.
+RTL, component theme/automation behavior, scaling, performance and native ARM64 evidence.
 
 ## Captured source evidence
 
@@ -235,8 +235,8 @@ Both caches are removed; native ARM64 remains unverified. The catalog is
 `artifacts/catalog-sidebar-native`; package and catalog Orchard assemblies
 match exactly and carry the source commit in their informational version.
 
-Full raster/motion/override and RTL coverage, Windows contrast, Narrator,
-display/text scaling, measured collection performance and native ARM64 runtime
+Full raster/motion/override and RTL coverage, component theme/automation
+behavior, display/text scaling, measured collection performance and native ARM64 runtime
 need evidence. The existing catalog navigation continues using button/input
 previews. The public wiki remains unavailable; documentation remains in this
 repository. No backend or Prometheus surface is involved. Push-triggered

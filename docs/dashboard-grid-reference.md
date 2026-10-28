@@ -84,8 +84,10 @@ cases at `artifacts/smoke-dashboard-grid-published`. Native ARM64/hosted
 validation remains deferred while push-triggered Actions are paused.
 
 Complete intrinsic sizing for arbitrary wrapping content/implicit tracks,
-consumer overrides and content templates, text/glyph raster, actual contrast
-schemes, Narrator, display/text scaling and native ARM64 acceptance remain open.
+consumer overrides and content templates, text/glyph raster, component theme
+and automation behavior, display/text scaling and native ARM64 acceptance remain
+open. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md).
 The inventory remains in progress. This native layout has no backend,
 configuration or telemetry impact. The public wiki remote is unavailable;
 documentation is maintained here.

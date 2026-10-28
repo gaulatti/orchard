@@ -103,8 +103,8 @@ raster remain an acceptance gap. Geometry tolerance remains 0.001px for the
 compared anchors, dimensions and gaps.
 
 Full glyph/curve/surface raster, all consumer templates/overrides and ReactNode
-edge shapes, normal-motion timing, actual contrast, Narrator, display/text
-scaling and native ARM64 runtime remain open. The inventory entry must remain
+edge shapes, normal-motion timing, component theme/automation behavior,
+display/text scaling and native ARM64 runtime remain open. The inventory entry must remain
 in progress until its complete acceptance matrix is verified. This native
 component has no backend, configuration or telemetry impact. The public wiki
 remote is unavailable; documentation is maintained in this repository.
@@ -152,7 +152,7 @@ runtimeVerified false. Both temporary caches are removed. The separately
 published x64 catalog passes all 80 source cases and desktop clipping gates at
 `artifacts/smoke-stat-content-published`; runnable output is
 `artifacts/catalog-stat-content`. Glyph/raster, full content/override/motion,
-contrast, Narrator, scaling and native ARM64 acceptance remain open.
+component theme/automation behavior, scaling and native ARM64 acceptance remain open.
 
 Fresh NuGet 0.1.0 from clean implementation commit
 `b3de3487e3cdfa9cffb0e2fc06bce5acbf767b27` has SHA-256

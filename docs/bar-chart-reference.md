@@ -112,8 +112,9 @@ keyboard channel. The pinned vertical source reverses Left/Right movement:
 Left advances downward, Right moves upward, and Up/Down do not select categories.
 Pointer hover selects a complete category band, overrides keyboard inspection,
 and hides on exit while retaining the keyboard index. Disabled inheritance keeps
-the child disabled. Narrator and complete native accessibility acceptance remain
-open.
+the child disabled. Complete native keyboard/focus and automation metadata
+acceptance remains open; Narrator testing is excluded by the
+[current library scope](library-scope.md).
 
 The cursor is the source muted-color rectangle behind bars and above the grid,
 with half-pixel inset on the numeric axis. It has no stroke. Tooltip headings
@@ -173,8 +174,8 @@ catalog passes the Bar Chart → Sparkline → Stat Card sequence in both themes
 
 This component remains in progress. Complete raster/glyph/legend/tooltip effects,
 normal/interrupted motion, full formatter/content/key/override/RTL matrix,
-actual Windows contrast, Narrator, display/text scaling and native ARM64 acceptance
-remain required. A successful static path comparison does not establish those
+component theme and automation behavior, display/text scaling and native ARM64
+acceptance remain required. A successful static path comparison does not establish those
 requirements. Push-triggered Actions remain paused at the user's request.
 
 The pinned React 19.2.4/Recharts 3.8.1 browser confirms that active mouse hover

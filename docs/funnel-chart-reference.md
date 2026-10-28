@@ -33,7 +33,7 @@ consumer, both architecture builds and the full published catalog. Preserve
 all previous checks, coordinate tolerances and runtime deadlines.
 
 Work is in progress and this inventory entry is not accepted. Complete raster,
-motion/reversal, full data/override/RTL coverage, actual contrast, Narrator,
+motion/reversal, full data/override/RTL coverage, component theme/automation behavior,
 display/text scaling, measured collection performance and native ARM64 runtime
 remain required. This native-only presentation work has no backend/Prometheus
 surface.

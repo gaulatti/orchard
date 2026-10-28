@@ -527,7 +527,7 @@ observation sees Arrow, and restored box hover sees UniversalNo. Rounded corners
 stationary enable/disable, occlusion/clipping, hit-testing, hide/show, unload,
 scrolling, RTL and shared Input ownership all pass the global visible-cursor gate.
 See [checked runtime archives](runtime-evidence.md). Full Checkbox visual,
-contrast/Narrator and scaling acceptance remains open.
+component theme/automation behavior and scaling acceptance remains open.
 
 The `b63424d` ARM64 run passes the remount/scroll checks, then loses the catalog
 foreground before RTL input. Desktop diagnostics now capture the actual
@@ -615,8 +615,8 @@ Input cursor ownership. Hosted verification remains required.
 Acceptance remains open: native runtime/captures and exact browser comparison,
 dark/disabled/focus rendered references, full physical pointer/keyboard matrix
 (including the disabled input's cursor), consumer rich-content edge cases,
-non-Latin fallback glyphs, lifecycle/scaling, live system/contrast appearance,
-Narrator, exact focus/color/motion raster timing and ARM64 state acceptance.
+non-Latin fallback glyphs, lifecycle/scaling, component theme resources,
+exact focus/color/motion raster timing and ARM64 state acceptance.
 Error styling is consumer-owned: the pinned source defines no built-in invalid
 variant. Local desktop text, display and animation preferences must remain
 unchanged. The repository wiki remote is unavailable, so this contract is

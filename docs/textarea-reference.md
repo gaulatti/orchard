@@ -211,9 +211,10 @@ races/cancellation and menu invocation need further runtime evidence.
 The direct native `ITextRange.Paste` experiment stowed-crashed at the clipboard
 boundary and is retained as a failure. The implementation instead retrieves
 plain text asynchronously and applies a selection edit after checking content,
-selection, view, enabled and read-only ownership. Complete-catalog integration, exact whole-frame
-raster equality, enabled motion, Windows scaling/contrast, Narrator and native
-ARM64 remain open. Cross-builds do not establish native ARM64 runtime acceptance.
+selection, view, enabled and read-only ownership. Complete-catalog integration,
+full rendered review, enabled motion, Windows scaling, component theme/automation
+behavior and native ARM64 remain open. Cross-builds do not establish native
+ARM64 runtime acceptance.
 
 ## Frozen browser contract
 
@@ -261,7 +262,7 @@ selection, clipboard, undo/redo, wrapping and overflow, read-only versus disable
 live size/row/error/theme updates, template replacement and unload/remount.
 Preserve the explicit accessibility override. Verify source geometry and raw
 raster comparisons without masks or resampling, actual Windows scaling, enabled
-and reduced motion, contrast, Narrator, x64 and native ARM64. Source geometry or
+and reduced motion, component theme/automation behavior, x64 and native ARM64. Source geometry or
 a successful build alone does not satisfy these criteria.
 
 ## Native context commands and consumer ownership
@@ -321,7 +322,7 @@ raw comparison (`artifacts/textarea-commands-regression-pixels.json`) reports
 frames, with no masks or resampling; visual parity is still open.
 Menu screenshots are evidence of the native result, not raw source raster
 acceptance. Clipboard-provider errors, remaining customization, enabled motion,
-scaling, contrast, Narrator and native ARM64 still require verification.
+scaling, component theme/automation behavior and native ARM64 still require verification.
 
 ## Live catalog integration
 

@@ -131,8 +131,10 @@ also passes both themes at `artifacts/smoke-checkbox-remount-published`.
 
 This component remains **in progress**. Full area/glyph/legend/tooltip raster
 and effect equivalence, normal/interrupted motion, the complete content/key/
-formatter/override/RTL matrix, actual contrast, Narrator, display/text scaling,
-large-collection performance and native ARM64 acceptance remain required.
+formatter/override/RTL matrix, component theme and automation behavior,
+display/text scaling, large-collection performance and native ARM64 acceptance
+remain required. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md).
 This native presentation change has no backend or metrics surface.
 
 The shared Recharts 3.8.1 mouse-priority contract is now verified with a real

@@ -165,6 +165,6 @@ package and archive hashes are recorded in [the current native checkpoint](nativ
 Search Input remains **in progress**. Exact raster/typography/color parity,
 complete hover/focus/pressed and enabled-motion timeline comparisons, broader
 customization and clipboard/IME/selection/accessibility-event cases, actual
-Windows display/text scaling, high contrast, Narrator and native ARM64 runtime
+Windows display/text scaling, component theme resources and native ARM64 runtime
 are not accepted. Cross-building ARM64 is not native runtime evidence. No
 backend, search service, debounce, results list or submit policy is introduced.

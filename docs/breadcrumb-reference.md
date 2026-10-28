@@ -46,8 +46,8 @@ they do not establish native acceptance.
   the default presentation. The current item remains current-page text.
 - Native keyboard and pointer activation, current-page accessibility, focus
   after expansion, binding/collection changes, reuse and template lifecycle
-  must pass on x64/ARM64. Contrast uses Windows semantic colors. Narrator,
-  scaling, focus visuals and full source/native raster/motion acceptance remain
+  must pass on x64/ARM64. Contrast uses Windows semantic colors. Component
+  automation behavior, scaling, focus visuals and full source/native raster/motion acceptance remain
   required before this inventory entry can be complete.
 
 ## Windows API
@@ -63,8 +63,8 @@ Separator accessibility excludes its entire subtree, matching source aria-hidden
 Internal action styles are loaded separately and assigned only to default
 links/ellipsis, so their native templates do not override consumer template controls.
 Contrast-mode ellipsis hover pairs Windows Highlight with HighlightText, and
-system color changes repaint its live palette. Manual contrast-theme acceptance
-is still pending.
+system color changes repaint its live palette. OS contrast switching is excluded
+from current acceptance by the [library scope](library-scope.md).
 Default links and the expansion button use the existing branded Windows focus
 ring. Keyboard expansion restores focus to the first focusable revealed link,
 including a consumer link template's native focusable descendant. Disabled or
@@ -72,8 +72,8 @@ non-focusable renderers do not receive focus, and the current-page text is not a
 target. Native [focus discovery](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.focusmanager.findfirstfocusableelement?view=windows-app-sdk-2.0)
 preserves the consumer's tab order and focusability. The custom renderer fixture
 expands with real Enter, verifies the original item/focused Button and continues
-with real Tab to the next revealed consumer link. Full focus visual, Narrator and
-scaling acceptance remains open; these new checks require fresh native runs.
+with real Tab to the next revealed consumer link. Full focus visual and scaling
+acceptance remain open; these new checks require fresh native runs.
 Both default and custom renderer regressions also disable the first revealed
 item through consumer `CanExecute(false)` and require focus on the next available
 link. No command is invoked merely to restore focus.

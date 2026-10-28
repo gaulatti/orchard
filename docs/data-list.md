@@ -48,7 +48,9 @@ The native automation hierarchy exposes a list and ordinal list items, keeping
 embedded consumer controls reachable. Changes, reorder, removal, template
 replacement, unloading/remounting and theme changes preserve the relevant
 consumer content. Native rendering supplies text/display scaling. Final
-Narrator, contrast, scaling and ARM64 runtime verification remain required.
+component automation/theme behavior, scaling and ARM64 runtime verification
+remain required. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md).
 
 The registered `DataListsFixture` includes a source-case picker and frozen
 normal, striped, raw scalar, multilingual, narrow, RTL, empty and embedded-action
@@ -78,8 +80,8 @@ The unmasked image audit at `artifacts/data-list-pixel-audit.json` compares all
 frames match; the other 66 differ, totaling 2,536,268 differing pixels and
 114,743,118 absolute RGBA error. Text baselines, font/shape rasterization and
 alpha paint remain open. Both architecture builds, 108 unit tests and token
-generation pass. This initial matrix does not establish ARM64 runtime,
-Narrator, Windows contrast or complete scaling/override acceptance.
+generation pass. This initial matrix does not establish ARM64 runtime or
+complete scaling/override acceptance.
 
 The initial embedded-action runs are retained in `artifacts/smoke-data-list-v1`
 and `v2`. A managed stack in `artifacts/data-list-action-stall-stack.txt` locates
@@ -115,7 +117,7 @@ The unchanged zero-tolerance image comparison at
 cases: 2,496,401 pixels and 76,288,483 absolute RGBA error. That is 39,867 fewer
 differing pixels and 38,454,635 less error than the initial matrix. Exact font,
 shape and alpha rasterization, wrapped-line detail, consumer/override coverage,
-scaling, contrast/Narrator and ARM64 runtime remain open. These baseline checks
+scaling, component theme/automation behavior and ARM64 runtime remain open. These baseline checks
 do not accept the component or its remaining platform requirements.
 
 The clean `82d7d34` published replay at

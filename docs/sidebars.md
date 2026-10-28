@@ -104,7 +104,7 @@ checks and pointer/presentation gates remain unchanged. The independent NuGet
 consumer declares both the control and the typed link template.
 
 Exact raster, the full state/motion/override and RTL matrices, arbitrary content
-and template combinations, actual Windows contrast/Narrator, display/text
+and template combinations, component theme/automation behavior, display/text
 scaling, measured large-collection performance and native ARM64 runtime remain
 required. The 35-row source fixture is not large-data performance acceptance.
 The existing catalog left navigation still uses button/input previews. This

@@ -146,7 +146,7 @@ the consumer child and releases its old visual parent.
 
 Acceptance still requires the complete native surface, all element/density and
 interactive/disabled/content/command cases, browser/native gradient and shadow
-comparison, actual motion/reversal, contrast, scaling, Narrator, x64/ARM64,
+comparison, actual motion/reversal, component theme/automation behavior, scaling, x64/ARM64,
 independent package consumption and composition/performance evidence. The
 inventory remains in progress until every required acceptance boundary is verified.
 
@@ -158,7 +158,7 @@ semantics, actual native button/Click activation and live recipe changes at
 `artifacts/package-consumer-attention`. Package version 0.1.0 has SHA-256
 `f9ae063786b8b14b4368c0f4002062ba584a4c0017ca25021b3bcfb550d0ade2`.
 Native ARM64 runtime of Attention, exact motion/reversal, full raster,
-contrast/Narrator/scaling and the remaining contract boundaries stay open.
+component theme/automation behavior, scaling and the remaining contract boundaries stay open.
 
 The native command-availability regression now changes the consumer command's
 CanExecute result and raises its real CanExecuteChanged event. Both actual inner
@@ -172,8 +172,9 @@ image restoration; fresh hosted verification is pending. See
 
 The combined native x64 catalog also passes Light and Dark with these checks at
 `artifacts/smoke-attention-contrast-breadcrumb-all`. That run uses display/text
-scale 1 and disabled system animations; it does not supply enabled-motion,
-contrast-transition, ARM64 or Narrator acceptance evidence.
+scale 1 and disabled system animations; it does not supply enabled-motion or
+ARM64 acceptance evidence. Narrator and OS contrast campaigns are excluded by
+the [current library scope](library-scope.md).
 
 The capture report now retains each gradient specimen's exact client rectangle
 and native surface radius, allowing whole-image comparisons without inferring

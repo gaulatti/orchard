@@ -29,7 +29,8 @@ reading direction; source strings are preserved.
 The default template consumes Background, BorderBrush, BorderThickness,
 CornerRadius, Padding and title Foreground. A consumer replacement template
 owns its layout and semantics. Native system-aware text resources supply the
-contrast mapping; actual contrast acceptance remains required. The heading
+contrast mapping; component theme-resource verification remains required, while
+OS contrast switching is excluded by the [current library scope](library-scope.md). The heading
 uses the pinned WinUI `AutomationProperties.HeadingLevel` contract documented
 by [Microsoft](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.automation.automationproperties.headinglevel?view=windows-app-sdk-2.0).
 
@@ -100,8 +101,9 @@ passes the focused runtime checks at
 and the host's animation effects disabled.
 
 Complete glyph/baseline raster comparison, CSS `text-balance`/`text-pretty`, the complete override and
-multilingual constraint matrix, actual contrast schemes, Narrator and
-display/text scaling remain open. The inventory entry remains in progress;
+multilingual constraint matrix, component automation behavior and display/text
+scaling remain open. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). The inventory entry remains in progress;
 these gaps are not approved platform substitutions. This passive control has
 no backend, configuration or metrics impact. The public repository wiki remote
 is unavailable; the contract is maintained here.

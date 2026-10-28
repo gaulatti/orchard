@@ -135,7 +135,7 @@ commits change catalog capture/observation and documentation only.
 
 Both components remain **in progress**. Full sector/glyph/legend/center/tooltip
 raster and effects, normal/interrupted motion, the complete data/key/radius/
-formatter/override and RTL matrix, actual contrast, Narrator, display/text
+formatter/override and RTL matrix, component theme/automation behavior, display/text
 scaling, collection performance and native ARM64 acceptance remain required.
 This native presentation change has no backend or metrics surface.
 

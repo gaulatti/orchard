@@ -57,10 +57,11 @@ collector, fonts and complete PNG hashes. The native 140-state matrix and
 twelve lifecycle phases pass with zero asserted geometry error. Complete
 PNG comparisons still report raster differences, with no masks, tolerance
 or resampling. Version `0.1.0-77f387a` passes a fresh independent x64 consumer in both themes and an ARM64 consumer build; native ARM64 runtime is unverified. No component is
-accepted from a build or a geometry report alone. Complete raster parity,
-arbitrary Unicode, remaining item/bar style overrides, external UIA/Narrator,
-scaling, contrast, collection measurements and native ARM64 runtime remain
-acceptance work.
+accepted from a build or a geometry report alone. Complete raster review,
+arbitrary Unicode, remaining item/bar style overrides, external UIA,
+component theme resources, scaling, collection measurements and native ARM64
+runtime remain acceptance work. Narrator and OS contrast campaigns are excluded
+by the [current library scope](library-scope.md).
 
 All thirteen corrupted baseline audit reports are rejected, including
 nonbreaking-space removal. Native and browser glyph receipts record the
@@ -204,7 +205,7 @@ original item labels/tooltips and passive automation metadata with the same
 frame contract as visible verification. It sends no input and never calls
 `Activate` or `Show`; visibility and foreground ownership are guarded during
 every layout cycle. This is actual XAML layout evidence through the
-independent package. Physical input, Narrator, visible presentation and native
+independent package. Physical input, visible presentation and native
 ARM64 acceptance remain separate requirements.
 
 ```powershell

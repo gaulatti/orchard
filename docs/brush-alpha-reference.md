@@ -99,6 +99,7 @@ sibling; both temporary restore caches are removed. Package, catalog and both
 consumers have identical Orchard DLL SHA-256
 `e0fa47a03ba224630a7d707940c427bf7f3df841cb48ccf2657d50952dc71e50`,
 ProductVersion `0.1.0+b28fac0c3bf72cbe8960c9550e7081795a2bd656`.
-Native ARM64 execution, full raster/motion, contrast/Narrator/scaling and the
+Native ARM64 execution, full raster/motion, component theme/automation behavior,
+scaling and the
 remaining acceptance matrices stay open. Inventory remains 50 in progress,
 62 pending and none accepted out of 112. Push Actions remain paused.

@@ -160,7 +160,7 @@ at `artifacts/sankey-raster-comparison.json`);
 full visual acceptance remains open.
 
 Work is in progress and this inventory entry is not accepted. Complete raster,
-motion/reversal, full graph/data/override/RTL coverage, actual contrast,
-Narrator, display/text scaling, measured collection performance and native
+motion/reversal, full graph/data/override/RTL coverage, component theme and
+automation behavior, display/text scaling, measured collection performance and native
 ARM64 runtime remain required. This native-only presentation work has no
 backend/Prometheus surface.

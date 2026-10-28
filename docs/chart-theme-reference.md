@@ -200,8 +200,8 @@ notifications, a second fresh isolated consumer passes both themes at
 `artifacts/package-consumer-chart-series-binding`. Its package 0.1.0 SHA-256 is
 `c22fe9259f80cf649b55fb3a7f6e85680a75dd59735aca19e3aae85e8afc85bd`.
 Both architecture builds have zero warnings, all 32 regressions pass and token
-generation matches the pin. Full catalog, native ARM64 series, contrast,
-scaling and Narrator acceptance remain required.
+generation matches the pin. Full catalog, native ARM64 series, component theme
+and automation behavior, and scaling acceptance remain required.
 
 The complete local x64 catalog passes both themes with the notification-enabled
 model and all series paint regressions at
@@ -216,7 +216,8 @@ requires real mounted name/color bindings to update, including transparent and
 null color transitions; the native fixture requires the composed paint samples.
 These close the initial native series-model/runtime proof on both architectures.
 Actual chart renderers, complete visual/accessibility/scaling/performance
-acceptance and the unrelated required contrast gate remain open.
+acceptance remain open. The unrelated historical contrast gate retains its
+original run result but is excluded from the current library scope.
 
 The focused local x64 run passes both appearances at
 `artifacts/smoke-chart-theme-native`, with Windows animations off and display/
@@ -234,7 +235,8 @@ Package 0.1.0 has SHA-256
 `8e5f1d430e81d22ec3ff666bb6c3e2c4c49314961d92f75487b907d375f711ca`.
 The verifier restores into a new independent cache and uses no source project
 reference. Native ARM64 and enabled-animation evidence require the hosted run;
-the unrelated contrast and disabled-cursor failures remain required gates.
+the unrelated disabled-cursor failure remains a required gate. The historical
+contrast failure retains its result but is excluded from current acceptance.
 
 The complete local x64 catalog passes both appearances with the registered
 chart fixture and expanded contrast baseline diagnostics at

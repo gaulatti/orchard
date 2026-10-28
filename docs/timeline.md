@@ -62,8 +62,8 @@ for timestamps and 14/24 for descriptions, and Encode Sans Semibold 12/16
 for default ordinals. Scalar icon text inherits Encode Sans Regular 16/24.
 Native font/display scaling uses the control's typography properties. The
 automation hierarchy exposes a list and ordinal list items, with resolved
-status and original consumer controls. Narrator, contrast and complete scaling
-acceptance require native runtime evidence.
+status and original consumer controls. Component automation/theme behavior and
+complete scaling acceptance require native runtime evidence.
 
 `TimelinesFixture` registers normal, explicit-status, single, empty, long,
 narrow, RTL, raw whitespace, scalar-icon, consumer-action and timestamp cases.
@@ -91,7 +91,7 @@ unload/remount and theme changes, preserving normal disabled/automation behavior
 and exercising an actual 639→640→639 window resize. Run
 `scripts/smoke-catalog.ps1 -Component timeline -ClientSize 1024,900`, then repeat
 at widths 639 and 640. Exact image comparison, full-suite preservation,
-independent package use, native ARM64, contrast, Narrator, scaling and override
+independent package use, native ARM64, component theme/automation behavior, scaling and override
 coverage remain required. The component remains in progress until that evidence
 satisfies the fixed inventory.
 
@@ -132,7 +132,7 @@ gate: 231.9245 ms under the unchanged two-second deadline. All 324 Stepper and
 132 wide DataList baselines remain within their original bounds. The full
 watchdog stays eight minutes. Collection performance is a separate acceptance
 requirement. Complete interactive-icon/focus, arbitrary-content/template,
-live-theme/resource-override, scaling, contrast/Narrator and native ARM64
+live-theme/resource-override, scaling, component automation behavior and native ARM64
 matrices remain open.
 
 The fresh independent `artifacts/package-consumer-timeline-x64` verifies both

@@ -107,8 +107,9 @@ The implementation must verify logo-only/named, both sizes, empty/null labels,
 custom images and link templates, runtime updates, long/non-Latin content,
 constrained width, native pointer/keyboard activation, theme changes, reduced
 motion, package resources and an independent consumer. Full rendered source
-comparison, x64/ARM64, contrast, scaling and Narrator remain required before
-acceptance. The registered Brand lockups page includes those primary variants,
+comparison, x64/ARM64, component theme resources and scaling remain required
+before acceptance. Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). The registered Brand lockups page includes those primary variants,
 custom RGBA imagery, a typed consumer link template, disabled/command states,
 long Japanese/Arabic text, a constrained name and a failed source. The focused
 `scripts/smoke-catalog.ps1 -Component brand` path and the full catalog exercise

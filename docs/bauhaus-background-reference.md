@@ -257,8 +257,10 @@ using the 0.1.0 package with SHA-256
 `79a15fbce81b6990b514a35830352d8980e02096abdb757af162a692f8909002`.
 
 Full curved antialiasing, other sizes, additional image decoders/animated
-sources, all contrast themes/states, Narrator and display/text scaling remain
+sources, component theme-resource behavior and display/text scaling remain
 open. The complete required catalog still needs a green native ARM64 run.
+Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md).
 
 Run `38475433445` at `764f5b2` passes focused ARM64 Bauhaus and Input, then the
 full catalog loses foreground immediately before a composed Bauhaus capture.

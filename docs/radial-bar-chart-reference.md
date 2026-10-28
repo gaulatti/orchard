@@ -38,7 +38,7 @@ resources, data, input, labels and paint. Verify both architecture builds and
 the full published catalog without weakening existing checks or deadlines.
 
 Work is in progress and this inventory entry is not accepted. Complete raster,
-motion/reversal, full data/override/RTL coverage, actual contrast, Narrator,
+motion/reversal, full data/override/RTL coverage, component theme/automation behavior,
 display/text scaling, collection performance and native ARM64 acceptance remain
 required. This native-only presentation work has no backend/Prometheus surface.
 

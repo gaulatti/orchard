@@ -1,5 +1,9 @@
 # Rendered Bleecker comparison
 
+This page retains historical visual observations and gaps. The
+[current component-library scope](library-scope.md) excludes Narrator and OS
+contrast campaigns; older acceptance wording below does not reinstate them.
+
 Overlay-shadow work now renders the two pinned layers through `BleeckerOverlaySurface`, including negative spread. The light Bleecker menu's computed CSS confirms `(0,24,64,-20,.28)` and `(0,4,14,0,.06)`, both RGB `(26,55,77)`. Native runtime assertions inspect both composition layers on the root, submenu and standalone fixture. Desktop comparison exposed clipping at a separate popup window; `BleeckerDropdownMenu` now stays within the XAML viewport and its shadow extends beyond the menu border (`artifacts/menu-shadow-root-light.jpg`). Exact blur rasterization, placement near viewport edges and contrast/scaling remain open. Card geometry was moved into a shared helper without changing its recipe or acceptance claims.
 
 Menu comparison uses the pinned `components-dropdownmenu--selection-controls` fixture. Browser measurements confirm 32px rows, 14px/20px Encode Sans text, 6px popup padding and a separator spanning the inner border. Native captures exposed a ScrollViewer clipping the separator's negative margins; moving padding inside the scroll viewport restores the full line. Check and radio vectors now retain the reference viewbox and 14px indicator-slot alignment. Root and nested popups resolve the branded presenter in both themes. `BleeckerDropdownMenu` now supplies the recipe's distinct 176px root and 144px submenu minima; captures and runtime assertions verify the small submenu, a consumer 220px presenter style and restoration of defaults across reopenings. These are partial checks: overlay shadow, motion and the remaining menu contracts are still open in [menu acceptance](menus.md).

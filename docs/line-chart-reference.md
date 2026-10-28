@@ -100,7 +100,8 @@ the unchanged source and pinned Recharts 3.8.1. Native state regression coverage
 uses these captured outcomes. Catalog and independent package fixtures exercise
 the normal WinUI focus and native keyboard path; lifecycle remounts wait for
 actual Loaded/Unloaded events. Native accessible names, values,
-keyboard/pointer focus and ownership still require actual UIA/Narrator evidence.
+keyboard/pointer focus and ownership still require actual UIA evidence. Narrator
+testing is excluded by the [current library scope](library-scope.md).
 
 ## Evidence and implementation boundary
 

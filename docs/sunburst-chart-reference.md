@@ -176,6 +176,6 @@ This establishes the current source/native/package/runtime foundation, while
 the visual and platform acceptance gaps below remain open.
 
 This entry is in progress and is not accepted. Complete raster/motion, tree/data/
-override/RTL, actual contrast, Narrator, display/text scaling, measured
+override/RTL, component theme/automation behavior, display/text scaling, measured
 collection performance and native ARM64 runtime remain required. This native
 presentation component has no backend or Prometheus surface.

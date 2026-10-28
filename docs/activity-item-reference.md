@@ -117,8 +117,9 @@ the full catalog and independent consumption. Contrast verification initially
 fails because both Activity Item and its nested Avatar name a border
 `PART_Surface`; selecting all descendants with `Single` is ambiguous. The
 fixture now selects Activity Item's direct template root and requires its
-expected name before checking colors. Actual contrast acceptance remains
-pending that corrected hosted check.
+expected name before checking colors. The historical contrast check remains
+unverified for its original binary; OS contrast campaigns are excluded from
+current component acceptance.
 
 The ARM64 candidate in that same run also passes focused Activity Item with
 animations enabled, the complete ordinary catalog and independent package

@@ -112,8 +112,8 @@ tests compare their numbers and visible tick strings to those DOM captures.
 Decimal tick construction avoids binary multiplication tails in axis labels.
 
 Full text/curve/effect raster, normal-motion timing, RTL and consumer overrides,
-extreme numeric/data shapes, disabled/error contracts, actual contrast settings,
-Narrator, display/text scaling and native ARM64 acceptance remain open. This
+extreme numeric/data shapes, disabled/error contracts, component theme and
+automation behavior, display/text scaling and native ARM64 acceptance remain open. This
 entry remains in progress. The public wiki remote is unavailable, so this
 contract is maintained in the repository.
 

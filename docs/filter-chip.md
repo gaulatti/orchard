@@ -101,8 +101,9 @@ disabled, replaced, removed and unloaded actions. A native reference event check
 the client transport; component events originate in the library. It registers
 and removes handlers on the same external MTA thread, following
 [Microsoft's UIA threading guidance](https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/ui-automation-threading-issues).
-Narrator speech, broader accessibility events and additional stale-client
-workflows remain separate acceptance checks.
+Broader component accessibility events and additional stale-client workflows
+remain separate acceptance checks. Narrator testing is excluded by the
+[current library scope](library-scope.md).
 
 `FilterChipsFixture` registers read-only, removable, multilingual and wrapping
 examples. Its consumer handlers demonstrate explicit collection removal/reset.
@@ -130,6 +131,6 @@ Its completed comparison is separate from acceptance; differing pixels keep
 
 Acceptance remains in progress. Exact source/native raster parity, enabled-motion
 timelines and cancellation, complete typography/RTL/resource customization,
-text/display scaling, contrast schemes, Narrator, broader UI Automation and
+text/display scaling, component theme resources, broader UI Automation and
 native ARM64 runtime must be evidenced before acceptance. ARM64 cross-compilation
 does not establish native runtime behavior.

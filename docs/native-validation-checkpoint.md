@@ -1,4 +1,9 @@
-# Current native validation checkpoint
+# Historical native validation checkpoints
+
+This page preserves historical checkpoints and their original failures. The
+[current component-library scope](library-scope.md) supersedes older statements
+below that call for Narrator or OS contrast campaigns. Do not launch Narrator or
+change Windows accessibility settings for this goal.
 
 ## OTP Input implementation, 2026-10-19 local
 

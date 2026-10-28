@@ -41,7 +41,7 @@ The harness uses HTML standards mode (`CSS1Compat`), a fresh component mount
 per endpoint, explicit viewport scroll reset and device scale 1. It records
 viewport offsets and range-card geometry. These details matter when the
 source's 360px minimum range card exceeds a constrained viewport. Enabled
-motion timelines, Windows scaling and forced-color/Narrator behavior remain
+motion timelines, Windows scaling and component theme/automation behavior remain
 separate acceptance work. Endpoint frames finish animations under reduced
 motion; their durations cannot establish normal-motion timing.
 
@@ -379,8 +379,9 @@ additional date/content matrices and enabled-motion behavior remain open.
 
 The Dates fixture and independent NuGet tests are registered. Acceptance still
 requires exact glyph/raster/shadow and enabled/reduced-motion comparisons, the
-remaining customization/lifecycle matrices, real scaling, Windows contrast,
-Narrator and native ARM64 execution. The public wiki remains unavailable, so
+remaining customization/lifecycle matrices, real scaling, component theme and
+automation behavior, and native ARM64 execution. Narrator and OS contrast
+campaigns are excluded by the [current library scope](library-scope.md). The public wiki remains unavailable, so
 this contract is maintained here.
 
 The shadow checkpoint passes 144 regression tests and the four focused x64

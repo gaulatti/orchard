@@ -47,8 +47,8 @@ package caches are removed. Both catalog ZIPs verify every published entry
 (537 x64 files and 533 ARM64 files).
 
 Remaining acceptance includes complete raster/typography/shadows, arbitrary
-Unicode and remaining template/override behavior, isolated scaling and contrast,
-external UIA/Narrator, collection measurements and native ARM64 runtime. The
+Unicode and remaining template/override behavior, isolated scaling, component
+theme resources, external UIA, collection measurements and native ARM64 runtime. The
 current complete catalog run also needs a connected mouse for its unchanged
 global cursor checks. Push-triggered Actions remain paused.
 
@@ -83,8 +83,8 @@ Acceptance criteria for the native implementation:
 - Verify live title/description/icon changes without replacing the original
   input in a still-present action; verify action activation and Tab navigation.
 - Add registered native catalog, boundary regressions, independent package and
-  CI coverage, then exercise x64 and native ARM64, raster, typography, contrast,
-  scaling, motion preferences, UIA/Narrator and lifecycle/override acceptance.
+  CI coverage, then exercise x64 and native ARM64, raster, typography, component
+  theme resources, scaling, motion preferences, UIA and lifecycle/override acceptance.
 
 The frozen source tests verify these distinctions and every PNG/collector hash.
 They establish the intended behavior for implementation, not native parity.

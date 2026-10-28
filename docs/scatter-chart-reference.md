@@ -103,7 +103,7 @@ record three frames/two unchanged transitions, offsets zero, and 32.6826ms and
 verification remains a separate required run.
 
 Full shape/glyph/legend/cursor/tooltip raster and effects, motion, complete
-data/key/formatter/override/RTL coverage, actual contrast, Narrator, display/text
+data/key/formatter/override/RTL coverage, component theme/automation behavior, display/text
 scaling, collection performance and native ARM64 acceptance remain open. This
 native presentation change has no backend or metrics surface. The public wiki
 is unavailable, so the contract is maintained in repository documentation.
