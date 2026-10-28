@@ -17,7 +17,11 @@ for the latest tested consumer crash fixes. Its
 records the package hash, input and tooltip checks, and clean shutdown. The
 [matching x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261027.7/Orchard.Catalog.0.1.0-preview.20261027.7.win-x64.zip)
 contains the exact NuGet library DLL; its extracted Monitoring and Editorial
-demo checks are recorded in the [catalog checkpoint](docs/evidence/catalog-v7-x64/checkpoint.json).
+demo checks are recorded in the [x64 checkpoint](docs/evidence/catalog-v7-x64/checkpoint.json).
+The [ARM64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261027.7/Orchard.Catalog.0.1.0-preview.20261027.7.win-arm64.zip)
+contains the same library DLL and passed archive/architecture checks; see its
+[checkpoint](docs/evidence/catalog-v7-arm64/checkpoint.json). Native ARM64
+execution remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
 has x64/ARM64 catalog ZIPs with the fictional Monitoring and Editorial demos.
