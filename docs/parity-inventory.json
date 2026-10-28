@@ -4362,7 +4362,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Published v7 x64 catalog passes focused physical pointer/digit, Backspace, Left Arrow, caller rejection, secure masking and native Ctrl+C/Ctrl+V filtered whole-value paste (docs/evidence/otp-input-v7-physical-v1/checkpoint.json); complete input matrix and independent NuGet consumer physical input remain open",
+        "Published v7 x64 catalog passes focused physical pointer/digit, Backspace, Left Arrow, caller rejection, secure masking and native Ctrl+C/Ctrl+V filtered whole-value paste (docs/evidence/otp-input-v7-physical-v1/checkpoint.json); exact-v7-package independent x64 consumer passes 60 hidden states and 32 controlled/lifecycle cases (docs/evidence/otp-input-v7-fresh-consumer-v1/checkpoint.json); complete physical matrix and independent consumer physical input remain open",
         "Actual Windows text scaling, complete native visual/customization and normal-motion acceptance",
         "Native ARM64 runtime verification",
         "Final component acceptance and delivery"
@@ -4385,6 +4385,16 @@
           "focusedPhysicalRoutesPassed": true,
           "nativeClipboardPasteVerified": true,
           "fullPhysicalInputMatrixVerified": false,
+          "nativeComponentAccepted": false
+        },
+        "currentV7IndependentConsumer": {
+          "checkpoint": "docs/evidence/otp-input-v7-fresh-consumer-v1/checkpoint.json",
+          "packageVersion": "0.1.0-preview.20261027.7",
+          "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+          "sourceStatesPassed": 60,
+          "behaviorCasesPassed": 32,
+          "processExitCode": 0,
+          "physicalInputVerified": false,
           "nativeComponentAccepted": false
         }
       }

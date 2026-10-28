@@ -74,3 +74,12 @@ The rejecting example retained `482`; the secure example added a masked digit.
 No new library implementation or fixture was needed. The catalog exited after
 the test, but its exit code was not captured. Full physical interaction,
 scaling, visual and ARM64 acceptance remain open.
+
+The [fresh-cache v7 independent consumer checkpoint](evidence/otp-input-v7-fresh-consumer-v1/checkpoint.json)
+reuses the existing hidden package fixture with the exact released Orchard DLL.
+It passes 60 pinned source states, 32 controlled/lifecycle cases, 60 captures,
+1,236 isolation guards, and 5.76 million audited pixels; the process exits
+zero. This verifies current-package public API, resources, theme paint and
+caller-owned edit behavior in a separate package-reference application. Its
+hidden probe does not send hardware input or use the Windows clipboard, so the
+catalog foreground result above and this consumer result retain separate scopes.
