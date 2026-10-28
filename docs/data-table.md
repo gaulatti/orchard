@@ -13,6 +13,17 @@ so it does not establish a performance improvement or regression. The full
 120-profile matrix remains unverified for v7, and Data Table performance
 acceptance remains open.
 
+A separate [v7 phase diagnostic](evidence/data-table-v7-phase-split-v1/checkpoint.json)
+replayed that same package-matching catalog once after the earlier raw reports
+were cleaned. All 20 semantic operations pass. Next-page processing took 240.3
+ms in synchronous mutation and 1,498.6 ms afterward across the fixture's three
+dispatcher/layout passes, for 1,738.9 ms total. The post-mutation interval
+alone exceeds the one-second total budget in this run. It includes dispatcher
+idles and native layout, not isolated layout CPU time. The process-wide GC
+pause was 411.2 ms. This points subsequent work at the post-mutation path;
+optimizing caller row producers or reconciliation alone cannot make this run
+pass. It is one diagnostic process, not a new median or a library improvement.
+
 The published `0.1.0-preview.20261027.5` package-matching x64 catalog ZIP was
 extracted and run through three independent sequential focused 16,384-row,
 page-100 replays. All 20 semantic, original-content and unload operations

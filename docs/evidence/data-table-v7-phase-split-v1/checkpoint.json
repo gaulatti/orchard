@@ -1,0 +1,27 @@
+{
+  "scope": "One focused 16,384-row/page-100 phase diagnostic on the exact published v7 package-matching x64 catalog",
+  "priorThreeRunMedian": "docs/evidence/data-table-v7-paging-median/checkpoint.json",
+  "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "catalogHostSha256": "7b33721d26d3db0ad4319fdbaf28a69d6897df34bbaed6d66c03a75f199d467c",
+  "output": "artifacts/current/data-table-v7-phase-split-v1",
+  "rawReportSha256": "c5ab715d0b142e32ce9604014d6b51c06a203b499367a877a60142d3bbef8221",
+  "auditSha256": "640a39c356e23b3f3c412ff42484d799ba5747f67802191ce89ae6ae5e691eca",
+  "processExitSha256": "31f97fda3513098a7e191ed574ae0cb05bb1d785bea950b4c76372b66aabc7f1",
+  "processExitCode": 0,
+  "semanticOperationsPassed": 20,
+  "nextPage": {
+    "synchronousMutationMilliseconds": 240.3018,
+    "postMutationThreeDispatcherLayoutPassMilliseconds": 1498.6424,
+    "totalMilliseconds": 1738.9442,
+    "managedAllocatedBytes": 19013360,
+    "gcPauseMilliseconds": 411.206
+  },
+  "page100BudgetMilliseconds": 1000,
+  "interpretation": "In this run, post-mutation dispatcher/layout time alone exceeded the total budget; mutation-only changes cannot meet that budget without changing the post-mutation path. The post-mutation interval includes dispatcher idles and native layout, not isolated CPU time.",
+  "singleProcessDiagnosticOnly": true,
+  "newPerformanceImprovementClaimed": false,
+  "full120ProfileMatrixVerified": false,
+  "dataTableAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
