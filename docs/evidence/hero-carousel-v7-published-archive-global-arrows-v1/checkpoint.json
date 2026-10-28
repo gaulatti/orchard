@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T00:19:43Z",
+  "scope": "Physical owning-window arrow input and native search exclusion in the extracted published v7 x64 catalog",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "extractedCatalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "extractedLibrarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "method": "Launched the hash-verified extracted catalog, opened the Hero Carousel fixture, reset to slide 0, clicked its navigation button outside the carousel, then used physical Right and Left keys through Computer Use and read the live WinUI index; repeated with the native component-search editor focused",
+  "observations": {
+    "systemDark": {
+      "outsideButtonRightIndex": [0, 1],
+      "outsideButtonLeftIndex": [1, 0],
+      "rightInFocusedNativeSearchIndex": [1, 1]
+    },
+    "explicitLight": {
+      "outsideButtonRightIndex": [0, 1],
+      "outsideButtonLeftIndex": [1, 0],
+      "rightInFocusedNativeSearchIndex": [0, 0]
+    }
+  },
+  "catalogProcessExited": true,
+  "exitCodeCaptured": false,
+  "limitations": {
+    "fullInputFocusMatrixVerified": false,
+    "fullSourceVisualReviewVerified": false,
+    "scalingMotionPerformanceVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}

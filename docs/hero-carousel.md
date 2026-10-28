@@ -12,8 +12,8 @@ consumer's DLL and assembly match the v7 package checkpoint. In both explicit
 Dark and Light, physical Right then Left from an outside focused button changed
 index `0 → 1 → 0`; Right from a focused native text editor kept index `0`.
 Both consumer processes closed. Exit codes were not captured, and this check
-does not establish the same arrow path in the published catalog or the full
-input/focus and visual matrices.
+does not by itself establish the same arrow path in the published catalog or
+the full input/focus and visual matrices.
 
 The [published v7 independent consumer inactive keyboard checkpoint](evidence/hero-carousel-v7-package-inactive-keyboard-v1/checkpoint.json)
 uses the same byte-matched package in separate Dark and Light runs. With the
@@ -32,6 +32,15 @@ The archive, executable and library hashes match the released v7 files. The
 catalog process closed; its exit code was not captured. The full input/focus,
 visual, scaling, motion and performance matrices and native ARM64 runtime remain
 open, so the component is still in progress.
+
+The [published v7 extracted catalog global-arrow checkpoint](evidence/hero-carousel-v7-published-archive-global-arrows-v1/checkpoint.json)
+tests the other focused input boundary in that same released binary. After
+resetting to slide `0` and clicking the catalog navigation button, physical
+Right and Left changed the visible index `0 → 1 → 0` in system Dark and explicit Light.
+Right from the focused native component-search editor left the index unchanged
+in both themes. The catalog process closed, though its exit code was not
+captured. Broader focus, visual, scaling, motion, performance and ARM64 runtime
+checks remain open.
 
 A [separate independent local NuGet-consumer foreground check](evidence/hero-carousel-current-package-foreground-v1/checkpoint.json)
 exercises the user-selected input behavior with the byte-matched
