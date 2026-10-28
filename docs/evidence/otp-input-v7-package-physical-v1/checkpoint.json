@@ -1,0 +1,29 @@
+{
+  "scope": "Focused physical OTP Input in an independent x64 consumer of the published v7 NuGet package",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "restoredCachePackageMatched": true,
+  "packageConsumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerExeSha256": "270f1bf79a0bf9177962b93f4e3b0be6d2a49fabbcdc9dd21f3c7296ab1a0918",
+  "consumerDllSha256": "7aec9a177ed659d085da988c341ea20199ebf9759e5ef664f24ed85e0efa9c2a",
+  "consumerFixture": "tests/PackageConsumer/OtpInputForegroundWindow.cs",
+  "probe": "scripts/verify-otp-input-consumer-desktop.ps1",
+  "probeSha256": "74ebadf83c77a1c51e19447a433bd19c32938011f159bab27e41b5b270e0d2cf",
+  "runs": {
+    "Light": { "report": "../otp-input-v7-package-physical-light-v1/otp-consumer-desktop.json", "reportSha256": "650f0eb768fc9c712c08c9b5e75ebf734af07673ec61556a2cefac1e865ea83e", "capture": "../otp-input-v7-package-physical-light-v1/otp-consumer.png", "captureSha256": "b119166210e09c4fc05743927bdae8a78aa686788ddbceb5c0d95f6b4e130025", "passed": true, "processExitCode": 0 },
+    "Dark": { "report": "../otp-input-v7-package-physical-dark-v1/otp-consumer-desktop.json", "reportSha256": "bdc4d99d4f2ff816b93e82e2c5ab71d4647f2ab8f2a41433519e9cf09bb8edf8", "capture": "../otp-input-v7-package-physical-dark-v1/otp-consumer.png", "captureSha256": "e52ecbb7e154f20aecadf1decbe1935d0d103f144cb720cd36f2e910868c6594", "passed": true, "processExitCode": 0 }
+  },
+  "physicalChecks": [
+    "Pointer focus and digit 7 request accepted caller value 4827 and advance to fifth slot",
+    "Backspace from empty fifth slot requests caller value 482 and focuses fourth slot",
+    "Pointer digit 9 requests 4829 while rejecting caller retains 482 and restores empty fourth editor",
+    "Secure fourth editor exposes native IsPassword metadata and physical digit 5 increases the accepted caller value length from three to four without displaying its value"
+  ],
+  "normalConsumerRuntime": { "report": "../otp-input-v7-package-physical-light-v1/general-runtime.json", "reportSha256": "ec83fe7f58c4d5199a1cc5790cfcee275cb8fe2db03bcd0be4d5d30202c96582", "passed": true, "processExitCode": 0 },
+  "builds": { "x64ConsumerPublishPassed": true, "arm64ConsumerCompilePassed": true, "arm64ConsumerDllSha256": "7d6298568a5d3d62f7845edd5d60ccf03ab14ed978dbb2f99e6b3fb1dcb7df57", "arm64Warnings": 0, "arm64NativeRuntimeVerified": false, "initialArm64NoRestoreFailure": "NETSDK1047: the x64 assets file lacked win-arm64; a correct ARM64 restore and build then passed" },
+  "limits": { "completePhysicalInputMatrixVerified": false, "fullVisualAndScalingReviewVerified": false, "nativeArm64RuntimeVerified": false, "componentAccepted": false },
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

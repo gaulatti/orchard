@@ -83,3 +83,15 @@ zero. This verifies current-package public API, resources, theme paint and
 caller-owned edit behavior in a separate package-reference application. Its
 hidden probe does not send hardware input or use the Windows clipboard, so the
 catalog foreground result above and this consumer result retain separate scopes.
+
+The [published v7 independent-consumer physical checkpoint](evidence/otp-input-v7-package-physical-v1/checkpoint.json)
+now closes a focused package-input gap. A separate visible consumer, built with
+the exact released NuGet DLL, passed physical fourth-slot entry, empty-slot
+Backspace compaction, caller rejection/restoration and native protected secure
+entry in both Light and Dark. Each foreground process exited zero; the normal
+package-consumer runtime also passed after the fixture was added. The ARM64
+consumer compiles with no warnings, but has not run on native ARM64 hardware.
+The Light/Dark captures show the final fictional values without clipped slots;
+they do not prove full visual parity. Other input routes, scaling, motion,
+complete visual review and native ARM64 execution remain open, so OTP Input is
+still not an accepted inventory entry.

@@ -343,6 +343,13 @@ public partial class App : Application
                 throw new ArgumentException("Select foreground probe requires --select-theme Light or Dark.");
             window=new SelectForegroundWindow(theme);window.Activate();return;
         }
+        if(arguments.Contains("--probe-otp-foreground"))
+        {
+            var themeIndex=Array.IndexOf(arguments,"--otp-theme");
+            if(themeIndex<0||themeIndex+1>=arguments.Length||!Enum.TryParse<ElementTheme>(arguments[themeIndex+1],out var theme)||theme is not (ElementTheme.Light or ElementTheme.Dark))
+                throw new ArgumentException("OTP foreground probe requires --otp-theme Light or Dark.");
+            window=new OtpInputForegroundWindow(theme);window.Activate();return;
+        }
         if(arguments.Contains("--probe-hero-foreground"))
         {
             var themeIndex=Array.IndexOf(arguments,"--hero-theme");
