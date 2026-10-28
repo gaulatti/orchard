@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": 72,
+  "guardChecks": 589,
+  "isolated": true,
+  "visibleRuntimeVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "catalogSha256": "7b33721d26d3db0ad4319fdbaf28a69d6897df34bbaed6d66c03a75f199d467c",
+  "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a"
+}

@@ -192,3 +192,16 @@ also stopped before input on a stale foreground “Open With” dialog; the
 unchanged retry passed. The v5 ARM64 catalog [builds with both demo XBF files](evidence/preview-v5-arm64-build/checkpoint.json)
 but has not run on ARM64 hardware. Broader visual/scaling and package catalog
 qualification remain open.
+
+The published `0.1.0-preview.20261027.7` x64 catalog archive now passes the
+same 72 hidden Monitoring/Editorial checks and 589 isolation guards in Light
+and Dark, with no resource or binding diagnostics. The suite covers ordered
+Editorial category/author relations, local save, validation and discard
+decisions; its auditor rejects 25 damaged receipts. The
+[v7 workspace checkpoint](evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json)
+binds those results to the exact NuGet-matching DLL and verified release ZIP.
+The earlier [visible relationship walkthrough](evidence/editorial-relations-source-v1/checkpoint.json)
+used demo source unchanged at the v7 release tag. That visible source evidence
+and the published hidden replay cover different boundaries; neither proves a
+complete published-archive input matrix, visual comparison, scaling or native
+ARM64 execution.

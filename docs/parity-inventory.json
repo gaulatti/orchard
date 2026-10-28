@@ -8917,7 +8917,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Current v5 package-matching source catalog passes Light/Dark Monitoring review focus, Escape and retained update; extracted x64 v5 ZIP passes 72 hidden checks and Monitoring Light pointer/keyboard review path (docs/evidence/catalog-v5-archives/checkpoint.json); complete broader extracted-catalog focus and input matrix",
+        "Published v7 x64 ZIP passes 72 hidden Monitoring/Editorial checks and 589 isolation guards in Light/Dark (docs/evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json); extracted x64 visible Monitoring review/update passed (docs/evidence/catalog-v7-x64/checkpoint.json); complete broader input and focus matrix",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8933,9 +8933,11 @@
         "fictional local data"
       ],
       "latestQualifiedNativeEvidence": {
-        "report": "docs/evidence/catalog-v5-demos/hidden-workspaces.json",
-        "audit": "docs/evidence/catalog-v5-demos/audit.json",
-        "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+        "checkpoint": "docs/evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json",
+        "report": "docs/evidence/catalog-v7-workspaces-hidden-v1/hidden-workspaces.json",
+        "audit": "docs/evidence/catalog-v7-workspaces-hidden-v1/audit.json",
+        "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+        "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
         "checksAcrossBothDemos": 72,
         "guardsAcrossBothDemos": 589,
         "isolated": true,
@@ -8983,7 +8985,7 @@
       "documentation": "docs/workspace-demos.md",
       "referenceContract": "tests/Reference/WorkspaceDemos.json",
       "remaining": [
-        "Current v5 package-matching source catalog passes Light/Dark Editorial search/selection and edit/save/dirty-decision paths; extracted x64 v5 ZIP passes 72 hidden checks and Editorial Dark pointer/keyboard edit path (docs/evidence/catalog-v5-archives/checkpoint.json); status/media/category/author source-fixture paths pass (docs/evidence/editorial-relations-source-v1/checkpoint.json); complete broader extracted-catalog input and focus matrix",
+        "Published v7 x64 ZIP passes 72 hidden Monitoring/Editorial checks, including ordered relations and local save (docs/evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json); extracted x64 visible search/edit and unchanged-source visible status/media/category/author paths pass; complete broader input and focus matrix",
         "visual comparison",
         "display/text scaling",
         "native ARM64 runtime acceptance"
@@ -8997,9 +8999,11 @@
         "fictional local data"
       ],
       "latestQualifiedNativeEvidence": {
-        "report": "docs/evidence/catalog-v5-demos/hidden-workspaces.json",
-        "audit": "docs/evidence/catalog-v5-demos/audit.json",
-        "librarySha256": "f94b2ae759db7046d4341ee91b36a2d996833c63ba222f9e49267f4b37c792bc",
+        "checkpoint": "docs/evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json",
+        "report": "docs/evidence/catalog-v7-workspaces-hidden-v1/hidden-workspaces.json",
+        "audit": "docs/evidence/catalog-v7-workspaces-hidden-v1/audit.json",
+        "archiveSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+        "librarySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
         "checksAcrossBothDemos": 72,
         "guardsAcrossBothDemos": 589,
         "isolated": true,
