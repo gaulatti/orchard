@@ -350,6 +350,13 @@ public partial class App : Application
                 throw new ArgumentException("OTP foreground probe requires --otp-theme Light or Dark.");
             window=new OtpInputForegroundWindow(theme);window.Activate();return;
         }
+        if(arguments.Contains("--probe-segmented-foreground"))
+        {
+            var themeIndex=Array.IndexOf(arguments,"--segmented-theme");
+            if(themeIndex<0||themeIndex+1>=arguments.Length||!Enum.TryParse<ElementTheme>(arguments[themeIndex+1],out var theme)||theme is not (ElementTheme.Light or ElementTheme.Dark))
+                throw new ArgumentException("Segmented Control foreground probe requires --segmented-theme Light or Dark.");
+            window=new SegmentedControlForegroundWindow(theme);window.Activate();return;
+        }
         if(arguments.Contains("--probe-hero-foreground"))
         {
             var themeIndex=Array.IndexOf(arguments,"--hero-theme");

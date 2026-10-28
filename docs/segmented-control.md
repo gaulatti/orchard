@@ -64,3 +64,16 @@ end left Detail selected. Home selected Brief, End selected Detail, and Tab move
 to the selected Detail enum in the next group. This check does not establish RTL,
 independent-consumer foreground input, display/text scaling, hardware-device
 input or ARM64 runtime.
+
+The [published v7 independent-consumer RTL checkpoint](evidence/segmented-control-v7-consumer-rtl-physical-v1/checkpoint.json)
+closes that focused x64 input gap. A visible caller-owned group uses the unchanged
+v7 NuGet library, with original fictional values and a disabled option. In both
+Light and Dark, physical Left/Right followed RTL order, Home/End skipped the
+disabled option, Control+Left moved focus without changing the selected value,
+Space selected the focused option, and a pointer click restored the caller's
+East value. Both independent processes exited with code zero. The retained
+screenshots were inspected for visual order and readable theme paint. Run
+`scripts/verify-segmented-consumer-desktop.ps1` against a fresh independent
+consumer build of the pinned package to repeat this check. The library source
+did not change. Full visual/scaling review and native ARM64 runtime remain open;
+the Segmented Control entry is still in progress.

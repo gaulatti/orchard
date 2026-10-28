@@ -1,0 +1,45 @@
+{
+  "scope": "Physical RTL Segmented Control input in an independent x64 consumer of the published v7 NuGet package",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerExeSha256": "65989ebf098ba212bdfb92b49cf278a438a0fc4665f299698ba257bd4f13edb6",
+  "consumerFixture": "tests/PackageConsumer/SegmentedControlForegroundWindow.cs",
+  "probe": "scripts/verify-segmented-consumer-desktop.ps1",
+  "probeSha256": "ca3bb877fa79dc458ec532040f539cf551ad7ba6bd5782155052861c8232e5f9",
+  "independentConsumerBuildPassed": true,
+  "runs": {
+    "Light": {
+      "report": "light.json",
+      "reportSha256": "23a142062ad327bf1f9fa73052e38069aed764d8e8c882be7fd74506d983ddaa",
+      "capture": "light.png",
+      "captureSha256": "a4251dc136819c3d8c69875cf45a084494615a14cd5f49632f09bb62c1b09451",
+      "passed": true,
+      "processExitCode": 0
+    },
+    "Dark": {
+      "report": "dark.json",
+      "reportSha256": "4d757c52b4f415925c1a37a6a754797dc4f1193124602af373c75fb7a1c7b8ce",
+      "capture": "dark.png",
+      "captureSha256": "9f7c02c3e65481814db1c2140c629eb387696da12f875eeb27c3e0aa185c27ba",
+      "passed": true,
+      "processExitCode": 0
+    }
+  },
+  "physicalChecks": [
+    "RTL visual order is Closed, West, East while caller value starts at east",
+    "Left selects West and Right selects East with native focus",
+    "End selects the last enabled option and Home selects the first enabled option",
+    "Control+Left moves focus to West while preserving the selected East value",
+    "Space selects the focused West option and pointer click selects East",
+    "Disabled Closed option stays disabled and is skipped"
+  ],
+  "screenCapturesInspected": true,
+  "librarySourceChanged": false,
+  "componentAccepted": false,
+  "remaining": ["Complete Segmented Control visual and scaling review", "Native ARM64 runtime"],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

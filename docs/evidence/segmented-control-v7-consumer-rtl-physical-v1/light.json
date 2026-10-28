@@ -1,0 +1,28 @@
+{
+  "format": "orchard-segmented-control-consumer-desktop-v1",
+  "theme": "Light",
+  "packageConsumerExeSha256": "65989ebf098ba212bdfb92b49cf278a438a0fc4665f299698ba257bd4f13edb6",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "passed": true,
+  "physicalPointerAndKeyboardSent": true,
+  "osSettingsChanged": false,
+  "componentAccepted": false,
+  "steps": {
+    "visualOrder": [
+      138.0,
+      196.0,
+      74.0
+    ],
+    "leftSelected": "Selection: west",
+    "rightSelected": "Selection: east",
+    "controlLeftKeptSelection": "Selection: east",
+    "spaceSelected": "Selection: west",
+    "pointerSelectedEast": {
+      "x": 220,
+      "y": 157,
+      "option": "East"
+    }
+  },
+  "processExited": true,
+  "processExitCode": 0
+}
