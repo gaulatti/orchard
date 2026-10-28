@@ -11,6 +11,14 @@
     "automationFromPointAtItemCenter": "PopupHost for both owned and working unowned menus; this does not identify the intercepting layer",
     "causeEstablished": false
   },
+  "nativeOwnedPresenterTrial": {
+    "sourceRetained": false,
+    "physicalModal": { "passed": true, "report": "artifacts/current/context-menu-owned-native-trial-modal-v1/context-menu-desktop.json", "sha256": "4fcddcfd50967e629918c08f578a805cf4a949616fb0c1d354adce2d829b3488" },
+    "physicalNonmodalOutside": { "passed": true, "report": "artifacts/current/context-menu-owned-native-trial-nonmodal-v1/context-menu-desktop.json", "sha256": "e67f9be0a3792a5b9d98964454120947ca6f9080e46b46a38611575fa0e8b3c7" },
+    "existingOwnerFixture": { "passed": false, "reason": "Expected portaled surface absent", "report": "artifacts/current/context-menu-owned-native-trial-modal-fixture-v1/context-menu-modal.json", "sha256": "22f49a08cf8c89ebe427cd69d6489b4afdc544e8e43cbcfc28bcae0fdc06b22b" },
+    "upperOwnerProbe": "Process exited 0xc000027b before writing a result; upper-owner shielding was not verified",
+    "qualified": false
+  },
   "reports": [
     { "file": "artifacts/current/context-menu-owned-pointer-trace-v2/context-menu-desktop.json", "sha256": "7a52a4d26c2cceb0cb3d82e5019e42bcd44f8890b9e6f9d14f58b41a4da44490" },
     { "file": "artifacts/current/context-menu-owned-pointer-trace-v2/failure-tree.json", "sha256": "ae651b31f341843b169964d7900e5e7481550bb4d029b9d8734ee66038921513" },
