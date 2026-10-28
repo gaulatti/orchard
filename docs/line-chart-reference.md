@@ -44,6 +44,16 @@ At width 640 with the default two-series specimen, the plot runs X=60..620
 and Y=10..225. Hiding the legend increases the plot bottom to 265. A narrow
 240px chart wraps its legend and reduces the plot bottom to 201.
 
+The pinned component does not set `allowDataOverflow` on either axis.
+Recharts 3.8.1 defaults both axes to `false` and creates a line-specific plot
+clip only when an axis enables overflow. Orchard's default `plot.Clip = null`
+therefore follows this source contract; adding a plot rectangle clip would
+incorrectly trim source-permitted line edges. Chart-viewport overflow and
+the rendered edge appearance still need native visual review. See the pinned
+[component](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/line-chart.tsx),
+[axis defaults](https://github.com/recharts/recharts/blob/v3.8.1/src/state/selectors/axisSelectors.ts)
+and [conditional clip](https://github.com/recharts/recharts/blob/v3.8.1/src/cartesian/GraphicalItemClipPath.tsx).
+
 Each series uses its key/name unchanged, an explicit consumer color or its
 index in the shared ten-color palette, a monotone curve, stroke width 2 and no
 ordinary dots. Active dots have radius 5, stroke width 2 and the card-resource
@@ -246,10 +256,12 @@ The complete local x64 catalog passes Light/Dark at
 `artifacts/smoke-line-interaction-all`; hosted ARM64 interaction remains required.
 
 Remaining acceptance includes complete text/paint/legend and tooltip raster comparison,
-source line/tooltip animation, plot clipping, duplicate
+source line/tooltip animation, chart-viewport edge review, duplicate
 categories, date/object/boolean plotting and raw tooltip conversion, consumer
 overrides, complete unload/reload and retemplating, measured collection performance,
-contrast, Narrator, display/text scaling and native ARM64 checks. The inventory
+component accessibility metadata, display/text scaling and native ARM64 checks.
+Narrator and OS contrast campaigns are excluded by the
+[library scope](library-scope.md). The inventory
 stays in progress; this control is not an accepted complete chart component.
 
 The catalog's retained interaction sequence now waits for actual routed key

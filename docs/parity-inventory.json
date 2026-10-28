@@ -780,7 +780,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Complete source/native text, paint and tooltip raster comparison, source line/tooltip motion and plot clipping",
+        "Complete source/native text, paint and tooltip raster comparison, source line/tooltip motion and chart-viewport edge review; the pinned component's default axes do not enable Recharts plot clipping (docs/line-chart-reference.md)",
         "Audit every data conversion, lifecycle, duplicate category and consumer override boundary; measure collection performance",
         "Verify native x64/ARM64 runtime, independent package, display/text scaling",
         "See docs/line-chart-reference.md for the frozen contract and current evidence"
