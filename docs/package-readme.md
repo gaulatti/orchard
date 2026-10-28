@@ -119,16 +119,19 @@ and placement. Caller actions, commands, bindings and content remain native.
 Owner teardown retires its native marker even after canceled closing. The menu
 peer retains original item peers; live content, theme, presenter styles, RTL and
 viewport changes reflow through native layout. Custom presenter templates must
-retain `PART_ContextPortalSlot` and `PART_ContextSurface`. Context gestures,
-actual focus/key/pointer routing, source placement/raster/motion and ARM64
-runtime acceptance remain open.
+retain `PART_ContextPortalSlot` and `PART_ContextSurface`. Unowned x64 menus
+pass physical keyboard opening, Escape, right-click and original-item pointer
+selection. Under an active modal owner, a physical item click currently
+dismisses the menu without invoking its original action. Complete focus,
+source placement/raster/motion and ARM64 runtime acceptance remain open.
 
 `IsModal` defaults to `true`. Bind it to `false` to retain outside input while
 the original context menu surface is open, including outside a modal host.
-Live changes retain original items and bindings. Nonmodal menus still obey
-their modal owner's active scope. Outside interaction requests native dismissal;
-normal closing cancellation stays supported. Target removal retires an orphaned
-popup even after cancellation. Physical input/focus routing remains unverified.
+Live changes retain original items and bindings. An unowned nonmodal menu uses
+the native presenter and WinUI outside-input pass-through; its first outside
+click activates the caller control and dismisses the menu on x64. Menus under
+an active modal owner still obey that owner's scope. Normal closing cancellation
+stays supported. Target removal retires an orphaned popup even after cancellation.
 
 `BleeckerOtpInput` displays caller-owned `Value` in `Length` native slots (six by
 default). Handle `ValueRequested` and assign the accepted value explicitly;

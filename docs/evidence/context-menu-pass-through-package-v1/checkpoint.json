@@ -1,0 +1,50 @@
+{
+  "scope": "Local x64 NuGet package and physical unowned Context Menu input from the same library DLL",
+  "date": "2026-10-28",
+  "sourceCommit": "54736c6",
+  "version": "0.1.0-context-menu-pass-through-v1-local",
+  "package": {
+    "path": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-context-menu-pass-through-v1-local.nupkg",
+    "sha256": "e6086d245d23b2d61354de3133331a716ed3e59eb0fbfa12ab821c6465f8120d",
+    "orchardDllSha256": "cf83e5724beb64eb618e2a2dacd502234a07f3d56b73b47f78785cc53c9b2ff1"
+  },
+  "releaseBuild": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "independentX64Consumer": {
+    "result": "artifacts/current/context-menu-pass-through-package-consumer-v2/result.json",
+    "resultSha256": "bd60a2f6046361564d18e26e204f0e8dfbba02311fabadc7dcdac0b11f2e10a1",
+    "runtimeSha256": "787631ef4072c558136fbf6ab04b1ffe68ce285ad2a2876be499ed022ab25a30",
+    "passed": true,
+    "cleanTemporaryConsumerRemoved": true,
+    "cleanupReceiptSha256": "7e7e4ef275d631b9048a9deae2282a2d2d592181cf53657e0b73571b76b723ea"
+  },
+  "catalogBuild": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "catalogExeSha256": "61eef8d76df87325226da13d7b70eb14bb5918ee61b997e1503a605f46e94a51",
+    "orchardDllMatchesPackage": true
+  },
+  "physicalUnownedModal": {
+    "report": "artifacts/current/context-menu-pass-through-desktop-modal-v1/context-menu-desktop.json",
+    "reportSha256": "f38eec0f3ac461f1f39ee573ee3576f31a991f579a068b629904b3045ec4069d",
+    "passed": true,
+    "keyboardOpenEscapeRightClickAndOriginalAction": true
+  },
+  "physicalUnownedNonmodal": {
+    "report": "artifacts/current/context-menu-pass-through-desktop-nonmodal-v1/context-menu-desktop.json",
+    "reportSha256": "5b74c0152d33079020d4c742ed93d39f853cf803d1d047656c75a9b3c81e43cb",
+    "passed": true,
+    "firstOutsideClickReachedOriginalAction": true
+  },
+  "knownOpenFailure": "Active modal-owner physical menu-item click dismisses without invoking its original handler; documented in context-menu-owned-physical-v1/checkpoint.json. This package candidate did not rerun that unchanged failing path.",
+  "initialConsumerRun": "An initial clean consumer could not acquire foreground input while a stray Open With window was in front; the window was closed and the fresh v2 run passed.",
+  "packagePublishedExternally": false,
+  "githubActionsTriggered": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0
+}
