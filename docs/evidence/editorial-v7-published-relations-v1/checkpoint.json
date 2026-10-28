@@ -1,0 +1,55 @@
+{
+  "scope": "Visible category and author relationship input through the published v7 extracted x64 Editorial component demo",
+  "recordedAt": "2026-10-27T23:16:16-04:00",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "catalogZipSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "catalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "packageAssemblyMatchesCatalog": true,
+  "method": "Visible Windows catalog operated with Computer Use sky.click pointer input and UI Automation state after settled renders; UIA set_value was used only to find the Editorial demo in the catalog navigation.",
+  "darkObserved": [
+    "Opened Harbor reading room with initial Local category and Ada Example author.",
+    "Selected Culture and moved it before Local; the visible editor and UI Automation order became Culture 1, Local 2.",
+    "Selected Mira Example and moved her before Ada Example; the order became Mira 1, Ada 2.",
+    "Saved the fictional local sample; the dirty summary cleared and Save local sample became disabled.",
+    "Navigated to Authors and back to Pages, reopened Harbor reading room, and observed both saved relation orders."
+  ],
+  "lightObserved": [
+    "Switched the catalog's own appearance selector to Light without changing Windows settings.",
+    "Selected Learning after Culture and Local; the visible order became Culture 1, Local 2, Learning 3.",
+    "Selected Sam Example and moved him before Ada Example; the visible order became Mira 1, Sam 2, Ada 3.",
+    "Saved the fictional local sample; the dirty summary cleared and Save local sample became disabled.",
+    "Navigated to Authors and back to Pages, reopened Harbor reading room, and observed both saved relation orders."
+  ],
+  "captures": [
+    {
+      "file": "light-unsaved-relations.jpg",
+      "sha256": "22e26295618560cfa8afdfc0b4412f616d9f66d636cd00979aa13462bce56416",
+      "meaning": "Light theme, selected and reordered relations before save"
+    },
+    {
+      "file": "light-saved-relations.jpg",
+      "sha256": "3bd0f5c8bd4cb6fbb2b04d584c025de62dbe16f382e8fa2b3a76e4f77001b952",
+      "meaning": "Light theme, relations retained after save and reopening"
+    },
+    {
+      "file": "dark-saved-relations.jpg",
+      "sha256": "7dd254ca5533beb2d3e8afa1f24eae81b03efe1fd5a66e65fe35d489bbdba54b",
+      "meaning": "Dark theme, retained relations visible in the same published catalog session"
+    }
+  ],
+  "physicalPointerInputSent": true,
+  "keyboardRelationInputVerified": false,
+  "catalogProcessExited": true,
+  "catalogExitCodeCaptured": false,
+  "osSettingsChanged": false,
+  "narratorLaunched": false,
+  "fullVisualComparisonVerified": false,
+  "displayAndTextScalingVerified": false,
+  "fullPublishedArchiveInputMatrixVerified": false,
+  "nativeArm64RuntimeVerified": false,
+  "editorialCompositionAccepted": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}

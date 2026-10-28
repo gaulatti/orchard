@@ -223,5 +223,15 @@ extracted x64 archive, using its exact released NuGet DLL. Both verifiers passed
 their catalog processes exited, and the filtered and dirty-decision screenshots
 were inspected. With the earlier extracted Dark search and Light edit, those
 specific Editorial demo paths now have both-theme archive evidence. Visible
-relationship input, the remaining archive input matrix, full visual/scaling
-acceptance and native ARM64 runtime remain open.
+relationship input has a focused published-archive check below; the remaining
+archive input matrix, full visual/scaling acceptance and native ARM64 runtime
+remain open.
+
+The [published v7 relationship walkthrough](evidence/editorial-v7-published-relations-v1/checkpoint.json)
+uses visible pointer input in the extracted x64 catalog. In Dark, Culture/Local
+and Mira/Ada ordering survived local save, navigation to Authors and reopening
+Harbor reading room. In Light, Learning and Sam were added, Sam moved before
+Ada, and the Culture/Local/Learning and Mira/Sam/Ada orders survived the same
+save/navigation cycle. The checkpoint retains three inspected captures and the
+exact released file hashes. Relationship keyboard input, the full archive
+matrix, visual parity, scaling and native ARM64 runtime remain open.
