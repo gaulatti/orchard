@@ -1,0 +1,74 @@
+{
+  "format": "orchard-label-consumer-desktop-v1",
+  "passed": true,
+  "consumerExeSha256": "3330c7d22c9a565835de9f1dbbc18d66d448d6b99144563dd26a78d74ef17a25",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "mode": "System",
+  "route": {
+    "toggleName": "Switch to light theme",
+    "tabToInput": true,
+    "labelPointer": {
+      "x": 717,
+      "y": 609
+    },
+    "pointerFocus": "Input",
+    "valueBefore": "Harbor update",
+    "valueAfter": "xHarbor update",
+    "inputLabeledBy": "PackageFieldLabel"
+  },
+  "nested": {
+    "labelPointer": {
+      "x": 717,
+      "y": 707
+    },
+    "captionFocus": "PackageRichInput",
+    "helpPointer": {
+      "x": 784,
+      "y": 707
+    },
+    "helpAction": "Help: 1",
+    "helpFocus": "PackageRichHelp",
+    "pointerChild": {
+      "x": 884,
+      "y": 707
+    },
+    "pointerAction": "Pointer: 2",
+    "pointerFocus": "PackageRichHelp",
+    "inputValueUnchanged": true,
+    "inputLabeledBy": "PackageRichLabel"
+  },
+  "nestedKeyboard": {
+    "tabFromPrecedingInputToHelp": true,
+    "spaceAction": "Help: 3",
+    "enterAction": "Help: 4",
+    "tabSkipsNonTabbablePointer": true,
+    "linkedInputUnchanged": true,
+    "linkedInputLabeledBy": "PackageRichLabel"
+  },
+  "physicalPointerAndKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 21920,
+  "disabledTarget": {
+    "labelPointer": {
+      "x": 717,
+      "y": 840
+    },
+    "inputEnabled": false,
+    "inputLabeledBy": "PackageDisabledTargetLabel",
+    "valueBefore": "Protected draft",
+    "focusAfterClick": "",
+    "enabledInputValueAfterClick": "xHarbor update",
+    "valueAfterClick": "Protected draft"
+  },
+  "capture": {
+    "file": "system-corrected.png",
+    "width": 1100,
+    "height": 760,
+    "sha256": "038ce9fbc9ebf63f72b7b4ea3192caaa46f29d46b5794f9fe97bc370c18e4627"
+  },
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}

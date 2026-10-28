@@ -169,3 +169,13 @@ also pass in all three runs, and each consumer exits zero. The updated fixture
 publishes for x64 and ARM64; native ARM64 execution, broader nested-control
 input, exact rich-content rendering and actual scaling remain open. Light and
 Dark captures were inspected and retained with the checkpoint.
+
+The [same published-v7 consumer's keyboard replay](evidence/label-v7-nested-keyboard-consumer-v1/checkpoint.json)
+passes physical Tab from the preceding input to the tabbable Help child, Space
+and Enter activation, then Tab past the non-tabbable Pointer child to the linked
+input in System, Light and Dark. The child actions do not change that input or
+its label association, and all three processes exit zero. The retained first
+System report failed because the probe expected forward Tab to reach a child
+that appears earlier than the linked input; the corrected route follows the
+fixture's native order. This check does not establish the broader nested-control
+matrix, exact focus pixels, scaling or native ARM64 runtime.

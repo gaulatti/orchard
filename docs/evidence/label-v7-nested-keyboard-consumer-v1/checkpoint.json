@@ -1,0 +1,31 @@
+{
+  "scope": "Physical Tab, Space and Enter on rich Label child controls in an independent x64 consumer of the published v7 NuGet package",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerFixture": "tests/PackageConsumer/MainWindow.xaml",
+  "fixtureSha256": "1e7c9e2d707cc69a87d3eaae1dde7f1400470a20c93d133f457d75dd53527b34",
+  "probe": "scripts/verify-label-consumer-desktop.ps1 -VerifyNestedKeyboard",
+  "probeSha256": "c816a10b1d0db2d9b8c0fb2caa6f207688f8ab50b2b616e59b717dfe9753e38a",
+  "runs": {
+    "System": { "report": "system-corrected.json", "sha256": "25e3936f920db15df7c7b81712f1ce327f9a05e4f4a04a26e94d1cde5c31237d", "passed": true, "processExitCode": 0 },
+    "Light": { "report": "light.json", "sha256": "bc51e19181a2110141eb893be4b1363b3fc21fdd3f179605a8da2cb7d8d8c28a", "capture": "light.png", "captureSha256": "4b8dff36bc3e8e6287df51a90a553ce7ba6e4a31ac7daf1d466458f035d742c0", "passed": true, "processExitCode": 0 },
+    "Dark": { "report": "dark.json", "sha256": "bae9e3990341f3ad1c39cea598c3dfb2595a87e769b65b5ca9274482829f12b5", "capture": "dark.png", "captureSha256": "d268e83b67fab7b7cf021e224d18491fced2ad316da7ca7c8498a6959f800e96", "passed": true, "processExitCode": 0 }
+  },
+  "observedInEveryRun": [
+    "Tab from the preceding input skips Label and focuses its tabbable Help child",
+    "Physical Space and Enter invoke Help once each without redirecting focus",
+    "The next Tab skips the non-tabbable Pointer child and focuses the linked input",
+    "The linked input value and LabeledBy relationship remain unchanged",
+    "The existing caption/child pointer, plain-label and disabled-target checks pass"
+  ],
+  "retainedHarnessFailure": { "report": "system.json", "sha256": "e2f612838bb9044729bc02f7e48bae6a44c1baf35001b4a27c1d93b82538c3ac", "reason": "The initial probe expected forward Tab from the rich input to reach Help, which precedes that input in the fixture. The corrected probe starts at the preceding plain input; the initial consumer process exited zero." },
+  "visualInspection": "The Light and Dark captures show the child actions and their final Help: 4 result without clipping in the consumer viewport; this is not complete rendered Label parity.",
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

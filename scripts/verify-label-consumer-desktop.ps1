@@ -3,7 +3,8 @@ param(
     [Parameter(Mandatory)][string]$Output,
     [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
     [ValidateSet('System', 'Light', 'Dark')][string]$Mode = 'System',
-    [switch]$VerifyNested
+    [switch]$VerifyNested,
+    [switch]$VerifyNestedKeyboard
 )
 
 $ErrorActionPreference = 'Stop'
@@ -39,6 +40,7 @@ $report = [ordered]@{
     mode = $Mode
     route = $null
     nested = $null
+    nestedKeyboard = $null
     physicalPointerAndKeyboardInputSent = $false
     osSettingsChanged = $false
     nativeArm64RuntimeVerified = $false
@@ -144,7 +146,7 @@ try {
     $after = $value.Current.Value
     if (-not $after.ToLowerInvariant().Contains('x')) { throw 'Physical key did not appear in the packaged Input.' }
     $report.route = [ordered]@{ toggleName = $toggle.Current.Name; tabToInput = $true; labelPointer = $position; pointerFocus = FocusedId; valueBefore = $before; valueAfter = $after; inputLabeledBy = $input.Current.LabeledBy.Current.AutomationId }
-    if ($VerifyNested) {
+    if ($VerifyNested -or $VerifyNestedKeyboard) {
         $richLabel = ById $root 'PackageRichLabel'
         $richInput = ById $root 'PackageRichInput'
         $richHelp = ById $root 'PackageRichHelp'
@@ -165,6 +167,22 @@ try {
         $pointerFocus = FocusedId
         if ($pointerFocus -eq 'PackageRichInput' -or $richValue.Current.Value -ne $richBefore) { throw 'Nested child redirected focus to or changed its linked input.' }
         $report.nested = [ordered]@{ labelPointer = $richPosition; captionFocus = 'PackageRichInput'; helpPointer = $helpPosition; helpAction = 'Help: 1'; helpFocus = $helpFocus; pointerChild = $pointerPosition; pointerAction = 'Pointer: 2'; pointerFocus = $pointerFocus; inputValueUnchanged = $true; inputLabeledBy = $richInput.Current.LabeledBy.Current.AutomationId }
+        if ($VerifyNestedKeyboard) {
+            ClickLabel $label | Out-Null
+            Wait-Until { FocusedId -eq 'Input' } 'Plain label did not refocus the preceding input before keyboard input.' | Out-Null
+            Key 0x09
+            Wait-Until { FocusedId -eq 'PackageRichHelp' } 'Tab did not move from the preceding input to the tabbable rich-label child.' | Out-Null
+            Key 0x20
+            Wait-Until { $richResult.Current.Name -eq 'Help: 3' } 'Space did not invoke the nested Help child.' | Out-Null
+            if ((FocusedId) -ne 'PackageRichHelp') { throw 'Space redirected focus away from nested Help.' }
+            Key 0x0D
+            Wait-Until { $richResult.Current.Name -eq 'Help: 4' } 'Enter did not invoke the nested Help child.' | Out-Null
+            if ((FocusedId) -ne 'PackageRichHelp') { throw 'Enter redirected focus away from nested Help.' }
+            Key 0x09
+            Wait-Until { FocusedId -eq 'PackageRichInput' } 'Tab did not skip the non-tabbable Pointer child.' | Out-Null
+            if ($richValue.Current.Value -ne $richBefore -or $richInput.Current.LabeledBy.Current.AutomationId -ne 'PackageRichLabel') { throw 'Nested keyboard input changed the linked input or its Label association.' }
+            $report.nestedKeyboard = [ordered]@{ tabFromPrecedingInputToHelp = $true; spaceAction = 'Help: 3'; enterAction = 'Help: 4'; tabSkipsNonTabbablePointer = $true; linkedInputUnchanged = $true; linkedInputLabeledBy = 'PackageRichLabel' }
+        }
     }
     $disabledValue = $disabledInput.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
     $disabledBefore = $disabledValue.Current.Value

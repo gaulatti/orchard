@@ -1,0 +1,75 @@
+{
+  "format": "orchard-label-consumer-desktop-v1",
+  "passed": true,
+  "consumerExeSha256": "3330c7d22c9a565835de9f1dbbc18d66d448d6b99144563dd26a78d74ef17a25",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "mode": "Light",
+  "route": {
+    "toggleName": "Switch to dark theme",
+    "tabToInput": true,
+    "labelPointer": {
+      "x": 743,
+      "y": 635
+    },
+    "pointerFocus": "Input",
+    "valueBefore": "Harbor update",
+    "valueAfter": "xHarbor update",
+    "inputLabeledBy": "PackageFieldLabel"
+  },
+  "nested": {
+    "labelPointer": {
+      "x": 743,
+      "y": 733
+    },
+    "captionFocus": "PackageRichInput",
+    "helpPointer": {
+      "x": 810,
+      "y": 733
+    },
+    "helpAction": "Help: 1",
+    "helpFocus": "PackageRichHelp",
+    "pointerChild": {
+      "x": 910,
+      "y": 733
+    },
+    "pointerAction": "Pointer: 2",
+    "pointerFocus": "PackageRichHelp",
+    "inputValueUnchanged": true,
+    "inputLabeledBy": "PackageRichLabel"
+  },
+  "nestedKeyboard": {
+    "tabFromPrecedingInputToHelp": true,
+    "spaceAction": "Help: 3",
+    "enterAction": "Help: 4",
+    "tabSkipsNonTabbablePointer": true,
+    "linkedInputUnchanged": true,
+    "linkedInputLabeledBy": "PackageRichLabel"
+  },
+  "physicalPointerAndKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 29472,
+  "themeTransition": "Theme accepted 1: Light",
+  "disabledTarget": {
+    "labelPointer": {
+      "x": 743,
+      "y": 866
+    },
+    "inputEnabled": false,
+    "inputLabeledBy": "PackageDisabledTargetLabel",
+    "valueBefore": "Protected draft",
+    "focusAfterClick": "",
+    "enabledInputValueAfterClick": "xHarbor update",
+    "valueAfterClick": "Protected draft"
+  },
+  "capture": {
+    "file": "light.png",
+    "width": 1100,
+    "height": 760,
+    "sha256": "4b8dff36bc3e8e6287df51a90a553ce7ba6e4a31ac7daf1d466458f035d742c0"
+  },
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}
