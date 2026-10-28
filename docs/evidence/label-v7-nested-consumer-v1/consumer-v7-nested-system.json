@@ -1,0 +1,66 @@
+{
+  "format": "orchard-label-consumer-desktop-v1",
+  "passed": true,
+  "consumerExeSha256": "3330c7d22c9a565835de9f1dbbc18d66d448d6b99144563dd26a78d74ef17a25",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "mode": "System",
+  "route": {
+    "toggleName": "Switch to light theme",
+    "tabToInput": true,
+    "labelPointer": {
+      "x": 457,
+      "y": 349
+    },
+    "pointerFocus": "Input",
+    "valueBefore": "Harbor update",
+    "valueAfter": "xHarbor update",
+    "inputLabeledBy": "PackageFieldLabel"
+  },
+  "nested": {
+    "labelPointer": {
+      "x": 457,
+      "y": 447
+    },
+    "captionFocus": "PackageRichInput",
+    "helpPointer": {
+      "x": 524,
+      "y": 447
+    },
+    "helpAction": "Help: 1",
+    "helpFocus": "PackageRichHelp",
+    "pointerChild": {
+      "x": 624,
+      "y": 447
+    },
+    "pointerAction": "Pointer: 2",
+    "pointerFocus": "PackageRichHelp",
+    "inputValueUnchanged": true,
+    "inputLabeledBy": "PackageRichLabel"
+  },
+  "physicalPointerAndKeyboardInputSent": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "componentAccepted": false,
+  "processId": 32028,
+  "disabledTarget": {
+    "labelPointer": {
+      "x": 457,
+      "y": 580
+    },
+    "inputEnabled": false,
+    "inputLabeledBy": "PackageDisabledTargetLabel",
+    "valueBefore": "Protected draft",
+    "focusAfterClick": "",
+    "enabledInputValueAfterClick": "xHarbor update",
+    "valueAfterClick": "Protected draft"
+  },
+  "capture": {
+    "file": "consumer-v7-nested-system.png",
+    "width": 1100,
+    "height": 760,
+    "sha256": "0f2ef877fdc96934f7d1cf5911cedc97fd0ed91881940c597a5ede770d7a8854"
+  },
+  "processExited": true,
+  "processExitCode": 0,
+  "cleanShutdown": true
+}

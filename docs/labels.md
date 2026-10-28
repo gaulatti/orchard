@@ -159,3 +159,13 @@ probe incorrectly expected Windows to retain focus on the previously active
 input; its failure is retained separately. Windows cleared focus, without
 focusing the disabled target. Broader nested-control input, complete rendering,
 actual scaling and native ARM64 runtime remain open.
+
+The [published-v7 independent consumer rich-label check](evidence/label-v7-nested-consumer-v1/checkpoint.json)
+passes physical caption, tabbable Help and non-tabbable Pointer action clicks in
+System, Light and Dark. The caption focuses its linked input; each child click
+invokes its consumer handler once without redirecting focus to or changing that
+input. The original association, plain-label typing and disabled-target behavior
+also pass in all three runs, and each consumer exits zero. The updated fixture
+publishes for x64 and ARM64; native ARM64 execution, broader nested-control
+input, exact rich-content rendering and actual scaling remain open. Light and
+Dark captures were inspected and retained with the checkpoint.

@@ -19,6 +19,7 @@ namespace PackageConsumer;
 public sealed partial class MainWindow : Window
 {
     private int groupedActionCount;
+    private int richLabelActionCount;
     public MainWindow()
     {
         InitializeComponent();
@@ -53,6 +54,13 @@ public sealed partial class MainWindow : Window
             : ReferenceEquals(sender, PackageGroupArchive) ? "Archive"
             : throw new InvalidOperationException("Unexpected grouped action.");
         PackageGroupResult.Text = $"{action}: {++groupedActionCount}";
+    }
+    private void OnRichLabelAction(object sender, RoutedEventArgs e)
+    {
+        var action = ReferenceEquals(sender, PackageRichHelp) ? "Help"
+            : ReferenceEquals(sender, PackageRichPointer) ? "Pointer"
+            : throw new InvalidOperationException("Unexpected rich label action.");
+        PackageRichResult.Text = $"{action}: {++richLabelActionCount}";
     }
 
     private async void OnLoaded(object sender, RoutedEventArgs e)

@@ -53,6 +53,15 @@
                 <TextBlock x:Name="Result" Text="Ready" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerLabel x:Name="PackageFieldLabel" Content="Title" Target="{Binding ElementName=Input}" />
                 <orchard:BleeckerInput x:Name="Input" Text="Harbor update" />
+                <orchard:BleeckerLabel x:Name="PackageRichLabel" AutomationProperties.Name="Consumer coverage actions" Target="{Binding ElementName=PackageRichInput}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Coverage" />
+                        <Button x:Name="PackageRichHelp" Content="Help" Click="OnRichLabelAction" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                        <Button x:Name="PackageRichPointer" Content="Pointer action" IsTabStop="False" Click="OnRichLabelAction" Style="{StaticResource BleeckerSecondaryButtonStyle}" />
+                    </StackPanel>
+                </orchard:BleeckerLabel>
+                <orchard:BleeckerInput x:Name="PackageRichInput" Text="Local coverage" />
+                <TextBlock x:Name="PackageRichResult" Text="No rich label action yet" Style="{StaticResource BleeckerBodyStyle}" />
                 <orchard:BleeckerLabel x:Name="PackageDisabledTargetLabel" Content="Unavailable title" Target="{Binding ElementName=PackageDisabledTargetInput}" />
                 <orchard:BleeckerInput x:Name="PackageDisabledTargetInput" Text="Protected draft" IsEnabled="False" />
                 <orchard:BleeckerTabs x:Name="PackageTabs" Width="480" Stretch="True" ActiveTab="overview" AutomationProperties.Name="Package tabs" />

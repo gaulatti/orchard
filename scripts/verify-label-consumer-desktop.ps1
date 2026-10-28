@@ -2,7 +2,8 @@ param(
     [Parameter(Mandatory)][string]$AppDirectory,
     [Parameter(Mandatory)][string]$Output,
     [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
-    [ValidateSet('System', 'Light', 'Dark')][string]$Mode = 'System'
+    [ValidateSet('System', 'Light', 'Dark')][string]$Mode = 'System',
+    [switch]$VerifyNested
 )
 
 $ErrorActionPreference = 'Stop'
@@ -37,6 +38,7 @@ $report = [ordered]@{
     orchardDllSha256 = $libraryHash
     mode = $Mode
     route = $null
+    nested = $null
     physicalPointerAndKeyboardInputSent = $false
     osSettingsChanged = $false
     nativeArm64RuntimeVerified = $false
@@ -80,6 +82,17 @@ function ClickToggle($element) {
     [OrchardLabelConsumerDesktop]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero)
     [OrchardLabelConsumerDesktop]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero)
     $report.physicalPointerAndKeyboardInputSent = $true
+}
+function ClickChild($element) {
+    $bounds = $element.Current.BoundingRectangle
+    if ($element.Current.IsOffscreen -or $bounds.IsEmpty -or $bounds.Width -le 0 -or $bounds.Height -le 0) { throw 'Consumer rich-label child is not visible for pointer input.' }
+    $x = [int][math]::Floor($bounds.X + $bounds.Width / 2)
+    $y = [int][math]::Floor($bounds.Y + $bounds.Height / 2)
+    if (-not [OrchardLabelConsumerDesktop]::SetCursorPos($x, $y)) { throw 'Windows rejected rich-label child pointer position.' }
+    [OrchardLabelConsumerDesktop]::mouse_event(2, 0, 0, 0, [UIntPtr]::Zero)
+    [OrchardLabelConsumerDesktop]::mouse_event(4, 0, 0, 0, [UIntPtr]::Zero)
+    $report.physicalPointerAndKeyboardInputSent = $true
+    return [ordered]@{ x = $x; y = $y }
 }
 
 $process = $null
@@ -131,6 +144,28 @@ try {
     $after = $value.Current.Value
     if (-not $after.ToLowerInvariant().Contains('x')) { throw 'Physical key did not appear in the packaged Input.' }
     $report.route = [ordered]@{ toggleName = $toggle.Current.Name; tabToInput = $true; labelPointer = $position; pointerFocus = FocusedId; valueBefore = $before; valueAfter = $after; inputLabeledBy = $input.Current.LabeledBy.Current.AutomationId }
+    if ($VerifyNested) {
+        $richLabel = ById $root 'PackageRichLabel'
+        $richInput = ById $root 'PackageRichInput'
+        $richHelp = ById $root 'PackageRichHelp'
+        $richPointer = ById $root 'PackageRichPointer'
+        $richResult = ById $root 'PackageRichResult'
+        if (-not $richLabel -or -not $richInput -or -not $richHelp -or -not $richPointer -or -not $richResult) { throw 'Independent consumer rich-label fixture is missing.' }
+        if ($richInput.Current.LabeledBy.Current.AutomationId -ne 'PackageRichLabel') { throw 'Rich consumer input lost its Label association.' }
+        $richValue = $richInput.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
+        $richBefore = $richValue.Current.Value
+        $richPosition = ClickLabel $richLabel
+        Wait-Until { FocusedId -eq 'PackageRichInput' } 'Physical rich-label caption click did not focus its input.' | Out-Null
+        $helpPosition = ClickChild $richHelp
+        Wait-Until { $richResult.Current.Name -eq 'Help: 1' } 'Physical nested Help click did not reach its consumer handler.' | Out-Null
+        $helpFocus = FocusedId
+        if ($helpFocus -eq 'PackageRichInput') { throw 'Nested Help click redirected focus to the rich-label target.' }
+        $pointerPosition = ClickChild $richPointer
+        Wait-Until { $richResult.Current.Name -eq 'Pointer: 2' } 'Physical non-tabbable child click did not reach its consumer handler.' | Out-Null
+        $pointerFocus = FocusedId
+        if ($pointerFocus -eq 'PackageRichInput' -or $richValue.Current.Value -ne $richBefore) { throw 'Nested child redirected focus to or changed its linked input.' }
+        $report.nested = [ordered]@{ labelPointer = $richPosition; captionFocus = 'PackageRichInput'; helpPointer = $helpPosition; helpAction = 'Help: 1'; helpFocus = $helpFocus; pointerChild = $pointerPosition; pointerAction = 'Pointer: 2'; pointerFocus = $pointerFocus; inputValueUnchanged = $true; inputLabeledBy = $richInput.Current.LabeledBy.Current.AutomationId }
+    }
     $disabledValue = $disabledInput.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
     $disabledBefore = $disabledValue.Current.Value
     $report.disabledTarget = [ordered]@{ labelPointer = (ClickLabel $disabledLabel); inputEnabled = $disabledInput.Current.IsEnabled; inputLabeledBy = $disabledInput.Current.LabeledBy.Current.AutomationId; valueBefore = $disabledBefore }

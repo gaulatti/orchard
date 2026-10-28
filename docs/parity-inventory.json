@@ -3843,7 +3843,7 @@
       "status": "in-progress",
       "remainingGaps": [
         "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
-        "Verify remaining disabled-target and nested-control input plus explicit-theme independent-consumer input beyond passing v7 x64 catalog and System-mode consumer routes",
+        "Finish the broader nested-control input matrix; the published v7 independent consumer now passes rich-caption and nested-button pointer routes plus disabled-target behavior in System, Light and Dark (docs/evidence/label-v7-nested-consumer-v1/checkpoint.json)",
         "Verify scaling, remaining ARM64 state acceptance and full reference parity"
       ],
       "metadataPreview": {
@@ -3872,6 +3872,15 @@
         "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
         "systemModePhysicalInputPassed": true,
         "explicitLightDarkPhysicalInputPassed": false,
+        "fullComponentAcceptance": false
+      },
+      "nestedConsumerPreview": {
+        "checkpoint": "docs/evidence/label-v7-nested-consumer-v1/checkpoint.json",
+        "packageVersion": "0.1.0-preview.20261027.7",
+        "themesPassed": ["System", "Light", "Dark"],
+        "physicalNestedPointerInputPassed": true,
+        "explicitLightDarkPhysicalInputPassed": true,
+        "nativeArm64RuntimeVerified": false,
         "fullComponentAcceptance": false
       }
     },

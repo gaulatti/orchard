@@ -1,0 +1,37 @@
+{
+  "scope": "Physical rich Label child actions in an independent x64 consumer of the published v7 NuGet package",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "release": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "consumerOrchardDllMatchesPackageEntry": true,
+  "consumerFixture": "tests/PackageConsumer/MainWindow.xaml",
+  "fixtureSha256": "1e7c9e2d707cc69a87d3eaae1dde7f1400470a20c93d133f457d75dd53527b34",
+  "fixtureCodeSha256": "db2d9339a343616e5fea3aab218ff597e73ff0f00b2c515df4dc52e001694aa5",
+  "probe": "scripts/verify-label-consumer-desktop.ps1 -VerifyNested",
+  "probeSha256": "7fb1c40d9b461cd52830de3a9255aaaeedd54649ea8b0fc795afd463d14dca33",
+  "restore": "Exact local copy of the published v7 package; third-party global NuGet cache reused",
+  "builds": {
+    "x64": { "publishExitCode": 0, "apphostMachine": "0x8664", "consumerExeSha256": "3330c7d22c9a565835de9f1dbbc18d66d448d6b99144563dd26a78d74ef17a25" },
+    "arm64": { "publishExitCode": 0, "apphostMachine": "0xaa64", "consumerExeSha256": "a3ce2bdc13187e53e7db89c88215d212d362bed4d8d497f33ece7a3f5c8d7ec9", "nativeRuntimeVerified": false }
+  },
+  "physicalRuns": {
+    "System": { "report": "consumer-v7-nested-system.json", "sha256": "14c85966c0d0b98889c427718651ee8d9717ded58e14992b8a66e6d057d508aa", "passed": true, "processExitCode": 0 },
+    "Light": { "report": "consumer-v7-nested-light.json", "sha256": "5a03af173f1d0c976807d8a6c9ef39519d344aec6bdfe2d88c0fd5ffee676e61", "capture": "consumer-v7-nested-light.png", "captureSha256": "b1efa6aebfd13c02706fc6db2c9cf5ac127bdbc170c3728b7cf5c2f71ac2ed72", "passed": true, "processExitCode": 0 },
+    "Dark": { "report": "consumer-v7-nested-dark.json", "sha256": "b6f92e40c91af68006f76c46a9670e5f03d9774ac480f92091cf636af1188538", "capture": "consumer-v7-nested-dark.png", "captureSha256": "7c58f0af85eb3e166e1cac34d7578c7a0af7ce3e2d2a378aead172c53fcc390d", "passed": true, "processExitCode": 0 }
+  },
+  "observedInEveryPhysicalRun": [
+    "Clicking rich-label caption focuses its linked input",
+    "Clicking the tabbable Help and non-tabbable Pointer action invokes each consumer handler exactly once",
+    "Child clicks do not redirect focus to or change the linked input",
+    "The linked input keeps its public LabeledBy relationship",
+    "Existing plain-label typing and disabled-target checks still pass"
+  ],
+  "consumerSmoke": { "report": "consumer-v7-nested-smoke.json", "sha256": "a6e0f00bf7e45f4a45062cf130259ab3b9c3975454f80b34b4d2f3b862f92b7d", "passed": true, "processExitCode": 0 },
+  "visualInspection": "The retained Light and Dark captures show the rich label, both child actions, unchanged input value and Orchard theme colors without clipping in this consumer viewport.",
+  "remaining": [ "Complete rich-content and disabled-cursor visual review", "Broader nested input/control matrix and actual display/text scaling", "Native ARM64 runtime and final component acceptance" ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}
