@@ -7,10 +7,26 @@
     "isolatedRestorePassed": true,
     "selfContainedPublishPassed": true,
     "consumerAssemblyMatchedPackage": true,
-    "runtimePassed": false,
-    "runtimeFailure": "The consumer could not acquire its own foreground window before component input checks. An existing Open With window retained foreground.",
-    "runtimeReport": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64/runtime.json",
-    "runtimeReportSha256": "f4738ec305c56c630cb38cba54e76c62b4bbde2a55c02da5d66084cb42c17c6a",
+    "consumerExeSha256": "65989ebf098ba212bdfb92b49cf278a438a0fc4665f299698ba257bd4f13edb6",
+    "consumerDllSha256": "881bc1c3f77b7adcf536dbca68945b33d89ab1481220e4b87f55c168c1fd2efb",
+    "initialRuntimeAttempt": {
+      "passed": false,
+      "failure": "The consumer could not acquire its own foreground window before component input checks. An updater-created Open With window retained foreground.",
+      "report": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64/runtime.json",
+      "reportSha256": "f4738ec305c56c630cb38cba54e76c62b4bbde2a55c02da5d66084cb42c17c6a"
+    },
+    "runtimeRetry": {
+      "reusedExistingFreshCacheBuild": true,
+      "processExitCode": 0,
+      "passed": true,
+      "verified": "Package resources, fonts, Light/Dark themes, layout and native action",
+      "report": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64/runtime-retry.json",
+      "reportSha256": "7c693683a2131fc84de6a27b52b6686b12db18f0c7b35faa1a273a4e315e5806",
+      "darkForegroundAcquired": true,
+      "lightForegroundAcquired": true,
+      "darkInputReportSha256": "dead85202a171882c9865fee62e75bdafb0a3b8aa3ac5834ab0c772a2283113e",
+      "lightInputReportSha256": "43bde33308f335b6d96245a6eca8d6c78dbbf4688b63a762af9a8d582482c283"
+    },
     "verifierLog": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64.log",
     "verifierLogSha256": "0e52ed8957e08ef2ad88bc96eaec6c1d5e6505200b84b5d3d95b652f1fbcc4e4",
     "temporaryRestoreWorkspaceRemoved": true,
@@ -32,7 +48,7 @@
     "cleanupReportSha256": "913e163eb9b858965763b95072c9cd759b6e1e04ba464b4d8ef205ed48a47b99"
   },
   "consumerAppOutputsCleanup": "Automatic approval review rejected deletion as blocked by policy; generated app folders remain in artifacts/current/catalog-v7-arm64.",
-  "freshCacheRuntimeQualificationComplete": false,
+  "freshCacheX64RuntimeQualificationComplete": true,
   "nativeArm64RuntimeVerified": false,
   "inventoryEntriesStarted": 112,
   "inventoryEntriesAccepted": 0
