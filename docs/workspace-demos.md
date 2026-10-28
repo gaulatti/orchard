@@ -100,7 +100,8 @@ catalog architectures compile and their ZIP entries match the extracted files;
 the ARM64 archive has no native runtime result on this x64 host. See the
 [v4 local preview record](releases/2026-10-26-text-media-v4-local.md).
 
-The exact v7 x64 catalog exposed a visible Monitoring focus defect: after
+The older `0.1.0-components-v7-local` x64 catalog exposed a visible Monitoring
+focus defect: after
 selecting a fictional post and opening Processing review with Enter, keyboard
 focus stayed on the background Review selected button. Escape therefore did not
 reach the review. The source fixture now measures the visible overlay before
@@ -108,7 +109,7 @@ focusing Local instructions. A source-built x64 catalog passes physical
 navigation, post selection, review Enter/Escape, focus return and an update that
 retains selection in Light and Dark. The focused [checkpoint and screenshots](evidence/monitoring-focus-source-v1/checkpoint.json)
 retain the v7 failure and source-build hashes. Both source screenshots show the
-review editor's focus outline. The unchanged v7 package still contains the
+review editor's focus outline. That older local v7 package still contains the
 defect. The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json)
 now passes this same physical review/focus/Escape/update path in Light and Dark
 from a separate runnable directory; its two screenshots were inspected. Broader
@@ -116,6 +117,15 @@ visible workflow and visual review, scaling and native ARM64 runtime remain open
 The current hidden Monitoring/Editorial gate
 passes 66 checks and 577 isolation guards; its negative auditor rejects 25
 altered receipts.
+
+The later published `0.1.0-preview.20261027.7` extracted x64 catalog now
+passes this same physical Monitoring review/focus/Escape/update route in Light
+and Dark. Its Orchard DLL matches the released NuGet package byte for byte;
+both processes exited, and both review screenshots visibly show the editor's
+focus outline. The retained [reports and captures](evidence/monitoring-v7-published-focus-v1/checkpoint.json)
+close the older package-version gap for this focused demo flow. Process exit
+codes were not captured. Broader visual/workflow review, scaling and native
+ARM64 runtime remain open.
 
 The source-built and extracted v7 x64 catalogs pass a focused visible Editorial
 search check in Light and Dark. Physical pointer input selects a fictional page
@@ -132,9 +142,10 @@ preserves the draft, while Discard changes opens the requested page without
 changing the saved row. The checkpoint retains all four runtime reports and
 decision screenshots. Run `scripts/verify-editorial-edit-desktop.ps1` with a
 fresh output directory. At the time of that v7 run, status/media/category/author
-editing, full visual comparison, scaling and native ARM64 runtime remained open. The v7 package
-passes these Editorial flows but still fails the Monitoring review
-focus check described above. The current source-built x64 catalog now has a
+editing, full visual comparison, scaling and native ARM64 runtime remained open.
+The older local v7 package passes these Editorial flows but fails the Monitoring review
+focus check described above; the later published `.7` catalog passes that
+focused Monitoring route. The current source-built x64 catalog now has a
 [visible relation-editing checkpoint](evidence/editorial-relations-source-v1/checkpoint.json):
 pointer input selected a local status and media illustration, selected and
 reordered categories and authors, saved the fictional sample, navigated away,

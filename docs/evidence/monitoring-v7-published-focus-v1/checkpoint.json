@@ -1,0 +1,49 @@
+{
+  "scope": "Physical Monitoring review focus and selection/update flow in the published v7 extracted x64 catalog",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "catalogZipSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "catalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "catalogDllSha256": "7b33721d26d3db0ad4319fdbaf28a69d6897df34bbaed6d66c03a75f199d467c",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "packageAssemblyMatchesCatalog": true,
+  "verifier": "scripts/verify-monitoring-desktop.ps1",
+  "verifierSha256": "0a91c3d9a5ac8a3a34732dc8b4f727276a6cdf5d9977cefd49c2324b6a9a6b8a",
+  "earlierLocalV7Failure": "docs/evidence/monitoring-focus-source-v1/checkpoint.json",
+  "runs": [
+    {
+      "theme": "Light",
+      "report": "light-report.json",
+      "reportSha256": "96b0d9f0cbb5c7743f0880454031ca5ef108b55cd612960fa729909a2f6c6aed",
+      "rawRunReportSha256": "cfae062349bf74d21121aa76363f728b7bc1dafb88f88053d89536a0f2643800",
+      "focusCapture": "light-review-focus.png",
+      "focusCaptureSha256": "bec526fb6a2d58228bf90aafb30d5a3f8e84b83353b0e3871cd9ea8bd774667a",
+      "passed": true,
+      "processExited": true
+    },
+    {
+      "theme": "Dark",
+      "report": "dark-report.json",
+      "reportSha256": "27b11f4c8b319704aa0ab2be92cd7f093dd2aef4387d35ef424dba4d1bbe6448",
+      "rawRunReportSha256": "6c6b3c2693e0906008f8338c3f151dc1227f73e8777cefb3712ab94e5b314146",
+      "focusCapture": "dark-review-focus.png",
+      "focusCaptureSha256": "d6feceeddc175fda116beb725fcbacf77902fbe940220bacc85820c77b1f330d",
+      "passed": true,
+      "processExited": true
+    }
+  ],
+  "observed": [
+    "Physical pointer selected a fictional post and preserved the exact selected summary.",
+    "Physical Enter opened Processing review and focused Local instructions.",
+    "Physical Escape closed the review and returned focus to Review selected.",
+    "Physical local update retained the selected post in both themes.",
+    "Both captured review surfaces show the editor focus outline."
+  ],
+  "processExitCodesCaptured": false,
+  "retainedReportLineEndingsNormalizedToLf": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "broaderVisualAndWorkflowAcceptance": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
