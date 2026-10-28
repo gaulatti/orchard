@@ -41,6 +41,14 @@ consumers build with the original PNG present and unchanged. The latest portable
 run passes 413 tests after adding the missing public-control coverage entry;
 32 corrupted reports and blank/wrong-tint frames are rejected.
 
+The [published v7 fresh-consumer replay](evidence/brand-mark-v7-fresh-consumer-v1/checkpoint.json)
+refreshes that focused x64 package boundary with the exact released Orchard DLL.
+The hidden consumer exits zero and passes all 37 states, 26,990 opaque-interior
+tint probes across 11,366,400 audited pixels, and the 32 corrupted-report plus
+two bad-frame rejection controls. This reuses the independently restored v7
+consumer; it does not claim a new package restore, catalog run, source-edge
+raster match, actual Windows scaling or native ARM64 execution.
+
 These checks do not claim a SwiftUI runtime capture, complete source-edge raster
 parity, physical input/focus behavior or native ARM64 runtime. The decorative
 source has no built-in action or selection state. The entry remains in progress
