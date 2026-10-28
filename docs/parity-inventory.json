@@ -5687,8 +5687,9 @@
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-expanded-v1/checkpoint.json",
       "headerTypeaheadCheckpoint": "docs/evidence/select-header-typeahead-v1/checkpoint.json",
       "packageForegroundCheckpoint": "docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json",
+      "packageHeaderInputCheckpoint": "docs/evidence/select-v7-package-header-input-v1/checkpoint.json",
       "remainingGaps": [
-        "Source-built x64 Header Select keyboard, pointer, typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-header-typeahead-v1/checkpoint.json); current independent x64 NuGet consumer pointer choice reaches the caller in both themes (docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json); finish independent package Header Select typeahead/outside input, focused-option source paint and complete open raster",
+        "Source-built x64 Header Select keyboard, pointer, typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-header-typeahead-v1/checkpoint.json); published v7 independent x64 NuGet consumer pointer choice, typeahead and outside dismissal pass in both themes (docs/evidence/select-v7-package-header-input-v1/checkpoint.json); finish complete input, exact focus identity, focused-option source paint and complete open raster",
         "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
       ]
     },

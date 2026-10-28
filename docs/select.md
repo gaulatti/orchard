@@ -142,6 +142,14 @@ dismisses without changing the caller's value. The normal consumer preview
 also opens. Complete input, focused-option source paint, full open raster,
 scaling, motion and native ARM64 runtime checks remain open.
 
+The [published v7 package Header Select input check](evidence/select-v7-package-header-input-v1/checkpoint.json)
+also passes physical pointer choice, closed placeholder-to-Alpha typeahead,
+open focus-only typeahead, and outside dismissal in the independently restored
+x64 consumer, in both themes. The value and caller status agree after each
+choice. The focused Beta row is visible in the inspected captures, but its
+exact UI Automation focus identity was not established; complete input, source
+paint parity, scaling, motion and native ARM64 runtime remain open.
+
 Worker-thread producer notifications are marshaled before any XAML state read.
 See [the producer notification contract](producer-notifications.md) for the
 shared catalog/package regression and its background-only verification limits.

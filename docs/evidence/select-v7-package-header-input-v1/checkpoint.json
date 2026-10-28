@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T02:25:32Z",
+  "scope": "Physical Header Select input in the independently restored published v7 x64 NuGet consumer",
+  "package": {
+    "version": "0.1.0-preview.20261027.7",
+    "path": "artifacts/current/catalog-v7-arm64/Gaulatti.Orchard.0.1.0-preview.20261027.7.nupkg",
+    "sha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+    "independentConsumerExe": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64/app/PackageConsumer.exe",
+    "independentConsumerExeSha256": "65989ebf098ba212bdfb92b49cf278a438a0fc4665f299698ba257bd4f13edb6",
+    "consumerOrchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+    "consumerAssemblyMatchedPackage": true,
+    "freshRestoreAndPublishCheckpoint": "docs/evidence/catalog-v7-fresh-consumer-v1/checkpoint.json"
+  },
+  "method": "Visible WinUI package consumer, physical Sky pointer and keyboard actions, refreshed Windows UI Automation value/status observations, and screenshot inspection",
+  "light": {
+    "explicitTheme": true,
+    "pointerBetaReachedCaller": true,
+    "firstClosedLRequestedInjectedPlaceholder": true,
+    "secondClosedLRequestedOriginalAlpha": true,
+    "openLFocusedBetaWithoutChangingAcceptedAlpha": true,
+    "outsidePointerDismissedAndPreservedAlpha": true
+  },
+  "dark": {
+    "explicitTheme": true,
+    "pointerBetaReachedCaller": true,
+    "firstClosedLRequestedInjectedPlaceholder": true,
+    "secondClosedLRequestedOriginalAlpha": true,
+    "openLFocusedBetaWithoutChangingAcceptedAlpha": true,
+    "outsidePointerDismissedAndPreservedAlpha": true
+  },
+  "limitations": {
+    "focusedBetaRowVisuallyObservedButExactUiaFocusIdentityVerified": false,
+    "completeInputMatrixVerified": false,
+    "sourcePaintParityVerified": false,
+    "completeOpenRasterVerified": false,
+    "scalingAndMotionVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}
