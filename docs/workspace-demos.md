@@ -216,3 +216,12 @@ used demo source unchanged at the v7 release tag. That visible source evidence
 and the published hidden replay cover different boundaries; neither proves a
 complete published-archive input matrix, visual comparison, scaling or native
 ARM64 execution.
+
+The [published v7 Editorial complement](evidence/editorial-v7-published-complement-v1/checkpoint.json)
+adds physical Light search/selection and Dark edit/save/dirty-decision in the
+extracted x64 archive, using its exact released NuGet DLL. Both verifiers passed,
+their catalog processes exited, and the filtered and dirty-decision screenshots
+were inspected. With the earlier extracted Dark search and Light edit, those
+specific Editorial demo paths now have both-theme archive evidence. Visible
+relationship input, the remaining archive input matrix, full visual/scaling
+acceptance and native ARM64 runtime remain open.

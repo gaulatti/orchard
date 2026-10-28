@@ -1,0 +1,54 @@
+{
+  "scope": "Physical Editorial search in Light and edit/save/dirty-decision in Dark from the published v7 extracted x64 catalog",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "catalogZipSha256": "def4212845931f860ef2a1f4b92ce5e9c362ce4500e4938d47d4c27f3d66b0e6",
+  "catalogExeSha256": "3481b171dd79a63e3c16e6682cd80ecc18e2338ab8289fe10dbbdd56a53fc2c9",
+  "catalogDllSha256": "7b33721d26d3db0ad4319fdbaf28a69d6897df34bbaed6d66c03a75f199d467c",
+  "orchardDllSha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "packageAssemblyMatchesCatalog": true,
+  "runs": [
+    {
+      "theme": "Light",
+      "verifier": "scripts/verify-editorial-search-desktop.ps1",
+      "verifierSha256": "cf73328a773fb827e0c32bc5f8d3d46d4f86e0eda2c7c218522908bbe9d20407",
+      "report": "light-search-report.json",
+      "reportSha256": "d31222406805c5509a54ef7ffd35dbafa93f5a240c31aebaa6e7ed12cc728eb0",
+      "rawRunReportSha256": "97ee41c492440407f0ef7949612514fa616346c5504dd82b79e953429abc1c5c",
+      "capture": "light-search-filtered.png",
+      "captureSha256": "8a5a206389a20d2918e86f7ff5d780f933881372da40dd13834828c146bd483d",
+      "passed": true,
+      "processExited": true,
+      "physicalPointerInputSent": true,
+      "physicalKeyboardInputSent": true
+    },
+    {
+      "theme": "Dark",
+      "verifier": "scripts/verify-editorial-edit-desktop.ps1",
+      "verifierSha256": "d2fa61b7fa5082b01c8300a2f897d4c62f43da909e7125a08319304962d0419c",
+      "report": "dark-edit-report.json",
+      "reportSha256": "44780ea7de59d6417ba2db81353310bfc547a9e757f18ea31cc46bc17b774a1c",
+      "rawRunReportSha256": "adde823572520b490963e56c88e9525ca49f074899c72ae74a873a825ca93786",
+      "capture": "dark-edit-dirty-decision.png",
+      "captureSha256": "887140cd8deab4083f903cf09c5caa0b32bbec29d173c1c2f8ba449c51b88c43",
+      "passed": true,
+      "processExited": true,
+      "physicalPointerInputSent": true,
+      "physicalKeyboardInputSent": true
+    }
+  ],
+  "observed": [
+    "Light: pointer selected a fictional page; search received focus and physical typing filtered four pages to one, then clearing restored four.",
+    "Dark: physical editing saved a fictional title; Keep editing retained a draft and Discard changes opened the requested page.",
+    "The Light filtered and Dark dirty-decision captures were visually inspected."
+  ],
+  "verifierProcessExitCodes": [0, 0],
+  "catalogProcessExitCodesCaptured": false,
+  "retainedReportLineEndingsNormalizedToLf": true,
+  "osSettingsChanged": false,
+  "nativeArm64RuntimeVerified": false,
+  "fullPublishedArchiveInputMatrixVerified": false,
+  "fullComponentAcceptanceVerified": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
