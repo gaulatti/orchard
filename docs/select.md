@@ -113,9 +113,15 @@ check](evidence/select-foreground-typeahead-v1/checkpoint.json) passes physical
 prefix cycling in closed and open Select, caller value requests, focus-only
 navigation, and outside-click dismissal in both themes. The first attempt used
 `B` for a label beginning `Local`; that fixture input was corrected to `L`.
-No library behavior changed. Header Select typeahead/outside input, independent
-package foreground input, complete raster/motion, scaling and native ARM64
-runtime remain open; the inventory entries are not accepted.
+No library behavior changed in that check.
+
+The [focused Header Select input check](evidence/select-header-typeahead-v1/checkpoint.json)
+now passes physical closed and open typeahead plus outside-click dismissal in
+the source-built x64 catalog, in Light and Dark. Repeated `L` first requests
+the injected `Local suite` placeholder after Beta, then cycles to the caller's
+Alpha option; open-menu `L` focuses Beta without changing Alpha. The two
+focused-row captures are readable, but source-paint parity, independent
+package input, scaling, motion and native ARM64 runtime remain unverified.
 
 A fresh [extracted v7 catalog foreground pass](evidence/select-package-foreground-v1/checkpoint.json)
 uses the Orchard DLL byte-matched to that preview's independently restored

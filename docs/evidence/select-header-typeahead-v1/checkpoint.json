@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-28T02:22:21Z",
+  "scope": "Source-built x64 catalog physical Header Select typeahead and outside dismissal in Light and Dark",
+  "catalog": {
+    "buildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "exeSha256": "1b53192c0f0b5ba4337f52590e9e2a9aec302ead5da54cd02ebcf7468cd04640",
+    "orchardDllSha256": "987019902329e715587e527e600330fbd5ec06b68f5fb394877a7f73beeb562d"
+  },
+  "run": {
+    "result": "artifacts/current/select-header-typeahead-v1/result.json",
+    "resultSha256": "9740db61449aeb0a4fcfcb8bfe854fa216dbb10d4a6fc27eff0187adf192860c",
+    "lightReportSha256": "9b5700c59070fa4ec7947cb16795844b9d0b00a34962f12b1012fd74ef6ca34f",
+    "darkReportSha256": "a411a04bb74315cff2d327481160ebfe021ada34e1e8f51c79a2cf21a669dc5b",
+    "passed": true,
+    "processArchitecture": "X64",
+    "osArchitecture": "X64",
+    "displayScale": 1,
+    "textScale": 1,
+    "animationsEnabled": false,
+    "themes": ["Light", "Dark"],
+    "closedTypeaheadRequestedPlaceholderThenOriginalAlpha": true,
+    "openTypeaheadFocusedOriginalBetaWithoutCommitting": true,
+    "outsidePointerDismissedWithoutChangingCallerValue": true,
+    "lightFocusedOptionCaptureSha256": "f4ef95686c78612002716b4fd456f01e02bb1e3795d78b6f7df2d2526d734303",
+    "darkFocusedOptionCaptureSha256": "90b9255446db152946b7b46d82c1b3fc61c9f69a90287b02fc33ad2a68289978"
+  },
+  "diagnostic": {
+    "initialFixtureFailure": "artifacts/current/select-header-typeahead-v1/initial-fixture-failure.json",
+    "initialFixtureFailureSha256": "1616b3ea8cc59a8833b00fec9073318749f2d13de9f9eeb8b0505f7df5fb4d6c",
+    "explanation": "The first fixture expected Alpha after one L from Beta. Header Select's enabled Local suite placeholder is the next match. The fixture now checks that placeholder and a second L to Alpha; no library code changed."
+  },
+  "limitations": {
+    "independentPackageHeaderTypeaheadVerified": false,
+    "focusedOptionSourceParityVerified": false,
+    "completeOpenRasterVerified": false,
+    "scalingAndMotionVerified": false,
+    "nativeArm64RuntimeVerified": false,
+    "componentAccepted": false
+  },
+  "entriesStarted": 112,
+  "accepted": 0
+}

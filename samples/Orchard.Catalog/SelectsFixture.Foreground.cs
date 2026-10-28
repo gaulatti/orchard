@@ -121,6 +121,25 @@ public sealed partial class SelectsFixture
         await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), header),
             "Header Select pointer selection did not restore trigger focus.");
 
+        Require(header.Focus(FocusState.Keyboard), "Header Select rejected focus before typeahead.");
+        input.Key(0x4C); // The injected Local suite placeholder follows Beta in cyclic order.
+        await AwaitAsync(() => !header.IsDropDownOpen && Header.Value == "" && Status.Text == "Consumer accepted: ",
+            "Closed Header Select typeahead did not request its matching placeholder option.");
+        input.Key(0x4C); // Repeating the prefix cycles to the original Alpha option.
+        await AwaitAsync(() => !header.IsDropDownOpen && Header.Value == "a" && Status.Text == "Consumer accepted: a",
+            "Closed Header Select typeahead did not cycle to the next matching caller option.");
+        input.Key(0x0D);
+        await AwaitAsync(() => header.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(header, "a")),
+            "Header Select did not reopen on its typeahead-selected option.");
+        input.Key(0x4C); // L moves focus to Beta without committing.
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(header, "b")) && Header.Value == "a",
+            "Open Header Select typeahead changed the caller value or missed its matching option.");
+        await MainWindow.AwaitPresentationAsync(Option(header, "b"));
+        await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, $"select-foreground-header-typeahead-{scheme}.png"));
+        await input.ClickAsync(Status);
+        await AwaitAsync(() => !header.IsDropDownOpen && Header.Value == "a" && Status.Text == "Consumer accepted: a",
+            "Header Select outside click changed the caller value or left the menu open.");
+
         await File.WriteAllTextAsync(Path.Combine(folder, $"select-foreground-{scheme}.json"), JsonSerializer.Serialize(new
         {
             passed = true, scheme, pointerSelectValue = "b", pointerFocusedSelectedOption = true,
@@ -129,7 +148,8 @@ public sealed partial class SelectsFixture
             selectClosedTypeaheadValue = "b", selectOpenTypeaheadFocusedValue = "a", selectOutsideClickPreservedValue = true,
             headerKeyboardValue = "a", headerInitiallyFocusedPlaceholder = true,
             headerDownFocusedOriginalOption = true, headerRestoredFocus = true, escapePreservedValue = true,
-            headerPointerValue = "b", headerPointerRestoredFocus = true
+            headerPointerValue = "b", headerPointerRestoredFocus = true,
+            headerClosedTypeaheadValues = new[] { "", "a" }, headerOpenTypeaheadFocusedValue = "b", headerOutsideClickPreservedValue = true
         }));
     }
 }
