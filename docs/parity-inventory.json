@@ -5731,10 +5731,12 @@
       "status": "in-progress",
       "packageForegroundCheckpoint": "docs/evidence/hero-carousel-current-package-foreground-v1/checkpoint.json",
       "publishedV7PackageForegroundCheckpoint": "docs/evidence/hero-carousel-v7-package-foreground-v1/checkpoint.json",
+      "publishedV7PackageInactiveKeyboardCheckpoint": "docs/evidence/hero-carousel-v7-package-inactive-keyboard-v1/checkpoint.json",
       "publishedArchivePointerCheckpoint": "docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json",
+      "publishedArchiveKeyboardCheckpoint": "docs/evidence/hero-carousel-v7-published-archive-keyboard-v1/checkpoint.json",
       "remainingGaps": [
         "Complete source-derived visual review, scaling/motion/customization and performance acceptance remain open; strict source/package 52 pixels/max 24 and source/archive 58 pixels/max 24 failures at zero tolerance remain diagnostics, not a byte-identical public-component delivery gate",
-        "Independent exact-v7-package x64 consumer physical input verifies outside-window Right/Left arrows and native editor exclusion in Light/Dark (docs/evidence/hero-carousel-v7-package-foreground-v1/checkpoint.json); an earlier local package verifies inactive-slide pointer and Tab/Enter, while the published v7 catalog verifies inactive-slide pointer input in system Dark and explicit Light (docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json); broader published input/focus states and native ARM64 runtime remain open",
+        "Independent exact-v7-package x64 consumer physical input verifies outside-window Right/Left arrows, native editor exclusion and inactive-slide Tab/Enter in Light/Dark (docs/evidence/hero-carousel-v7-package-foreground-v1/checkpoint.json; docs/evidence/hero-carousel-v7-package-inactive-keyboard-v1/checkpoint.json); the published v7 catalog verifies inactive-slide pointer and Tab/Enter input in system Dark and explicit Light (docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json; docs/evidence/hero-carousel-v7-published-archive-keyboard-v1/checkpoint.json); broader input/focus states and native ARM64 runtime remain open",
         "Full library/release acceptance and all other pending component entries remain open; both fictional demos remain required"
       ],
       "sourcePreparation": {

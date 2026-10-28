@@ -21,8 +21,17 @@ coastal slide still visible at index `0`, physical Tab reached the next inactive
 slide; Enter delivered the original second item's `/fictional/article#original`
 destination and external flag to the caller without changing the visible index.
 The active first item also responded to Enter in both themes. The consumer
-windows closed, but exit codes were not captured. Published catalog keyboard
-input, the full focus matrix and complete component acceptance remain open.
+windows closed, but exit codes were not captured. This consumer check alone did
+not establish catalog keyboard input or the full focus matrix.
+
+The [published v7 extracted catalog keyboard checkpoint](evidence/hero-carousel-v7-published-archive-keyboard-v1/checkpoint.json)
+closes the corresponding focused catalog gap. With the coastal slide still
+visible, physical Tab and Enter invoked the original inactive article item and
+returned its destination and external flag in system Dark and explicit Light.
+The archive, executable and library hashes match the released v7 files. The
+catalog process closed; its exit code was not captured. The full input/focus,
+visual, scaling, motion and performance matrices and native ARM64 runtime remain
+open, so the component is still in progress.
 
 A [separate independent local NuGet-consumer foreground check](evidence/hero-carousel-current-package-foreground-v1/checkpoint.json)
 exercises the user-selected input behavior with the byte-matched
