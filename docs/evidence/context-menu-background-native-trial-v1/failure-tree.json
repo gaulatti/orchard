@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Inspect fictional item",
+    "type": "ControlType.MenuItem",
+    "offscreen": false
+  },
+  {
+    "name": "Inspect fictional item",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Unavailable fictional action",
+    "type": "ControlType.MenuItem",
+    "offscreen": false
+  },
+  {
+    "name": "Unavailable fictional action",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Indented fictional action",
+    "type": "ControlType.MenuItem",
+    "offscreen": false
+  },
+  {
+    "name": "Indented fictional action",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Composed fictional action",
+    "type": "ControlType.MenuItem",
+    "offscreen": false
+  },
+  {
+    "name": "Composed fictional action",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Showing Context menus",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Show Context menus",
+    "type": "ControlType.Button",
+    "offscreen": false
+  },
+  {
+    "name": "Context menus",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Context menu · native recipe draft",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Fictional local actions. Right-click the target or use its native context-menu key.",
+    "type": "ControlType.Text",
+    "offscreen": false
+  },
+  {
+    "name": "Modal context menu Outside actions are blocked",
+    "type": "ControlType.Button",
+    "offscreen": false
+  },
+  {
+    "name": "Fictional context target",
+    "type": "ControlType.Button",
+    "offscreen": false
+  },
+  {
+    "name": "No fictional context action yet",
+    "type": "ControlType.Text",
+    "offscreen": false
+  }
+]

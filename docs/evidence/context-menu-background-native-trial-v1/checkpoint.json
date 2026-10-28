@@ -1,0 +1,31 @@
+{
+  "scope": "Rejected x64 Context Menu native-host-background placement trial",
+  "candidate": "In BleeckerContextMenu.Opening, project only when host.ActiveSurface is non-null or IsModal is false; leave an ordinary modal-host background target in the native presenter",
+  "candidateRetained": false,
+  "catalogBuild": { "passed": true, "warnings": 0, "errors": 0 },
+  "catalogExeSha256": "ed4ae3c4dc5938f363c399dc0dcaa09d9746e4b55c28265578d90c028db7e120",
+  "candidateOrchardDllSha256": "ff189e2621a6364da5b78e55b8cdc65ac3e1ae04bbbecb037d8c1bb048ac0e00",
+  "physicalProbe": "scripts/verify-context-menu-desktop.ps1",
+  "physicalProbeSha256": "3c6cf9cb7e604764442f51976fe0bf6d06d31803bf9a91c56f8c858936890840",
+  "report": "physical-report.json",
+  "reportSha256": "dbc1a2f324ffb424bed286afc93e99c9694d95604f4c7b49ad66bd85d1ed4bed",
+  "failureTree": "failure-tree.json",
+  "failureTreeSha256": "878bb02224ba5a1ac929ce74b8eccc0d5eb7a8df3a65b9f524e07f4035270b0c",
+  "capture": "selection-failure.png",
+  "captureSha256": "d3ffcdb79ee9ab5adb570c1b660b914f1d022a655f53de01d3c96995c2a56d90",
+  "observed": {
+    "shiftF10Opened": true,
+    "escapeDismissed": true,
+    "rightClickOpened": true,
+    "originalItemVisible": true,
+    "physicalItemClickReachedCaller": false,
+    "menuRemainedVisibleAfterClick": true,
+    "processExited": true
+  },
+  "conclusion": "Native background presentation alone repairs opening but leaves pointer selection broken; the candidate was reverted.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

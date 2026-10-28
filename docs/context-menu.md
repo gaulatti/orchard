@@ -52,6 +52,12 @@ failure screenshots are recorded in
 component remains unaccepted until native gesture opening, original pointer
 selection and keyboard dismissal pass together. A local focus experiment was
 reverted because it let the menu open but still failed pointer selection.
+The later [native host-background trial](evidence/context-menu-background-native-trial-v1/checkpoint.json)
+also failed the complete physical path. Leaving the default menu in its native
+presenter allowed Shift+F10 and right-click opening plus Escape dismissal, but a
+real click on the visible first item did not call the original catalog handler;
+the menu remained open. The one-line placement candidate was reverted. The
+original portal behavior and this trial's failure remain distinct evidence.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.
