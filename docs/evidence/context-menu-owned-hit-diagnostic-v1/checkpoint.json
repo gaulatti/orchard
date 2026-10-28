@@ -1,0 +1,27 @@
+{
+  "scope": "Focused diagnosis of the unaccepted active-owner Context Menu physical click",
+  "date": "2026-10-28",
+  "diagnosticSourceRetained": false,
+  "libraryImplementationChanged": false,
+  "observed": {
+    "ownedOriginalItemVisibleBeforeClick": true,
+    "ownedOriginalItemClickInvoked": false,
+    "ownedItemPointerPressedSeenByHandledEventsTooListener": false,
+    "unownedOriginalItemClickInvoked": true,
+    "automationFromPointAtItemCenter": "PopupHost for both owned and working unowned menus; this does not identify the intercepting layer",
+    "causeEstablished": false
+  },
+  "reports": [
+    { "file": "artifacts/current/context-menu-owned-pointer-trace-v2/context-menu-desktop.json", "sha256": "7a52a4d26c2cceb0cb3d82e5019e42bcd44f8890b9e6f9d14f58b41a4da44490" },
+    { "file": "artifacts/current/context-menu-owned-pointer-trace-v2/failure-tree.json", "sha256": "ae651b31f341843b169964d7900e5e7481550bb4d029b9d8734ee66038921513" },
+    { "file": "artifacts/current/context-menu-owned-pointer-trace-v3/before-click.png", "sha256": "a31b26bd89781047d8b9ead49d486d92cfabb88399dc460d6afc2a3b0e760f10" },
+    { "file": "artifacts/current/context-menu-owned-hit-probe-v1/context-menu-desktop.json", "sha256": "1cb71b55e4f187421f74290c70c7e8b11d912a25f9d355dbfb45b7a83d0130aa" },
+    { "file": "artifacts/current/context-menu-unowned-hit-probe-v1/context-menu-desktop.json", "sha256": "0470349441f127272eb70ba1e4a55c2340ad4eb584c6011f2c57dd6d5cde38c7" }
+  ],
+  "nextAcceptanceBoundary": "Make a physical click on the owned menu item invoke its original handler while keeping Escape menu-only, nonmodal outside input usable, and upper-owner shielding intact.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

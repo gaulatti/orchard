@@ -3238,7 +3238,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Unowned x64 keyboard, pointer, action and first outside-click paths pass (docs/evidence/context-menu-pass-through-v1/checkpoint.json); active-modal-owner physical item clicks still dismiss without invoking the caller action in both modes (docs/evidence/context-menu-owned-physical-v1/checkpoint.json); complete focus and live-modality fidelity remains open",
+        "Unowned x64 keyboard, pointer, action and first outside-click paths pass from the qualified local package DLL (docs/evidence/context-menu-pass-through-package-v1/checkpoint.json); active-modal-owner physical item clicks still dismiss without invoking the caller action in both modes (docs/evidence/context-menu-owned-physical-v1/checkpoint.json). A handled-events-too listener sees no owned item press, but UIA FromPoint returns PopupHost for both passing and failing paths, so the intercepting layer is unproven (docs/evidence/context-menu-owned-hit-diagnostic-v1/checkpoint.json); complete focus and live-modality fidelity remains open",
         "Nested native menu extensions, full source placement/raster/shadow/motion and physical text/display scaling",
         "ARM64 runtime and final component acceptance"
       ],
