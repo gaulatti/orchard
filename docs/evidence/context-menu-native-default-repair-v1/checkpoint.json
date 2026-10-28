@@ -1,0 +1,31 @@
+{
+  "scope": "x64 Context Menu native default-action repair",
+  "change": "Default modal menus without an active BleeckerModal owner use the original native presenter with ShouldConstrainToRootBounds=false; owned and nonmodal menus retain the shared-plane adapter.",
+  "candidateRetained": true,
+  "catalogBuild": { "passed": true, "warnings": 0, "errors": 0 },
+  "orchardDllSha256": "1553d65c728f706b2e378d9989abd319f0e831ee885782d311dbfe36eb5d10f5",
+  "physicalProbe": "scripts/verify-context-menu-desktop.ps1",
+  "physicalReport": "physical-report.json",
+  "physicalReportSha256": "f1b3729e83ad394eb0b8ac2c327f72506ec315ac5caf2d159873479f49d844a0",
+  "observed": {
+    "shiftF10Opened": true,
+    "escapeDismissed": true,
+    "rightClickOpened": true,
+    "originalItemVisible": true,
+    "onePhysicalClickReachedOriginalHandler": true,
+    "processExited": true
+  },
+  "hiddenChecks": [
+    { "report": "root-audit.json", "sha256": "21e65131231b08651ea2e74eeb0b244987def02e520b06fccf34e887b6c63abc", "passed": true },
+    { "report": "modal-audit.json", "sha256": "ee344f76d464db91fd669917f4dcb403033ba1a52ca2c3a2e79c874d9b882de2", "passed": true, "cases": 14 },
+    { "report": "catalog-audit.json", "sha256": "90f5045a26a575b5ffee3bb0e36abbde15fe9efe5cef2655d19ed1846435bda8", "passed": true, "cases": 4 },
+    { "report": "options-audit.json", "sha256": "fbe32eab38b278c1d58b417b8e5a9c6cd9c0f3ef3a73994f673ec61508014997", "passed": true, "cases": 38, "nativeInputSurfaceSamples": 32 },
+    { "report": "options-negative-audit.json", "sha256": "13ccf93936ec2cc64d10d5d19ecd771e20ee18d6f845e61cd25e4765ac6df20b", "passed": true, "corruptReportsRejected": 30 }
+  ],
+  "remaining": "Physical nonmodal and active-modal input paths remain unverified or failed; full Context Menu acceptance and package qualification remain open.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

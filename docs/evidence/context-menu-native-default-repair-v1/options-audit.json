@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "cases": 38,
+  "nativeInputSurfaceSamples": 32,
+  "nonmodalSamples": 18,
+  "modalSamples": 14,
+  "guards": 800,
+  "publicRootOptionVerified": true,
+  "liveModalityBindingVerified": true,
+  "nativeLifecycleAndOwnershipVerified": true,
+  "nativeOutsideHitStackVerified": true,
+  "librarySha256": "1553d65c728f706b2e378d9989abd319f0e831ee885782d311dbfe36eb5d10f5",
+  "hostSha256": "437038c94c0ab90e03e03bfa98344c5b616cfd3e0ea5e067f483203bad6706d3",
+  "actualOutsidePointerRoutingVerified": false,
+  "actualFocusRoutingVerified": false,
+  "sourceDomRemountSideEffectsReplicated": false,
+  "nativeComponentAccepted": false
+}

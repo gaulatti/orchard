@@ -33,8 +33,10 @@ surface remains hit-testable, and outside pointer/focus handlers request native
 dismissal. A nonmodal menu still belongs to its nearest modal owner; an upper
 modal shields that owner's menu without rewriting caller enabled bindings.
 Standalone nonmodal menus use the same projected original surface without
-requiring a `BleeckerModalHost`. Default standalone modal menus keep their
-original Windows presentation.
+requiring a `BleeckerModalHost`. Default modal menus without an active modal
+owner, including targets inside an otherwise idle `BleeckerModalHost`, keep
+their original Windows presentation. An active modal owner and nonmodal mode
+still use the shared-plane adapter.
 
 Live option changes update the backdrop and focus-scope registration while
 retaining the original native items, public binding and open/close lifecycle.
@@ -58,6 +60,13 @@ presenter allowed Shift+F10 and right-click opening plus Escape dismissal, but a
 real click on the visible first item did not call the original catalog handler;
 the menu remained open. The one-line placement candidate was reverted. The
 original portal behavior and this trial's failure remain distinct evidence.
+The [native default repair](evidence/context-menu-native-default-repair-v1/checkpoint.json)
+retains that placement only for default modal menus without an active modal
+owner and disables native root-bound constraining. On the same x64 library DLL,
+Shift+F10, Escape, right-click and a single physical click on the first original
+action passed. Root, modal-owner, catalog and root-option hidden checks also
+passed, including live modality changes. Nonmodal and active-modal physical
+selection still need repair; this does not accept the Context Menu component.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.
@@ -65,7 +74,7 @@ menu.
 `ContextMenuOptions.json` freezes 24 browser histories, 56 snapshots and four
 PNGs, reproduced byte for byte independently. The public native option fixture
 covers 38 cases in both themes across standalone, hosted and modal-owned roots.
-Its 34 WinUI hit-stack samples check the actual menu subtree: WinUI may report
+Its 32 WinUI hit-stack samples check the actual menu subtree: WinUI may report
 an internal PopupRoot Canvas outside a null-background popup, so an empty
 global hit stack is not the input contract. Nonmodal samples retain the outside
 target and exclude the menu plane; modal samples include that plane. These are

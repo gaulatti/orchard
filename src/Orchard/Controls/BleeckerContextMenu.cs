@@ -20,7 +20,7 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
     {
         var resources = new ResourceDictionary { Source = new Uri("ms-appx:///Orchard/Themes/Orchard.xaml") };
         MenuFlyoutPresenterStyle = (Style)resources["BleeckerContextMenuPresenterStyle"];
-        ShouldConstrainToRootBounds = true;
+        ShouldConstrainToRootBounds = false;
         AreOpenCloseAnimationsEnabled = false;
         Opening += (_, _) =>
         {
@@ -28,7 +28,7 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
             portal?.Dispose(); portal = null;
             if (Target is not { } target) throw new InvalidOperationException("Context Menu requires its native target before opening.");
             var host = BleeckerModalHost.Find(target);
-            if (host is not null || !IsModal)
+            if (host?.ActiveSurface is not null || !IsModal)
                 portal = new PortalSession(this, presenter ?? throw new InvalidOperationException("Context Menu has no native presenter."), target, host);
             else
             {

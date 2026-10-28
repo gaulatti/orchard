@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "nativeCommandCases": 2,
+  "sourceRecipeLayouts": 10,
+  "geometryValues": 120,
+  "maximumWidthDifference": 0.421875,
+  "widthToleranceDip": 1,
+  "captures": 10,
+  "guards": 294,
+  "librarySha256": "1553d65c728f706b2e378d9989abd319f0e831ee885782d311dbfe36eb5d10f5",
+  "hostSha256": "4c9118b1ab15c716e099656f1902b86eb7adb61069eef11be0dd0f03c94c3894",
+  "sourceReferenceSha256": "2a3e8dacde6ca24a3f126c697d4d6f99e87de911b57623c61d40d0cbc504433c",
+  "hostedModalAdapterExercised": false,
+  "contextGestureVerified": false,
+  "sourcePlacementVerified": false,
+  "sourceRasterParityVerified": false,
+  "nativeComponentAccepted": false,
+  "rawPixelsValidated": 137844,
+  "backgroundPixelProbes": 10
+}
