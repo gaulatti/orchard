@@ -8672,7 +8672,7 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Verify applicable complete source-edge raster/scaling and native ARM64 runtime; original SwiftUI runtime capture is not claimed",
+        "The original asset silhouette passes eight current-package x64 sizes/themes with at least 97% overlap and one-pixel edge proximity; finish edge antialiasing review, actual Windows scaling and native ARM64 runtime. Original SwiftUI runtime capture is not claimed",
         "Decorative source has no built-in command, focus or selection state; preserve caller accessibility metadata"
       ],
       "sha256": "14cec81653ac61cfc7b0287b512047af6c90f98eadb63a9bc31b24db04f04f2e",
@@ -8685,6 +8685,9 @@
         "actualCatalogThemes": 2,
         "package": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-brand-mark-v1-local.nupkg",
         "librarySha256": "15d88d1e392089cbd908a7d727b323391cb27b34f9b7c5a573472d42b630a65f",
+        "publishedV7ConsumerCheckpoint": "docs/evidence/brand-mark-v7-fresh-consumer-v1/checkpoint.json",
+        "publishedV7SourceAssetSilhouettes": 8,
+        "publishedV7MinimumSilhouetteOverlap": 0.9704433497536946,
         "sourceRuntimeVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false

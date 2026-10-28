@@ -45,9 +45,13 @@ The [published v7 fresh-consumer replay](evidence/brand-mark-v7-fresh-consumer-v
 refreshes that focused x64 package boundary with the exact released Orchard DLL.
 The hidden consumer exits zero and passes all 37 states, 26,990 opaque-interior
 tint probes across 11,366,400 audited pixels, and the 32 corrupted-report plus
-two bad-frame rejection controls. This reuses the independently restored v7
-consumer; it does not claim a new package restore, catalog run, source-edge
-raster match, actual Windows scaling or native ARM64 execution.
+two bad-frame rejection controls. The original asset silhouette also matches
+eight Light/Dark captures at 16, 32, 64 and 96 DIP: every source/native ink
+pixel is within one device pixel of the other mask, with at least 97% overlap.
+A stray edge pixel is rejected. The 64-DIP captures were visually reviewed in both
+themes. This reuses the independently restored v7 consumer; it does not claim a
+new package restore, catalog run, exact edge antialiasing, actual Windows
+scaling or native ARM64 execution.
 
 These checks do not claim a SwiftUI runtime capture, complete source-edge raster
 parity, physical input/focus behavior or native ARM64 runtime. The decorative

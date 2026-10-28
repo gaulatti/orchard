@@ -23,9 +23,36 @@ export function verifyBrandMarkPaint(s,png,source){
  for(let y=top;y<bottom;y++)for(let x=left;x<right;x++){const at=(y*png.width+x)*4;const changed=['r','g','b'].some((c,i)=>Math.abs(png.rgba[at+i]-background[c])>2);if(changed){ink++;bounds.minX=Math.min(bounds.minX,x);bounds.minY=Math.min(bounds.minY,y);bounds.maxX=Math.max(bounds.maxX,x);bounds.maxY=Math.max(bounds.maxY,y);}const inside=x+.5>=s.box.x+1&&x+.5<s.box.x+s.box.width-1&&y+.5>=s.box.y+1&&y+.5<s.box.y+s.box.height-1;if(inside&&sourceOpaque(x,y)){for(let i=0;i<3;i++)assert(Math.abs(png.rgba[at+i]-expected[i])<=2,s.scheme+'/'+s.kind+'/actual tint pixel');assert.equal(png.rgba[at+3],255);probes++;}}
  if(s.size===0){assert.equal(ink,0);return{inkPixels:0,opaqueTintProbes:0};}assert(ink>10,s.kind+'/image has no ink');if(s.kind!=='constrained'&&s.size>=32)assert(probes>=5,s.kind+'/too few original-alpha interior probes');return{inkPixels:ink,opaqueTintProbes:probes,bounds};
 }
+export function verifyBrandMarkSilhouette(s,png,source){
+ const box=s.iconBox,x0=Math.floor(box.x),y0=Math.floor(box.y),width=Math.ceil(box.x+box.width)-x0,height=Math.ceil(box.y+box.height)-y0;
+ const expected=new Uint8Array(width*height),actual=new Uint8Array(width*height);
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+  let covered=0;
+  // Sample the original asset across each output pixel. This checks the
+  // source shape without asserting a browser/WinUI antialiasing algorithm.
+  for(let yy=0;yy<4;yy++)for(let xx=0;xx<4;xx++){
+   const sx=Math.max(0,Math.min(source.width-1,Math.floor((x0+x+(xx+.5)/4-box.x)*source.width/box.width)));
+   const sy=Math.max(0,Math.min(source.height-1,Math.floor((y0+y+(yy+.5)/4-box.y)*source.height/box.height)));
+   if(source.alpha[sy*source.width+sx]>127)covered++;
+  }
+  const at=((y0+y)*png.width+x0+x)*4,index=y*width+x;
+  expected[index]=covered>=8?1:0;
+  actual[index]=Math.max(Math.abs(png.rgba[at]-s.background.r),Math.abs(png.rgba[at+1]-s.background.g),Math.abs(png.rgba[at+2]-s.background.b))>2?1:0;
+ }
+ const near=(mask,x,y)=>{for(let yy=Math.max(0,y-1);yy<=Math.min(height-1,y+1);yy++)for(let xx=Math.max(0,x-1);xx<=Math.min(width-1,x+1);xx++)if(mask[yy*width+xx])return true;return false;};
+ let sourceInk=0,nativeInk=0,overlap=0;
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+  const at=y*width+x,e=expected[at],a=actual[at];sourceInk+=e;nativeInk+=a;overlap+=e&&a?1:0;
+  if(e)assert(near(actual,x,y),s.scheme+'/'+s.kind+'/missing source ink');
+  if(a)assert(near(expected,x,y),s.scheme+'/'+s.kind+'/stray native ink');
+ }
+ const intersectionOverUnion=overlap/(sourceInk+nativeInk-overlap);
+ assert(sourceInk>0&&nativeInk>0&&intersectionOverUnion>=.95,s.scheme+'/'+s.kind+'/source silhouette overlap');
+ return{scheme:s.scheme,kind:s.kind,sourceInk,nativeInk,overlap,intersectionOverUnion,maximumEdgeDistancePixels:1};
+}
 export async function auditBrandMark(o){const bytes=await fs.readFile(path.join(o.native,'brand-mark.json')),n=JSON.parse(bytes),refBytes=await fs.readFile('tests/Reference/BrandMark.json'),r=JSON.parse(refBytes);assert.deepEqual(await fs.readFile(path.join(o.native,'source-reference.json')),refBytes);const sourceBytes=await fs.readFile('tests/Reference/BrandMark/BleeckerLogo.png');assert.equal(hash(sourceBytes),r.asset.sha256);const source=readGrayAlphaPng(sourceBytes),catalogExpected=(o['host-assembly']??'Orchard.Catalog.dll')==='Orchard.Catalog.dll',a=verifyBrandMark(n,r,catalogExpected),exit=JSON.parse(await fs.readFile(path.join(o.native,'process-exit.json')));assert.equal(exit.exited,true);assert.equal(exit.exitCode,0);assert.equal(exit.timedOut,false);for(const[file,sha]of[['Orchard.dll',n.librarySha256],[o['host-assembly']??'Orchard.Catalog.dll',n.hostSha256]])assert.equal(hash(await fs.readFile(path.join(o.native,'app-identity',file))),sha);
- let pixels=0,probes=0;const images=new Map(),paint=[];for(const p of n.pngs){const b=await fs.readFile(path.join(o.native,p.file));assert.equal(hash(b),p.sha256);const png=readRgbaPng(b);assert.equal(png.width,640);assert.equal(png.height,480);images.set(p.file,{bytes:b,png});pixels+=png.width*png.height;}for(const s of n.states){const p=verifyBrandMarkPaint(s,images.get(s.file).png,source);probes+=p.opaqueTintProbes;paint.push({scheme:s.scheme,kind:s.kind,...p});}
+ let pixels=0,probes=0;const images=new Map(),paint=[],silhouettes=[];for(const p of n.pngs){const b=await fs.readFile(path.join(o.native,p.file));assert.equal(hash(b),p.sha256);const png=readRgbaPng(b);assert.equal(png.width,640);assert.equal(png.height,480);images.set(p.file,{bytes:b,png});pixels+=png.width*png.height;}for(const s of n.states){const png=images.get(s.file).png,p=verifyBrandMarkPaint(s,png,source);probes+=p.opaqueTintProbes;paint.push({scheme:s.scheme,kind:s.kind,...p});if(['size-16','size-32','size-64','size-96'].includes(s.kind))silhouettes.push(verifyBrandMarkSilhouette(s,png,source));}
  for(const scheme of['Light','Dark']){const find=kind=>n.states.find(s=>s.scheme===scheme&&s.kind===kind).file;assert.deepEqual(images.get(find('size-64')).png.rgba,images.get(find('rtl')).png.rgba,'RTL must preserve the original logo orientation');assert.deepEqual(images.get(find('size-64')).png.rgba,images.get(find('font-large')).png.rgba,'Image frame must not depend on font size');}
- return{...a,originalAssetAlphaTintProbes:probes,rawPixelsValidated:pixels,paint,librarySha256:n.librarySha256,hostSha256:n.hostSha256,reportSha256:hash(bytes),referenceSha256:hash(refBytes)};
+ return{...a,originalAssetAlphaTintProbes:probes,rawPixelsValidated:pixels,originalAssetSilhouetteVerified:silhouettes.length===8,silhouettes,paint,librarySha256:n.librarySha256,hostSha256:n.hostSha256,reportSha256:hash(bytes),referenceSha256:hash(refBytes)};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){const o=Object.fromEntries(process.argv.slice(2).reduce((r,v,i,a)=>i%2===0?[...r,[v.replace(/^--/,''),a[i+1]]]:r,[])),a=await auditBrandMark(o);await fs.writeFile(o.output,JSON.stringify(a,null,2)+'\n');console.log(JSON.stringify({...a,paint:a.paint.length}));}
