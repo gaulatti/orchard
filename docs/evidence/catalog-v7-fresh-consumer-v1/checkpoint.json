@@ -1,0 +1,39 @@
+{
+  "scope": "Fresh-cache independent consumption of the exact published v7 NuGet package",
+  "packageVersion": "0.1.0-preview.20261027.7",
+  "packageSha256": "5be14cb1dc7c52bee1fece0ca8cf1c74a86bb5f3b6dd2bd20294d67d5395cf1d",
+  "packageAssemblySha256": "839f520e51f9f462d3284f531f6c9fd5e40378d89eb31d29ceec93dbd9a81a6a",
+  "x64": {
+    "isolatedRestorePassed": true,
+    "selfContainedPublishPassed": true,
+    "consumerAssemblyMatchedPackage": true,
+    "runtimePassed": false,
+    "runtimeFailure": "The consumer could not acquire its own foreground window before component input checks. An existing Open With window retained foreground.",
+    "runtimeReport": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64/runtime.json",
+    "runtimeReportSha256": "f4738ec305c56c630cb38cba54e76c62b4bbde2a55c02da5d66084cb42c17c6a",
+    "verifierLog": "artifacts/current/catalog-v7-arm64/fresh-consumer-x64.log",
+    "verifierLogSha256": "0e52ed8957e08ef2ad88bc96eaec6c1d5e6505200b84b5d3d95b652f1fbcc4e4",
+    "temporaryRestoreWorkspaceRemoved": true,
+    "cleanupReportSha256": "6e9588a3d07e621f6538a433b405a164b61b63bea4801f0c715d1ba35c734e85"
+  },
+  "ARM64": {
+    "isolatedRestorePassed": true,
+    "frameworkDependentCompilePassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "consumerAssemblyMatchedPackage": true,
+    "apphostMachine": "Arm64",
+    "nativeRuntimeVerified": false,
+    "verifierResult": "artifacts/current/catalog-v7-arm64/fresh-consumer-arm64/result.json",
+    "verifierResultSha256": "3f39e62842b778fe46fc2ab5d53bf684dd079fb4cc0c76727c148d85ada623d2",
+    "verifierLog": "artifacts/current/catalog-v7-arm64/fresh-consumer-arm64.log",
+    "verifierLogSha256": "da49eed63e5113e2268d2856533f54354a2f7594d5d95102e337bf1078481c9d",
+    "temporaryRestoreWorkspaceRemoved": true,
+    "cleanupReportSha256": "913e163eb9b858965763b95072c9cd759b6e1e04ba464b4d8ef205ed48a47b99"
+  },
+  "consumerAppOutputsCleanup": "Automatic approval review rejected deletion as blocked by policy; generated app folders remain in artifacts/current/catalog-v7-arm64.",
+  "freshCacheRuntimeQualificationComplete": false,
+  "nativeArm64RuntimeVerified": false,
+  "inventoryEntriesStarted": 112,
+  "inventoryEntriesAccepted": 0
+}
