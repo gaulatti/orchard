@@ -6010,8 +6010,8 @@
       ],
       "status": "in-progress",
       "remainingGaps": [
-        "Normal animation and live preference switching",
-        "Scaling and constrained composition",
+        "Precise animation timing and live preference switching",
+        "Display/text scaling",
         "Remaining ARM64 state acceptance and complete visual acceptance"
       ]
     },

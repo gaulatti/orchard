@@ -10,5 +10,17 @@
             <orchard:BleeckerLoadingSpinner x:Name="DynamicSpinner" AutomationProperties.Name="Syncing changes" />
             <orchard:BleeckerLoadingSpinner Size="Large" AutomationProperties.Name="Preparing preview" />
         </StackPanel>
+        <TextBlock Text="Constrained status row (120 DIPs)" Style="{StaticResource BleeckerBodyStyle}" />
+        <Grid x:Name="ConstrainedStatus" Width="120" ColumnSpacing="8" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <orchard:BleeckerLoadingSpinner x:Name="ConstrainedSpinner" Size="Small"
+                AutomationProperties.Name="Syncing background changes" />
+            <TextBlock x:Name="ConstrainedLabel" Grid.Column="1" Text="Syncing background changes"
+                TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+                Style="{StaticResource BleeckerBodyStyle}" />
+        </Grid>
     </StackPanel>
 </UserControl>

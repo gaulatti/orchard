@@ -13,7 +13,7 @@ public sealed partial class LoadingSpinnersFixture : UserControl
 
     internal async Task VerifyAsync(BleeckerColorScheme scheme)
     {
-        foreach (var spinner in Sizes.Children.OfType<BleeckerLoadingSpinner>())
+        foreach (var spinner in Sizes.Children.OfType<BleeckerLoadingSpinner>().Append(ConstrainedSpinner))
         {
             var diameter = spinner.Size switch { BleeckerLoadingSize.Small => 16, BleeckerLoadingSize.Medium => 32, _ => 48 };
             Require(spinner.ActualWidth == diameter && spinner.ActualHeight == diameter, "Spinner dimensions differ from Bleecker.");
@@ -27,6 +27,11 @@ public sealed partial class LoadingSpinnersFixture : UserControl
             var peer = FrameworkElementAutomationPeer.CreatePeerForElement(spinner);
             Require(peer.GetAutomationControlType() == AutomationControlType.ProgressBar && !string.IsNullOrEmpty(peer.GetName()) && !spinner.IsTabStop, "Spinner accessibility contract failed.");
         }
+        Require(Math.Abs(ConstrainedStatus.ActualWidth - 120) < 0.5 &&
+            Math.Abs(ConstrainedSpinner.ActualWidth - 16) < 0.5 &&
+            ConstrainedLabel.ActualWidth > 0 && ConstrainedLabel.ActualWidth <= 96.5 &&
+            ConstrainedSpinner.ActualWidth + ConstrainedStatus.ColumnSpacing + ConstrainedLabel.ActualWidth <= ConstrainedStatus.ActualWidth + 0.5,
+            "Constrained status row stretched or clipped its spinner or label.");
         var rotation = (RotateTransform)((Canvas)VisualTreeHelper.GetChild(DynamicSpinner, 0)).RenderTransform;
         AnimationsEnabled = new UISettings().AnimationsEnabled;
         var angle = rotation.Angle;

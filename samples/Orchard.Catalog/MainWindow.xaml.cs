@@ -66,6 +66,17 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "metric", environment = RuntimeEnvironment() }));
             }
+            else if (args.Contains("--smoke-loading-spinner"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme;
+                    await SelectFixtureAsync(LoadingSpinners);
+                    await LoadingSpinners.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+                    await CaptureFixtureAsync(LoadingSpinners, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "loading-spinner", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-brush-alpha")) await RunBrushAlphaProbeAsync(folder);
             else if (args.Contains("--smoke-dialog-close")) await RunDialogCloseButtonsAsync(folder);
             else if (args.Contains("--smoke-field")) await RunFieldsAsync(folder);

@@ -1,0 +1,31 @@
+{
+  "scope": "Native x64 Loading Spinner constrained catalog composition",
+  "date": "2026-10-28",
+  "build": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0,
+    "catalogExeSha256": "3ce53ba65fda08f689d4b76a383e2744fe538b02c0b7d0265ba2d100f3704b0d",
+    "orchardDllSha256": "7fbaabc0961c38d22adefbe7fe125e9d3fc621fe0766a270ac0d3a4b29a00ee7"
+  },
+  "runtime": {
+    "passed": true,
+    "processArchitecture": "X64",
+    "osArchitecture": "X64",
+    "displayScale": 1,
+    "textScale": 1,
+    "animationsEnabled": false,
+    "themes": ["Light", "Dark"],
+    "constrainedRowWidthDips": 120,
+    "constrainedRingDiameterDips": 16,
+    "report": "artifacts/current/loading-spinner-constrained-v2/result.json",
+    "reportSha256": "58a7741d32fbe506448d99bbe2306970f21fc703cbd46fdd0cd0c9eb896923f3",
+    "lightScreenshot": "artifacts/current/loading-spinner-constrained-v2/catalog-light.png",
+    "lightScreenshotSha256": "4db590da14feb6e5f1509133bda839760299eca608c388cef651602f2e3bc800",
+    "darkScreenshot": "artifacts/current/loading-spinner-constrained-v2/catalog-dark.png",
+    "darkScreenshotSha256": "e292e2e451db17236b2bbf3b3528dcef6aa89e7f3d52992f8f3d3aabbb9f706d"
+  },
+  "visualReview": "The 120-DIP row stays aligned below its caption, the ring remains visible, and the label ellipsizes in both themes.",
+  "componentAccepted": false,
+  "remaining": ["precise and live motion", "component theme-resource behavior", "display/text scaling", "native ARM64 runtime"]
+}
