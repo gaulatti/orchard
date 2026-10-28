@@ -2,10 +2,12 @@ param(
     [Parameter(Mandatory)][string]$AppDirectory,
     [Parameter(Mandatory)][string]$Output,
     [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
-    [switch]$Nonmodal
+    [switch]$Nonmodal,
+    [switch]$CheckOutside
 )
 
 $ErrorActionPreference = 'Stop'
+if ($CheckOutside -and -not $Nonmodal) { throw 'Outside action check requires nonmodal mode.' }
 Add-Type -AssemblyName UIAutomationClient
 Add-Type -AssemblyName System.Drawing
 Add-Type -TypeDefinition @'
@@ -103,6 +105,13 @@ try {
         Wait-Until { (ByName $root 'Modal context menu Outside actions remain available' ([System.Windows.Automation.ControlType]::Button)) } 'Catalog did not enter nonmodal mode.' | Out-Null
     }
     Ensure-Foreground $process.MainWindowHandle
+    $outside = $null
+    if ($CheckOutside) {
+        $outside = Wait-Until { ByName $root 'Fictional outside action' ([System.Windows.Automation.ControlType]::Button) } 'Catalog outside action unavailable.'
+        $report.steps.outsideBaseline = Pointer $outside $process.MainWindowHandle $false
+        Wait-Until { $status.Current.Name -eq 'Outside action activated' } 'Catalog outside button failed without an open menu.' | Out-Null
+        $report.steps.outsideBaselineAction = $status.Current.Name
+    }
     $target.SetFocus()
     Wait-Until { $target.Current.HasKeyboardFocus } 'Context target did not take focus.' | Out-Null
     [OrchardContextMenuDesktopInput]::keybd_event(0x10, 0, 0, [UIntPtr]::Zero)
@@ -120,7 +129,16 @@ try {
     Wait-Until { -not (ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem)) } 'Selection did not dismiss the Context Menu.' | Out-Null
     $report.steps.originalAction = $status.Current.Name
 
-    if ($status.Current.Name -ne 'Selected: Inspect fictional item') { throw 'Escape changed the caller action status.' }
+    if ($CheckOutside) {
+        $report.steps.pointerReopen = Pointer $target $process.MainWindowHandle $true
+        Wait-Until { ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem) } 'Nonmodal menu did not reopen.' | Out-Null
+        $report.steps.outsideClick = Pointer $outside $process.MainWindowHandle $false
+        Wait-Until { $status.Current.Name -eq 'Outside action activated' } 'First outside click did not reach the original catalog button.' | Out-Null
+        Wait-Until { -not (ByName $root 'Inspect fictional item' ([System.Windows.Automation.ControlType]::MenuItem)) } 'Outside click did not dismiss the nonmodal menu.' | Out-Null
+        $report.steps.outsideAction = $status.Current.Name
+    }
+
+    if ($status.Current.Name -ne $(if ($CheckOutside) { 'Outside action activated' } else { 'Selected: Inspect fictional item' })) { throw 'Caller action status changed unexpectedly.' }
     $report.passed = $true
 } catch {
     $report.error = $_.Exception.Message

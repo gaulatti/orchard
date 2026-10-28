@@ -1,0 +1,32 @@
+{
+  "scope": "x64 Context Menu nonmodal physical input boundary",
+  "date": "2026-10-28",
+  "librarySourceRetained": false,
+  "catalogFixtureAndPhysicalCheckRetained": true,
+  "currentLibrarySha256": "30308fcf282599ac202a7ce0811a0f54b280419ca66d12f39040bc42a9e706f7",
+  "observed": {
+    "defaultModalPhysicalPathPassed": true,
+    "catalogHiddenCasesPassed": 4,
+    "catalogOutsideButtonWorkedWithoutOpenMenu": true,
+    "currentNonmodalShiftF10Opened": false,
+    "nativeNonmodalTrialItemSelectionPassed": true,
+    "nativeNonmodalFirstOutsideClickReachedButton": false,
+    "nativeNonmodalLightDismissAndRootPointerTrialReachedButton": false,
+    "portalFocusTraceShowedNativePopupClosingDuringFocusHandoff": true
+  },
+  "reports": [
+    { "file": "default-regression-pass.json", "sha256": "3d30e1090ee27710f711aecf75a96ad6943ef5c61bd56f8de04813b62555a9bf" },
+    { "file": "catalog-audit.json", "sha256": "0e6608045d304115509638c3af95451d4c121b85306644395ebaa8d23b058020" },
+    { "file": "published-open-failure.json", "sha256": "f2988467fe7b6d87f68eacf3a2aabc745aa50e68df5a40108c2c6bc2d00a0e52" },
+    { "file": "native-action-pass.json", "sha256": "dee53b7c71220421a31443093c14e6ba459a931ab99f0f839c08622a4d9e7dea" },
+    { "file": "native-outside-failure.json", "sha256": "51aa9a7735de45e46175793bce4549218dcbe869ac8f44b98df69b7001a335e2" },
+    { "file": "native-outside-hook-failure.json", "sha256": "2ad46e2efcb73155370557426c476652599ba5f4b9a4445799acf5e07d647707" },
+    { "file": "portal-focus-trace.txt", "sha256": "9f2fda3889109a08f2b91730a6b0cbff0740664a4041333348adb1bff32f807e" }
+  ],
+  "nextAcceptanceBoundary": "In nonmodal mode, keyboard or right-click opens the menu; a single physical item click invokes its original handler; a first outside click activates the original outside button and dismisses the menu.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "narratorLaunched": false,
+  "osSettingsChanged": false
+}

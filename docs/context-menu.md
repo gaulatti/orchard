@@ -67,6 +67,13 @@ Shift+F10, Escape, right-click and a single physical click on the first original
 action passed. Root, modal-owner, catalog and root-option hidden checks also
 passed, including live modality changes. Nonmodal and active-modal physical
 selection still need repair; this does not accept the Context Menu component.
+The [nonmodal physical follow-up](evidence/context-menu-nonmodal-physical-v1/checkpoint.json)
+adds a fictional outside button to the catalog and a first-click regression
+check. The committed portal path still closes before Shift+F10 exposes an item.
+An unowned native nonmodal trial made item selection work, but its first outside
+click only dismissed the menu instead of activating that button. A light-dismiss
+and root-pointer trial also failed. Those library changes were reverted; the
+catalog demo and focused test retain the required outside-input contract.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.

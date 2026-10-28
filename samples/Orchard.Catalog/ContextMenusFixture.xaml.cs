@@ -6,4 +6,5 @@ public sealed partial class ContextMenusFixture : StackPanel
 {
     public ContextMenusFixture() => InitializeComponent();
     private void Changed(object sender,RoutedEventArgs args) => Status.Text = "Selected: " + ((MenuFlyoutItem)sender).Text;
+    private void OutsideChanged(object sender,RoutedEventArgs args) => Status.Text = "Outside action activated";
 }

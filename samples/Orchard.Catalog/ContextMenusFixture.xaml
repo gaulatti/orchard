@@ -12,4 +12,5 @@
   </orchard:BleeckerContextMenu></Button.ContextFlyout>
  </Button>
  <TextBlock x:Name="Status" Text="No fictional context action yet" Style="{StaticResource BleeckerBodyStyle}"/>
+ <Button x:Name="OutsideAction" Content="Fictional outside action" Click="OutsideChanged" HorizontalAlignment="Left" Margin="0,220,0,0" Style="{StaticResource BleeckerSecondaryButtonStyle}"/>
 </StackPanel>

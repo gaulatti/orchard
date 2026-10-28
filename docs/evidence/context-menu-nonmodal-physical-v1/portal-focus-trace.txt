@@ -1,0 +1,10 @@
+2026-10-28T06:53:44.2067070Z GettingFocus node=Popup inside=False modal=False eligible=False open=True nativePopup= surfacePopup=
+2026-10-28T06:53:44.2194421Z GettingFocus node=MenuFlyoutPresenter inside=False modal=False eligible=False open=True nativePopup= surfacePopup=
+2026-10-28T06:53:44.2948417Z GotFocus node=Popup inside=False modal=False eligible=False open=True nativePopup= surfacePopup=
+2026-10-28T06:53:44.2959846Z GettingFocus node=MenuFlyoutItem inside=False modal=False eligible=False open=True nativePopup= surfacePopup=
+2026-10-28T06:53:44.2982728Z GotFocus node=MenuFlyoutPresenter inside=False modal=False eligible=False open=True nativePopup= surfacePopup=
+2026-10-28T06:53:44.3063538Z GotFocus node=MenuFlyoutItem inside=False modal=False eligible=False open=True nativePopup= surfacePopup=
+2026-10-28T06:53:44.3245057Z GettingFocus node=Popup inside=False modal=False eligible=False open=True nativePopup=True surfacePopup=
+2026-10-28T06:53:44.3683449Z GotFocus node=Popup inside=False modal=False eligible=True open=True nativePopup=True surfacePopup=
+2026-10-28T06:53:44.3721981Z GettingFocus node=Button inside=False modal=False eligible=True open=False nativePopup=False surfacePopup=
+2026-10-28T06:53:44.3799387Z Dispose node= inside=False modal=False eligible=True open=False nativePopup=False surfacePopup=
