@@ -1,7 +1,9 @@
 param([Parameter(Mandatory)][string]$AppDirectory,[Parameter(Mandatory)][string]$Archive,[Parameter(Mandatory)][string]$ExpandedDirectory,[Parameter(Mandatory)][string]$Output,[Parameter(Mandatory)][string]$Version)
 $ErrorActionPreference='Stop'
 $taskApp=(Resolve-Path -LiteralPath $AppDirectory).Path
-if(Test-Path -LiteralPath (Join-Path $taskApp 'publish') -PathType Container){throw 'Catalog input contains nested publish output. Use a clean publish directory, not the build directory.'}
+$taskNestedPublish=Join-Path $taskApp 'publish'
+if((Test-Path -LiteralPath $taskNestedPublish -PathType Container) -and
+   @(Get-ChildItem -LiteralPath $taskNestedPublish -Recurse -File -Force).Count -gt 0){throw 'Catalog input contains nested publish output. Use a clean publish directory, not the build directory.'}
 $taskArchive=[IO.Path]::GetFullPath($Archive)
 $taskExpanded=[IO.Path]::GetFullPath($ExpandedDirectory)
 foreach($taskPath in @($taskArchive,$taskExpanded,[IO.Path]::GetFullPath($Output))){if(Test-Path -LiteralPath $taskPath){throw 'Use fresh catalog artifact paths'}}

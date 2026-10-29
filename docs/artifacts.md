@@ -1,11 +1,11 @@
 # Local artifact storage
 
 The current published package and x64/ARM64 runnable catalogs are
-[preview 2026-10-29.1](releases/2026-10-29-preview-1.md). Its exact NuGet DLL,
+[preview 2026-10-29.24](releases/2026-10-29-preview-24.md). Its exact NuGet DLL,
 archive bytes, x64 consumer/runtime checks, ARM64 build/consumer compile, and
-fictional demos are recorded in the
-[delivery checkpoint](evidence/preview-20261029-1/checkpoint.json). Native
-ARM64 execution and full component acceptance remain open. The previous
+fictional demos are recorded in
+`artifacts/current/context-menu-native-candidate/release-v24-checkpoint.json`.
+Native ARM64 execution and remaining component acceptance remain open. The previous
 [published v7](releases/2026-10-27-preview-v7.md) contains the crash fix and
 its own separately qualified bytes. The older unpublished local checkpoint is
 [components v7](releases/2026-10-27-components-v7-local.md); its distinct
@@ -51,9 +51,9 @@ Monitoring and Editorial demos, has a matching compiled file before archiving.
 The catalog publish target copies compiled XAML only from the build output root
 and `Demos` directory. Repeated publishes must not copy an earlier `publish`
 tree into `publish/publish`; the packaging script rejects nested output.
-If an older build already left a nested `publish/publish` directory, remove
-that generated subdirectory before using the normal publish directory for
-packaging. A fresh publish directory does not contain it.
+If an older build leaves a nested `publish/publish` directory containing files,
+remove that generated subdirectory before packaging. The packer tolerates empty
+nested directories left by repeated publishes and still rejects nested files.
 Verify the extracted application and required component demos before claiming
 runtime delivery.
 

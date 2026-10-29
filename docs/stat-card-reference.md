@@ -1,5 +1,13 @@
 # Stat Card source contract and acceptance
 
+For the 2026-10-29 x64 milestone, Stat Card passes all five required checks:
+Light/Dark states, native keyboard/pointer/focus behavior, four native 150%
+no-clipping cases, static behavior with reduced motion, and independent package
+consumer compilation. The [inventory](parity-inventory.json) records the
+matching `.24` package and catalog evidence. ARM64 remains build-only and
+runtime-unverified. Exact raster comparisons are historical diagnostics, not
+an acceptance gate.
+
 `BleeckerStatCard` implements the pinned Bleecker
 [`StatCard`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/stat-card.tsx).
 Source SHA-256: `7085e7d88f1109a0d1ca93885fc0de01aa735fd7ca973de1bdb63cac333ffb06`.
@@ -214,9 +222,10 @@ themes, including multiline title, description, trend label and footer, raw
 icon/footer text, and anonymous zero slots. It compares every pixel in the
 captured text rectangles with their background, without a color threshold or
 pixel mask. Matching occupied rows verifies placement, not complete glyph
-shaping, horizontal advances, antialiasing or raster equality. Those gaps,
-scaling and native ARM64 acceptance remain open. Narrator and OS contrast
-campaigns are excluded by the current [library scope](library-scope.md).
+shaping, horizontal advances, antialiasing or raster equality. Those historical
+raster differences are outside the current x64 milestone. The separate native
+150% fixture now passes in Light and Dark; ARM64 runtime is unverified. Narrator
+and OS contrast campaigns are excluded by the current [library scope](library-scope.md).
 
 The registered gallery adds a wrapped title/summary with raw icon and footer
 text. Native checks pass at `artifacts/smoke-stat-typography-stable`, including

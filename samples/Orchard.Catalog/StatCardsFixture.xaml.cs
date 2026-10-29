@@ -108,6 +108,7 @@ public sealed partial class StatCardsFixture:UserControl
             throw;
         }
         input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),Part<Button>(action,"PART_Action")),"Stat Card skipped its consumer footer action.");input.Key(0x20);await AwaitAsync(()=>clicks==1,"Stat Card consumer action did not invoke through native Space.");input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),chart),"Stat Card reverse Tab did not restore history focus.");
+        await input.ClickAsync(action);await AwaitAsync(()=>clicks==2,"Stat Card consumer action did not invoke through native pointer click.");
         card.IsEnabled=false;UpdateLayout();Require(!Part<Button>(action,"PART_Action").IsEnabled&&!chart.IsEnabled,"Disabled Stat Card left its child controls enabled.");card.IsEnabled=true;
         stack.Children.Remove(card);await AwaitAsync(()=>!card.IsLoaded,"Stat Card did not unmount.");card.Trend=trend;trend.Value="-9%";stack.Children.Insert(1,card);await AwaitAsync(()=>card.IsLoaded&&Part<TextBlock>(card,"PART_TrendValue").Text=="-9%","Stat Card lost changed consumer state after remount.");
         Require(ReferenceEquals(card.Footer,action),"Stat Card replaced consumer footer identity.");
