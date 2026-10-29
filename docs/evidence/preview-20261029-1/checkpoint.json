@@ -3,6 +3,13 @@
   "date": "2026-10-29",
   "version": "0.1.0-preview.20261029.1",
   "buildSourceCommit": "88e85b9ca10265d7c2b8b3a9d099d3a8386a5548",
+  "publication": {
+    "releaseUrl": "https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.1",
+    "releaseTagCommit": "fa9ef71dd58b05bda419da82ada8d6f35beb85ab",
+    "prerelease": true,
+    "assetsUploaded": 3,
+    "githubAssetDigestsMatchLocal": true
+  },
   "package": {
     "path": "artifacts/current/preview-20261029-candidate/Gaulatti.Orchard.0.1.0-preview.20261029.1.nupkg",
     "sha256": "5ae3aa13c09b37f4a6d9a4df8d29fd352a4365802d375cc8f57575fedf889deb",

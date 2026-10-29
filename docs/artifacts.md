@@ -1,10 +1,13 @@
 # Local artifact storage
 
-The current published crash fix and matching x64 runnable catalog are
-[preview v7](releases/2026-10-27-preview-v7.md). The catalog's released NuGet
-DLL hash, archive bytes, extracted resources, and fictional demos are recorded
-in its [delivery checkpoint](evidence/catalog-v7-x64/checkpoint.json). The
-older unpublished local NuGet and catalog checkpoint is
+The current published package and x64/ARM64 runnable catalogs are
+[preview 2026-10-29.1](releases/2026-10-29-preview-1.md). Its exact NuGet DLL,
+archive bytes, x64 consumer/runtime checks, ARM64 build/consumer compile, and
+fictional demos are recorded in the
+[delivery checkpoint](evidence/preview-20261029-1/checkpoint.json). Native
+ARM64 execution and full component acceptance remain open. The previous
+[published v7](releases/2026-10-27-preview-v7.md) contains the crash fix and
+its own separately qualified bytes. The older unpublished local checkpoint is
 [components v7](releases/2026-10-27-components-v7-local.md); its distinct
 version, hashes, runtime checks and failed ARM64 consumer publish are recorded
 there.
