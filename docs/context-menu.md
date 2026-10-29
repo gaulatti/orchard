@@ -89,6 +89,15 @@ pointer action work but let Escape close the parent modal; a portal
 pass-through trial did not fix selection. Both library trials were reverted.
 The owned demo and focused test retain this acceptance boundary while the
 unowned physical paths continue to pass.
+The [window-hit follow-up](evidence/context-menu-window-hit-v1/checkpoint.json)
+records the native top-level window at each original item's center during
+the same physical test. Both the failing owned menu and passing unowned menu
+report a `Microsoft.UI.Content.PopupWindowSiteBridge` at that point, so the
+class alone does not identify the intercepting popup. Collapsing the owned
+menu's native marker in a local trial left that window rectangle and the
+failed physical action unchanged. The trial was reverted. The owned click
+and complete focus/modality behavior remain open; the new diagnostic does
+not accept this component.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.

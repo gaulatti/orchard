@@ -1,0 +1,57 @@
+{
+  "scope": "Native window-hit diagnosis of Context Menu original-item physical clicks",
+  "date": "2026-10-29",
+  "sourceRetained": "Focused desktop verifier records WindowFromPoint and the root window's class, process, and bounds at the original item center; no library implementation change is retained",
+  "verifiedBuild": {
+    "architecture": "x64",
+    "catalogExeSha256": "05e3d21ad9dff4c1ab9ced4184425fd2a863d373fb173e06d895e5c8c54e8444",
+    "orchardDllSha256": "f05d7e37b2c55183173bbea6718ea6bb5ac0e5318ae30b9c1eca89810aae72bc"
+  },
+  "physicalRuns": [
+    {
+      "case": "active modal owner",
+      "passed": false,
+      "keyboardOpenAndEscapeDismissal": true,
+      "rightClickOpenedOriginalItem": true,
+      "originalItemClickInvoked": false,
+      "itemCenter": [708, 575],
+      "topWindowClass": "Microsoft.UI.Content.PopupWindowSiteBridge",
+      "topWindowRect": [600, 548, 816, 618],
+      "processExited": true,
+      "report": "artifacts/current/context-menu-window-hit-owned-v1/context-menu-desktop.json",
+      "sha256": "0ed69585c926cc5baa7786508880fc14b1baabafdf3152413af49c86abb1575b"
+    },
+    {
+      "case": "unowned",
+      "passed": true,
+      "keyboardOpenAndEscapeDismissal": true,
+      "rightClickOpenedOriginalItem": true,
+      "originalItemClickInvoked": true,
+      "itemCenter": [786, 375],
+      "topWindowClass": "Microsoft.UI.Content.PopupWindowSiteBridge",
+      "topWindowRect": [673, 348, 900, 562],
+      "processExited": true,
+      "report": "artifacts/current/context-menu-window-hit-unowned-v1/context-menu-desktop.json",
+      "sha256": "2496133992a361c7b0f6df386bfcbe0d2693016994ac8ea6c29473f5b3c7e83c"
+    }
+  ],
+  "collapsedNativeMarkerTrial": {
+    "sourceRetained": false,
+    "catalogBuildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "physicalOwnedClickPassed": false,
+    "topWindowClass": "Microsoft.UI.Content.PopupWindowSiteBridge",
+    "topWindowRect": [600, 548, 816, 618],
+    "processExited": true,
+    "report": "artifacts/current/context-menu-collapsed-marker-trial-owned-v1/context-menu-desktop.json",
+    "sha256": "7a8169c8a666fef2ba3d140ecf4c9cce3ba4b900543a6ad8214a9aa1c93bc357"
+  },
+  "interpretation": "The window class is shared by both outcomes and does not identify which popup receives the click. Collapsing the marker did not change the observed window or make the owned item actionable.",
+  "nextAcceptanceBoundary": "A physical click on the active-owner original item invokes its caller handler while Escape dismisses only the menu, first outside input works in nonmodal mode, and upper-owner shielding remains intact.",
+  "componentAccepted": false,
+  "entriesStarted": 112,
+  "accepted": 0,
+  "osSettingsChanged": false,
+  "narratorLaunched": false
+}

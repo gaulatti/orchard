@@ -14,8 +14,16 @@ Add-Type -AssemblyName System.Drawing
 Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 public static class OrchardContextMenuDesktopInput {
+    [StructLayout(LayoutKind.Sequential)] public struct Point { public int X, Y; public Point(int x, int y) { X = x; Y = y; } }
+    [StructLayout(LayoutKind.Sequential)] public struct Rect { public int Left, Top, Right, Bottom; }
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] public static extern IntPtr WindowFromPoint(Point point);
+    [DllImport("user32.dll")] public static extern IntPtr GetAncestor(IntPtr window, uint flags);
+    [DllImport("user32.dll")] public static extern int GetClassName(IntPtr window, StringBuilder name, int maximum);
+    [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
+    [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr window, out Rect rectangle);
     [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
     [DllImport("user32.dll")] public static extern bool MoveWindow(IntPtr window, int x, int y, int width, int height, bool repaint);
     [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
@@ -62,6 +70,20 @@ function ByName($root, [string]$name, $type) {
 }
 function Ensure-Foreground([IntPtr]$window) {
     if ([OrchardContextMenuDesktopInput]::GetForegroundWindow() -ne $window) { throw 'Catalog lost foreground; no physical input was sent.' }
+}
+function WindowAt($element) {
+    $bounds = $element.Current.BoundingRectangle
+    $x = [int][math]::Floor($bounds.X + $bounds.Width / 2)
+    $y = [int][math]::Floor($bounds.Y + $bounds.Height / 2)
+    $hit = [OrchardContextMenuDesktopInput]::WindowFromPoint([OrchardContextMenuDesktopInput+Point]::new($x, $y))
+    $top = [OrchardContextMenuDesktopInput]::GetAncestor($hit, 2)
+    [uint32]$processId = 0
+    [OrchardContextMenuDesktopInput]::GetWindowThreadProcessId($top, [ref]$processId) | Out-Null
+    $name = [System.Text.StringBuilder]::new(256)
+    [OrchardContextMenuDesktopInput]::GetClassName($top, $name, $name.Capacity) | Out-Null
+    $rect = [OrchardContextMenuDesktopInput+Rect]::new()
+    [OrchardContextMenuDesktopInput]::GetWindowRect($top, [ref]$rect) | Out-Null
+    [ordered]@{ x = $x; y = $y; hitHandle = $hit.ToInt64(); topHandle = $top.ToInt64(); topClass = $name.ToString(); topProcessId = $processId; topRect = @($rect.Left, $rect.Top, $rect.Right, $rect.Bottom) }
 }
 function Pointer($element, [IntPtr]$window, [bool]$right) {
     Ensure-Foreground $window
@@ -136,6 +158,7 @@ try {
     $report.steps.pointerOpen = Pointer $target $process.MainWindowHandle $true
     $item = Wait-Until { ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem) } 'Physical right-click did not expose the native menu item.'
     $report.steps.menuItemVisible = -not $item.Current.IsOffscreen
+    $report.steps.hitWindowAtMenuItemCenter = WindowAt $item
     $report.steps.pointerSelect = Pointer $item $process.MainWindowHandle $false
     Wait-Until { $status.Current.Name -eq "Selected: $itemName" } 'Physical selection did not reach the original catalog Click handler.' | Out-Null
     Wait-Until { -not (ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem)) } 'Selection did not dismiss the Context Menu.' | Out-Null
