@@ -66,6 +66,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "metric", environment = RuntimeEnvironment() }));
             }
+            else if (args.Contains("--smoke-labels"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Labels);
+                    await Labels.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder, CatalogRoot);
+                    await CaptureFixtureAsync(Labels, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "label", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-loading-spinner"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })

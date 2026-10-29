@@ -27,7 +27,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -195,6 +195,41 @@ internal static class ContentScaleFixture
                 await File.WriteAllBytesAsync(Path.Combine(Path.GetDirectoryName(output)!, $"eyebrow-scale-{theme}-1.5.png"),eyebrowPng);
                 root.Children.Clear();await Layout();
             }
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            {
+                stage=$"label/{theme}/150-percent";
+                root.RequestedTheme=theme;
+                var plainLabel=new BleeckerLabel{Width=140,Content="A longer coverage label wraps within its available width"};
+                var richText=new TextBlock{Text="Rich coverage label wraps within its available width",TextWrapping=TextWrapping.Wrap};
+                var richLabel=new BleeckerLabel{Width=160,Content=richText};
+                var disabledLabel=new BleeckerLabel{Width=140,Content="Unavailable field",IsEnabled=false};
+                var emptyLabel=new BleeckerLabel{Width=140,Content=""};
+                Canvas.SetLeft(plainLabel,24);Canvas.SetTop(plainLabel,16);
+                Canvas.SetLeft(richLabel,200);Canvas.SetTop(richLabel,16);
+                Canvas.SetLeft(disabledLabel,24);Canvas.SetTop(disabledLabel,104);
+                Canvas.SetLeft(emptyLabel,24);Canvas.SetTop(emptyLabel,132);
+                root.Children.Add(plainLabel);root.Children.Add(richLabel);root.Children.Add(disabledLabel);root.Children.Add(emptyLabel);
+                await Layout();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001,"Label did not render at native 150% scale.");
+                foreach(var (owner,content,id) in new (BleeckerLabel,FrameworkElement,string)[]{
+                    (plainLabel,Find<TextBlock>(plainLabel,"PART_Text")!,"plain"),
+                    (richLabel,richText,"rich"),
+                    (disabledLabel,Find<TextBlock>(disabledLabel,"PART_Text")!,"disabled"),
+                    (emptyLabel,Find<TextBlock>(emptyLabel,"PART_Text")!,"empty")})
+                {
+                    var ownerBounds=owner.TransformToVisual(root).TransformBounds(new Rect(0,0,owner.ActualWidth,owner.ActualHeight));
+                    var contentBounds=content.TransformToVisual(root).TransformBounds(new Rect(0,0,content.ActualWidth,content.ActualHeight));
+                    Require(owner.IsLoaded&&content.IsLoaded&&!owner.IsTabStop&&owner.ActualWidth>0&&owner.ActualHeight>0&&
+                        ownerBounds.X>=0&&ownerBounds.Y>=0&&ownerBounds.Right<=400&&ownerBounds.Bottom<=160&&
+                        contentBounds.X>=ownerBounds.X-.5&&contentBounds.Y>=ownerBounds.Y-.5&&
+                        contentBounds.Right<=ownerBounds.Right+.5&&contentBounds.Bottom<=ownerBounds.Bottom+.5,
+                        $"Label {id} clipped at native 150% scale: owner={ownerBounds}, content={contentBounds}.");
+                    labelScale.Add(new{theme=theme.ToString(),kind=id,scale=root.XamlRoot.RasterizationScale,
+                        ownerBounds=new{x=ownerBounds.X,y=ownerBounds.Y,width=ownerBounds.Width,height=ownerBounds.Height},
+                        contentBounds=new{x=contentBounds.X,y=contentBounds.Y,width=contentBounds.Width,height=contentBounds.Height},passed=true});
+                }
+                root.Children.Clear();await Layout();
+            }
             island.SiteBridge.OverrideScale=1;
             window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));
             island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
@@ -239,8 +274,8 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
 }

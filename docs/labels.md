@@ -39,12 +39,14 @@ The label has no error enum. The catalog reproduces the pinned error story with
 consumer styling: terracotta in light appearance and primary text in dark. See
 [the reference audit](label-reference.md) for that CSS precedence detail.
 
-This is an in-progress component. Exact glyph/baseline matching, empty and rich
-content comparison, the full pointer and nested-action matrix,
-live appearance, text/display scaling and ARM64 runtime remain unaccepted. Narrator
-and OS contrast campaigns are excluded by [the library scope](library-scope.md). Catalog
-coverage includes plain, disabled, empty, wrapped, non-Latin and rich labels;
-the package consumer exercises the public typography and association contract.
+Label is accepted for the 2026-10-29 x64 component milestone. Its Light and Dark
+states, keyboard/pointer/focus behavior, native 150% no-clipping, static
+reduced-motion behavior and independent package-consumer compilation all pass.
+ARM64 remains build-only with runtime unverified. Narrator, OS contrast and
+pixel-parity campaigns are outside this milestone. Catalog coverage includes
+plain, disabled, empty, error-styled, wrapped, non-Latin and rich labels;
+the package consumer exercises typography and association. Older preview
+records below describe the state when those checks were run.
 
 Verification: artifacts/smoke-label-geometry passes both themes, including the 13px line box, disabled opacity within one-millionth numeric precision, wrapping, accessible name changes, association removal and explicit consumer-name precedence. Light/dark captures were inspected. Physical dark-theme label click focused the input and accepted typed text (artifacts/label-pointer-focus.jpg); one Tab moved directly to the nested Help button without stopping on intervening labels (artifacts/label-tab-order.jpg). The complete physical matrix remains open. All 13 tests and x64/ARM64 builds pass; ARM64 runtime remains unavailable.
 
@@ -179,3 +181,17 @@ System report failed because the probe expected forward Tab to reach a child
 that appears earlier than the linked input; the corrected route follows the
 fixture's native order. This check does not establish the broader nested-control
 matrix, exact focus pixels, scaling or native ARM64 runtime.
+
+For the current x64 milestone, the focused `--smoke-labels` catalog run passes
+all fixture assertions in Light and Dark, including a live theme change; its
+catalog captures were inspected. The independent consumer of candidate
+`0.1.0-preview.20261029.8` compiles without warnings and passes 26 hidden
+Light/Dark association cases. Its native 150% island passes eight plain, rich,
+disabled and empty label bounds checks across both themes in
+`artifacts/current/context-menu-native-candidate/label-scale-v8.json`. The
+Label control, template and catalog fixture are unchanged from the earlier
+published v7 package that
+passed physical pointer and keyboard input in both themes, so that evidence
+remains applicable. Two attempted current foreground launches stopped before
+sending input because Windows withheld foreground focus; neither is a
+component failure. No OS setting was changed.

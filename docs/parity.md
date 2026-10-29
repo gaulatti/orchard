@@ -9,7 +9,7 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Brand Mark, Context Menu, Kbd,
-Loading Spinner, Separator and Status Badge are accepted.
+Label, Loading Spinner, Separator and Status Badge are accepted.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
