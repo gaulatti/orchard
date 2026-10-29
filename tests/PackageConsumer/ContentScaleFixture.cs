@@ -33,7 +33,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -564,6 +564,48 @@ internal static class ContentScaleFixture
                     root.Children.Clear();await Layout();
                 }
             }
+            foreach(var viewport in new[]{400,900})
+            {
+                root.Width=viewport;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport*1.5),780));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,(int)(viewport*1.5),780));
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                {
+                    root.RequestedTheme=theme;
+                    BleeckerEmpty Full(double width)=>new(){Width=width,Title="No fictional items",Description="Create a local item to begin this editorial review.",Action=new Button{Content="Create item",Width=120}};
+                    var cases=viewport==400?new (string id,BleeckerEmpty control)[]{
+                        ("full",Full(320)),
+                        ("wrapped",new BleeckerEmpty{Width=280,Title="A longer fictional monitoring empty state",Description="Consumer-owned guidance wraps inside this constrained empty surface without losing words.",Action=new Button{Content="Open review",Width=120}}),
+                        ("custom-icon",new BleeckerEmpty{Width=320,Title="Local archive",Icon=new Border{Width=24,Height=24,Background=new SolidColorBrush(Windows.UI.Color.FromArgb(255,180,55,90))}}),
+                        ("empty-text",new BleeckerEmpty{Width=320,Title="",Description=null})
+                    }:new (string id,BleeckerEmpty control)[]{("wide",Full(600)),("wide-wrapped",new BleeckerEmpty{Width=600,Title="A longer fictional editorial empty state",Description="Consumer-owned description remains centered and readable at a wide viewport.",Action=new Button{Content="Create item",Width=120}})};
+                    foreach(var(id,control) in cases)
+                    {
+                        stage=$"empty/{theme}/{viewport}/{id}/150-percent";
+                        Canvas.SetLeft(control,32);Canvas.SetTop(control,16);root.Children.Add(control);await Layout();
+                        Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&Math.Abs(root.XamlRoot.Size.Width-viewport)<.01,"Empty did not use native 150% scale and viewport.");
+                        var owner=control.TransformToVisual(root).TransformBounds(new Rect(0,0,control.ActualWidth,control.ActualHeight));
+                        Require(control.IsLoaded&&!control.IsTabStop&&control.ActualWidth==control.Width&&control.ActualHeight>0&&owner.X>=0&&owner.Y>=0&&owner.Right<=root.Width&&owner.Bottom<=root.Height,
+                            $"Empty {id} escaped its native 150% host: {owner}.");
+                        foreach(var name in new[]{"EmptyIcon","EmptyBody","EmptyTitle","EmptyDescription","EmptyAction"})
+                        {
+                            var part=Find<FrameworkElement>(control,name)??throw new InvalidOperationException($"Empty {id} lost {name}.");
+                            if(part.Visibility==Visibility.Collapsed||part.ActualHeight==0)continue;
+                            var bounds=part.TransformToVisual(root).TransformBounds(new Rect(0,0,part.ActualWidth,part.ActualHeight));
+                            Require(bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5,
+                                $"Empty {id} {name} clipped at native 150% scale: owner={owner}, part={bounds}.");
+                        }
+                        if(control.Action is FrameworkElement action)
+                        {
+                            var bounds=action.TransformToVisual(root).TransformBounds(new Rect(0,0,action.ActualWidth,action.ActualHeight));
+                            Require(action.IsLoaded&&action.ActualHeight>0&&bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5,
+                                $"Empty {id} consumer action clipped at native 150% scale: owner={owner}, action={bounds}.");
+                        }
+                        emptyScale.Add(new{theme=theme.ToString(),viewport,kind=id,scale=root.XamlRoot.RasterizationScale,passed=true});
+                        root.Children.Clear();await Layout();
+                    }
+                }
+            }
             root.Width=400;
             root.Height=160;
             island.SiteBridge.OverrideScale=1;
@@ -610,8 +652,8 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid, Card and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid, Card, Empty and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
 }

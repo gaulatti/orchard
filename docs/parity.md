@@ -9,8 +9,9 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Brand Mark, Card, Context Menu, Dashboard
-Grid, Dashboard Section, Error State, Icon Badge, Kbd, Label, Loading Spinner,
-Page Header, Progress, Section Header, Separator and Status Badge are accepted.
+Grid, Dashboard Section, Empty, Error State, Icon Badge, Kbd, Label, Loading
+Spinner, Page Header, Progress, Section Header, Separator and Status Badge are
+accepted.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -392,7 +393,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | dialog-close-button | `BleeckerDialogCloseButton`, native commands, adjustable Lucide X and consumer-owned dismissal | 16 native/source states; 110 motion samples; real input, live themes and shadow disposal; eleven corruption checks | In progress: [contract and evidence](dialog-close-button.md); exact raster, normal native motion, broader overrides/scaling and native ARM64 |
 | drawer | `BleeckerDrawer`: retained caller content, controlled close requests and a scrolling bottom surface | Registered edge-dialog catalog; shared Drawer/Sheet source and fresh x64 NuGet checks cover 194 states and 42 lifecycle/content/scrolling scenarios | In progress: [contract and evidence](drawer-sheet.md); physical touch/input, complete visual/motion/scaling and native ARM64 runtime |
 | progress-stack | `BleeckerProgressStack`: consumer values/brushes and wrapping legend | 140 source/native frames and twelve lifecycle phases; zero asserted geometry error | In progress: [contract and remaining acceptance](progress-stack.md) |
-| empty | `BleeckerEmpty`: passive title/description, default or consumer icon, and consumer action | 120 source/native states and twelve live, detach, minimum/style ownership and template/model phases; zero asserted geometry error | In progress: [source/native contract](empty-reference.md); full raster/typography/shadows, remaining customization, platform/a11y and integration acceptance |
+| empty | `BleeckerEmpty`: passive title/description, default or consumer icon, and consumer action | 120 Light/Dark states, twelve lifecycle phases, consumer input, and twelve 150% native scale cases passed | Accepted on x64 under the [five-check milestone contract](acceptance-contract.md); [component usage](empty-reference.md) |
 | eyebrow | `BleeckerEyebrow`: three tones, optional rule and language-aware plain-text casing | Current x64 package passes Light/Dark language-casing, rule layout, passive focus, static motion, 150% no-clipping and consumer compilation | In progress: rich-content uppercase inheritance differs from the pinned source; [usage and remaining check](eyebrows.md) |
 | hover-card | `BleeckerHoverCard`: original trigger/content, inline hover placement and source opacity clock | 44 native layouts, 132 brush checks, 96 controlled presentation samples and five ownership/query groups; full client captures | In progress: [API and gaps](hover-card.md); physical input, nested/ancestor stacking, full raster, scaling, performance and native ARM64 |
 | input | `BleeckerInput`: three sizes, adornments, validation and native editing | Registered light/dark fixtures; native editing, motion, typography, 24 reading-direction and 72 physical-adornment cases; extracted v7 x64 disabled-pointer lifecycle passes 52 stages with animations off and the NuGet-matching DLL | In progress: [reference comparison](input-reference.md), fallback typography, scaling (225% Japanese viewport failure), enabled-motion reversal, full motion parity and remaining ARM64 state checks; see [usage](inputs.md) |

@@ -1,7 +1,11 @@
 # Empty source contract
 
-`BleeckerEmpty` is an in-progress native preview. Its source/native layout and
-lifecycle checks pass; full visual/platform acceptance remains unverified.
+`BleeckerEmpty` is accepted on x64 under the current
+[five-check milestone contract](acceptance-contract.md). The matching catalog
+passed 120 Light/Dark state frames and twelve lifecycle phases; the independent
+NuGet consumer compiled and ran, including twelve native 150% no-clipping
+cases. The control has no animation or transition, and reduced-motion states
+passed without changing OS settings. ARM64 builds but its runtime is unverified.
 
 ```xml
 <orchard:BleeckerEmpty Title="No items" Description="Create an item to get started.">
@@ -34,23 +38,13 @@ recipe and are suppressed in contrast mode.
 The title consumes the source refined tracking (-0.02em). Centering divides
 signed 1/64px layout units toward zero, including overflowing content. RTL
 receipts measure transformed bounds rather than the mirrored local origin.
-The native check verifies all 120 reference states and twelve lifecycle phases
-with zero asserted geometry error: live consumer input/focus, detach/commands,
-explicit minimum/style ownership, and original models through templates and
-selectors. Complete PNG comparisons retain zero tolerance, no masks and no
-resampling; they still report raster differences rather than accepting them.
-All twelve corrupted layout, heading, content-presence, paint and completeness
-reports are rejected. Version `0.1.0-4d820a9` passes both catalog builds and a
-fresh independent x64 NuGet consumer in both themes; the ARM64 consumer builds
-with runtime explicitly unverified. Both generated consumer workspaces and
-package caches are removed. Both catalog ZIPs verify every published entry
-(537 x64 files and 533 ARM64 files).
-
-Remaining acceptance includes complete raster/typography/shadows, arbitrary
-Unicode and remaining template/override behavior, isolated scaling, component
-theme resources, external UIA, collection measurements and native ARM64 runtime. The
-current complete catalog run also needs a connected mouse for its unchanged
-global cursor checks. Push-triggered Actions remain paused.
+The native check verifies 120 reference states and twelve lifecycle phases:
+live consumer input/focus, detach/commands, explicit minimum/style ownership,
+and original models through templates and selectors. The focused catalog route
+also exercised physical pointer activation in both themes. The independent
+package consumer passed twelve native 150% no-clipping cases across Light/Dark
+and 400/900 logical-pixel viewports. Older exact-PNG reports remain historical
+research, not component acceptance gates.
 
 `tests/Reference/Empty.json` freezes Bleecker
 `a86059013cd59684ce452849278ea81e734f2066`, component hash
@@ -60,7 +54,7 @@ themes and both motion preferences, plus twelve retained consumer-input updates.
 The collector pins React 19.2.4, esbuild 0.25.12, Playwright 1.62.1 and Edge
 155.0.4283.62, with the exact regular and semibold font bytes.
 
-Acceptance criteria for the native implementation:
+The source contract implemented by the native control includes:
 
 - Preserve the passive outer container and consumer icon/action objects,
   bindings, templates, commands, keyboard order and accessible descendants.
@@ -82,17 +76,13 @@ Acceptance criteria for the native implementation:
   an overflowing body wider than that box.
 - Verify live title/description/icon changes without replacing the original
   input in a still-present action; verify action activation and Tab navigation.
-- Add registered native catalog, boundary regressions, independent package and
-  CI coverage, then exercise x64 and native ARM64, raster, typography, component
-  theme resources, scaling, motion preferences, UIA and lifecycle/override acceptance.
+- Exercise the registered catalog fixture, consumer-owned action, native x64
+  scaling and package-consumer compilation under the current milestone contract.
 
 The frozen source tests verify these distinctions and every PNG/collector hash.
 They establish the intended behavior for implementation, not native parity.
 
-The current version `0.1.0-77f387a` also passes the full 477-second x64 replay and a fresh x64 consumer in both themes. Native ARM64 runtime and complete component acceptance remain open; see the [current checkpoint](native-validation-checkpoint.md).
-
-The current local candidate refreshes unchanged title/description text when
-`FontFamily` changes, clearing old Orchard script faces for a consumer font
-and restoring them when Encode Sans returns. The registered custom example
-uses Arial with mixed CJK/Arabic text. Live transitions run in the hidden
-package diagnostic; visible runtime/raster replay remains required.
+The control refreshes title/description text when `FontFamily` changes,
+clearing old Orchard script faces for a consumer font and restoring them when
+Encode Sans returns. The registered custom example uses Arial with mixed
+CJK/Arabic text.
