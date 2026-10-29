@@ -11,13 +11,13 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-29 `.14` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.14)
-for the current x64 component milestone. Fourteen of 112 entries are accepted:
-Brand Mark, Context Menu, Dashboard Grid, Dashboard Section, Error State, Icon
-Badge, Kbd, Label, Loading Spinner, Page Header, Progress, Section Header,
+Download the [2026-10-29 `.15` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.15)
+for the current x64 component milestone. Fifteen of 112 entries are accepted:
+Brand Mark, Card, Context Menu, Dashboard Grid, Dashboard Section, Error State,
+Icon Badge, Kbd, Label, Loading Spinner, Page Header, Progress, Section Header,
 Separator and Status Badge.
 ARM64 is build-only with runtime unverified. Its
-[release note](docs/releases/2026-10-29-preview-14.md)
+[release note](docs/releases/2026-10-29-preview-15.md)
 lists the five checks and remaining scope. The earlier v7 preview's
 [checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
 records the package hash, input and tooltip checks, and clean shutdown. The

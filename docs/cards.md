@@ -19,6 +19,16 @@ Elevated uses two custom composition shadow layers from Bleecker's raised-shadow
 
 ## Acceptance
 
+For the 2026-10-29 x64 milestone, Card passes all five checks: its five variants
+and four padding choices render in Light and Dark; physical Tab, reverse Tab,
+Space and pointer activation reach a consumer-owned child without making Card
+a keyboard stop; the independent package consumer passes twenty native 150%
+cases across the five variants, both themes and narrow/wide viewports. Card
+defines no animation or transition and passed with Windows animations already
+disabled. The independent consumer compiles and runs. ARM64 is build-only with
+runtime unverified. See [the inventory](parity-inventory.json) for per-check
+evidence.
+
 The registered fixture covers every variant and padding size, wrapping international text, a constrained-width composition, live variant changes and child action invocation. Native checks compare actual brushes, dimensions, padding and composition layer counts with the source recipe. The independent consumer wraps its controls in a card.
 
 The light-theme desktop capture `artifacts/cards-desktop-light.jpg` confirms that the elevated shadow renders in the published application. A physical pointer click on the card's Open workspace action updates the consumer result to Workspace opened: 1. Light/dark fixture bitmap captures and the independent package runtime also pass. These observations verify visible rendering and child input, not exact browser blur equivalence.
@@ -27,10 +37,8 @@ Additional native regressions retain a consumer background binding across varian
 
 The consumer-style fixture binds Style, cycles through all five variants, checks retained corner/border setters and variant brush opacity, then updates the binding source to a different style. A visible companion fixture sets `Padding=7` through a consumer style; another style changes corners while retaining the 24px default. The named padding sizes also retain their values. The native presentation smoke passed in light and dark themes after the padding fix, and the final focused check passed both added assertions; its [result and light/dark captures](evidence/card-padding-style-v1) are retained. Earlier captures remain in `artifacts/smoke-card-styles-final`. The independent package fixture supplies its asymmetric corners through a consumer style. Use `./scripts/smoke-catalog.ps1 -Component cards` for a focused light/dark Card check and captures.
 
-This component remains in progress. Outstanding checks include source-derived
-shadow appearance, broader clipping cases with transforms/scaling, 220ms
-reference surface transitions and reduced motion, consumer template/style
-lifecycle, scaling, and ARM64 runtime. A separate framework-dependent x64
+The historical shadow and transition investigations below do not add gates to
+this milestone. A separate framework-dependent x64
 consumer source copy restored the byte-matched `0.1.0-preview.20261027.5`
 NuGet package with a shared dependency cache and passed a
 focused light/dark runtime check for the 7px style override, the retained 24px

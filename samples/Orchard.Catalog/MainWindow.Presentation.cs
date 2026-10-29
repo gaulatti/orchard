@@ -18,7 +18,7 @@ public sealed partial class MainWindow
                 await input.AcquireAsync(heading); await input.MoveAsync(heading); await Buttons.VerifyAsync(scheme);
             }),
             (IconButtons, scheme => IconButtons.VerifyAsync(scheme)), (IconBadges, scheme => IconBadges.VerifyAsync(scheme)), (Empties, _ => Empties.VerifyAsync()), (ProgressStacks, _ => ProgressStacks.VerifyAsync()), (ToggleGroups, _ => ToggleGroups.VerifyAsync()),
-            (Cards, scheme => Cards.VerifyAsync(scheme)), (Separators, scheme => Separators.VerifyAsync(scheme)),
+            (Cards, scheme => Cards.VerifyAsync(scheme, folder)), (Separators, scheme => Separators.VerifyAsync(scheme)),
             (StatusBadges, scheme => StatusBadges.VerifyAsync(scheme)), (Menus, scheme => Menus.VerifyAsync(scheme, folder)),
             (Notifications, scheme => Notifications.VerifyAsync(scheme, folder, CatalogRoot)), (ActivityItems, scheme => ActivityItems.VerifyAsync(scheme, folder, CatalogRoot)),
             (Tooltips, scheme => Tooltips.VerifyAsync(scheme, folder, CatalogRoot)), (FieldHelp, scheme => FieldHelp.VerifyAsync(scheme, folder)),

@@ -441,7 +441,7 @@ public sealed partial class MainWindow : Window
                 {
                     CatalogRoot.RequestedTheme = theme;
                     await SelectFixtureAsync(Cards);
-                    await Cards.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+                    await Cards.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
                     await CaptureFixtureAsync(Cards, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "cards", environment = RuntimeEnvironment() }));
@@ -905,7 +905,7 @@ public sealed partial class MainWindow : Window
             await SelectFixtureAsync(LoadingSpinners);
             await LoadingSpinners.VerifyAsync(scheme);
             await SelectFixtureAsync(Cards);
-            await Cards.VerifyAsync(scheme);
+            await Cards.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Skeletons);
             await Skeletons.VerifyAsync(scheme, folder);
             await SelectFixtureAsync(Avatars);

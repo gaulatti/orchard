@@ -519,20 +519,28 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/CardsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
       "currentV5Arm64BuildEvidence": {
         "checkpoint": "docs/evidence/preview-v5-arm64-build/checkpoint.json",
         "libraryCatalogAndPackageConsumerBuilt": true,
         "nativeArm64RuntimeVerified": false
       },
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .15 x64 catalog passed all five variants, four paddings, consumer content, live style and clipping checks in Light/Dark; focused result artifacts/current/context-menu-native-candidate/card-catalog-v15.json and catalog-light.png/catalog-dark.png",
+        "keyboardPointerFocus": "Matching .15 x64 catalog passed physical forward/reverse Tab, Space and pointer click on the original consumer child action in both themes; Card added no keyboard stop; artifacts/current/context-menu-native-candidate/card-Light-desktop.json and card-Dark-desktop.json",
+        "scale150NoClip": "Independent .15 x64 package consumer passed twenty native 150% cases: five variants at 400/900 logical-pixel viewports in Light/Dark, with card and consumer text/action bounds inside their host; artifacts/current/context-menu-native-candidate/card-scale-v15.json",
+        "reducedMotion": "Card control and template define no animation or transition; matching .15 x64 catalog passed with Windows animations already disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/card-catalog-v15.json",
+        "packageConsumerCompiles": "Independent .15 x64 package consumer compiled and ran with zero warnings; package SHA-256 b42a0757b9b5bb0140b55ca807e48f886555027ac9434e76c34c88ba41d42dbc and packaged/consumer/catalog Orchard DLL SHA-256 8c602e3e9f42f51857348a53187978bc30baba825108a5ae0a5247cab04f525c; artifacts/current/context-menu-native-candidate/card-consumer-v15.json"
       }
     },
     {

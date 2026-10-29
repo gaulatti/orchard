@@ -8,9 +8,9 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Brand Mark, Context Menu, Dashboard Grid,
-Dashboard Section, Error State, Icon Badge, Kbd, Label, Loading Spinner, Page
-Header, Progress, Section Header, Separator and Status Badge are accepted.
+records pass/fail for all 112 entries; Brand Mark, Card, Context Menu, Dashboard
+Grid, Dashboard Section, Error State, Icon Badge, Kbd, Label, Loading Spinner,
+Page Header, Progress, Section Header, Separator and Status Badge are accepted.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -345,7 +345,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | attention-surface | `BleeckerAttentionSurface`: five elements, densities, source color model and consumer content/actions | 143 frozen-helper/browser numeric cases; 86 initial x64 source-layout cases and native action/style/hover checks | In progress: [source contract and API](attention-surface-reference.md); full raster/motion, constraints/lifecycle/overrides, scaling, package and ARM64 acceptance |
 | button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, scaling, motion, remaining ARM64 state checks; see [usage](buttons.md) |
 | button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, scaling, remaining ARM64 state checks; see [usage](button-group.md) |
-| card | `BleeckerCard`: five variants, four padding sizes, consumer content | Registered fixtures; native surface, wrapping, child-action and shadow-layer checks; independent consumer | In progress: exact shadows/clipping, surface motion, overrides, accessibility/scaling, remaining ARM64 state checks; see [usage](cards.md) |
+| card | `BleeckerCard`: five variants, four padding sizes, consumer content | Matching `.15` x64 catalog passes Light/Dark variants and physical consumer-child Tab/Space/pointer/focus; independent package consumer passes twenty native 150% cases, static reduced motion and compilation | Accepted for the x64 milestone; ARM64 runtime unverified. [Usage and evidence](cards.md) |
 | chart | `BleeckerChart`: fixed currency plot over original consumer records | Registered 94-case source fixture, real pointer/keyboard handovers and independent consumer; retained in the current published catalog | In progress: [source contract and evidence](chart-reference.md); exact raster/motion, full data/override/RTL and platform acceptance |
 | chart-theme | `BleeckerChartTheme` and `BleeckerChartSeries`: scoped resource keys, source palette selection, immutable style metadata and consumer-owned series | Registered role/palette/brand, series-paint and axis/grid/tooltip surface fixture; frozen metadata regressions | In progress: [contract and API](chart-theme-reference.md); actual chart consumers, tooltip effects and full platform acceptance |
 | line-chart | `BleeckerLineChart`: consumer records/series, monotone curves, grid, axes, legend and category inspection | Registered fixture; frozen curve/domain/data cases, 60 placement cases, 22 chart and 26 tooltip specimens, composed blur/shadow profiles; independent consumer | In progress: [API and evidence](line-chart-reference.md); complete visual/motion/lifecycle, tooltip raster and platform acceptance |

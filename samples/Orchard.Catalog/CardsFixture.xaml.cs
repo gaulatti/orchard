@@ -17,7 +17,7 @@ public sealed partial class CardsFixture : UserControl
     private int clicks;
     private void OnOpen(object sender, RoutedEventArgs args) => Result.Text = $"Workspace opened: {++clicks}";
 
-    internal async Task VerifyAsync(BleeckerColorScheme scheme)
+    internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         foreach (var card in Variants.Children.OfType<BleeckerCard>())
         {
@@ -96,6 +96,42 @@ public sealed partial class CardsFixture : UserControl
         Require(outline.StartPoint.X == 20 && outline.Segments.OfType<ArcSegment>().Select(arc => arc.Size.Width).SequenceEqual(new double[] { 8, 4, 16, 20 }), "Changing card corners left the elevation mask stale.");
         elevated.ClearValue(Control.CornerRadiusProperty);
         await VerifyClippingAsync(scheme);
+        await VerifyNativeInputAsync(folder, scheme);
+    }
+    private async Task VerifyNativeInputAsync(string folder, BleeckerColorScheme scheme)
+    {
+        var before = new Button { Content = "Before card" };
+        var action = new Button { Content = "Open fictional workspace" };
+        var after = new Button { Content = "After card" };
+        var card = new BleeckerCard { Content = action, Width = 280, HorizontalAlignment = HorizontalAlignment.Left };
+        var stack = new StackPanel { Spacing = 8, Children = { before, card, after } };
+        var clicks = 0;
+        action.Click += (_, _) => clicks++;
+        var root = (StackPanel)Content;
+        root.Children.Add(stack);
+        try
+        {
+            await MainWindow.AwaitPresentationAsync(this);
+            using var input = new NativeInputSession(XamlRoot, folder, $"card-{scheme}");
+            await input.AcquireAsync(before);
+            Require(!card.IsTabStop && before.Focus(FocusState.Keyboard), "Card added a keyboard stop or could not focus the preceding action.");
+            input.Key(0x09);
+            await WaitForAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), action), "Tab skipped the consumer action inside Card.");
+            await input.KeyAsync(0x20, action);
+            await WaitForAsync(() => clicks == 1, "Card swallowed the consumer action's physical Space.");
+            input.Key(0x09);
+            await WaitForAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), after), "Tab did not leave Card content.");
+            input.ShiftKey(0x09);
+            await WaitForAsync(() => ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), action), "Reverse Tab skipped Card content.");
+            await input.ClickAsync(action);
+            await WaitForAsync(() => clicks == 2, "Card swallowed the consumer action's physical pointer click.");
+        }
+        finally { root.Children.Remove(stack); }
+    }
+    private static async Task WaitForAsync(Func<bool> ready, string message)
+    {
+        for (var i = 0; i < 120 && !ready(); i++) await Task.Delay(16);
+        Require(ready(), message);
     }
     private async Task VerifyClippingAsync(BleeckerColorScheme scheme)
     {
