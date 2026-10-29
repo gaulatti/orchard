@@ -10,9 +10,9 @@ milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Brand Mark, Card, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Icon Badge,
-Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Progress,
-Progress Stack, Section Header, Separator, Sparkline and Status Badge are accepted
-(22 of 112 entries).
+Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
+Progress, Progress Stack, Section Header, Separator, Sparkline and Status Badge
+are accepted (23 of 112 entries).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -448,7 +448,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | feed-grid | `BleeckerFeedGrid`: auto-fill tracks, variable rows and original caller children | Matching .19 x64 catalog passes 144 Light/Dark layouts and native child input/focus; 16 independent-consumer 150% cases, static reduced-motion behavior and package compilation | Accepted on x64: [contract](feed-grid.md); ARM64 runtime unverified |
 | header | `BleeckerHeader`: original brand/navigation, caller-owned actions and responsive positioning | Catalog and fresh x64 consumer; 72 source layouts, 23 native scenarios and both architecture builds | In progress: [contract and evidence](header.md); desktop input/focus, complete visual/motion/scaling, integration and native ARM64 runtime |
 | page-frame | `BleeckerPageFrame`: centered width/spacing recipes and semantic grouping | Matching .20 x64 Light/Dark catalog passed 792 layouts and two native input/focus sequences; independent package consumer passed 16 native 150% states and static reduced-motion behavior | Accepted on x64: [contract and evidence](page-frame.md); ARM64 runtime unverified |
-| panel-layout | BleeckerPanelLayout / BleeckerPanelColumn | PanelLayoutsFixture | Preview: fixed/growing tracks, retained child controls, horizontal scrolling; visual/platform acceptance open |
+| panel-layout | `BleeckerPanelLayout` / `BleeckerPanelColumn`: fixed/growing tracks, retained caller controls and horizontal scrolling | Matching .21 x64 Light/Dark catalog passed 86 layouts and two native input/focus sequences; independent package consumer passed 12 native 150% states and static reduced-motion behavior | Accepted on x64: [contract and evidence](panel-layout.md); ARM64 runtime unverified |
 
 | brand-mark (Sabella) | `BleeckerBrandMark`, original template PNG and caller-owned size/tint | Current package passes 37 Light/Dark states and eight native 150% size/theme checks; independent consumer compiles | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](brand-mark.md) |
 | secure-field (Sabella) | `BleeckerSecureField` | SecureFieldsFixture; native and fresh consumer 30 cases; disabled visual regression | In progress: [contract](secure-field.md); physical input, full visual/scaling/customization and ARM64 runtime |

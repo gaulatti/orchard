@@ -8249,15 +8249,23 @@
         "samples/Orchard.Catalog/MainWindow.PanelLayouts.cs",
         "scripts/verify-panel-layout.mjs",
         "scripts/test-panel-layout-audit.mjs",
-        "tests/PackageConsumer/MainWindow.PanelLayout.cs"
+        "tests/PackageConsumer/MainWindow.PanelLayout.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .21 x64 catalog passed 86 Panel Layout and Panel Column Light/Dark states including fixed/growing tracks, nested columns, empty/hidden children, RTL and constrained overflow; artifacts/current/context-menu-native-candidate/panel-layout-catalog-v21.json and panel-layout.json",
+        "keyboardPointerFocus": "Matching .21 x64 catalog passed two native pointer/keyboard/focus sequences, retaining edited values, actions, focus, child lifetime and scroll position through growth, collection moves and remount; artifacts/current/context-menu-native-candidate/panel-layout.json",
+        "scale150NoClip": "Independent .21 x64 package consumer passed 12 native 150% Light/Dark 400/900-DIP fixed-grow/nested-column/empty cases with visible content in bounds; intentional horizontal overflow is scrollable in the focused catalog route; artifacts/current/context-menu-native-candidate/panel-layout-scale-v21.json",
+        "reducedMotion": "Panel Layout and Panel Column define no animation or transition; matching .21 focused catalog static behavior passed with animation effects disabled; artifacts/current/context-menu-native-candidate/panel-layout-catalog-v21.json",
+        "packageConsumerCompiles": "Independent .21 x64 NuGet consumer compiled and ran against package SHA-256 500c316ed8157eeafa98ea82c484a26e40cb73d51677697137fe603a21e3b933 and matching package/consumer/x64-catalog Orchard DLL SHA-256 22bf20124e8435a3176827ffb9c7faca7b71bed73fc0b8bc7617a72db12a0cfd; artifacts/current/context-menu-native-candidate/panel-layout-consumer-v21.json"
       }
     },
     {

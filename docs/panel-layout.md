@@ -50,9 +50,9 @@ The Panel layouts fixture demonstrates both controls with fictional local
 values. The frozen Bleecker source contains 86 reference layouts across both
 themes, including fractional tracks, RTL, empty/hidden children, nested
 columns, padding and constrained overflow, with 34 complete original PNGs.
-Current native and package evidence is recorded in runtime-evidence.md. This
-preview remains subject to actual scaling, native ARM64 and final integration
-acceptance.
+Historical native and package evidence is recorded in runtime-evidence.md.
+The current x64 milestone uses the five checks in
+[the acceptance contract](acceptance-contract.md).
 
 The current focused native run matches all 86 layouts exactly. Both themes
 retain edited text, focus and child lifetime across growth/collection moves,
@@ -65,4 +65,14 @@ Both catalog architectures build without warnings/errors. A fresh x64 NuGet
 consumer passes both themes, including compiled XAML attached growth and live
 attached bindings; the independent ARM64 consumer compiles the same API. Its
 temporary source and package caches are removed after validation. Native ARM64
-execution and a complete catalog replay remain unverified for this package.
+execution and a complete catalog replay remained unverified for that package.
+
+Preview `.21` accepts Panel Layout and Panel Column on x64. The matching catalog
+passed all 86 Light/Dark layouts and two native input/focus sequences; the
+independent NuGet consumer compiled and ran. Twelve native 150% Light/Dark cases
+at narrow and wide viewports passed for fixed/growing children, a nested column
+and an empty layout. The component defines no animation or transition, and its
+static behavior passed with animation effects disabled. Horizontal overflow is
+intentionally scrollable, as verified by the native keyboard route. ARM64
+runtime remains unverified. Historical pixel differences are not a gate for
+this milestone.
