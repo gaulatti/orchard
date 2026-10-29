@@ -71,6 +71,10 @@ public sealed partial class ProgressFixture : UserControl
             foreach (var (value, percentage) in new[] { (-50d, 0d), (50d, 25d), (145d, 72.5d), (250d, 100d) })
             {
                 Plain.Value = value;
+                if (!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled)
+                    Require(Math.Abs(Find<Border>(Plain, "PART_Fill").Width -
+                        Find<Border>(Plain, "PART_Track").ActualWidth * percentage / 100) < .001,
+                        "Progress animated a value change while reduced motion is active.");
                 await SettleAsync(() => Math.Abs(Find<Border>(Plain, "PART_Fill").ActualWidth -
                     Find<Border>(Plain, "PART_Track").ActualWidth * percentage / 100) < 1);
                 Require(Plain.Value == value && range.Value == Math.Clamp(value, 0, 200) && range.Maximum == 200 &&

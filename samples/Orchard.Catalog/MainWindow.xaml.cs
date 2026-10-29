@@ -154,6 +154,23 @@ public sealed partial class MainWindow : Window
             }
             else if(args.Contains("--smoke-accordion-reference"))await RunAccordionsAsync(folder);
             else if(args.Contains("--smoke-empty"))await RunEmptiesAsync(folder);
+            else if(args.Contains("--smoke-progress-milestone"))
+            {
+                if(new Windows.UI.ViewManagement.UISettings().AnimationsEnabled)
+                    throw new InvalidOperationException("Progress reduced-motion milestone requires animations already disabled; no OS setting is changed.");
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                {
+                    CatalogRoot.RequestedTheme=theme;
+                    await SelectFixtureAsync(Progress);
+                    await Progress.VerifyAsync(theme==ElementTheme.Light?BleeckerColorScheme.Light:BleeckerColorScheme.Dark,folder);
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder,"progress-milestone.json"),
+                    JsonSerializer.Serialize(new{passed=true,themes=new[]{"Light","Dark"},sizes=3,variants=4,
+                        animationsEnabled=new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
+                        passiveKeyboardPointerFocus=true,environment=RuntimeEnvironment()}));
+                await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),
+                    JsonSerializer.Serialize(new{passed=true,component="progress-milestone",environment=RuntimeEnvironment()}));
+            }
             else if(args.Contains("--smoke-progress-stack"))await RunProgressStacksAsync(folder);
             else if(args.Contains("--smoke-progress-stack-text"))await RunProgressStacksAsync(folder,unicode:true);
             else if(args.Contains("--smoke-progress-stack-accessibility"))await RunProgressStackAccessibilityAsync(folder);

@@ -3,6 +3,16 @@
 `BleeckerProgress` is a preview of the pinned Bleecker `src/components/progress.tsx`
 at commit `a86059013cd59684ce452849278ea81e734f2066`.
 
+Progress is accepted for the 2026-10-29 x64 component milestone. The focused
+catalog run passed all 12 size/variant combinations in Light and Dark, passive
+read-only keyboard/pointer/focus semantics, and immediate value changes while
+Windows animations were already disabled. The independent
+`0.1.0-preview.20261029.9` package consumer compiled without warnings, passed
+its range checks and passed 24 native 150% no-clipping cases across both themes.
+The reports are `artifacts/current/context-menu-native-candidate/progress-milestone.json`,
+`progress-range-v9.json` and `progress-content-scale-v9.json` in that directory.
+ARM64 runtime remains unverified for this milestone.
+
 ```xml
 <orchard:BleeckerProgress Value="65" />
 <orchard:BleeckerProgress Value="145" Max="200" ProgressSize="Large"
@@ -88,10 +98,10 @@ CI at `5412997`, run `38268516314`. The ARM64 fill measures
 174.199996948px, and the captured pill bodies pass in all 12 combinations and
 both themes. See [runtime evidence](runtime-evidence.md).
 
-Acceptance remains open: rendered native/browser comparison, exact pill edges
-and typography, enabled/interrupted motion, live appearance and unload/reload,
-isolated scaling and the remaining ARM64 state
-checks. Narrator and OS contrast campaigns are excluded by the current
+The historical full-parity review still has rendered native/browser comparison,
+exact pill edges and typography, enabled/interrupted motion, and ARM64 runtime
+checks open. These are not gates for the current x64 milestone. Narrator and OS
+contrast campaigns are excluded by the current
 [library scope](library-scope.md). Do not change
 the developer's desktop-wide settings to perform scaling checks.
 
@@ -121,6 +131,6 @@ eight live binding contracts, four invalid-bound-data recovery contracts and
 93 audit guards. The retained reports are under
 `artifacts/current/components-v7-progress-range-catalog-x64` and
 `artifacts/current/components-v7-progress-range-consumer-x64`. These results
-verify the shipped x64 bytes for this range contract; motion, complete visual
-comparison, scaling and native ARM64 runtime remain open, so Progress remains
-in progress.
+verify the shipped x64 bytes for this range contract. The newer `.8` package
+consumer and focused catalog checks above establish the current x64 milestone;
+the earlier v7 result is retained as historical range evidence.

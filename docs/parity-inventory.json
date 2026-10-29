@@ -4224,11 +4224,12 @@
         "samples/Orchard.Catalog/ProgressFixture.xaml.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "tests/PackageConsumer/ProgressRangeFixture.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
         "scripts/verify-progress-range.ps1",
         "scripts/verify-progress-range.mjs",
         "scripts/test-progress-range-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "nativePreview": {
         "sourceAudit": "artifacts/current/progress-range-source-native-v2/audit.json",
         "packageAudit": "artifacts/current/progress-range-package-native-v1/audit.json",
@@ -4259,11 +4260,18 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "2026-10-29 focused x64 catalog Progress fixture passed all three sizes and four variants in Light/Dark, plus empty, disabled, named range, value updates and resize/template lifecycle; artifacts/current/context-menu-native-candidate/progress-milestone.json",
+        "keyboardPointerFocus": "Progress is a passive read-only display: catalog verifies no Tab stop and a read-only range provider whose write is rejected; independent package consumer verifies range semantics with zero focus/activation in the hidden host; artifacts/current/context-menu-native-candidate/progress-range-v9.json",
+        "scale150NoClip": "0.1.0-preview.20261029.9 independent x64 package consumer passed 24 native 1.5 XAML scale cases for every size/variant in Light/Dark, including track, fill and label bounds inside the rendered root; artifacts/current/context-menu-native-candidate/progress-content-scale-v9.json",
+        "reducedMotion": "Current x64 catalog reported Windows animations disabled; live Progress value changes set the destination fill width synchronously in both themes without changing OS settings; artifacts/current/context-menu-native-candidate/progress-milestone.json",
+        "packageConsumerCompiles": "0.1.0-preview.20261029.9 independent x64 consumer compiled with zero warnings; packaged/consumer/x64 catalog Orchard DLL SHA-256 4dfe073131ce550c89a09aedfc9885bd7fd8c732d370a63b919ee2f8b5f0e336"
       }
     },
     {

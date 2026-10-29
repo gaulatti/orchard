@@ -27,7 +27,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -281,6 +281,46 @@ internal static class ContentScaleFixture
                     sampledRedOutsideBadge=true});
                 root.Children.Clear();await Layout();
             }
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            {
+                stage=$"progress/{theme}/150-percent";
+                root.RequestedTheme=theme;
+                var cases=new List<(BleeckerProgress control,string id)>();
+                var sizes=Enum.GetValues<BleeckerProgressSize>();
+                var variants=Enum.GetValues<BleeckerProgressVariant>();
+                for(var index=0;index<sizes.Length*variants.Length;index++)
+                {
+                    var size=sizes[index%3];var variant=variants[index/3];
+                    var control=new BleeckerProgress{Width=180,ProgressSize=size,Variant=variant,Value=65,ShowLabel=true};
+                    Canvas.SetLeft(control,8+(index/6)*192);Canvas.SetTop(control,6+(index%6)*24);
+                    root.Children.Add(control);cases.Add((control,$"{variant}/{size}"));
+                }
+                await Layout();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001,"Progress did not render at native 150% scale.");
+                foreach(var(control,id) in cases)
+                {
+                    var owner=control.TransformToVisual(root).TransformBounds(new Rect(0,0,control.ActualWidth,control.ActualHeight));
+                    var track=Find<Border>(control,"PART_Track")!;
+                    var fill=Find<Border>(control,"PART_Fill")!;
+                    var label=Find<TextBlock>(control,"PART_Label")!;
+                    var trackBounds=track.TransformToVisual(root).TransformBounds(new Rect(0,0,track.ActualWidth,track.ActualHeight));
+                    var fillBounds=fill.TransformToVisual(root).TransformBounds(new Rect(0,0,fill.ActualWidth,fill.ActualHeight));
+                    var labelBounds=label.TransformToVisual(root).TransformBounds(new Rect(0,0,label.ActualWidth,label.ActualHeight));
+                    Require(control.IsLoaded&&!control.IsTabStop&&control.ActualWidth==180&&control.ActualHeight==16&&
+                        owner.X>=0&&owner.Y>=0&&owner.Right<=400&&owner.Bottom<=160&&
+                        trackBounds.X>=owner.X-.5&&trackBounds.Right<=owner.Right+.5&&
+                        fillBounds.X>=trackBounds.X-.5&&fillBounds.Right<=trackBounds.Right+.5&&
+                        labelBounds.X>=owner.X-.5&&labelBounds.Right<=owner.Right+.5&&
+                        trackBounds.Y>=owner.Y-.5&&trackBounds.Bottom<=owner.Bottom+.5&&
+                        fillBounds.Y>=owner.Y-.5&&fillBounds.Bottom<=owner.Bottom+.5&&
+                        labelBounds.Y>=owner.Y-.5&&labelBounds.Bottom<=owner.Bottom+.5,
+                        $"Progress {id} clipped at native 150% scale: owner={owner}, track={trackBounds}, fill={fillBounds}, label={labelBounds}.");
+                    progressScale.Add(new{theme=theme.ToString(),kind=id,scale=root.XamlRoot.RasterizationScale,passed=true});
+                }
+                Guard();var progressFrame=new RenderTargetBitmap();await progressFrame.RenderAsync(root);Guard();
+                Require(progressFrame.PixelWidth==600&&progressFrame.PixelHeight==240,"Progress native capture used the wrong scale.");
+                root.Children.Clear();await Layout();
+            }
             island.SiteBridge.OverrideScale=1;
             window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));
             island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
@@ -325,7 +365,7 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
         catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
