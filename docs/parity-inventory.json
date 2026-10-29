@@ -1491,11 +1491,18 @@
       ],
       "status": "in-progress",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
+        "lightDarkStates": "pass",
         "keyboardPointerFocus": "fail",
         "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Published .13 x64 catalog passed all 96 captured cases across Light/Dark with responsive columns, spans, RTL, empty and constrained content; artifacts/current/context-menu-native-candidate/dashboard-grid-catalog-v13.json and dashboard-grid-layout-Light-v13.json/dashboard-grid-layout-Dark-v13.json",
+        "keyboardPointerFocus": "fail: physical forward/reverse Tab and Space through consumer child pass in both themes, but pointer activation is not yet recorded for this grid boundary",
+        "scale150NoClip": "fail: native 150% no-clipping check has not yet been recorded for the grid and spans",
+        "reducedMotion": "Dashboard Grid and Span define no animation or transition; published .13 catalog passed with Windows animations already disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/dashboard-grid-catalog-v13.json",
+        "packageConsumerCompiles": "Independent .13 x64 package consumer compiled and ran with zero warnings, including Dashboard Grid responsive tracks and live span behavior; packaged/consumer Orchard DLL SHA-256 10145fd098c4fd6fee3c96ee97088a0abcd134fd34239ecd7de432dc2b00cdc1; artifacts/current/context-menu-native-candidate/dashboard-grid-consumer-v13.json"
       }
     },
     {
@@ -1532,11 +1539,18 @@
       ],
       "status": "in-progress",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
+        "lightDarkStates": "pass",
         "keyboardPointerFocus": "fail",
         "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Published .13 x64 catalog passed all 50 captured cases across Light/Dark with optional, constrained, RTL, multilingual, empty and overflow content; artifacts/current/context-menu-native-candidate/dashboard-section-catalog-v13.json and dashboard-section-layout-Light-v13.json/dashboard-section-layout-Dark-v13.json",
+        "keyboardPointerFocus": "fail: physical forward/reverse Tab and Space through consumer action/content pass in both themes, but pointer activation is not yet recorded for this section boundary",
+        "scale150NoClip": "fail: native 150% no-clipping check has not yet been recorded for the section, including intentional action overflow",
+        "reducedMotion": "Dashboard Section control/template define no animation or transition; published .13 catalog passed with Windows animations already disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/dashboard-section-catalog-v13.json",
+        "packageConsumerCompiles": "Independent .13 x64 package consumer compiled and ran with zero warnings, including Dashboard Section heading/content and live updates; packaged/consumer Orchard DLL SHA-256 10145fd098c4fd6fee3c96ee97088a0abcd134fd34239ecd7de432dc2b00cdc1; artifacts/current/context-menu-native-candidate/dashboard-section-consumer-v13.json"
       }
     },
     {
