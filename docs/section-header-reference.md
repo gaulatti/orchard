@@ -1,5 +1,15 @@
 # Section Header
 
+Section Header is accepted for the 2026-10-29 x64 component milestone. The
+published `.12` catalog passes all 24 Light/Dark specimens and physical
+forward/reverse Tab traversal around this passive header. The matching
+independent package consumer compiles and runs; sixteen native 150% scale cases
+keep visible text inside the control. The component has no animation, and the
+catalog passed with Windows animations already disabled. The five checks are
+recorded in [the inventory](parity-inventory.json). ARM64 runtime remains
+unverified. Historical raster and OS contrast investigations below are not
+release gates.
+
 `BleeckerSectionHeader` implements the pinned Bleecker
 [`SectionHeader`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/section-header.tsx).
 The source SHA-256 is
@@ -100,10 +110,10 @@ passes the focused runtime checks at
 `artifacts/smoke-section-header-baseline-published` with display/text scale 1
 and the host's animation effects disabled.
 
-Complete glyph/baseline raster comparison, CSS `text-balance`/`text-pretty`, the complete override and
-multilingual constraint matrix, component automation behavior and display/text
-scaling remain open. Narrator and OS contrast campaigns are excluded by the
-[current library scope](library-scope.md). The inventory entry remains in progress;
-these gaps are not approved platform substitutions. This passive control has
+Earlier parity investigations tracked glyph/baseline raster details,
+CSS `text-balance`/`text-pretty` and broader overrides. These are not gates
+for the current x64 milestone; native 150% no-clipping now passes in both themes.
+Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md). This passive control has
 no backend, configuration or metrics impact. The public repository wiki remote
 is unavailable; the contract is maintained here.

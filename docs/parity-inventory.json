@@ -6560,15 +6560,23 @@
       "regressionTests": [
         "samples/Orchard.Catalog/SectionHeadersFixture.xaml.cs",
         "tests/Reference/SectionHeaderLayout.json",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Published .12 x64 catalog passed all 24 Section Header specimens in Light and Dark, including optional, empty, wrapped, RTL and multilingual content, themes and live binding/template changes; artifacts/current/context-menu-native-candidate/section-header-catalog-v12.json and section-header-layout-Light-v12.json/section-header-layout-Dark-v12.json",
+        "keyboardPointerFocus": "Section Header has no component-owned pointer action or Tab stop; published .12 x64 catalog passed physical forward/reverse Tab traversal between adjacent actions in both themes, with the real heading peer retained; artifacts/current/context-menu-native-candidate/section-header-keyboard-Light-v12.json and section-header-keyboard-Dark-v12.json",
+        "scale150NoClip": "Independent .12 x64 package consumer passed 16 native 150% XAML-scale cases: eight content states per Light/Dark theme with visible eyebrow, title and summary bounds and desired heights inside the control; artifacts/current/context-menu-native-candidate/content-scale-section-header-v12.json",
+        "reducedMotion": "Section Header control and template define no animation or transition; published .12 catalog passed with Windows animations already disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/section-header-catalog-v12.json",
+        "packageConsumerCompiles": "Published .12 independent x64 package consumer compiled and ran with zero warnings, including Section Header rendering and live updates; packaged/consumer Orchard DLL SHA-256 b7a8de625cdbffd1b04740f505f1e685fd849b7c1d61836fedacbab1768fe51a; artifacts/current/context-menu-native-candidate/section-header-consumer-v12.json"
       }
     },
     {
