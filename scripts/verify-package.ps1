@@ -11,6 +11,17 @@ $repository = Split-Path $PSScriptRoot -Parent
 $packagePath = (Resolve-Path -LiteralPath $Package).Path
 $outputPath = [IO.Path]::GetFullPath($Output)
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
+$appOutput = Join-Path $outputPath 'app'
+# The verifier reuses Output across architectures. A prior ARM64 native DLL in
+# app can survive an x64 publish and make an otherwise valid consumer fail.
+if (Test-Path -LiteralPath $appOutput) {
+    if ([IO.Path]::GetDirectoryName([IO.Path]::GetFullPath($appOutput)) -ne $outputPath -or
+        [IO.Path]::GetFileName($appOutput) -ne 'app' -or
+        ((Get-Item -LiteralPath $appOutput -Force).Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+        throw 'Refusing to clear package consumer output outside its direct app directory.'
+    }
+    Remove-Item -LiteralPath $appOutput -Recurse -Force
+}
 foreach ($reportName in @('result.json', 'runtime.json', 'cleanup.json')) {
     $reportPath = Join-Path $outputPath $reportName
     if (Test-Path -LiteralPath $reportPath) { Remove-Item -LiteralPath $reportPath }
@@ -78,11 +89,11 @@ try {
         dotnet restore $project --configfile $configPath --packages "$consumerRoot/packages" -p:Platform=$Platform -p:OrchardPackageVersion=$version @compileProperties
         if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer restore failed.' }
         if ($CompileOnly) {
-            dotnet build $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version @compileProperties --no-restore -o "$outputPath/app"
+            dotnet build $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version @compileProperties --no-restore -o $appOutput
             if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer compile failed.' }
         }
         else {
-            dotnet publish $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version --no-restore -o "$outputPath/app"
+            dotnet publish $project -c Release -p:Platform=$Platform -p:OrchardPackageVersion=$version --no-restore -o $appOutput
             if ($LASTEXITCODE -ne 0) { throw 'Clean package consumer publish failed.' }
         }
     }
@@ -91,6 +102,17 @@ try {
     if ((Get-FileHash -LiteralPath $packagePath).Hash -ne (Get-FileHash -LiteralPath $restoredPackage).Hash) {
         throw 'Consumer restored a different package from the one under test.'
     }
+    $canvasPath = Join-Path $appOutput 'Microsoft.Graphics.Canvas.dll'
+    if (-not (Test-Path -LiteralPath $canvasPath -PathType Leaf)) { throw 'Compiled consumer is missing native Win2D.' }
+    $canvasStream = [IO.File]::OpenRead($canvasPath)
+    try {
+        $canvasPe = [System.Reflection.PortableExecutable.PEReader]::new($canvasStream)
+        try { $canvasMachine = $canvasPe.PEHeaders.CoffHeader.Machine.ToString() }
+        finally { $canvasPe.Dispose() }
+    }
+    finally { $canvasStream.Dispose() }
+    $expectedCanvasMachine = if ($Platform -eq 'ARM64') { 'Arm64' } else { 'Amd64' }
+    if ($canvasMachine -ne $expectedCanvasMachine) { throw "Native Win2D is $canvasMachine, expected $expectedCanvasMachine." }
     if ($CompileOnly) {
         foreach ($requiredOutput in @('PackageConsumer.exe', 'PackageConsumer.dll', 'Orchard.dll')) {
             if (-not (Test-Path -LiteralPath (Join-Path "$outputPath/app" $requiredOutput))) {
