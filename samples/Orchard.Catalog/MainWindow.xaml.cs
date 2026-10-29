@@ -157,6 +157,7 @@ public sealed partial class MainWindow : Window
             else if(args.Contains("--smoke-progress-stack"))await RunProgressStacksAsync(folder);
             else if(args.Contains("--smoke-progress-stack-text"))await RunProgressStacksAsync(folder,unicode:true);
             else if(args.Contains("--smoke-progress-stack-accessibility"))await RunProgressStackAccessibilityAsync(folder);
+            else if(args.Contains("--smoke-icon-badge-milestone"))await RunIconBadgeAsync(folder, milestoneOnly: true);
             else if(args.Contains("--smoke-icon-badge"))await RunIconBadgeAsync(folder);
             else if(args.Contains("--smoke-accordion-scalars"))await RunAccordionScalarsAsync(folder);
             else if(args.Contains("--smoke-accordion-continuity"))await RunAccordionContinuityAsync(folder);

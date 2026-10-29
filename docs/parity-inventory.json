@@ -3619,7 +3619,7 @@
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "lightDarkStates": "2026-10-29 x64 focused catalog Labels fixture passed plain, error, disabled, empty, wrapped, Unicode, template, rich and linked states with live theme switching in Light and Dark; artifacts/current/context-menu-native-candidate/result.json and catalog-light.png/catalog-dark.png",
+        "lightDarkStates": "2026-10-29 x64 focused catalog Labels fixture passed plain, error, disabled, empty, wrapped, Unicode, template, rich and linked states with live theme switching in Light and Dark; artifacts/current/context-menu-native-candidate/label-catalog-v8.json and label-catalog-light-v8.png/label-catalog-dark-v8.png",
         "keyboardPointerFocus": "Published 2026-10-27 v7 independent x64 consumer passed physical caption, nested Help/Pointer clicks, Tab, Space and Enter in Light and Dark; docs/evidence/label-v7-nested-consumer-v1/checkpoint.json and label-v7-nested-keyboard-consumer-v1/checkpoint.json. BleeckerLabel.cs, Generic.xaml and LabelsFixture were unchanged through current 2026-10-29 v8; the v8 package passed 26 Light/Dark association cases (artifacts/current/context-menu-native-candidate/label-association-v8.json). Two current foreground-launch attempts sent no input and do not contradict component behavior.",
         "scale150NoClip": "0.1.0-preview.20261029.8 x64 package DLL passed native 1.5 XAML rasterization for plain wrapped, rich, disabled and empty labels in Light and Dark, with all eight content bounds inside their controls and root; artifacts/current/context-menu-native-candidate/label-scale-v8.json",
         "reducedMotion": "Static Label control and template define no animation or transition; focused x64 catalog run reported Windows animations disabled without changing OS settings",
@@ -5538,11 +5538,18 @@
       ],
       "status": "in-progress",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
+        "lightDarkStates": "pass",
         "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "2026-10-29 x64 focused catalog milestone route completed six size/variant fixture checks plus empty, scalar, named and interactive content in Light and Dark before physical input acquisition; artifacts/current/context-menu-native-candidate/icon-badge-states.json",
+        "keyboardPointerFocus": "Fail for milestone: current x64 catalog physical route could not acquire foreground pointer delivery and exited before child click/Tab checks; artifacts/current/context-menu-native-candidate/icon-badge-milestone-failed-v8.json. Earlier physical evidence predates a BleeckerIconBadge text-presentation change and is not reused.",
+        "scale150NoClip": "0.1.0-preview.20261029.8 independent x64 package consumer passed 14 native 1.5 XAML scale cases across Light/Dark: six size/variant child bounds per theme and visibly red overflow outside the badge in both themes; artifacts/current/context-menu-native-candidate/icon-badge-scale-v8.json",
+        "reducedMotion": "Static BleeckerIconBadge control and Generic.xaml template define no animation or transition; catalog runtime reports Windows animations disabled without any OS setting change",
+        "packageConsumerCompiles": "0.1.0-preview.20261029.8 independent x64 consumer compiled with zero warnings; packaged/consumer Orchard DLL SHA-256 0d32289fe2051b775dac6efb8762813ab7a2b85188b97c617d373cedd0a1690c"
       }
     },
     {

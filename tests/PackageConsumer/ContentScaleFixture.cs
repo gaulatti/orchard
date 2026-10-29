@@ -27,7 +27,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -230,6 +230,57 @@ internal static class ContentScaleFixture
                 }
                 root.Children.Clear();await Layout();
             }
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            {
+                stage=$"icon-badge/{theme}/150-percent";
+                root.RequestedTheme=theme;
+                var variants=Enum.GetValues<BleeckerIconBadgeVariant>();
+                var sizes=Enum.GetValues<BleeckerIconBadgeSize>();
+                var badges=new List<(BleeckerIconBadge iconBadge,TextBlock child,string id)>();
+                for(var index=0;index<variants.Length*sizes.Length;index++)
+                {
+                    var size=sizes[index%sizes.Length];var variant=variants[index/sizes.Length];
+                    var child=new TextBlock{Text="A",Width=24,Height=24};
+                    var iconBadge=new BleeckerIconBadge{Size=size,Variant=variant,Content=child};
+                    Canvas.SetLeft(iconBadge,12+(index%3)*120);Canvas.SetTop(iconBadge,12+(index/3)*80);
+                    root.Children.Add(iconBadge);badges.Add((iconBadge,child,$"{variant}/{size}"));
+                }
+                await Layout();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001,"Icon Badge did not render at native 150% scale.");
+                foreach(var(iconBadge,child,id) in badges)
+                {
+                    var extent=iconBadge.Size==BleeckerIconBadgeSize.Medium?56:64;
+                    var bounds=iconBadge.TransformToVisual(root).TransformBounds(new Rect(0,0,iconBadge.ActualWidth,iconBadge.ActualHeight));
+                    var childBounds=child.TransformToVisual(root).TransformBounds(new Rect(0,0,child.ActualWidth,child.ActualHeight));
+                    Require(iconBadge.IsLoaded&&child.IsLoaded&&!iconBadge.IsTabStop&&iconBadge.ActualWidth==extent&&iconBadge.ActualHeight==extent&&
+                        bounds.X>=0&&bounds.Y>=0&&bounds.Right<=400&&bounds.Bottom<=160&&
+                        childBounds.X>=bounds.X-.5&&childBounds.Y>=bounds.Y-.5&&
+                        childBounds.Right<=bounds.Right+.5&&childBounds.Bottom<=bounds.Bottom+.5,
+                        $"Icon Badge {id} child clipped at native 150% scale: badge={bounds}, child={childBounds}.");
+                    iconBadgeScale.Add(new{theme=theme.ToString(),kind=id,scale=root.XamlRoot.RasterizationScale,passed=true});
+                }
+                root.Children.Clear();await Layout();
+                var overflowChild=new Border{Width=100,Height=80,Background=new SolidColorBrush(Microsoft.UI.Colors.Red)};
+                var overflowBadge=new BleeckerIconBadge{Size=BleeckerIconBadgeSize.Medium,Content=overflowChild};
+                Canvas.SetLeft(overflowBadge,24);Canvas.SetTop(overflowBadge,24);root.Children.Add(overflowBadge);await Layout();
+                var ownerBounds=overflowBadge.TransformToVisual(root).TransformBounds(new Rect(0,0,overflowBadge.ActualWidth,overflowBadge.ActualHeight));
+                var overflowBounds=overflowChild.TransformToVisual(root).TransformBounds(new Rect(0,0,overflowChild.ActualWidth,overflowChild.ActualHeight));
+                Require(overflowBounds.Right>ownerBounds.Right+6&&overflowBounds.X>=0&&overflowBounds.Y>=0&&overflowBounds.Right<=400&&overflowBounds.Bottom<=160,
+                    $"Icon Badge overflow child did not extend within the native root at 150%: badge={ownerBounds}, child={overflowBounds}.");
+                Guard();var overflowFrame=new RenderTargetBitmap();await overflowFrame.RenderAsync(root);Guard();
+                Require(overflowFrame.PixelWidth==600&&overflowFrame.PixelHeight==240,"Icon Badge native overflow capture used the wrong scale.");
+                var overflowPixels=System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeBufferExtensions.ToArray(await overflowFrame.GetPixelsAsync());
+                var sampleX=(int)Math.Round((ownerBounds.Right+5)*1.5);
+                var sampleY=(int)Math.Round((ownerBounds.Y+ownerBounds.Height/2)*1.5);
+                var pixel=(sampleY*overflowFrame.PixelWidth+sampleX)*4;
+                Require(overflowPixels[pixel]==0&&overflowPixels[pixel+1]==0&&overflowPixels[pixel+2]==255&&overflowPixels[pixel+3]==255,
+                    "Icon Badge clipped its red child outside the badge at native 150% scale.");
+                iconBadgeScale.Add(new{theme=theme.ToString(),kind="overflow",scale=root.XamlRoot.RasterizationScale,passed=true,
+                    badgeBounds=new{x=ownerBounds.X,y=ownerBounds.Y,width=ownerBounds.Width,height=ownerBounds.Height},
+                    childBounds=new{x=overflowBounds.X,y=overflowBounds.Y,width=overflowBounds.Width,height=overflowBounds.Height},
+                    sampledRedOutsideBadge=true});
+                root.Children.Clear();await Layout();
+            }
             island.SiteBridge.OverrideScale=1;
             window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));
             island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
@@ -274,8 +325,8 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
 }

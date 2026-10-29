@@ -16,7 +16,7 @@ using Path = System.IO.Path;
 namespace Orchard.Catalog;
 public sealed partial class MainWindow
 {
-    private async Task RunIconBadgeAsync(string folder)
+    private async Task RunIconBadgeAsync(string folder, bool milestoneOnly = false)
     {
         using var stream = CatalogReferenceResources.Open(typeof(MainWindow).Assembly, "Orchard.Catalog.Reference.IconBadge.json") ?? throw new InvalidOperationException("IconBadge reference missing.");
         using var document = await JsonDocument.ParseAsync(stream);
@@ -28,12 +28,16 @@ public sealed partial class MainWindow
                 CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(IconBadges);
                 await IconBadges.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
             }
+            if (milestoneOnly)
+                await File.WriteAllTextAsync(Path.Combine(folder, "icon-badge-states.json"),
+                    JsonSerializer.Serialize(new { passed = true, themes = new[] { "Light", "Dark" },
+                        sizeVariantCases = 6, emptyScalarNamedAndInteractiveFixture = true }));
             Content = canvas; await AwaitPresentationAsync(canvas);
             using var input = new NativeInputSession(canvas.XamlRoot, folder, "icon-badge"); await input.AcquireAsync(canvas);
             object Box(FrameworkElement element) { var p = element.TransformToVisual(canvas).TransformPoint(new Point()); return new { x = p.X, y = p.Y, width = element.ActualWidth, height = element.ActualHeight }; }
             object Paint(Brush value) { var brush = (SolidColorBrush)value; return new { r = brush.Color.R, g = brush.Color.G, b = brush.Color.B, a = brush.Color.A, opacity = brush.Opacity }; }
             var outside = new Border { Width = 10, Height = 10, Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent) }; Canvas.SetLeft(outside, 280); Canvas.SetTop(outside, 180);
-            foreach (var reference in document.RootElement.GetProperty("cases").EnumerateArray())
+            if (!milestoneOnly) foreach (var reference in document.RootElement.GetProperty("cases").EnumerateArray())
             {
                 var theme = Enum.Parse<ElementTheme>(reference.GetProperty("scheme").GetString()!); canvas.RequestedTheme = theme;
                 canvas.Background = new SolidColorBrush(theme == ElementTheme.Light ? Microsoft.UI.Colors.White : Windows.UI.Color.FromArgb(255, 13, 24, 33));
@@ -101,7 +105,8 @@ public sealed partial class MainWindow
                 }
                 else await NativeScreenCapture.CaptureClientAsync(input.Window, capturePath);
             }
-            await File.WriteAllTextAsync(Path.Combine(folder, "icon-badge.json"), JsonSerializer.Serialize(new { passed = false, frames, lifecycle }, new JsonSerializerOptions { WriteIndented = true }));
+            var reportName = milestoneOnly ? "icon-badge-milestone.json" : "icon-badge.json";
+            await File.WriteAllTextAsync(Path.Combine(folder, reportName), JsonSerializer.Serialize(new { passed = false, milestoneOnly, frames, lifecycle }, new JsonSerializerOptions { WriteIndented = true }));
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
             {
                 canvas.RequestedTheme = theme; canvas.Children.Clear();
@@ -145,8 +150,8 @@ public sealed partial class MainWindow
                 lifecycle.Add(new { scheme = theme.ToString(), phase = "retemplate-detach-template-selector-colors", retained = true });
                 await input.MoveAsync(outside); await NativeScreenCapture.CaptureClientAsync(input.Window, Path.Combine(folder, "catalog-" + theme.ToString().ToLowerInvariant() + ".png"));
             }
-            await File.WriteAllTextAsync(Path.Combine(folder, "icon-badge.json"), JsonSerializer.Serialize(new { passed = true, frames, lifecycle }, new JsonSerializerOptions { WriteIndented = true }));
-            await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "icon-badge", environment = RuntimeEnvironment() }));
+            await File.WriteAllTextAsync(Path.Combine(folder, reportName), JsonSerializer.Serialize(new { passed = true, milestoneOnly, frames, lifecycle }, new JsonSerializerOptions { WriteIndented = true }));
+            await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "icon-badge", milestoneOnly, environment = RuntimeEnvironment() }));
         }
         finally { Content = original; await AwaitPresentationAsync(CatalogRoot); }
     }

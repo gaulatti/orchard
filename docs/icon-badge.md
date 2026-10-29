@@ -86,13 +86,22 @@ global cursor, while WinUI selects Hand. This is not a complete full-suite
 pass. The last complete passing source remains `48d8fd3`; the new candidate
 still needs the unchanged full test with a connected mouse.
 
-Acceptance remains in progress. Required evidence includes complete visual review,
-remaining customization/RTL/disabled/overflow pointer cases, external UIA,
-isolated text/display scaling, native ARM64 runtime,
-and the full catalog and independent package consumer. See [parity](parity.md).
-Existing exact raster diagnostics retain their thresholds and actual failures;
-they do not replace the [component acceptance contract](acceptance-contract.md).
-Narrator and OS contrast campaigns are excluded by the current library scope.
+For the 2026-10-29 x64 [component acceptance contract](acceptance-contract.md),
+Icon Badge passes four of five checks and remains unaccepted. The focused
+catalog route verifies all six size/variant combinations plus empty, scalar,
+named and interactive content in Light and Dark. The exact `.8` NuGet package
+compiles in an independent x64 consumer and passes 14 native 150% bounds cases:
+six combinations per theme and a visible overflow child per theme. The
+component and template have no motion. The keyboard/pointer/focus check remains
+failed because the current physical route timed out acquiring foreground input
+before it could click or Tab through the child controls. Earlier passing input
+evidence predates a control change and is not reused. The reports are in
+`artifacts/current/context-menu-native-candidate/icon-badge-states.json`,
+`icon-badge-scale-v8.json` and `icon-badge-milestone-failed-v8.json`.
+
+The earlier exact-raster diagnostics above remain historical; raster parity is
+not a milestone gate. ARM64 is build-only and runtime-unverified. Narrator and
+OS contrast campaigns are excluded by the current library scope.
 
 The current version `0.1.0-77f387a` passes the full 477-second x64 replay using a scoped Windows MouseKeys virtual mouse, plus a fresh x64 consumer in both themes. MouseKeys configuration is restored after each scope. This supersedes the earlier missing-mouse replay failure; see the [current checkpoint](native-validation-checkpoint.md).
 
