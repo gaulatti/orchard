@@ -1,5 +1,14 @@
 # ProgressStack native preview
 
+`BleeckerProgressStack` is accepted on x64 under the current
+[five-check milestone contract](acceptance-contract.md). The matching catalog
+passed 140 Light/Dark states across both motion preferences, twelve lifecycle
+phases, passive Tab/focus behavior, and physical pointer entry on its segments.
+The independent NuGet consumer compiled and ran, including sixteen native 150%
+no-clipping cases. The control has no transition or animation. ARM64 builds,
+with runtime unverified. Historical exact-raster and ARM64 notes below do not
+add release gates for this milestone.
+
 `BleeckerProgressStack` displays consumer-owned `Items`, an optional `Max`,
 and a wrapping legend (`ShowLegend`, true by default). Each observable
 `BleeckerProgressStackItem` retains its `Label`, numeric `Value`, and optional
@@ -56,12 +65,12 @@ frames and sixteen live update receipts from the original source, with exact
 collector, fonts and complete PNG hashes. The native 140-state matrix and
 twelve lifecycle phases pass with zero asserted geometry error. Complete
 PNG comparisons still report raster differences, with no masks, tolerance
-or resampling. Version `0.1.0-77f387a` passes a fresh independent x64 consumer in both themes and an ARM64 consumer build; native ARM64 runtime is unverified. No component is
-accepted from a build or a geometry report alone. Complete raster review,
-arbitrary Unicode, remaining item/bar style overrides, external UIA,
-component theme resources, scaling, collection measurements and native ARM64
-runtime remain acceptance work. Narrator and OS contrast campaigns are excluded
-by the [current library scope](library-scope.md).
+or resampling. Historical version `0.1.0-77f387a` passed a fresh independent x64
+consumer in both themes and an ARM64 consumer build. Its broader raster,
+Unicode, override, UIA, collection and ARM64-runtime investigations remain
+historical research rather than current milestone acceptance requirements.
+Narrator and OS contrast campaigns are excluded by the
+[current library scope](library-scope.md).
 
 All thirteen corrupted baseline audit reports are rejected, including
 nonbreaking-space removal. Native and browser glyph receipts record the

@@ -9,8 +9,9 @@ component notes below describe historical checks and do not add release gates.
 
 Accepted x64 components in this preview: Brand Mark, Card, Context Menu,
 Dashboard Grid, Dashboard Section, Empty, Error State, Icon Badge, Kbd, Label,
-Loading Spinner, Page Header, Progress, Section Header, Separator and Status
-Badge. The fixed inventory has 112 entries started; 16 are accepted.
+Loading Spinner, Page Header, Progress, Progress Stack, Section Header,
+Separator and Status Badge. The fixed inventory has 112 entries started; 17 are
+accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes

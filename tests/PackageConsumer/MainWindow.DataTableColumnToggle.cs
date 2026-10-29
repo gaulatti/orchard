@@ -25,7 +25,7 @@ public sealed partial class MainWindow
             var trigger = BrandDescendants<Button>(picker).Single(item => item.Name == "PART_Trigger"); var peer = FrameworkElementAutomationPeer.CreatePeerForElement(trigger); var expand = (IExpandCollapseProvider)peer.GetPattern(PatternInterface.ExpandCollapse);
             Require(peer.GetName() == "Columns", "Packaged column trigger lost its source label."); expand.Expand();
             Popup? Popup() => VisualTreeHelper.GetOpenPopupsForXamlRoot(Root.XamlRoot).SingleOrDefault(item => item.Child is FrameworkElement element && element.Name == "PART_Dialog");
-            await AwaitAsync(() => Popup() is { } popup && BrandDescendants<BleeckerCheckbox>(popup.Child).Count() == 2, "Packaged original visibility columns did not render.");
+            await AwaitAsync(() => Popup() is { } popup && BrandDescendants<BleeckerCheckbox>(popup.Child) is var columns && columns.Count() == 2 && columns.All(column => column.IsLoaded), "Packaged original visibility columns did not render.");
             var checks = BrandDescendants<BleeckerCheckbox>(Popup()!.Child).ToArray(); var first = checks.Single(item => ReferenceEquals(item.Tag, source.Columns[0]));
             Require(checks.All(item => item.Tag is ConsumerColumnSource.Column column && column.HasAccessor && column.CanHide) && checks.All(item => item.IsChecked == true), "Packaged picker fabricated eligibility or checked state.");
             var toggle = (IToggleProvider)FrameworkElementAutomationPeer.CreatePeerForElement(first).GetPattern(PatternInterface.Toggle); toggle.Toggle();

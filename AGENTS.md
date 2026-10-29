@@ -389,13 +389,6 @@ end-to-end contract.
 - Orchard is exclusively a reusable C# / WinUI 3 UI component library. Work must
   directly support its components, public APIs, tokens/themes, component behavior,
   catalog fixtures and demos, regression coverage, documentation, or NuGet delivery.
-- The current milestone covers the fixed 112-entry component inventory. Accept a
-  component only when all five checks pass on x64: applicable Light and Dark states,
-  keyboard/pointer/focus behavior, no clipping at 150% scaling, reduced motion,
-  and independent package-consumer compilation. Record pass/fail per component.
-  ARM64 is build-only and runtime-unverified. Raster/pixel parity is not a gate or
-  an inventory gap. Do not add evidence folders or diagnostics beyond these checks.
-  Fix the modal Context Menu click and cut releases listing accepted components.
 - Monitoring and editorial screens remain in scope as demonstrations of library
   components using fictional local data. Do not remove them merely because they
   resemble applications. Do not expand them into product implementations or add
