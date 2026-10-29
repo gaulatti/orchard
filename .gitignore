@@ -6,3 +6,6 @@ artifacts/
 *.user
 *.suo
 .DS_Store
+.clouseau-ci
+.clouseau-review
+.github/tests/node_modules
