@@ -1,7 +1,13 @@
 # Page Header source contract
 
-The native implementation is `BleeckerPageHeader`. This entry remains in
-progress; the full visual and platform matrix is not accepted. The frozen browser capture is
+The native implementation is `BleeckerPageHeader`. It is accepted for the
+2026-10-29 x64 milestone: the published `.13` catalog passes sixteen Light/Dark
+cases with physical Back pointer/keyboard activation, and the independent
+package consumer runs with 22 native 150% no-clipping cases across narrow and
+wide viewports. The component template and Back style define no motion; the
+catalog passed with Windows animations disabled. ARM64 runtime is unverified.
+The five checks are recorded in [the inventory](parity-inventory.json).
+The frozen browser capture is
 `tests/Reference/PageHeaderLayout.json`, SHA-256
 `90a3c3f98b9e582cdb39ca5b23c9b15ee4356640a07a797539919b0230ce9f76`.
 It renders the actual [pinned PageHeader source](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/page-header.tsx),
@@ -73,11 +79,12 @@ ancestors and template replacement. Run the focused gate with
 `scripts/smoke-catalog.ps1 -Component page-header`. An independent
 `tests/PackageConsumer` fixture consumes the packaged API and default template.
 
-Remaining acceptance: exact glyph baselines/widths, CSS `text-wrap: balance` and
-`pretty`, the full minimum-content/override matrix, component theme resources,
-scaling, automation behavior and complete x64/ARM64 visual evidence. The title-only native width is
-119.7433px versus 119.1094px in the browser; passing block heights does not
-accept that width difference. Do not treat this component as fully accepted.
+Earlier parity investigations tracked exact glyph baselines/widths, CSS
+`text-wrap: balance` and `pretty`, and broader minimum-content overrides.
+These are not gates for the current x64 milestone. The title-only native width
+is 119.7433px versus 119.1094px in the pinned browser capture; raster/pixel
+parity is not an inventory gap. Native 150% no-clipping now passes in both
+themes and viewport modes.
 
 Caller automation-name overrides, including empty values and styles, follow
 [the shared metadata contract](automation-metadata.md).

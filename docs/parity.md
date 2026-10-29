@@ -9,8 +9,8 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Brand Mark, Context Menu, Error State,
-Icon Badge, Kbd, Label, Loading Spinner, Progress, Section Header, Separator
-and Status Badge are accepted.
+Icon Badge, Kbd, Label, Loading Spinner, Page Header, Progress, Section Header,
+Separator and Status Badge are accepted.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -363,7 +363,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | sunburst-chart | `BleeckerSunburstChart` and original recursive `BleeckerSunburstNode` records | Registered 94-case source fixture, invalid-tree regressions and native input/lifecycle checks | In progress: [source contract and acceptance gaps](sunburst-chart-reference.md) |
 | dashboard-grid | `BleeckerDashboardGrid` and `BleeckerDashboardSpan`: viewport columns, responsive/full spans and consumer children | Registered 96-case frozen layout, mutation/keyboard fixture and independent consumer; monitoring/editorial compositions | In progress: [source contract and evidence](dashboard-grid-reference.md); full intrinsic/override matrix, raster, scaling and platform acceptance |
 | dashboard-section | `BleeckerDashboardSection`: consumer content, optional title/description/action and viewport-responsive header | Registered 50-case frozen layout, binding/lifecycle/keyboard fixture and independent consumer | In progress: [source contract and evidence](dashboard-section-reference.md); exact raster, minimum-content/override matrix, scaling and full platform acceptance |
-| page-header | `BleeckerPageHeader`: consumer title, description, breadcrumbs, wrapping actions and Back commands/routes | Registered sixteen-case viewport/RTL and content/lifecycle/keyboard fixture; independent package consumer | In progress: [source contract and API](page-header-reference.md); exact text balancing/raster, minimum-content constraints, scaling and full platform acceptance |
+| page-header | `BleeckerPageHeader`: consumer title, description, breadcrumbs, wrapping actions and Back commands/routes | Published `.13` x64 catalog passes sixteen Light/Dark cases with physical Back input; matching consumer passes 22 native 150% content cases, static motion and compilation | Accepted for the x64 milestone; ARM64 runtime unverified. Historical raster diagnostics remain in [the component record](page-header-reference.md) |
 | sidebar | `BleeckerSidebar`, consumer-owned items and typed native link context | Registered 82-case geometry/color fixture, original callbacks, physical input, keyed state, scrolling, lifecycle and independent package consumer | In progress: [API and evidence](sidebars.md); exact raster, full state/motion/override/RTL and platform acceptance |
 | data-table-toolbar | `BleeckerDataTableToolbar`, original consumer table/column adapter and content | Registered 118-case normal source layout fixture, actual native filtering/reset, original rows and lifecycle checks | In progress: [API and evidence](data-table-toolbar-reference.md); complete interaction, raster, overrides and platform acceptance remain open |
 | data-table-filters | `BleeckerDataTableSelectFilter`, original consumer table/column and observable `BleeckerSelectOption` | Original 276 states plus 140 live-update states, keyed focus/identity/scrolling, native input and lifecycle checks; clean full x64 catalog and isolated consumer pass, ARM64 builds | In progress: [contract and evidence](data-table-filters-reference.md); four original raw focus differences, raster/routes, full collection/content/motion matrix and platform acceptance remain open |
