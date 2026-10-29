@@ -9,8 +9,8 @@ component notes below describe historical checks and do not add release gates.
 
 Accepted x64 components in this preview: Brand Mark, Card, Context Menu,
 Dashboard Grid, Dashboard Section, Empty, Error State, Icon Badge, Kbd, Label,
-Loading Spinner, Page Header, Progress, Progress Stack, Section Header,
-Separator and Status Badge. The fixed inventory has 112 entries started; 17 are
+Loading Spinner, Metric, Page Header, Progress, Progress Stack, Section Header,
+Separator, Sparkline and Status Badge. The fixed inventory has 112 entries started; 19 are
 accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
@@ -441,7 +441,7 @@ Percent or Compact formats. `Language`, `Currency` and nullable `Decimals`
 control culture and precision. Original prefix/suffix elements and templates
 remain consumer-owned; the metric is non-tabbable accessible text. Null/NaN
 leave its numeric text empty. Source-format regression covers 680 browser
-cases; exact visual/platform acceptance remains in progress.
+cases. Metric passes the five x64 milestone checks; ARM64 runtime is unverified.
 
 `BleeckerTimeline` displays an observable `BleeckerTimelineItem` collection with
 consumer-owned titles, descriptions, opaque timestamps, statuses and icons.
@@ -487,7 +487,8 @@ values, and owns a clipped native shadow and Gaussian backdrop effect.
 Its full visual, motion and platform acceptance remains in progress.
 `BleeckerSparkline` supplies a compact monotone line from observable Data and a
 DataKey, with Height 40, optional Color and native inspection. ShowArea preserves
-the pinned source's unfilled Line output. Complete parity remains in progress.
+the pinned source's unfilled Line output. Sparkline passes the five x64
+milestone checks; ARM64 runtime is unverified.
 `BleeckerStatCard` composes Title, Value/ValueTemplate, an observable
 `BleeckerStatTrend`, optional Icon/Footer content and consumer Sparkline history.
 A Trend suppresses Description. Full visual/platform acceptance remains open.

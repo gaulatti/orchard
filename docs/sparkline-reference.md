@@ -1,5 +1,13 @@
 # Sparkline source contract and acceptance
 
+Sparkline is accepted for the [x64 milestone](acceptance-contract.md) in preview
+.18. The matching Light/Dark catalog verifies its states, pointer/keyboard/focus
+and data updates; the independent package consumer passes 20 native 150% scale
+cases and compiles against the released package. Sparkline and its inner Line
+Chart have no animation or transition, so their static behavior respects reduced
+motion. ARM64 is build-only with runtime unverified. Raster parity is not a
+milestone gate. Historical diagnostics below describe earlier investigations.
+
 Keyboard inspection uses the actual XAML-root focus owner before applying an
 inspection key. Pinned WinUI 2.3.9 documents `GotFocus` as asynchronous; a
 physical Right can therefore arrive after Tab assigns focus but before

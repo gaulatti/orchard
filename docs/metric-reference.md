@@ -6,13 +6,16 @@
 The application owns its nullable numeric value, inline prefix/suffix and
 culture. It has no requests, timers, commands or data collection of its own.
 
-The observable acceptance contract is all four number formats with source
+The observable component contract includes all four number formats with source
 rounding/precision, empty missing/NaN values, signed zero/infinity, live updates,
 retained consumer content, noninteractive text accessibility, source tabular
-numerals and refined tracking, wrapping and theme-aware text. Full acceptance
-also requires native raster, scaling and ARM64 runtime evidence; these remain
-open until separately verified. Narrator and OS contrast campaigns are excluded
-by the current [library scope](library-scope.md).
+numerals and refined tracking, wrapping and theme-aware text. Metric is accepted
+for the [x64 milestone](acceptance-contract.md) in preview .18: its five recorded
+checks cover Light/Dark states, consumer-slot input and focus, native 150%
+scaling, static reduced-motion behavior and independent package compilation.
+ARM64 runtime remains unverified; raster parity is not a milestone gate.
+Narrator and OS contrast campaigns are excluded by the current
+[library scope](library-scope.md).
 
 ```xml
 <orchard:BleeckerMetric Value="1248" Language="en-US" Suffix=" reviews" />

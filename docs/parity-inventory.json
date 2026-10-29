@@ -1058,15 +1058,23 @@
         "tests/Reference/SparklineLayout.json",
         "tests/Orchard.Tests/NegativeChartDomainTests.cs",
         "tests/Reference/NegativeChartDomains.json",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .18 x64 catalog passed 18 Sparkline source states in each Light/Dark theme; artifacts/current/context-menu-native-candidate/sparkline-catalog-v18.json",
+        "keyboardPointerFocus": "Matching .18 x64 catalog passed native pointer and keyboard inspection, focus entry, data mutation and remount in both themes; artifacts/current/context-menu-native-candidate/sparkline-Light-desktop.json and sparkline-Dark-desktop.json",
+        "scale150NoClip": "Independent .18 x64 package consumer passed 20 native 150% cases across Light/Dark, 400/900-DIP viewports and normal/empty/gaps/area/negative states; artifacts/current/context-menu-native-candidate/metric-sparkline-scale-v18.json",
+        "reducedMotion": "Sparkline and its inner Line Chart define no animation or transition; matching .18 x64 catalog states passed with animation effects disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/sparkline-catalog-v18.json",
+        "packageConsumerCompiles": "Independent .18 x64 NuGet consumer compiled and ran against package SHA-256 74a0d159bb19a7665279a5363c4f971e48662b28bae2cb2320652201365e0d45 and matching package/consumer/x64-catalog Orchard DLL SHA-256 c2efead92bf2b7a70da19be90716d727ad7be002a17d0d6ba4465b8cb07fff59; artifacts/current/context-menu-native-candidate/metric-sparkline-consumer-v18.json"
       }
     },
     {
@@ -2586,9 +2594,10 @@
         "tests/Reference/DisplayMetadata/defaults.json",
         "tests/PackageConsumer/RichContentLayoutFixture.cs",
         "scripts/verify-rich-content-layout.ps1",
-        "scripts/verify-rich-content-layout.mjs"
+        "scripts/verify-rich-content-layout.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
       "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
       "metadataPreview": {
@@ -2633,11 +2642,18 @@
         "fullComponentAcceptance": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .18 x64 catalog passed 340 Metric locale/format states per Light/Dark theme plus live value and rich-content states; artifacts/current/context-menu-native-candidate/metric-catalog-v18.json",
+        "keyboardPointerFocus": "Matching .18 x64 catalog passed retained consumer-slot focus, Space and pointer activation through live updates in both themes; artifacts/current/context-menu-native-candidate/metric-rich-lifecycle-Light.json and metric-rich-lifecycle-Dark.json",
+        "scale150NoClip": "Independent .18 x64 package consumer passed 20 native 150% Metric cases across Light/Dark, 400/900-DIP viewports and number/currency/wrapped/rich/missing states; artifacts/current/context-menu-native-candidate/metric-sparkline-scale-v18.json",
+        "reducedMotion": "Metric control and template define no animation or transition; matching .18 x64 catalog states passed with animation effects disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/metric-catalog-v18.json",
+        "packageConsumerCompiles": "Independent .18 x64 NuGet consumer compiled and ran against package SHA-256 74a0d159bb19a7665279a5363c4f971e48662b28bae2cb2320652201365e0d45 and matching package/consumer/x64-catalog Orchard DLL SHA-256 c2efead92bf2b7a70da19be90716d727ad7be002a17d0d6ba4465b8cb07fff59; artifacts/current/context-menu-native-candidate/metric-sparkline-consumer-v18.json"
       }
     },
     {
