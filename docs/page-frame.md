@@ -122,9 +122,11 @@ also passes the existing Field runtime and all 44 measured Field states.
 The full 792-layout and 40-image suite was not rerun for the focused font/size
 checks above. Its earlier results retain their original scope.
 
-Broader platform acceptance remains open. Actual Windows display/text scaling,
-native ARM64 execution and final visual/integration acceptance still need
-current evidence. The caller override cases above do not establish those
-platform outcomes. See
-[runtime evidence](runtime-evidence.md) and the governing
-[component-library scope](library-scope.md).
+Under the [2026-10-29 five-check contract](acceptance-contract.md), Page Frame
+is accepted on x64 in preview `.20`. Its matching Light/Dark catalog passed 792
+layouts and two native input/focus sequences. The independent `.20` NuGet
+consumer compiled and ran, and 16 Light/Dark narrow/wide states passed native
+150% no-clipping. The layout introduces no animation; static behavior passed
+with animation effects disabled. ARM64 runtime remains unverified. Earlier
+display/text-scale and raster investigations are historical diagnostics rather
+than gates for this milestone.

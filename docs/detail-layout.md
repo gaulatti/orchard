@@ -71,6 +71,11 @@ both themes. Opaque box specimens retain fractional logical bounds while their
 separate paint parts snap to device pixels, including mirrored RTL coordinates.
 These are fixture surfaces; no image pixels are ignored or edited for comparison.
 
-Full caller-override, actual display/text scaling, native ARM64 and final
-integration acceptance remain open. See the governing
-[component-library scope](library-scope.md).
+Under the [2026-10-29 five-check contract](acceptance-contract.md), Detail Layout
+is accepted on x64 in preview `.20`. Its matching Light/Dark catalog passed 888
+layouts and two native input/focus sequences, including the regression that
+changing `Side` or `Ratio` must keep unchanged consumer template content.
+The independent `.20` NuGet consumer compiled and ran, and 16 Light/Dark
+narrow/wide states passed native 150% no-clipping. The layout introduces no
+animation; static behavior passed with animation effects disabled. ARM64
+runtime remains unverified.

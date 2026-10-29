@@ -30,8 +30,10 @@ public sealed partial class BleeckerDetailLayout : ContentControl
     }
     private static DependencyProperty Property(string name, Type type, object? value) => DependencyProperty.Register(name, type, typeof(BleeckerDetailLayout),
         new PropertyMetadata(value, (owner, _) => ((BleeckerDetailLayout)owner).Render()));
-    public static readonly DependencyProperty RatioProperty = Property(nameof(Ratio), typeof(BleeckerDetailLayoutRatio), BleeckerDetailLayoutRatio.Primary);
-    public static readonly DependencyProperty SideProperty = Property(nameof(Side), typeof(BleeckerDetailLayoutSide), BleeckerDetailLayoutSide.End);
+    private static DependencyProperty GeometryProperty(string name, Type type, object value) => DependencyProperty.Register(name, type, typeof(BleeckerDetailLayout),
+        new PropertyMetadata(value, (owner, _) => ((BleeckerDetailLayout)owner).UpdateGeometry()));
+    public static readonly DependencyProperty RatioProperty = GeometryProperty(nameof(Ratio), typeof(BleeckerDetailLayoutRatio), BleeckerDetailLayoutRatio.Primary);
+    public static readonly DependencyProperty SideProperty = GeometryProperty(nameof(Side), typeof(BleeckerDetailLayoutSide), BleeckerDetailLayoutSide.End);
     public static readonly DependencyProperty SideRailProperty = Property(nameof(SideRail), typeof(object), null);
     public static readonly DependencyProperty SideRailTemplateProperty = Property(nameof(SideRailTemplate), typeof(DataTemplate), null);
     public static readonly DependencyProperty SideRailTemplateSelectorProperty = Property(nameof(SideRailTemplateSelector), typeof(DataTemplateSelector), null);
@@ -45,6 +47,11 @@ public sealed partial class BleeckerDetailLayout : ContentControl
     public string? SideRailLabel { get => (string?)GetValue(SideRailLabelProperty); set => SetValue(SideRailLabelProperty, value); }
     public bool Sticky { get => (bool)GetValue(StickyProperty); set => SetValue(StickyProperty, value); }
     private static void Validate<T>(T value) where T : struct, Enum { if (!Enum.IsDefined(value)) throw new ArgumentOutOfRangeException(nameof(value)); }
+    private void UpdateGeometry()
+    {
+        Validate(Ratio); Validate(Side);
+        panel?.InvalidateMeasure(); InvalidateMeasure(); UpdateSticky();
+    }
     private bool HasRail => SideRailTemplate is not null || SideRailTemplateSelector is not null || BleeckerReactContent.Present(SideRail);
     private double Viewport => XamlRoot?.Size.Width ?? 0;
     protected override void OnContentChanged(object oldContent, object newContent) { main?.Release(); base.OnContentChanged(oldContent, newContent); Render(); }

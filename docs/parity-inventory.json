@@ -7831,15 +7831,23 @@
         "samples/Orchard.Catalog/MainWindow.DetailLayouts.cs",
         "scripts/verify-detail-layout.mjs",
         "scripts/test-detail-layout-audit.mjs",
-        "tests/PackageConsumer/MainWindow.DetailLayout.cs"
+        "tests/PackageConsumer/MainWindow.DetailLayout.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .20 x64 catalog passed 888 Detail Layout Light/Dark states with normal, empty, responsive, optional-rail, ratio and side variants; artifacts/current/context-menu-native-candidate/detail-layout-catalog-candidate.json and detail-layout.json",
+        "keyboardPointerFocus": "Matching .20 x64 catalog passed two native pointer/keyboard/focus interaction sequences, preserving caller input, action and unchanged template content through side/ratio changes, viewport changes and remount; artifacts/current/context-menu-native-candidate/detail-layout.json",
+        "scale150NoClip": "Independent .20 x64 package consumer passed 16 native 150% Light/Dark narrow/wide normal/wrapped/start/empty cases with all visible content in bounds; artifacts/current/context-menu-native-candidate/layout-scale-v20.json",
+        "reducedMotion": "Detail Layout has no animation or transition; its sticky translation is immediate, and matching .20 focused catalog behavior passed with animation effects disabled; artifacts/current/context-menu-native-candidate/detail-layout-catalog-candidate.json",
+        "packageConsumerCompiles": "Independent .20 x64 NuGet consumer compiled and ran against package SHA-256 c0ecf517e8d1121b8781c4d07448ad177a5efa63db2ac3b194c07b68951ca8df with package/consumer/x64-catalog Orchard DLL SHA-256 fe1996638b1f565dd7b8333a48299caee426bda57c23afe78c9941d15b388eac; artifacts/current/context-menu-native-candidate/layout-consumer-v20.json"
       }
     },
     {
@@ -8157,9 +8165,10 @@
         "tests/PackageConsumer/MainWindow.PageFrame.cs",
         "tests/PackageConsumer/PageFrameOverridesFixture.cs",
         "scripts/verify-page-frame-overrides.mjs",
-        "scripts/test-page-frame-overrides-audit.mjs"
+        "scripts/test-page-frame-overrides-audit.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "fontAndLayoutOverridesVerification": {
         "source": {
           "report": "artifacts/current/page-frame-additional-overrides-catalog-native-v1/page-frame-overrides.json",
@@ -8189,11 +8198,18 @@
         "fullComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .20 x64 catalog passed 792 Page Frame Light/Dark layout states including width, gutter, vertical spacing, empty content and narrow hosts; artifacts/current/context-menu-native-candidate/page-frame-catalog-v20.json and page-frame.json",
+        "keyboardPointerFocus": "Matching .20 x64 catalog passed two native pointer/Space/focus interaction sequences, preserving caller editing, actions, templates and selectors through recipe, viewport and remount changes; artifacts/current/context-menu-native-candidate/page-frame.json",
+        "scale150NoClip": "Independent .20 x64 package consumer passed 16 native 150% Light/Dark 400/900-DIP reading/full/wrapped/empty cases with caller content in bounds; artifacts/current/context-menu-native-candidate/layout-scale-v20.json",
+        "reducedMotion": "Page Frame has no animation or transition; matching .20 focused catalog states passed with animation effects disabled; artifacts/current/context-menu-native-candidate/page-frame-catalog-v20.json",
+        "packageConsumerCompiles": "Independent .20 x64 NuGet consumer compiled and ran against package SHA-256 c0ecf517e8d1121b8781c4d07448ad177a5efa63db2ac3b194c07b68951ca8df with package/consumer/x64-catalog Orchard DLL SHA-256 fe1996638b1f565dd7b8333a48299caee426bda57c23afe78c9941d15b388eac; artifacts/current/context-menu-native-candidate/layout-consumer-v20.json"
       }
     },
     {

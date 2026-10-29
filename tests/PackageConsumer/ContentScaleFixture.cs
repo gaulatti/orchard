@@ -34,7 +34,7 @@ internal static class ContentScaleFixture
     private static IEnumerable<T> FindAll<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)yield return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)foreach(var found in FindAll<T>(VisualTreeHelper.GetChild(root,i),name))yield return found;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var progressStackScale=new List<object>();var metricScale=new List<object>();var sparklineScale=new List<object>();var feedGridScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var progressStackScale=new List<object>();var metricScale=new List<object>();var sparklineScale=new List<object>();var feedGridScale=new List<object>();var pageFrameScale=new List<object>();var detailLayoutScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -740,6 +740,90 @@ internal static class ContentScaleFixture
                     root.Children.Clear();await Layout();
                 }
             }
+            foreach(var viewport in new[]{400,900})
+            {
+                root.Width=viewport;root.Height=520;island.SiteBridge.OverrideScale=1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport*1.5),780));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,(int)(viewport*1.5),780));
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                foreach(var kind in new[]{"reading","full","wrapped","empty"})
+                {
+                    stage=$"page-frame/{theme}/{viewport}/{kind}/150-percent";root.RequestedTheme=theme;
+                    var body=kind=="empty"?null:new StackPanel{Spacing=8};
+                    if(body is not null)
+                    {
+                        body.Children.Add(new TextBlock{Text=kind=="wrapped"?"A long fictional editorial page title wraps inside the caller-owned page frame without clipping at native scale.":"Fictional editorial page",TextWrapping=TextWrapping.Wrap});
+                        body.Children.Add(new Button{Content="Review"});
+                    }
+                    var frame=new BleeckerPageFrame{Width=viewport==400?320:800,FrameWidth=kind=="full"?BleeckerPageFrameWidth.Full:BleeckerPageFrameWidth.Reading,
+                        Gutter=kind=="full"?BleeckerPageFrameGutter.Spacious:BleeckerPageFrameGutter.Comfortable,
+                        VerticalSpacing=kind=="full"?BleeckerPageFrameVerticalSpacing.None:BleeckerPageFrameVerticalSpacing.Compact,Content=body};
+                    Canvas.SetLeft(frame,32);Canvas.SetTop(frame,16);root.Children.Add(frame);await Layout();
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&Math.Abs(root.XamlRoot.Size.Width-viewport)<.01,"Page Frame did not use native 150% scale and viewport.");
+                    var owner=frame.TransformToVisual(root).TransformBounds(new Rect(0,0,frame.ActualWidth,frame.ActualHeight));
+                    Require(frame.IsLoaded&&!frame.IsTabStop&&frame.ActualWidth>0&&frame.ActualWidth<=frame.Width&&frame.ActualHeight>0&&owner.X>=0&&owner.Y>=0&&owner.Right<=root.Width&&owner.Bottom<=root.Height,
+                        $"Page Frame {kind} escaped its native 150% host: {owner}.");
+                    foreach(var name in new[]{"PART_Root","PART_Content"})
+                    {
+                        var part=Find<FrameworkElement>(frame,name)??throw new InvalidOperationException($"Page Frame {kind} lost {name}.");
+                        var bounds=part.TransformToVisual(root).TransformBounds(new Rect(0,0,part.ActualWidth,part.ActualHeight));
+                        Require(part.IsLoaded&&bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5,
+                            $"Page Frame {kind} {name} clipped at native 150% scale: owner={owner}, part={bounds}.");
+                    }
+                    if(body is not null)
+                    foreach(var child in body.Children.OfType<FrameworkElement>())
+                    {
+                        var bounds=child.TransformToVisual(root).TransformBounds(new Rect(0,0,child.ActualWidth,child.ActualHeight));
+                        Require(child.IsLoaded&&child.ActualWidth>0&&child.ActualHeight>0&&bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5,
+                            $"Page Frame {kind} caller content clipped at native 150% scale: owner={owner}, child={bounds}.");
+                    }
+                    pageFrameScale.Add(new{theme=theme.ToString(),viewport,kind,scale=root.XamlRoot.RasterizationScale,passed=true});
+                    root.Children.Clear();await Layout();
+                }
+            }
+            foreach(var viewport in new[]{400,1200})
+            {
+                root.Width=viewport;root.Height=800;island.SiteBridge.OverrideScale=1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport*1.5),1200));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,(int)(viewport*1.5),1200));
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                foreach(var kind in new[]{"normal","wrapped","start","empty"})
+                {
+                    stage=$"detail-layout/{theme}/{viewport}/{kind}/150-percent";root.RequestedTheme=theme;
+                    var body=kind=="empty"?null:new StackPanel{Spacing=8};
+                    if(body is not null)
+                    {
+                        body.Children.Add(new TextBlock{Text=kind=="wrapped"?"A long fictional editorial heading wraps inside the main content track at native scale without clipping.":"Fictional article detail",TextWrapping=TextWrapping.Wrap});
+                        body.Children.Add(new Button{Content="Review detail"});
+                    }
+                    var layout=new BleeckerDetailLayout{Width=viewport==400?320:1100,Content=body,
+                        SideRail=kind=="empty"?null:"Related fictional details",SideRailLabel="Related details",
+                        Side=kind=="start"?BleeckerDetailLayoutSide.Start:BleeckerDetailLayoutSide.End,
+                        Ratio=kind=="start"?BleeckerDetailLayoutRatio.Balanced:BleeckerDetailLayoutRatio.Primary};
+                    Canvas.SetLeft(layout,32);Canvas.SetTop(layout,16);root.Children.Add(layout);await Layout();
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&Math.Abs(root.XamlRoot.Size.Width-viewport)<.01,"Detail Layout did not use native 150% scale and viewport.");
+                    var owner=layout.TransformToVisual(root).TransformBounds(new Rect(0,0,layout.ActualWidth,layout.ActualHeight));
+                    Require(layout.IsLoaded&&!layout.IsTabStop&&layout.ActualWidth==layout.Width&&(kind=="empty"?layout.ActualHeight==0:layout.ActualHeight>0)&&owner.X>=0&&owner.Y>=0&&owner.Right<=root.Width&&owner.Bottom<=root.Height,
+                        $"Detail Layout {kind} escaped its native 150% host: {owner}.");
+                    foreach(var name in new[]{"PART_Root","DetailColumns","DetailContent","DetailSideRail"})
+                    {
+                        var part=Find<FrameworkElement>(layout,name)??throw new InvalidOperationException($"Detail Layout {kind} lost {name}.");
+                        if(part.Visibility!=Visibility.Visible)continue;
+                        var bounds=part.TransformToVisual(root).TransformBounds(new Rect(0,0,part.ActualWidth,part.ActualHeight));
+                        Require(part.IsLoaded&&bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5,
+                            $"Detail Layout {kind} {name} clipped at native 150% scale: owner={owner}, part={bounds}.");
+                    }
+                    if(body is not null)
+                    foreach(var child in body.Children.OfType<FrameworkElement>())
+                    {
+                        var bounds=child.TransformToVisual(root).TransformBounds(new Rect(0,0,child.ActualWidth,child.ActualHeight));
+                        Require(child.IsLoaded&&child.ActualWidth>0&&child.ActualHeight>0&&bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5,
+                            $"Detail Layout {kind} caller content clipped at native 150% scale: owner={owner}, child={bounds}.");
+                    }
+                    detailLayoutScale.Add(new{theme=theme.ToString(),viewport,kind,scale=root.XamlRoot.RasterizationScale,passed=true});
+                    root.Children.Clear();await Layout();
+                }
+            }
             root.Width=400;
             root.Height=160;
             island.SiteBridge.OverrideScale=1;
@@ -786,8 +870,8 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid, Card, Empty, Progress Stack, Metric, Sparkline, Feed Grid and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid, Card, Empty, Progress Stack, Metric, Sparkline, Feed Grid, Page Frame, Detail Layout and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,pageFrameScale,detailLayoutScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,pageFrameScale,detailLayoutScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
 }

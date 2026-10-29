@@ -11,24 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-29 `.19` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.19)
-for the current x64 component milestone. Twenty of 112 entries are accepted:
-Brand Mark, Card, Context Menu, Dashboard Grid, Dashboard Section, Empty,
-Error State, Feed Grid, Icon Badge, Kbd, Label, Loading Spinner, Metric,
-Page Header, Progress, Progress Stack, Section Header, Separator, Sparkline
-and Status Badge.
-ARM64 is build-only with runtime unverified. Its
-[release note](docs/releases/2026-10-29-preview-19.md)
-lists the five checks and remaining scope. The earlier v7 preview's
-[checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
-records the package hash, input and tooltip checks, and clean shutdown. The
-[matching x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261027.7/Orchard.Catalog.0.1.0-preview.20261027.7.win-x64.zip)
-contains the exact NuGet library DLL; its extracted Monitoring and Editorial
-demo checks are recorded in the [x64 checkpoint](docs/evidence/catalog-v7-x64/checkpoint.json).
-The [ARM64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261027.7/Orchard.Catalog.0.1.0-preview.20261027.7.win-arm64.zip)
-contains the same library DLL and passed archive/architecture checks; see its
-[checkpoint](docs/evidence/catalog-v7-arm64/checkpoint.json). Native ARM64
-execution remains unverified.
+Download the [2026-10-29 `.20` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.20)
+for the current x64 component milestone. Twenty-two of 112 entries are accepted:
+Brand Mark, Card, Context Menu, Dashboard Grid, Dashboard Section, Detail Layout,
+Empty, Error State, Feed Grid, Icon Badge, Kbd, Label, Loading Spinner, Metric,
+Page Frame, Page Header, Progress, Progress Stack, Section Header, Separator,
+Sparkline and Status Badge. The [release note](docs/releases/2026-10-29-preview-20.md)
+records the five checks and package hashes. Download the matching
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.20/Orchard.Catalog.0.1.0-preview.20261029.20.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.20/Orchard.Catalog.0.1.0-preview.20261029.20.win-arm64.zip).
+ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
 has x64/ARM64 catalog ZIPs with the fictional Monitoring and Editorial demos.
