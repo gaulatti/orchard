@@ -1,0 +1,46 @@
+{
+  "scope": "Large Loading Spinner isolated x64 XamlRoot rasterization in Light and Dark",
+  "date": "2026-10-29",
+  "build": {
+    "catalogPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "librarySha256": "f05d7e37b2c55183173bbea6718ea6bb5ac0e5318ae30b9c1eca89810aae72bc",
+    "catalogSha256": "a38022ec8f47d5f70f37ed6bcd7af63a99384f4ca4427372fbf8235259f18eac"
+  },
+  "runtime": {
+    "passed": true,
+    "processExited": true,
+    "exitCode": 0,
+    "architecture": "x64",
+    "themes": ["Light", "Dark"],
+    "isolatedRasterizationScales": [1, 1.25, 1.5, 2],
+    "largeSpinnerDiameterDips": 48,
+    "largeSpinnerStrokeDips": 3,
+    "spinnerCases": 8,
+    "role": "ProgressBar",
+    "tabStop": false,
+    "guards": 183,
+    "focusEvents": 0,
+    "activationEvents": 0,
+    "osSettingsChanged": false,
+    "hardwareInputSent": false,
+    "report": "artifacts/current/loading-spinner-isolated-scale-v1/content-scale.json",
+    "reportSha256": "8b28c3c5ef99d84e043156d642c09ffa01e050bd3a1bdc9b965da3e8048cfba1",
+    "audit": "artifacts/current/loading-spinner-isolated-scale-v1/audit.json",
+    "auditSha256": "092a5192ab929430a71e098a52bd9e2390e00f943d5b7baaaaef1ce08c105114",
+    "negativeAudit": "artifacts/current/loading-spinner-isolated-scale-v1/negative-audit.json",
+    "negativeAuditSha256": "7948091cd07cdda448d3cf281500eddff8eb2cbefeeb9f923a4172d1feba7ba6",
+    "negativeCasesRejected": 29,
+    "lightCapture": "artifacts/current/loading-spinner-isolated-scale-v1/content-scale-Light-1.25.png",
+    "lightCaptureSha256": "1af39a81fc8c810feb86e6e9b2e2e66cd3e2f41ac4b5cde4edf3e69d0caa6689",
+    "darkCapture": "artifacts/current/loading-spinner-isolated-scale-v1/content-scale-Dark-2.png",
+    "darkCaptureSha256": "851d98932beae07be419e015840c1a2362e8119ab98a255b4f3fb316b002dda8"
+  },
+  "componentAccepted": false,
+  "remaining": [
+    "Precise animation timing and live preference switching",
+    "Physical display and consumer-row text scaling beyond this isolated large-size test",
+    "Native ARM64 runtime and complete visual acceptance"
+  ]
+}

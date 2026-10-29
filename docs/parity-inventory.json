@@ -6006,12 +6006,17 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/LoadingSpinnersFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
+        "scripts/verify-content-scale.ps1",
+        "scripts/verify-content-scale.mjs",
+        "scripts/test-content-scale-audit.mjs"
       ],
       "status": "in-progress",
+      "isolatedScaleCheckpoint": "docs/evidence/loading-spinner-isolated-scale-v1/checkpoint.json",
       "remainingGaps": [
         "Precise animation timing and live preference switching",
-        "Display/text scaling",
+        "Physical display and consumer-row text scaling beyond isolated large-size XamlRoot rasterization",
         "Remaining ARM64 state acceptance and complete visual acceptance"
       ]
     },
