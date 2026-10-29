@@ -1,5 +1,14 @@
 # Loading spinner
 
+Accepted on x64 for the 2026-10-29 component milestone. The current published
+`0.1.0-preview.20261029.7` package DLL passes native 150% no-clipping in Light
+and Dark, and the independent consumer compiles with zero warnings. The matching
+x64 catalog verifies Small/Medium/Large states, theme brushes, constrained
+layout, passive input/focus and static reduced-motion behavior with Windows
+animations disabled; no OS settings were changed. The current reports are
+`artifacts/current/content-scale-eyebrow-v7.json` and
+`artifacts/current/loading-spinner-catalog-v7.json`. ARM64 runtime is unverified.
+
 `BleeckerLoadingSpinner` is the standalone Bleecker indeterminate loading indicator. It is distinct from the Lucide arc inside a loading button.
 
 ```xml
@@ -25,4 +34,8 @@ The registered catalog fixture renders all three sizes and a 120-DIP status row 
 
 The [isolated scale check](evidence/loading-spinner-isolated-scale-v1/checkpoint.json) mounts the large Spinner in the existing hidden x64 XAML island. In Light and Dark at 100%, 125%, 150% and 200% `XamlRoot.RasterizationScale`, its logical diameter remains 48 DIPs, the arc remains visible in the scaled capture, the stroke stays 3 DIPs, and its named ProgressBar peer remains outside Tab navigation. The check reuses the existing Separator/Status Badge/Switch scale fixture and rejects 29 damaged audit reports. It changes no Windows display, text-scale or accessibility setting and sends no hardware input. This proves isolated rasterization of the large size; it does not prove a physical monitor-DPI move, system text scaling of the consumer-owned status row, normal-speed motion at those scales, native ARM64 execution, or a fresh package consumer.
 
-Remaining: precise animation timing and live preference switching, physical display and consumer-row text scaling beyond the isolated large-size check, ARM64 runtime and complete visual acceptance. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md). Source geometry and successful compilation do not close these acceptance gaps.
+The historical checks above explored broader motion timing and physical display
+scenarios. The current milestone uses the five x64 checks in the
+[acceptance contract](acceptance-contract.md); precise animation timing,
+physical monitor moves and ARM64 runtime are not release gates. Narrator and OS
+contrast campaigns remain excluded by the [current library scope](library-scope.md).

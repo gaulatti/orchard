@@ -9,8 +9,9 @@ For the 2026-10-29 x64 milestone, passive keyboard/pointer/focus behavior,
 static reduced-motion behavior and independent package-consumer compilation
 pass. The current package passes its Light/Dark language-casing and rule-layout
 checks, but rich content does not inherit the pinned source's uppercase
-transform. Applicable state rendering therefore remains failed. Native 150%
-no-clipping is also unverified. Eyebrow is not accepted yet; ARM64 runtime is
+transform. Applicable state rendering therefore remains failed. The current
+package passes native 150% no-clipping for wrapped plain and rich content in
+both themes (`artifacts/current/content-scale-eyebrow-v7.json`). Eyebrow is not accepted yet; ARM64 runtime is
 build-only and unverified for this milestone.
 
 ```xml
@@ -85,8 +86,9 @@ reconciliation. Consumer rich content/templates retain their
 text and must currently supply uppercase content themselves. This does not yet
 match the reference's inherited CSS text transform. Exact native/browser glyph
 and tracking comparison, inline/baseline behavior, template and broader RTL edge cases,
-isolated scaling and the remaining ARM64 state checks remain
-unverified. HTML
+broader text-scaling behavior and the remaining ARM64 state checks remain
+unverified for the historical parity review; they are not this milestone's
+acceptance gates. HTML
 `div`/`p`/`span` selection has no direct native equivalent; composed layout and
 semantics still require acceptance evidence. No desktop-wide settings should
 be changed for scaling verification. Narrator and OS contrast campaigns are

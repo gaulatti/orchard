@@ -27,7 +27,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -160,6 +160,41 @@ internal static class ContentScaleFixture
                 await File.WriteAllBytesAsync(Path.Combine(Path.GetDirectoryName(output)!, $"brand-mark-scale-{theme}-1.5.png"),brandPng);
                 root.Children.Clear();await Layout();
             }
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            {
+                stage=$"eyebrow/{theme}/150-percent";
+                root.RequestedTheme=theme;
+                var plain=new BleeckerEyebrow{Width=180,Rule=true,Content="A longer section label wraps within the available width"};
+                var richText=new TextBlock{Text="A longer rich section label wraps within the available width",TextWrapping=TextWrapping.Wrap};
+                var richLabel=new BleeckerEyebrow{Width=180,Rule=true,Content=richText};
+                Canvas.SetLeft(plain,24);Canvas.SetTop(plain,16);Canvas.SetLeft(richLabel,24);Canvas.SetTop(richLabel,88);
+                root.Children.Add(plain);root.Children.Add(richLabel);await Layout();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001,"Eyebrow did not render at native 150% scale.");
+                foreach(var (owner,content,id) in new (BleeckerEyebrow,FrameworkElement,string)[]{(plain,Find<TextBlock>(plain,"PART_Text")!,"plain"),(richLabel,richText,"rich")})
+                {
+                    var ownerBounds=owner.TransformToVisual(root).TransformBounds(new Rect(0,0,owner.ActualWidth,owner.ActualHeight));
+                    var contentBounds=content.TransformToVisual(root).TransformBounds(new Rect(0,0,content.ActualWidth,content.ActualHeight));
+                    Require(owner.IsLoaded&&content.IsLoaded&&!owner.IsTabStop&&owner.ActualWidth==180&&content.ActualHeight>16&&
+                        ownerBounds.X>=0&&ownerBounds.Y>=0&&ownerBounds.Right<=400&&ownerBounds.Bottom<=160&&
+                        contentBounds.X>=ownerBounds.X-.5&&contentBounds.Y>=ownerBounds.Y-.5&&
+                        contentBounds.Right<=ownerBounds.Right+.5&&contentBounds.Bottom<=ownerBounds.Bottom+.5,
+                        $"Eyebrow {id} content clipped at native 150% scale: owner={ownerBounds}, content={contentBounds}.");
+                    eyebrowScale.Add(new{theme=theme.ToString(),kind=id,scale=root.XamlRoot.RasterizationScale,
+                        ownerBounds=new{x=ownerBounds.X,y=ownerBounds.Y,width=ownerBounds.Width,height=ownerBounds.Height},
+                        contentBounds=new{x=contentBounds.X,y=contentBounds.Y,width=contentBounds.Width,height=contentBounds.Height},passed=true});
+                }
+                Guard();var eyebrowFrame=new RenderTargetBitmap();await eyebrowFrame.RenderAsync(root);Guard();
+                Require(eyebrowFrame.PixelWidth==600&&eyebrowFrame.PixelHeight==240,"Eyebrow capture did not use native 150% rasterization.");
+                var eyebrowPixels=System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeBufferExtensions.ToArray(await eyebrowFrame.GetPixelsAsync());
+                using var eyebrowStream=new InMemoryRandomAccessStream();
+                var eyebrowEncoder=await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId,eyebrowStream);
+                eyebrowEncoder.SetPixelData(BitmapPixelFormat.Bgra8,BitmapAlphaMode.Premultiplied,600,240,96,96,eyebrowPixels);
+                await eyebrowEncoder.FlushAsync();eyebrowStream.Seek(0);
+                using var eyebrowReader=new DataReader(eyebrowStream);await eyebrowReader.LoadAsync((uint)eyebrowStream.Size);
+                var eyebrowPng=new byte[(int)eyebrowStream.Size];eyebrowReader.ReadBytes(eyebrowPng);
+                await File.WriteAllBytesAsync(Path.Combine(Path.GetDirectoryName(output)!, $"eyebrow-scale-{theme}-1.5.png"),eyebrowPng);
+                root.Children.Clear();await Layout();
+            }
             island.SiteBridge.OverrideScale=1;
             window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));
             island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
@@ -204,7 +239,7 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
         catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }

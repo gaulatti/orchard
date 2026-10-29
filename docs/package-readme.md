@@ -8,8 +8,8 @@ build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
 Accepted x64 components in this preview: Brand Mark, Context Menu, Kbd,
-Separator and Status Badge. The fixed inventory has 112 entries started;
-5 are accepted.
+Loading Spinner, Separator and Status Badge. The fixed inventory has 112
+entries started; 6 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes

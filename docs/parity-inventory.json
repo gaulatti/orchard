@@ -3330,16 +3330,16 @@
       "milestoneChecks": {
         "lightDarkStates": "fail",
         "keyboardPointerFocus": "pass",
-        "scale150NoClip": "fail",
+        "scale150NoClip": "pass",
         "reducedMotion": "pass",
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
         "lightDarkStates": "Current package passes four language-casing and four rule-layout cases across Light/Dark, but rich-content uppercase inheritance differs from the pinned source; full applicable state rendering is not accepted",
         "keyboardPointerFocus": "Display-only text control: template IsTabStop=false and no command; package hidden fixture recorded zero focus or activation",
-        "scale150NoClip": "Not yet verified on a current package under isolated native 1.5 XAML rasterization",
+        "scale150NoClip": "0.1.0-preview.20261029.7 package DLL passed four Light/Dark plain and rich wrapped-content bounds checks in a native 1.5 XAML island, with inspected captures and no clipping; report artifacts/current/content-scale-eyebrow-v7.json",
         "reducedMotion": "Static display component; control and template define no animation or transition",
-        "packageConsumerCompiles": "0.1.0-preview.20261029.5 x64 independent consumer compiled with zero warnings; restored package SHA-256 759db08a9f728025819c9fd89d9ee420ba2db3724931c07b4c56937cfd762223; current package report artifacts/current/context-menu-native-candidate/package-display-metadata-v5.json"
+        "packageConsumerCompiles": "0.1.0-preview.20261029.7 x64 independent consumer compiled with zero warnings; restored package SHA-256 773f8138d34d62367e784ccb3eee7572fd10105c00a129b6bf79222685e6ee44; current package report artifacts/current/context-menu-native-candidate/package-display-metadata-v7.json"
       }
     },
     {
@@ -5618,14 +5618,21 @@
         "scripts/verify-content-scale.mjs",
         "scripts/test-content-scale-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "isolatedScaleCheckpoint": "docs/evidence/loading-spinner-isolated-scale-v1/checkpoint.json",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "0.1.0-preview.20261029.7 x64 catalog passed Small/Medium/Large, constrained row, Light/Dark theme brushes, live foreground override and theme restoration; artifacts/current/loading-spinner-catalog-v7.json and loading-spinner-catalog-Light-v7.png/loading-spinner-catalog-Dark-v7.png",
+        "keyboardPointerFocus": "Passive progress indicator has no pointer or keyboard action and is not a tab stop; current package hidden scale fixture verified ProgressBar role, caller name and zero focus or activation",
+        "scale150NoClip": "Current package DLL passed 48-DIP large spinner bounds and 3-DIP stroke at native 1.5 XAML rasterization in Light/Dark, with inspected captures; artifacts/current/content-scale-eyebrow-v7.json",
+        "reducedMotion": "Current x64 catalog fixture read Windows animationsEnabled=false and verified static angle zero, hide/show reset and unload stop without changing OS settings; artifacts/current/loading-spinner-catalog-v7.json",
+        "packageConsumerCompiles": "0.1.0-preview.20261029.7 independent x64 consumer compiled with zero warnings; package SHA-256 773f8138d34d62367e784ccb3eee7572fd10105c00a129b6bf79222685e6ee44; catalog and consumer Orchard DLL SHA-256 ca9badea7a1f383c66d2e9e9d60814464efdb03a5d693ec9df8c9cd85cf35bdc"
       }
     },
     {
