@@ -18,6 +18,12 @@ namespace Orchard.Testing;
 
 internal static class ContentScaleFixture
 {
+    private sealed class RetryCommand : System.Windows.Input.ICommand
+    {
+        public event EventHandler? CanExecuteChanged { add { } remove { } }
+        public bool CanExecute(object? parameter) => true;
+        public void Execute(object? parameter) { }
+    }
     private delegate bool Visitor(nint handle,nint value);
     [DllImport("user32.dll")] private static extern bool EnumWindows(Visitor visitor,nint value);
     [DllImport("user32.dll")] private static extern nint GetForegroundWindow();
@@ -27,7 +33,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -44,7 +50,7 @@ internal static class ContentScaleFixture
             const string switchLabel="Enable fictional editorial notifications while reviewing a long draft";
             var scaledSwitch=new BleeckerSwitch{Width=320,Label=switchLabel,IsOn=true};var toggles=0;scaledSwitch.Toggled+=(_,_)=>toggles++;Canvas.SetLeft(scaledSwitch,24);Canvas.SetTop(scaledSwitch,104);root.Children.Add(scaledSwitch);
             var spinner=new BleeckerLoadingSpinner{Size=BleeckerLoadingSize.Large};AutomationProperties.SetName(spinner,"Loading fictional preview");Canvas.SetLeft(spinner,350);Canvas.SetTop(spinner,104);root.Children.Add(spinner);
-            async Task Layout(){for(var i=0;i<3;i++){root.Measure(new Size(400,160));root.Arrange(new Rect(0,0,400,160));root.UpdateLayout();Guard();await Task.Delay(16);}await NativeRenderReadiness.RenderAsync(root);Guard();}
+            async Task Layout(){for(var i=0;i<3;i++){root.Measure(new Size(root.Width,root.Height));root.Arrange(new Rect(0,0,root.Width,root.Height));root.UpdateLayout();Guard();await Task.Delay(16);}await NativeRenderReadiness.RenderAsync(root);Guard();}
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})foreach(var scale in new[]{1f,1.25f,1.5f,2f})
             {
                 stage=$"{theme}/{scale}";root.RequestedTheme=theme;island.SiteBridge.OverrideScale=scale;var width=(int)Math.Round(400*scale);var height=(int)Math.Round(160*scale);window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(width,height));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,width,height));await Layout();
@@ -321,6 +327,43 @@ internal static class ContentScaleFixture
                 Require(progressFrame.PixelWidth==600&&progressFrame.PixelHeight==240,"Progress native capture used the wrong scale.");
                 root.Children.Clear();await Layout();
             }
+            root.Height=520;island.SiteBridge.OverrideScale=1.5f;
+            window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,780));
+            island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,780));
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            {
+                root.RequestedTheme=theme;
+                var cases=new (string id,BleeckerErrorState control)[]{
+                    ("default",new BleeckerErrorState{Width=320}),
+                    ("retry",new BleeckerErrorState{Width=320,Title="Fictional archive unavailable",Description="Retry the consumer-owned archive request.",RetryCommand=new RetryCommand()}),
+                    ("custom",new BleeckerErrorState{Width=320,Title="Custom icon",Description="",Icon=new Border{Width=28,Height=28}}),
+                    ("long",new BleeckerErrorState{Width=280,Title="A longer fictional failure title wraps within the consumer's chosen width",Description="The consumer retains this complete description. No service or recovery policy is inferred by the component."}),
+                    ("rtl",new BleeckerErrorState{Width=320,FlowDirection=FlowDirection.RightToLeft,Title="العربية · archive",Description="Consumer-owned right-to-left summary."}),
+                    ("empty-title",new BleeckerErrorState{Width=320,Title="",Description="Consumer description"}),
+                    ("empty-text",new BleeckerErrorState{Width=320,Title="",Description=""})
+                };
+                foreach(var(id,control) in cases)
+                {
+                    stage=$"error-state/{theme}/{id}/150-percent";
+                    Canvas.SetLeft(control,32);Canvas.SetTop(control,16);root.Children.Add(control);await Layout();
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001,"Error State did not render at native 150% scale.");
+                    var owner=control.TransformToVisual(root).TransformBounds(new Rect(0,0,control.ActualWidth,control.ActualHeight));
+                    Require(control.IsLoaded&&control.ActualWidth==control.Width&&control.ActualHeight>0&&owner.X>=0&&owner.Y>=0&&owner.Right<=root.Width&&owner.Bottom<=root.Height,
+                        $"Error State {id} escaped its native 150% host: {owner}.");
+                    foreach(var name in new[]{"PART_IconBox","PART_Title","PART_Description","PART_Retry"})
+                    {
+                        var part=Find<FrameworkElement>(control,name)??throw new InvalidOperationException($"Error State {id} lost {name}.");
+                        if(part.Visibility==Visibility.Collapsed||part.ActualHeight==0)continue;
+                        var bounds=part.TransformToVisual(root).TransformBounds(new Rect(0,0,part.ActualWidth,part.ActualHeight));
+                        Require(bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5&&
+                            part.ActualHeight+.5>=part.DesiredSize.Height,
+                            $"Error State {id} {name} clipped at native 150% scale: owner={owner}, part={bounds}.");
+                    }
+                    errorStateScale.Add(new{theme=theme.ToString(),kind=id,scale=root.XamlRoot.RasterizationScale,passed=true});
+                    root.Children.Clear();await Layout();
+                }
+            }
+            root.Height=160;
             island.SiteBridge.OverrideScale=1;
             window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));
             island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
@@ -365,7 +408,7 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
         catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }

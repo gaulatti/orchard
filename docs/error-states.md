@@ -1,5 +1,18 @@
 # Error State
 
+Error State is accepted for the 2026-10-29 x64 component milestone. The
+published `.10` catalog passes seven specimens in Light and Dark, including
+physical pointer and Space retry, focus, disabled command state, and live
+content changes. The matching isolated package consumer compiles and runs, and
+its native 150% XAML-scale fixture passes all fourteen specimen/theme cases
+without visible content escaping its control. Error State has no animation;
+the non-loading retry button has no active spinner, and the catalog passed with
+Windows animations already disabled. See the five pass/fail records in
+[the inventory](parity-inventory.json). ARM64 runtime remains unverified.
+
+Historical parity investigations below remain useful diagnostics. Their raster,
+OS contrast, and ARM64 runtime gaps are not gates for this x64 milestone.
+
 Run [38547741448](https://github.com/gaulatti/orchard/actions/runs/38547741448)
 at `55d9391` passes both standalone Error State suites, both complete catalogs,
 both existing real-contrast suites and both independent consumers. Its new
@@ -107,9 +120,9 @@ GitHub-hosted Windows, compares painted background and established composed
 title/description ink, then restores the original mode and palette. Local
 invocations refuse before changing preferences.
 
-This is in progress. Full glyph/icon/composed raster parity, scaling, component
-automation/theme behavior and broader custom-template/lifecycle edge cases
-remain required. Narrator and OS contrast campaigns are excluded by the
+Earlier parity work tracked glyph/icon raster and broader template edge cases.
+Those are not gates for the current x64 milestone; native 150% no-clipping now
+passes in both themes. Narrator and OS contrast campaigns are excluded by the
 [current library scope](library-scope.md). There is no backend, metrics or production publishing surface.
 The wiki remote remains unavailable; component documentation is kept here.
 

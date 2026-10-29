@@ -7,9 +7,9 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Brand Mark, Context Menu, Kbd,
-Label, Loading Spinner, Progress, Separator and Status Badge. The fixed inventory
-has 112 entries started; 8 are accepted.
+Accepted x64 components in this preview: Brand Mark, Context Menu, Error State,
+Kbd, Label, Loading Spinner, Progress, Separator and Status Badge. The fixed
+inventory has 112 entries started; 9 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
