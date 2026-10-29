@@ -1,0 +1,72 @@
+{
+  "scope": "Locally qualified versioned Orchard NuGet and runnable catalog preview",
+  "date": "2026-10-29",
+  "version": "0.1.0-preview.20261029.1",
+  "buildSourceCommit": "88e85b9ca10265d7c2b8b3a9d099d3a8386a5548",
+  "package": {
+    "path": "artifacts/current/preview-20261029-candidate/Gaulatti.Orchard.0.1.0-preview.20261029.1.nupkg",
+    "sha256": "5ae3aa13c09b37f4a6d9a4df8d29fd352a4365802d375cc8f57575fedf889deb",
+    "orchardDllSha256": "2002ec15074636738dfde8cad877b66516bf9c0b24a83dfb02ea19d15ec96c72",
+    "x64IsolatedConsumerPassed": true,
+    "x64ConsumerReport": "artifacts/current/preview-20261029-candidate/consumer-x64/result.json",
+    "x64ConsumerReportSha256": "3afabf0d9d809af8a659bc762252700e6d695cdf116c47ee0dc07960e1f73e21",
+    "arm64IsolatedConsumerCompiled": true,
+    "arm64ConsumerRuntimeVerified": false,
+    "arm64ConsumerReport": "artifacts/current/preview-20261029-candidate/consumer-arm64/result.json",
+    "arm64ConsumerReportSha256": "5ef03829fee767f3baf90dd6ecf9b09122be4a43072458515c9c4523536b1540"
+  },
+  "catalogs": {
+    "x64": {
+      "path": "artifacts/current/preview-20261029-candidate/Orchard.Catalog.0.1.0-preview.20261029.1.win-x64.zip",
+      "sha256": "18cf2e5059a52e0f392c823675719663b1dd994dce315d7b7da0f5f02496d509",
+      "archiveFilesStreamVerified": 821,
+      "compiledXamlFixtures": 114,
+      "extractedFileCount": 821,
+      "extractedLibraryMatchesPackage": true,
+      "archiveManifest": "artifacts/current/preview-20261029-candidate/catalog-x64-archive.json",
+      "archiveManifestSha256": "8ec7391e551a2579dd63c6f5a520ea4949dad6193afc612d4ec5473133c2e968",
+      "hiddenMonitoringEditorialPassed": true,
+      "hiddenDemoChecks": 72,
+      "hiddenDemoIsolationGuards": 589,
+      "hiddenDemoReport": "artifacts/current/preview-20261029-candidate/x64-hidden-workspaces/hidden-workspaces.json",
+      "hiddenDemoReportSha256": "a8de641be2bd709861b6b52902de0c6936323b9f679a872cb10ed42e4753b7b0",
+      "visibleMonitoringLightPassed": true,
+      "visibleMonitoringReport": "artifacts/current/preview-20261029-candidate/monitoring-light/monitoring-desktop.json",
+      "visibleMonitoringReportSha256": "268d878e38d6774094b1e651f9a9e881a445d0d0d85dfe0d43cbc987b73bc5c5",
+      "visibleMonitoringScreenshot": "artifacts/current/preview-20261029-candidate/monitoring-light/monitoring-review-focus.png",
+      "visibleMonitoringScreenshotSha256": "bec526fb6a2d58228bf90aafb30d5a3f8e84b83353b0e3871cd9ea8bd774667a",
+      "visibleEditorialDarkPassed": true,
+      "visibleEditorialReport": "artifacts/current/preview-20261029-candidate/editorial-dark/editorial-edit.json",
+      "visibleEditorialReportSha256": "91009147823f81131cab49e85136d93f419ecd593bee4686f31ea36aeb09048b",
+      "visibleEditorialScreenshot": "artifacts/current/preview-20261029-candidate/editorial-dark/editorial-dirty-decision.png",
+      "visibleEditorialScreenshotSha256": "28f002e0eccb8d8ae94299c5b250a00c4efa84a00e1492dfef1b76fb4b54a4d4",
+      "visibleScreenshotsReviewed": true
+    },
+    "arm64": {
+      "path": "artifacts/current/preview-20261029-candidate/Orchard.Catalog.0.1.0-preview.20261029.1.win-arm64.zip",
+      "sha256": "9fe0ff3f3b6f48db4367e36110d4a04c97354bf306593d8c887d18937fcf616b",
+      "archiveFilesStreamVerified": 817,
+      "compiledXamlFixtures": 114,
+      "apphostMachine": "Arm64",
+      "libraryMatchesPackage": true,
+      "archiveManifest": "artifacts/current/preview-20261029-candidate/catalog-arm64-archive.json",
+      "archiveManifestSha256": "829734ee92e4b235f56791db9595e7879ff7018d3f0b6598eb262354a5754886",
+      "nativeRuntimeVerified": false
+    }
+  },
+  "portableTests": { "passed": 498, "failed": 0, "skipped": 0 },
+  "textTests": { "passed": 10, "failed": 0, "skipped": 0 },
+  "failedSetupAttempt": "The first ARM64 --no-restore build failed NETSDK1047 because the shared assets file had only an x64 target. ARM64 restore succeeded and the subsequent ARM64 library and catalog builds passed with zero warnings/errors.",
+  "knownComponentFailure": "Active-modal-owner Context Menu physical item click still fails to invoke the original handler; see docs/evidence/context-menu-window-hit-v1/checkpoint.json.",
+  "limits": [
+    "Native ARM64 runtime remains unverified on this x64 PC",
+    "The visible demo checks cover Monitoring Light and Editorial Dark; they do not accept the full demo interaction, visual, motion or scaling matrices",
+    "This preview does not accept any of the 112 component entries"
+  ],
+  "entriesStarted": 112,
+  "accepted": 0,
+  "fictionalMonitoringAndEditorialDemosRetained": true,
+  "narratorLaunched": false,
+  "osSettingsChanged": false,
+  "githubActionsTriggered": false
+}
