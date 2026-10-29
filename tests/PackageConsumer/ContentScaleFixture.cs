@@ -27,7 +27,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -79,6 +79,48 @@ internal static class ContentScaleFixture
                 Require(bitmap.PixelWidth==width&&bitmap.PixelHeight==height,"Native island capture did not use its actual rasterization scale.");
             }
             root.Children.Clear();
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            {
+                stage=$"context-menu/{theme}/150-percent";
+                root.RequestedTheme=theme;
+                island.SiteBridge.OverrideScale=1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,240));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,240));
+                var target=new Button{Content="Fictional context target",Width=180,Height=36};
+                Canvas.SetLeft(target,80);Canvas.SetTop(target,32);root.Children.Add(target);
+                var menu=new BleeckerContextMenu();
+                var constrainedStyle=new Style{TargetType=typeof(MenuFlyoutPresenter),BasedOn=menu.MenuFlyoutPresenterStyle};
+                constrainedStyle.Setters.Add(new Setter(FrameworkElement.MaxWidthProperty,200d));
+                menu.MenuFlyoutPresenterStyle=constrainedStyle;
+                var item=new MenuFlyoutItem{Text="Inspect a fictional local item with a wrapped label",Style=(Style)Application.Current.Resources["BleeckerContextMenuItemStyle"]};
+                menu.Items.Add(item);target.ContextFlyout=menu;
+                await Layout();
+                ((FlyoutBase)menu).ShowAt(target,new FlyoutShowOptions{ShowMode=FlyoutShowMode.Transient,Position=new Point(12,12)});
+                await Layout();
+                var popup=VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot).Single(p=>p.Child is MenuFlyoutPresenter);
+                var presenter=(MenuFlyoutPresenter)popup.Child;
+                var itemBounds=item.TransformToVisual(presenter).TransformBounds(new Rect(0,0,item.ActualWidth,item.ActualHeight));
+                var label=Find<TextBlock>(item,"TextBlock")??throw new InvalidOperationException("Scaled Context Menu label is missing.");
+                var labelBounds=label.TransformToVisual(presenter).TransformBounds(new Rect(0,0,label.ActualWidth,label.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&menu.IsOpen&&item.IsLoaded,
+                    "Context Menu did not render in the native 150% island.");
+                Require(presenter.ActualWidth>=160&&presenter.ActualWidth<=200&&presenter.ActualHeight>=36&&itemBounds.X>=-.5&&itemBounds.Y>=-.5&&
+                    itemBounds.Right<=presenter.ActualWidth+.5&&itemBounds.Bottom<=presenter.ActualHeight+.5,
+                    "Context Menu item clipped its native presenter at 150% scaling.");
+                Require(label.Text==item.Text&&label.ActualHeight>19.5&&labelBounds.X>=itemBounds.X&&labelBounds.Y>=itemBounds.Y&&
+                    labelBounds.Right<=itemBounds.Right+.5&&labelBounds.Bottom<=itemBounds.Bottom+.5,
+                    $"Context Menu wrapped label clipped its item at 150% scaling: label={labelBounds}, item={itemBounds}, presenter={presenter.ActualWidth}x{presenter.ActualHeight}.");
+                Require(!menu.AreOpenCloseAnimationsEnabled,"Context Menu retained an open/close animation under reduced motion.");
+                contextMenuScale.Add(new{theme=theme.ToString(),scale=root.XamlRoot.RasterizationScale,passed=true,
+                    presenterWidth=presenter.ActualWidth,presenterHeight=presenter.ActualHeight,
+                    itemBounds=new{x=itemBounds.X,y=itemBounds.Y,width=itemBounds.Width,height=itemBounds.Height},
+                    labelBounds=new{x=labelBounds.X,y=labelBounds.Y,width=labelBounds.Width,height=labelBounds.Height},
+                    openCloseAnimationsEnabled=menu.AreOpenCloseAnimationsEnabled});
+                menu.Hide();await Layout();root.Children.Clear();
+            }
+            island.SiteBridge.OverrideScale=1;
+            window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));
+            island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
             var styleNames=new[]{"BleeckerSmallToggleStyle","BleeckerToggleStyle","BleeckerLargeToggleStyle","BleeckerSmallOutlineToggleStyle","BleeckerOutlineToggleStyle","BleeckerLargeOutlineToggleStyle"};
             var labels=new[]{"Small","Medium","Large","S outline","M outline","L outline"};
             var scaledToggles=new ToggleButton[styleNames.Length];var toggleChanges=0;
@@ -120,7 +162,7 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
         catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }

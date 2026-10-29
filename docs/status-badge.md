@@ -23,7 +23,15 @@ Full baseline/shaping and gamut comparison, widths below unbreakable-word minima
 system text scaling, physical monitor-DPI changes and current native ARM64 runtime remain open. The badge is
 display-only; its input contract is the absence of an unwanted focus stop.
 Narrator and OS contrast campaigns are excluded by the current
-[library scope](library-scope.md). The inventory entry remains in progress.
+[library scope](library-scope.md). These historical checks do not add gates to
+the 2026-10-29 x64 milestone.
+
+The current package consumer passes 18 Light/Dark states and 26 metadata,
+binding and lifecycle contracts on the published preview DLL. Its isolated
+150% XAML rasterization check keeps the badge, label and description visible
+inside their bounds in both themes. Status Badge is display-only, has no focus
+stop or animation, and the package consumer compiles. All five x64 milestone
+checks pass; the component is accepted. ARM64 runtime is unverified.
 
 ## Caller metadata
 

@@ -40,10 +40,12 @@ receives focus and Enter invokes its caller action. Hidden Light/Dark checks
 cover 38 option/lifecycle cases and 12 owned-menu cases, including upper-owner
 shielding, live content/theme/binding/style changes, canceled dismissal,
 owner teardown, and remount. Root layout and actual catalog action checks also
-pass. The candidate `0.1.0-preview.20261029.3` NuGet package compiled in the
+pass. The candidate `0.1.0-preview.20261029.4` NuGet package compiled in the
 x64 package consumer with zero warnings, and the restored package hash matched
 the candidate. A physical owned-modal item click on the same DLL invoked the
-original catalog handler. The 150% no-clipping and reduced-motion checks remain
-unverified, so this component is not yet accepted under the current milestone.
-Open/close animation remains disabled. ARM64 runtime is build-only and
-unverified for this milestone.
+original catalog handler. The same package DLL passes native Light/Dark checks
+at 150% XAML rasterization: a long label wraps inside a caller-constrained
+200-DIP presenter, and the item grows to contain it. Single-line items keep
+their 36-DIP minimum height.
+Open/close animation is disabled in both themes. Context Menu now passes all
+five x64 milestone checks and is accepted. ARM64 runtime remains unverified.

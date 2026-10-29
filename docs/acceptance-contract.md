@@ -21,10 +21,12 @@ Raster/pixel parity is not a gate and must not appear as a remaining inventory
 gap. No new evidence folders are required. Keep diagnostics confined to the
 five checks and the observed component defect being repaired.
 
-The current Context Menu defect is a physical click on an item owned by an
-active modal. Its native flyout must invoke the caller's action without the
-modal swallowing the click. Verify that behavior through the x64 package
-consumer. Preserve the existing component APIs, themes, fixtures, and tests.
+The modal-owned Context Menu click repair is verified on x64: its native
+flyout invokes the caller's action without the modal swallowing the click.
+The package-matching consumer also verifies 150% no-clipping in both themes
+and disabled open/close animation. Preserve the existing component APIs,
+themes, fixtures, and tests.
+
 Narrator and OS accessibility/contrast campaigns remain excluded. Do not
 launch Narrator or change system accessibility, contrast, or time settings.
 The paused pointer heartbeat stays paused, and release delivery must not

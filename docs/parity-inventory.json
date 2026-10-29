@@ -2987,7 +2987,7 @@
         "scripts/test-context-menu-options-audit.mjs",
         "scripts/verify-context-menu-desktop.ps1"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "nativeEvidence": {
         "source": "artifacts/current/context-menu-options-root-native-v2/context-menu-root-audit.json",
         "publicPackage": "artifacts/current/context-menu-options-package-root-v1/context-menu-root-audit.json",
@@ -3025,16 +3025,16 @@
       "milestoneChecks": {
         "lightDarkStates": "pass",
         "keyboardPointerFocus": "pass",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "x64LightDarkStates": "38 native option cases and 12 owned-menu cases in Light/Dark on the same library source",
-        "x64KeyboardPointerFocus": "Candidate DLL 35f9c936ada96f24bf050294e550f3815004ac261cf862fa69530fa77ba57e6a; owned physical item click invoked original action; owned Enter focus/action verified",
-        "x64Scale150NoClip": "No current 150% no-clipping check",
-        "reducedMotion": "No current reduced-motion check",
-        "candidatePackageConsumer": "0.1.0-preview.20261029.3; x64 build passed with zero warnings; candidate/restored package SHA-256 4a2586b23494add27d4b4fe99b12e9e1211aa3a005c34068f531e0ac325e70c9"
+        "x64LightDarkStates": "0.1.0-preview.20261029.4 package DLL: 38 native option cases and 12 owned-menu cases in Light/Dark",
+        "x64KeyboardPointerFocus": "Package DLL SHA-256 de8a8861cd3bd770cbffdbc1e7ac72ece3693dbf525f2dfff2cedbf5dd8a675a; owned physical item click invoked original action; owned Enter focus/action verified",
+        "x64Scale150NoClip": "0.1.0-preview.20261029.4 package DLL: native 1.5 XAML rasterization in Light/Dark; long wrapped label and item remain inside caller-constrained native presenter (artifacts/current/context-menu-native-candidate/content-scale.json)",
+        "reducedMotion": "0.1.0-preview.20261029.4 package DLL: AreOpenCloseAnimationsEnabled=false in both Light/Dark 1.5-scale native checks; no OS setting changed",
+        "candidatePackageConsumer": "0.1.0-preview.20261029.4; x64 build passed with zero warnings; candidate/restored package SHA-256 0b9a066089c2a59ef611686500572bdf41c8897e0fe2221949437c05a4b07db2"
       }
     },
     {
@@ -4566,7 +4566,7 @@
         "x64LightDarkStatesAndInput": "docs/evidence/separator-preview-v2/checkpoint.json",
         "x64Scale150NoClip": "docs/evidence/separator-preview-v2/checkpoint.json",
         "reducedMotion": "Static component with no animation or input action; no tab stop verified in both themes",
-        "candidatePackageConsumer": "0.1.0-preview.20261029.3; x64 build passed with zero warnings; candidate/restored package SHA-256 4a2586b23494add27d4b4fe99b12e9e1211aa3a005c34068f531e0ac325e70c9"
+        "candidatePackageConsumer": "0.1.0-preview.20261029.4; x64 build passed with zero warnings; candidate/restored package SHA-256 0b9a066089c2a59ef611686500572bdf41c8897e0fe2221949437c05a4b07db2"
       }
     },
     {
@@ -6609,7 +6609,7 @@
         "scripts/verify-content-scale.mjs",
         "scripts/test-content-scale-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "nativePreview": {
         "sourceAudit": "artifacts/current/separator-scale-status-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/separator-scale-status-package-native-v1/audit.json",
@@ -6626,11 +6626,18 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "x64LightDarkStates": "Current package DLL: 18 native states, all five variants in Light/Dark (artifacts/current/context-menu-native-candidate/status-badge.json)",
+        "x64KeyboardPointerFocus": "Display-only; no tab stop, no focus events, caller metadata and bindings verified in 26 contracts",
+        "x64Scale150NoClip": "Current package DLL: native 1.5 XAML rasterization in Light/Dark with badge surface, label and description inside island bounds",
+        "reducedMotion": "Static display component with no animations",
+        "candidatePackageConsumer": "0.1.0-preview.20261029.4; x64 consumer compiled with zero warnings; package SHA-256 0b9a066089c2a59ef611686500572bdf41c8897e0fe2221949437c05a4b07db2"
       }
     },
     {

@@ -125,10 +125,11 @@ menu before the parent modal handles it. Owner teardown retires the popup even
 after canceled closing. Live content, theme and presenter-style changes retain
 native layout. Local x64 catalog checks pass physical keyboard opening,
 Escape, right-click, original-item pointer selection, and owned Enter
-activation. The `0.1.0-preview.20261029.3` x64 package consumer compiles
+activation. The `0.1.0-preview.20261029.4` x64 package consumer compiles
 with zero warnings, and a physical owned-modal item click on the matching DLL
-invokes the original handler. The component still needs 150% no-clipping and
-reduced-motion checks for this milestone; ARM64 runtime is unverified.
+invokes the original handler. Light/Dark native 150% checks keep the item
+within its presenter, and open/close animation stays disabled. Context Menu
+passes all five x64 milestone checks; ARM64 runtime is unverified.
 
 `IsModal` defaults to `true`. Bind it to `false` to retain outside input while
 the original context menu surface is open, including outside a modal host.

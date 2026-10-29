@@ -21,6 +21,7 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
     private Popup? nativePopup;
     private object? priorNativeVisibility;
     private BleeckerPopupScope.Registration? nativeScope;
+    private bool observingNativeLayout;
     public static readonly DependencyProperty IsModalProperty = DependencyProperty.Register(
         nameof(IsModal), typeof(bool), typeof(BleeckerContextMenu), new PropertyMetadata(true, (owner, _) => ((BleeckerContextMenu)owner).ModalityChanged()));
     /// <summary>Whether the open menu traps input; defaults to the source root's modal behavior.</summary>
@@ -49,7 +50,16 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
             AttachNativeScope();
             target.Unloaded += NativeTargetUnloaded;
         };
-        Opened += (_, _) => { UpdateNativeOwnerVisibility(); AttachNativeScope(); };
+        Opened += (_, _) =>
+        {
+            UpdateNativeOwnerVisibility(); AttachNativeScope();
+            if (presenter is not null)
+            {
+                presenter.LayoutUpdated += NativePresenterLayoutUpdated;
+                observingNativeLayout = true;
+                UpdateNativeTextBounds();
+            }
+        };
         Closed += (_, _) => StopNativeTargetObservation();
     }
 
@@ -62,6 +72,8 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
 
     private void StopNativeTargetObservation()
     {
+        if (observingNativeLayout && presenter is not null) presenter.LayoutUpdated -= NativePresenterLayoutUpdated;
+        observingNativeLayout = false;
         nativeScope?.Dispose(); nativeScope = null;
         RestoreNativePassThrough();
         if (nativeOwner is not null)
@@ -79,6 +91,35 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
     }
 
     private void NativeOwnerScopeChanged() => UpdateNativeOwnerVisibility();
+
+    private void NativePresenterLayoutUpdated(object? sender, object args) => UpdateNativeTextBounds();
+
+    private void UpdateNativeTextBounds()
+    {
+        if (!IsOpen) return;
+        foreach (var item in Items.OfType<MenuFlyoutItem>())
+        {
+            if (!BleeckerMenuFocus.GetIsEnabled(item) || item.ActualWidth <= 0) continue;
+            var label = FindNativePart<TextBlock>(item, "TextBlock");
+            if (label is null || label.TextWrapping != TextWrapping.Wrap) continue;
+            var available = Math.Max(0, item.ActualWidth - item.Padding.Left - item.Padding.Right);
+            if (Math.Abs(label.MaxWidth - available) > .5) label.MaxWidth = available;
+            var layout = FindNativePart<Grid>(item, "LayoutRoot");
+            // WinUI centers a wrapped TextBlock after the native item is measured;
+            // allow its second line to settle without painting past the item edge.
+            var neededHeight = label.ActualHeight + item.Padding.Top + item.Padding.Bottom
+                + (label.ActualHeight > 19.5 ? 8 : 0);
+            if (layout is not null && Math.Abs(layout.MinHeight - neededHeight) > .5) layout.MinHeight = neededHeight;
+        }
+    }
+
+    private static T? FindNativePart<T>(DependencyObject root, string name) where T : FrameworkElement
+    {
+        if (root is T element && element.Name == name) return element;
+        for (var index = 0; index < VisualTreeHelper.GetChildrenCount(root); index++)
+            if (FindNativePart<T>(VisualTreeHelper.GetChild(root, index), name) is { } found) return found;
+        return null;
+    }
 
     private void AttachNativeScope()
     {
