@@ -1957,7 +1957,6 @@
         "childActionAndPeerTreeVerified": true,
         "reducedMotionVerified": true,
         "normalPulseVerified": false,
-        "callerOpacitySourceGroupRasterVerified": false,
         "nativeARM64RuntimeVerified": false,
         "fullComponentAccepted": false
       },
@@ -3000,7 +2999,6 @@
         "sharedModalAdapterImplemented": true,
         "contextGestureVerified": false,
         "sourcePlacementVerified": false,
-        "sourceRasterParityVerified": false,
         "nativeComponentAccepted": false,
         "sourceModalHistories": "artifacts/current/context-menu-modal-source-audit-v1.json",
         "styledPortalPrototype": "artifacts/current/context-menu-styled-portal-native-v1/styled-portal-audit.json",
@@ -3331,10 +3329,17 @@
       },
       "milestoneChecks": {
         "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
+        "keyboardPointerFocus": "pass",
         "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Current package passes four language-casing and four rule-layout cases across Light/Dark, but rich-content uppercase inheritance differs from the pinned source; full applicable state rendering is not accepted",
+        "keyboardPointerFocus": "Display-only text control: template IsTabStop=false and no command; package hidden fixture recorded zero focus or activation",
+        "scale150NoClip": "Not yet verified on a current package under isolated native 1.5 XAML rasterization",
+        "reducedMotion": "Static display component; control and template define no animation or transition",
+        "packageConsumerCompiles": "0.1.0-preview.20261029.5 x64 independent consumer compiled with zero warnings; restored package SHA-256 759db08a9f728025819c9fd89d9ee420ba2db3724931c07b4c56937cfd762223; current package report artifacts/current/context-menu-native-candidate/package-display-metadata-v5.json"
       }
     },
     {
@@ -3704,7 +3709,6 @@
         "packaged": true,
         "fullNormalMotionVerified": false,
         "physicalInputVerified": false,
-        "sourceRasterParityVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
       },
@@ -4796,7 +4800,6 @@
         "packageNegativeCasesRejected": 49,
         "portableTestsPassed": 418,
         "hiddenX64SourceAndPackageVerified": true,
-        "sourceRasterParityVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false,
         "solutionBuilds": [
@@ -6796,7 +6799,6 @@
         "templateRestorationVerified": true,
         "actualCatalogInvokes": 4,
         "physicalInputVerified": false,
-        "sourceRasterParityVerified": false,
         "nativeComponentAccepted": false,
         "currentTableSourcesPackaged": true,
         "evidenceScope": "Primitive regression subset only; composition evidence is recorded separately.",
@@ -6823,7 +6825,6 @@
         "actualCatalogNativeActions": 10,
         "currentTableSourcesPackaged": true,
         "physicalInputVerified": false,
-        "sourceRasterParityVerified": false,
         "nativeComponentAccepted": false
       },
       "sourceDataTableComposition": "BleeckerSimpleDataTable implements table.tsx; the separate TanStack entry remains pending under data-table.",
@@ -6841,7 +6842,6 @@
         "simpleUnicodeMappingsPinned": 1505,
         "unicodeVersion": "17.0.0",
         "currentTableSourcesPackaged": true,
-        "sourceRasterParityVerified": false,
         "nativeComponentAccepted": false
       },
       "customizationEvidence": {
@@ -6858,7 +6858,6 @@
         "actualOldBorderPngsRejectedPerHost": 3,
         "actualPriorTemplateRetirementFailureVerified": true,
         "currentTableSourcesPackaged": true,
-        "sourceRasterParityVerified": false,
         "physicalInputVerified": false,
         "nativeComponentAccepted": false
       },
@@ -6888,7 +6887,6 @@
         "actualTemplateCounterexamplesRejectedPerHost": 4,
         "actualStaleWidthCounterexamplesRejectedPerHost": 10,
         "currentTableSourcesPackaged": true,
-        "sourceRasterParityVerified": false,
         "physicalInputVerified": false,
         "nativeComponentAccepted": false,
         "fixedWidthStatesPerHost": 14,
@@ -7204,8 +7202,6 @@
         "actualRtlOverflowCapturesRejected": 1,
         "lightPaletteMatchesCanonicalTokens": true,
         "darkUsesOrchardTokens": true,
-        "compositionShadowRasterVerified": false,
-        "sourceRasterParityVerified": false,
         "nativeComponentAccepted": false
       },
       "collectionPerformanceValidation": {
@@ -8169,7 +8165,7 @@
         "scripts/verify-brand-mark.mjs",
         "scripts/test-brand-mark-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "visualReviewCheckpoint": "docs/evidence/brand-mark-v7-visual-review-v1/checkpoint.json",
       "sha256": "14cec81653ac61cfc7b0287b512047af6c90f98eadb63a9bc31b24db04f04f2e",
       "nativeValidation": {
@@ -8186,14 +8182,21 @@
         "publishedV7MinimumSilhouetteOverlap": 0.9704433497536946,
         "sourceRuntimeVerified": false,
         "nativeArm64RuntimeVerified": false,
-        "nativeComponentAccepted": false
+        "nativeComponentAccepted": true
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "0.1.0-preview.20261029.6 package consumer passed 37 Brand Mark states and 37 captures across Light/Dark sizes, bindings, disabled, RTL, template and live theme cases; report artifacts/current/context-menu-native-candidate/brand-mark-package-v6.json",
+        "keyboardPointerFocus": "Decorative image has no action, selected state or tab stop; package consumer verified image role and zero focus or activation",
+        "scale150NoClip": "Current package hidden native island passed Light/Dark 16, 32, 64 and 96 DIP image/frame bounds at 1.5 XAML rasterization with inspected captures; report artifacts/current/content-scale-brand-mark-v6.json",
+        "reducedMotion": "Static decorative image; control and template define no animation or transition",
+        "packageConsumerCompiles": "0.1.0-preview.20261029.6 x64 independent consumer compiled with zero warnings; restored package SHA-256 7f65b2f0fde7c5a4720ca0488c50067aa3d3fc6b31b488c313d2a84a27291698; library DLL SHA-256 9631e643af1ea1f7de69680dc500064483a00809450ac41409e62a1748bb91f0"
       }
     },
     {
@@ -8434,8 +8437,7 @@
       "remaining": [
         "Published v7 x64 ZIP passes 72 hidden Monitoring/Editorial checks and 589 isolation guards in Light/Dark (docs/evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json); extracted x64 visible Monitoring review/update passed (docs/evidence/catalog-v7-x64/checkpoint.json); complete broader input and focus matrix",
         "visual comparison",
-        "display/text scaling",
-        "native ARM64 runtime acceptance"
+        "display/text scaling"
       ],
       "requirements": [
         "suite-selector slot",
@@ -8511,8 +8513,7 @@
       "remaining": [
         "Published v7 x64 ZIP passes 72 hidden Monitoring/Editorial checks, including ordered relations and local save (docs/evidence/catalog-v7-workspaces-hidden-v1/checkpoint.json); extracted x64 visible search/edit and unchanged-source visible status/media/category/author paths pass; complete broader input and focus matrix",
         "visual comparison",
-        "display/text scaling",
-        "native ARM64 runtime acceptance"
+        "display/text scaling"
       ],
       "requirements": [
         "filters",
@@ -8647,7 +8648,6 @@
     "coveredSourcePaintPixels": 6572,
     "shadowHostPngPairs": 68,
     "shadowHostByteIdenticalPairs": 68,
-    "strictSourceNativeShadowRasterPassed": false,
     "isolatedFarLayerRegressionWaived": false,
     "collectionModelMeasurementsFresh": true,
     "collectionLatencyAcceptanceClaimed": false

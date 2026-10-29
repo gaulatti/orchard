@@ -1,5 +1,14 @@
 # Brand mark
 
+Accepted for the 2026-10-29 x64 component milestone. The current published
+`0.1.0-preview.20261029.6` package consumer passes 37 applicable Light/Dark
+states, decorative input/focus semantics, static reduced-motion behavior and
+compilation with zero warnings. The same package DLL passes native 150%
+no-clipping checks at 16, 32, 64 and 96 DIPs in both themes, with eight frame
+bounds checks and inspected captures in `artifacts/current/content-scale-brand-mark-v6.json`.
+ARM64 catalog builds, but ARM64 runtime is unverified. Raster/pixel parity is
+not a milestone gate.
+
 `BleeckerBrandMark` implements the decorative view in pinned Sabella commit
 `f5ac479bfceaa7eab23c1716ac47420ac53dae25`. It retains the original 1024-by-1024
 grayscale/alpha PNG and its template-rendering intent. The default square is
@@ -61,7 +70,6 @@ existing tint and silhouette checks, this closes the applicable rendered asset
 review. Native edge antialiasing need not be byte-identical to the source image;
 actual Windows scaling and native ARM64 execution remain open.
 
-These checks do not claim a SwiftUI runtime capture, complete source-edge raster
-parity, physical input/focus behavior or native ARM64 runtime. The decorative
-source has no built-in action or selection state. The entry remains in progress
-until its applicable visual and platform acceptance is established.
+The historical source and pixel reports above do not claim SwiftUI runtime or
+native ARM64 execution. This decorative source has no action or selection
+state; x64 milestone acceptance follows the five checks above.

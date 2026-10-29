@@ -5,6 +5,14 @@ label. The pinned reference is commit
 `a86059013cd59684ce452849278ea81e734f2066`, `src/components/eyebrow.tsx` and
 `stories/components/Eyebrow.stories.tsx`.
 
+For the 2026-10-29 x64 milestone, passive keyboard/pointer/focus behavior,
+static reduced-motion behavior and independent package-consumer compilation
+pass. The current package passes its Light/Dark language-casing and rule-layout
+checks, but rich content does not inherit the pinned source's uppercase
+transform. Applicable state rendering therefore remains failed. Native 150%
+no-clipping is also unverified. Eyebrow is not accepted yet; ARM64 runtime is
+build-only and unverified for this milestone.
+
 ```xml
 <orchard:BleeckerEyebrow Content="Private client services" />
 <orchard:BleeckerEyebrow Content="The autumn edit" Tone="Muted" Rule="True" />
