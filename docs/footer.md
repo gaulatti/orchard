@@ -1,5 +1,18 @@
 # Footer source contract
 
+For the 2026-10-29 x64 milestone, Footer passes all five checks in
+[the acceptance contract](acceptance-contract.md). The current packaged DLL
+renders 64 Light/Dark catalog states; its independent x64 NuGet consumer
+compiles and runs. Physical pointer and Enter activation preserve the original
+caller item, keyboard focus and caller input in both themes. Four native 150%
+Light/Dark narrow/wide layouts keep visible Footer parts within the component
+and viewport. Under the machine's disabled animation setting, pointer hover
+changes ink immediately and remains stable without an OS setting change.
+The 0.1.0-preview.20261029.22 package DLL and catalog DLL share SHA-256
+`3eec9012cc91e1ac15394db3381fedda6b47da0c783fe3cb78692c085fb5daf2`.
+ARM64 runtime remains unverified. Raster/pixel parity is outside this milestone;
+older diagnostics below are historical rather than acceptance gates.
+
 Footer's native implementation and catalog fixture are in progress. The reference freezes the original
 component at Bleecker commit `a86059013cd59684ce452849278ea81e734f2066`,
 `src/layout/footer.tsx`, SHA-256

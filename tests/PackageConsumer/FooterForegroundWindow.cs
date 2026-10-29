@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Media;
 using Orchard;
 using Windows.Foundation;
 using Windows.Graphics;
+using Windows.UI.ViewManagement;
 
 namespace PackageConsumer;
 
@@ -28,6 +29,7 @@ public sealed class FooterForegroundWindow : Window
     private bool keyboardSent;
     private bool pointerInvoked;
     private bool keyboardInvoked;
+    private bool reducedMotionVerified;
 
     public FooterForegroundWindow(ElementTheme theme, string output)
     {
@@ -68,10 +70,29 @@ public sealed class FooterForegroundWindow : Window
             stage = "foreground";
             await AcquireForeground();
             stage = "pointer";
+            var origin = new NativePoint();
+            Require(ClientToScreen(WinRT.Interop.WindowNative.GetWindowHandle(this), ref origin) &&
+                SetCursorPos(origin.X + 12, origin.Y + 12), "Could not place the pointer outside the Footer link.");
+            await Task.Delay(40);
+            var normalInk = link.Foreground as SolidColorBrush ?? throw new InvalidOperationException("Footer normal ink is not a solid brush.");
+            var normalColor = normalInk.Color;
+            var normalOpacity = normalInk.Opacity;
             await Click(link);
             await Wait(() => requests.Count == 1, "Physical pointer did not invoke the Footer item.");
             Require(ReferenceEquals(requests[0], home), "Pointer replaced the original caller item.");
             pointerInvoked = true;
+            if (!new UISettings().AnimationsEnabled)
+            {
+                var immediate = link.Foreground as SolidColorBrush ?? throw new InvalidOperationException("Footer hover ink is not a solid brush.");
+                var hoverColor = immediate.Color;
+                var hoverOpacity = immediate.Opacity;
+                Require(hoverColor != normalColor || hoverOpacity != normalOpacity,
+                    "Footer pointer hover did not change ink in reduced motion.");
+                await Task.Delay(110);
+                Require(immediate.Color == hoverColor && immediate.Opacity == hoverOpacity,
+                    "Footer hover ink kept animating with Windows reduced motion enabled.");
+                reducedMotionVerified = true;
+            }
 
             stage = "custom-keyboard";
             footer.LinkTemplate = (DataTemplate)XamlReader.Load("<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'><HyperlinkButton Content='{Binding Content}' Command='{Binding Command}' Style='{Binding Style}' Tag='{Binding Item}' /></DataTemplate>");
@@ -168,7 +189,7 @@ public sealed class FooterForegroundWindow : Window
             osArchitecture = RuntimeInformation.OSArchitecture.ToString(), foregroundOwnerPid,
             originalItemInvokedByPointer = pointerInvoked, originalItemInvokedByKeyboard = keyboardInvoked,
             customRendererUsed = keyboardInvoked, keyboardFocusRetained = keyboardInvoked,
-            callerInputRetained = passed, themeBrandInkVerified = passed, pointerSent, keyboardSent,
+            callerInputRetained = passed, themeBrandInkVerified = passed, reducedMotionVerified, pointerSent, keyboardSent,
             librarySha256 = Hash(typeof(BleeckerFooter).Assembly.Location), hostSha256 = Hash(typeof(FooterForegroundWindow).Assembly.Location),
             nativeComponentAccepted = false
         }, new JsonSerializerOptions { WriteIndented = true }));

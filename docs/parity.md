@@ -9,10 +9,10 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Brand Mark, Card, Context Menu, Dashboard
-Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Icon Badge,
+Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Footer, Icon Badge,
 Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Sparkline and Status Badge
-are accepted (23 of 112 entries).
+are accepted (24 of 112 entries).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
