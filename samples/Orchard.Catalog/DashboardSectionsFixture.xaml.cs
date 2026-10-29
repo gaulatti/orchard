@@ -125,6 +125,7 @@ public sealed partial class DashboardSectionsFixture : UserControl
         var before=new BleeckerButton {Content="Before section"}; var action=new BleeckerButton {Content="Refresh"};
         var child=new BleeckerButton {Content="Open review"}; var after=new BleeckerButton {Content="After section"};
         var clicks=0; action.Click+=(_,_)=>clicks++;
+        var childClicks=0; child.Click+=(_,_)=>childClicks++;
         var section=new BleeckerDashboardSection {Title="Monitoring",Action=action,Content=child};
         var stack=new StackPanel {VerticalAlignment=VerticalAlignment.Top}; stack.Children.Add(before); stack.Children.Add(section); stack.Children.Add(after);host.Children.Add(stack);
         await AwaitAsync(()=>after.IsLoaded,"Dashboard keyboard fixture did not mount."); UpdateLayout(); await input.AcquireAsync(before);
@@ -136,6 +137,8 @@ public sealed partial class DashboardSectionsFixture : UserControl
         input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),last),"Tab did not leave dashboard content.");
         input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),body),"Reverse Tab skipped dashboard content.");
         input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),target),"Reverse Tab skipped dashboard action.");
+        await input.ClickAsync(target);await AwaitAsync(()=>clicks==2,"Dashboard Section swallowed its consumer action pointer click.");
+        await input.ClickAsync(body);await AwaitAsync(()=>childClicks==1,"Dashboard Section swallowed its consumer content pointer click.");
         section.IsEnabled=false;UpdateLayout();
         Require(!target.IsEnabled&&!body.IsEnabled&&!FrameworkElementAutomationPeer.CreatePeerForElement(target).IsEnabled(),"Disabled Dashboard Section left consumer actions enabled.");
         section.IsEnabled=true;UpdateLayout();Require(target.IsEnabled&&body.IsEnabled,"Dashboard Section did not restore child actions.");

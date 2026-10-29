@@ -91,6 +91,7 @@ public sealed partial class DashboardGridsFixture:UserControl
         input.Key(0x20);await AwaitAsync(()=>clicks==1,"Dashboard child did not receive physical Space.");
         input.Key(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),next),"Tab did not leave dashboard child.");
         input.ShiftKey(0x09);await AwaitAsync(()=>ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot),target),"Reverse Tab skipped dashboard child.");
+        await input.ClickAsync(target);await AwaitAsync(()=>clicks==2,"Dashboard Grid swallowed its consumer child pointer click.");
         ((BleeckerDashboardSpan)grid.Children[0]).IsEnabled=false;UpdateLayout();Require(!target.IsEnabled,"Disabled span did not disable its child action.");
     }
     private static void Reject(Func<object> action){try{_ = action();}catch(ArgumentOutOfRangeException){return;}throw new InvalidOperationException("Dashboard Grid accepted an invalid constraint.");}

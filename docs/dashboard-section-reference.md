@@ -1,12 +1,12 @@
 # Dashboard Section
 
-For the 2026-10-29 x64 milestone, Light/Dark states, static reduced motion and
-independent `.13` package-consumer compilation pass. The published `.13` catalog
-passes all 50 captured cases and physical keyboard/focus traversal. Pointer
-activation at the section boundary and native 150% no-clipping, including the
-intentional action overflow, remain unverified and therefore fail the two
-remaining checks. Raster/pixel parity is not a milestone gap; ARM64 runtime is
-unverified. See [the inventory](parity-inventory.json) for per-check status.
+Dashboard Section is accepted for the 2026-10-29 x64 milestone. The published
+`.14` catalog passes all 50 captured Light/Dark cases and physical keyboard,
+pointer and focus checks for the header and body actions. The independent `.14`
+package consumer compiles and runs, including 12 native 150% cases in both
+themes that check the intentional painted action overflow. The control defines
+no motion and passed with animations disabled. ARM64 runtime is unverified.
+See [the inventory](parity-inventory.json) for the five recorded checks.
 
 `BleeckerDashboardSection` implements the pinned Bleecker
 [`DashboardSection`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/dashboard-section.tsx).
@@ -132,9 +132,7 @@ The published x64 catalog passes all 50 focused cases at
 `artifacts/smoke-dashboard-section-constraints-published`. Hosted/native ARM64
 validation remains deferred while automatic push Actions are paused.
 
-Complete glyph/baseline raster comparison, wrappable-action minimum-content constraints,
-the complete consumer override matrix, component theme contrast,
-display/text scaling and native ARM64 validation remain open. The inventory
-entry remains in progress. This native passive composition has no backend,
-configuration or telemetry impact. The public wiki remote is unavailable;
-documentation is maintained here.
+The historical raster and broader override investigations above do not add
+acceptance gates to this milestone. This native passive composition has no
+backend, configuration or telemetry impact. The public wiki remote is
+unavailable; documentation is maintained here.

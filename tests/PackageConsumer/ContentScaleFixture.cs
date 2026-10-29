@@ -33,7 +33,7 @@ internal static class ContentScaleFixture
     private static T? Find<T>(DependencyObject root,string name) where T:FrameworkElement {if(root is T match&&match.Name==name)return match;for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++)if(Find<T>(VisualTreeHelper.GetChild(root,i),name)is{ } found)return found;return null;}
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
-        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -448,6 +448,91 @@ internal static class ContentScaleFixture
                     }
                 }
             }
+            foreach(var viewport in new[]{400,900})
+            {
+                root.Width=viewport;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport*1.5),780));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,(int)(viewport*1.5),780));
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                {
+                    root.RequestedTheme=theme;
+                    BleeckerDashboardSection Full(double width)=>new(){Width=width,Title="Monitoring",Description="Fictional local queue summary.",Action=new Border{Width=80,Height=32,Background=new SolidColorBrush(Windows.UI.Color.FromArgb(255,166,93,87))},Content=new Border{Height=64,Background=new SolidColorBrush(Windows.UI.Color.FromArgb(255,185,199,209))}};
+                    var cases=viewport==400?new (string id,BleeckerDashboardSection control)[]{
+                        ("full",Full(320)),
+                        ("wrapped",new BleeckerDashboardSection{Width=280,Title="A longer fictional monitoring section title",Description="Consumer-owned description wraps inside this constrained section.",Content=new Border{Height=64}}),
+                        ("empty",new BleeckerDashboardSection{Width=320})
+                    }:new (string id,BleeckerDashboardSection control)[]{
+                        ("wide",Full(600)),
+                        ("overflow",new BleeckerDashboardSection{Width=160,Title="Monitoring",Description="Consumer-owned section summary.",Action=new Border{Width=80,Height=32,Background=new SolidColorBrush(Windows.UI.Color.FromArgb(255,166,93,87))},Content=new Border{Height=64}}),
+                        ("rtl",new BleeckerDashboardSection{Width=320,FlowDirection=FlowDirection.RightToLeft,Title="Monitoring",Description="Consumer-owned right-to-left summary.",Action=new Border{Width=80,Height=32},Content=new Border{Height=64}})
+                    };
+                    foreach(var(id,control) in cases)
+                    {
+                        stage=$"dashboard-section/{theme}/{viewport}/{id}/150-percent";
+                        Canvas.SetLeft(control,32);Canvas.SetTop(control,16);root.Children.Add(control);await Layout();
+                        Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&Math.Abs(root.XamlRoot.Size.Width-viewport)<.01,"Dashboard Section did not use native 150% scale and viewport.");
+                        var owner=control.TransformToVisual(root).TransformBounds(new Rect(0,0,control.ActualWidth,control.ActualHeight));
+                        Require(control.IsLoaded&&!control.IsTabStop&&control.ActualWidth==control.Width&&owner.X>=0&&owner.Y>=0&&owner.Right<=root.Width&&owner.Bottom<=root.Height&&
+                            (id=="empty"?control.ActualHeight==0:control.ActualHeight>0),$"Dashboard Section {id} escaped its native 150% host: {owner}.");
+                        foreach(var name in new[]{"PART_Title","PART_Description","PART_Action","PART_Content"})
+                        {
+                            var part=Find<FrameworkElement>(control,name)??throw new InvalidOperationException($"Dashboard Section {id} lost {name}.");
+                            if(part.Visibility==Visibility.Collapsed||part.ActualHeight==0)continue;
+                            var bounds=part.TransformToVisual(root).TransformBounds(new Rect(0,0,part.ActualWidth,part.ActualHeight));
+                            Require(bounds.X>=0&&bounds.Y>=0&&bounds.Right<=root.Width+.5&&bounds.Bottom<=root.Height+.5&&
+                                (id=="overflow"||bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5)&&
+                                (part is TextBlock text?part.ActualHeight+4>=part.DesiredSize.Height-text.Margin.Top-text.Margin.Bottom:true),
+                                $"Dashboard Section {id} {name} clipped at native 150% scale: owner={owner}, part={bounds}.");
+                        }
+                        if(id=="overflow")
+                        {
+                            var action=control.Action as Border??throw new InvalidOperationException("Dashboard Section overflow action is missing.");
+                            var bounds=action.TransformToVisual(root).TransformBounds(new Rect(0,0,action.ActualWidth,action.ActualHeight));
+                            Require(bounds.X<owner.Right&&bounds.Right>owner.Right+1&&bounds.Right<=root.Width,$"Dashboard Section action did not retain visible overflow at native 150% scale: owner={owner}, action={bounds}.");
+                            Guard();var bitmap=new RenderTargetBitmap();await bitmap.RenderAsync(root);Guard();
+                            var pixels=System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeBufferExtensions.ToArray(await bitmap.GetPixelsAsync());
+                            var x=(int)(((owner.Right+bounds.Right)/2)*1.5);
+                            var y=(int)((bounds.Y+bounds.Height/2)*1.5);
+                            var offset=(y*bitmap.PixelWidth+x)*4;
+                            Require(bitmap.PixelWidth==(int)(viewport*1.5)&&offset+3<pixels.Length&&pixels[offset]==87&&pixels[offset+1]==93&&pixels[offset+2]==166,
+                                "Dashboard Section's intentional action overflow was not painted at native 150% scale.");
+                        }
+                        dashboardSectionScale.Add(new{theme=theme.ToString(),viewport,kind=id,scale=root.XamlRoot.RasterizationScale,passed=true});
+                        root.Children.Clear();await Layout();
+                    }
+                }
+            }
+            foreach(var viewport in new[]{400,900,1280})
+            {
+                root.Width=viewport;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport*1.5),780));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,(int)(viewport*1.5),780));
+                foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+                foreach(var rtl in viewport==900?new[]{false,true}:new[]{false})
+                {
+                    stage=$"dashboard-grid/{theme}/{viewport}/{(rtl?"rtl":"default")}/150-percent";
+                    root.RequestedTheme=theme;
+                    var grid=new BleeckerDashboardGrid{Width=viewport==400?320:viewport==900?600:960,FlowDirection=rtl?FlowDirection.RightToLeft:FlowDirection.LeftToRight};
+                    foreach(var span in new[]{BleeckerDashboardSpanSize.One,BleeckerDashboardSpanSize.Two,BleeckerDashboardSpanSize.Full,BleeckerDashboardSpanSize.One})
+                        grid.Children.Add(new BleeckerDashboardSpan{Span=span,Content=new Border{Height=40,Background=new SolidColorBrush(Windows.UI.Color.FromArgb(255,185,199,209))}});
+                    Canvas.SetLeft(grid,32);Canvas.SetTop(grid,16);root.Children.Add(grid);await Layout();
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&Math.Abs(root.XamlRoot.Size.Width-viewport)<.01,"Dashboard Grid did not use native 150% scale and viewport.");
+                    var owner=grid.TransformToVisual(root).TransformBounds(new Rect(0,0,grid.ActualWidth,grid.ActualHeight));
+                    Require(grid.IsLoaded&&!grid.IsTabStop&&grid.ActualWidth==grid.Width&&grid.ActualHeight>0&&owner.X>=0&&owner.Y>=0&&owner.Right<=root.Width&&owner.Bottom<=root.Height,
+                        $"Dashboard Grid escaped its native 150% host: {owner}.");
+                    foreach(var span in grid.Children.OfType<BleeckerDashboardSpan>())
+                    {
+                        var bounds=span.TransformToVisual(root).TransformBounds(new Rect(0,0,span.ActualWidth,span.ActualHeight));
+                        var content=(FrameworkElement)span.Content;
+                        var body=content.TransformToVisual(root).TransformBounds(new Rect(0,0,content.ActualWidth,content.ActualHeight));
+                        Require(span.IsLoaded&&!span.IsTabStop&&bounds.X>=owner.X-.5&&bounds.Y>=owner.Y-.5&&bounds.Right<=owner.Right+.5&&bounds.Bottom<=owner.Bottom+.5&&
+                            body.X>=bounds.X-.5&&body.Y>=bounds.Y-.5&&body.Right<=bounds.Right+.5&&body.Bottom<=bounds.Bottom+.5&&content.ActualHeight>0,
+                            $"Dashboard Grid span/content clipped at native 150% scale: owner={owner}, span={bounds}, content={body}.");
+                    }
+                    dashboardGridScale.Add(new{theme=theme.ToString(),viewport,rtl,scale=root.XamlRoot.RasterizationScale,passed=true});
+                    root.Children.Clear();await Layout();
+                }
+            }
             root.Width=400;
             root.Height=160;
             island.SiteBridge.OverrideScale=1;
@@ -494,8 +579,8 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State, Section Header, Page Header and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Brand Mark, Eyebrow, Label, Icon Badge, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
-        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
+        catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
 }

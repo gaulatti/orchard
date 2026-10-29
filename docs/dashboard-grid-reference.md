@@ -1,12 +1,12 @@
 # Dashboard Grid and Span
 
-For the 2026-10-29 x64 milestone, Light/Dark states, static reduced motion and
-independent `.13` package-consumer compilation pass. The published `.13` catalog
-passes all 96 captured cases and physical keyboard/focus traversal. Pointer
-activation at the grid child boundary and native 150% no-clipping remain
-unverified and therefore fail the two remaining checks. Raster/pixel parity is
-not a milestone gap; ARM64 runtime is unverified. See
-[the inventory](parity-inventory.json) for per-check status.
+Dashboard Grid and Span are accepted for the 2026-10-29 x64 milestone. The
+published `.14` catalog passes all 96 captured Light/Dark cases and physical
+keyboard, pointer and focus checks through a consumer child action. The
+independent `.14` package consumer compiles and runs, including eight native
+150% cases across both themes and responsive viewports. These layouts define
+no motion and passed with animations disabled. ARM64 runtime is unverified.
+See [the inventory](parity-inventory.json) for the five recorded checks.
 
 `BleeckerDashboardGrid` and `BleeckerDashboardSpan` implement the pinned Bleecker
 [`DashboardGrid`/`DashboardSpan`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/dashboard-grid.tsx).
@@ -91,11 +91,8 @@ temporary caches. The separately published x64 catalog passes the 96 focused
 cases at `artifacts/smoke-dashboard-grid-published`. Native ARM64/hosted
 validation remains deferred while push-triggered Actions are paused.
 
-Complete intrinsic sizing for arbitrary wrapping content/implicit tracks,
-consumer overrides and content templates, text/glyph raster, component theme
-and automation behavior, display/text scaling and native ARM64 acceptance remain
-open. Narrator and OS contrast campaigns are excluded by the
-[current library scope](library-scope.md).
-The inventory remains in progress. This native layout has no backend,
-configuration or telemetry impact. The public wiki remote is unavailable;
-documentation is maintained here.
+The historical intrinsic-sizing, override and raster investigations above do
+not add acceptance gates to this milestone. Narrator and OS contrast campaigns
+are excluded by the [current library scope](library-scope.md). This native
+layout has no backend, configuration or telemetry impact. The public wiki
+remote is unavailable; documentation is maintained here.
