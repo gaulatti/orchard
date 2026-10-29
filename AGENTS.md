@@ -417,3 +417,16 @@ end-to-end contract.
   not an acceptance gate or inventory gap. Do not create new evidence folders.
   Fix the modal Context Menu click and release with an explicit list of accepted
   components. Do not expand diagnostics beyond these milestone checks.
+
+## Required Clouseau review before creating a PR
+
+- Before creating any pull request, run the current shared `clouseau` skill
+  locally with your authenticated coding harness against the complete change.
+  The accepted local recipe is `.clouseau-local.json`.
+- Fix the reported defects and required changes, run the recipe's verification,
+  and rerun Clouseau after repairs. Resolve every actionable finding; do not
+  create a PR with unresolved findings or an incomplete review.
+- Review the final committed change with a clean worktree. A change to the code
+  or base requires a matching fresh review; never repeat an unchanged review to
+  obtain a pass.
+- Submit changes through PRs; never push directly to `main`.
