@@ -9,21 +9,20 @@ export function verifyContextRetirement(s) {
  assert.equal(s.originalItemLoaded,false);assert.equal(s.opens,2);assert.equal(s.closes,2);
 }
 export function verifyContextOptions(n) {
- assert.equal(n.format,'orchard-context-menu-options-native-v1');
+ assert.equal(n.format,'orchard-context-menu-options-native-v2');
  assert.equal(n.passed,true); assert.equal(n.cases.length,38);
  assert(n.guards>=600); assert.equal(n.focus,0); assert.equal(n.activations,0);
  assert.equal(n.publicApisOnly,true); assert.equal(n.transientRootRequested,true);
  for(const key of ['activateCalled','showWindowCalled','focusCalled','hardwareInputSent','actualOutsidePointerRoutingVerified','actualFocusRoutingVerified','sourceDomRemountSideEffectsReplicated','nativeComponentAccepted']) assert.equal(n[key],false,key);
  const required={
-  'default-and-input-plane':['defaultModalTrue','boundModeRetained','originalItemsRetained','backdropMatchesMode'],
-  'live-bound-mode':['noSyntheticNativeLifecycle','originalPortalRetained','modalityBindingStayedLive','restoredBackdropVerified'],
-  'cancel-dismiss-and-root-teardown':['canceledCloseRetainsSurface','nativeActionDismisses','markerAndPresentationRetired','modalityBindingRetainedAfterReopen']
+  'default-and-native-presentation':['defaultModalTrue','boundModeRetained','originalItemsRetained','outsideInputMatchesMode','nativeItemAccessibilityVerified'],
+  'live-bound-mode':['noSyntheticNativeLifecycle','originalNativePresenterRetained','modalityBindingStayedLive','restoredOutsideInputVerified'],
+  'cancel-dismiss-and-root-teardown':['canceledCloseRetainsSurface','nativeActionDismisses','nativePresenterRetired','modalityBindingRetainedAfterReopen']
  };
  for(const scheme of ['Light','Dark']) for(const placement of ['standalone','hosted','owned']) for(const modal of [false,true]) {
   for(const [name,flags] of Object.entries(required)) {
    const rows=n.cases.filter(c=>c.scheme===scheme&&c.placement===placement&&c.modal===modal&&c.name===name);assert.equal(rows.length,1);
    const c=rows[0];assert.equal(c.passed,true);for(const flag of flags)assert.equal(c[flag],true,flag);
-   if(name==='default-and-input-plane')assert.equal(c.nativeOutsideHitStackVerified,placement==='owned');
    if(name==='cancel-dismiss-and-root-teardown'){assert.equal(c.opens,2);assert.equal(c.closes,2);assert.equal(c.invokes,1);verifyContextRetirement(c.retirement);}
   }
  }
@@ -31,16 +30,8 @@ export function verifyContextOptions(n) {
   const rows=n.cases.filter(c=>c.scheme===scheme&&c.name==='nonmodal-owner-shield');assert.equal(rows.length,1);const c=rows[0];assert.equal(c.placement,'owned');assert.equal(c.modal,false);assert.equal(c.passed,true);
   for(const key of ['nonmodalStillOwned','inactiveTreeShielded','callerEnabledRetained','ownerResumeVerified'])assert.equal(c[key],true,key);
  }
- assert.equal(n.inputSamples.length,12);
- assert.equal(n.inputSamples.filter(s=>s.expectedModal).length,6);
- for(const s of n.inputSamples) {
-  assert(['Light','Dark'].includes(s.scheme));assert(['standalone','hosted','owned'].includes(s.placement));assert.equal(typeof s.initialModal,'boolean');assert.equal(typeof s.expectedModal,'boolean');
-  const {x,y}=s.outsidePoint,b=s.menuBounds;for(const v of [x,y,b.x,b.y,b.width,b.height])assert(Number.isFinite(v));assert(b.width>=160&&b.width<=900&&b.height>0&&b.height<=760);
-  assert(!(x>=b.x&&x<=b.x+b.width&&y>=b.y&&y<=b.y+b.height),'Outside sample overlaps menu');assert.equal(s.menuContentHit,true);assert(Number.isInteger(s.internalWrapperHits)&&s.internalWrapperHits>=0);
-  if(s.expectedModal){assert.equal(s.planeHit,true);assert(s.ownOutsideHits>=1);}else{assert.equal(s.planeHit,false);assert.equal(s.ownOutsideHits,0);assert.equal(s.outsideTargetInHitStack,true);}
- }
  for(const key of ['librarySha256','hostSha256'])assert.match(n[key],/^[0-9a-f]{64}$/);
- return {passed:true,cases:38,nativeInputSurfaceSamples:12,nonmodalSamples:6,modalSamples:6,guards:n.guards,publicRootOptionVerified:true,liveModalityBindingVerified:true,nativeLifecycleAndOwnershipVerified:true,nativeOutsideHitStackVerified:true,librarySha256:n.librarySha256,hostSha256:n.hostSha256,actualOutsidePointerRoutingVerified:false,actualFocusRoutingVerified:false,sourceDomRemountSideEffectsReplicated:false,nativeComponentAccepted:false};
+ return {passed:true,cases:38,guards:n.guards,publicRootOptionVerified:true,liveModalityBindingVerified:true,nativeLifecycleAndOwnershipVerified:true,nativePresentationVerified:true,librarySha256:n.librarySha256,hostSha256:n.hostSha256,actualOutsidePointerRoutingVerified:false,actualFocusRoutingVerified:false,sourceDomRemountSideEffectsReplicated:false,nativeComponentAccepted:false};
 }
 async function main(){
  const option=n=>{const i=process.argv.indexOf(n);assert(i>=0&&process.argv[i+1]);return process.argv[i+1];},folder=option('--native');

@@ -65,6 +65,9 @@ internal static class BleeckerPopupScope
     internal static IReadOnlyList<DependencyObject>? ActiveContentRoots(XamlRoot root) => ActiveTrap(root) is { } trap ? ContentRoots(root, trap.Surface) : null;
     internal static bool IsActiveTrap(Registration scope) => ReferenceEquals(ActiveTrap(scope.Root), scope);
     internal static bool AllowsInput(XamlRoot? root, DependencyObject declaration) => root is null || ActiveTrap(root) is not { } trap || Contains(root, trap.Surface, declaration);
+    internal static bool AllowsOwnedFocus(XamlRoot root, DependencyObject owner, DependencyObject target) =>
+        roots.TryGetValue(root, out var scopes) && scopes.Items.Any(scope => scope.Enabled() &&
+            Within(scope.Declaration, owner) && Contains(root, scope.Surface, target) && AllowsInput(root, scope.Surface));
     private static bool Within(DependencyObject? node, DependencyObject ancestor)
     {
         for (; node is not null; node = node is TextElement text ? text.ElementStart.Parent : VisualTreeHelper.GetParent(node)) if (ReferenceEquals(node, ancestor)) return true;

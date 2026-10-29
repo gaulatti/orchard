@@ -1,6 +1,9 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Windows.System;
 
 namespace Orchard;
 
@@ -9,11 +12,15 @@ namespace Orchard;
 public sealed partial class BleeckerContextMenu : MenuFlyout
 {
     private MenuFlyoutPresenter? presenter;
-    private PortalSession? portal;
     private FrameworkElement? nativeTarget;
     private XamlRoot? nativeRoot;
     private object? priorNativePassThrough;
     private bool nativePassThroughActive;
+    private BleeckerModalHost? nativeOwner;
+    private FrameworkElement? nativeOwnerSurface;
+    private Popup? nativePopup;
+    private object? priorNativeVisibility;
+    private BleeckerPopupScope.Registration? nativeScope;
     public static readonly DependencyProperty IsModalProperty = DependencyProperty.Register(
         nameof(IsModal), typeof(bool), typeof(BleeckerContextMenu), new PropertyMetadata(true, (owner, _) => ((BleeckerContextMenu)owner).ModalityChanged()));
     /// <summary>Whether the open menu traps input; defaults to the source root's modal behavior.</summary>
@@ -27,41 +34,74 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
         Opening += (_, _) =>
         {
             StopNativeTargetObservation();
-            portal?.Dispose(); portal = null;
             if (Target is not { } target) throw new InvalidOperationException("Context Menu requires its native target before opening.");
             var host = BleeckerModalHost.Find(target);
             if (host?.ActiveSurface is not null)
-                portal = new PortalSession(this, presenter ?? throw new InvalidOperationException("Context Menu has no native presenter."), target, host);
-            else
             {
-                nativeTarget = target;
-                nativeRoot = target.XamlRoot ?? throw new InvalidOperationException("Context Menu requires the target's actual XamlRoot.");
-                if (!IsModal) EnableNativePassThrough();
-                target.Unloaded += NativeTargetUnloaded;
+                nativeOwner = host;
+                nativeOwnerSurface = host.ActiveSurface;
+                host.ScopeChanged += NativeOwnerScopeChanged;
             }
+            nativeTarget = target;
+            nativeRoot = target.XamlRoot ?? throw new InvalidOperationException("Context Menu requires the target's actual XamlRoot.");
+            if (!IsModal) EnableNativePassThrough();
+            if (nativeOwner is not null) nativeRoot.Content.AddHandler(UIElement.PreviewKeyDownEvent, new KeyEventHandler(NativePreviewKeyDown), true);
+            AttachNativeScope();
+            target.Unloaded += NativeTargetUnloaded;
         };
-        Opened += (_, _) => portal?.QueueUpdate();
-        Closed += (_, _) => { StopNativeTargetObservation(); var retired = portal; portal = null; retired?.Dispose(); };
+        Opened += (_, _) => { UpdateNativeOwnerVisibility(); AttachNativeScope(); };
+        Closed += (_, _) => StopNativeTargetObservation();
     }
 
     private void ModalityChanged()
     {
-        if (!IsOpen || Target is not { } target || presenter is null) return;
-        if (portal is null && nativeTarget is not null)
-        {
-            if (IsModal) RestoreNativePassThrough(); else EnableNativePassThrough();
-            return;
-        }
-        StopNativeTargetObservation();
-        portal ??= new PortalSession(this, presenter, target, BleeckerModalHost.Find(target));
-        portal.ModalityChanged();
+        if (!IsOpen || nativeTarget is null) return;
+        if (IsModal) RestoreNativePassThrough(); else EnableNativePassThrough();
+        AttachNativeScope();
     }
 
     private void StopNativeTargetObservation()
     {
+        nativeScope?.Dispose(); nativeScope = null;
         RestoreNativePassThrough();
+        if (nativeOwner is not null)
+        {
+            nativeOwner.ScopeChanged -= NativeOwnerScopeChanged;
+            nativeRoot?.Content.RemoveHandler(UIElement.PreviewKeyDownEvent, new KeyEventHandler(NativePreviewKeyDown));
+        }
+        if (nativePopup is not null)
+        {
+            if (ReferenceEquals(priorNativeVisibility, DependencyProperty.UnsetValue)) nativePopup.ClearValue(UIElement.VisibilityProperty);
+            else nativePopup.SetValue(UIElement.VisibilityProperty, priorNativeVisibility);
+        }
         if (nativeTarget is not null) nativeTarget.Unloaded -= NativeTargetUnloaded;
-        nativeTarget = null; nativeRoot = null;
+        nativeTarget = null; nativeRoot = null; nativeOwner = null; nativeOwnerSurface = null; nativePopup = null; priorNativeVisibility = null;
+    }
+
+    private void NativeOwnerScopeChanged() => UpdateNativeOwnerVisibility();
+
+    private void AttachNativeScope()
+    {
+        nativeScope?.Dispose(); nativeScope = null;
+        if (nativeOwner is null || nativeTarget is null || presenter is null) return;
+        nativeScope = BleeckerPopupScope.Attach(nativeTarget, presenter, IsModal,
+            () => nativeOwner is not null && ReferenceEquals(nativeOwner.ActiveSurface, nativeOwnerSurface) && nativePopup?.Visibility != Visibility.Collapsed);
+    }
+
+    private void UpdateNativeOwnerVisibility()
+    {
+        if (!IsOpen || nativeOwner is null || nativeRoot is null) return;
+        nativePopup ??= VisualTreeHelper.GetOpenPopupsForXamlRoot(nativeRoot).SingleOrDefault(p => ReferenceEquals(p.Child, presenter));
+        if (nativePopup is null) return;
+        priorNativeVisibility ??= nativePopup.ReadLocalValue(UIElement.VisibilityProperty);
+        nativePopup.Visibility = ReferenceEquals(nativeOwner.ActiveSurface, nativeOwnerSurface) ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    private void NativePreviewKeyDown(object sender, KeyRoutedEventArgs args)
+    {
+        if (!IsOpen || nativeOwner is null || args.Handled || args.Key != VirtualKey.Escape) return;
+        args.Handled = true;
+        Hide();
     }
 
     private void EnableNativePassThrough()
@@ -103,7 +143,6 @@ public sealed partial class BleeckerContextMenu : MenuFlyout
     protected override Control CreatePresenter()
     {
         presenter = (MenuFlyoutPresenter)base.CreatePresenter();
-        presenter.Loaded += (_, _) => portal?.QueueUpdate();
         return presenter;
     }
 }

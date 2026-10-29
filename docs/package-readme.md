@@ -1,6 +1,11 @@
 # Gaulatti.Orchard
 
 Native Windows components and Bleecker theme resources for C# / WinUI 3.
+For the 2026-10-29 milestone, acceptance is x64-only: Light/Dark states,
+keyboard/pointer/focus, 150% scaling without clipping, reduced motion, and
+package-consumer compilation. The release lists accepted components. ARM64 is
+build-only and runtime-unverified; raster/pixel parity is not a gate. Older
+component notes below describe historical checks and do not add release gates.
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
 and remounts; child controls keep their own actions and accessible peers.
@@ -113,17 +118,17 @@ remain open.
 `ContextFlyout`. Apply `BleeckerContextMenuItemStyle` or the inset/composed
 variants from `Orchard.xaml` to original native items; caller commands,
 parameters and Click handlers remain native. `Closing` cancellation can retain
-an invoked menu. Inside `BleeckerModalHost`, its styled surface automatically
-joins the nearest modal owner while the original native presenter drives size
-and placement. Caller actions, commands, bindings and content remain native.
-Owner teardown retires its native marker even after canceled closing. The menu
-peer retains original item peers; live content, theme, presenter styles, RTL and
-viewport changes reflow through native layout. Custom presenter templates must
-retain `PART_ContextPortalSlot` and `PART_ContextSurface`. Unowned x64 menus
-pass physical keyboard opening, Escape, right-click and original-item pointer
-selection. Under an active modal owner, a physical item click currently
-dismisses the menu without invoking its original action. Complete focus,
-source placement/raster/motion and ARM64 runtime acceptance remain open.
+an invoked menu. An active `BleeckerModalHost` owns the native presenter:
+an upper modal temporarily hides it, then restores the same menu and items.
+Original items may receive focus while their owner is active; Escape closes the
+menu before the parent modal handles it. Owner teardown retires the popup even
+after canceled closing. Live content, theme and presenter-style changes retain
+native layout. Local x64 catalog checks pass physical keyboard opening,
+Escape, right-click, original-item pointer selection, and owned Enter
+activation. The `0.1.0-preview.20261029.3` x64 package consumer compiles
+with zero warnings, and a physical owned-modal item click on the matching DLL
+invokes the original handler. The component still needs 150% no-clipping and
+reduced-motion checks for this milestone; ARM64 runtime is unverified.
 
 `IsModal` defaults to `true`. Bind it to `false` to retain outside input while
 the original context menu surface is open, including outside a modal host.

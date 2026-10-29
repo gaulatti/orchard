@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "scope": {
     "kind": "component-library-only",
     "componentDemonstrationsIncluded": true,
@@ -164,13 +164,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerBrandLockup.cs",
         "src/Orchard/Controls/BleeckerBrandImage.cs",
@@ -190,12 +183,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Rendered pinned browser/native comparison, including errors and consumer overrides",
-        "Measured composed hover timing and interrupted physical reversal with enabled/reduced motion",
-        "Native ARM64 runtime, independent package consumption of the new control",
-        "Display/text scaling, focus pixels, animated/custom images"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "bauhaus-background",
@@ -221,13 +215,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerBauhausBackground.cs",
         "src/Orchard/Themes/Bauhaus.xaml"
@@ -246,11 +233,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full geometric raster, additional image decoders/animated sources and motion acceptance; see docs/bauhaus-background-reference.md",
-        "Display/text scaling acceptance",
-        "Native ARM64 runtime and enabled-motion acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "activity-item",
@@ -272,13 +261,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerActivityItem.cs",
         "src/Orchard/Themes/Activity.xaml"
@@ -295,12 +277,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full browser/native text and Avatar raster, constrained widths and consumer override matrix",
-        "Precise motion timing and interrupted physical reversal",
-        "Display/text scaling acceptance",
-        "Complete x64/ARM64 visual, input and accessibility matrix beyond the passing initial runtime/consumer checks"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "attention-surface",
@@ -327,13 +310,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAttentionSurface.cs",
         "src/Orchard/Controls/BleeckerAttentionSurface.Rendering.cs",
@@ -357,12 +333,13 @@
         "scripts/verify-theme-toggle-package-accepted-input.ps1"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full native/browser gradient, border, radius, shadow and glyph raster parity",
-        "Exact motion, interrupted reversals, and remaining consumer overrides and lifecycle/constraint boundaries; normal x64 NuGet consumer close now exits zero after the pointer-observer fix (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)",
-        "Display/text scaling acceptance",
-        "Complete independent-consumer contract beyond initial x64/ARM64 checks and the full native ARM64 visual/input/accessibility matrix"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "button",
@@ -389,13 +366,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerButton.cs",
         "src/Orchard/Themes/Generic.xaml",
@@ -414,11 +384,6 @@
         "tests/Reference/DataTableGeometryCounterexamples.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete the remaining foreground keyboard/pointer wrapper matrix; the earlier 0.1.0-components-v7-local extracted x64 catalog passes physical consumer-command, loading rejection/restoration, focused Space/Enter activation, and keyboard self-loading Start/Finish in Light/Dark; the distinct published 0.1.0-preview.20261027.7 package consumer physical Button click reaches its caller handler and closes with exit code zero (docs/evidence/button-v7-package-pointer-v1/checkpoint.json)",
-        "Verify remaining variants and display/text scaling",
-        "Verify reduced motion and remaining ARM64 state acceptance"
-      ],
       "buttonTrackingValidation": {
         "audit": "artifacts/current/data-table-paint-native-v3/data-table-audit.json",
         "publicPackageAudit": "artifacts/current/data-table-paint-package-native-v1/data-table-audit.json",
@@ -466,6 +431,13 @@
         "focusTransferVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -490,13 +462,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerButtonGroup.cs"
       ],
@@ -514,11 +479,13 @@
         "scripts/test-button-group-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Foreground x64 catalog and published v7 independent NuGet consumer verify pointer/keyboard commands, Tab traversal and disabled gating in Light/Dark (docs/evidence/components-v5-button-group-foreground-v1/checkpoint.json; docs/evidence/button-group-v7-package-foreground-v1/checkpoint.json); broader input states remain open",
-        "Verify actual text/display scaling and native ARM64 runtime acceptance",
-        "Complete visual review against the pinned source, remaining motion and final catalog/release integration"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "card",
@@ -543,13 +510,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerCard.cs",
         "src/Orchard/Themes/Cards/"
@@ -567,11 +527,13 @@
         "nativeArm64RuntimeVerified": false
       },
       "status": "in-progress",
-      "remainingGaps": [
-        "Review source-derived shadow appearance, overflow clipping and surface motion under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Remaining consumer template/style lifecycle, accessibility and scaling; consumer style padding override now passes source-built catalog and framework-dependent local-package x64 light/dark consumer runtime",
-        "Remaining ARM64 state acceptance and complete rendered parity"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "chart",
@@ -592,13 +554,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerChart.cs",
         "src/Orchard/Charts/BleeckerCurrencyChartLayout.cs",
@@ -616,10 +571,13 @@
         "tests/Reference/ChartLayout.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete raster/motion, data/override/RTL and measured collection-performance coverage",
-        "Verify display/text scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "chart-theme",
@@ -642,13 +600,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerChartTheme.cs",
         "src/Orchard/Charts/BleeckerChartSeries.cs"
@@ -666,11 +617,6 @@
         "scripts/verify-chart-theme-consumers.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify remaining chart-family resource roles/overrides beyond the Line/Bar/Area/Scatter x64 catalog and package palette, explicit-series paint, grid/axis and controlled tooltip checks",
-        "Register variants and applicable interactive states",
-        "Verify runtime, accessibility and visuals"
-      ],
       "nativeSeriesConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -699,28 +645,40 @@
           "ARM64"
         ],
         "nativeArm64RuntimeVerified": false,
-      "fullChartAcceptance": false
-    },
-    "currentScatterVerification": {
-      "catalogAudit": "artifacts/current/chart-theme-scatter-source-v1/audit.json",
-      "catalogReportSha256": "f220a71a7dd2f5bfb72fa4a876c87540406f23807355c4157c96a6b0d1000bf1",
-      "catalogLibrarySha256": "07254437e626f59eb4e9516d4ec46933e962088864acd18d1457b03a56e46b1e",
-      "packageAudit": "artifacts/current/chart-theme-scatter-package-native-v1/audit.json",
-      "packageReportSha256": "76d396ef436b3d63d3aed66865dc075895d6d9a8eee67c062280163fa732931d",
-      "packageLibrarySha256": "a2a178d202f4b60a12e8c0a806560fc4ab3eed2ceef8abb27159a0be992a0753",
-      "package": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-chart-theme-scatter-v1-local.nupkg",
-      "packageSha256": "1b8ed813dda5352cb2d1def41aa3dcd5e87b93b6fb486b2392908602a68f390b",
-      "chartConsumers": ["Line", "Bar", "Area", "Scatter"],
-      "checks": 148,
-      "negativeCasesRejected": 18,
-      "themes": 2,
-      "scopes": 2,
-      "hiddenNativeX64CatalogAndPackage": true,
-      "independentPackageRuntimeVerified": true,
-      "independentConsumerArm64BuildVerified": true,
-      "nativeArm64RuntimeVerified": false,
-      "fullChartAcceptance": false
-    }
+        "fullChartAcceptance": false
+      },
+      "currentScatterVerification": {
+        "catalogAudit": "artifacts/current/chart-theme-scatter-source-v1/audit.json",
+        "catalogReportSha256": "f220a71a7dd2f5bfb72fa4a876c87540406f23807355c4157c96a6b0d1000bf1",
+        "catalogLibrarySha256": "07254437e626f59eb4e9516d4ec46933e962088864acd18d1457b03a56e46b1e",
+        "packageAudit": "artifacts/current/chart-theme-scatter-package-native-v1/audit.json",
+        "packageReportSha256": "76d396ef436b3d63d3aed66865dc075895d6d9a8eee67c062280163fa732931d",
+        "packageLibrarySha256": "a2a178d202f4b60a12e8c0a806560fc4ab3eed2ceef8abb27159a0be992a0753",
+        "package": "artifacts/current/packages/Gaulatti.Orchard.0.1.0-chart-theme-scatter-v1-local.nupkg",
+        "packageSha256": "1b8ed813dda5352cb2d1def41aa3dcd5e87b93b6fb486b2392908602a68f390b",
+        "chartConsumers": [
+          "Line",
+          "Bar",
+          "Area",
+          "Scatter"
+        ],
+        "checks": 148,
+        "negativeCasesRejected": 18,
+        "themes": 2,
+        "scopes": 2,
+        "hiddenNativeX64CatalogAndPackage": true,
+        "independentPackageRuntimeVerified": true,
+        "independentConsumerArm64BuildVerified": true,
+        "nativeArm64RuntimeVerified": false,
+        "fullChartAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "line-chart",
@@ -741,13 +699,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerLineChart.cs",
@@ -779,12 +730,6 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source/native text, paint and tooltip raster comparison, source line/tooltip motion and chart-viewport edge review; the pinned component's default axes do not enable Recharts plot clipping (docs/line-chart-reference.md)",
-        "Audit every data conversion, lifecycle, duplicate category and consumer override boundary; measure collection performance",
-        "Verify native x64/ARM64 runtime, independent package, display/text scaling",
-        "See docs/line-chart-reference.md for the frozen contract and current evidence"
-      ],
       "chartThemeConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -816,6 +761,13 @@
         "fullChartAcceptance": false,
         "checksForThisChartPerHost": 42,
         "sharedEvidenceOnly": true
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -840,13 +792,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerBarChart.cs",
         "src/Orchard/Charts/BleeckerBarGeometry.cs",
@@ -866,11 +811,6 @@
         "scripts/verify-chart-load-focus.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete bar/glyph/legend/tooltip raster and normal/interrupted motion",
-        "Full content/key/formatter/override and RTL matrix",
-        "Display/text scaling and native ARM64 acceptance"
-      ],
       "chartThemeConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -902,6 +842,13 @@
         "fullChartAcceptance": false,
         "checksForThisChartPerHost": 42,
         "sharedEvidenceOnly": true
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -924,13 +871,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerAreaChart.cs",
         "src/Orchard/Charts/BleeckerAreaGeometry.cs",
@@ -948,12 +888,6 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full area/glyph/legend/tooltip raster and effects",
-        "Normal and interrupted source animation",
-        "Complete content/key/formatter/override and RTL matrix",
-        "Display/text scaling, collection performance and native ARM64 acceptance"
-      ],
       "chartThemeConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -985,6 +919,13 @@
         "fullChartAcceptance": false,
         "checksForThisChartPerHost": 42,
         "sharedEvidenceOnly": true
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -1008,13 +949,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerPieChart.cs",
         "src/Orchard/Charts/BleeckerPieChartDatum.cs",
@@ -1032,11 +966,13 @@
         "tests/Reference/PieChartLayout.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete sector/glyph/legend/center/tooltip raster and effects",
-        "Normal/interrupted motion and complete data/key/radius/override/RTL matrix",
-        "Display/text scaling, collection performance and native ARM64 acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "donut-chart",
@@ -1058,13 +994,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerDonutChart.cs",
         "src/Orchard/Themes/DonutChart.xaml",
@@ -1079,11 +1008,13 @@
         "tests/Reference/PieChartLayout.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete sector/glyph/legend/center/tooltip raster and effects",
-        "Normal/interrupted motion and complete data/key/radius/override/RTL matrix",
-        "Display/text scaling, collection performance and native ARM64 acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "sparkline",
@@ -1105,13 +1036,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerSparkline.cs",
         "src/Orchard/Charts/BleeckerLineChart.cs",
@@ -1129,11 +1053,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full curve/text/tooltip raster, normal motion and consumer override matrix",
-        "Extreme numeric/data shapes, RTL and applicable disabled/error behavior",
-        "Text/display scaling and native ARM64 acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "scatter-chart",
@@ -1156,13 +1082,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerScatterChart.cs",
         "src/Orchard/Charts/BleeckerScatterSeries.cs",
@@ -1180,11 +1099,13 @@
         "tests/PackageConsumer/MainWindow.ScatterChart.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full shape/glyph/legend/crosshair/tooltip raster and effects",
-        "Normal/interrupted motion and complete data/key/formatter/override/RTL matrix",
-        "Display/text scaling, collection performance and native ARM64 acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "radar-chart",
@@ -1207,13 +1128,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerRadarChart.cs",
         "src/Orchard/Charts/BleeckerRadarSeries.cs",
@@ -1232,11 +1146,13 @@
         "tests/PackageConsumer/MainWindow.RadarChart.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual/effects review and normal/interrupted motion verification under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Complete data, overrides, RTL and collection-performance matrix",
-        "Verify display/text scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "radial-bar-chart",
@@ -1258,13 +1174,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerRadialBarChart.cs",
@@ -1289,10 +1198,13 @@
         "tests/Reference/RadialBarChartLayout.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete raster/motion, data/override/RTL and collection-performance matrix",
-        "Verify display/text scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "funnel-chart",
@@ -1315,13 +1227,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerFunnelChart.cs",
         "src/Orchard/Charts/BleeckerFunnelChartDatum.cs",
@@ -1341,10 +1246,13 @@
         "tests/Reference/FunnelChartLayout.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete raster/motion, data/override/RTL and measured collection-performance coverage",
-        "Verify display/text scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "sankey-chart",
@@ -1368,13 +1276,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerSankeyChart.cs",
         "src/Orchard/Charts/BleeckerSankeyChartData.cs",
@@ -1397,10 +1298,13 @@
         "scripts/verify-chart-load-focus.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source raster/motion, data/override/RTL and measured collection-performance coverage",
-        "Verify display/text scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "sunburst-chart",
@@ -1423,13 +1327,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Charts/BleeckerSunburstChart.cs",
         "src/Orchard/Charts/BleeckerSunburstNode.cs",
@@ -1450,10 +1347,13 @@
         "tests/Reference/SunburstChartLayout.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete raster/motion, tree/data/override/RTL and measured collection-performance coverage",
-        "Verify display/text scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "stat-card",
@@ -1477,13 +1377,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerStatCard.cs",
@@ -1512,11 +1405,6 @@
         "scripts/verify-rich-content-layout.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Exact glyph advances and curve/surface raster, including the recorded RTL trend residual",
-        "Complete content/template/override and intrinsic wrapping matrix; reference surface motion",
-        "Display/text scaling and native ARM64 acceptance"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -1557,6 +1445,13 @@
         "newProbePackagedInPublicCatalog": false,
         "libraryChanged": false,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -1581,13 +1476,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDashboardGrid.cs",
         "src/Orchard/Controls/BleeckerDashboardSpan.cs",
@@ -1602,11 +1490,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete arbitrary wrapping content, implicit-track sizing and consumer override/template matrix",
-        "Complete raster, display/text scaling",
-        "Native ARM64 and complete x64/ARM64 acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "dashboard-section",
@@ -1628,13 +1518,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDashboardSection.cs",
         "src/Orchard/Themes/DashboardSection.xaml"
@@ -1648,11 +1531,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review glyph baselines and complete rendered appearance against the pinned source under docs/acceptance-contract.md",
-        "Wrappable-action minimum-content and complete consumer override matrix",
-        "Scaling and complete x64/ARM64 visual acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "page-header",
@@ -1674,13 +1559,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerPageHeader.cs",
         "src/Orchard/Themes/PageHeader.xaml"
@@ -1698,11 +1576,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Exact glyph baselines/widths and CSS text balancing/pretty",
-        "Complete minimum-content and consumer override matrix",
-        "Scaling and complete x64/ARM64 visual acceptance"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -1714,6 +1587,13 @@
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -1737,13 +1617,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "BleeckerSidebar",
         "BleeckerSidebarItem",
@@ -1761,11 +1634,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review and state, motion/reversal, arbitrary content/template, override and RTL matrices under docs/acceptance-contract.md",
-        "Display/text scaling and measured collection performance",
-        "Native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "data-table-toolbar",
@@ -1786,13 +1661,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerDataTableToolbar",
@@ -1828,11 +1696,13 @@
         "scripts/verify-data-table-toolbar-interactions.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete paint/focus/motion for all 376 source interaction states and full content/override/error/RTL matrices; consumer state/geometry/input have a dedicated native replay",
-        "Complete source-derived visual review under docs/acceptance-contract.md, display/text scaling and collection performance; retain exact-raster diagnostics separately",
-        "Native ARM64 runtime remains required; matching-source package/catalog and fresh x64 runtime/ARM64 build-only consumers pass"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "data-table-filters",
@@ -1854,13 +1724,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerDataTableSelectFilter",
@@ -1893,12 +1756,6 @@
         "tests/PackageConsumer/MainWindow.DataTablePagination.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review source-derived visuals and native event/focus behavior under docs/acceptance-contract.md; four browser body/native next-control focus differences remain unresolved and explicitly recorded",
-        "Complete collection/content, state/motion/override/RTL matrices; 140 added live-update states verify keyed focus, identity, scrolling and mutation boundaries",
-        "Display/text scaling, performance and native ARM64 runtime",
-        "Complete platform acceptance remains open; clean matching-source x64 catalog/package/consumer checks pass for their recorded older binaries, current hosted catalog replay passes, ARM64 builds only"
-      ],
       "currentHostedSelectFixture": {
         "checkpoint": "docs/evidence/hosted-select-fixtures-v1/checkpoint.json",
         "x64FilterStatesPerThemePassed": 138,
@@ -1906,6 +1763,13 @@
         "arm64BuildPassed": true,
         "nativeArm64RuntimeVerified": false,
         "componentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -1928,13 +1792,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "BleeckerDataTableColumnToggle",
         "IBleeckerDataTableColumnVisibilitySource",
@@ -1953,12 +1810,13 @@
         "scripts/test-hidden-producer-threading-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review source-derived appearance/typography and native focus/release ownership under docs/acceptance-contract.md; source body/native dialog focus remains different after eligibility removal",
-        "Complete hover/pressed/disabled, theme/override, motion and mutation matrix",
-        "Text/display scaling and collection performance",
-        "Native ARM64 runtime acceptance; current x64 independent NuGet/full-catalog checkpoint passes"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "data-table-pagination",
@@ -1980,13 +1838,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "BleeckerDataTablePagination",
         "IBleeckerDataTablePaginationSource"
@@ -2005,12 +1856,6 @@
         "scripts/test-hidden-producer-threading-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify the complete enabled-state pointer/keyboard input matrix; 136 rapid-pair functional states, 136 held-key states, 132 source-state checks, 12 pointer clicks and two Escape transfers pass. Browser DOM and WinUI key-up owner differences remain recorded as diagnostics; settled focus, paging, callback count and visible rows pass the rapid replay",
-        "Review and correct observable selector/popup appearance, typography, icons, motion and 154 geometry differences across 132 rendered-state pairs; retain the strict pixel differences as diagnostics rather than a byte-identical acceptance gate",
-        "Verify native ARM64 execution and fresh package delivery of the caller-font and option-font repairs; current x64 Pagination catalog passes, while earlier package consumers pass only their recorded older binaries",
-        "Verify text/display scaling and measured collection performance"
-      ],
       "generalConsumerSmoke": {
         "evidence": "docs/evidence/data-table-pagination-pixel-snap-v1/checkpoint.json",
         "package": "0.1.0-text-media-v4-local",
@@ -2040,6 +1885,13 @@
         "currentLocalPackageArm64BuildPassed": true,
         "currentPackageQualified": false,
         "componentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -2066,13 +1918,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSkeleton.cs",
         "src/Orchard/Controls/BleeckerSkeletonCard.cs",
@@ -2094,10 +1939,6 @@
         "scripts/test-skeleton-content-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Finish source-derived visual review of compositor shadows and normal pulse timing;36 reduced-motion default geometry/palette states and caller content are verified through source and exact NuGet",
-        "Actual display/text scaling, native ARM64 execution and final visual/integration acceptance"
-      ],
       "callerContentVerification": {
         "source": {
           "report": "artifacts/current/skeleton-content-candidate-native-v3/skeleton-content.json",
@@ -2134,6 +1975,13 @@
         "normalPulseVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -2161,13 +2009,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerStepper.cs",
         "src/Orchard/Controls/BleeckerStep.cs",
@@ -2192,11 +2033,13 @@
       "status": "in-progress",
       "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
       "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
-      "remainingGaps": [
-        "Complete source-derived visual review of the 42/44 differing normal-state frames, reversal/override motion matrices and scaling; retain strict zero-tolerance raster failures as diagnostics rather than a public-component delivery gate",
-        "Verify native ARM64 runtime",
-        "Complete independent-consumer visual/override matrix and final acceptance; the exact published v7 package consumer already passes focused Stepper geometry, metadata, native Space release, original-step invocation and disabled UIA checks in Light/Dark"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "timeline",
@@ -2222,13 +2065,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerTimeline.cs",
         "src/Orchard/Controls/BleeckerTimeline.Entry.cs",
@@ -2250,12 +2086,13 @@
         "tests/PackageConsumer/MainWindow.Timeline.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete exact source glyph/shape/alpha/shadow raster and live-theme/resource-override matrices",
-        "Complete interactive-icon/focus, arbitrary-content/template and lifecycle edge matrices",
-        "Verify complete text/display scaling",
-        "Verify native ARM64 runtime and final independent consumer/platform acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "data-list",
@@ -2278,13 +2115,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDataList.cs",
         "src/Orchard/Controls/BleeckerDataList.Entry.cs",
@@ -2302,11 +2132,13 @@
         "tests/PackageConsumer/MainWindow.DataList.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source wrapped-line detail, glyph/shape rasterization and alpha paint (66/72 exact images differ; all396 scalar first-line baselines pass)",
-        "Complete arbitrary-content/template and resource-override matrices, real scaling",
-        "Verify native ARM64 runtime and final component acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "error-state",
@@ -2328,13 +2160,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerErrorState.cs",
         "src/Orchard/Themes/ErrorState.xaml"
@@ -2353,12 +2178,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete browser/native glyph, icon and composed raster comparison",
-        "Verify display/text scaling",
-        "Verify hosted native x64/ARM64 runtime and independent consumption for the new component",
-        "Verify all lifecycle, custom-template and live-theme edge cases"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -2370,6 +2189,13 @@
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -2391,13 +2217,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerLoadingOverlay.cs",
@@ -2434,12 +2253,13 @@
         "scripts/test-loading-overlay-contrast-entry-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review and motion comparison under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Verify cross-window root transfer, arbitrary custom templates and complete live resource/lifecycle matrices",
-        "Verify display/text scaling",
-        "Verify native ARM64 runtime for the new component"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "date-range-picker",
@@ -2461,13 +2281,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerDateRangePicker",
@@ -2499,12 +2312,13 @@
         "scripts/verify-date-shadows.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review source-derived glyph/shadow appearance, normal-motion timing and remaining custom size/content/data boundaries under docs/acceptance-contract.md; all 188 reference layout states have targeted native geometry coverage, with 56 Picker/Range states independently audited for 964 boxes, 620 popup days and 132 basic paints; retain exact-raster diagnostics separately",
-        "Retain the 6076 source text-entry checks across 188 frames, including actual baselines, line height, tracking and 4680 tabular day entries; horizontal glyph ink and subpixel raster placement remain unverified",
-        "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
-        "Verify scaling and native ARM64 runtime; sourcec64f5ec package passes the full independent x64 consumer with eight date key pairs, source baselines, tabular numerals, geometry and date shadow transfer/trigger/popup-layer checks, with matching ARM64 consumer builds; full x64 catalog passes 152 phases/1150 captures and retains all 174 protected glyph hashes; the independent 188-frame shadow audit checks 128 selected/36 trigger shadows, 40 popup layers and four stale releases with zero full-frame regressions, masks or tolerance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "filter-chip",
@@ -2527,13 +2341,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFilter.cs",
@@ -2569,12 +2376,13 @@
         "scripts/test-filter-chip-accessibility-session-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived text and glyph visual review under docs/acceptance-contract.md; retain exact source/native raster diagnostics separately",
-        "Enabled-motion timelines, cancellation and full lifecycle/resource customization",
-        "Complete RTL, actual Windows scaling/broader accessibility-event/stale-peer coverage",
-        "Native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "search-input",
@@ -2597,13 +2405,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSearchInput.cs",
@@ -2629,11 +2430,13 @@
         "tests/PackageConsumer/MainWindow.SearchInput.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review source-derived visuals across all 40 client frames under docs/acceptance-contract.md; strict raster diagnostics retain 83452 differing pixels and do not establish visual acceptance",
-        "Complete hover/focus/pressed and enabled-motion timelines, customization and accessibility-event coverage",
-        "Actual Windows scaling/broader IME/selection/clipboard and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "dropdown-menu",
@@ -2651,13 +2454,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDropdownMenu.cs",
@@ -2690,13 +2486,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete rich-row compositions and indeterminate states; constrained label content",
-        "Review source-derived overlay shadows and edge placement, entry/exit and item transition motion under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "All physical pointer/keyboard/focus states and closed-menu selection persistence",
-        "Scaling, constrained content and remaining ARM64 state acceptance",
-        "See docs/menus.md for detailed acceptance limitations"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -2708,6 +2497,13 @@
         "scope": "Menu Label subcomponent only",
         "originalGeneratedDefaultsRetained": true,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -2731,13 +2527,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerMetric",
@@ -2766,12 +2555,6 @@
       "status": "in-progress",
       "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
       "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
-      "remainingGaps": [
-        "Complete source-derived visual review and verify inline baseline/wrapping under docs/acceptance-contract.md; retain exact native/browser raster diagnostics separately",
-        "Full rich-content, customization and lifecycle matrix",
-        "Actual scaling",
-        "Current native ARM64 runtime; exact published v7 independent x64 consumer formatting, binding, metadata and retained-child focus checks pass in Light/Dark"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -2812,6 +2595,13 @@
         "newProbePackagedInPublicCatalog": false,
         "libraryChanged": false,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -2835,13 +2625,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerNotificationBadge.xaml",
         "src/Orchard/Controls/BleeckerNotificationBadge.xaml.cs",
@@ -2856,11 +2639,13 @@
         "PackageConsumer.MainWindow.OnLoaded"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Reference motion, exact shadow and edge placement",
-        "Full pointer/keyboard/disabled, focus restoration, long content and constrained viewport matrix",
-        "Live themes, text/display scaling and remaining ARM64 state acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "accordion",
@@ -2882,13 +2667,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerAccordion",
@@ -2924,11 +2702,13 @@
         "scripts/test-accordion-scalars-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review of the complete-client raster differences; all 60 source/native layout and paint frames pass with zero geometry error; retain the strict image diagnostic separately",
-        "Resolve motion raster and the complete customization/error/lifecycle matrix; expansion, hover, theme, successive reversals and eight collection/content operations pass numeric checks",
-        "Verify native ARM64 runtime, scaling, performance; full x64 catalog and independent package/build delivery pass at 48d8fd3"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "alert",
@@ -2954,13 +2734,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAlert.cs",
         "src/Orchard/Controls/BleeckerAlert.Motion.cs",
@@ -2975,11 +2748,13 @@
         "PackageConsumer.VerifyAlertAsync"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived rendered reference and shadow review plus all consumer overrides; retain exact-raster diagnostics separately",
-        "Measured premium close-hover easing and complete enabled/reduced motion evidence",
-        "Disabled states, native ARM64, display/text scaling"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "alert-dialog",
@@ -3002,13 +2777,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAlertDialog.cs",
@@ -3043,11 +2811,13 @@
         "scripts/test-alert-dialog-actions-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Source-backed hidden geometry, text, metadata and controlled action checks pass; modal branch adapters and actual keyboard/pointer/focus acceptance remain open",
-        "Complete blur/shadow/raster, customization, scrolling and real-time motion acceptance",
-        "Visible startup, scaling/performance, native ARM64 and full platform acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "avatar",
@@ -3073,13 +2843,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAvatar.cs",
         "src/Orchard/Controls/BleeckerAvatarGroup.cs",
@@ -3100,13 +2863,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full visual/input/accessibility/scaling acceptance remains open; scoped native x64/ARM64 catalog and package checks pass at 2f265e3",
-        "Complete source-derived visual review across all five sizes and both themes under docs/acceptance-contract.md; retain exact native/browser raster diagnostics separately",
-        "Display/text scaling and constrained-width acceptance",
-        "Complete remaining image/customization lifecycle acceptance; current x64 caller sizing regression covers280 states/32 contracts including bindings, equal values, explicit/BasedOn/implicit styles and retained group children; ten default captures unchanged",
-        "See docs/avatar-reference.md for the pinned source and API contract"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -3118,6 +2874,13 @@
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -3141,13 +2904,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "BleeckerBreadcrumb",
         "BleeckerBreadcrumbItem"
@@ -3161,11 +2917,13 @@
         "CatalogCoverageTests"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source/native typography, vectors, focus and enabled-motion raster acceptance",
-        "Verify text/display scaling",
-        "See docs/breadcrumb-reference.md for the pinned source and Windows contract"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "context-menu",
@@ -3184,18 +2942,10 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerContextMenu.cs",
         "src/Orchard/Themes/ContextMenus.g.xaml",
-        "scripts/context-menu-styles.mjs",
-        "src/Orchard/Controls/BleeckerContextMenu.Portal.cs"
+        "scripts/context-menu-styles.mjs"
       ],
       "catalogFixtures": [
         "samples/Orchard.Catalog/ContextMenusFixture.xaml",
@@ -3238,11 +2988,6 @@
         "scripts/verify-context-menu-desktop.ps1"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Unowned x64 keyboard, pointer, action and first outside-click paths pass from the qualified local package DLL (docs/evidence/context-menu-pass-through-package-v1/checkpoint.json); active-modal-owner physical item clicks still dismiss without invoking the caller action in both modes (docs/evidence/context-menu-owned-physical-v1/checkpoint.json). A handled-events-too listener sees no owned item press. Native window-hit samples find a PopupWindowSiteBridge over both the failing owned and passing unowned item centers; collapsing the native owned marker does not fix the action, and the intercepting layer remains unproven (docs/evidence/context-menu-window-hit-v1/checkpoint.json). Complete focus and live-modality fidelity remains open",
-        "Nested native menu extensions, full source placement/raster/shadow/motion and physical text/display scaling",
-        "ARM64 runtime and final component acceptance"
-      ],
       "nativeEvidence": {
         "source": "artifacts/current/context-menu-options-root-native-v2/context-menu-root-audit.json",
         "publicPackage": "artifacts/current/context-menu-options-package-root-v1/context-menu-root-audit.json",
@@ -3276,6 +3021,20 @@
         "standaloneCanceledTeardownRegressionVerified": true,
         "actualOutsidePointerRoutingVerified": false,
         "actualFocusRoutingVerified": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "x64LightDarkStates": "38 native option cases and 12 owned-menu cases in Light/Dark on the same library source",
+        "x64KeyboardPointerFocus": "Candidate DLL 35f9c936ada96f24bf050294e550f3815004ac261cf862fa69530fa77ba57e6a; owned physical item click invoked original action; owned Enter focus/action verified",
+        "x64Scale150NoClip": "No current 150% no-clipping check",
+        "reducedMotion": "No current reduced-motion check",
+        "candidatePackageConsumer": "0.1.0-preview.20261029.3; x64 build passed with zero warnings; candidate/restored package SHA-256 4a2586b23494add27d4b4fe99b12e9e1211aa3a005c34068f531e0ac325e70c9"
       }
     },
     {
@@ -3299,13 +3058,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerCalendar",
@@ -3336,12 +3088,13 @@
         "scripts/verify-date-shadows.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review source-derived glyph/shadow appearance, normal-motion timing and remaining custom size/content/data boundaries under docs/acceptance-contract.md; all 188 reference layout states have targeted native geometry coverage, with 56 Picker/Range states independently audited for 964 boxes, 620 popup days and 132 basic paints; retain exact-raster diagnostics separately",
-        "Retain the 6076 source text-entry checks across 188 frames, including actual baselines, line height, tracking and 4680 tabular day entries; horizontal glyph ink and subpixel raster placement remain unverified",
-        "Complete callback-error, custom template/content, live theme/bounds/data and remaining keyboard/lifecycle/automation boundaries beyond targeted native evidence",
-        "Verify scaling and native ARM64 runtime; sourcec64f5ec package passes the full independent x64 consumer with eight date key pairs, source baselines, tabular numerals, geometry and date shadow transfer/trigger/popup-layer checks, with matching ARM64 consumer builds; full x64 catalog passes 152 phases/1150 captures and retains all 174 protected glyph hashes; the independent 188-frame shadow audit checks 128 selected/36 trigger shadows, 40 popup layers and four stale releases with zero full-frame regressions, masks or tolerance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "dialog-close-button",
@@ -3363,13 +3116,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDialogCloseButton.cs",
         "src/Orchard/Motion/BleeckerDialogCloseAnimation.cs",
@@ -3388,11 +3134,13 @@
         "tests/PackageConsumer/MainWindow.DialogClose.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review, native normal-motion and platform acceptance under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Complete broader consumer overrides, actual scaling and final integration",
-        "Verify native ARM64 runtime and release integration; x64 reference/input/lifecycle checks pass; see docs/dialog-close-button.md"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "drawer",
@@ -3413,13 +3161,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerEdgeDialog.cs",
@@ -3450,12 +3191,6 @@
         "scripts/test-edge-motion-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify physical pointer/touch, key routing and focus/restoration with renewed desktop availability",
-        "Verify complete source raster/blur/shadow and actual native animation samples, including reversals and reduced motion",
-        "Complete consumer customization, text/DPI scaling, interrupted native motion and performance acceptance",
-        "Verify native ARM64 runtime and final release/CI acceptance without re-enabling excluded OS campaigns"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/EdgeDialog.json",
         "motion": "tests/Reference/EdgeDialogMotion.json",
@@ -3486,6 +3221,13 @@
         "reducedNativePropertyCases": 2,
         "normalNativeMotionVerified": false,
         "motionContract": "docs/drawer-sheet-motion.md"
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -3508,13 +3250,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerEmpty.cs",
         "src/Orchard/Themes/EmptyPalette.g.xaml",
@@ -3533,11 +3268,13 @@
         "tests/PackageConsumer/MainWindow.Empty.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Resolve complete unmasked raster/typography/shadow parity; 120 source/native states and 12 lifecycle phases pass with zero asserted geometry error",
-        "Complete Unicode/remaining overrides, isolated scaling/external UIA acceptance",
-        "Verify current independent package delivery and complete full/native ARM64 integration"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "eyebrow",
@@ -3563,13 +3300,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerEyebrow.cs",
         "src/Orchard/Themes/Eyebrow.xaml",
@@ -3587,11 +3317,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Reconcile Unicode and rich-content casing; finish rendered reference comparison in docs/eyebrows.md",
-        "Verify template, broader RTL text/visual edges beyond the measured four rule-gap cases, accessibility, isolated scaling and remaining ARM64 state acceptance",
-        "Verify runtime, accessibility and visuals"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -3603,6 +3328,13 @@
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -3627,13 +3359,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerHoverCard.cs",
         "src/Orchard/Controls/BleeckerHoverCardModel.cs",
@@ -3651,10 +3376,13 @@
         "scripts/test-hover-card-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Source-built pointer, Space and Enter trigger actions pass; extracted v10 x64 catalog Bottom/Top gap dismissal and direct surface clicks, caller-note retention, Light/Dark appearance and disabled-wrapper behavior pass (docs/evidence/hover-card-foreground-v1/checkpoint.json; docs/evidence/hover-card-v10-foreground-v1/checkpoint.json). Move-only pointer input, full focus traversal, ancestor stacking and nested popup/modal integration remain open",
-        "Verify complete raster/shadows, live normal motion, scaling, performance, independent NuGet consumer Hover Card foreground behavior and native ARM64 acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "input",
@@ -3677,13 +3405,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerInput.cs",
@@ -3710,12 +3431,14 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Finish appearance, shadows, motion and input-type contracts documented in docs/inputs.md",
-        "Extracted v7 x64 disabled Input pointer lifecycle passed with animations off; verify remaining keyboard/pointer, enabled-motion reversal and display/text scaling states",
-        "Verify ARM64 runtime and full visual parity"
-      ],
-      "pointerForegroundCheckpoint": "docs/evidence/input-pointer-foreground-source-v1/checkpoint.json"
+      "pointerForegroundCheckpoint": "docs/evidence/input-pointer-foreground-source-v1/checkpoint.json",
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "kbd",
@@ -3737,13 +3460,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerKbd.cs",
         "src/Orchard/Themes/Keyboard.xaml",
@@ -3761,11 +3477,6 @@
         "scripts/verify-kbd-content.ps1"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete rendered typography/inline and fallback-glyph review across the pinned Kbd stories",
-        "System text scaling and native ARM64 execution of the caller-name repair",
-        "Finish uncovered catalog/collection lifecycle acceptance, reusing valid unchanged evidence"
-      ],
       "nativePreview": {
         "sourceAudit": "artifacts/current/kbd-scale-source-native-v2/audit.json",
         "packageAudit": "artifacts/current/kbd-scale-package-native-v1/audit.json",
@@ -3795,6 +3506,13 @@
         "isolatedScaleFramesPerHost": 8,
         "nativeARM64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -3813,13 +3531,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerLabel.cs",
@@ -3842,11 +3553,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify exact rendered text and rich-content contract; disabled cursor adaptation",
-        "Finish the broader nested-control input matrix; the published v7 independent consumer passes rich-caption/child pointer routes, child Tab/Space/Enter and disabled-target behavior in System, Light and Dark (docs/evidence/label-v7-nested-consumer-v1/checkpoint.json; docs/evidence/label-v7-nested-keyboard-consumer-v1/checkpoint.json)",
-        "Verify scaling, remaining ARM64 state acceptance and full reference parity"
-      ],
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -3863,7 +3569,10 @@
         "checkpoint": "docs/evidence/label-physical-v7/checkpoint.json",
         "packageVersion": "0.1.0-components-v7-local",
         "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
-        "themesPassed": ["Light", "Dark"],
+        "themesPassed": [
+          "Light",
+          "Dark"
+        ],
         "physicalInputVerified": true,
         "fullComponentAcceptance": false
       },
@@ -3878,13 +3587,24 @@
       "nestedConsumerPreview": {
         "checkpoint": "docs/evidence/label-v7-nested-consumer-v1/checkpoint.json",
         "packageVersion": "0.1.0-preview.20261027.7",
-        "themesPassed": ["System", "Light", "Dark"],
+        "themesPassed": [
+          "System",
+          "Light",
+          "Dark"
+        ],
         "physicalNestedPointerInputPassed": true,
         "explicitLightDarkPhysicalInputPassed": true,
         "nestedKeyboardCheckpoint": "docs/evidence/label-v7-nested-keyboard-consumer-v1/checkpoint.json",
         "physicalNestedKeyboardInputPassed": true,
         "nativeArm64RuntimeVerified": false,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -3916,13 +3636,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerMenubarEntry.cs",
         "src/Orchard/Controls/BleeckerMenubar.cs",
@@ -3949,11 +3662,6 @@
         "tests/Reference/MenubarNativeCounterexamples/DuplicatePeerText.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify normal real-time and nested surface/row motion, interruption and reduced-motion behavior; controlled root-surface and row color timelines pass",
-        "Focused x64 pointer root switching, disabled gating, Down/Space/Enter/Escape, RTL Left/Right and nested original action pass; verify broader routed input/focus and external UIA client traversal/event delivery (docs/evidence/menubar-viewport-v1/checkpoint.json)",
-        "Focused source-built x64 viewport placement passes Light/Dark native checks and dark/light RTL nested/deeper foreground; verify other constrained sizes, font/display scaling, caller overrides, full visual review, independent NuGet consumer and native ARM64 runtime (docs/evidence/menubar-viewport-v1/checkpoint.json)"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/Menubar.json",
         "frames": "tests/Reference/Menubar",
@@ -4155,6 +3863,13 @@
         "controlledPeerDiscoveryVerified": true,
         "radioContainerQueryVerified": true,
         "externalClientTraversalVerified": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -4180,13 +3895,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerNavigationMenuEntry.cs",
         "src/Orchard/Controls/BleeckerNavigationLinkContext.cs",
@@ -4207,11 +3915,6 @@
         "scripts/test-navigation-menu-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Native ARM64 execution remains unverified; x64/ARM64 solution and clean NuGet consumer builds passed",
-        "Native counterparts for individual hover/focus/pressed fixtures remain incomplete",
-        "Controlled popup-surface motion and focused pointer/keyboard paths pass; complete control/chevron motion, input/focus, metadata/customization/scaling/raster acceptance remain open"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/NavigationMenu.json",
         "frames": "tests/Reference/NavigationMenu",
@@ -4329,6 +4032,13 @@
         "completePhysicalInputMatrixVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -4351,13 +4061,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerOtpInput.cs",
         "src/Orchard/Controls/BleeckerOtpModel.cs",
@@ -4373,12 +4076,6 @@
         "scripts/verify-otp-input.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Published v7 x64 catalog passes focused physical pointer/digit, Backspace, Left Arrow, caller rejection, secure masking and native Ctrl+C/Ctrl+V filtered whole-value paste (docs/evidence/otp-input-v7-physical-v1/checkpoint.json); exact-v7-package independent x64 consumer passes 60 hidden states and 32 controlled/lifecycle cases (docs/evidence/otp-input-v7-fresh-consumer-v1/checkpoint.json); complete physical matrix and independent consumer physical input remain open",
-        "Actual Windows text scaling, complete native visual/customization and normal-motion acceptance",
-        "Native ARM64 runtime verification",
-        "Final component acceptance and delivery"
-      ],
       "sourceReference": "tests/Reference/OtpInput.json",
       "nativeEvidence": {
         "source": "artifacts/current/otp-input-native-v4/otp-input-audit.json",
@@ -4409,6 +4106,13 @@
           "physicalInputVerified": false,
           "nativeComponentAccepted": false
         }
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -4436,13 +4140,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerPopover.cs",
         "src/Orchard/Controls/BleeckerPopoverModel.cs",
@@ -4466,10 +4163,13 @@
         "scripts/test-package-popover-modal-root-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Extracted v11 x64 Light/Dark nested parent/child pointer opening, original child focus and ordered Escape restoration pass with the NuGet-matching Orchard DLL (docs/evidence/popover-nested-trigger-v1/checkpoint.json); source x64 physical confirmation pointer opening and ordered Escape dismissal pass (docs/evidence/popover-modal-foreground-source-v1/checkpoint.json); verify broader modal pointer/focus combinations",
-        "Verify complete raster, scaling, performance and native ARM64 runtime acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "progress",
@@ -4494,13 +4194,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerProgress.cs",
         "src/Orchard/Themes/Progress.xaml",
@@ -4518,11 +4211,6 @@
         "scripts/test-progress-range-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Finish rendered comparison, enabled/interrupted motion and lifecycle checks in docs/progress.md",
-        "Isolated scaling, native ARM64 execution of the range repair and remaining state acceptance",
-        "Full visual, runtime and accessibility metadata acceptance; focused bounded range and invalid-input recovery contracts are verified"
-      ],
       "nativePreview": {
         "sourceAudit": "artifacts/current/progress-range-source-native-v2/audit.json",
         "packageAudit": "artifacts/current/progress-range-package-native-v1/audit.json",
@@ -4551,6 +4239,13 @@
         "invalidInputCasesPerHost": 32,
         "nativeARM64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -4574,13 +4269,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerProgressStack.cs",
         "src/Orchard/Controls/BleeckerProgressStackItem.cs",
@@ -4599,11 +4287,13 @@
         "scripts/test-progress-stack-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Finish complete source/native parity acceptance in docs/progress-stack.md",
-        "Verify complete raster, arbitrary Unicode and item/bar override behavior",
-        "Verify native tooltip interaction, external UIA/scaling, measured collections and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "radio-group",
@@ -4627,13 +4317,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerRadioGroup",
@@ -4666,11 +4349,13 @@
         "tests/PackageConsumer/MainWindow.RadioGroups.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source customization/error/lifecycle and motion/reversal matrices; see docs/radio-group.md",
-        "Resolve complete-client glyph/raster differences; current 56-frame geometry and paint audit passes",
-        "Verify native ARM64 runtime, scaling, performance; full x64 catalog, independent package/build delivery, 52 numeric motion timelines and 28 continuity cases pass at e73e626"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "checkbox",
@@ -4692,13 +4377,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerCheckbox.cs",
         "src/Orchard/Themes/Checkbox.xaml",
@@ -4719,12 +4397,6 @@
         "scripts/test-checkbox-content-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full native ARM64 runtime and rendered reference comparison remain open; current source/package/archive rich-content contracts pass 72/70/72 hidden x64 checks",
-        "Full physical pointer/keyboard/focus and disabled cursor matrix",
-        "Rich-content edges, non-Latin fallback glyphs, lifecycle and isolated scaling",
-        "Component theme-response and interrupted-motion appearance/timing verification under docs/acceptance-contract.md; no OS accessibility or contrast changes; retain exact-raster diagnostics separately"
-      ],
       "currentV7X64": {
         "packageVersion": "0.1.0-components-v7-local",
         "librarySha256": "ff3e83795ac7184297ace7bb2ccf69b16593384fe2eb569ed8f5b132adc81da9",
@@ -4736,6 +4408,13 @@
         "consumerChecks": 70,
         "nativeARM64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -4760,13 +4439,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerScrollArea.cs",
         "src/Orchard/Controls/BleeckerScrollAreaModel.cs",
@@ -4784,11 +4456,13 @@
         "tests/Fixtures/ScrollAreaNativeEllipse.png"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Physical native pointer/keyboard/focus and nested scrolling integration",
-        "Complete source raster including rounded-edge antialiasing, customization, scaling, performance and visible startup",
-        "Native ARM64 runtime and full component acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "separator",
@@ -4814,13 +4488,6 @@
         "rtl",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSeparator.cs",
         "src/Orchard/Themes/Generic.xaml"
@@ -4841,13 +4508,10 @@
         "scripts/test-content-scale-audit.mjs",
         "tests/Reference/SeparatorScale/reference.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "currentV7CatalogSmokeCheckpoint": "docs/evidence/separator-v7-catalog-foreground-v1/checkpoint.json",
       "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
       "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
-      "remainingGaps": [
-        "Current native ARM64 state acceptance for the fractional-edge default"
-      ],
       "nativePreview": {
         "sourceAudit": "artifacts/current/separator-scale-baseline-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/separator-scale-baseline-package-native-v1/audit.json",
@@ -4880,11 +4544,29 @@
         "checkpoint": "docs/evidence/separator-preview-v2/checkpoint.json",
         "librarySha256": "dae14ecffa0f04e62bfd57a973d9e0a5c6ab0b7c7d6bcda053411554da39b080",
         "x64CatalogAndIndependentConsumerPassed": true,
-        "isolatedRasterizationScalesVerified": [1, 1.25, 1.5, 2],
+        "isolatedRasterizationScalesVerified": [
+          1,
+          1.25,
+          1.5,
+          2
+        ],
         "componentSpecificScalingAccepted": true,
         "physicalMonitorDpiChangeVerified": false,
         "nativeARM64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "x64LightDarkStatesAndInput": "docs/evidence/separator-preview-v2/checkpoint.json",
+        "x64Scale150NoClip": "docs/evidence/separator-preview-v2/checkpoint.json",
+        "reducedMotion": "Static component with no animation or input action; no tab stop verified in both themes",
+        "candidatePackageConsumer": "0.1.0-preview.20261029.3; x64 build passed with zero warnings; candidate/restored package SHA-256 4a2586b23494add27d4b4fe99b12e9e1211aa3a005c34068f531e0ac325e70c9"
       }
     },
     {
@@ -4909,13 +4591,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerEdgeDialog.cs",
@@ -4946,12 +4621,6 @@
         "scripts/test-edge-motion-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify physical pointer/touch, key routing and focus/restoration with renewed desktop availability",
-        "Verify complete source raster/blur/shadow and actual native animation samples, including reversals and reduced motion",
-        "Complete consumer customization, text/DPI scaling, interrupted native motion and performance acceptance",
-        "Verify native ARM64 runtime and final release/CI acceptance without re-enabling excluded OS campaigns"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/EdgeDialog.json",
         "motion": "tests/Reference/EdgeDialogMotion.json",
@@ -4982,6 +4651,13 @@
         "reducedNativePropertyCases": 8,
         "normalNativeMotionVerified": false,
         "motionContract": "docs/drawer-sheet-motion.md"
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -5006,13 +4682,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSlider.cs",
         "src/Orchard/Controls/BleeckerSliderModel.cs",
@@ -5033,11 +4702,13 @@
         "scripts/test-hidden-slider-contracts-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete remaining visible lifecycle/automation and independent-consumer foreground input; exact v7 extracted x64 catalog passes native pointer/keyboard and accepted/rejected drag in both themes",
-        "Complete visual review, native normal/reduced motion, actual scaling and ARM64 runtime; 182 catalog frames have zero geometry error but 44 exact raster pairs differ",
-        "Finish shared text-consumer integration and release acceptance; exact v7 independent x64 consumer passes 182 hidden layouts, 14 fill histories and 36 ownership checks"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "sonner",
@@ -5071,13 +4742,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSonner.cs",
         "src/Orchard/Controls/BleeckerSonner.Entries.cs",
@@ -5099,12 +4763,6 @@
         "scripts/compare-sonner-hosts.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Physical input/focus, complete glyph/icon/shadow raster and normal motion/reversal acceptance",
-        "Broader action scaling/customization and remaining extreme numeric timer values beyond the source-built and independent-package x64 checks for 0.5ms, 2^32+1000ms and NaN",
-        "Native ARM64 runtime remains unverified; solution and isolated package consumer builds pass on both architectures",
-        "Full component/library integration and release acceptance; both fictional demos remain required"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/Sonner.json",
         "sourceStates": 70,
@@ -5124,7 +4782,7 @@
         "standaloneHistoriesPerHost": 2,
         "actualCatalogThemes": 2,
         "geometryValuesPerHost": 1984,
-        "maximumGeometryError": 0.00006103515625,
+        "maximumGeometryError": 6.103515625e-05,
         "paletteValuesPerHost": 430,
         "byteIdenticalSourcePackagePngPairs": 66,
         "sourceNegativeCasesRejected": 53,
@@ -5156,6 +4814,13 @@
         "retainedToastExitSemanticsPreserved": true,
         "physicalInputVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -5179,13 +4844,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSwitch.cs",
@@ -5212,11 +4870,13 @@
         "tests/Reference/SwitchFonts.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify current native ARM64 runtime and remaining physical/consumer states; old hosted WWAHost occlusion reports remain historical diagnostics. Current source and fresh consumers build for x64/ARM64; current hidden x64 lifecycle/font checks pass",
-        "Complete native/browser typography, pill, shadow and animation raster comparison",
-        "Verify remaining drag/cursor/focus, animated appearance, physical monitor-DPI transitions and system text scaling; isolated 100/125/150/200% native rasterization passes in both themes and package consumer"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "textarea",
@@ -5239,13 +4899,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerTextarea"
@@ -5294,12 +4947,13 @@
         "tests/PackageConsumer/MainWindow.Textarea.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete remaining customization/validation boundaries; positive native length limits, selection, normalization and undo now match the measured source",
-        "Verify provider errors and remaining customization/lifecycle paths; 20 live recipe/theme/validity phases, six independently packaged context phases, 56 length cases, 36 deferred-provider cases, four real menu paste invocations, 36 context command states, 28 context ownership/reset phases and pointer ownership matrices pass",
-        "Verify remaining independent-consumer customization; regenerated source3a0e8e1 versioned package and both catalog archives pass byte checks, the x64 package consumer passes full Light/Dark runtime and six native context phases, and its ARM64 consumer builds; the regenerated full x64 catalog passes 150 phases, 1148 captures and 20 live Textarea phases; prior-baseline retention was not reverified after the user-requested artifact reset",
-        "Complete source-derived visual review, motion/scaling and native ARM64 acceptance under docs/acceptance-contract.md; external UIA validity remains unavailable in the legacy client; retain exact-raster diagnostics separately"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "toggle",
@@ -5324,13 +4978,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Themes/Orchard.xaml",
         "scripts/generate-tokens.mjs"
@@ -5345,11 +4992,6 @@
         "scripts/test-content-scale-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify physical monitor-DPI and increased Windows text scale beyond isolated native rasterization",
-        "Verify reduced motion and complete visual states",
-        "Verify remaining ARM64 state acceptance"
-      ],
       "nativeRasterizationVerification": {
         "sourceAudit": "artifacts/current/toggle-isolated-scale-source-audit-v1.json",
         "packageAudit": "artifacts/current/toggle-isolated-scale-package-audit-v1.json",
@@ -5387,6 +5029,13 @@
         "nativeArm64RuntimeVerified": false,
         "physicalInputVerifiedByTheseTests": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -5415,13 +5064,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerToggleGroup.cs",
         "src/Orchard/Controls/BleeckerToggleGroupItem.cs",
@@ -5439,12 +5081,6 @@
         "scripts/test-toggle-group-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify rendered Bleecker parity across every variant, size, theme and interaction state, including typography, spacing, dimensions, colors, borders, radii, icons and motion",
-        "Verify broader keyboard/RTL and error-state fixtures",
-        "Verify display/text scaling and reduced motion",
-        "Verify remaining ARM64 state acceptance on ARM64 hardware; current host is Intel x64"
-      ],
       "currentDelivery": {
         "checkpoint": "docs/evidence/toggle-notification-v1/checkpoint.json",
         "checkpointSha256": "c4114f76979ee01196c306879aeb3c399c3ed33961d0a80ffa5d615aaf47dd64",
@@ -5460,6 +5096,13 @@
         "physicalInputVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -5485,13 +5128,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerTooltip.cs",
         "src/Orchard/Controls/BleeckerTooltip.Motion.cs",
@@ -5516,12 +5152,13 @@
         "scripts/verify-tooltip-desktop.ps1"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify collision corners, very small viewports and source-derived shadow appearance under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Verify rendered entry/exit motion curves and hover/skip timing",
-        "Extracted v7 and archive-identical v8 x64 Top hover/leave, Tab/Shift+Tab and Escape pass in Light/Dark; verify other placements, full physical pointer transit matrix, physical modal focus routing, explicit nested theme overrides and richer consumer templates",
-        "Verify rendered reference parity, display/text scaling and remaining ARM64 state acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "feed-item",
@@ -5543,13 +5180,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFeedItem.cs",
         "src/Orchard/Controls/BleeckerFeedItemModel.cs",
@@ -5570,12 +5200,13 @@
         "scripts/test-hidden-feed-items-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete hover/motion and scaling review; source-link pointer/keyboard requests and the ISO timestamp tooltip were observed in the x64 catalog",
-        "Complete source-derived visual review, actual scaling, native ARM64 and broader caller overrides under docs/acceptance-contract.md; retain exact native raster diagnostics separately",
-        "Full ECMAScript legacy/extended date parsing and other locale/calendar cases",
-        "Complete catalog/package runtime and final library acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "field",
@@ -5599,13 +5230,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerField.cs",
         "src/Orchard/Controls/BleeckerFieldModel.cs",
@@ -5625,11 +5249,13 @@
         "tests/PackageConsumer/MainWindow.Field.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived full-frame visual review under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Broader rich templates and consumer metadata/style overrides",
-        "Actual text/display scaling and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "header-select",
@@ -5651,13 +5277,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSelect.cs",
@@ -5700,10 +5319,13 @@
       "headerTypeaheadCheckpoint": "docs/evidence/select-header-typeahead-v1/checkpoint.json",
       "packageForegroundCheckpoint": "docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json",
       "packageHeaderInputCheckpoint": "docs/evidence/select-v7-package-header-input-v1/checkpoint.json",
-      "remainingGaps": [
-        "Source-built x64 Header Select keyboard, pointer, typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-header-typeahead-v1/checkpoint.json); published v7 independent x64 NuGet consumer pointer choice, typeahead and outside dismissal pass in both themes (docs/evidence/select-v7-package-header-input-v1/checkpoint.json); finish complete input, exact focus identity, focused-option source paint and complete open raster",
-        "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "hero-carousel",
@@ -5730,13 +5352,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerHeroCarousel.cs",
@@ -5770,11 +5385,6 @@
       "publishedArchivePointerCheckpoint": "docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json",
       "publishedArchiveKeyboardCheckpoint": "docs/evidence/hero-carousel-v7-published-archive-keyboard-v1/checkpoint.json",
       "publishedArchiveGlobalArrowsCheckpoint": "docs/evidence/hero-carousel-v7-published-archive-global-arrows-v1/checkpoint.json",
-      "remainingGaps": [
-        "Complete source-derived visual review, scaling/motion/customization and performance acceptance remain open; strict source/package 52 pixels/max 24 and source/archive 58 pixels/max 24 failures at zero tolerance remain diagnostics, not a byte-identical public-component delivery gate",
-        "Independent exact-v7-package x64 consumer physical input verifies outside-window Right/Left arrows, native editor exclusion and inactive-slide Tab/Enter in Light/Dark (docs/evidence/hero-carousel-v7-package-foreground-v1/checkpoint.json; docs/evidence/hero-carousel-v7-package-inactive-keyboard-v1/checkpoint.json); the published v7 catalog verifies inactive-slide pointer and Tab/Enter, outside-button Right/Left and native-search exclusion in system Dark and explicit Light (docs/evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json; docs/evidence/hero-carousel-v7-published-archive-keyboard-v1/checkpoint.json; docs/evidence/hero-carousel-v7-published-archive-global-arrows-v1/checkpoint.json); broader input/focus states and native ARM64 runtime remain open",
-        "Full library/release acceptance and all other pending component entries remain open; both fictional demos remain required"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/HeroCarousel.json",
         "sourceStates": 86,
@@ -5819,6 +5429,13 @@
         "tabTraversalVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -5841,13 +5458,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFieldHelpTooltip.cs",
         "src/Orchard/Controls/BleeckerFieldHelpTooltip.Motion.cs",
@@ -5861,11 +5471,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Verify exact rendered 190ms color and scale curves against the pinned reference",
-        "Verify physical input and rendered reference parity across themes and states",
-        "Verify scaling, remaining ARM64 state acceptance and inherited Tooltip gaps"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "icon-badge",
@@ -5890,13 +5502,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerIconBadge.cs",
         "src/Orchard/Themes/Generic.xaml",
@@ -5915,11 +5520,13 @@
         "tests/PackageConsumer/MainWindow.IconBadge.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Review native/browser appearance differences under docs/acceptance-contract.md; source-matched geometry, colors, scalar content and retained-child lifecycle checks pass for 136 source frames; retain exact-raster diagnostics separately",
-        "Finish customization, RTL, disabled/overflow pointer and external UIA acceptance in docs/icon-badge.md",
-        "Verify scaling, native ARM64 runtime, full catalog integration and independently packaged consumer"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "icon-button",
@@ -5944,13 +5551,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerIconButton.cs",
         "src/Orchard/Themes/Buttons/Icon*.g.xaml"
@@ -5963,11 +5563,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Exact extracted v7 and archive-identical v8 x64 foreground pointer, Space and Enter invoke the Icon Button consumer command in Light/Dark; the Edit story tooltip appears in both themes after swept pointer entry, and the disabled button remains disabled. Complete the wider physical matrix and fresh full v8 ZIP extraction",
-        "Verify scaling and reduced motion",
-        "Verify remaining ARM64 state acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "loading-spinner",
@@ -5991,13 +5593,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerLoadingSpinner.cs",
         "src/Orchard/Themes/Generic.xaml"
@@ -6015,11 +5610,13 @@
       ],
       "status": "in-progress",
       "isolatedScaleCheckpoint": "docs/evidence/loading-spinner-isolated-scale-v1/checkpoint.json",
-      "remainingGaps": [
-        "Precise animation timing and live preference switching",
-        "Physical display and consumer-row text scaling beyond isolated large-size XamlRoot rasterization",
-        "Remaining ARM64 state acceptance and complete visual acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "media-library",
@@ -6041,13 +5638,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerMediaLibrary.cs",
@@ -6071,11 +5661,6 @@
         "scripts/verify-media-library.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review; historical strict image diagnostics failed at 13349376 pixels/max242 for browser/native, 9171/max102 for source/package and 10366/max102 for source/archive; byte-identical raster is not an acceptance gate",
-        "Published v7 x64 extracted archive passes pointer Delete, Tab/Space Delete and pointer Open in Light/Dark with the exact NuGet DLL, plus 100 hidden states and 38 contracts (docs/evidence/media-library-v7-published-archive-v1/checkpoint.json); broader input and native ARM64 runtime remain unverified",
-        "Complete display/text/modal scaling, motion/customization and collection performance acceptance"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/MediaLibrary.json",
         "referenceSha256": "11cbfaa6488702b925f04e498647c59dccce1a3229366c1ed530cd34f56257c5",
@@ -6151,6 +5736,13 @@
         "generalPackageSmokePassed": false,
         "generalPackageSmokeFailureComponent": "data-table-toolbar",
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -6172,13 +5764,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerModal.cs",
@@ -6202,11 +5787,13 @@
         "scripts/verify-modal-desktop.ps1"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Extracted v7 and archive-identical v8 x64 nested pointer/Escape/focus restoration pass Light/Dark; complete the remaining physical keyboard/pointer/focus and full raster/motion/scaling/performance acceptance",
-        "Complete broader customization and advanced nested content/portal acceptance",
-        "Verify native ARM64 runtime and final package/release acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "nav-menu",
@@ -6234,13 +5821,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerNavMenu.cs",
         "src/Orchard/Controls/BleeckerNavMenu.Layout.cs",
@@ -6266,11 +5846,13 @@
         "scripts/test-hidden-nav-menus-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Current Footer-shared DLL foreground replay passes 42 source states, 888 geometry checks, 138 paint checks, eight physical input histories and 26 lifecycle checks (docs/evidence/nav-menu-current-after-footer-v1/checkpoint.json). Complete visual review remains open; strict diagnostics retain 38 differing PNGs and 88562 differing pixels without masks/tolerance/resampling",
-        "Complete native enabled-motion timelines, actual scaling, broader customization and integration",
-        "Verify native ARM64 runtime before final acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "pagination",
@@ -6291,13 +5873,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerPagination.cs",
@@ -6327,11 +5902,13 @@
         "scripts/test-pagination-motion-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review under docs/acceptance-contract.md; retain exact source raster diagnostics separately",
-        "Real-time normal-motion playback, interrupted input and broader native customization/scaling",
-        "Full integration and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "collection-filters",
@@ -6356,13 +5933,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerCollectionFilters.cs",
@@ -6393,11 +5963,13 @@
         "scripts/test-hidden-producer-threading-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual/paint review and normal-motion verification under docs/acceptance-contract.md; retain exact source raster diagnostics separately",
-        "Expanded prop/date-input, customization and scaling coverage",
-        "Full integration and native ARM64 runtime"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "command-spotlight",
@@ -6419,13 +5991,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerCommandSpotlight.cs",
@@ -6489,12 +6054,6 @@
       "status": "in-progress",
       "publishedV7ForegroundCheckpoint": "docs/evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json",
       "publishedV7LightForegroundCheckpoint": "docs/evidence/command-spotlight-v7-light-foreground-v1/checkpoint.json",
-      "remainingGaps": [
-        "Complete source-derived visual review; preserve failed strict browser/native and native-host raster comparisons with zero thresholds, but do not require byte-identical raster for public-component acceptance",
-        "Focused published v7 x64 catalog Ctrl+K input exclusion/open/close, beta callback, query reset, physical trigger and Escape/focus restoration pass in system Dark (docs/evidence/command-spotlight-v7-published-foreground-v1/checkpoint.json) and explicit Light (docs/evidence/command-spotlight-v7-light-foreground-v1/checkpoint.json); physical Tab skips disabled actions and wraps within the modal in Dark and both wrap boundaries pass in Light (docs/evidence/command-spotlight-v7-modal-tab-v1/checkpoint.json); verify broader focus/modal combinations, explicit Dark/system Light, installed/custom keyboard layouts and IME behavior",
-        "Complete caller template/overlay combinations, full display/text scaling/motion and native ARM64 runtime",
-        "Measured refreshes improved; large native unique-group refreshes and full collection performance acceptance remain open"
-      ],
       "sourcePreparation": {
         "status": "verified source reference; native component pending",
         "source": "tests/Reference/CommandSpotlight.json",
@@ -6738,6 +6297,13 @@
         "physicalInputVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -6762,13 +6328,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSelect.cs",
@@ -6809,10 +6368,13 @@
       "status": "in-progress",
       "foregroundInputCheckpoint": "docs/evidence/select-foreground-typeahead-v1/checkpoint.json",
       "packageForegroundCheckpoint": "docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json",
-      "remainingGaps": [
-        "Current independent x64 NuGet consumer Select pointer choice, closed/open prefix typeahead and outside dismissal pass in Light/Dark (docs/evidence/select-latest-package-consumer-foreground-v1/checkpoint.json); finish complete input matrix, focused-option source paint and complete open raster",
-        "Verify scaling, motion, performance, visible startup and native ARM64 runtime acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "file-input",
@@ -6836,13 +6398,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFileInput.cs",
         "src/Orchard/Controls/BleeckerFileInputSelection.cs",
@@ -6862,11 +6417,6 @@
         "tests/Fixtures/fictional-note.txt"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Broaden native system picker and physical input matrix; focused x64 catalog pointer, Tab, Space, Escape, two-file Ctrl-click, extension/all-files filters, original-file callbacks and clear pass on the exact v4 package DLL",
-        "Native ARM64 runtime and complete display/text scaling, motion and customization acceptance",
-        "Strict browser/native component image comparison fails:411684 pixels/max227; source/fresh-package strict comparison fails:7 rounded-border pixels/max14; thresholds remain zero"
-      ],
       "desktopPickerCheckpoint": {
         "evidence": "docs/evidence/file-input-desktop-v1/checkpoint.json",
         "x64CatalogRunsPassed": 2,
@@ -6923,6 +6473,13 @@
         "nativeSystemPickerShown": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -6945,13 +6502,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSectionHeader.cs",
         "src/Orchard/Themes/SectionHeader.xaml"
@@ -6965,11 +6515,13 @@
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Exact glyph baselines and CSS text balancing/pretty",
-        "Complete consumer override and constrained multilingual matrix",
-        "Scaling and complete x64/ARM64 visual acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "panel",
@@ -6991,13 +6543,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerPanel.cs",
         "src/Orchard/Controls/BleeckerPanelModel.cs",
@@ -7016,11 +6561,13 @@
         "tests/PackageConsumer/MainWindow.Panel.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Resolve 661516 differing pixels across 58 full raw screenshots",
-        "Verify native normal motion, broader consumer overrides and actual display/text scaling",
-        "Native ARM64 runtime, PanelLayout grow consumption and final integration/release acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "status-badge",
@@ -7044,13 +6591,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerStatusBadge.cs",
         "src/Orchard/Themes/StatusBadges/"
@@ -7070,11 +6610,6 @@
         "scripts/test-content-scale-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full baseline, gamut and extreme-label layout comparison",
-        "System text scaling and physical monitor-DPI changes remain open; isolated native rasterization at 100/125/150/200% passes in both themes with display-only metadata and no-tab-stop checks",
-        "Remaining ARM64 state acceptance and complete rendered parity"
-      ],
       "nativePreview": {
         "sourceAudit": "artifacts/current/separator-scale-status-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/separator-scale-status-package-native-v1/audit.json",
@@ -7089,6 +6624,13 @@
         "nativeARM64RuntimeVerified": false,
         "displayScalingVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -7127,13 +6669,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerTableModel.cs",
@@ -7215,11 +6750,6 @@
         "tests/Reference/DataTableLiveCounterexamples.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Additional consumer layout/line-breaking edge cases, text scaling, full text/border/corner/shadow raster and state motion",
-        "Cold/large-collection and mixed selection performance remain open; broaden workloads and establish acceptance criteria before final performance acceptance",
-        "Physical keyboard/pointer/focus, ARM64 runtime and final component acceptance"
-      ],
       "sourcePreparation": {
         "source": "artifacts/current/table-source-audit-v2.json",
         "originalInputs": "artifacts/current/table-input-audit-v1.json",
@@ -7424,6 +6954,13 @@
         "cellTypographyAndButtonBorderChangesVerified": true,
         "callerCellTemplateOwnershipVerified": true,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -7444,13 +6981,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "BleeckerDataTable",
@@ -7526,11 +7056,6 @@
         "scripts/compare-data-table-performance.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Focused v5 x64 foreground Count sort, Ash search, page selection retention and pointer/keyboard pagination pass; complete source-derived visual review, scaling/motion, remaining input/focus paths and native ARM64 runtime. Preserve strict raster diagnostics separately from public-component acceptance",
-        "Meet unchanged local performance budgets: the published v7 package-matching extracted x64 catalog passes all 20 semantic operations in each of three focused processes, but 16,384-row/page-100 next-page takes 1,751.42 ms median versus the 1,000 ms local target; 11 of 20 timing medians fail (docs/evidence/data-table-v7-paging-median/checkpoint.json). The full 120-profile audit and performance acceptance remain open",
-        "Complete broader component acceptance beyond the navigation-foreground repair: version0.1.0-table-navigation-v1-local passes independent x64/ARM64 consumer builds and96states/264observations in each x64package/catalog host, with66fictional-demo checks; native ARM64 runtime remains unverified"
-      ],
       "sourcePreparation": {
         "reference": "tests/Reference/DataTable.json",
         "source": "artifacts/current/data-table-frozen-audit-v1.json",
@@ -7805,6 +7330,13 @@
         "nextPageBudgetMilliseconds": 1000,
         "fullPerformanceMatrixVerified": false,
         "performancePassed": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -7832,13 +7364,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerTabs.cs",
         "src/Orchard/Controls/BleeckerTabItem.cs",
@@ -7863,11 +7388,13 @@
         "scripts/reference/tabs-motion-client.tsx"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review under docs/acceptance-contract.md; 44 native geometry/paint cases match with zero geometry error; retain exact source raster diagnostics separately",
-        "Verify normal native motion presentation; production paint clocks match 528 frozen browser samples",
-        "Complete broader consumer overrides, lifecycle, scaling, native ARM64 runtime and final integration; see docs/tabs.md"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "theme-toggle",
@@ -7888,13 +7415,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerThemeToggle.cs",
@@ -7917,12 +7437,14 @@
         "scripts/verify-theme-toggle-package-accepted-input.ps1"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Published v5 catalog input and package-consumer mode requests were observed, but its normal close exited 0xC000027B and routed tooltip hover crashed WinUI; the published v7 preview fixes both and passes accepted/rejected input, visible tooltip update, hidden ownership checks and clean close (docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json); its matching x64 catalog passes extracted-byte, resource, Monitoring and Editorial demo checks (docs/evidence/catalog-v7-x64/checkpoint.json) and physical pointer/Space/Enter mode requests in system Dark and explicit Light (docs/evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json), while broader focus/tooltip matrix remains",
-        "Static source/native geometry passes all 134 states including inherited pressed scale and translation; full visual review, normal animation playback, actual scaling and native ARM64 runtime remain",
-        "Complete broader library integration and release acceptance"
-      ],
-      "publishedV7CatalogForegroundCheckpoint": "docs/evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json"
+      "publishedV7CatalogForegroundCheckpoint": "docs/evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json",
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "app-shell",
@@ -7944,13 +7466,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAppShell.cs",
         "src/Orchard/Controls/BleeckerAppShellModel.cs",
@@ -7971,11 +7486,13 @@
         "tests/PackageConsumer/HeaderReferenceFixture.Contracts.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Visible keyboard/pointer traversal and focus retention across composition/resize changes",
-        "Complete source-derived visual review, actual scaling and broader caller positioning/customization under docs/acceptance-contract.md; retain exact native raster diagnostics separately",
-        "Native ARM64 and complete catalog/package runtime integration"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "admin-shell",
@@ -7997,13 +7514,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAdminShell.cs",
         "src/Orchard/Controls/BleeckerAdminShellModel.cs",
@@ -8021,11 +7531,13 @@
         "scripts/test-hidden-admin-shells-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete nested-overflow and remaining custom native renderer/override matrix",
-        "Complete visible keyboard/pointer/focus matrix and source raster comparison",
-        "Actual display/text scaling and native ARM64 runtime acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "auth-shell",
@@ -8052,13 +7564,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAuthShell.cs",
         "src/Orchard/Controls/BleeckerAuthShellModel.cs",
@@ -8081,12 +7586,6 @@
         "scripts/test-auth-shell-layout-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete source-derived visual review of base and container suites under docs/acceptance-contract.md; strict browser/native raster comparisons remain failed, with no thresholds relaxed",
-        "Native text-rendering variation of76pixels/max85 reproduced in earlier source/package and new source/source original-state comparisons; rendering cause unproven",
-        "Broader custom-style/template and lifetime checks; measured performance and actual display/text scaling",
-        "Physical input/focus/Tab and native ARM64 runtime; preserve all prior inventory acceptance gaps"
-      ],
       "documentation": "docs/auth-shell.md",
       "referenceContract": "tests/Reference/AuthShell.json",
       "sourcePreparation": {
@@ -8168,6 +7667,13 @@
         "nativeComponentAccepted": false,
         "reference": "tests/Reference/AuthShellLayout.json",
         "sourceRuntime": "artifacts/current/auth-shell-layout-native-source-v1"
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -8195,13 +7701,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerDetailLayout.cs",
         "src/Orchard/Controls/BleeckerDetailLayoutModel.cs",
@@ -8218,11 +7717,13 @@
         "tests/PackageConsumer/MainWindow.DetailLayout.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Broader oversized-content, styling, metadata and alignment override boundaries",
-        "Verify broader caller overrides and actual display/text scaling",
-        "Verify native ARM64 runtime and final library integration/package acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "footer",
@@ -8244,13 +7745,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFooter.cs",
@@ -8293,11 +7787,6 @@
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Broader original-content/custom-renderer/style and fractional-width matrices; a focused 640.5/768.5-DIP caller-owned slot case and pinned long/unbroken cases pass current x64 catalog and package audits",
-        "Source-built x64 Footer Light/Dark physical pointer and Enter routes pass through original Home items, custom link template, retained focus and caller input; the three catalog variants mount individually and dark custom brand uses the active text token (docs/evidence/footer-brand-token-foreground-v1/checkpoint.json). A published versioned NuGet preview has the same tested Footer DLL; its package-reference x64 consumer passes normal Light/Dark runtime and 12 hidden Footer contracts (docs/evidence/footer-brand-preview-v2/checkpoint.json). Focused package-specific Light/Dark physical pointer and Enter routes pass with the original item, caller renderer, retained focus/input and theme brand ink (docs/evidence/footer-package-physical-input-v1/checkpoint.json). The same current DLL passes the Nav Menu visible source replay (docs/evidence/nav-menu-current-after-footer-v1/checkpoint.json). Matching refreshed x64/ARM64 catalog ZIPs are published and stream-verified; the current x64 build passes Monitoring and Editorial Light/Dark desktop input (docs/evidence/catalog-preview-v2/checkpoint.json). Verify fully isolated package audit, extracted-ZIP runtime, native ARM64 runtime and broader visual/scaling review",
-        "Native motion/scaling, integration and native ARM64 runtime acceptance"
-      ],
       "currentDelivery": {
         "checkpoint": "artifacts/current/text-media-v4-footer-layout-checkpoint-v1.json",
         "checkpointSha256": "b6fbf0984eccdb4f321788dda5c87da96ca089a3853c483243a0b4bb19513801",
@@ -8352,6 +7841,13 @@
         "scope": "Caller metadata only",
         "originalGeneratedDefaultsRetained": true,
         "fullComponentAcceptance": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -8374,13 +7870,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFeedColumn.cs",
         "src/Orchard/Controls/BleeckerFeedColumnModel.cs",
@@ -8400,11 +7889,13 @@
         "scripts/test-hidden-feed-columns-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Further caller/lifecycle interaction coverage; x64 foreground pointer/keyboard, focus traversal, visible scrolling and retained caller controls were observed",
-        "Complete source-derived visual review of rounded clipping/shadows/gradient, actual scaling and native ARM64 runtime under docs/acceptance-contract.md; retain exact-raster diagnostics separately",
-        "Broader overrides/template selectors and complete catalog/package/runtime integration"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "feed-grid",
@@ -8426,13 +7917,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerFeedGrid.cs",
         "src/Orchard/Controls/BleeckerFeedGridModel.cs"
@@ -8448,11 +7932,13 @@
         "tests/PackageConsumer/MainWindow.FeedGrid.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete raw raster parity and broader grid overrides",
-        "Actual scaling and native ARM64 execution",
-        "Current catalog/package integration and release acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "header",
@@ -8476,13 +7962,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "BleeckerHeader",
         "BleeckerHeaderBrand",
@@ -8501,12 +7980,13 @@
         "tests/Reference/HeaderComposition.json"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Full source raster, native input/focus and normal visible catalog startup",
-        "Broader renderer/style/slot/position/breakpoint matrices and source keyboard policy",
-        "Normal motion, scaling and measured performance",
-        "Complete integration and native ARM64 runtime/release acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "page-frame",
@@ -8536,13 +8016,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerPageFrame.cs",
         "src/Orchard/Controls/BleeckerPageFrameModel.cs",
@@ -8562,10 +8035,6 @@
         "scripts/test-page-frame-overrides-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Actual Windows display/text scaling; component FontSize overrides are verified separately",
-        "Native ARM64 runtime and final visual/integration acceptance"
-      ],
       "fontAndLayoutOverridesVerification": {
         "source": {
           "report": "artifacts/current/page-frame-additional-overrides-catalog-native-v1/page-frame-overrides.json",
@@ -8593,6 +8062,13 @@
         "displayScalingVerified": false,
         "nativeARM64RuntimeVerified": false,
         "fullComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -8617,13 +8093,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "applicable keyboard/pointer/focus/selection semantics",
-        "accessible names/roles/values",
-        "catalog variants and edge cases",
-        "Windows runtime and visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerPanelLayout.cs",
         "src/Orchard/Controls/BleeckerPanelColumn.cs",
@@ -8642,11 +8111,13 @@
         "tests/PackageConsumer/MainWindow.PanelLayout.cs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Complete raw raster parity without masks or tolerance",
-        "Actual scaling and native ARM64 runtime evidence",
-        "Current complete catalog integration and release acceptance"
-      ]
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
+      }
     },
     {
       "id": "brand-mark",
@@ -8665,11 +8136,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "Windows keyboard/pointer/accessibility semantics",
-        "registered catalog and regression/runtime/visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerBrandMark.cs",
@@ -8691,9 +8157,6 @@
       ],
       "status": "in-progress",
       "visualReviewCheckpoint": "docs/evidence/brand-mark-v7-visual-review-v1/checkpoint.json",
-      "remainingGaps": [
-        "The original asset silhouette, tint and rendered visual review pass eight published-v7 independent x64 consumer sizes/themes (docs/evidence/brand-mark-v7-visual-review-v1/checkpoint.json); actual Windows scaling and native ARM64 runtime remain open"
-      ],
       "sha256": "14cec81653ac61cfc7b0287b512047af6c90f98eadb63a9bc31b24db04f04f2e",
       "nativeValidation": {
         "sourceAudit": "artifacts/current/brand-mark-native-v2/brand-mark-audit.json",
@@ -8710,6 +8173,13 @@
         "sourceRuntimeVerified": false,
         "nativeArm64RuntimeVerified": false,
         "nativeComponentAccepted": false
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -8730,11 +8200,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "Windows keyboard/pointer/accessibility semantics",
-        "registered catalog and regression/runtime/visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSecureField.cs",
         "src/Orchard/Themes/SecureField.xaml"
@@ -8753,11 +8218,6 @@
         "scripts/test-secure-field-catalog-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Focused x64 catalog physical typing, Ctrl+A selection, Backspace, pointer/Space reveal and Clear pass in Dark with a Light subset; complete input/focus, IME and independent-consumer foreground matrix remains open (docs/evidence/secure-field-foreground-v1/checkpoint.json)",
-        "Verify actual OS text/DPI scaling and complete native visual acceptance; Apple rendering was not measured",
-        "Verify native ARM64 runtime and final release/CI acceptance without excluded OS campaigns"
-      ],
       "sha256": "e344bd2f5b9aa88f5c37abb27e70db2e487262fdcfd73d76c59c4e493467057d",
       "sourcePreparation": {
         "reference": "tests/Reference/SecureField.json",
@@ -8779,6 +8239,13 @@
         "focusedPhysicalInputEvidence": "docs/evidence/secure-field-foreground-v1/checkpoint.json",
         "corruptedReportsRejected": 28,
         "packageVersion": "0.1.0-secure-field-v2-local"
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -8798,11 +8265,6 @@
         "dark",
         "text-scaling",
         "constrained-width"
-      ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "Windows keyboard/pointer/accessibility semantics",
-        "registered catalog and regression/runtime/visual evidence"
       ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerSegmentedControl.cs",
@@ -8824,11 +8286,6 @@
         "scripts/test-segmented-control-catalog-audit.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Foreground x64 catalog SendInput verifies pointer selection, roving Tab, Control+Left focus without selection, Space/Right/Home/End selection and disabled-end gating; RTL and independent consumer foreground paths remain open (docs/evidence/components-v5-segmented-foreground-v1/checkpoint.json)",
-        "Complete native text/DPI scaling, customization, constrained-layout and visual/platform acceptance",
-        "Verify native ARM64 runtime and final release/CI delivery without excluded OS campaigns"
-      ],
       "sha256": "5a75a79ed533c33b7d1a5753c1aeb74a31695950f3f8bb26a00938f5cc09182b",
       "sourcePreparation": {
         "reference": "tests/Reference/SegmentedControl.json",
@@ -8853,6 +8310,13 @@
         "packageVersion": "0.1.0-segmented-control-v1-local",
         "corruptedReportsRejected": 27,
         "actualCatalogCorruptionsRejected": 16
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     },
     {
@@ -8873,11 +8337,6 @@
         "text-scaling",
         "constrained-width"
       ],
-      "acceptance": [
-        "consumer-owned data/content/commands",
-        "Windows keyboard/pointer/accessibility semantics",
-        "registered catalog and regression/runtime/visual evidence"
-      ],
       "windowsImplementation": [
         "src/Orchard/Controls/BleeckerAppTab.cs",
         "src/Orchard/Controls/BleeckerAppTabBar.cs",
@@ -8895,12 +8354,6 @@
         "scripts/verify-app-tab-bar.mjs"
       ],
       "status": "in-progress",
-      "remainingGaps": [
-        "Focused x64 catalog physical pointer and keyboard checks pass in Light/Dark, including disabled rejection, focus-only Ctrl+Left and Tab transfer; complete physical/RTL and independent-consumer matrix remains open (docs/evidence/app-tab-bar-foreground-v1/checkpoint.json)",
-        "Actual system text-scaling and complete visual/customization acceptance",
-        "Native ARM64 runtime verification",
-        "Final component acceptance and delivery"
-      ],
       "sha256": "1feea91528f96a09679d67e381a9d0a79a58fa9ce8a6e0bc29d36c5edb4f24fa",
       "sourceReference": "tests/Reference/AppTabBar.json",
       "nativeEvidence": {
@@ -8911,6 +8364,13 @@
         "appleRenderingVerified": false,
         "accepted": false,
         "publicPackage": "artifacts/current/app-tab-bar-package-native-v2/app-tab-bar-audit.json"
+      },
+      "milestoneChecks": {
+        "lightDarkStates": "fail",
+        "keyboardPointerFocus": "fail",
+        "scale150NoClip": "fail",
+        "reducedMotion": "fail",
+        "packageConsumerCompiles": "fail"
       }
     }
   ],
@@ -8987,7 +8447,10 @@
       },
       "currentV5SourceEvidence": {
         "checkpoint": "docs/evidence/catalog-v5-demos/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "physicalReviewFocusEscapeAndLocalUpdatePassed": true,
         "arm64CatalogBuildPassed": true,
         "extractedCatalogRuntimeVerified": false,
@@ -9005,14 +8468,20 @@
       },
       "v8ArchiveEquivalentEvidence": {
         "checkpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "physicalReviewFocusEscapeAndLocalUpdatePassed": true,
         "freshZipExtractionVerified": false,
         "fullCompositionAccepted": false
       },
       "sourceReviewSurfaceEvidence": {
         "checkpoint": "docs/evidence/monitoring-review-surface-source-v1/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "boundedOpaqueSurfaceAndLocalReviewVerified": true,
         "freshPackageRuntimeVerified": false,
         "fullCompositionAccepted": false
@@ -9053,7 +8522,10 @@
       },
       "currentV5SourceEvidence": {
         "checkpoint": "docs/evidence/catalog-v5-demos/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "physicalSearchSelectionAndEditDecisionPassed": true,
         "arm64CatalogBuildPassed": true,
         "extractedCatalogRuntimeVerified": false,
@@ -9071,7 +8543,10 @@
       },
       "visibleSearchSelectionEvidence": {
         "checkpoint": "docs/evidence/editorial-search-source-v1/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "physicalPointerAndKeyboardVerified": true,
         "selectionPreservedAcrossFiltering": true,
         "extractedV7CatalogPassed": true,
@@ -9079,7 +8554,10 @@
       },
       "visibleEditDecisionEvidence": {
         "checkpoint": "docs/evidence/editorial-edit-v1/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "physicalPointerAndKeyboardVerified": true,
         "savedLocalTitleAndDirtyDecisionVerified": true,
         "extractedV7CatalogPassed": true,
@@ -9087,14 +8565,20 @@
       },
       "visibleRelationEvidence": {
         "checkpoint": "docs/evidence/editorial-relations-source-v1/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "sourceBuiltX64PointerEditingAndLocalSaveReopenPassed": true,
         "freshPackageRuntimeVerified": false,
         "fullCompositionAccepted": false
       },
       "v8ArchiveEquivalentEvidence": {
         "checkpoint": "docs/evidence/components-v8-linked-catalog-v1/checkpoint.json",
-        "themes": ["Light", "Dark"],
+        "themes": [
+          "Light",
+          "Dark"
+        ],
         "physicalEditSaveAndDirtyDecisionPassed": true,
         "freshZipExtractionVerified": false,
         "fullCompositionAccepted": false
@@ -9107,7 +8591,7 @@
     "login networking and product auth",
     "CMS document schemas"
   ],
-  "completionRule": "All required entries implemented with registered fixtures and verified regression/runtime/visual evidence; pending entries cannot count as complete. Visual acceptance follows docs/acceptance-contract.md. Exact raster diagnostics retain their thresholds and actual failures; they do not replace visual/behavior review or add a byte-identical completion gate.",
+  "completionRule": "An entry is accepted only when all five milestone checks pass on x64. ARM64 is build-only and runtime-unverified; raster/pixel parity is not a gate. The release lists accepted entries.",
   "sharedOverlayShadowPreview": {
     "sourceAudit": "artifacts/current/overlay-shadow-tint-shadow-source-v2/shadow-audit.json",
     "packageAudit": "artifacts/current/overlay-shadow-tint-shadow-package-v1/shadow-audit.json",
@@ -9153,5 +8637,20 @@
     "isolatedFarLayerRegressionWaived": false,
     "collectionModelMeasurementsFresh": true,
     "collectionLatencyAcceptanceClaimed": false
+  },
+  "milestone": {
+    "date": "2026-10-29",
+    "acceptancePlatform": "x64",
+    "arm64": "build-only; runtime unverified",
+    "checks": [
+      "lightDarkStates",
+      "keyboardPointerFocus",
+      "scale150NoClip",
+      "reducedMotion",
+      "packageConsumerCompiles"
+    ],
+    "acceptedWhen": "all five checks pass on x64",
+    "rasterPixelParityGate": false,
+    "newEvidenceFolders": false
   }
 }

@@ -31,12 +31,12 @@ The saved Codex goal is active. The available goal API can change status but
 cannot edit an existing objective, so its old wording has not been replaced.
 This user correction governs the work and must be carried into any resumed goal.
 
-Completion evidence follows the [component-library acceptance contract](acceptance-contract.md),
-derived from the original brief and the user's explicit native behavior/token
-corrections. Existing zero-tolerance raster diagnostics retain their results;
-they do not substitute for the full visual, behavior and runtime review of every
-required component. All inventory entries remain unaccepted until their actual
-requirements are verified.
+The 2026-10-29 milestone follows the [component-library acceptance contract](acceptance-contract.md):
+x64 runtime acceptance only, ARM64 build-only and runtime-unverified, and no
+raster/pixel parity gate. Each component receives pass/fail results for Light
+and Dark state rendering, keyboard/pointer/focus, 150% scaling without clipping,
+reduced motion, and package-consumer compilation. No new evidence folders are
+needed. The release lists accepted components explicitly.
 
 The user requires an explicit check against overengineering (2026-10-24).
 Before adding implementation, abstractions or verification, identify the

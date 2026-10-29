@@ -209,7 +209,8 @@ public sealed partial class BleeckerModalHost : ContentControl
     internal bool ShouldCancelFocusTarget(DependencyObject target)
     {
         var targetRoot = target switch { UIElement element => element.XamlRoot, TextElement text => text.XamlRoot, _ => null };
-        return core.ActiveSurface is not null && observedRoot is not null && ReferenceEquals(targetRoot, observedRoot) && !core.AllowsFocusTarget(target);
+        return core.ActiveSurface is { } active && observedRoot is not null && ReferenceEquals(targetRoot, observedRoot) &&
+            !core.AllowsFocusTarget(target) && !BleeckerPopupScope.AllowsOwnedFocus(observedRoot, active, target);
     }
     private void RootKeyDown(object sender, KeyRoutedEventArgs args)
     {

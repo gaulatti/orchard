@@ -5,12 +5,12 @@ editorial component demos. The [user-confirmed scope](library-scope.md) supersed
 older Narrator and OS contrast acceptance requirements below; those test
 campaigns are excluded. The user has resumed component-library work.
 
-Use the [acceptance contract](acceptance-contract.md) to assess completion against
-the original brief and subsequent native behavior/token corrections. The strict
-image diagnostics below keep their zero thresholds and actual results. An exact
-image result alone cannot establish component acceptance, and intentional user
-corrections must be verified against their native expectations. All 112 entries
-and both compositions remain in progress.
+Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
+milestone: five x64 checks per component, with ARM64 build-only and runtime
+unverified. Raster/pixel parity is not a gate. The machine-readable inventory
+records pass/fail for all 112 entries; one component, Separator, is accepted.
+Older row descriptions below retain historical diagnostics and do not add
+milestone gates. Monitoring and Editorial remain required fictional demos.
 
 The 2026-10-25 inventory review corrects 30 stale exact-raster gate descriptions
 across 30 entries to require visual and behavior review under that contract.
@@ -385,7 +385,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | alert-dialog | Controlled native preview and catalog fixture | 56 source/native layouts, 2,664 geometry values, 22 action/lifecycle cases; source motion models and shared host regressions | In progress: [public API](alert-dialog.md), [source contract](alert-dialog-reference.md); scrollbar edge paint, popup adapters, complete motion/visual/input and platform acceptance remain open |
 | avatar | `BleeckerAvatar`, `BleeckerAvatarGroup`, `BleeckerAvatarData`: five sizes, images/initials/silhouettes and consumer collections | Registered Avatars fixture; source Light/Dark audit; x64/ARM64 geometry, rendered pixels, collection/lifecycle and independent package checks pass at `2f265e3` | In progress: native/browser raster parity, scaling, constrained widths and overrides; see [contract and usage](avatar-reference.md) |
 | breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | x64/ARM64 wrapping, threshold, template/collection, held/cancelled press, keyboard expansion/focus and unload/reload checks; independent consumers pass at `7c4c272` | In progress: complete visuals/motion, remaining focus, scaling; see [reference/API](breadcrumb-reference.md) |
-| context-menu | `BleeckerContextMenu`: native actions with original commands and a bindable modal option | Registered catalog and fresh NuGet consumer; 38 option cases, 14 hosted-adapter cases and source layout checks | In progress: [contract and evidence](context-menu.md); physical input/focus, nested behavior, complete placement/raster/motion and native ARM64 runtime |
+| context-menu | `BleeckerContextMenu`: original native actions with bindable modal option and owner-aware focus | Registered catalog; x64 physical owned-modal click invokes the original handler; Light/Dark option and owner checks pass; current candidate package consumer compiles | In progress: [contract and evidence](context-menu.md); 150% no-clipping and reduced-motion checks remain |
 | date-picker | `BleeckerDatePicker`: controlled local-date values and native popup requests | Registered Date Controls fixture; frozen source/native geometry, typography, popup, bounds, focus and independent consumer regressions | In progress: [contract and evidence](date-controls-reference.md); exact raster/motion, remaining customization and full platform acceptance |
 | dialog-close-button | `BleeckerDialogCloseButton`, native commands, adjustable Lucide X and consumer-owned dismissal | 16 native/source states; 110 motion samples; real input, live themes and shadow disposal; eleven corruption checks | In progress: [contract and evidence](dialog-close-button.md); exact raster, normal native motion, broader overrides/scaling and native ARM64 |
 | drawer | `BleeckerDrawer`: retained caller content, controlled close requests and a scrolling bottom surface | Registered edge-dialog catalog; shared Drawer/Sheet source and fresh x64 NuGet checks cover 194 states and 42 lifecycle/content/scrolling scenarios | In progress: [contract and evidence](drawer-sheet.md); physical touch/input, complete visual/motion/scaling and native ARM64 runtime |
@@ -404,7 +404,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | radio-group | `BleeckerRadioGroup` and immutable `BleeckerRadioOption` | Registered native fixture; 56 source/native frames and 136 options have zero geometry error; physical keyboard, controlled requests, UIA and lifecycle checks in both themes | In progress: [contract and evidence](radio-group.md); full raster/motion, customization/error matrix and Windows platform acceptance |
 | checkbox | `BleeckerCheckbox`: native selection with consumer label/description content | Registered fixture; v7 x64 catalog/consumer pass 72/70 rich-name, binding, style and native-toggle checks | In progress: [usage and gaps](checkboxes.md); complete rendering, physical input/cursor/focus, scaling, motion and ARM64 runtime |
 | scroll-area | BleeckerScrollArea: original content/templates, native scrolling, source scrollbar recipe and public scroll pattern | ScrollAreasFixture; 94 layouts, 12 native histories, five contract groups, 17,952 thumb-body pixels and fresh consumer | In progress: [contract and evidence](scroll-area.md); physical input, full visual/scaling/performance and platform acceptance open |
-| separator | `BleeckerSeparator`: horizontal/vertical, decorative or semantic | Registered geometry, theme, live orientation and automation fixture; native 100–200% isolated scale and no-tab-stop checks pass; v7 catalog foreground and exact-package independent consumer smokes pass | In progress: [contract and evidence](separator.md); native ARM64 fractional-default acceptance; strict one-channel raster difference remains diagnostic |
+| separator | `BleeckerSeparator`: horizontal/vertical, decorative or semantic | Light/Dark states, passive input/focus semantics, 150% no-clipping, static reduced-motion behavior and current candidate package-consumer compilation pass | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](separator.md) |
 | sheet | `BleeckerSheet`: retained caller content, controlled close requests and four physical sides | Registered edge-dialog catalog; shared 194-state source/NuGet checks and 16 actual catalog cases cover all sides and nested composition | In progress: [contract and evidence](drawer-sheet.md); physical input, complete visual/motion/scaling and native ARM64 runtime |
 | slider | `BleeckerSlider`: controlled raw/sanitized values and native range semantics | 182 exact hidden layouts, 14 retained-fill states, 36 ownership/lifecycle checks and 44 corruption negatives; multilingual font and styled-name regressions | In progress: [contract](slider.md); visible input/raster/motion, scaling, shared-consumer integration and platform acceptance |
 | sonner | Native host/toast/action API and registered fictional fixture | [Source preparation](sonner-reference.md) and [native preview](sonner.md); source/fresh NuGet match 66 hidden states and 20 checks, 53/49 auditor rejections; 418 portable tests, both builds and isolated consumers pass | Physical input, full visual/motion/customization/modal and ARM64 runtime acceptance |
@@ -468,7 +468,7 @@ Monitoring: suite-selector slot, sidebar, live columns, attention cards, search,
 
 - Foundation: published and Visual Studio startup, fonts/resources, light/dark/system themes, open flyouts, token drift, text/display scaling and reduced motion.
 - Every public visual control/style must have registered catalog coverage and appropriate boundary regression checks.
-- x64 and ARM64 builds and runtime evidence are separate requirements. The registered fixture/runtime baseline passes on both architectures; full platform acceptance remains open as described in [runtime evidence](runtime-evidence.md).
+- x64 runtime is the acceptance platform. ARM64 is build-only and labelled runtime-unverified for this milestone.
 - Component accessibility requires keyboard/focus behavior and UI Automation names, roles and values. Narrator and OS contrast campaigns are excluded. Component performance checks use representative local workloads.
 - Independent package consumer, versioned NuGet and runnable catalog, matching documentation, remote main and required CI are still required.
 

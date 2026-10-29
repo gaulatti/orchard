@@ -410,3 +410,10 @@ end-to-end contract.
   unaffected behavior, batch package qualification at meaningful milestones,
   and do not make byte-identical raster research a public-component delivery
   gate. Preserve actual failures and required runtime/delivery checks.
+- The 2026-10-29 milestone accepts components on x64 only. For each component,
+  record pass/fail for Light and Dark state rendering, keyboard/pointer/focus,
+  no clipping at 150% scaling, reduced motion, and package-consumer compilation.
+  ARM64 is build-only and labelled runtime-unverified. Raster/pixel parity is
+  not an acceptance gate or inventory gap. Do not create new evidence folders.
+  Fix the modal Context Menu click and release with an explicit list of accepted
+  components. Do not expand diagnostics beyond these milestone checks.

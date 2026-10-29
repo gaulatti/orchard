@@ -4,7 +4,9 @@ param(
     [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
     [switch]$Nonmodal,
     [switch]$CheckOutside,
-    [switch]$Owned
+    [switch]$Owned,
+    [switch]$KeyboardSelect,
+    [switch]$ReuseOutput
 )
 
 $ErrorActionPreference = 'Stop'
@@ -36,12 +38,12 @@ $app = (Resolve-Path -LiteralPath $AppDirectory).Path
 $exe = Join-Path $app 'Orchard.Catalog.exe'
 $library = Join-Path $app 'Orchard.dll'
 $folder = [IO.Path]::GetFullPath($Output)
-if (Test-Path -LiteralPath $folder) { throw 'Use a fresh Context Menu desktop output directory.' }
+if ((Test-Path -LiteralPath $folder) -and -not $ReuseOutput) { throw 'Use a fresh Context Menu desktop output directory.' }
 foreach ($path in @($exe, $library)) { if (-not (Test-Path -LiteralPath $path)) { throw "Missing catalog input: $path" } }
 $libraryHash = (Get-FileHash -LiteralPath $library -Algorithm SHA256).Hash.ToLowerInvariant()
 if ($libraryHash -ne $ExpectedLibrarySha256.ToLowerInvariant()) { throw 'Catalog Orchard.dll differs from the expected published package.' }
 if (@(Get-Process Orchard.Catalog -ErrorAction SilentlyContinue | Where-Object Path -eq $exe).Count) { throw 'Close this catalog before its isolated input check.' }
-New-Item -ItemType Directory -Path $folder | Out-Null
+if (-not (Test-Path -LiteralPath $folder)) { New-Item -ItemType Directory -Path $folder | Out-Null }
 $report = [ordered]@{
     format = 'orchard-context-menu-desktop-v1'
     catalogExeSha256 = (Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -69,6 +71,10 @@ function ByName($root, [string]$name, $type) {
     @($all | Where-Object { $_.Current.Name -eq $name -and $_.Current.ControlType -eq $type -and -not $_.Current.IsOffscreen }) | Select-Object -First 1
 }
 function Ensure-Foreground([IntPtr]$window) {
+    for ($attempt = 0; $attempt -lt 10 -and [OrchardContextMenuDesktopInput]::GetForegroundWindow() -ne $window; $attempt++) {
+        [OrchardContextMenuDesktopInput]::SetForegroundWindow($window) | Out-Null
+        Start-Sleep -Milliseconds 120
+    }
     if ([OrchardContextMenuDesktopInput]::GetForegroundWindow() -ne $window) { throw 'Catalog lost foreground; no physical input was sent.' }
 }
 function WindowAt($element) {
@@ -155,6 +161,20 @@ try {
     Key 0x1B
     Wait-Until { -not (ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem)) } 'Escape did not dismiss the Context Menu.' | Out-Null
     $report.steps.escapeDismissed = $true
+    if ($KeyboardSelect) {
+        $target.SetFocus()
+        [OrchardContextMenuDesktopInput]::keybd_event(0x10, 0, 0, [UIntPtr]::Zero)
+        Key 0x79
+        [OrchardContextMenuDesktopInput]::keybd_event(0x10, 0, 2, [UIntPtr]::Zero)
+        $item = Wait-Until { ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem) } 'Keyboard selection menu did not reopen.'
+        $report.steps.itemHasKeyboardFocus = $item.Current.HasKeyboardFocus
+        Key 0x0D
+        Wait-Until { $status.Current.Name -eq "Selected: $itemName" } 'Enter did not invoke the original Context Menu item.' | Out-Null
+        Wait-Until { -not (ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem)) } 'Enter did not dismiss the Context Menu.' | Out-Null
+        $report.steps.keyboardAction = $status.Current.Name
+        $report.passed = $true
+        return
+    }
     $report.steps.pointerOpen = Pointer $target $process.MainWindowHandle $true
     $item = Wait-Until { ByName $root $itemName ([System.Windows.Automation.ControlType]::MenuItem) } 'Physical right-click did not expose the native menu item.'
     $report.steps.menuItemVisible = -not $item.Current.IsOffscreen
