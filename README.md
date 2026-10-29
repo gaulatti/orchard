@@ -11,13 +11,14 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-29 `.18` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.18)
-for the current x64 component milestone. Nineteen of 112 entries are accepted:
+Download the [2026-10-29 `.19` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.19)
+for the current x64 component milestone. Twenty of 112 entries are accepted:
 Brand Mark, Card, Context Menu, Dashboard Grid, Dashboard Section, Empty,
-Error State, Icon Badge, Kbd, Label, Loading Spinner, Metric, Page Header,
-Progress, Progress Stack, Section Header, Separator, Sparkline and Status Badge.
+Error State, Feed Grid, Icon Badge, Kbd, Label, Loading Spinner, Metric,
+Page Header, Progress, Progress Stack, Section Header, Separator, Sparkline
+and Status Badge.
 ARM64 is build-only with runtime unverified. Its
-[release note](docs/releases/2026-10-29-preview-18.md)
+[release note](docs/releases/2026-10-29-preview-19.md)
 lists the five checks and remaining scope. The earlier v7 preview's
 [checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
 records the package hash, input and tooltip checks, and clean shutdown. The
@@ -141,7 +142,7 @@ Light/Dark/System changes with native icon-button variants and source labels.
 Guarded hidden XAML checks verify its normal geometry and caller metadata
 ownership. Its visible desktop verification is pending.
 
-The [FeedGrid preview](docs/feed-grid.md) auto-fills minimum-width columns,
+The [FeedGrid component](docs/feed-grid.md) auto-fills minimum-width columns,
 reserves empty tracks and retains original caller controls across resizing.
 The [FeedColumn preview](docs/feed-column.md) composes a fixed title/count/filter
 header with an independent native scrolling body and caller-owned content.

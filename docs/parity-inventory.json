@@ -8046,15 +8046,23 @@
         "samples/Orchard.Catalog/MainWindow.FeedGrids.cs",
         "scripts/verify-feed-grid.mjs",
         "scripts/test-feed-grid-audit.mjs",
-        "tests/PackageConsumer/MainWindow.FeedGrid.cs"
+        "tests/PackageConsumer/MainWindow.FeedGrid.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .19 x64 catalog passed 144 Feed Grid layout states across Light/Dark, including empty, collapsed, RTL and width-boundary states; artifacts/current/context-menu-native-candidate/feed-grid-catalog-v19.json and feed-grid.json",
+        "keyboardPointerFocus": "Matching .19 x64 catalog passed real child pointer/Space actions, retained editor focus and text across resize, collection move and remount in both themes; artifacts/current/context-menu-native-candidate/feed-grid.json",
+        "scale150NoClip": "Independent .19 x64 package consumer passed 16 native 150% cases across Light/Dark, 400/900-DIP viewports and normal/wrapped/collapsed/empty states with every visible child inside the host; artifacts/current/context-menu-native-candidate/feed-grid-scale-v19.json",
+        "reducedMotion": "Feed Grid defines no animation or transition; matching .19 x64 catalog states passed with animation effects disabled and no OS setting changes; artifacts/current/context-menu-native-candidate/feed-grid-catalog-v19.json",
+        "packageConsumerCompiles": "Independent .19 x64 NuGet consumer compiled and ran against package SHA-256 6fa731823c057ed6d3e47f952a238230300e7a49ce41c07f0d4a116b900baba2 and matching package/consumer/x64-catalog Orchard DLL SHA-256 71de2619f3d924f30ad64495ba389841d4eb24a2d6422ea83c236e8f831edfb2; artifacts/current/context-menu-native-candidate/feed-grid-consumer-v19.json"
       }
     },
     {

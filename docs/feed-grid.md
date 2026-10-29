@@ -1,5 +1,13 @@
 # BleeckerFeedGrid
 
+Feed Grid is accepted for the [x64 milestone](acceptance-contract.md) in preview
+.19. The matching catalog passes 144 Light/Dark layouts and native child
+keyboard, pointer and focus behavior. An independent package consumer compiles
+and passes 16 native 150% scale cases across narrow/wide viewports, including
+normal, wrapped, collapsed and empty states. The control has no animation or
+transition, so its static behavior respects reduced motion. ARM64 is build-only
+with runtime unverified. Raster parity is not a milestone gate.
+
 `BleeckerFeedGrid` arranges original caller controls in an auto-filling grid.
 Its default minimum column width is 340 DIP, gap is 12 DIP and padding is
 16 DIP. The minimum is capped at the available inner width, so narrow grids
@@ -32,15 +40,15 @@ uses the larger of the minimum width and the children's intrinsic width.
 The Feed grids catalog fixture uses fictional local content. The pinned source
 reference contains 144 layouts and 22 complete original PNGs, including empty
 tracks, 723/724 DIP boundaries, fractional tracks, RTL, zero minimum, collapsed
-children and explicit gap/padding overrides. Native, package and remaining
-acceptance evidence are recorded in runtime-evidence.md. This remains a preview
-until visual, scaling, ARM64 runtime and integration acceptance are verified.
+children and explicit gap/padding overrides. Historical native and package
+diagnostics are recorded in runtime-evidence.md.
 
 The current x64 run has zero geometry error across all 144 layouts and zero
 pixel differences across all 22 complete reference screenshots. Both themes
 retain real editing, native pointer/Space actions, focus and child lifetime
 across resizing, live minimum bindings and collection moves. These focused
-results do not establish native ARM64 or actual scaling acceptance.
+results do not establish native ARM64 runtime. The current milestone's 150%
+scaling checks are recorded above.
 
 The native arrangement pass visits each child once. Twenty loaded layout
 updates average 0.165/0.476/2.159 ms for 128/512/2,048 simple native Borders on

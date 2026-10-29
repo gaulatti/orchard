@@ -9,9 +9,9 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Brand Mark, Card, Context Menu, Dashboard
-Grid, Dashboard Section, Empty, Error State, Icon Badge, Kbd, Label, Loading
-Spinner, Metric, Page Header, Progress, Progress Stack, Section Header, Separator,
-Sparkline and Status Badge are accepted (19 of 112 entries).
+Grid, Dashboard Section, Empty, Error State, Feed Grid, Icon Badge, Kbd, Label,
+Loading Spinner, Metric, Page Header, Progress, Progress Stack, Section Header,
+Separator, Sparkline and Status Badge are accepted (20 of 112 entries).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -444,7 +444,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | detail-layout | `BleeckerDetailLayout`: responsive main/rail tracks and bounded sticky placement | 888 zero-error states, 48 exact full PNGs, 27 audit negatives, real input/Tab order, original template models and nearest ScrollViewer/ScrollView retargeting | In progress: [contract and evidence](detail-layout.md); broader caller overrides/scaling, native ARM64 and final integration |
 | footer | `BleeckerFooter` with original brand/section models, bottom slots and a global guarded link context | 48 pinned source PNGs; catalog and fresh package hidden 144 layouts/8040 exact geometry checks/1434 brushes/7 lifetime and threading checks/1349 isolation guards; 40 catalog/44 package damaged reports rejected; fixture; 287 portable tests; clean x64/ARM64 builds and isolated consumers | In progress: [contract](footer.md); visible input/raster, broader props, motion/scaling, integration and native ARM64 acceptance |
 | feed-column | `BleeckerFeedColumn`: fixed header, original filter/body slots and independent native viewport | Feed columns fixture; 154 pinned source states and 58 original full PNGs | In progress: [contract](feed-column.md); native/visible/platform acceptance remains open |
-| feed-grid | BleeckerFeedGrid | FeedGridsFixture | Preview: auto-fill tracks, variable rows and retained native children; visual/platform acceptance open |
+| feed-grid | `BleeckerFeedGrid`: auto-fill tracks, variable rows and original caller children | Matching .19 x64 catalog passes 144 Light/Dark layouts and native child input/focus; 16 independent-consumer 150% cases, static reduced-motion behavior and package compilation | Accepted on x64: [contract](feed-grid.md); ARM64 runtime unverified |
 | header | `BleeckerHeader`: original brand/navigation, caller-owned actions and responsive positioning | Catalog and fresh x64 consumer; 72 source layouts, 23 native scenarios and both architecture builds | In progress: [contract and evidence](header.md); desktop input/focus, complete visual/motion/scaling, integration and native ARM64 runtime |
 | page-frame | `BleeckerPageFrame`: centered width/spacing recipes and semantic grouping | 792 measured states, 40 exact full PNGs, 20 audit negatives, native input, viewport/binding/style/template/selector checks and fresh package consumer | In progress: [contract and evidence](page-frame.md); broader content/override/scaling and native ARM64 |
 | panel-layout | BleeckerPanelLayout / BleeckerPanelColumn | PanelLayoutsFixture | Preview: fixed/growing tracks, retained child controls, horizontal scrolling; visual/platform acceptance open |

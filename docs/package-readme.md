@@ -8,9 +8,9 @@ build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
 Accepted x64 components in this preview: Brand Mark, Card, Context Menu,
-Dashboard Grid, Dashboard Section, Empty, Error State, Icon Badge, Kbd, Label,
-Loading Spinner, Metric, Page Header, Progress, Progress Stack, Section Header,
-Separator, Sparkline and Status Badge. The fixed inventory has 112 entries started; 19 are
+Dashboard Grid, Dashboard Section, Empty, Error State, Feed Grid, Icon Badge,
+Kbd, Label, Loading Spinner, Metric, Page Header, Progress, Progress Stack,
+Section Header, Separator, Sparkline and Status Badge. The fixed inventory has 112 entries started; 20 are
 accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
@@ -349,7 +349,8 @@ font/script runs, preserving the source's multilingual width and wrapping.
 12 DIP gaps and 16 DIP padding. Empty tracks remain reserved, row heights follow
 the tallest child, and original native children retain their state and commands.
 `MinColumnWidth`, `Gap` and `Padding` are bindable. Child alignment stays native;
-set Stretch when a child should fill its track. Full acceptance remains open.
+set Stretch when a child should fill its track. Feed Grid passes the five x64
+milestone checks; ARM64 runtime is unverified.
 
 `BleeckerFeedColumn` supplies a fixed title/count/filter header and independently
 scrolling body. `Title`, nullable numeric `Count`, solid `Accent`, `Filter` and
