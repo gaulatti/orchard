@@ -1,5 +1,15 @@
 # Pinned Avatar contract
 
+For the 2026-10-29 x64 milestone, Avatar and AvatarGroup pass the five checks in
+[the acceptance contract](acceptance-contract.md). The packaged x64 hidden
+fixture passed 280 Light/Dark sizing and content states plus 32 group/lifecycle
+contracts, with zero focus or activation. The catalog presentation route and
+independent x64 package consumer passed. Four native 150% Light/Dark narrow/wide
+cases kept initials, empty silhouettes and five group circles within bounds.
+These controls are passive and define no animation. ARM64 remains build-only and
+runtime-unverified; raster/pixel parity is outside this milestone. Historical
+preview language below does not add acceptance gates.
+
 Producer: `src/components/avatar.tsx` at Bleecker
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `e5cd2428aeddba94d2fca122ab21edf6e8e6238223c529cd2529266248fa2eb7`.
