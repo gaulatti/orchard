@@ -95,9 +95,10 @@ the same physical test. Both the failing owned menu and passing unowned menu
 report a `Microsoft.UI.Content.PopupWindowSiteBridge` at that point, so the
 class alone does not identify the intercepting popup. Collapsing the owned
 menu's native marker in a local trial left that window rectangle and the
-failed physical action unchanged. The trial was reverted. The owned click
-and complete focus/modality behavior remain open; the new diagnostic does
-not accept this component.
+failed physical action unchanged. A catalog-only transparent window-style
+trial also left the original action unreachable. Both trials were reverted.
+The owned click and complete focus/modality behavior remain open; the new
+diagnostic does not accept this component.
 Target removal retires the menu even if normal closing was canceled, including
 the unprojected standalone path; normal cancellation still retains an attached
 menu.

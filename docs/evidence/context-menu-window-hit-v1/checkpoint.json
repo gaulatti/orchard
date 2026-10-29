@@ -47,7 +47,18 @@
     "report": "artifacts/current/context-menu-collapsed-marker-trial-owned-v1/context-menu-desktop.json",
     "sha256": "7a8169c8a666fef2ba3d140ecf4c9cce3ba4b900543a6ad8214a9aa1c93bc357"
   },
-  "interpretation": "The window class is shared by both outcomes and does not identify which popup receives the click. Collapsing the marker did not change the observed window or make the owned item actionable.",
+  "catalogWindowStyleTrial": {
+    "sourceRetained": false,
+    "catalogBuildPassed": true,
+    "warnings": 0,
+    "errors": 0,
+    "physicalOwnedClickPassed": false,
+    "topWindowClassAfterTransparentStyle": "Microsoft.UI.Content.PopupWindowSiteBridge",
+    "processExited": true,
+    "report": "artifacts/current/context-menu-click-through-hwnd-trial-owned-v1/context-menu-desktop.json",
+    "sha256": "d4d689fd80cca9538cf4545a16c4eaccdac3982238d3a49ab76408b6ec4023eb"
+  },
+  "interpretation": "The window class is shared by both outcomes and does not identify which popup receives the click. Collapsing the marker or temporarily applying a transparent extended style to the catalog's top popup window did not make the owned item actionable. Both experiments were reverted.",
   "nextAcceptanceBoundary": "A physical click on the active-owner original item invokes its caller handler while Escape dismisses only the menu, first outside input works in nonmodal mode, and upper-owner shielding remains intact.",
   "componentAccepted": false,
   "entriesStarted": 112,
