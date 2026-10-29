@@ -3476,7 +3476,7 @@
         "tests/PackageConsumer/KbdContentFixture.cs",
         "scripts/verify-kbd-content.ps1"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "nativePreview": {
         "sourceAudit": "artifacts/current/kbd-scale-source-native-v2/audit.json",
         "packageAudit": "artifacts/current/kbd-scale-package-native-v1/audit.json",
@@ -3508,11 +3508,18 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "x64LightDarkStates": "0.1.0-preview.20261029.5 package DLL: 64 content/alignment states, 32 corner states, 16 caller contracts and 64 metadata contracts in Light/Dark (artifacts/current/kbd-content-v5.json and kbd-corners-v5.json)",
+        "x64KeyboardPointerFocus": "Display-only component registers no shortcut or command; package fixture confirms single/group roles, zero focus and no keycap tab stops",
+        "x64Scale150NoClip": "0.1.0-preview.20261029.5 package DLL: native 1.5 XAML rasterization in Light/Dark; single and combination keycaps remain within the isolated root (artifacts/current/kbd-scale-Light-1.5.png and kbd-scale-Dark-1.5.png)",
+        "reducedMotion": "Static display component; source control and Keyboard theme define no animation or transition",
+        "candidatePackageConsumer": "0.1.0-preview.20261029.5; x64 consumer compiled with zero warnings; candidate/restored package SHA-256 759db08a9f728025819c9fd89d9ee420ba2db3724931c07b4c56937cfd762223; package DLL SHA-256 b46be08831d6cedc9b81e1f0270e55d5cf3ec867cd0dd11e44d73502fe2128c2"
       }
     },
     {

@@ -6,6 +6,10 @@ keyboard/pointer/focus, 150% scaling without clipping, reduced motion, and
 package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
+
+Accepted x64 components in this preview: Context Menu, Kbd, Separator and
+Status Badge. The fixed inventory has 112 entries started; 4 are accepted.
+
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
 and remounts; child controls keep their own actions and accessible peers.
@@ -125,7 +129,7 @@ menu before the parent modal handles it. Owner teardown retires the popup even
 after canceled closing. Live content, theme and presenter-style changes retain
 native layout. Local x64 catalog checks pass physical keyboard opening,
 Escape, right-click, original-item pointer selection, and owned Enter
-activation. The `0.1.0-preview.20261029.4` x64 package consumer compiles
+activation. The `0.1.0-preview.20261029.5` x64 package consumer compiles
 with zero warnings, and a physical owned-modal item click on the matching DLL
 invokes the original handler. Light/Dark native 150% checks keep the item
 within its presenter, and open/close animation stays disabled. Context Menu

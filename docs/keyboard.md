@@ -1,7 +1,9 @@
 # Keyboard shortcut display
 
-`BleeckerKbd` displays a keycap or a consumer-owned sequence of keys. It is an
-in-progress implementation of the [pinned Kbd contract](kbd-reference.md).
+`BleeckerKbd` displays a keycap or a consumer-owned sequence of keys. It is
+accepted for the 2026-10-29 x64 milestone under the
+[five-check contract](acceptance-contract.md); see the
+[pinned Kbd contract](kbd-reference.md) for its API and historical evidence.
 
 ```xml
 <orchard:BleeckerKbd Content="Esc" />
@@ -49,25 +51,27 @@ Per-theme JSON records native keycap dimensions, child positions, font and
 palette values for comparison with the browser. The independent package
 consumer includes a keycap.
 
-Historical registered-fixture and independent-consumer runs passed on native
-ARM64 and x64; see [runtime evidence](runtime-evidence.md) for their source and
-process identities. Those runs do not establish native ARM64 execution of the
-current caller-corner repair. Full state and visual acceptance remains open.
+The current x64 package DLL passes 64 Light/Dark content and alignment states,
+32 corner states, 16 caller contracts and 64 metadata contracts. Its isolated
+150% XAML rasterization captures show the single keycap and key combination
+within bounds in both themes. The component has no shortcut, command, tab stop
+or animation. The independent package consumer compiles, so all five milestone
+checks pass. ARM64 runtime remains unverified for this milestone. Historical
+native ARM64 and x64 runs are described in
+[runtime evidence](runtime-evidence.md).
 
-Acceptance is still open: Consolas matches the browser reference's measured
-widths for the audited Latin keys and command symbol; native glyph comparison
-and other fallback content remain unverified. Rendered
-shadow corners, baseline and inline alignment, rich/template edge cases,
-isolated scaling, constrained width
-and the remaining ARM64 state checks still need verification. The component is
-not marked complete.
+Historical broader fidelity work remains: Consolas matches the browser
+reference's measured widths for audited Latin keys and the command symbol, but
+full native glyph and fallback comparison is unverified. More shadow, baseline,
+inline, rich-template and constrained-width cases can be studied separately.
+These are not gates for the current x64 milestone.
 
 The focused `--probe-hidden-kbd-corners` regression runs in the catalog and the
 independent package consumer without desktop input. It checks eight radius/size
 cases in both themes and text directions, captures the actual shadow pixels at
 square corners, and exercises bound radius changes, combination children,
-retemplating and remounting. These checks qualify that caller override; full
-component visual and platform acceptance remains open. Narrator and OS contrast
+retemplating and remounting. These checks qualify that caller override; broader
+browser/native raster comparison and ARM64 runtime remain open. Narrator and OS contrast
 campaigns are excluded by the current [library scope](library-scope.md).
 
 ```powershell
@@ -102,8 +106,8 @@ names, and caller bindings. This uses the existing owned XAML island mechanism;
 it does not change monitor DPI or Windows text scale. Metadata cases cover single
 content and key groups, local/bound/style names, label associations, template
 replacement and remounting. The registered catalog includes an explicitly empty
-caller name. Full rendered typography/fallback, physical scaling, native ARM64
-execution and remaining lifecycle acceptance stay open.
+caller name. Broader typography/fallback, physical monitor scaling and native
+ARM64 execution remain outside this milestone.
 
 The consolidated v7 extracted x64 catalog and exact independent NuGet consumer
 both pass the content probe with Orchard DLL hash `ff3e8379…`. Each verifies
@@ -121,5 +125,5 @@ metadata cases. The corner probe passed 32 radius/theme/direction states and
 four lifecycle contexts. Both exited successfully with zero focus or activation;
 the [checkpoint](evidence/kbd-published-v7-consumer-v1/checkpoint.json) binds the
 reports to the exact package and consumer hashes. This verifies those focused
-runtime behaviors in the current package, while full rendered parity, physical
+runtime behaviors in that v7 package, while full rendered parity, physical
 scaling and native ARM64 runtime remain open.

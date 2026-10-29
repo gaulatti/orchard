@@ -2,8 +2,10 @@
 
 Pinned Bleecker commit: `a86059013cd59684ce452849278ea81e734f2066`.
 Sources: `src/components/kbd.tsx`, `stories/components/Kbd.stories.tsx`
-and the pinned build's `dist/styles.css`. A Windows preview is implemented;
-complete rendered comparison and acceptance remain pending.
+and the pinned build's `dist/styles.css`. The Windows component is accepted
+under the [2026-10-29 x64 milestone](acceptance-contract.md). The broader
+browser/native rendering comparisons below are historical work, not gates for
+this milestone.
 
 ## Content and behavior
 
@@ -37,8 +39,8 @@ represent the two paths; decorative separators must not become separate tab stop
 
 The compiled mono stack is `ui-monospace, SFMono-Regular, Menlo, Monaco,
 Consolas, "Liberation Mono", "Courier New", monospace`. The actual Windows
-browser font and glyph metrics must be measured before accepting a native font
-choice. The separator inherits the surrounding font family; it is not assigned
+browser font and glyph metrics remain a broader fidelity question, outside the
+current acceptance gate. The separator inherits the surrounding font family; it is not assigned
 the keycap's mono family. There is no component-defined animation or disabled
 opacity. Windows contrast mode must use the required system colors.
 
@@ -52,7 +54,10 @@ or establish exact native raster parity. The screenshot transport produced JPEG
 bytes; pixel differences between translated row crops are not an exact glyph
 acceptance check.
 
-## Acceptance evidence to collect
+## Historical broader verification
+
+The items below describe the original parity program. Current milestone
+acceptance uses the five x64 checks in the acceptance contract.
 
 - Both content paths, empty keys, a one-key array, two/three-key combinations,
   repeated keys, empty strings, Unicode symbols and long content.
@@ -63,12 +68,14 @@ acceptance check.
 - Normal consumer overrides, rich content/templates, collection replacement,
   collection mutation, unload/reload and retained consumer ownership.
 - Accessible names/roles, absence of unwanted focus stops, constrained
-  widths, RTL, isolated text/display scaling, and x64/ARM64 runtime.
+  widths, RTL and broader text/display scaling. ARM64 runtime remains
+  unverified for this milestone.
 - Registered catalog fixtures and independent NuGet consumer verification.
 
 Scaling checks must use an isolated environment; do not change desktop-wide
 settings on the developer's workstation. Successful builds or source-value
-assertions alone do not establish visual parity.
+assertions alone do not establish visual parity; current 150% no-clipping is
+verified in native Light/Dark captures.
 
 Narrator and OS contrast campaigns are excluded by the current
 [library scope](library-scope.md); existing component accessibility metadata and
