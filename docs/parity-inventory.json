@@ -5550,22 +5550,23 @@
         "samples/Orchard.Catalog/MainWindow.IconBadge.cs",
         "scripts/verify-icon-badge.mjs",
         "scripts/test-icon-badge-audit.mjs",
-        "tests/PackageConsumer/MainWindow.IconBadge.cs"
+        "tests/PackageConsumer/MainWindow.IconBadge.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
         "lightDarkStates": "pass",
-        "keyboardPointerFocus": "fail",
+        "keyboardPointerFocus": "pass",
         "scale150NoClip": "pass",
         "reducedMotion": "pass",
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "lightDarkStates": "2026-10-29 x64 focused catalog milestone route completed six size/variant fixture checks plus empty, scalar, named and interactive content in Light and Dark before physical input acquisition; artifacts/current/context-menu-native-candidate/icon-badge-states.json",
-        "keyboardPointerFocus": "Fail for milestone: current x64 catalog physical route could not acquire foreground pointer delivery and exited before child click/Tab checks; artifacts/current/context-menu-native-candidate/icon-badge-milestone-failed-v8.json. Earlier physical evidence predates a BleeckerIconBadge text-presentation change and is not reused.",
-        "scale150NoClip": "0.1.0-preview.20261029.8 independent x64 package consumer passed 14 native 1.5 XAML scale cases across Light/Dark: six size/variant child bounds per theme and visibly red overflow outside the badge in both themes; artifacts/current/context-menu-native-candidate/icon-badge-scale-v8.json",
-        "reducedMotion": "Static BleeckerIconBadge control and Generic.xaml template define no animation or transition; catalog runtime reports Windows animations disabled without any OS setting change",
-        "packageConsumerCompiles": "0.1.0-preview.20261029.8 independent x64 consumer compiled with zero warnings; packaged/consumer Orchard DLL SHA-256 0d32289fe2051b775dac6efb8762813ab7a2b85188b97c617d373cedd0a1690c"
+        "lightDarkStates": "Published .11 x64 catalog milestone passed six size/variant cases plus empty, scalar, named and interactive content in Light and Dark; artifacts/current/context-menu-native-candidate/icon-badge-states-v11.json",
+        "keyboardPointerFocus": "Published .11 x64 catalog physically clicked the child button twice, Tabbed into its editor, and retained focus/content across live size, variant, template and remount changes in both themes; artifacts/current/context-menu-native-candidate/icon-badge-milestone-v11.json",
+        "scale150NoClip": "Independent .11 x64 package consumer passed 14 native 150% XAML-scale cases across Light/Dark: six size/variant child bounds per theme and visibly red overflow outside the badge in both themes; artifacts/current/context-menu-native-candidate/content-scale-icon-badge-v11.json",
+        "reducedMotion": "Static BleeckerIconBadge control and Generic.xaml template define no animation or transition; published .11 catalog runtime reported Windows animations disabled without OS setting changes; artifacts/current/context-menu-native-candidate/icon-badge-catalog-v11.json",
+        "packageConsumerCompiles": "Published .11 independent x64 consumer compiled and ran with zero warnings after clearing prior ARM64 native output; packaged/consumer Orchard DLL SHA-256 d5f0b0af8c0fd39f49224c659ee29608bc34932a6dbc78d9a1d71a76f2f73911; artifacts/current/context-menu-native-candidate/consumer-v11.json"
       }
     },
     {

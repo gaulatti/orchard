@@ -11,12 +11,12 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-29 `.10` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.10)
-for the current x64 component milestone. Nine of 112 entries are accepted:
-Brand Mark, Context Menu,
-Error State, Kbd, Label, Loading Spinner, Progress, Separator and Status Badge.
+Download the [2026-10-29 `.11` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.11)
+for the current x64 component milestone. Ten of 112 entries are accepted:
+Brand Mark, Context Menu, Error State, Icon Badge, Kbd, Label, Loading Spinner,
+Progress, Separator and Status Badge.
 ARM64 is build-only with runtime unverified. Its
-[release note](docs/releases/2026-10-29-preview-10.md)
+[release note](docs/releases/2026-10-29-preview-11.md)
 lists the five checks and remaining scope. The earlier v7 preview's
 [checkpoint](docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json)
 records the package hash, input and tooltip checks, and clean shutdown. The
@@ -315,6 +315,10 @@ Build a local NuGet package and verify it independently:
 dotnet pack src/Orchard/Orchard.csproj -c Release -p:Platform=x64 -o artifacts/packages
 ./scripts/verify-package.ps1
 ```
+
+The verifier clears only its generated `Output/app` directory before each run,
+so an ARM64 native DLL cannot survive into an x64 consumer. Reports in `Output`
+remain available across runs.
 
 Add `artifacts/packages` as a NuGet source in the consuming application and
 reference `Gaulatti.Orchard` version `0.1.0`. The package supplies the library,

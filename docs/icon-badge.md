@@ -1,5 +1,15 @@
 # IconBadge
 
+Icon Badge is accepted for the 2026-10-29 x64 component milestone. The
+published `.11` catalog passes six size/variant combinations and empty,
+scalar, named and interactive content in Light and Dark. Physical child clicks,
+Tab focus, live updates and remounts pass in both themes. The matching isolated
+package consumer compiles and passes fourteen native 150% scale cases. The
+component is static, and the catalog passed with Windows animations already
+disabled. [The inventory](parity-inventory.json) records all five checks.
+ARM64 runtime remains unverified. Older raster investigations below are not
+release gates.
+
 `BleeckerIconBadge` follows `src/components/icon-badge.tsx` at Bleecker commit
 `a86059013cd59684ce452849278ea81e734f2066`. It is a passive content surface.
 Its children retain their own commands and keyboard focus; the badge adds no
@@ -70,7 +80,7 @@ scalar and completeness reports are rejected by the audit. Four full PNGs
 match exactly; the other 132 retain reported raster differences, including
 rounded-edge antialiasing, translucent compositing and text/native child paint.
 Geometry assertions cover the badge and explicit child boxes. Text ink/line
-layout and native editor appearance remain part of the raster acceptance gap.
+layout and native editor appearance remain historical raster diagnostics.
 
 Version `0.1.0-b8aa2de` is built from
 `b8aa2de56d11d7f23773196a4b722d0c2fd36df9`. Both catalog architectures build;
@@ -80,24 +90,17 @@ ARM64 consumer builds with runtime explicitly unverified. Both isolated
 consumer workspaces and package caches are removed. The x64/ARM64 catalog
 archives verify all 537/533 entries against their published files.
 
-The current full x64 attempt stopped at the unchanged Activity Hand-cursor
+An earlier full x64 attempt stopped at the unchanged Activity Hand-cursor
 gate after 44,195.8564ms. Windows reports no present mouse and no visible
 global cursor, while WinUI selects Hand. This is not a complete full-suite
 pass. The last complete passing source remains `48d8fd3`; the new candidate
 still needs the unchanged full test with a connected mouse.
 
-For the 2026-10-29 x64 [component acceptance contract](acceptance-contract.md),
-Icon Badge passes four of five checks and remains unaccepted. The focused
-catalog route verifies all six size/variant combinations plus empty, scalar,
-named and interactive content in Light and Dark. The exact `.8` NuGet package
-compiles in an independent x64 consumer and passes 14 native 150% bounds cases:
-six combinations per theme and a visible overflow child per theme. The
-component and template have no motion. The keyboard/pointer/focus check remains
-failed because the current physical route timed out acquiring foreground input
-before it could click or Tab through the child controls. Earlier passing input
-evidence predates a control change and is not reused. The reports are in
-`artifacts/current/context-menu-native-candidate/icon-badge-states.json`,
-`icon-badge-scale-v8.json` and `icon-badge-milestone-failed-v8.json`.
+An earlier `.8` attempt passed four of five checks but could not acquire
+foreground pointer input. The `.11` physical run supersedes that failure.
+Its reports are in `artifacts/current/context-menu-native-candidate/` as
+`icon-badge-states-v11.json`, `icon-badge-milestone-v11.json`, and
+`content-scale-icon-badge-v11.json`.
 
 The earlier exact-raster diagnostics above remain historical; raster parity is
 not a milestone gate. ARM64 is build-only and runtime-unverified. Narrator and
@@ -105,7 +108,7 @@ OS contrast campaigns are excluded by the current library scope.
 
 The current version `0.1.0-77f387a` passes the full 477-second x64 replay using a scoped Windows MouseKeys virtual mouse, plus a fresh x64 consumer in both themes. MouseKeys configuration is restored after each scope. This supersedes the earlier missing-mouse replay failure; see the [current checkpoint](native-validation-checkpoint.md).
 
-The current local candidate refreshes unchanged plain text when `FontFamily`
+An earlier local candidate refreshes unchanged plain text when `FontFamily`
 changes. A consumer font clears Orchard's previously selected script faces;
 restoring Encode Sans restores them. The catalog adds an Arial Japanese
 caption, and the hidden package diagnostic covers live font transitions in
