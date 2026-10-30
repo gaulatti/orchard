@@ -6,6 +6,17 @@ The fixed Bleecker commit is `a86059013cd59684ce452849278ea81e734f2066`.
 its default link renderer comes from `nav-menu.tsx`, SHA-256
 `1a9b3d9c7c7d43c52d23080c37af477211d37ed457f1c6a8eb2a18269b2f8cc5`.
 
+Breadcrumb is accepted in current source for the [five-check x64 milestone](acceptance-contract.md).
+The `.29` preview lists it. The matching `.29` package DLL passed the focused Light/Dark
+catalog route, including native ellipsis hover, held/cancelled press, Enter
+expansion, focus restoration and custom links. With animations disabled, the
+pressed/restored endpoints settled and the control started no storyboard.
+The independent x64 package consumer compiled and ran; eight native 150%
+Light/Dark collapsed/full path cases at 320- and 600-DIP viewports stayed within
+their bounds. ARM64 is build-only and runtime-unverified for this milestone.
+Older source-derived criteria and reports below retain their historical scope;
+exact raster/motion parity and OS contrast are not acceptance gates.
+
 Before implementation, the actual source was rendered with empty/single paths,
 five items, collapse thresholds 1/2/-1, the exact threshold, custom links and
 separators, a 140px width, Japanese/Latin text, and path replacement after
@@ -46,9 +57,9 @@ they do not establish native acceptance.
   the default presentation. The current item remains current-page text.
 - Native keyboard and pointer activation, current-page accessibility, focus
   after expansion, binding/collection changes, reuse and template lifecycle
-  must pass on x64/ARM64. Contrast uses Windows semantic colors. Component
-  automation behavior, scaling, focus visuals and full source/native raster/motion acceptance remain
-  required before this inventory entry can be complete.
+  belong to the broader historical parity review. Contrast uses Windows semantic
+  colors. The current milestone uses the five x64 checks above; ARM64 runtime,
+  exact raster/motion parity and OS contrast campaigns are outside that gate.
 
 ## Windows API
 
@@ -72,8 +83,8 @@ non-focusable renderers do not receive focus, and the current-page text is not a
 target. Native [focus discovery](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.focusmanager.findfirstfocusableelement?view=windows-app-sdk-2.0)
 preserves the consumer's tab order and focusability. The custom renderer fixture
 expands with real Enter, verifies the original item/focused Button and continues
-with real Tab to the next revealed consumer link. Full focus visual and scaling
-acceptance remain open; these new checks require fresh native runs.
+with real Tab to the next revealed consumer link. Broader historical focus-visual
+review remains open; native 150% bounds now pass under the current milestone.
 Both default and custom renderer regressions also disable the first revealed
 item through consumer `CanExecute(false)` and require focus on the next available
 link. No command is invoked merely to restore focus.

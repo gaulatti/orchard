@@ -7,19 +7,19 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Avatar, Brand Mark, Button, Button Group,
+Accepted x64 components in this preview: Avatar, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Context Menu,
 Dashboard Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid,
 Field Help Tooltip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
-Panel Layout, Progress, Progress Stack, Section Header, Separator, Sparkline,
-Stat Card, Status Badge and Tooltip. The fixed inventory has 112 entries started; 31 are accepted.
+Panel Layout, Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline,
+Stat Card, Status Badge and Tooltip. The fixed inventory has 112 entries started; 33 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
 and remounts; child controls keep their own actions and accessible peers.
 `Width`, `Height`, `Padding` and content alignment remain caller-owned. The
 container stays decorative and follows native WinUI opacity composition.
-Normal pulse timing and final visual/platform acceptance remain open.
+Normal pulse timing remains outside this milestone's five x64 gates; ARM64 runtime is unverified.
 Orchard's scope is the reusable component library and its fictional monitoring
 and editorial demos. Narrator and Windows/OS contrast test campaigns are excluded;
 existing component accessibility metadata and theme support remain in scope.

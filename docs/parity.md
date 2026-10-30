@@ -8,13 +8,12 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Avatar, Brand Mark, Button, Button Group, Card, Context Menu, Dashboard
+records pass/fail for all 112 entries; Avatar, Brand Mark, Breadcrumb, Button, Button Group, Card, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
-Status Badge and Tooltip are accepted (32 of 112 entries in current source).
-The published `.28` preview lists the 31 components accepted when it was cut;
-Skeleton will join the next batched release.
+Status Badge and Tooltip are accepted (33 of 112 entries in current source
+and in the `.29` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -390,7 +389,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | alert | `BleeckerAlert`, `BleeckerAlertContainer`: window-owned typed notifications and shared stream | Registered four-type fixture; x64 native paint/position, Tab/Shift+Tab/Space, held/cancelled press, duration and lifecycle checks; clean package consumer | In progress: [contract and usage](alert-reference.md); rendered reference, premium hover easing, full motion, disabled/scaling and ARM64 |
 | alert-dialog | Controlled native preview and catalog fixture | 56 source/native layouts, 2,664 geometry values, 22 action/lifecycle cases; source motion models and shared host regressions | In progress: [public API](alert-dialog.md), [source contract](alert-dialog-reference.md); scrollbar edge paint, popup adapters, complete motion/visual/input and platform acceptance remain open |
 | avatar | `BleeckerAvatar`, `BleeckerAvatarGroup`, `BleeckerAvatarData`: five sizes, images/initials/silhouettes and consumer collections | Matching `.23` x64 package and catalog pass Light/Dark states, passive input/focus, native 150% bounds, static reduced-motion behavior and independent consumer compilation | Accepted on x64: [contract and usage](avatar-reference.md); ARM64 runtime unverified |
-| breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | x64/ARM64 wrapping, threshold, template/collection, held/cancelled press, keyboard expansion/focus and unload/reload checks; independent consumers pass at `7c4c272` | In progress: complete visuals/motion, remaining focus, scaling; see [reference/API](breadcrumb-reference.md) |
+| breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | Matching `.29` x64 catalog passes Light/Dark states, physical ellipsis press/Enter/focus and reduced-motion endpoints; independent consumer compiles and passes eight native 150% collapsed/full path cases | Accepted in `.29` for the five-check x64 milestone; ARM64 runtime unverified; see [reference/API](breadcrumb-reference.md) |
 | context-menu | `BleeckerContextMenu`: original native actions with bindable modal option and owner-aware focus | Current package DLL passes physical owned-modal click, Light/Dark states, 150% no-clipping, disabled open/close animation and package-consumer compilation | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](context-menu.md) |
 | date-picker | `BleeckerDatePicker`: controlled local-date values and native popup requests | Registered Date Controls fixture; frozen source/native geometry, typography, popup, bounds, focus and independent consumer regressions | In progress: [contract and evidence](date-controls-reference.md); exact raster/motion, remaining customization and full platform acceptance |
 | dialog-close-button | `BleeckerDialogCloseButton`, native commands, adjustable Lucide X and consumer-owned dismissal | 16 native/source states; 110 motion samples; real input, live themes and shadow disposal; eleven corruption checks | In progress: [contract and evidence](dialog-close-button.md); exact raster, normal native motion, broader overrides/scaling and native ARM64 |

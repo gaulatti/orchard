@@ -37,6 +37,7 @@ internal static class ContentScaleFixture
         var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var tooltipScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var progressStackScale=new List<object>();var metricScale=new List<object>();var sparklineScale=new List<object>();var feedGridScale=new List<object>();var pageFrameScale=new List<object>();var detailLayoutScale=new List<object>();var panelLayoutScale=new List<object>();var footerScale=new List<object>();var avatarScale=new List<object>();var statCardScale=new List<object>();var buttonGroupScale=new List<object>();var buttonScale=new List<object>();var iconButtonScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         var fieldHelpScale = new List<object>();
         var skeletonScale = new List<object>();
+        var breadcrumbScale = new List<object>();
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -248,6 +249,54 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "skeleton-scale-cases.json"),
                 JsonSerializer.Serialize(new { passed = skeletonScale.Count == 4, cases = skeletonScale,
                     librarySha256 = Hash(typeof(BleeckerSkeleton).Assembly.Location) },
+                    new JsonSerializerOptions { WriteIndented = true }));
+            foreach (var viewport in new[] { 320, 600 })
+            {
+                root.Width = viewport; root.Height = 320;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport * 1.5), 480));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, (int)(viewport * 1.5), 480));
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                foreach (var expanded in new[] { false, true })
+                {
+                    stage = $"breadcrumb/{theme}/{viewport}/{(expanded ? "full" : "collapsed")}/150-percent";
+                    root.RequestedTheme = theme;
+                    var items = new System.Collections.ObjectModel.ObservableCollection<BleeckerBreadcrumbItem> {
+                        new() { Label = "Workspace", Href = "/workspace" },
+                        new() { Label = "Fictional editorial review", Href = "/review" },
+                        new() { Label = "Drafts", Href = "/drafts" },
+                        new() { Label = "Current story draft with a longer title", Href = "/current" } };
+                    var trail = new BleeckerBreadcrumb { Items = items, CollapsedAfter = expanded ? 0 : 1,
+                        Width = viewport == 320 ? 240 : 480 };
+                    Canvas.SetLeft(trail, 16); Canvas.SetTop(trail, 24); root.Children.Add(trail);
+                    try
+                    {
+                        await Layout();
+                        var host = Find<Grid>(trail, "PART_Items") ?? throw new InvalidOperationException("Scaled Breadcrumb host is missing.");
+                        var panel = host.Children.OfType<Panel>().Single();
+                        var owner = trail.TransformToVisual(root).TransformBounds(new Rect(0, 0, trail.ActualWidth, trail.ActualHeight));
+                        Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && trail.IsLoaded &&
+                            panel.Children.Count == (expanded ? 7 : 5) && trail.ActualHeight > 0,
+                            "Breadcrumb did not render its full or collapsed path at native 150% scale.");
+                        Require(owner.X >= -.5 && owner.Y >= -.5 && owner.Right <= viewport + .5 && owner.Bottom <= root.Height + .5,
+                            $"Breadcrumb escaped its native 150% viewport: {owner}.");
+                        foreach (var child in panel.Children.OfType<FrameworkElement>())
+                        {
+                            var bounds = child.TransformToVisual(root).TransformBounds(new Rect(0, 0, child.ActualWidth, child.ActualHeight));
+                            Require(child.IsLoaded && bounds.Width > 0 && bounds.Height > 0 && bounds.X >= owner.X - .5 && bounds.Y >= owner.Y - .5 &&
+                                bounds.Right <= owner.Right + .5 && bounds.Bottom <= owner.Bottom + .5,
+                                $"Breadcrumb child clipped its native 150% owner: owner={owner}, child={bounds}.");
+                        }
+                        Require(panel.Children.OfType<TextBlock>().Single().IsTextTrimmed == false,
+                            "Breadcrumb current-page text trimmed at native 150% scale.");
+                        breadcrumbScale.Add(new { theme = theme.ToString(), viewport, expanded,
+                            scale = root.XamlRoot.RasterizationScale, children = panel.Children.Count, passed = true });
+                    }
+                    finally { root.Children.Clear(); await Layout(); }
+                }
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "breadcrumb-scale-cases.json"),
+                JsonSerializer.Serialize(new { passed = breadcrumbScale.Count == 8, cases = breadcrumbScale,
+                    librarySha256 = Hash(typeof(BleeckerBreadcrumb).Assembly.Location) },
                     new JsonSerializerOptions { WriteIndented = true }));
             root.Width=400;root.Height=160;window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,240));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,240));
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})

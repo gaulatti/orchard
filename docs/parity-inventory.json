@@ -3013,13 +3013,23 @@
         "PackageConsumer.MainWindow.OnLoaded",
         "CatalogCoverageTests"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261029.28",
+        "librarySha256": "64b032807a3a95d3467ea02a3d4dc28bd26fe10964eae54b67cf19bba0c52015",
+        "lightDarkStates": "Matching-package x64 catalog breadcrumb route passed empty, single, collapsed, expanded, custom and live-update states in Light and Dark",
+        "keyboardPointerFocus": "Catalog route passed physical ellipsis hover, held/cancelled press, Enter expansion, focus restoration and custom link interaction in both themes",
+        "scale150NoClip": "Independent package consumer passed eight native 150% Light/Dark collapsed/full path cases at 320/600-DIP viewports",
+        "reducedMotion": "Catalog route passed pressed/restored endpoints with Windows animations disabled; motion starts no storyboard under that preference",
+        "packageConsumerCompiles": "Independent x64 0.1.0-preview.20261029.28 package consumer compiled and ran",
+        "arm64RuntimeVerified": false
       }
     },
     {
