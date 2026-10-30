@@ -91,6 +91,44 @@ internal static class ContentScaleFixture
                 Require(bitmap.PixelWidth==width&&bitmap.PixelHeight==height,"Native island capture did not use its actual rasterization scale.");
             }
             root.Children.Clear();
+            var checkboxScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                stage = $"checkbox/{theme}/150-percent";
+                root.Width = 400; root.Height = 200; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 300));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 300));
+                const string title = "Keep fictional editorial notifications enabled while reviewing a long draft";
+                const string detail = "Send local alerts when a fictional review needs attention.";
+                var checkbox = new BleeckerCheckbox { Width = 320, Content = title, Description = detail, IsChecked = true };
+                Canvas.SetLeft(checkbox, 24); Canvas.SetTop(checkbox, 24); root.Children.Add(checkbox);
+                await Layout();
+                var label = Find<TextBlock>(checkbox, "PART_Label") ?? throw new InvalidOperationException("Scaled Checkbox label is missing.");
+                var description = Find<TextBlock>(checkbox, "PART_Description") ?? throw new InvalidOperationException("Scaled Checkbox description is missing.");
+                var box = Find<Border>(checkbox, "PART_Box") ?? throw new InvalidOperationException("Scaled Checkbox box is missing.");
+                var bounds = checkbox.TransformToVisual(root).TransformBounds(new Rect(0, 0, checkbox.ActualWidth, checkbox.ActualHeight));
+                var labelBounds = label.TransformToVisual(root).TransformBounds(new Rect(0, 0, label.ActualWidth, label.ActualHeight));
+                var detailBounds = description.TransformToVisual(root).TransformBounds(new Rect(0, 0, description.ActualWidth, description.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && checkbox.IsLoaded && checkbox.IsChecked == true,
+                    "Checkbox did not render in the native 150% island.");
+                Require(checkbox.ActualWidth == 320 && box.ActualWidth == 20 && box.ActualHeight == 20 &&
+                    label.Text == title && description.Text == detail && label.ActualHeight > 0 && description.ActualHeight > 0 &&
+                    bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width && bounds.Bottom <= root.Height &&
+                    labelBounds.X >= bounds.X && labelBounds.Right <= bounds.Right + .5 && labelBounds.Bottom <= bounds.Bottom + .5 &&
+                    detailBounds.X >= bounds.X && detailBounds.Right <= bounds.Right + .5 && detailBounds.Bottom <= bounds.Bottom + .5 &&
+                    label.ActualHeight + label.Margin.Top + label.Margin.Bottom + .5 >= label.DesiredSize.Height &&
+                    description.ActualHeight + description.Margin.Top + description.Margin.Bottom + .5 >= description.DesiredSize.Height,
+                    $"Checkbox text or chrome clipped at 150% scaling: control={bounds}, label={labelBounds} actual/desired={label.ActualHeight}/{label.DesiredSize.Height} text={label.Text}, description={detailBounds} actual/desired={description.ActualHeight}/{description.DesiredSize.Height} text={description.Text}, box={box.ActualWidth}x{box.ActualHeight}.");
+                checkboxScale.Add(new { theme = theme.ToString(), scale = root.XamlRoot.RasterizationScale, passed = true,
+                    width = checkbox.ActualWidth, height = checkbox.ActualHeight,
+                    labelHeight = label.ActualHeight, descriptionHeight = description.ActualHeight });
+                root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "checkbox-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-checkbox-150-scale-v1", passed = true, cases = checkboxScale,
+                    librarySha256 = Hash(typeof(BleeckerCheckbox).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            root.Height = 160;
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {
                 stage=$"context-menu/{theme}/150-percent";

@@ -1,5 +1,19 @@
 # Checkbox
 
+## x64 milestone acceptance
+
+Checkbox passes the five checks in the [component-library acceptance contract](acceptance-contract.md)
+against the published `0.1.0-preview.20261029.31` package. Its matching
+extracted x64 catalog passes 11 presentation states and 10 native physical
+input stages in each Light/Dark theme, including Space, Tab, box/label/description
+clicks, disabled rejection, RTL and focus. With animations already disabled,
+the glyph settles immediately without changing an OS setting. The independent
+package consumer compiles and runs; its hidden native island verifies the
+320-DIP checkbox's title, description and chrome do not clip at 150% in both
+themes. Reports remain in the existing
+`artifacts/current/context-menu-native-candidate/` directory. ARM64 builds
+remain runtime-unverified for this milestone.
+
 ## Rich-content names and implicit text styles
 
 Direct consumer-owned rich labels and descriptions retain their default native
@@ -612,11 +626,9 @@ The complete local x64 run at `artifacts/smoke-brand-all` passes both appearance
 with all 85 pointer observations, including the 24 repeat transitions and shared
 Input cursor ownership. Hosted verification remains required.
 
-Acceptance remains open: native runtime/captures and exact browser comparison,
-dark/disabled/focus rendered references, full physical pointer/keyboard matrix
-(including the disabled input's cursor), consumer rich-content edge cases,
-non-Latin fallback glyphs, lifecycle/scaling, component theme resources,
-exact focus/color/motion raster timing and ARM64 state acceptance.
+The older source-parity campaign tracked exact browser comparison, glyphs,
+cursor pixels, and motion raster timing. Those diagnostics do not add gates to
+the current five-check x64 milestone.
 Error styling is consumer-owned: the pinned source defines no built-in invalid
 variant. Local desktop text, display and animation preferences must remain
 unchanged. The repository wiki remote is unavailable, so this contract is
@@ -636,7 +648,7 @@ theme. The [checkpoint](evidence/checkbox-theme-root-pixel-center-v1/checkpoint.
 retains both failures and the passing report hashes. The shared Input physical
 pointer route also passes against that source build. The existing v7 package
 was not rebuilt or requalified; full visual, motion, scaling, consumer and
-native ARM64 acceptance remain open.
+native ARM64 acceptance remained open at that earlier checkpoint.
 
 Shared cursor diagnostics now record per-root refresh/publication counts and
 the retained/restored producer cursor alongside disabled Checkbox failures.

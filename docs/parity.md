@@ -8,12 +8,12 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Context Menu, Dashboard
+records pass/fail for all 112 entries; Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
-Status Badge, Switch and Tooltip are accepted (36 of 112 entries in current
-source and in the `.31` preview).
+Status Badge, Switch and Tooltip are accepted (37 of 112 entries in current
+source; the published `.31` preview lists the prior 36).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
