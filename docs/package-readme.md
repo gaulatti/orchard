@@ -11,9 +11,9 @@ Accepted x64 components in this preview: Accordion, Activity Item, Alert, Avatar
 Card, Checkbox, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Feed Item,
 Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
-Notification Badge, Panel Layout, Progress, Progress Stack, Radio Group, Section Header, Segmented Control, Separator,
+Notification Badge, OTP Input, Panel Layout, Progress, Progress Stack, Radio Group, Section Header, Segmented Control, Separator,
 Skeleton, Slider, Sparkline, Stat Card, Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 51 are accepted.
+inventory has 112 entries started; 52 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -153,8 +153,8 @@ default). Handle `ValueRequested` and assign the accepted value explicitly;
 rejected or unhandled edits restore the caller value. Edits accept ASCII digits,
 deletion compacts characters, and paste replaces the entire value. `IsSecure`
 uses protected native PasswordBox editors. The component adds no authentication
-or code-delivery service. Physical input, clipboard, scaling, full visual/motion
-and ARM64 runtime acceptance remain open.
+or code-delivery service. OTP Input passes the five x64 milestone checks;
+ARM64 runtime remains unverified.
 
 `BleeckerAppTabBar` binds `SelectedValue` to immutable `BleeckerAppTab` destinations
 in an observable `Tabs` collection. Supply a native `FontIconSource`, label,

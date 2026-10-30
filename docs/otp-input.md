@@ -1,10 +1,20 @@
-# OTP Input preview
+# OTP Input
 
 `BleeckerOtpInput` ports the controlled `OtpInput` at Bleecker commit
 `a86059013cd59684ce452849278ea81e734f2066`. It is a reusable editor for fictional
 local catalog values; it provides no authentication, delivery or validation service.
 
-Acceptance requires original caller values and source requests to cross native
+OTP Input is accepted for the 2026-10-29 x64 milestone. The exact published
+`.45` package DLL passed Light and Dark source states and catalog examples,
+physical pointer/keyboard/focus behavior in an independent consumer, ten
+native 150% layouts with no clipped slots or editors, reduced-motion focus
+ring endpoints while animations were disabled, and a fresh independent NuGet
+consumer compile and runtime. The earlier Windows clipboard route also passed.
+See `artifacts/current/context-menu-native-candidate/otp-input-*-v45.json`.
+ARM64 compiles but its runtime remains unverified. Raster/pixel parity and
+external UI Automation input are not gates for this milestone.
+
+The original implementation contract requires caller values and source requests to cross native
 editors correctly; ASCII-only edit filtering, deletion compaction and whole-value
 paste; native protected password editors; dynamic length/mode/disabled state;
 40×48 slots with 8-DIP spacing, theme paint and constrained overflow; registered
@@ -93,5 +103,5 @@ package-consumer runtime also passed after the fixture was added. The ARM64
 consumer compiles with no warnings, but has not run on native ARM64 hardware.
 The Light/Dark captures show the final fictional values without clipped slots;
 they do not prove full visual parity. Other input routes, scaling, motion,
-complete visual review and native ARM64 execution remain open, so OTP Input is
-still not an accepted inventory entry.
+complete historical visual parity and native ARM64 execution remained open at
+that earlier checkpoint; the current x64 milestone acceptance is recorded above.

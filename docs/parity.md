@@ -13,8 +13,8 @@ Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
-Filter Chip, Radio Group and Slider, are accepted (50 of 112 entries in current
-source and the `.43` preview).
+Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
+(52 of 112 entries in current source for the `.45` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -268,10 +268,11 @@ inherited tag shadows. Both full solution and isolated-consumer architectures,
 strict source/package image gate remains failed: 33 differing pixels, maximum
 20, with 77/82 identical PNG pairs; identical-binary archive replay differs at
 40 pixels. Full component acceptance remains open.
-The [OTP Input preview](otp-input.md) preserves controlled caller values, ASCII
+The [accepted OTP Input](otp-input.md) preserves controlled caller values, ASCII
 edit requests, native text/password slots and source deletion/paste semantics.
-Its source host passes 60 states and 32 behavior cases; physical input, clipboard,
-scaling, complete visual/motion and ARM64 runtime acceptance remain open.
+The exact `.45` package passed 60 states, 32 behavior cases, physical input in
+both themes, native 150% no-clipping and reduced-motion focus-ring checks.
+ARM64 runtime remains unverified.
 The [App Tab Bar preview](app-tab-bar.md) adds value-bound destinations, equal
 tracks, caller-owned Windows icons and capped badges with raw-count metadata.
 Its source host passes 58 cases and eight rendered layout checks; physical input,

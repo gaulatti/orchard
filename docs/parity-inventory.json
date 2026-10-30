@@ -4282,18 +4282,19 @@
       "regressionTests": [
         "tests/Orchard.Tests/OtpInputContractTests.cs",
         "tests/PackageConsumer/OtpInputFixture.cs",
+        "tests/PackageConsumer/OtpInputScaleFixture.cs",
         "samples/Orchard.Catalog/OtpInputCatalogProbe.cs",
         "scripts/verify-otp-input.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourceReference": "tests/Reference/OtpInput.json",
       "nativeEvidence": {
         "source": "artifacts/current/otp-input-native-v4/otp-input-audit.json",
         "sourceStates": 60,
         "behaviorCases": 32,
-        "physicalInputVerified": false,
-        "nativeClipboardVerified": false,
-        "nativeComponentAccepted": false,
+        "physicalInputVerified": true,
+        "nativeClipboardVerified": true,
+        "nativeComponentAccepted": true,
         "actualCatalog": "artifacts/current/otp-input-catalog-v2/otp-input-catalog-audit.json",
         "publicPackage": "artifacts/current/otp-input-package-native-v1/otp-input-audit.json",
         "externalUiaInputVerified": false,
@@ -4318,11 +4319,20 @@
         }
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.45",
+        "librarySha256": "a67005b1bbb8d92010ad9e6666bb3ce055ef79400fea0d8b3b22636dba271fb6",
+        "lightDarkStates": "The exact .45 package DLL passed 60 source states and 32 behavior cases in the independent consumer and two extracted-catalog Light/Dark cases; artifacts/current/context-menu-native-candidate/otp-input-hidden-v45.json and otp-input-catalog-v45.json.",
+        "keyboardPointerFocus": "The package-matching independent consumer passed physical pointer entry, Backspace, caller rejection, secure PasswordBox entry and focus in both Light and Dark; artifacts/current/context-menu-native-candidate/otp-light-desktop-v45.json and otp-dark-desktop-v45.json. The earlier native clipboard route passed.",
+        "scale150NoClip": "The independent .45 x64 consumer passed ten native 150% Light/Dark states across normal, secure, disabled, large-font and RTL layouts with all slots and editors inside bounds; artifacts/current/context-menu-native-candidate/otp-input-scale-v45.json.",
+        "reducedMotion": "With Windows animations already disabled, the independent consumer confirmed focused OTP rings snap to their endpoint in Light and Dark; artifacts/current/context-menu-native-candidate/otp-input-scale-v45.json. No OS setting was changed.",
+        "packageConsumerCompiles": "A fresh independent x64 NuGet consumer compiled and ran against .45 package SHA-256 e1b490cfbb5c712dcf1667b9cf4012c8adf5aae2712e10c128082a8aae0f5281 and exact matching DLL; artifacts/current/context-menu-native-candidate/package-consumer-x64-v45.json. ARM64 build-only; runtime unverified."
       }
     },
     {

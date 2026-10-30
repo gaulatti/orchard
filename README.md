@@ -11,16 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-30 `.44` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.44)
-for the current x64 component milestone. Fifty-one of 112 entries are accepted:
+Download the [2026-10-30 `.45` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.45)
+for the current x64 component milestone. Fifty-two of 112 entries are accepted:
 Accordion, Activity Item, Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button,
 Empty, Error State, Feed Grid, Feed Item, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
-Notification Badge, Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Radio Group,
+Notification Badge, OTP Input, Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Radio Group,
 Section Header, Segmented Control, Separator, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
-Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-44.md)
+Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-45.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.44/Orchard.Catalog.0.1.0-preview.20261030.44.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.44/Orchard.Catalog.0.1.0-preview.20261030.44.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.45/Orchard.Catalog.0.1.0-preview.20261030.45.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.45/Orchard.Catalog.0.1.0-preview.20261030.45.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
@@ -91,7 +91,7 @@ The [Segmented Control preview](docs/segmented-control.md) supplies typed value
 selection with keyed options, Windows selection metadata and constrained layouts.
 The [App Tab Bar preview](docs/app-tab-bar.md) supplies typed destination selection,
 caller-owned Windows icons, capped badges and raw-count accessibility metadata.
-The [OTP Input preview](docs/otp-input.md) supplies controlled digit requests,
+The [accepted OTP Input](docs/otp-input.md) supplies controlled digit requests,
 native text/password slots and fictional caller-owned validation examples.
 The [Context Menu draft](docs/context-menu.md) supplies native caller-owned
 actions with a distinct context recipe, bindable modality and shared modal ownership. Input,
