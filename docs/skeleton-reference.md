@@ -4,11 +4,10 @@ Producer: `src/components/skeleton.tsx` at Bleecker
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `acc108ca2c34011adfaf1792d7f758c87e0dce9dfd65a3642ca55e7f7bd0837b`.
 Its dependency is Tailwind CSS 4.2.2. The three native controls are accepted in
-current source for the [five-check x64 milestone](acceptance-contract.md). The
-published `.28` preview predates this inventory update; the next batched release
-will list Skeleton. ARM64 remains build-only and runtime-unverified.
+the `.29` preview for the [five-check x64 milestone](acceptance-contract.md).
+ARM64 remains build-only and runtime-unverified.
 
-The `.28` package DLL (`64b032807a3a95d3467ea02a3d4dc28bd26fe10964eae54b67cf19bba0c52015`)
+The `.29` package DLL (`4557de029e1c2ddf675c1f6459dd933a42725ed614dcc47c53df4309f56bcefe`)
 passed 36 Light/Dark/RTL states and 16 caller-content contracts in the hidden
 x64 catalog. The focused `smoke-catalog.ps1 -Component skeletons` route passed both themes, with a
 physical pointer click, Space, Enter and keyboard focus reaching the caller's
