@@ -8,7 +8,7 @@ registered after Bauhaus in the catalog. For the current x64 milestone it passes
 all five checks in the [acceptance contract](acceptance-contract.md): applicable
 Light/Dark states, physical keyboard/pointer/focus, native 150% no-clipping,
 reduced motion, and independent package-consumer compilation. The package-matching
-`.33` catalog passed its Light/Dark route; the independent `.33` consumer passed
+`.34` catalog passed its Light/Dark route; the independent `.34` consumer passed
 six 150% cases covering long, empty and RTL content. The source has no disabled
 or error variant. ARM64 runtime remains unverified for this milestone. The
 broader parity investigations below are historical and add no current gate.

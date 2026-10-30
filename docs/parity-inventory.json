@@ -297,13 +297,13 @@
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "packageVersion": "0.1.0-preview.20261030.33",
-        "librarySha256": "a41b89ec0ba49035941923da98a0d0a5bab6b1cebe4e83f53396f56c47673e99",
-        "lightDarkStates": "Package-matching extracted .33 x64 catalog passed normal, empty, long, RTL, hover and live-theme states in Light/Dark; source has no disabled or error variant; artifacts/current/context-menu-native-candidate/activity-route-v33.json and activity-measurements-{Light,Dark}.json",
-        "keyboardPointerFocus": "The same catalog passed physical hover/exit, movement across nested content, Hand cursor, ancestor tap, physical Tab bypass of passive rows, and non-invokable UIA in both themes; artifacts/current/context-menu-native-candidate/activity-route-v33.json",
-        "scale150NoClip": "Independent .33 x64 package consumer passed six native 150% cases covering long, empty and RTL content in Light/Dark; artifacts/current/context-menu-native-candidate/activity-item-scale.json",
-        "reducedMotion": "The extracted .33 catalog observed animations disabled and immediate hover/exit alpha endpoints in Light/Dark; artifacts/current/context-menu-native-candidate/activity-motion-{Light,Dark}.json",
-        "packageConsumerCompiles": "Independent .33 x64 NuGet consumer compiled and ran with Activity Item content/UIA assertions against package SHA-256 c5c401cb590a08ad48afd25520668417a795eb86b0d5cd11aec1e6f02acf2b43; artifacts/current/context-menu-native-candidate/package-consumer-x64-v33-activity.json"
+    "packageVersion": "0.1.0-preview.20261030.34",
+    "librarySha256": "f58839ffa270fdee4f8b0f743350f19b85126c23616f1ba3de316df296dbd8e5",
+    "lightDarkStates": "Package-matching extracted .34 x64 catalog passed normal, empty, long, RTL, hover and live-theme states in Light/Dark; source has no disabled or error variant; artifacts/current/context-menu-native-candidate/activity-route-v34.json",
+    "keyboardPointerFocus": "The same catalog passed physical hover/exit, movement across nested content, Hand cursor, ancestor tap, physical Tab bypass of passive rows, and non-invokable UIA in both themes; artifacts/current/context-menu-native-candidate/activity-route-v34.json",
+    "scale150NoClip": "Independent .34 x64 package consumer passed six native 150% cases covering long, empty and RTL content in Light/Dark; artifacts/current/context-menu-native-candidate/activity-item-scale.json",
+    "reducedMotion": "The extracted .34 catalog observed animations disabled and immediate hover/exit alpha endpoints in Light/Dark; artifacts/current/context-menu-native-candidate/activity-route-v34.json",
+    "packageConsumerCompiles": "Independent .34 x64 NuGet consumer compiled and ran with Activity Item content/UIA assertions against package SHA-256 9ff4072ed08259418dd6a94ea0c527ab3e4be9f0932f131d583c9f329e0b2ce9; artifacts/current/context-menu-native-candidate/package-consumer-x64-v34.json"
       }
     },
     {
@@ -2236,13 +2236,13 @@
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "packageVersion": "0.1.0-preview.20261030.33",
-        "librarySha256": "a41b89ec0ba49035941923da98a0d0a5bab6b1cebe4e83f53396f56c47673e99",
-        "lightDarkStates": "Package-matching .33 extracted x64 catalog passed 72 Data List cases across Light/Dark at 1024, 639 and 640 DIP clients; artifacts/current/context-menu-native-candidate/data-list-{1024,639,640}-route-v33.json",
-        "keyboardPointerFocus": "The same catalog passed physical pointer, Space and Enter activation of original embedded actions, inherited disabled state, live content and keyed reorder in Light/Dark; artifacts/current/context-menu-native-candidate/data-list-input-{Light,Dark}.json",
-        "scale150NoClip": "Independent .33 x64 package consumer passed six native 150% narrow, wide and RTL row/content layout cases in Light/Dark; artifacts/current/context-menu-native-candidate/data-list-scale.json",
-        "reducedMotion": "Data List control and template define no animation or transition; static state and embedded-control routing passed with animations already disabled; artifacts/current/context-menu-native-candidate/data-list-{1024,639,640}-route-v33.json",
-        "packageConsumerCompiles": "Independent .33 x64 NuGet consumer compiled and ran with Data List content/UIA assertions against package SHA-256 c5c401cb590a08ad48afd25520668417a795eb86b0d5cd11aec1e6f02acf2b43; artifacts/current/context-menu-native-candidate/package-consumer-x64-v33-data-list.json"
+    "packageVersion": "0.1.0-preview.20261030.34",
+    "librarySha256": "f58839ffa270fdee4f8b0f743350f19b85126c23616f1ba3de316df296dbd8e5",
+    "lightDarkStates": "Package-matching .34 extracted x64 catalog passed 72 Data List cases across Light/Dark at 1024, 639 and 640 DIP clients; artifacts/current/context-menu-native-candidate/data-list-{1024,639,640}-route-v34.json",
+    "keyboardPointerFocus": "The same catalog passed physical pointer, Space and Enter activation of original embedded actions, inherited disabled state, live content and keyed reorder in Light/Dark; artifacts/current/context-menu-native-candidate/data-list-input-{Light,Dark}.json",
+    "scale150NoClip": "Independent .34 x64 package consumer passed six native 150% narrow, wide and RTL row/content layout cases in Light/Dark; artifacts/current/context-menu-native-candidate/data-list-scale.json",
+    "reducedMotion": "Data List control and template define no animation or transition; static state and embedded-control routing passed with animations already disabled; artifacts/current/context-menu-native-candidate/data-list-{1024,639,640}-route-v34.json",
+    "packageConsumerCompiles": "Independent .34 x64 NuGet consumer compiled and ran with Data List content/UIA assertions against package SHA-256 9ff4072ed08259418dd6a94ea0c527ab3e4be9f0932f131d583c9f329e0b2ce9; artifacts/current/context-menu-native-candidate/package-consumer-x64-v34.json"
       }
     },
     {

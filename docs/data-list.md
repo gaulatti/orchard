@@ -4,8 +4,8 @@ For the current x64 milestone, Data List passes the five checks in the
 [acceptance contract](acceptance-contract.md): applicable Light/Dark states,
 physical embedded-control pointer/keyboard/focus behavior, native 150%
 no-clipping, static reduced-motion behavior, and independent package-consumer
-compilation. The package-matching `.33` catalog passed 72 cases at 1024, 639
-and 640 DIPs. The independent `.33` consumer passed six 150% cases covering
+compilation. The package-matching `.34` catalog passed 72 cases at 1024, 639
+and 640 DIPs. The independent `.34` consumer passed six 150% cases covering
 narrow, wide and RTL layouts. ARM64 runtime remains unverified. Broader source
 raster and platform investigations below are historical and do not add current
 milestone gates.

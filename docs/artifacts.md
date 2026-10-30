@@ -1,10 +1,10 @@
 # Local artifact storage
 
 The current published package and x64/ARM64 runnable catalogs are
-[preview 2026-10-30.33](releases/2026-10-30-preview-33.md). Its exact NuGet DLL,
+[preview 2026-10-30.34](releases/2026-10-30-preview-34.md). Its exact NuGet DLL,
 archive bytes, x64 consumer/runtime checks, ARM64 build/consumer compile, and
 fictional demos are recorded in
-`artifacts/current/context-menu-native-candidate/release-v33-checkpoint.json`.
+`artifacts/current/context-menu-native-candidate/release-v34-checkpoint.json`.
 Native ARM64 execution and remaining component acceptance remain open. The previous
 [published v7](releases/2026-10-27-preview-v7.md) contains the crash fix and
 its own separately qualified bytes. The older unpublished local checkpoint is
