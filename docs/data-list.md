@@ -1,5 +1,15 @@
 # Data list
 
+For the current x64 milestone, Data List passes the five checks in the
+[acceptance contract](acceptance-contract.md): applicable Light/Dark states,
+physical embedded-control pointer/keyboard/focus behavior, native 150%
+no-clipping, static reduced-motion behavior, and independent package-consumer
+compilation. The package-matching `.33` catalog passed 72 cases at 1024, 639
+and 640 DIPs. The independent `.33` consumer passed six 150% cases covering
+narrow, wide and RTL layouts. ARM64 runtime remains unverified. Broader source
+raster and platform investigations below are historical and do not add current
+milestone gates.
+
 `BleeckerDataList` implements the frozen Bleecker `DataList` contract from
 `a86059013cd59684ce452849278ea81e734f2066`, source SHA-256
 `23da195177b59a57fb1031ba4c8fdd900f7484febc4d73d13b96770cc55bde5a`.
@@ -64,8 +74,9 @@ requires comparison with their unchanged screenshots.
 Run native checks with `scripts/smoke-catalog.ps1 -Component data-list`, and
 repeat with `-ClientSize 639,1000` and `-ClientSize 640,1000` for the breakpoint
 matrix. The full catalog must retain all existing captures and input checks.
-The component remains in progress until runtime, raster, content/template,
-accessibility, scaling and platform evidence satisfies the fixed inventory.
+That earlier parity program sought broader raster, content/template,
+accessibility, scaling and platform evidence; the current x64 milestone uses
+the five checks above.
 
 Initial x64 evidence in `artifacts/data-list-matrix/{1024,639,640}` passes all
 72 source geometry cases at the original 0.05-DIP bound. Each process verifies

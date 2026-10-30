@@ -255,6 +255,53 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "activity-item-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-activity-item-150-scale-v1", passed = true, cases = activityScale,
                     librarySha256 = Hash(typeof(BleeckerActivityItem).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var dataListScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var variant in new[] { "narrow", "wide", "rtl" })
+            {
+                stage = $"data-list/{theme}/{variant}/150-percent";
+                var viewport = variant == "narrow" ? 400 : 700;
+                root.Width = viewport; root.Height = 500; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport * 1.5), 750));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, (int)(viewport * 1.5), 750));
+                var list = new BleeckerDataList { Width = viewport - 48, IsStriped = true,
+                    FlowDirection = variant == "rtl" ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
+                    Items = [new("record", "Editorial record", "A long fictional title that wraps inside its consumer width") { Description = "A local summary that also wraps at the chosen width" },
+                             new("empty", "", ""), new("number", "Count", 0),
+                             new("language", "المحرر", "العربية · a fictional multilingual value that wraps") ] };
+                Canvas.SetLeft(list, 24); Canvas.SetTop(list, 24); root.Children.Add(list);
+                await Layout();
+                var rows = FindAll<Panel>(list, "DataListRow").ToArray();
+                var bounds = list.TransformToVisual(root).TransformBounds(new Rect(0, 0, list.ActualWidth, list.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && list.IsLoaded && !list.IsTabStop &&
+                    list.ActualWidth == viewport - 48 && rows.Length == 4 &&
+                    bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width && bounds.Bottom <= root.Height,
+                    $"Data List did not render within the native 150% island: {theme}/{variant}, bounds={bounds}.");
+                foreach (var row in rows)
+                {
+                    var rowBounds = row.TransformToVisual(root).TransformBounds(new Rect(0, 0, row.ActualWidth, row.ActualHeight));
+                    Require(row.ActualWidth == list.ActualWidth && row.ActualHeight > 0 &&
+                        rowBounds.X >= bounds.X - .5 && rowBounds.Y >= bounds.Y - .5 &&
+                        rowBounds.Right <= bounds.Right + .5 && rowBounds.Bottom <= bounds.Bottom + .5,
+                        $"Data List row clipped at 150%: {theme}/{variant}, row={rowBounds}, owner={bounds}.");
+                    foreach (var name in new[] { "DataListLabel", "DataListValue", "DataListDescription" })
+                    {
+                        var slot = Find<Panel>(row, name) ?? throw new InvalidOperationException($"Scaled Data List {name} is missing.");
+                        var slotBounds = slot.TransformToVisual(root).TransformBounds(new Rect(0, 0, slot.ActualWidth, slot.ActualHeight));
+                        Require(slotBounds.X >= rowBounds.X - .5 && slotBounds.Y >= rowBounds.Y - .5 &&
+                            slotBounds.Right <= rowBounds.Right + .5 && slotBounds.Bottom <= rowBounds.Bottom + .5 &&
+                            slot.ActualHeight + .5 >= slot.DesiredSize.Height,
+                            $"Data List {name} clipped at 150%: {theme}/{variant}, slot={slotBounds}, row={rowBounds}.");
+                    }
+                }
+                dataListScale.Add(new { theme = theme.ToString(), variant, scale = root.XamlRoot.RasterizationScale,
+                    passed = true, width = list.ActualWidth, height = list.ActualHeight });
+                root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "data-list-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-data-list-150-scale-v1", passed = true, cases = dataListScale,
+                    librarySha256 = Hash(typeof(BleeckerDataList).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             root.Height = 160;
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {
