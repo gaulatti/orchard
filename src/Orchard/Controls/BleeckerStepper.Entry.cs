@@ -232,7 +232,9 @@ public sealed partial class BleeckerStepper
         internal void Align(BleeckerStepper owner)
         {
             if (owner.XamlRoot is null || Text.Text.Length == 0) return;
-            var origin = TransformToVisual(owner.XamlRoot.Content).TransformPoint(new Point()).Y;
+            // The source baseline is local to the Stepper. A fractional catalog
+            // host offset must not change the line's position inside the control.
+            var origin = TransformToVisual(owner).TransformPoint(new Point()).Y;
             var factor = Text.IsTextScaleFactorEnabled ? owner.settings.TextScaleFactor : 1;
             var scale = owner.XamlRoot.RasterizationScale;
             // Chromium floors the measured CSS line baseline onto the device

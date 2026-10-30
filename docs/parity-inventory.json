@@ -2130,20 +2130,30 @@
         "tests/Reference/StepperMotion.json",
         "scripts/smoke-stepper-motion.ps1",
         "tests/Reference/StepperTypography.json",
+        "tests/PackageConsumer/StepperScaleFixture.cs",
         "scripts/verify-stepper-typography.mjs",
         "scripts/smoke-catalog.ps1 -Component stepper-raster",
         "scripts/compare-stepper-raster.mjs",
         "scripts/test-stepper-raster-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "currentV7ConsumerCheckpoint": "docs/evidence/theme-toggle-v7-lifecycle-v1/checkpoint.json",
       "currentV7ConsumerReport": "docs/evidence/theme-toggle-v7-lifecycle-v1/full-consumer-result.json",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.49",
+        "librarySha256": "50f49861086f5bab53a25896a180d442fe3ad6396734a7285ac26cfe6293999c",
+        "lightDarkStates": "The package-matching .49 x64 catalog passed 22 Light and 22 Dark source states with zero failures, including both orientations, all four statuses, empty, RTL and narrow cases. Stepper-local baseline rounding removed the prior 0.64-DIP host-offset error; artifacts/current/context-menu-native-candidate/stepper-source-{Light,Dark}.json and stepper-foreground-v49.json.",
+        "keyboardPointerFocus": "The same x64 foreground catalog passed native pointer ownership, Tab and held-Space input, disabled rejection, UIA invocation, original-step callbacks, reorder and lifecycle checks in Light and Dark; artifacts/current/context-menu-native-candidate/stepper-input-{Light,Dark}.json and stepper-{Light,Dark}-desktop.json. The independent .49 consumer also passed focused Space and original-step action checks.",
+        "scale150NoClip": "Independent .49 x64 package consumer passed eight native 150% Light/Dark horizontal, narrow, vertical and RTL layouts. Step buttons and label groups stayed inside the owner; artifacts/current/context-menu-native-candidate/stepper-scale-v49.json.",
+        "reducedMotion": "With Windows animations already disabled, the exact .49 package consumer verified changed Stepper status colors settled immediately and stayed static in all eight 150% layouts; artifacts/current/context-menu-native-candidate/stepper-scale-v49.json. No OS setting was changed.",
+        "packageConsumerCompiles": "Independent .49 x64 NuGet consumer compiled and ran against package SHA-256 c10be5b3ac7b0ee524d145db363d02f0d6490ebb4d268568c418e4775754a1a6 and exact DLL 50f49861086f5bab53a25896a180d442fe3ad6396734a7285ac26cfe6293999c; artifacts/current/context-menu-native-candidate/package-consumer-stepper-x64-v49.json. ARM64 runtime is unverified."
       }
     },
     {
