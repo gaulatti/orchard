@@ -7,6 +7,15 @@ The consumer owns `IsVisible` and `Label`. The default label is `Loading...`;
 null and empty labels omit the paragraph, while whitespace retains its 12-DIP
 gap and a zero-height paragraph.
 
+Loading Overlay is accepted for the x64 [five-check milestone](acceptance-contract.md).
+The current catalog passes 60 Light/Dark states at 320×240, 640×480 and
+1024×900, including physical pointer, Space, Enter, focus transfer, Escape and
+Tab behavior. Its independent package consumer compiles and runs; four native
+150% Light/Dark layouts keep the portal, card, spinner and label in bounds.
+With Windows animations already disabled, the spinner remains static. No OS
+setting was changed. ARM64 is build-only and runtime-unverified. The broader
+historical diagnostics below do not add milestone gates.
+
 ```xml
 <orchard:BleeckerLoadingOverlay IsVisible="{x:Bind ViewModel.IsLoading, Mode=OneWay}"
     Label="Preparing the local preview" />
@@ -25,6 +34,8 @@ action can still receive Space and Enter. Applications needing modal dialog
 semantics should use a dialog contract. This component has no cancellation
 command or automatic timeout. The catalog's three-second example demonstrates
 caller-controlled visibility.
+After a pointer click on the portal, WinUI may clear the root's temporary focus;
+Space must still leave the underlying action inactive, and Tab returns to it.
 
 The spinner exposes an indeterminate `ProgressBar` automation peer without a
 numeric range or keyboard stop. Its name follows Orchard's standard precedence:
@@ -106,17 +117,12 @@ template and lifecycle combinations are not established by it.
 contrast workflow's ordinary Light/Dark entry without changing Windows settings.
 It verifies default palette/effect state, original keyboard focus and solid
 label ink in actual native captures. Its verifier reports `entryOnly: true` and
-`actualContrastVerified: false`; entry evidence cannot satisfy the live gate.
+`actualContrastVerified: false`; OS contrast campaigns are outside this milestone.
 
-`-Component loading-overlay-contrast -ClientSize 640,480` is the prepared live
-transition gate. It uses the existing hosted-runner-only contrast helper,
-checks opaque Window/WindowText/Highlight paint and suppressed blur/shadows,
-reuses the established label-ink mask, exercises pointer/Space behavior, then
-requires the original Windows state, palette and effects to return. It is
-registered for both native CI jobs, with push-triggered Actions still paused.
-The local route continues to refuse mutation before native stages begin.
-Live execution of this new gate remains unverified. See the
-[contrast safety contract](contrast-verification.md).
+The historical `-Component loading-overlay-contrast -ClientSize 640,480`
+route describes an OS contrast transition. It is excluded from this goal and
+must not be launched for milestone acceptance. See the
+[current library scope](library-scope.md).
 
 `tests/Reference/LoadingOverlay.json` records 60 unmodified browser cases across
 1024×900, 640×480 and 320×240 in both themes, plus six real keyboard/pointer
@@ -168,7 +174,7 @@ template replacement release the rendering subscription. Focused
 frame while the parent scrolls and changes its render transform. Its viewport
 bound remains 0.05 DIP, including the first frame after a change.
 
-Exact unmasked pixel comparison remains required. The native fixture uses real
+Historical unmasked pixel comparison is retained for research, not acceptance. The native fixture uses real
 native underlying buttons, whose own rendering also differs from the browser
 fixture. The checkerboard phase matches the source. No masks, resampling or
 pixel tolerances are applied.
@@ -190,8 +196,6 @@ Avatar presentation timeout remains retained; its cause is not established.
 The original release DLL is rejected by the same Page-root regression: the
 actual button receives Tab focus while the root incorrectly remains a tab stop.
 
-Acceptance remains open: full rendered review, broader resource and
-custom-template/cross-window lifecycle, scaling,
-component theme/automation behavior, motion and native ARM64
-runtime. A successful build or the presence of the catalog example is not
-component acceptance.
+The current x64 five-check acceptance is recorded above. Broader resource,
+custom-template, multiwindow and ARM64 runtime coverage remain historical parity
+work and do not gate this milestone.

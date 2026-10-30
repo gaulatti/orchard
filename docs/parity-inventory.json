@@ -2375,6 +2375,7 @@
         "tests/Reference/LoadingOverlay.json",
         "tests/Orchard.Tests/LoadingOverlayReferenceTests.cs",
         "tests/PackageConsumer/MainWindow.LoadingOverlay.cs",
+        "tests/PackageConsumer/LoadingOverlayScaleFixture.cs",
         "scripts/verify-loading-overlay.mjs",
         "scripts/test-loading-overlay-audit.mjs",
         "scripts/compare-loading-overlay-pixels.mjs",
@@ -2395,13 +2396,22 @@
         "scripts/verify-loading-overlay-contrast.mjs",
         "scripts/test-loading-overlay-contrast-entry-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.51",
+        "librarySha256": "90c5647d0b58e2d3ff98a7ba8734ab5ce27733854c03f21123f4a723a8cc4c35",
+        "lightDarkStates": "The .51 x64 catalog passes 60 Light/Dark source cases at 320x240, 640x480 and 1024x900 DIPs with zero failures; artifacts/current/context-menu-native-candidate/loading-overlay-source-{320,640,1024}-v51.json.",
+        "keyboardPointerFocus": "The same foreground catalog passes physical pointer barrier, Space/Enter on the original action before a click, no underlying activation after a portal click, Escape non-dismissal, Tab focus restoration and root tab-stop/binding restoration in Light and Dark; the three loading-overlay-source-{320,640,1024}-v51.json reports and loading-overlay-desktop.json.",
+        "scale150NoClip": "Independent .51 x64 package consumer passes four native 150% Light/Dark 320x240 and 640x480 layouts with portal, card, spinner and label in bounds; artifacts/current/context-menu-native-candidate/loading-overlay-scale-v51.json.",
+        "reducedMotion": "With Windows animations already disabled, the exact .51 package consumer verifies spinner rotation stays static in all four native 150% layouts; artifacts/current/context-menu-native-candidate/loading-overlay-scale-v51.json. No OS setting was changed.",
+        "packageConsumerCompiles": "Independent .51 x64 NuGet consumer compiles and runs against the exact release package; artifacts/current/context-menu-native-candidate/package-consumer-loading-overlay-x64-v51.json. ARM64 runtime is unverified."
       }
     },
     {

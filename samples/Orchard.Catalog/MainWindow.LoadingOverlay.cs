@@ -96,9 +96,11 @@ public sealed partial class MainWindow
                 await input.ClickAsync(activePortal, localPoint: new Point(90, 36)); var pointerBlocked = actions == keyboardActivations;
                 var focusAfterPointer = (FocusManager.GetFocusedElement(root) as FrameworkElement)?.Name;
                 var neutralRootFocused = ReferenceEquals(FocusManager.GetFocusedElement(root), root.Content);
-                if (neutralRootFocused) await input.KeyAsync(0x20, CatalogRoot);
+                // The root's temporary tab stop is restored after pointer focus clears;
+                // WinUI may then drop that transient focus before the next key.
+                input.Key(0x20); await AwaitPresentationAsync(host);
                 var pointerClearedActivation = actions == keyboardActivations;
-                if (neutralRootFocused) await input.KeyAsync(0x1B, CatalogRoot); else input.Key(0x1B);
+                input.Key(0x1B);
                 await AwaitPresentationAsync(host);
                 var escapeDoesNotDismiss = VisualTreeHelper.GetOpenPopupsForXamlRoot(root).Any(p => p.Child is FrameworkElement element && element.Name == "PART_Portal");
                 input.Key(0x09); await AwaitPresentationAsync(host); var focusAfterTab = (FocusManager.GetFocusedElement(root) as FrameworkElement)?.Name;
