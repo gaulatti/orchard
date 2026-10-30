@@ -1,5 +1,16 @@
 # BleeckerThemeToggle
 
+The current x64 milestone accepts Theme Toggle under the five checks in
+[the acceptance contract](acceptance-contract.md). The package-matching catalog
+passes 134 Light/Dark states and physical pointer, Space, Enter and focus
+behavior. With Windows animations disabled, six pressed states reach the 0.97
+scale/1-DIP translation endpoint immediately and twelve hover/focus states
+remain at their rest endpoint. An independent NuGet consumer passes 108 native
+150% no-clipping cases across modes, sizes, variants, enabled states and both
+themes; it compiles against the preview package. Exact browser/native raster
+equality is not a gate. ARM64 is build-only and runtime-unverified. The older
+source-parity investigations below remain historical.
+
 `BleeckerThemeToggle` is a native icon button that requests a consumer-owned theme
 mode. `Mode` defaults to `System`; activating it requests `Light`, then `Dark`,
 then `System`. The consumer accepts a request by updating its model and choosing
@@ -47,12 +58,11 @@ changes OS preferences. The audit checks source normal-state geometry, icon
 properties and metadata as well as caller overrides and lifecycle boundaries.
 It explicitly leaves physical input, visible raster, motion and scaling open.
 
-Acceptance requires all three mode transitions through physical pointer,
-Space/Enter and native Invoke; disabled/detached rejection; accepted and rejected
-requests; live bindings and metadata/tooltip updates; template/remount behavior;
-all size/variant/theme states; original full-frame raster comparison; inherited
-button motion, display scaling, package consumers and native ARM64 evidence.
-No Narrator or OS preference changes are part of this work.
+The current milestone requires the five x64 checks above. The earlier
+full-parity review also investigated native Invoke, template/remount behavior,
+exact full-frame raster comparison and ARM64 runtime; those extra investigations
+do not add gates to this release. No Narrator or OS preference changes are part
+of this work.
 
 The Theme Toggles catalog fixture demonstrates local preview changes, a fixed
 consumer mode, disabled state, variants, caller text in Japanese and style-owned
@@ -76,7 +86,7 @@ frame; native normal animation, actual scaling and ARM64 runtime remain
 unverified. The v8 artifacts predate this change. The [v9 local preview](releases/2026-10-27-components-v9-unqualified.md)
 contains it: its extracted x64 catalog repeats the physical and 134-state
 geometry checks, and an independent v9 NuGet consumer runs on x64. The
-component remains unaccepted.
+component was unaccepted at that historical checkpoint.
 
 The later [published v5 preview](evidence/theme-toggle-v5-published-foreground-v1/checkpoint.json)
 has the same Theme Toggle library bytes in its NuGet package and extracted x64
@@ -112,5 +122,6 @@ check](evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json) confirms
 pointer, Space and Enter requests through System, Light, Dark and back to System
 in system Dark and explicit Light, with the next-mode names and preview
 appearance updating. The catalog window closed; its exit code was not captured.
-Broader focus/tooltip variants, normal animation, display scaling, full visual
-review and native ARM64 runtime remain open. The component is still unaccepted.
+Broader focus/tooltip variants, normal animation, full visual review and native
+ARM64 runtime remain open for the historical parity review. The current x64
+milestone is accepted as stated above.

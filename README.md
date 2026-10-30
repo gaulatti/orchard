@@ -11,16 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-30 `.42` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.42)
-for the current x64 component milestone. Forty-nine of 112 entries are accepted:
+Download the [2026-10-30 `.43` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.43)
+for the current x64 component milestone. Fifty of 112 entries are accepted:
 Accordion, Activity Item, Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button,
 Empty, Error State, Feed Grid, Feed Item, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
 Notification Badge, Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Radio Group,
 Section Header, Separator, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
-Switch, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-42.md)
+Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-43.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.42/Orchard.Catalog.0.1.0-preview.20261030.42.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.42/Orchard.Catalog.0.1.0-preview.20261030.42.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.43/Orchard.Catalog.0.1.0-preview.20261030.43.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.43/Orchard.Catalog.0.1.0-preview.20261030.43.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
@@ -130,10 +130,11 @@ sanitized range values and routes changes through consumer-controlled requests.
 Guarded package tests match 182 source layouts and controlled ownership checks.
 Its visible desktop verification is pending.
 
-The [Theme Toggle draft](docs/theme-toggle.md) requests consumer-owned
+The [Theme Toggle component](docs/theme-toggle.md) requests consumer-owned
 Light/Dark/System changes with native icon-button variants and source labels.
 Guarded hidden XAML checks verify its normal geometry and caller metadata
-ownership. Its visible desktop verification is pending.
+ownership. The current x64 catalog passes physical input and Light/Dark states;
+an independent consumer passes 108 native 150% cases.
 
 The [FeedGrid component](docs/feed-grid.md) auto-fills minimum-width columns,
 reserves empty tracks and retains original caller controls across resizing.

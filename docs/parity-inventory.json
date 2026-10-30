@@ -7738,16 +7738,27 @@
         "scripts/verify-hidden-component-contracts.mjs",
         "scripts/test-hidden-component-contracts-audit.mjs",
         "scripts/verify-theme-toggle-package-input.ps1",
-        "scripts/verify-theme-toggle-package-accepted-input.ps1"
+        "scripts/verify-theme-toggle-package-accepted-input.ps1",
+        "tests/PackageConsumer/ThemeToggleScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "publishedV7CatalogForegroundCheckpoint": "docs/evidence/theme-toggle-v7-catalog-foreground-v1/checkpoint.json",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.43",
+        "librarySha256": "965109bab9115ae24ef60e59810956ba6724de9ac0c5c15ad7dc1ce4e8695b3e",
+        "lightDarkStates": "The package-matching extracted x64 catalog passed 134 states across Light/Dark, all modes, sizes, variants, disabled, hover, press and focus; artifacts/current/context-menu-native-candidate/theme-toggle-extracted-v43.json and selected theme-toggle-system-md-default-false-Light-v43.png / theme-toggle-system-md-default-false-Dark-v43.png.",
+        "keyboardPointerFocus": "The extracted x64 catalog passed physical pointer, Space and Enter requests and focus in both themes, including binding retention, disabled/detached rejection and remount; artifacts/current/context-menu-native-candidate/theme-toggle-extracted-v43.json. The independent package consumer also passed native Invoke and metadata checks.",
+        "scale150NoClip": "The independent .43 NuGet consumer passed 108 visible native 150% cases: Light/Dark by three modes, three sizes, three variants and enabled/disabled, with icon and vector inside owner bounds; artifacts/current/context-menu-native-candidate/theme-toggle-scale-v43.json.",
+        "reducedMotion": "With Windows animations disabled and no OS setting change, the extracted x64 catalog observed six pressed states at the immediate 0.97 scale/1-DIP translation endpoint and twelve hover/focus states at rest; artifacts/current/context-menu-native-candidate/theme-toggle-extracted-result-v43.json and theme-toggle-extracted-v43.json.",
+        "packageConsumerCompiles": "An independent .43 x64 consumer compiled and ran against NuGet package SHA-256 5a148c7c7573285e98e8aa204a6415f555a29816280350d5c35366d95951de18; artifacts/current/context-menu-native-candidate/package-consumer-x64-v43.json and theme-toggle-scale-v43.json.",
+        "arm64RuntimeVerified": false
       }
     },
     {
