@@ -5314,9 +5314,10 @@
         "tests/PackageConsumer/ToggleGroupFixture.cs",
         "scripts/verify-toggle-group.ps1",
         "scripts/verify-toggle-group.mjs",
-        "scripts/test-toggle-group-audit.mjs"
+        "scripts/test-toggle-group-audit.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "currentDelivery": {
         "checkpoint": "docs/evidence/toggle-notification-v1/checkpoint.json",
         "checkpointSha256": "c4114f76979ee01196c306879aeb3c399c3ed33961d0a80ffa5d615aaf47dd64",
@@ -5334,12 +5335,13 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The package-matching .38 x64 catalog passed Light/Dark theme paint and physical pointer, keyboard, focus, caller selection, and stable selected paint with OS animations already disabled. The independent .38 NuGet consumer compiled; its native island passed all 12 size/variant layouts in Light/Dark at 150% without clipping. ARM64 runtime remains unverified."
     },
     {
       "id": "tooltip",

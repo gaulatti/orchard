@@ -12,8 +12,8 @@ Card, Checkbox, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Feed Item,
 Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
 Panel Layout, Progress, Progress Stack, Radio Group, Section Header, Separator,
-Skeleton, Slider, Sparkline, Stat Card, Status Badge, Switch, Toggle and Tooltip. The fixed
-inventory has 112 entries started; 45 are accepted.
+Skeleton, Slider, Sparkline, Stat Card, Status Badge, Switch, Toggle, Toggle Group and Tooltip. The fixed
+inventory has 112 entries started; 46 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes

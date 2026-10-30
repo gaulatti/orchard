@@ -2,6 +2,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using System.Text.Json;
+using Windows.UI.ViewManagement;
 
 namespace Orchard.Catalog;
 
@@ -86,6 +89,67 @@ public sealed partial class ToggleGroupsFixture : UserControl
         MultipleGroup.SelectedValues.Clear();
         MultipleGroup.SelectedValues.Add("local");
     }
+
+    internal async Task VerifyPhysicalAsync(ElementTheme theme, string folder)
+    {
+        using var input = new NativeInputSession(XamlRoot, folder, $"toggle-group-{theme}");
+        await input.AcquireAsync(GridItem);
+        SelectionValueInput.Text = "list";
+        MultipleGroup.SelectedValues.Clear();
+        MultipleGroup.SelectedValues.Add("local");
+        await MainWindow.AwaitPresentationAsync(this);
+        var light = theme == ElementTheme.Light;
+        var surface = (SolidColorBrush)SingleGroup.Background;
+        var border = (SolidColorBrush)SingleGroup.BorderBrush;
+        Require(Hex(surface) == (light ? "#FFF9F6F2" : "#FFFFFFFF") &&
+            Math.Abs(surface.Opacity - (light ? .65 : .05)) < .001 &&
+            Hex(border) == (light ? "#FFE6D5B8" : "#FFFFFFFF") &&
+            Math.Abs(border.Opacity - (light ? .2 : .07)) < .001,
+            "Toggle Group did not render its themed surface and border.");
+        await input.ClickAsync(GridItem);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(SingleGroup.SelectedValue == "grid" && SelectionValueInput.Text == "grid" && GridItem.IsChecked == true,
+            "Pointer click did not select Grid in the caller binding.");
+        await input.ClickAsync(GridItem);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(string.IsNullOrEmpty(SingleGroup.SelectedValue) && SelectionValueInput.Text == "" && GridItem.IsChecked == false,
+            "Pointer click did not clear the selected item.");
+        Require(ListItem.Focus(FocusState.Keyboard), "List item refused keyboard focus.");
+        input.Key(0x27);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), GridItem) &&
+            string.IsNullOrEmpty(SingleGroup.SelectedValue),
+            "Right arrow did not move focus to Grid without selecting it.");
+        await input.KeyAsync(0x20, GridItem);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(SingleGroup.SelectedValue == "grid" && GridItem.IsChecked == true,
+            "Space did not select the focused Grid item.");
+        await input.ClickAsync(CultureItem);
+        Require(MultipleGroup.SelectedValues.SequenceEqual(new[] { "local", "culture" }),
+            "Pointer click did not add Culture to the caller's multiple selection.");
+        await input.ClickAsync(CultureItem);
+        Require(MultipleGroup.SelectedValues.SequenceEqual(new[] { "local" }),
+            "Pointer click did not remove Culture from the caller's multiple selection.");
+        Require(CultureItem.Focus(FocusState.Keyboard), "Culture item refused keyboard focus.");
+        await input.KeyAsync(0x20, CultureItem);
+        Require(MultipleGroup.SelectedValues.SequenceEqual(new[] { "local", "culture" }) && SelectionResult.Text.Contains("culture", StringComparison.Ordinal),
+            "Space did not add Culture to the caller's multiple selection.");
+        var reducedMotion = !new UISettings().AnimationsEnabled;
+        if (reducedMotion)
+        {
+            var presenter = (ContentPresenter)VisualTreeHelper.GetChild(CultureItem, 0);
+            var color = ((SolidColorBrush)presenter.Background).Color;
+            await Task.Delay(50);
+            Require(((SolidColorBrush)presenter.Background).Color == color,
+                "Selected Toggle Group item continued a background transition under reduced motion.");
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, $"toggle-group-runtime-{theme}.json"),
+            JsonSerializer.Serialize(new { passed = true, theme = theme.ToString(), pointerActions = 4,
+                keyboardActions = 2, arrowFocus = true, callerSelection = true, reducedMotionVerified = reducedMotion }));
+    }
+
+    private static string Hex(SolidColorBrush brush) =>
+        $"#{brush.Color.A:X2}{brush.Color.R:X2}{brush.Color.G:X2}{brush.Color.B:X2}";
 
     private static void Require(bool condition, string message)
     {

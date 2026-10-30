@@ -1,5 +1,12 @@
 # Toggle groups
 
+Toggle Group passes the current x64 component milestone: Light and Dark states,
+physical pointer/keyboard/focus behavior, no clipping at native 150% scaling,
+reduced-motion behavior, and independent NuGet consumer compilation. The
+package-matching catalog route exercises single and multiple selection and
+caller bindings in both themes; the isolated consumer verifies all 12
+size/variant/theme layouts at 150%. ARM64 runtime remains unverified.
+
 `BleeckerToggleGroup` groups consumer-owned `BleeckerToggleGroupItem` controls by stable string values. Single selection is optional: activating the selected item clears it. Multiple selection toggles membership in an observable collection.
 
 ```xml
@@ -70,14 +77,11 @@ package compile for ARM64; native ARM64 runtime remains open.
 
 Catalog fixtures cover optional single selection, multiple selection, two-way consumer binding, disabled items/groups, both variants, all sizes and constrained multilingual content. Published x64 runtime checks exercise UI Automation selection, collection mutation, removal/reinsertion, disabled inheritance and light/dark rendering. Physical pointer and keyboard checks verify multiple selection, disabled-item skipping, wrapping, Space selection and clearing. The independent NuGet consumer exercises group templates and selection without a project reference. ARM64 compilation is checked separately.
 
-Remaining acceptance: rendered Bleecker comparison across every size, variant,
-theme and interaction state; branded focus and motion; display/text scaling;
-reduced motion; broader keyboard/RTL and error-state fixtures; and ARM64 runtime.
-Narrator and OS contrast campaigns are excluded by the
-[component-library scope](library-scope.md). The earlier published runtime
-statements describe their original checks; the v4 evidence above is separate.
-Token and interaction checks do not establish visual parity. This component
-remains in progress in the parity inventory.
+The preceding local-preview notes describe their original checks; the current
+x64 milestone supersedes those older acceptance gaps. Raster/pixel identity,
+native ARM64 runtime, Narrator, and OS contrast campaigns are outside this
+milestone. The accepted status and five pass/fail checks are recorded in the
+[parity inventory](parity-inventory.json).
 
 The later [consolidated v5 package](releases/2026-10-26-components-v5-local.md)
 passed the focused Toggle Group lifecycle/style check in its independent x64

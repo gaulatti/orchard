@@ -1649,6 +1649,48 @@ internal static class ContentScaleFixture
                 using var stream=new InMemoryRandomAccessStream();var encoder=await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId,stream);encoder.SetPixelData(BitmapPixelFormat.Bgra8,BitmapAlphaMode.Premultiplied,(uint)bitmap.PixelWidth,(uint)bitmap.PixelHeight,96,96,bytes);await encoder.FlushAsync();stream.Seek(0);using var reader=new DataReader(stream);await reader.LoadAsync((uint)stream.Size);var png=new byte[(int)stream.Size];reader.ReadBytes(png);await File.WriteAllBytesAsync(Path.Combine(Path.GetDirectoryName(output)!,file),png);toggleFrames.Add(new{theme=theme.ToString(),requestedScale=scale,width=bitmap.PixelWidth,height=bitmap.PixelHeight,file,sha256=Convert.ToHexStringLower(SHA256.HashData(png))});
                 Require(bitmap.PixelWidth==width&&bitmap.PixelHeight==height&&Math.Abs(root.XamlRoot.RasterizationScale-scale)<.0001,"Toggle capture did not use the requested native rasterization scale.");
             }
+            var toggleGroupScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var size in Enum.GetValues<BleeckerControlSize>())
+            foreach (var variant in Enum.GetValues<BleeckerToggleVariant>())
+            {
+                stage = $"toggle-group/{theme}/{size}/{variant}/150-percent";
+                root.Children.Clear(); root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 240));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 240));
+                var group = new BleeckerToggleGroup { Width = 300, Size = size, Variant = variant, SelectedValue = "list" };
+                var list = new BleeckerToggleGroupItem { Value = "list", Content = "List" };
+                var grid = new BleeckerToggleGroupItem { Value = "grid", Content = "Grid" };
+                group.Items.Add(list); group.Items.Add(grid);
+                var selectionEvents = 0;
+                group.SelectionChanged += (_, _) => selectionEvents++;
+                Canvas.SetLeft(group, 24); Canvas.SetTop(group, 24); root.Children.Add(group);
+                await Layout();
+                var bounds = group.TransformToVisual(root).TransformBounds(new Rect(0, 0, group.ActualWidth, group.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && group.IsLoaded && !group.IsTabStop &&
+                    group.ActualWidth == 300 && bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width &&
+                    bounds.Bottom <= root.Height && selectionEvents == 0 && list.IsChecked == true && grid.IsChecked == false,
+                    $"Toggle Group escaped its native 150% host or changed selection: {theme}/{size}/{variant}, owner={bounds}.");
+                foreach (var item in new[] { list, grid })
+                {
+                    var itemBounds = item.TransformToVisual(root).TransformBounds(new Rect(0, 0, item.ActualWidth, item.ActualHeight));
+                    var content = (ContentPresenter)VisualTreeHelper.GetChild(item, 0);
+                    var contentBounds = content.TransformToVisual(root).TransformBounds(new Rect(0, 0, content.ActualWidth, content.ActualHeight));
+                    Require(item.IsLoaded && item.IsTabStop && item.ActualWidth > 0 && item.ActualHeight > 0 &&
+                        itemBounds.X >= bounds.X - .5 && itemBounds.Y >= bounds.Y - .5 &&
+                        itemBounds.Right <= bounds.Right + .5 && itemBounds.Bottom <= bounds.Bottom + .5 &&
+                        contentBounds.X >= itemBounds.X - .5 && contentBounds.Y >= itemBounds.Y - .5 &&
+                        contentBounds.Right <= itemBounds.Right + .5 && contentBounds.Bottom <= itemBounds.Bottom + .5 &&
+                        content.ActualHeight + .5 >= content.DesiredSize.Height,
+                        $"Toggle Group item clipped at native 150%: {theme}/{size}/{variant}, item={itemBounds}, content={contentBounds}.");
+                }
+                toggleGroupScale.Add(new { theme = theme.ToString(), size = size.ToString(), variant = variant.ToString(),
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "toggle-group-scale.json"),
+                JsonSerializer.Serialize(new { passed = true, cases = toggleGroupScale,
+                    librarySha256 = Hash(typeof(BleeckerToggleGroup).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             root.Children.Clear();root.RequestedTheme=ElementTheme.Light;island.SiteBridge.OverrideScale=1;window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(400,160));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,400,160));
             var defaultInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Small};root.Children.Add(defaultInput);stage="input/default-small";await Layout();
             Require(defaultInput.FontSize==13&&defaultInput.Padding==new Thickness(12,0,12,0)&&defaultInput.MinHeight==36,"Default small Input lost its size recipe.");
