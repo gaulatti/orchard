@@ -1,5 +1,15 @@
 # Dialog Close Button
 
+`BleeckerDialogCloseButton` is accepted in current source for the
+[five-check x64 milestone](acceptance-contract.md). The published `.29` preview
+predates this inventory update. Its matching package DLL passed the focused
+extracted catalog's 16 Light/Dark states and physical pointer, Space, Enter and
+focus path with animations disabled. The independent x64 consumer compiled and
+ran; four native 150% default/large-icon and enabled/disabled cases kept the
+root, border and icon inside the owner. ARM64 remains build-only and
+runtime-unverified. Exact raster and normal-motion parity remain outside this
+milestone's gates.
+
 `BleeckerDialogCloseButton` derives from WinUI `Button`. Its default surface is
 36 by 36 DIPs with a 7 DIP radius, a one DIP border and a centered Lucide X.
 `IconSize` defaults to 18; zero and other finite non-negative values are valid.
@@ -43,8 +53,8 @@ and exercises pointer release, Space/Enter, command parameter identity, disabled
 invocation, template replacement and remounts. `verify-dialog-close-button.mjs`
 compares the 16 source/native geometry and paint states, icon bounds, native
 shadow graph, focus and input receipts. Numeric and raster evidence are separate;
-exact pixels, normal native motion, broader overrides/scaling, native ARM64 and
-final integration remain unaccepted until their checks pass.
+exact pixels, normal native motion and broader overrides remain open in the
+historical parity review; they do not alter the five-check milestone result.
 
 The focused x64 runtime and all 16 numeric reference states pass in both themes.
 Maximum geometry error is 0.000003814697265625 DIP; measured colors, alpha,

@@ -3237,15 +3237,26 @@
         "scripts/verify-dialog-close-button.mjs",
         "scripts/test-dialog-close-audit.mjs",
         "scripts/reference/capture-dialog-close-button.cjs",
-        "tests/PackageConsumer/MainWindow.DialogClose.cs"
+        "tests/PackageConsumer/MainWindow.DialogClose.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261029.29",
+        "librarySha256": "4557de029e1c2ddf675c1f6459dd933a42725ed614dcc47c53df4309f56bcefe",
+        "lightDarkStates": "Matching .29 extracted x64 catalog passed 16 Light/Dark normal, icon-size, disabled, hover, pressed and focus states; artifacts/current/context-menu-native-candidate/dialog-close-states-v29.json",
+        "keyboardPointerFocus": "Native catalog route passed physical held pointer, Tab, Space and Enter, three caller Click/Command invocations per theme, disabled rejection and focus; artifacts/current/context-menu-native-candidate/dialog-close-desktop.json",
+        "scale150NoClip": "Independent .29 package consumer passed four native 150% Light/Dark default/large-icon and enabled/disabled cases with root, border and icon inside the 36-DIP owner; artifacts/current/context-menu-native-candidate/dialog-close-scale-cases-v29.json",
+        "reducedMotion": "With Windows animations disabled, the package-matched x64 catalog passed settled rest/hover paint and immediate held-press transform without an OS setting change; artifacts/current/context-menu-native-candidate/dialog-close-catalog-v29.json",
+        "packageConsumerCompiles": "Independent .29 x64 NuGet consumer compiled and ran against package SHA-256 198306b4ec1ea0dbdce1d3ed52cd66f4d654b99c7d84695fef99767017862281; artifacts/current/context-menu-native-candidate/dialog-close-package-v29.json",
+        "arm64RuntimeVerified": false
       }
     },
     {

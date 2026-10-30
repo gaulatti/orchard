@@ -38,6 +38,7 @@ internal static class ContentScaleFixture
         var fieldHelpScale = new List<object>();
         var skeletonScale = new List<object>();
         var breadcrumbScale = new List<object>();
+        var dialogCloseScale = new List<object>();
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -299,6 +300,41 @@ internal static class ContentScaleFixture
                     librarySha256 = Hash(typeof(BleeckerBreadcrumb).Assembly.Location) },
                     new JsonSerializerOptions { WriteIndented = true }));
             root.Width=400;root.Height=160;window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,240));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,240));
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var iconSize in new[] { 18d, 24d })
+            {
+                stage = $"dialog-close/{theme}/{iconSize}/150-percent";
+                root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                var close = new BleeckerDialogCloseButton { IconSize = iconSize, IsEnabled = iconSize == 18d };
+                AutomationProperties.SetName(close, "Close fictional preview");
+                Canvas.SetLeft(close, 24); Canvas.SetTop(close, 24); root.Children.Add(close);
+                try
+                {
+                    await Layout();
+                    var closeRoot = Find<Grid>(close, "CloseRoot") ?? throw new InvalidOperationException("Dialog Close Button root is missing.");
+                    var border = Find<Border>(close, "CloseBorder") ?? throw new InvalidOperationException("Dialog Close Button border is missing.");
+                    var icon = Find<Viewbox>(close, "CloseIcon") ?? throw new InvalidOperationException("Dialog Close Button icon is missing.");
+                    var owner = close.TransformToVisual(root).TransformBounds(new Rect(0, 0, close.ActualWidth, close.ActualHeight));
+                    var rootBounds = closeRoot.TransformToVisual(root).TransformBounds(new Rect(0, 0, closeRoot.ActualWidth, closeRoot.ActualHeight));
+                    var borderBounds = border.TransformToVisual(root).TransformBounds(new Rect(0, 0, border.ActualWidth, border.ActualHeight));
+                    var iconBounds = icon.TransformToVisual(root).TransformBounds(new Rect(0, 0, icon.ActualWidth, icon.ActualHeight));
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && close.IsLoaded && icon.IsLoaded &&
+                        close.ActualWidth == 36 && close.ActualHeight == 36 && icon.ActualWidth == iconSize && icon.ActualHeight == iconSize,
+                        "Dialog Close Button did not render its requested state at native 150% scale.");
+                    foreach (var (part, bounds) in new[] { ("root", rootBounds), ("border", borderBounds), ("icon", iconBounds) })
+                        Require(bounds.X >= owner.X - .5 && bounds.Y >= owner.Y - .5 &&
+                            bounds.Right <= owner.Right + .5 && bounds.Bottom <= owner.Bottom + .5,
+                            $"Dialog Close Button {part} clipped at native 150% scale: owner={owner}, part={bounds}.");
+                    dialogCloseScale.Add(new { theme = theme.ToString(), iconSize, enabled = close.IsEnabled,
+                        scale = root.XamlRoot.RasterizationScale, passed = true });
+                }
+                finally { root.Children.Clear(); await Layout(); }
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "dialog-close-scale-cases.json"),
+                JsonSerializer.Serialize(new { passed = dialogCloseScale.Count == 4, cases = dialogCloseScale,
+                    librarySha256 = Hash(typeof(BleeckerDialogCloseButton).Assembly.Location) },
+                    new JsonSerializerOptions { WriteIndented = true }));
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {
                 stage=$"brand-mark/{theme}/150-percent";

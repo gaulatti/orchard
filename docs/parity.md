@@ -9,11 +9,12 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Avatar, Brand Mark, Breadcrumb, Button, Button Group, Card, Context Menu, Dashboard
-Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
+Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
-Status Badge and Tooltip are accepted (33 of 112 entries in current source
-and in the `.29` preview).
+Status Badge and Tooltip are accepted (34 of 112 entries in current source).
+The published `.29` preview lists the 33 components accepted when it was cut;
+Dialog Close Button will join the next batched release.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -392,7 +393,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | Matching `.29` x64 catalog passes Light/Dark states, physical ellipsis press/Enter/focus and reduced-motion endpoints; independent consumer compiles and passes eight native 150% collapsed/full path cases | Accepted in `.29` for the five-check x64 milestone; ARM64 runtime unverified; see [reference/API](breadcrumb-reference.md) |
 | context-menu | `BleeckerContextMenu`: original native actions with bindable modal option and owner-aware focus | Current package DLL passes physical owned-modal click, Light/Dark states, 150% no-clipping, disabled open/close animation and package-consumer compilation | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](context-menu.md) |
 | date-picker | `BleeckerDatePicker`: controlled local-date values and native popup requests | Registered Date Controls fixture; frozen source/native geometry, typography, popup, bounds, focus and independent consumer regressions | In progress: [contract and evidence](date-controls-reference.md); exact raster/motion, remaining customization and full platform acceptance |
-| dialog-close-button | `BleeckerDialogCloseButton`, native commands, adjustable Lucide X and consumer-owned dismissal | 16 native/source states; 110 motion samples; real input, live themes and shadow disposal; eleven corruption checks | In progress: [contract and evidence](dialog-close-button.md); exact raster, normal native motion, broader overrides/scaling and native ARM64 |
+| dialog-close-button | `BleeckerDialogCloseButton`, native commands, adjustable Lucide X and consumer-owned dismissal | Matching `.29` extracted x64 catalog passes 16 Light/Dark states, physical pointer/Space/Enter/focus, reduced-motion endpoints; independent consumer compiles and passes four native 150% icon/disabled cases | Accepted in current source for the five-check x64 milestone; next batched release pending; ARM64 runtime unverified; see [contract](dialog-close-button.md) |
 | drawer | `BleeckerDrawer`: retained caller content, controlled close requests and a scrolling bottom surface | Registered edge-dialog catalog; shared Drawer/Sheet source and fresh x64 NuGet checks cover 194 states and 42 lifecycle/content/scrolling scenarios | In progress: [contract and evidence](drawer-sheet.md); physical touch/input, complete visual/motion/scaling and native ARM64 runtime |
 | progress-stack | `BleeckerProgressStack`: consumer values/brushes and wrapping legend | 140 Light/Dark states, twelve lifecycle phases, passive keyboard/focus and physical segment pointer, sixteen 150% native scale cases | Accepted on x64 under the [five-check milestone contract](acceptance-contract.md); [component usage](progress-stack.md) |
 | empty | `BleeckerEmpty`: passive title/description, default or consumer icon, and consumer action | 120 Light/Dark states, twelve lifecycle phases, consumer input, and twelve 150% native scale cases passed | Accepted on x64 under the [five-check milestone contract](acceptance-contract.md); [component usage](empty-reference.md) |
