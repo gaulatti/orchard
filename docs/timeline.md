@@ -7,6 +7,16 @@ It displays consumer-owned history. It has no selection, navigation, automatic
 status progression or generated actions. An embedded icon control keeps its
 own focus, command, keyboard behavior and accessible name.
 
+Timeline is accepted for the x64 [five-check milestone](acceptance-contract.md).
+The current catalog passes 72 Light/Dark states at 639, 640 and 1024 DIPs,
+including physical pointer/Space/Enter input, focus, keyed lifecycle and a real
+breakpoint resize. An independent package consumer compiles and runs, and its
+eight native 150% Light/Dark compact/wide and RTL layouts have no clipped rows,
+icons, titles, timestamps or descriptions. With Windows animations already
+disabled, status colors change immediately and remain static; no OS setting was
+changed. ARM64 is build-only and runtime-unverified. Historical raster and
+broader platform diagnostics below do not add milestone gates.
+
 ```xml
 <orchard:BleeckerTimeline AutomationProperties.Name="Editorial record history">
  <orchard:BleeckerTimeline.Items>
@@ -62,8 +72,8 @@ for timestamps and 14/24 for descriptions, and Encode Sans Semibold 12/16
 for default ordinals. Scalar icon text inherits Encode Sans Regular 16/24.
 Native font/display scaling uses the control's typography properties. The
 automation hierarchy exposes a list and ordinal list items, with resolved
-status and original consumer controls. Component automation/theme behavior and
-complete scaling acceptance require native runtime evidence.
+status and original consumer controls. The x64 native runtime checks above
+cover the current milestone; broader platform parity remains historical work.
 
 `TimelinesFixture` registers normal, explicit-status, single, empty, long,
 narrow, RTL, raw whitespace, scalar-icon, consumer-action and timestamp cases.
@@ -85,15 +95,13 @@ verifies restoration of the original parent. Empty frames use the explicit
 bitmap path. RenderTargetBitmap's overflow-expanded, fractionally shifted RTL
 captures are retained as failed capture evidence and do not replace source PNGs.
 
-Acceptance requires matching source geometry and text baselines, retaining
+The historical source-parity protocol checks source geometry and text baselines, retaining
 consumer icon actions/templates and live metadata through reorders/replacements,
 unload/remount and theme changes, preserving normal disabled/automation behavior,
 and exercising an actual 639→640→639 window resize. Run
 `scripts/smoke-catalog.ps1 -Component timeline -ClientSize 1024,900`, then repeat
-at widths 639 and 640. Exact image comparison, full-suite preservation,
-independent package use, native ARM64, component theme/automation behavior, scaling and override
-coverage remain required. The component remains in progress until that evidence
-satisfies the fixed inventory.
+at widths 639 and 640. Exact image comparison and native ARM64 runtime were
+part of the former parity campaign, not this x64 acceptance gate.
 
 Initial x64 evidence at `artifacts/timeline-matrix-v9/{1024,639,640}` passes
 all 72 cases and 534 library-owned baselines. Maximum geometry error is
@@ -117,9 +125,9 @@ intrinsic text width down caused extra wrapping),
 evaluation) and `artifacts/timeline-matrix-v5` (overflow-expanded bitmap bounds).
 Earlier mixed-direction captures at `artifacts/timeline-matrix-v6` are superseded
 by explicit paragraph reading direction. The current source matrix adds long
-and wrapping scalar icons. These checks establish the current implementation
-boundary, while clean release/package/full-suite and final component acceptance
-remain separate evidence. The public wiki remains unavailable; documentation
+and wrapping scalar icons. At that historical stage, clean release/package
+checks remained separate. The current five-check x64 acceptance is recorded
+above. The public wiki remains unavailable; documentation
 is maintained in this repository.
 
 The clean `1f85bbc` published matrix at
@@ -130,15 +138,14 @@ previous names and 174 protected glyph hashes. Its audit verifies 2,006 pointer
 moves/presentation gates, 1,752 owned key pairs and 72 physical clicks. Maximum
 gate: 231.9245 ms under the unchanged two-second deadline. All 324 Stepper and
 132 wide DataList baselines remain within their original bounds. The full
-watchdog stays eight minutes. Collection performance is a separate acceptance
-requirement. Complete interactive-icon/focus, arbitrary-content/template,
-live-theme/resource-override, scaling, component automation behavior and native ARM64
-matrices remain open.
+watchdog stays eight minutes. Those broader performance, arbitrary-content,
+resource-override and ARM64 runtime matrices are historical parity work, not
+gates for the current x64 milestone.
 
 The fresh independent `artifacts/package-consumer-timeline-x64` verifies both
 themes, original native icon activation, keyed updates and ordinal status.
 The ARM64 package consumer has build-only evidence. Both temporary consumer
 caches are removed. Versioned catalog ZIPs match every published file; the
 [current checkpoint](native-validation-checkpoint.md) records separate package,
-archive, architecture and runtime hashes/scope. Push-triggered Actions remain
-paused and the component remains in progress.
+archive, architecture and runtime hashes/scope. Push-triggered Actions were
+paused in that historical checkpoint; current x64 acceptance is recorded above.

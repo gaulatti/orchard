@@ -2198,15 +2198,25 @@
         "scripts/reference/capture-timeline.cjs",
         "scripts/smoke-catalog.ps1 -Component timeline",
         "scripts/compare-timeline-pixels.mjs",
-        "tests/PackageConsumer/MainWindow.Timeline.cs"
+        "tests/PackageConsumer/MainWindow.Timeline.cs",
+        "tests/PackageConsumer/TimelineScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.50",
+        "librarySha256": "5b6fd848fbf777d648cf4c7e2c13971f58a6d186bc829523bed7b2b76e5c3f2a",
+        "lightDarkStates": "The .50 x64 catalog passes 72 Light/Dark source cases at 639, 640 and 1024 DIPs with zero failures; artifacts/current/context-menu-native-candidate/timeline-source-{639,640,1024}-{Light,Dark}.json.",
+        "keyboardPointerFocus": "The same x64 catalog passes physical pointer, Space and Enter, focus, original icon ownership, inherited disabled behavior, keyed lifecycle and live breakpoint checks in both themes; artifacts/current/context-menu-native-candidate/timeline-input-{Light,Dark}.json and timeline-{Light,Dark}-desktop.json. Independent package consumer also invokes the original icon.",
+        "scale150NoClip": "Independent .50 package consumer passes eight native 150% compact/wide and RTL layouts in Light/Dark with all rows, icons, titles, timestamps and descriptions in bounds; artifacts/current/context-menu-native-candidate/timeline-scale-v50.json.",
+        "reducedMotion": "With Windows animations already disabled, the exact .50 consumer verifies changed status colors settle immediately and remain static in all eight native 150% layouts; artifacts/current/context-menu-native-candidate/timeline-scale-v50.json. No OS setting was changed.",
+        "packageConsumerCompiles": "Independent .50 x64 NuGet consumer compiles and runs against the exact release package; artifacts/current/context-menu-native-candidate/package-consumer-timeline-x64-v50.json. ARM64 runtime is unverified."
       }
     },
     {
