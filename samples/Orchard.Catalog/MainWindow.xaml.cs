@@ -106,6 +106,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-footer-foreground")) await RunFooterForegroundAsync(folder);
             else if (args.Contains("--smoke-footer")) await RunFooterAsync(folder);
             else if (args.Contains("--smoke-panel")) await RunPanelsAsync(folder);
+            else if (args.Contains("--smoke-button-group")) await RunButtonGroupForegroundAsync(folder);
             else if (args.Contains("--smoke-buttons"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
@@ -115,6 +116,7 @@ public sealed partial class MainWindow : Window
                     var heading = (FrameworkElement)((StackPanel)Buttons.Content).Children[0];
                     await buttonInput.AcquireAsync(heading); await buttonInput.MoveAsync(heading);
                     await Buttons.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+                    await Buttons.VerifyForegroundInputAsync(buttonInput);
                     await CaptureFixtureAsync(Buttons, Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "buttons", environment = RuntimeEnvironment() }));

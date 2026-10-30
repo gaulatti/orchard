@@ -11,15 +11,15 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-29 `.24` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.24)
-for the current x64 component milestone. Twenty-six of 112 entries are accepted:
-Avatar, Brand Mark, Card, Context Menu, Dashboard Grid, Dashboard Section, Detail Layout,
+Download the [2026-10-29 `.25` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.25)
+for the current x64 component milestone. Twenty-eight of 112 entries are accepted:
+Avatar, Brand Mark, Button, Button Group, Card, Context Menu, Dashboard Grid, Dashboard Section, Detail Layout,
 Empty, Error State, Feed Grid, Footer, Icon Badge, Kbd, Label, Loading Spinner, Metric,
 Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Section Header,
-Separator, Sparkline, Stat Card and Status Badge. The [release note](docs/releases/2026-10-29-preview-24.md)
+Separator, Sparkline, Stat Card and Status Badge. The [release note](docs/releases/2026-10-29-preview-25.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.24/Orchard.Catalog.0.1.0-preview.20261029.24.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.24/Orchard.Catalog.0.1.0-preview.20261029.24.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.25/Orchard.Catalog.0.1.0-preview.20261029.25.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.25/Orchard.Catalog.0.1.0-preview.20261029.25.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)

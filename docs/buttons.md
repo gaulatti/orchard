@@ -1,8 +1,15 @@
 # BleeckerButton
 
+For the 2026-10-29 x64 milestone, Button passes the five required checks:
+Light/Dark variants and states, physical pointer/Enter/Space and native focus,
+four native 150% no-clipping cases, disabled-animation spinner behavior, and
+independent package-consumer compilation. The current inventory records the
+matching package and catalog evidence. ARM64 remains build-only and
+runtime-unverified. Historical raster comparisons are outside this milestone.
+
 Hidden-window checks exercise native template parts and offscreen rendering.
 Foreground catalog checks separately exercise visible pointer and keyboard
-behavior. Neither is a complete variant/state or device-input matrix.
+behavior. These focused checks do not claim a hardware-device matrix.
 
 `BleeckerButton` wraps a native WinUI `Button` and preserves native commands, pointer/keyboard activation, focus visuals and automation. Import Orchard's resource dictionary before using it.
 

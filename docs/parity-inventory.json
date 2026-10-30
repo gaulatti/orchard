@@ -376,14 +376,17 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/ButtonsFixture.xaml.cs: VerifyAsync",
+        "samples/Orchard.Catalog/ButtonsFixture.xaml.cs: VerifyForegroundInputAsync",
         "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ButtonLifecycleFixture.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
         "tests/PackageConsumer/ButtonDefaultStyleProbe.cs",
         "scripts/verify-button-default-style-probe.ps1",
         "scripts/verify-button-default-style-probe.mjs",
         "scripts/verify-button-package-pointer.ps1",
         "tests/Reference/DataTableGeometryCounterexamples.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "buttonTrackingValidation": {
         "audit": "artifacts/current/data-table-paint-native-v3/data-table-audit.json",
         "publicPackageAudit": "artifacts/current/data-table-paint-package-native-v1/data-table-audit.json",
@@ -433,11 +436,18 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .25 x64 packaged Buttons catalog passed Light/Dark variant, native-state, content and loading checks; independent package lifecycle fixture passed 28 observations and 448 checks; artifacts/current/context-menu-native-candidate/buttons-archive-v25.json and button-lifecycle-v25.json",
+        "keyboardPointerFocus": "Matching .25 x64 catalog passed physical pointer click, Enter, Space and native keyboard focus in Light/Dark with original consumer command; artifacts/current/context-menu-native-candidate/buttons-archive-v25.json and buttons-Light-desktop.json and buttons-Dark-desktop.json",
+        "scale150NoClip": "Matching .25 x64 package consumer passed four native 150% Light/Dark narrow/wide Button cases with native action and caller text inside owner and viewport; artifacts/current/context-menu-native-candidate/buttons-and-group-scale-v25.json",
+        "reducedMotion": "Matching .25 x64 Buttons catalog verified its loading spinner resets to zero and static states pass while Windows AnimationsEnabled=false, without changing an OS setting; artifacts/current/context-menu-native-candidate/buttons-archive-v25.json",
+        "packageConsumerCompiles": "Independent .25 x64 NuGet consumer compiled and ran against package SHA-256 e71d832c2a9704f38c83303b19daa988a33c602740779411a871cb026a141f1b and Orchard DLL SHA-256 6dc3803b0e3117524153803918a733b38a3708c02accfb796fd012f385741786; artifacts/current/context-menu-native-candidate/buttons-group-package-v25.json"
       }
     },
     {
@@ -472,19 +482,28 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/MainWindow.xaml.cs: VerifyButtonGroup",
+        "samples/Orchard.Catalog/MainWindow.ButtonGroupForeground.cs",
         "tests/PackageConsumer/ButtonGroupFixture.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
         "tests/PackageConsumer/MainWindow.xaml",
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "scripts/verify-button-group.mjs",
         "scripts/test-button-group-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .25 x64 packaged Button Group catalog passed 22 Light/Dark horizontal/vertical, empty, disabled, layout and lifecycle checks; independent package consumer passed 20 checks; artifacts/current/context-menu-native-candidate/button-group-hidden-catalog-v25.json and button-group-consumer-v25.json",
+        "keyboardPointerFocus": "Matching .25 x64 catalog passed physical pointer click, Tab, Enter, disabled-action skip and native focus in Light/Dark; artifacts/current/context-menu-native-candidate/button-group-archive-v25.json and button-group-Light-desktop.json and button-group-Dark-desktop.json",
+        "scale150NoClip": "Matching .25 x64 package consumer passed four native 150% Light/Dark horizontal/vertical Button Group cases with children and text inside owner and viewport and connected edges retained; artifacts/current/context-menu-native-candidate/buttons-and-group-scale-v25.json",
+        "reducedMotion": "Button Group defines no animation, transition or timer; its static Light/Dark physical input route passed while Windows AnimationsEnabled=false without an OS setting change; artifacts/current/context-menu-native-candidate/button-group-archive-v25.json",
+        "packageConsumerCompiles": "Independent .25 x64 NuGet consumer compiled and ran against package SHA-256 e71d832c2a9704f38c83303b19daa988a33c602740779411a871cb026a141f1b and Orchard DLL SHA-256 6dc3803b0e3117524153803918a733b38a3708c02accfb796fd012f385741786; artifacts/current/context-menu-native-candidate/buttons-group-package-v25.json"
       }
     },
     {

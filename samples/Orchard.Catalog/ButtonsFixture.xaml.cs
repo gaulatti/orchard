@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 
 namespace Orchard.Catalog;
@@ -228,6 +229,24 @@ public sealed partial class ButtonsFixture : UserControl
         await MainWindow.AwaitPresentationAsync(this);
         Require(!SelfLoadingAction.IsLoading && selfLoadingNative.IsEnabled && ButtonResult.Text == "Self-loading action ready",
             "Finishing self-loading did not restore the original action.");
+    }
+
+    internal async Task VerifyForegroundInputAsync(NativeInputSession input)
+    {
+        var action = Find<Button>(LoadingAction) ?? throw new InvalidOperationException("Button lost its native action.");
+        var before = invocations;
+        await input.ClickAsync(LoadingAction);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(invocations == before + 1 && ButtonResult.Text == $"Command preview: {invocations}",
+            "Button pointer click did not invoke its consumer command exactly once.");
+        Require(action.Focus(FocusState.Keyboard) && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), action),
+            "Button native action did not retain keyboard focus.");
+        await input.KeyAsync(0x0D, action);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(invocations == before + 2, "Button Enter did not invoke its consumer command exactly once.");
+        await input.KeyAsync(0x20, action);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(invocations == before + 3, "Button Space did not invoke its consumer command exactly once.");
     }
 
     private static T? Find<T>(DependencyObject owner) where T : DependencyObject

@@ -1,5 +1,12 @@
 # Connected button groups
 
+For the 2026-10-29 x64 milestone, Button Group passes the five required checks:
+Light/Dark horizontal and vertical states, physical pointer/Tab/Enter/focus
+with a disabled action skipped, four native 150% no-clipping cases, static
+behavior with animations disabled, and independent package-consumer
+compilation. The current inventory records the matching package and catalog
+evidence. ARM64 remains build-only and runtime-unverified.
+
 `BleeckerButtonGroup` joins consumer-owned native `ButtonBase` controls or Orchard `BleeckerButton` controls in a horizontal (default) or vertical strip. Set `AutomationProperties.Name` on the group to describe its purpose. Each child retains its own content, command, disabled state, automation peer and native keyboard focus. A group does not imply single or multiple selection; use selection controls for that purpose.
 
 ```xml
