@@ -8,13 +8,13 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Alert, Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
+records pass/fail for all 112 entries; Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
-Filter Chip, Radio Group and Slider, are accepted (48 of 112 entries in current
-source and the `.41` preview).
+Filter Chip, Radio Group and Slider, are accepted (49 of 112 entries in current
+source and the `.42` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -344,7 +344,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | --- | --- | --- | --- |
 | brand-lockup | `BleeckerBrandLockup`, typed consumer link context and live native image effects | Matching `.30` package DLL in extracted x64 catalog passes Light/Dark variants, live theme, physical pointer/Tab/Enter/focus, reduced-motion endpoints; independent consumer compiles and passes four native 150% small/large named cases | Accepted in `.30` for the five-check x64 milestone; ARM64 runtime unverified; see [contract](brand-lockup-reference.md) |
 | brand-mark | `BleeckerBrandMark`, original template PNG and fixed square size | Current package passes 37 Light/Dark states, decorative input/focus, static motion, independent consumer compilation and 150% no-clipping at four sizes in both themes | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](brand-mark.md) |
-| bauhaus-background | `BleeckerBauhausBackground`: four variants and live native image effects | Registered RGBA, square/tall and missing-image fixtures; x64 blend-pixel, source, geometry, motion-preference and UIA checks | In progress: [source contract and API](bauhaus-background-reference.md); full raster/motion, mutations, scaling, packaging and ARM64 acceptance |
+| bauhaus-background | `BleeckerBauhausBackground`: four variants and live native image effects | Registered square/tall and missing-image fixtures; x64 source, geometry, motion-preference and decorative UIA checks; eight native 150% package-consumer cases | Accepted x64 milestone: [source contract and API](bauhaus-background-reference.md); ARM64 runtime unverified |
 | activity-item | `BleeckerActivityItem`: exact strings, small Avatar, source typography and hover | `.34` package-matching x64 Light/Dark route and six native 150% consumer cases pass | Accepted on x64 under the [five-check contract](acceptance-contract.md); ARM64 runtime unverified; [source contract and API](activity-item-reference.md) |
 | attention-surface | `BleeckerAttentionSurface`: five elements, densities, source color model and consumer content/actions | 143 frozen-helper/browser numeric cases; 86 initial x64 source-layout cases and native action/style/hover checks | In progress: [source contract and API](attention-surface-reference.md); full raster/motion, constraints/lifecycle/overrides, scaling, package and ARM64 acceptance |
 | button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, scaling, motion, remaining ARM64 state checks; see [usage](buttons.md) |

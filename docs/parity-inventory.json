@@ -241,15 +241,25 @@
         "samples/Orchard.Catalog/Reference/BauhausAutostrada.png",
         "samples/Orchard.Catalog/Reference/BauhausPompeii.png",
         "samples/Orchard.Catalog/BauhausBackgroundsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/BauhausScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.42",
+        "librarySha256": "39b706c68bf6f836f2edf08ec91419554db043ea5e4d0847d3e2b8fdad611ec5",
+        "lightDarkStates": "The package-matching x64 catalog rendered Nazca, Autostrada, Pompeii and Monitor with live image/variant changes and caller-owned backgrounds in Light and Dark; artifacts/current/context-menu-native-candidate/bauhaus-route-v42.json and bauhaus-window-Light.png / bauhaus-window-Dark.png.",
+        "keyboardPointerFocus": "The same native catalog confirmed every variant is decorative, absent from control/content UIA, not hit-testable and not a Tab stop in Light and Dark; artifacts/current/context-menu-native-candidate/bauhaus-route-v42.json.",
+        "scale150NoClip": "An independent .42 NuGet consumer passed eight visible native 150% Light/Dark cases across four variants, verifying the owned clip and composition output bounds; artifacts/current/context-menu-native-candidate/bauhaus-scale-v42.json.",
+        "reducedMotion": "The x64 catalog observed disabled animations and zero rotation throughout native frame samples in Light and Dark; artifacts/current/context-menu-native-candidate/bauhaus-motion-Light.json and bauhaus-motion-Dark.json.",
+        "packageConsumerCompiles": "An independent x64 consumer compiled against the .42 NuGet package and ran the Bauhaus 150% fixture; package SHA-256 631258acf984f707925c1612664ab38c5fbc1bf82151af3273ef08be46c17b17; artifacts/current/context-menu-native-candidate/package-consumer-x64-v42.json and bauhaus-scale-v42.json."
       }
     },
     {

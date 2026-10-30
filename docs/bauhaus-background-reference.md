@@ -1,5 +1,13 @@
 # BauhausBackground reference and acceptance
 
+The current x64 milestone accepts Bauhaus Background after the five checks in
+[the acceptance contract](acceptance-contract.md) passed. The package-matching
+catalog verifies all four variants, live consumer image ownership, decorative
+input/focus semantics, Light/Dark rendering and reduced motion. An independent
+NuGet consumer verifies eight native 150% no-clipping cases. Exact browser/native
+raster equality is not a gate; the earlier raster research below is historical.
+ARM64 is build-only and runtime-unverified for this milestone.
+
 Live enabled-motion verification at `faab41e`, run `38578657500`, passes native
 ARM64 focused Light/Dark and the full-suite Light boundary. The full-suite span
 is 332.4672ms of frame time, predicting 5.9844096 degrees against 5.9843607
@@ -60,7 +68,8 @@ The frozen source is
 [`bauhaus-background.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/bauhaus-background.tsx),
 SHA-256 `648c0cdb37639b40ac6c67ecbad04b692d1400358b8b3bed9fad12e5baa1489c`.
 The downloaded source matches the inventory. The native control is implemented
-and remains in progress until the acceptance matrix below is verified.
+and accepted for the current x64 milestone; historical full-parity research
+below remains available without adding release gates.
 
 The source contract is four variants: Nazca uses bronze/circles, Autostrada
 oxblood/lines, Pompeii bronze/squares and Monitor oxblood/circles. Bronze is
@@ -98,12 +107,13 @@ mapping, preserve custom sources, and expose unavailable images without choosing
 alternate artwork. The source image has an empty alternative text and is
 decorative. It contains no commands or user content.
 
-Acceptance requires all four variants in square/wide/tall/constrained layouts,
-opaque and RGBA custom images, explicit/default/missing/empty source behavior,
-live changes, clipping/blend pixels, actual rotation/reduced motion, unload/reload,
-themes/contrast, display/text scaling, decorative accessibility, x64/ARM64 and
-independent NuGet consumption. Browser/native raster comparison remains required.
-The public wiki remote is unavailable, so this source contract is recorded here.
+The current milestone verifies all four variants in square, wide, tall and
+constrained native layouts, explicit/default/missing/empty source behavior,
+live changes, owned clipping, reduced motion, Light/Dark themes, decorative
+semantics, and independent x64 NuGet consumption. Earlier blend-pixel,
+browser/native raster, OS contrast and ARM64 runtime investigations do not
+gate this milestone. The public wiki remote is unavailable, so this source
+contract is recorded here.
 
 ## Native API and behavior
 
