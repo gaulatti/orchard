@@ -4,7 +4,7 @@ Filter Chip and Filter Group are accepted on x64 under the
 [five-check milestone](acceptance-contract.md). The source catalog passes 40
 Light/Dark cases at 320 and 640 DIPs plus four physical keyboard, pointer and
 focus runs. Those runs also verify immediate hover and exit paint with
-animations already disabled. The independent `.34` package consumer compiles,
+animations already disabled. The independent `.35` package consumer compiles,
 runs the native actions and passes six native 150% standalone, grouped and RTL
 no-clipping cases. ARM64 runtime is unverified. The empty-group capture fixture
 now checks its expected solid canvas instead of rejecting it as blank. Older

@@ -13,8 +13,8 @@ Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch and Tooltip, plus Activity Item, Data List, Filter Chip,
-Radio Group and Slider, are accepted (42 of 112 entries in current source;
-41 are in the published `.34` preview).
+Radio Group and Slider, are accepted (42 of 112 entries in current source and
+the published `.35` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 

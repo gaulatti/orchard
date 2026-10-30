@@ -2498,13 +2498,13 @@
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "packageVersion": "0.1.0-preview.20261030.34",
-        "librarySha256": "f58839ffa270fdee4f8b0f743350f19b85126c23616f1ba3de316df296dbd8e5",
-        "lightDarkStates": "Source x64 catalog passed 40 Filter Chip and Filter Group cases at 320/640 DIP clients in Light/Dark, including empty and disabled states; artifacts/current/context-menu-native-candidate/filter-chip-source-{320,640}.json",
-        "keyboardPointerFocus": "Four physical Light/Dark input runs passed pointer, Space, Enter, focus and ownership/lifecycle checks at both widths; artifacts/current/context-menu-native-candidate/filter-chip-source-{320,640}.json",
-        "scale150NoClip": "Independent .34 x64 package consumer passed six native 150% standalone, grouped and RTL cases in Light/Dark; artifacts/current/context-menu-native-candidate/filter-chip-scale.json",
-        "reducedMotion": "With Windows animations already disabled, four physical Light/Dark input runs verified immediate hover and exit paint endpoints without changing OS settings; artifacts/current/context-menu-native-candidate/filter-chip-source-{320,640}.json",
-        "packageConsumerCompiles": "Independent .34 x64 NuGet consumer compiled and ran Filter Chip actions and typography against package SHA-256 9ff4072ed08259418dd6a94ea0c527ab3e4be9f0932f131d583c9f329e0b2ce9; artifacts/current/context-menu-native-candidate/package-consumer-x64-v34.json"
+        "packageVersion": "0.1.0-preview.20261030.35",
+        "librarySha256": "04c73f85b4064b7ed3c55401e43c85c3e4631a4e1f58b9e4ab2b5347d68e7c18",
+        "lightDarkStates": "Package-matching extracted .35 x64 catalog passed 40 Filter Chip and Filter Group cases at 320/640 DIP clients in Light/Dark, including empty and disabled states; artifacts/current/context-menu-native-candidate/filter-chip-{320,640}-route-v35.json",
+        "keyboardPointerFocus": "The extracted .35 catalog passed four physical Light/Dark input runs with pointer, Space, Enter, focus and ownership/lifecycle checks at both widths; artifacts/current/context-menu-native-candidate/filter-chip-{320,640}-route-v35.json",
+        "scale150NoClip": "Independent .35 x64 package consumer passed six native 150% standalone, grouped and RTL cases in Light/Dark; artifacts/current/context-menu-native-candidate/filter-chip-scale.json",
+        "reducedMotion": "With Windows animations already disabled, four package-matching physical Light/Dark input runs verified immediate hover and exit paint endpoints without changing OS settings; artifacts/current/context-menu-native-candidate/filter-chip-{320,640}-route-v35.json",
+        "packageConsumerCompiles": "Independent .35 x64 NuGet consumer compiled and ran Filter Chip actions and typography against package SHA-256 d33b2812ba53c224617d6affe134220ceb90ebe7aa5ef6f3bd05909e9ab50604; artifacts/current/context-menu-native-candidate/package-consumer-x64-v35.json"
       }
     },
     {
