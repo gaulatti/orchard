@@ -7,13 +7,13 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Accordion, Activity Item, Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
+Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Checkbox, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
 Notification Badge, OTP Input, Panel Layout, Progress, Progress Stack, Radio Group, Section Header, Segmented Control, Separator,
 Skeleton, Slider, Sparkline, Stat Card, Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 53 are accepted.
+inventory has 112 entries started; 54 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -161,7 +161,8 @@ in an observable `Tabs` collection. Supply a native `FontIconSource`, label,
 optional signed badge count and disabled state. Equal-width destinations preserve
 typed values; badges cap visually at `99+` while retaining the raw accessible
 count. The standalone compact component adds no app shell or navigation service.
-Full physical-input, visual/scaling and ARM64 runtime acceptance remain open.
+App Tab Bar passes the five x64 milestone checks, including native 150% layouts;
+ARM64 runtime remains unverified.
 
 `BleeckerSegmentedControl` binds one `SelectedValue` to immutable, value-keyed
 `BleeckerSegmentOption` entries in an observable `Options` collection. Values

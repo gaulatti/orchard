@@ -1,5 +1,14 @@
 # App Tab Bar preview
 
+App Tab Bar is accepted for the 2026-10-29 x64 milestone. The exact preview
+package passes Light/Dark states, eight native 150% layouts without clipping,
+static reduced-motion behavior and independent consumer compilation. Focused
+physical pointer, keyboard and focus checks remain valid because the component
+and catalog fixture are unchanged since that checkpoint. The five pass records
+are in `docs/parity-inventory.json`. ARM64 compiles but runtime is unverified;
+raster/pixel parity is not a milestone gate. Historical diagnostics below do not
+add release gates.
+
 `BleeckerAppTabBar` implements the compact standalone App Tab Bar recipe from
 Sabella commit `f5ac479bfceaa7eab23c1716ac47420ac53dae25`, `Mobile.swift`.
 The Windows inventory includes this cross-platform component. Mobile app shells,

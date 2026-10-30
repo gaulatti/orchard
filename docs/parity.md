@@ -8,13 +8,13 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
+records pass/fail for all 112 entries; Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
 Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
-(53 of 112 entries in current source for the `.46` preview).
+(54 of 112 entries in current source for the `.47` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -273,10 +273,12 @@ edit requests, native text/password slots and source deletion/paste semantics.
 The exact `.45` package passed 60 states, 32 behavior cases, physical input in
 both themes, native 150% no-clipping and reduced-motion focus-ring checks.
 ARM64 runtime remains unverified.
-The [App Tab Bar preview](app-tab-bar.md) adds value-bound destinations, equal
+The [accepted App Tab Bar](app-tab-bar.md) adds value-bound destinations, equal
 tracks, caller-owned Windows icons and capped badges with raw-count metadata.
-Its source host passes 58 cases and eight rendered layout checks; physical input,
-actual scaling, full visual/customization and ARM64 runtime remain open.
+Its exact package passes 58 cases and eight Light/Dark layouts, while the native
+150% consumer passes eight more cases. Focused physical pointer, keyboard and
+focus evidence remains valid for unchanged component and fixture. ARM64 runtime
+remains unverified.
 The [Segmented Control preview](segmented-control.md) implements the pinned
 value-bound choice contract. Its source host passes 40 behavior cases and eight
 layouts, with rendered selected-surface checks that reject the actual earlier
@@ -456,7 +458,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | brand-mark (Sabella) | `BleeckerBrandMark`, original template PNG and caller-owned size/tint | Current package passes 37 Light/Dark states and eight native 150% size/theme checks; independent consumer compiles | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](brand-mark.md) |
 | secure-field (Sabella) | `BleeckerSecureField` | SecureFieldsFixture; native and fresh consumer 30 cases; disabled visual regression | In progress: [contract](secure-field.md); physical input, full visual/scaling/customization and ARM64 runtime |
 | segmented-control (Sabella) | `BleeckerSegmentedControl` / `BleeckerSegmentOption` | Current package: 40 Light/Dark cases, eight layouts, physical pointer/keyboard/focus in both themes, 16 native 150% no-clipping cases, immediate reduced-motion behavior and independent consumer compilation | Accepted on x64: [contract](segmented-control.md); ARM64 runtime unverified |
-| app-tab-bar (Sabella) | Native compact preview with typed selection, equal tracks, icons and badges | Registered fictional catalog, source/NuGet native cases and rendered checks | Physical input, actual scaling, full visual/customization and ARM64 runtime acceptance |
+| app-tab-bar (Sabella) | Native compact destinations with typed selection, equal tracks, icons and badges | Exact .47 package passes 58 cases and eight Light/Dark layouts; focused physical input is unchanged; eight native 150% layouts and static reduced-motion behavior pass | Accepted on x64: [contract](app-tab-bar.md); ARM64 runtime unverified |
 
 The focused title-language repair renders `istanbul` as `İSTANBUL` under
 `tr-TR` and `ISTANBUL` under `en-US` in Eyebrow, Feed Column, Panel, Stat Card
