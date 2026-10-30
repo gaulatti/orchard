@@ -1,5 +1,12 @@
 # BleeckerFeedItem
 
+For the current [x64 acceptance milestone](acceptance-contract.md), Feed Item
+passes all five checks: 100 Light/Dark states, physical pointer/keyboard/focus
+in both themes, four native 150% Light/Dark LTR/RTL no-clipping cases,
+immediate hover with reduced motion, and independent `.37` package-consumer
+compilation. ARM64 runtime remains unverified. The historical parity gaps
+below do not add milestone gates.
+
 `BleeckerFeedItem` presents consumer-owned author/avatar metadata, a localized
 timestamp, relevance, plain content, language/category tags and a source link.
 It composes the existing Avatar and Tooltip components. It adds no feed service,
@@ -53,14 +60,14 @@ Tab stop; its source link has the native Hyperlink role, focus visuals and
 original URL help metadata. Caller naming on the row remains native.
 
 The Feed items catalog fixture uses fictional local metadata and records source
-requests locally. Acceptance requires source layout/typography, long-word and
+requests locally. The historical full-parity review sought source layout/typography, long-word and
 category wrapping, RTL, themed and hover paint, the original timestamp tooltip,
 retained data/parts, image failure, command/request ownership, keyboard/focus,
 visible raster, motion, actual scaling, native ARM64 and package integration.
 The browser reference has 100 states, 64 full screenshots, 21 timestamp cases
 and both actual timestamp tooltip bodies. Hidden native diagnostics use an
 internal fixed clock; they do not change Windows time or establish visible
-rendering/input. The component remains an in-progress preview.
+rendering/input. The historical full-parity review remains in progress.
 
 Foreground x64 catalog input confirms pointer source requests use the original
 URL, including an empty invalid URL, and keyboard Enter invokes the focused

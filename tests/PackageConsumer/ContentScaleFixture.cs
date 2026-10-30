@@ -256,6 +256,43 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "activity-item-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-activity-item-150-scale-v1", passed = true, cases = activityScale,
                     librarySha256 = Hash(typeof(BleeckerActivityItem).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var feedItemScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var rtl in new[] { false, true })
+            {
+                stage = $"feed-item/{theme}/{(rtl ? "rtl" : "ltr")}/150-percent";
+                root.Width = 400; root.Height = 400; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 600));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 600));
+                var item = new BleeckerFeedItem { Width = 320, Author = "Fictional editorial author",
+                    Content = "A longer fictional local story wraps inside the feed item at native 150% scaling.",
+                    PostedAt = DateTimeOffset.UtcNow.AddHours(-1), LanguageCode = "en", Categories = ["Local", "Editorial review"],
+                    SourceUrl = "https://news.example/story", Relevance = 87.5,
+                    FlowDirection = rtl ? FlowDirection.RightToLeft : FlowDirection.LeftToRight };
+                Canvas.SetLeft(item, 24); Canvas.SetTop(item, 24); root.Children.Add(item);
+                await Layout();
+                var bounds = item.TransformToVisual(root).TransformBounds(new Rect(0, 0, item.ActualWidth, item.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && item.IsLoaded && !item.IsTabStop &&
+                    item.ActualWidth == 320 && item.ActualHeight > 0 && bounds.X >= 24 && bounds.Y >= 24 &&
+                    bounds.Right <= root.Width && bounds.Bottom <= root.Height,
+                    $"Feed Item escaped its native 150% host: {theme}/{rtl}, owner={bounds}.");
+                foreach (var name in new[] { "FeedItemHeader", "FeedItemAuthor", "FeedItemTime", "FeedItemContent", "FeedItemTags", "FeedItemSourceLink" })
+                {
+                    var part = Find<FrameworkElement>(item, name) ?? throw new InvalidOperationException($"Scaled Feed Item {name} is missing.");
+                    var partBounds = part.TransformToVisual(root).TransformBounds(new Rect(0, 0, part.ActualWidth, part.ActualHeight));
+                    Require(part.IsLoaded && part.ActualWidth > 0 && part.ActualHeight > 0 &&
+                        partBounds.X >= bounds.X - .5 && partBounds.Y >= bounds.Y - .5 &&
+                        partBounds.Right <= bounds.Right + .5 && partBounds.Bottom <= bounds.Bottom + .5 &&
+                        part.ActualHeight + .5 >= part.DesiredSize.Height,
+                        $"Feed Item {name} clipped at native 150%: {theme}/{rtl}, part={partBounds}, owner={bounds}, desired={part.DesiredSize}.");
+                }
+                feedItemScale.Add(new { theme = theme.ToString(), rtl, scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear(); await Layout();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "feed-item-scale.json"),
+                JsonSerializer.Serialize(new { passed = true, cases = feedItemScale,
+                    librarySha256 = Hash(typeof(BleeckerFeedItem).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             var dataListScale = new List<object>();
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
             foreach (var variant in new[] { "narrow", "wide", "rtl" })

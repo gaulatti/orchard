@@ -11,16 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-30 `.36` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.36)
-for the current x64 component milestone. Forty-three of 112 entries are accepted:
+Download the [2026-10-30 `.37` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.37)
+for the current x64 component milestone. Forty-four of 112 entries are accepted:
 Accordion, Activity Item, Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button,
-Empty, Error State, Feed Grid, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
+Empty, Error State, Feed Grid, Feed Item, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
 Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Radio Group,
 Section Header, Separator, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
-Switch and Tooltip. The [release note](docs/releases/2026-10-30-preview-36.md)
+Switch and Tooltip. The [release note](docs/releases/2026-10-30-preview-37.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.36/Orchard.Catalog.0.1.0-preview.20261030.36.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.36/Orchard.Catalog.0.1.0-preview.20261030.36.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.37/Orchard.Catalog.0.1.0-preview.20261030.37.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.37/Orchard.Catalog.0.1.0-preview.20261030.37.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
