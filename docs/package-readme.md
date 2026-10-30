@@ -9,11 +9,11 @@ component notes below describe historical checks and do not add release gates.
 
 Accepted x64 components in this preview: Accordion, Activity Item, Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Checkbox, Context Menu,
-Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Feed Item,
+Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
 Notification Badge, OTP Input, Panel Layout, Progress, Progress Stack, Radio Group, Section Header, Segmented Control, Separator,
 Skeleton, Slider, Sparkline, Stat Card, Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 52 are accepted.
+inventory has 112 entries started; 53 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -359,7 +359,8 @@ scrolling body. `Title`, nullable numeric `Count`, solid `Accent`, `Filter` and
 native content/filter templates retain consumer ownership. `Viewport` exposes
 the current ScrollViewer after template application. Width and MinWidth default
 to 372 DIP; set both for another recipe width. Body Padding defaults to 12 DIP.
-Header updates retain controls and scroll state. Full acceptance remains open.
+Header updates retain controls and scroll state. Feed Column passes the five
+x64 milestone checks; ARM64 runtime remains unverified.
 The default Feed Column keeps its dark gradient and requests dark theme tokens
 for its content subtree, including composed Feed Items, in a Light host. Set
 `RequestedTheme` explicitly when replacing that default surface recipe.

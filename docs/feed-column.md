@@ -5,6 +5,13 @@ numeric count and filter slot, and an independent native scrolling body. The
 default width and minimum width are 372 DIP. Its height stretches within a
 bounded parent. The original three-stop 45-degree Oklab gradient, accent dot,
 border, count pill and shadows belong to the component's presentation.
+Feed Column is accepted for the 2026-10-29 x64 milestone. The exact preview
+package passes Light/Dark states, native 150% no-clipping, static reduced-motion
+behavior and independent consumer compilation. The catalog's physical pointer,
+keyboard, focus and scroll checks remain valid because the component and fixture
+are unchanged since that checkpoint. See `docs/parity-inventory.json` for the
+five pass records. ARM64 compiles but its runtime remains unverified;
+raster/pixel parity is not a milestone gate.
 The gradient remains dark in either host theme. The default control requests
 Orchard's dark theme for its header and content subtree so text, accents and
 composed controls stay readable in a Light host. Callers can set
@@ -46,7 +53,7 @@ add no accessibility stop. A scrolling body with no focusable content exposes
 the native viewport's keyboard stop. Focusable caller content retains normal
 native traversal. Existing enabled/visibility behavior stays native.
 
-Acceptance requires the pinned header/wrapping/count/filter/body geometry,
+The original implementation contract requires pinned header/wrapping/count/filter/body geometry,
 independent scrolling, live bindings, retained slot identity, templates,
 metadata precedence, theme/accent updates, unload/remount, caller overrides,
 visible input and raster behavior, scaling and platform/package integration.
@@ -55,8 +62,8 @@ Foreground x64 catalog checks now cover physical pointer and keyboard input,
 inner scrolling, header updates and retained caller-owned filter/body state.
 Light and Dark host appearances were inspected. A Light-host contrast defect
 was corrected by scoping dark tokens to the dark surface; the before/after
-frames are in `docs/evidence/feed-light-contrast-v1/`. These source-catalog
-checks do not establish packaged or ARM64 runtime acceptance.
+frames are in `docs/evidence/feed-light-contrast-v1/`. Those earlier source-catalog
+checks alone did not establish packaged or ARM64 runtime acceptance.
 
 The fresh `0.1.0-feed-contrast-v2-local` x64 package ran all 154 hidden source
 states and passed 29 checks with no failures, including a Light host with a
@@ -67,9 +74,9 @@ dark accent token because the column has a dark surface. Thirty-five corrupted
 receipts were rejected. Ownership and lifecycle checks cover live
 header/accent/name bindings, edited original controls, retained scroll,
 original template models and selectors, template
-removal/reapply, and unload/remount. Full raster, actual scaling, native ARM64
-and final integration acceptance remain open.
+removal/reapply, and unload/remount. That earlier checkpoint predated native
+150% and final package qualification; these are recorded for the current x64
+milestone above. Native ARM64 runtime remains open.
 
-Previous x64 and ARM64 catalog and package-consumer builds passed. The current
-contrast package was rebuilt and checked on x64; native ARM64 runtime remains
-unverified on this host.
+Previous x64 and ARM64 catalog and package-consumer builds passed. Native ARM64
+runtime remains unverified for this milestone.

@@ -9,12 +9,12 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Alert, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
-Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
+Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
 Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
-(52 of 112 entries in current source for the `.45` preview).
+(53 of 112 entries in current source for the `.46` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -447,7 +447,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | auth-shell | `BleeckerAuthShell`: centered/split retained caller slots and responsive aside | Registered fictional catalog;104 native states/24 checks across source/NuGet/archive;94 source/package audit negatives each;469 portable/10 Windows text tests; both architectures/consumers/demos;104 source/archive PNGs exact | In progress: [contract and remaining visual/input/platform acceptance](auth-shell.md); browser and one package-image gate failed |
 | detail-layout | `BleeckerDetailLayout`: responsive main/rail tracks and bounded sticky placement | Matching .20 x64 Light/Dark catalog passed 888 layouts and two native input/focus sequences; independent package consumer passed 16 native 150% states and static reduced-motion behavior | Accepted on x64: [contract and evidence](detail-layout.md); ARM64 runtime unverified |
 | footer | `BleeckerFooter` with original brand/section models, bottom slots and a global guarded link context | 48 pinned source PNGs; catalog and fresh package hidden 144 layouts/8040 exact geometry checks/1434 brushes/7 lifetime and threading checks/1349 isolation guards; 40 catalog/44 package damaged reports rejected; fixture; 287 portable tests; clean x64/ARM64 builds and isolated consumers | In progress: [contract](footer.md); visible input/raster, broader props, motion/scaling, integration and native ARM64 acceptance |
-| feed-column | `BleeckerFeedColumn`: fixed header, original filter/body slots and independent native viewport | Feed columns fixture; 154 pinned source states and 58 original full PNGs | In progress: [contract](feed-column.md); native/visible/platform acceptance remains open |
+| feed-column | `BleeckerFeedColumn`: fixed header, original filter/body slots and independent native viewport | Exact .46 package passes 154 source states and 29 checks; physical input is unchanged since the Light-host contrast fix; eight native 150% cases and static reduced-motion behavior pass | Accepted on x64: [contract](feed-column.md); ARM64 runtime unverified |
 | feed-grid | `BleeckerFeedGrid`: auto-fill tracks, variable rows and original caller children | Matching .19 x64 catalog passes 144 Light/Dark layouts and native child input/focus; 16 independent-consumer 150% cases, static reduced-motion behavior and package compilation | Accepted on x64: [contract](feed-grid.md); ARM64 runtime unverified |
 | header | `BleeckerHeader`: original brand/navigation, caller-owned actions and responsive positioning | Catalog and fresh x64 consumer; 72 source layouts, 23 native scenarios and both architecture builds | In progress: [contract and evidence](header.md); desktop input/focus, complete visual/motion/scaling, integration and native ARM64 runtime |
 | page-frame | `BleeckerPageFrame`: centered width/spacing recipes and semantic grouping | Matching .20 x64 Light/Dark catalog passed 792 layouts and two native input/focus sequences; independent package consumer passed 16 native 150% states and static reduced-motion behavior | Accepted on x64: [contract and evidence](page-frame.md); ARM64 runtime unverified |
