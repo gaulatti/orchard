@@ -1,5 +1,20 @@
 # Switch
 
+## x64 milestone acceptance
+
+Switch passes all five checks in the [component-library acceptance contract](acceptance-contract.md)
+against the published `0.1.0-preview.20261029.30` package and its matching
+extracted x64 catalog. The focused catalog route verifies applicable on, off,
+disabled, bound, and unlabeled states in Light and Dark. Native physical Space,
+Tab, track, and label input, focus order, disabled rejection, and RTL clicks
+pass in both themes. The package-matching isolated XAML-island fixture verifies
+the long label stays within its row at 150% in both themes. With Windows
+animations already disabled, the thumb settles immediately without changing
+any OS setting. The independent x64 consumer compiles and runs against the
+same package. The focused run and scale report are retained in the existing
+`artifacts/current/context-menu-native-candidate/` directory. ARM64 builds
+remain runtime-unverified for this milestone.
+
 ## Public state and native-input lifecycle
 
 `IsOn` is the authoritative caller-owned Boolean, including before a template
@@ -50,8 +65,9 @@ and `artifacts/current/switch-japanese-checkpoint-v1.json`.
 
 Latin geometry remains at its measured baseline of 125.272011 DIPs, versus the
 source's 125.296875 DIPs. That pre-existing difference remains recorded and is
-not counted as source typography acceptance. Full glyph/baseline review,
-physical input, scaling/motion and native ARM64 runtime remain open. No new
+not counted as source typography acceptance. At that earlier checkpoint,
+full glyph/baseline review, physical input, scaling/motion and native ARM64
+runtime remained open. No new
 font asset, renderer, size offset or OS-setting change is part of this repair.
 
 ## Isolated display-scale verification
@@ -69,8 +85,8 @@ image diagnostic still reports 4,128 one-channel pixel differences; this Switch
 check does not alter that result.
 
 The island changes only its owned rasterization scale. Physical monitor-DPI
-transitions, system text scaling, Switch reduced-motion transitions, native
-ARM64 runtime and complete component acceptance remain open. The small native
+transitions, system text scaling, and native ARM64 runtime were outside that
+earlier check. The small native
 reports are retained as `artifacts/current/switch-isolated-scale-source-report-v1.json`
 and `artifacts/current/switch-isolated-scale-package-report-v1.json`; all 16
 tested PNG frames are in `artifacts/current/switch-isolated-scale-frames-v1.zip`. These
@@ -295,14 +311,11 @@ The disabled-activation regression accepts the native UIA ElementNotEnabled
 HRESULT `0x80040200`, which this SDK projection exposes as COMException, while
 also requiring the consumer Boolean to remain unchanged.
 
-Acceptance remains open: meaningful native/browser appearance comparison (glyphs,
-baselines, pill edges, shadows and fallback fonts), actual keyboard/pointer/drag
-matrix, focus visibility and live system appearance,
-constrained widths and isolated text/display scaling, exact interrupted-motion
-timing/color rasterization, and remaining x64/ARM64 state acceptance. Desktop-wide
-display, text size and animation settings must remain unchanged during local
-verification. The repository wiki remote is unavailable; this contract is
-documented in the code repository.
+The older source-parity campaign tracked browser raster, glyph, and timing
+diagnostics. Those are not gates for the current five-check x64 milestone.
+Desktop-wide display, text size and animation settings remain unchanged during
+local verification. The repository wiki remote is unavailable; this contract
+is documented in the code repository.
 
 The source-built catalog's focused Switch smoke on 2026-10-27 passes both
 appearances after its live-theme and motion-interruption probes change
