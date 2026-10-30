@@ -8,13 +8,13 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
+records pass/fail for all 112 entries; Alert, Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
-Filter Chip, Radio Group and Slider, are accepted (47 of 112 entries in current
-source and the `.40` preview).
+Filter Chip, Radio Group and Slider, are accepted (48 of 112 entries in current
+source and the `.41` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -387,7 +387,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | metric | `BleeckerMetric`: source number/currency/percent/compact formatting and consumer inline slots | Matching .18 x64 Light/Dark catalog covers 680 format cases and rich-slot input/focus; 20 independent-consumer 150% cases, static reduced-motion behavior and package compilation | Accepted on x64: [source contract and evidence](metric-reference.md); ARM64 runtime unverified |
 | notification-badge | `BleeckerNotificationBadge` and consumer-owned notification items | Registered populated/empty/count/long-content fixtures; x64 light/dark popup geometry, command/collection updates, live appearance and physical keyboard checks; independent package consumer | In progress: full state/input matrix, shadow/motion, scaling and remaining ARM64 state checks; see [evidence and gaps](notifications.md) |
 | accordion | `BleeckerAccordion`, keyed consumer content and four template slots | Source/native layout, motion, continuity, scalar, physical input and package checks | In progress: exact raster, complete customization/lifecycle and platform acceptance; see [contract and evidence](accordion.md) |
-| alert | `BleeckerAlert`, `BleeckerAlertContainer`: window-owned typed notifications and shared stream | Registered four-type fixture; x64 native paint/position, Tab/Shift+Tab/Space, held/cancelled press, duration and lifecycle checks; clean package consumer | In progress: [contract and usage](alert-reference.md); rendered reference, premium hover easing, full motion, disabled/scaling and ARM64 |
+| alert | `BleeckerAlert`, `BleeckerAlertContainer`: window-owned typed notifications and shared stream | Registered four-type fixture; x64 native position, Tab/Shift+Tab/Space, held/cancelled press, duration and lifecycle checks; clean package consumer and native 150% Light/Dark no-clipping | Accepted x64 milestone: [contract and usage](alert-reference.md); ARM64 runtime unverified |
 | alert-dialog | Controlled native preview and catalog fixture | 56 source/native layouts, 2,664 geometry values, 22 action/lifecycle cases; source motion models and shared host regressions | In progress: [public API](alert-dialog.md), [source contract](alert-dialog-reference.md); scrollbar edge paint, popup adapters, complete motion/visual/input and platform acceptance remain open |
 | avatar | `BleeckerAvatar`, `BleeckerAvatarGroup`, `BleeckerAvatarData`: five sizes, images/initials/silhouettes and consumer collections | Matching `.23` x64 package and catalog pass Light/Dark states, passive input/focus, native 150% bounds, static reduced-motion behavior and independent consumer compilation | Accepted on x64: [contract and usage](avatar-reference.md); ARM64 runtime unverified |
 | breadcrumb | `BleeckerBreadcrumb` and consumer-owned `BleeckerBreadcrumbItem` | Matching `.29` x64 catalog passes Light/Dark states, physical ellipsis press/Enter/focus and reduced-motion endpoints; independent consumer compiles and passes eight native 150% collapsed/full path cases | Accepted in `.29` for the five-check x64 milestone; ARM64 runtime unverified; see [reference/API](breadcrumb-reference.md) |

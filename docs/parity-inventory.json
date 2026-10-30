@@ -2880,15 +2880,25 @@
       ],
       "regressionTests": [
         "AlertsFixture.VerifyAsync",
-        "PackageConsumer.VerifyAlertAsync"
+        "PackageConsumer.VerifyAlertAsync",
+        "tests/PackageConsumer/AlertScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.41",
+        "librarySha256": "2c359cfd487832922b4da7e90bd440ebed2502698edb7c0239d9e63ce8e5faf0",
+        "lightDarkStates": "The package-matching x64 catalog passed all four alert types, empty and long messages, constrained width, and live theme changes in Light and Dark; artifacts/current/context-menu-native-candidate/alert-route-v41.json and alert-measurements-Light.json / alert-measurements-Dark.json.",
+        "keyboardPointerFocus": "The same native catalog passed physical close pointer click, cancelled held press, Tab/Shift+Tab/Space, focus preservation and caller close callbacks in both themes; artifacts/current/context-menu-native-candidate/alert-measurements-Light.json and alert-measurements-Dark.json.",
+        "scale150NoClip": "An independent .41 NuGet consumer passed visible native 150% long-message and close-button containment in Light and Dark; artifacts/current/context-menu-native-candidate/alert-scale-v41.json.",
+        "reducedMotion": "The x64 catalog ran with animations disabled and reached immediate surface and close-action endpoints while retaining caller callbacks in Light and Dark; artifacts/current/context-menu-native-candidate/alert-route-v41.json and alert-measurements-Light.json / alert-measurements-Dark.json.",
+        "packageConsumerCompiles": "An independent x64 consumer compiled against the .41 NuGet package and ran the Alert 150% fixture; package SHA-256 fe4abeb654fc0fe2ddf66341ac0d483d7ef19b52b548d1785d9e9ef1b87bd2b0; artifacts/current/context-menu-native-candidate/package-consumer-x64-v41.json and alert-scale-v41.json."
       }
     },
     {

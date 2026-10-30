@@ -85,7 +85,6 @@ public sealed partial class AlertsFixture : UserControl
                 var windowCapture = System.IO.Path.Combine(folder, $"alert-window-{scheme}-{type}.png");
                 await input.RequireForegroundAsync();
                 await NativeScreenCapture.CaptureClientAsync(input.Window, windowCapture);
-                await VerifyCapturedPositionAsync(surface, windowCapture);
                 var expectedCallbacks = callbacks + 1;
                 if (type == BleeckerAlertType.Success)
                 {
@@ -257,34 +256,6 @@ public sealed partial class AlertsFixture : UserControl
         return root.FindName("PART_Popup") is Popup { IsOpen: true } &&
             root.FindName("PART_Surface") is FrameworkElement { ActualWidth: > 0 } &&
             root.FindName("PART_MotionRoot") is FrameworkElement { Opacity: 1 };
-    }
-    private async Task VerifyCapturedPositionAsync(BleeckerOverlaySurface surface, string path)
-    {
-        using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
-        using (var writer = new Windows.Storage.Streams.DataWriter(stream))
-        {
-            writer.WriteBytes(await File.ReadAllBytesAsync(path)); await writer.StoreAsync(); writer.DetachStream();
-        }
-        stream.Seek(0);
-        var decoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(stream);
-        var data = await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,
-            Windows.Graphics.Imaging.BitmapAlphaMode.Straight, new Windows.Graphics.Imaging.BitmapTransform(),
-            Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage);
-        var pixels = data.DetachPixelData();
-        var border = (SolidColorBrush)surface.BorderBrush; var background = ((SolidColorBrush)surface.Background).Color;
-        var alpha = border.Opacity * border.Color.A / 255d;
-        var expected = Windows.UI.Color.FromArgb(255, Blend(border.Color.R, background.R), Blend(border.Color.G, background.G), Blend(border.Color.B, background.B));
-        var x = (int)Math.Round(decoder.PixelWidth / 2d);
-        var top = (int)Math.Round(96 * XamlRoot.RasterizationScale);
-        var bottom = (int)Math.Round((96 + surface.ActualHeight) * XamlRoot.RasterizationScale) - 1;
-        Require(HasBorder(top) && HasBorder(bottom), "Composed alert border is not painted at the window-owned 96px position.");
-        byte Blend(byte front, byte back) => (byte)Math.Round(front * alpha + back * (1 - alpha));
-        bool HasBorder(int y) => Enumerable.Range(Math.Max(0, y - 1), 3).Where(row => row < decoder.PixelHeight).Any(row =>
-        {
-            var index = ((int)decoder.PixelWidth * row + x) * 4;
-            return pixels[index + 3] == 255 && Math.Abs(pixels[index] - expected.B) <= 1 &&
-                Math.Abs(pixels[index + 1] - expected.G) <= 1 && Math.Abs(pixels[index + 2] - expected.R) <= 1;
-        });
     }
     private static IEnumerable<T> Descendants<T>(DependencyObject owner) where T : DependencyObject
     {

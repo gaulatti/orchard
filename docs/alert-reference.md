@@ -1,5 +1,10 @@
 # Alert reference and acceptance
 
+For the current x64 milestone, Alert is accepted only after the five checks in
+[the acceptance contract](acceptance-contract.md) pass. The catalog's native
+screen-coordinate and layout checks remain; exact screenshot pixel colors are
+not an acceptance gate. ARM64 remains build-only and runtime-unverified.
+
 Run `38465239245` at `c8a830c` fails its ARM64 Light/Info screen capture after
 the runner's WSL console takes foreground. The retained desktop report shows
 the pointer still over the catalog's own visible, topmost window. Capture now
@@ -21,8 +26,11 @@ The frozen Bleecker alert is a transient notification overlay. Its source is
 at `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `03f13d8e268535cd89c08ea44ee46d99177acfc0c6a372ad6cec0f9f4a1a336e`.
 The downloaded source was verified against the inventory hash. `BleeckerAlert`
-and `BleeckerAlertContainer` are implemented as an in-progress native preview;
-full acceptance remains open.
+and `BleeckerAlertContainer` are accepted for the current x64 milestone. The
+package-matching catalog passes all four types, physical close actions, focus,
+empty/long messages, live themes and reduced motion in Light and Dark. An
+independent package consumer passes native 150% no-clipping in both themes.
+ARM64 runtime remains unverified.
 
 ## Native use
 
@@ -95,9 +103,8 @@ close, collection updates, unload/reload and appearance changes. Verify the
 actual popup geometry, paint, pointer/keyboard close and accessible message/name
 through the running catalog and an independent package consumer. Opening an
 alert must preserve the consumer's focus; reduced motion must stop transient
-animation without losing the close callback. Native x64/ARM64, rendered reference
-comparison and scaling evidence are required before the
-inventory can be accepted.
+animation without losing the close callback. The current milestone requires
+x64 native scaling evidence and independent package-consumer compilation.
 
 The composed capture exposed a shared `BleeckerOverlaySurface` defect: its
 translucent border blended with the shadow because WinUI's Border background
