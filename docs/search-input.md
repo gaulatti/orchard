@@ -1,5 +1,15 @@
 # Search Input
 
+The .54 preview accepts `BleeckerSearchInput` on x64. The matching catalog
+passes 40 base and 48 interaction/paint states across Light and Dark at 320
+and 640 DIPs, including physical keyboard/pointer/focus input. An independent
+NuGet consumer passes 24 native 150% layouts across three sizes, error states
+and both themes without clipping. With animations already disabled, the clear
+action remains stable after presentation; no OS setting was changed. The
+package consumer compiles and runs. ARM64 builds but its runtime is unverified.
+Raster/pixel parity is outside this milestone gate. Older diagnostics below
+record historical comparisons and do not add acceptance requirements.
+
 Checkpoint `7df5542` passes the real catalog, 118 unit tests, the original
 Search Input regression and shared FilterChip geometry/retained UIA checks.
 The versioned NuGet package passes a fresh x64 runtime consumer in both themes
