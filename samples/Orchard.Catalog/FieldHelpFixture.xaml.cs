@@ -105,6 +105,27 @@ public sealed partial class FieldHelpFixture : UserControl
         Require(Help.Visibility == Visibility.Collapsed && !tooltip.IsOpen, "Empty help left its trigger or popup active.");
         Help.Text = original;
         Require(Help.Visibility == Visibility.Visible, "Restored help did not restore its trigger.");
+        var physicalActivations = 0;
+        RoutedEventHandler physicalClick = (_, _) => physicalActivations++;
+        Help.Click += physicalClick;
+        try
+        {
+            await input.MoveAsync(Heading);
+            await input.MoveAsync(Help);
+            await Task.Delay(tooltip.DelayDuration + 100);
+            Require(tooltip.IsOpen && Help.IsPointerOver, "Physical pointer hover did not open field help.");
+            await input.ClickAsync(Help);
+            Require(physicalActivations == 1 && !tooltip.IsOpen, "Physical field help click did not invoke once and dismiss help.");
+            await input.MoveAsync(Heading);
+            Require(Help.Focus(FocusState.Keyboard) && ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), Help),
+                "Field help did not retain keyboard focus after pointer input.");
+            tooltip.IsOpen = true;
+            await input.KeyAsync(0x0D, Help);
+            Require(physicalActivations == 2 && !tooltip.IsOpen, "Physical Enter did not invoke field help and dismiss its tooltip.");
+            await input.KeyAsync(0x20, Help);
+            Require(physicalActivations == 3, "Physical Space did not invoke field help exactly once.");
+        }
+        finally { Help.Click -= physicalClick; }
     }
 
     private static async Task AwaitStaticPaintAsync(Func<bool> settled,string state)

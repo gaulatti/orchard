@@ -9,10 +9,10 @@ Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Avatar, Brand Mark, Button, Button Group, Card, Context Menu, Dashboard
-Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Footer, Icon Badge,
+Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
-Progress, Progress Stack, Section Header, Separator, Sparkline, Stat Card and
-Status Badge and Tooltip are accepted (30 of 112 entries).
+Progress, Progress Stack, Section Header, Separator, Sparkline, Stat Card,
+Status Badge and Tooltip are accepted (31 of 112 entries).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -420,7 +420,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | field | `BleeckerField`: retained label/control/action/message composition | 44 measured states, real input, external UIA ownership and package checks | In progress: [contract and evidence](field.md); exact raster, broader customization/scaling and native ARM64 |
 | header-select | `BleeckerHeaderSelect`: original options, caller value requests and compact recipe | Shared 292 closed/32 open layout states; modal ownership/live-update cases and independent public NuGet recipe checks; source x64 keyboard selection/Escape in both themes | In progress: [API and acceptance](select.md); remaining input matrix, source-focused paint comparison, full raster, scaling/motion/performance and ARM64 runtime |
 | hero-carousel | `BleeckerHeroCarousel`, original items/context/images, owning-window arrows and inactive input, fictional catalog | [Source preparation](hero-carousel-reference.md): 86 frames/54 histories; current source/package/archive 82 states/34 checks, 434 portable/10 text tests, both builds/consumers and demos pass; exact v7 independent consumer outside arrows/editor exclusion pass in Light/Dark | [Native preview](hero-carousel.md): strict image diagnostics, broader published physical input/focus, complete visual/motion/scaling/customization and native ARM64 acceptance remain open |
-| field-help-tooltip | `BleeckerFieldHelpTooltip`, native button with explicit vector template | Inline label and empty text, branded state values, keyboard help, accessible name and live text | In progress: exact motion comparison, physical input, rendered parity, scaling and ARM64; see [usage](field-help-tooltips.md) |
+| field-help-tooltip | `BleeckerFieldHelpTooltip`, native button with explicit vector template | Matching `.27` x64 catalog passes Light/Dark states, physical hover/click/Enter/Space/focus and reduced-motion behavior; independent package consumer compiles and passes four native 150% theme/width cases | Accepted on x64 under the five-check milestone; ARM64 runtime unverified; see [usage](field-help-tooltips.md) |
 | icon-badge | `BleeckerIconBadge`: two sizes, three variants, passive rich/scalar content | Published `.11` catalog passes Light/Dark variants, physical child click/Tab/focus and lifecycle; matching consumer passes fourteen native 150% cases, static motion and compilation | Accepted for the x64 milestone; ARM64 runtime unverified. Historical raster diagnostics remain in [the component record](icon-badge.md) |
 | icon-button | `BleeckerIconButton`: three variants and three sizes | All nine combinations render in Light/Dark; matching .26 extracted x64 catalog passes physical pointer/Space/Enter/focus and reduced-motion press; independent package consumer passes 18 native 150% cases and compiles; ARM64 build-only | Accepted on x64 under the five-check milestone; ARM64 runtime unverified; see [usage](icon-buttons.md) |
 | loading-spinner | `BleeckerLoadingSpinner`: three sizes, themed three-quarter ring | Current x64 package DLL passes 150% Light/Dark bounds and independent consumer compilation; matching catalog passes sizes, theme brushes, constrained row and static reduced motion | Accepted on x64 for this milestone; ARM64 runtime unverified; [usage](loading-spinner.md) |

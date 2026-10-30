@@ -35,6 +35,7 @@ internal static class ContentScaleFixture
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
         var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var tooltipScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var progressStackScale=new List<object>();var metricScale=new List<object>();var sparklineScale=new List<object>();var feedGridScale=new List<object>();var pageFrameScale=new List<object>();var detailLayoutScale=new List<object>();var panelLayoutScale=new List<object>();var footerScale=new List<object>();var avatarScale=new List<object>();var statCardScale=new List<object>();var buttonGroupScale=new List<object>();var buttonScale=new List<object>();var iconButtonScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var fieldHelpScale = new List<object>();
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -153,6 +154,42 @@ internal static class ContentScaleFixture
                     finally { tip.IsOpen=false;BleeckerTooltipService.SetToolTip(target,null);root.Children.Clear();await Layout(); }
                 }
             }
+            foreach (var viewport in new[] { 320, 600 })
+            {
+                root.Width = viewport; root.Height = viewport == 320 ? 240 : 320;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport * 1.5), (int)(root.Height * 1.5)));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, (int)(viewport * 1.5), (int)(root.Height * 1.5)));
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    stage = $"field-help/{theme}/{viewport}/150-percent"; root.RequestedTheme = theme;
+                    var help = new BleeckerFieldHelpTooltip { Text = "Fictional guidance for an editorial field that wraps inside the available help surface." };
+                    Canvas.SetLeft(help, (viewport - 16) / 2); Canvas.SetTop(help, 48); root.Children.Add(help);
+                    var tip = BleeckerTooltipService.GetToolTip(help)!;
+                    try
+                    {
+                        await Layout(); tip.IsOpen = true; await Layout();
+                        var surface = Find<BleeckerOverlaySurface>(tip, "PART_Surface") ?? throw new InvalidOperationException("Scaled field help surface is missing.");
+                        var text = Find<TextBlock>(tip, "TooltipContentText") ?? throw new InvalidOperationException("Scaled field help text is missing.");
+                        var triggerBounds = help.TransformToVisual(root).TransformBounds(new Rect(0, 0, help.ActualWidth, help.ActualHeight));
+                        var tipBounds = tip.TransformToVisual(root).TransformBounds(new Rect(0, 0, tip.ActualWidth, tip.ActualHeight));
+                        var contentBounds = text.TransformToVisual(surface).TransformBounds(new Rect(0, 0, text.ActualWidth, text.ActualHeight));
+                        Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && help.ActualWidth == 16 && help.ActualHeight == 16 && tip.IsOpen && tip.IsLoaded,
+                            "Field help did not render its trigger and tooltip at native 150% scale.");
+                        Require(triggerBounds.X >= 0 && triggerBounds.Y >= 0 && triggerBounds.Right <= viewport && triggerBounds.Bottom <= root.Height &&
+                            tipBounds.X >= -.5 && tipBounds.Y >= -.5 && tipBounds.Right <= viewport + .5 && tipBounds.Bottom <= root.Height + .5,
+                            $"Field help escaped its native 150% viewport: trigger={triggerBounds}, tip={tipBounds}.");
+                        Require(!text.IsTextTrimmed && contentBounds.X >= -.5 && contentBounds.Y >= -.5 &&
+                            contentBounds.Right <= surface.ActualWidth + .5 && contentBounds.Bottom <= surface.ActualHeight + .5,
+                            $"Field help text clipped its native 150% surface: {contentBounds}.");
+                        fieldHelpScale.Add(new { theme = theme.ToString(), viewport, scale = root.XamlRoot.RasterizationScale, passed = true });
+                    }
+                    finally { tip.IsOpen = false; BleeckerTooltipService.SetToolTip(help, null); root.Children.Clear(); await Layout(); }
+                }
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "field-help-scale-cases.json"),
+                JsonSerializer.Serialize(new { passed = fieldHelpScale.Count == 4, cases = fieldHelpScale,
+                    librarySha256 = Hash(typeof(BleeckerFieldHelpTooltip).Assembly.Location) },
+                    new JsonSerializerOptions { WriteIndented = true }));
             root.Width=400;root.Height=160;window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,240));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,240));
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {

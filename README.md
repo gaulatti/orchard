@@ -11,15 +11,15 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-29 `.27` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.27)
-for the current x64 component milestone. Thirty of 112 entries are accepted:
+Download the [2026-10-29 `.28` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261029.28)
+for the current x64 component milestone. Thirty-one of 112 entries are accepted:
 Avatar, Brand Mark, Button, Button Group, Card, Context Menu, Dashboard Grid, Dashboard Section, Detail Layout,
-Empty, Error State, Feed Grid, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
+Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
 Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Section Header,
-Separator, Sparkline, Stat Card, Status Badge and Tooltip. The [release note](docs/releases/2026-10-29-preview-27.md)
+Separator, Sparkline, Stat Card, Status Badge and Tooltip. The [release note](docs/releases/2026-10-29-preview-28.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.27/Orchard.Catalog.0.1.0-preview.20261029.27.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.27/Orchard.Catalog.0.1.0-preview.20261029.27.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.28/Orchard.Catalog.0.1.0-preview.20261029.28.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261029.28/Orchard.Catalog.0.1.0-preview.20261029.28.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
