@@ -176,6 +176,22 @@ public sealed partial class SkeletonsFixture : UserControl
                     ? await VerifyEmptyPixelsAsync(Path.Combine(folder, capture), client, bounds, scheme) : (int?)null;
                 windowCaptures.Add(new { capture, client, target = bounds, emptyPixelsVerified });
             }
+            var callerClicks = 0;
+            RoutedEventHandler callerClick = (_, _) => callerClicks++;
+            CallerSlotButton.Click += callerClick;
+            try
+            {
+                await native.ClickAsync(CallerSlotButton);
+                Require(callerClicks == 1 && CallerSlotStatus.Text == "Caller action: " + CallerSlotInput.Text,
+                    "Skeleton swallowed the caller's physical pointer action.");
+                Require(CallerSlotButton.Focus(FocusState.Keyboard) &&
+                    ReferenceEquals(Microsoft.UI.Xaml.Input.FocusManager.GetFocusedElement(XamlRoot), CallerSlotButton),
+                    "Skeleton child did not accept keyboard focus.");
+                await native.KeyAsync(0x20, CallerSlotButton);
+                await native.KeyAsync(0x0D, CallerSlotButton);
+                Require(callerClicks == 3, "Skeleton child lost physical Space or Enter activation.");
+            }
+            finally { CallerSlotButton.Click -= callerClick; }
             passed = true;
             stage = "complete";
         }
@@ -297,7 +313,7 @@ public sealed partial class SkeletonsFixture : UserControl
         }
         return width * height;
     }
-    private static Border Surface(BleeckerSkeleton owner) => (Border)VisualTreeHelper.GetChild(owner, 0);
+    private static Border Surface(BleeckerSkeleton owner) => Descendants<Border>(owner).Single(border => border.Name == "PART_Surface");
     private static (string color, double opacity) Brush(Brush brush)
     {
         var solid = (SolidColorBrush)brush;

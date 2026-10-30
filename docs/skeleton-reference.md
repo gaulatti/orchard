@@ -3,8 +3,21 @@
 Producer: `src/components/skeleton.tsx` at Bleecker
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `acc108ca2c34011adfaf1792d7f758c87e0dce9dfd65a3642ca55e7f7bd0837b`.
-Its dependency is Tailwind CSS 4.2.2. The three native controls are previews;
-Windows acceptance remains open.
+Its dependency is Tailwind CSS 4.2.2. The three native controls are accepted in
+current source for the [five-check x64 milestone](acceptance-contract.md). The
+published `.28` preview predates this inventory update; the next batched release
+will list Skeleton. ARM64 remains build-only and runtime-unverified.
+
+The `.28` package DLL (`64b032807a3a95d3467ea02a3d4dc28bd26fe10964eae54b67cf19bba0c52015`)
+passed 36 Light/Dark/RTL states and 16 caller-content contracts in the hidden
+x64 catalog. The focused `smoke-catalog.ps1 -Component skeletons` route passed both themes, with a
+physical pointer click, Space, Enter and keyboard focus reaching the caller's
+child button. An independent package consumer compiled and ran; its hidden
+native 150% probe kept the rectangle, circle, card, table and child shapes
+within 400- and 900-DIP viewports in both themes. Both catalog checks ran with
+animations disabled and verified static reduced-motion opacity. No OS setting
+was changed. The exact normal pulse curve and timing remain unverified outside
+this milestone's five acceptance gates.
 
 `Skeleton` accepts consumer width, height, circle, style and div attributes.
 Rectangle corners use the 7px UI radius. Circle uses a full radius: unequal
@@ -44,8 +57,9 @@ The current reproducible contract is [Skeleton.json](../tests/Reference/Skeleton
 with the pinned [component source](../tests/Reference/Skeleton/source.tsx) and
 [token CSS](../tests/Reference/Skeleton/tokens.generated.css). The original
 `artifacts/skeleton-reference-*` images and font-audit harness are no longer
-present at their documented paths. Normal pulse timing and full Windows
-visual/scaling checks remain unverified. OS contrast and Narrator campaigns are
+present at their documented paths. Exact normal pulse timing remains unverified;
+the milestone's native 150% bounds check passes across both themes and two
+viewports. OS contrast and Narrator campaigns are
 excluded by the [library scope](library-scope.md). The native runtime
 checkpoint below covers lifecycle, consumer counts and package consumption.
 The public wiki remote
@@ -161,11 +175,13 @@ checks pass in both themes on x64 and ARM64 at `71a7fb8`, including normal-motio
 .75/.25 bindings and restoration while hidden/unloaded. The earlier `61d13aa`
 ARM64 run failed an Input cursor phase before reaching Skeleton; that issue did
 not recur and its cause remains unresolved. See [checked runtime evidence](runtime-evidence.md).
-The source audit and successful compilation do not establish visual acceptance.
-Those historical architecture-labelled results do not establish current native
-ARM64 execution. Full source-derived visual review, normal pulse timing and
-display/text scaling remain open. Exact-raster diagnostics retain their original
-scope under the [acceptance contract](acceptance-contract.md).
+The source audit and successful compilation alone did not establish x64
+milestone acceptance; the matching-package runtime and native 150% checks above
+do. Those historical architecture-labelled results do not establish current
+native ARM64 execution. Full source-derived visual review, exact normal pulse
+timing and OS-wide display/text scaling remain open outside this milestone.
+Exact-raster diagnostics retain their original scope under the
+[acceptance contract](acceptance-contract.md).
 
 At `4de3160`, both native jobs reach the capture boundary after the Light
 geometry, consumer-count, decorative-peer, motion and template-lifecycle checks.

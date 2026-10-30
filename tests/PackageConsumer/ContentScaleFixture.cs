@@ -36,6 +36,7 @@ internal static class ContentScaleFixture
     {
         var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var tooltipScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var progressStackScale=new List<object>();var metricScale=new List<object>();var sparklineScale=new List<object>();var feedGridScale=new List<object>();var pageFrameScale=new List<object>();var detailLayoutScale=new List<object>();var panelLayoutScale=new List<object>();var footerScale=new List<object>();var avatarScale=new List<object>();var statCardScale=new List<object>();var buttonGroupScale=new List<object>();var buttonScale=new List<object>();var iconButtonScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
         var fieldHelpScale = new List<object>();
+        var skeletonScale = new List<object>();
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -189,6 +190,64 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "field-help-scale-cases.json"),
                 JsonSerializer.Serialize(new { passed = fieldHelpScale.Count == 4, cases = fieldHelpScale,
                     librarySha256 = Hash(typeof(BleeckerFieldHelpTooltip).Assembly.Location) },
+                    new JsonSerializerOptions { WriteIndented = true }));
+            foreach (var viewport in new[] { 400, 900 })
+            {
+                root.Width = viewport; root.Height = 600;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport * 1.5), 900));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, (int)(viewport * 1.5), 900));
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    stage = $"skeleton/{theme}/{viewport}/150-percent"; root.RequestedTheme = theme;
+                    var width = viewport == 400 ? 320 : 600;
+                    var rectangle = new BleeckerSkeleton { Width = width, Height = 16 };
+                    var circle = new BleeckerSkeleton { Width = 40, Height = 40, Circle = true };
+                    var card = new BleeckerSkeletonCard { Width = width, Rows = 3 };
+                    var table = new BleeckerSkeletonTable { Width = width, Rows = 5, Columns = 4 };
+                    Canvas.SetLeft(rectangle, 32); Canvas.SetTop(rectangle, 16);
+                    Canvas.SetLeft(circle, 32); Canvas.SetTop(circle, 48);
+                    Canvas.SetLeft(card, 32); Canvas.SetTop(card, 112);
+                    Canvas.SetLeft(table, 32); Canvas.SetTop(table, 320);
+                    foreach (var owner in new FrameworkElement[] { rectangle, circle, card, table }) root.Children.Add(owner);
+                    await Layout();
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                        rectangle.ActualHeight == 16 && circle.ActualHeight == 40 && card.ActualHeight == 160 && table.ActualHeight == 272,
+                        "Skeleton shapes or compositions did not measure at native 150% scale.");
+                    Rect Bounds(FrameworkElement element) => element.TransformToVisual(root).TransformBounds(new Rect(0, 0, element.ActualWidth, element.ActualHeight));
+                    foreach (var owner in new FrameworkElement[] { rectangle, circle, card, table })
+                    {
+                        var bounds = Bounds(owner);
+                        Require(owner.IsLoaded && bounds.Width > 0 && bounds.Height > 0 && bounds.X >= -.5 && bounds.Y >= -.5 &&
+                            bounds.Right <= viewport + .5 && bounds.Bottom <= root.Height + .5,
+                            $"Skeleton {owner.GetType().Name} clipped its native 150% viewport: {bounds}.");
+                    }
+                    var cardShapes = new List<BleeckerSkeleton> {
+                        Find<BleeckerSkeleton>(card, "PART_Avatar")!, Find<BleeckerSkeleton>(card, "PART_Headline")!,
+                        Find<BleeckerSkeleton>(card, "PART_Subtitle")! };
+                    cardShapes.AddRange(Find<StackPanel>(card, "PART_Body")!.Children.OfType<BleeckerSkeleton>());
+                    var tableShapes = Find<StackPanel>(table, "PART_Rows")!.Children.OfType<Grid>()
+                        .SelectMany(row => row.Children.OfType<BleeckerSkeleton>()).ToArray();
+                    Require(cardShapes.Count == 6 && tableShapes.Length == 24, "Skeleton composition lost shapes at native 150% scale.");
+                    foreach (var (owner, shapes) in new (FrameworkElement Owner, IEnumerable<BleeckerSkeleton> Shapes)[]
+                        { (card, cardShapes), (table, tableShapes) })
+                    {
+                        var outer = Bounds(owner);
+                        foreach (var shape in shapes)
+                        {
+                            var inner = Bounds(shape);
+                            Require(shape.IsLoaded && inner.Width > 0 && inner.Height > 0 && inner.X >= outer.X - .5 && inner.Y >= outer.Y - .5 &&
+                                inner.Right <= outer.Right + .5 && inner.Bottom <= outer.Bottom + .5,
+                                $"Skeleton child clipped its native 150% composition: owner={outer}, child={inner}.");
+                        }
+                    }
+                    skeletonScale.Add(new { theme = theme.ToString(), viewport, scale = root.XamlRoot.RasterizationScale,
+                        cardShapes = cardShapes.Count, tableShapes = tableShapes.Length, passed = true });
+                    root.Children.Clear(); await Layout();
+                }
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "skeleton-scale-cases.json"),
+                JsonSerializer.Serialize(new { passed = skeletonScale.Count == 4, cases = skeletonScale,
+                    librarySha256 = Hash(typeof(BleeckerSkeleton).Assembly.Location) },
                     new JsonSerializerOptions { WriteIndented = true }));
             root.Width=400;root.Height=160;window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,240));island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,240));
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
