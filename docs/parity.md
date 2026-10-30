@@ -10,11 +10,11 @@ milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
-Icon Button, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
+Icon Button, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel, Panel Layout,
 Progress, Progress Stack, Scroll Area, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Stepper, Switch, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
 Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
-(59 of 112 entries in current source for the `.52` preview).
+(60 of 112 entries in current source for the `.53` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 

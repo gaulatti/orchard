@@ -6913,16 +6913,18 @@
         "samples/Orchard.Catalog/MainWindow.Panels.cs",
         "scripts/verify-panel.mjs",
         "scripts/test-panel-audit.mjs",
-        "tests/PackageConsumer/MainWindow.Panel.cs"
+        "tests/PackageConsumer/MainWindow.Panel.cs",
+        "tests/PackageConsumer/PanelScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .53 x64 extracted catalog passed 266 Light/Dark Panel states and two physical input sequences covering editing, actions, focus and scrolling. Independent .53 NuGet consumer passed eight native 150% Light/Dark narrow/wide optional-slot layouts without clipping and immediate stable accent with animations disabled. Package compiled and ran; ARM64 catalog built and independent consumer compiled, runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "status-badge",

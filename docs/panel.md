@@ -67,10 +67,9 @@ The Panels catalog fixture uses fictional local values and actions. The frozen
 reference contains 266 source states, 58 original full screenshots, two live
 input sequences, two keyboard sequences and 14 border timeline samples.
 Windowless native font tests also verify tabular counts and kerning against
-those browser widths. Current runtime, raw pixel differences and remaining
-acceptance are recorded in [runtime evidence](runtime-evidence.md). Full pixel,
-normal native motion, broader overrides, actual scaling, native ARM64 and final
-integration acceptance require current evidence before this preview is accepted.
+those browser widths. Historical pixel measurements remain in
+[runtime evidence](runtime-evidence.md); raster parity is outside the x64
+milestone gate.
 
 The current preview has zero measured error across all 266 layouts and matching
 paint values. Native editing, actions, binding/template/lifecycle, scroll
@@ -79,4 +78,12 @@ corrupted reports/images are rejected. Full comparison retains 661,516
 differing pixels across 58 raw screenshots. Both catalog builds pass without
 warnings/errors. A fresh independent package passes x64 runtime in both themes
 and ARM64 compilation, with temporary sources/caches removed. Field and
-DetailLayout regressions pass with the new tabular-kerning bridge.
+DetailLayout regressions pass with the tabular-kerning bridge.
+
+The .53 preview accepts Panel on x64. Its released catalog passes 266 Light/Dark
+states and two physical input sequences covering filter/body edits, actions,
+keyboard scrolling, focus and retained caller content. The independent package
+consumer passes eight native 150% narrow/wide, optional-slot Light/Dark layouts
+without clipping. With animations already disabled, accent changes snap and
+stay stable. The package consumer compiles and runs; ARM64 builds but its runtime
+is unverified. No OS accessibility or motion setting was changed.
