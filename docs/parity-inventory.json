@@ -8638,6 +8638,7 @@
       "regressionTests": [
         "tests/Orchard.Tests/SegmentedControlContractTests.cs",
         "tests/PackageConsumer/SegmentedControlFixture.cs",
+        "tests/PackageConsumer/SegmentedControlScaleFixture.cs",
         "samples/Orchard.Catalog/SegmentedControlCatalogProbe.cs",
         "scripts/reference/capture-segmented-control.cjs",
         "scripts/verify-segmented-control.ps1",
@@ -8646,7 +8647,7 @@
         "scripts/verify-segmented-control-catalog.mjs",
         "scripts/test-segmented-control-catalog-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sha256": "5a75a79ed533c33b7d1a5753c1aeb74a31695950f3f8bb26a00938f5cc09182b",
       "sourcePreparation": {
         "reference": "tests/Reference/SegmentedControl.json",
@@ -8673,11 +8674,21 @@
         "actualCatalogCorruptionsRejected": 16
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.44",
+        "librarySha256": "ea1ef94693aee0e72186e1b389a120f7ffa986049e854d072adcba8f6f7b8f38",
+        "lightDarkStates": "The .44 package-matching independent x64 consumer passed 40 bound selection cases and eight rendered layouts across Light and Dark; artifacts/current/context-menu-native-candidate/segmented-control-hidden-v44.json. The extracted .44 x64 catalog also passed both theme cases.",
+        "keyboardPointerFocus": "The .44 independent x64 consumer passed physical pointer, keyboard, focus and RTL selection checks in both themes; artifacts/current/context-menu-native-candidate/segmented-light-desktop-v44.json and segmented-dark-desktop-v44.json.",
+        "scale150NoClip": "The .44 independent NuGet consumer passed 16 native 150% cases across both themes, natural/narrow/large/RTL layouts and two selections; frames, buttons and text stayed within their owners; artifacts/current/context-menu-native-candidate/segmented-control-scale-v44.json.",
+        "reducedMotion": "The Segmented Control uses immediate VisualState setters with no storyboard or transition; selection calls GoToState with transitions disabled. The package consumer passed live state changes without changing OS settings.",
+        "packageConsumerCompiles": "The independent .44 x64 NuGet consumer compiled and ran with the same Orchard DLL, including the focused segmented checks; artifacts/current/context-menu-native-candidate/package-consumer-x64-v44.json and segmented-control-hidden-v44.json.",
+        "arm64RuntimeVerified": false
       }
     },
     {

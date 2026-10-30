@@ -1,5 +1,15 @@
 # Segmented Control native preview
 
+Segmented Control is accepted for the 2026-10-29 x64 milestone in preview
+`.44`. The current package passed 40 Light/Dark bound-selection cases and
+eight rendered layouts, physical pointer/keyboard/focus and RTL selection in
+both themes, and 16 native 150% no-clipping cases covering natural, narrow,
+large-text and RTL layouts. Selection changes use immediate VisualState setters
+with transitions disabled, so reduced motion needs no alternate animation.
+The independent NuGet consumer compiled and ran. ARM64 builds, but its runtime
+remains unverified. The focused reports are under the existing
+`artifacts/current/context-menu-native-candidate/` directory.
+
 `BleeckerSegmentedControl` represents one caller-bound value. It changes a value,
 without hosting panels or navigation. The [pinned Sabella source](https://github.com/gaulatti/sabella/blob/f5ac479bfceaa7eab23c1716ac47420ac53dae25/Sources/Sabella/Buttons.swift)
 uses generic Hashable values, option-value identity and an unconditional button
@@ -37,7 +47,8 @@ the 24-DIP horizontal padding remains intact. The frame clips overflow and grows
 vertically for wrapped or enlarged text. This is a native text-layout mapping.
 Apple HStack compression and raster geometry were not measured, and no Apple
 pixel parity is claimed. The source has no scrolling or equal-width-fill option;
-the Windows API adds neither. Full sizing/customization acceptance remains open.
+the Windows API adds neither. Broader sizing/customization review is outside
+the current five-check milestone.
 
 `SegmentedControlsFixture` demonstrates strings, typed enums, disabled options,
 constrained width and enlarged text over fictional local values. The local
@@ -46,8 +57,10 @@ constrained width and enlarged text over fictional local values. The local
 Each auditor rejects 27 corrupted reports and the two actual wrong RTL captures.
 The real catalog passes both themes, four native invocations and four selection
 provider actions; its auditor rejects 16 corrupt reports. All 344 portable tests
-pass. x64/ARM64 catalog and independent consumer builds pass; ARM64 runtime,
-broader physical input/focus and full visual/scaling/customization acceptance remain open.
+pass. Those earlier x64/ARM64 catalog and independent consumer builds predate
+the current package. Their broader input, visual and scaling questions were
+reassessed against the five-check x64 milestone above; ARM64 runtime remains
+unverified.
 The source host passes 40 behavior cases and eight layout/capture cases. Each
 selected surface is checked against physical root-space bounds and actual PNG
 pixels. Two frozen captures from the earlier double-mirrored RTL candidate are
@@ -75,5 +88,5 @@ East value. Both independent processes exited with code zero. The retained
 screenshots were inspected for visual order and readable theme paint. Run
 `scripts/verify-segmented-consumer-desktop.ps1` against a fresh independent
 consumer build of the pinned package to repeat this check. The library source
-did not change. Full visual/scaling review and native ARM64 runtime remain open;
-the Segmented Control entry is still in progress.
+did not change. The earlier full pixel review and native ARM64 runtime remain
+outside this x64 milestone.

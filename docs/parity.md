@@ -454,7 +454,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 
 | brand-mark (Sabella) | `BleeckerBrandMark`, original template PNG and caller-owned size/tint | Current package passes 37 Light/Dark states and eight native 150% size/theme checks; independent consumer compiles | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](brand-mark.md) |
 | secure-field (Sabella) | `BleeckerSecureField` | SecureFieldsFixture; native and fresh consumer 30 cases; disabled visual regression | In progress: [contract](secure-field.md); physical input, full visual/scaling/customization and ARM64 runtime |
-| segmented-control (Sabella) | `BleeckerSegmentedControl` / `BleeckerSegmentOption` | SegmentedControlsFixture; both hosts 40 cases/8 layouts/8 rendered probes; wrong RTL captures rejected | In progress: [contract](segmented-control.md); full input/visual/platform acceptance |
+| segmented-control (Sabella) | `BleeckerSegmentedControl` / `BleeckerSegmentOption` | Current package: 40 Light/Dark cases, eight layouts, physical pointer/keyboard/focus in both themes, 16 native 150% no-clipping cases, immediate reduced-motion behavior and independent consumer compilation | Accepted on x64: [contract](segmented-control.md); ARM64 runtime unverified |
 | app-tab-bar (Sabella) | Native compact preview with typed selection, equal tracks, icons and badges | Registered fictional catalog, source/NuGet native cases and rendered checks | Physical input, actual scaling, full visual/customization and ARM64 runtime acceptance |
 
 The focused title-language repair renders `istanbul` as `İSTANBUL` under
