@@ -1,5 +1,13 @@
 # Toggles
 
+For the current [x64 acceptance milestone](acceptance-contract.md), Toggle
+passes all five checks: Light/Dark state paint for default and outline variants,
+physical pointer/Space/focus in both themes, all six styles at native 150%,
+stable selected paint under reduced motion, and independent `.38` package
+consumer compilation with 12 standalone binding/action cases. ARM64 runtime
+remains unverified. The historical full-parity notes below do not add milestone
+gates.
+
 Orchard styles the native WinUI `ToggleButton`. Import `Themes/Orchard.xaml` as documented in the package setup, then choose a style:
 
 | Size | Default variant | Outline variant |
@@ -76,9 +84,7 @@ cells and visibly clipped two examples; the current pass uses labels that fit
 the source-sized examples. Consumers should use the documented wrapping
 TextBlock for long labels.
 
-Remaining acceptance: actual monitor-DPI and increased text-scale behavior,
-reduced motion, broader visual review and ARM64 runtime. Narrator and OS contrast
-campaigns are excluded by the [component-library scope](library-scope.md).
-Historical runtime statements above describe their original checks. These styles
-are implemented; the parity entry remains in progress until all required evidence
-exists.
+The earlier full-parity review tracked monitor-DPI and increased text-scale
+behavior, broader visual review and ARM64 runtime. These are not additional
+x64 milestone gates. Narrator and OS contrast campaigns are excluded by the
+[component-library scope](library-scope.md).

@@ -446,6 +446,7 @@ public sealed partial class MainWindow : Window
             }
             else if (args.Contains("--smoke-activity")) await RunActivitySmokeAsync(folder);
             else if (args.Contains("--smoke-feed-item")) await RunFeedItemSmokeAsync(folder);
+            else if (args.Contains("--smoke-toggles")) await RunToggleSmokeAsync(folder);
             else if (args.Contains("--smoke-attention")) await RunAttentionSmokeAsync(folder);
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-media-library-foreground")) await RunMediaLibraryForegroundAsync(folder);
@@ -812,6 +813,18 @@ public sealed partial class MainWindow : Window
             await CaptureAsync(Path.Combine(folder,$"catalog-{theme.ToString().ToLowerInvariant()}.png"));
         }
         await File.WriteAllTextAsync(Path.Combine(folder,"result.json"),JsonSerializer.Serialize(new{passed=true,component="feed-item",environment=RuntimeEnvironment()}));
+    }
+    private async Task RunToggleSmokeAsync(string folder)
+    {
+        foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+        {
+            await SelectFixtureAsync(Foundation); CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(Toggles);
+            await Toggles.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+            await Toggles.VerifyPhysicalAsync(theme, folder);
+            await CaptureAsync(Path.Combine(folder, $"catalog-{theme.ToString().ToLowerInvariant()}.png"));
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, "result.json"),
+            JsonSerializer.Serialize(new { passed = true, component = "toggles", environment = RuntimeEnvironment() }));
     }
     private async Task RunSwitchSmokeAsync(string folder)
     {

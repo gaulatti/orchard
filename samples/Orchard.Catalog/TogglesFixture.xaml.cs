@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
+using System.Text.Json;
+using Windows.UI.ViewManagement;
 
 namespace Orchard.Catalog;
 
@@ -64,6 +66,38 @@ public sealed partial class TogglesFixture : UserControl
             }
             VisualStateManager.GoToState(toggle, toggle.IsChecked == true ? "Checked" : "Normal", false);
         }
+    }
+
+    internal async Task VerifyPhysicalAsync(ElementTheme theme, string folder)
+    {
+        DefaultToggle.IsChecked = false;
+        OutlineToggle.IsChecked = true;
+        using var input = new NativeInputSession(XamlRoot, folder, $"toggle-{theme}");
+        await input.AcquireAsync(DefaultToggle);
+        await input.ClickAsync(DefaultToggle);
+        Require(DefaultToggle.IsChecked == true && ToggleResult.Text == "Follow updates: on",
+            "Pointer click did not select the default toggle or update consumer state.");
+        Require(DefaultToggle.Focus(FocusState.Keyboard), "Default toggle refused keyboard focus.");
+        await input.KeyAsync(0x20, DefaultToggle);
+        Require(DefaultToggle.IsChecked == false && ToggleResult.Text == "Follow updates: off",
+            "Space did not clear the focused default toggle.");
+        await input.ClickAsync(OutlineToggle);
+        Require(OutlineToggle.IsChecked == false, "Pointer click did not clear the outline toggle.");
+        Require(OutlineToggle.Focus(FocusState.Keyboard), "Outline toggle refused keyboard focus.");
+        await input.KeyAsync(0x20, OutlineToggle);
+        Require(OutlineToggle.IsChecked == true, "Space did not select the focused outline toggle.");
+        var reducedMotion = !new UISettings().AnimationsEnabled;
+        if (reducedMotion)
+        {
+            var presenter = (ContentPresenter)VisualTreeHelper.GetChild(OutlineToggle, 0);
+            var color = ((SolidColorBrush)presenter.Background).Color;
+            await Task.Delay(50);
+            Require(((SolidColorBrush)presenter.Background).Color == color,
+                "Outline toggle continued a background transition under reduced motion.");
+        }
+        await File.WriteAllTextAsync(Path.Combine(folder, $"toggle-runtime-{theme}.json"),
+            JsonSerializer.Serialize(new { passed = true, theme = theme.ToString(), pointerActions = 2,
+                keyboardActions = 2, keyboardFocus = true, reducedMotionVerified = reducedMotion }));
     }
 
     private static void Require(bool condition, string message)

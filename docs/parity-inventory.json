@@ -5215,15 +5215,18 @@
         "scripts/generate-tokens.mjs"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/TogglesFixture.xaml"
+        "samples/Orchard.Catalog/TogglesFixture.xaml",
+        "samples/Orchard.Catalog/TogglesFixture.xaml.cs"
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/TogglesFixture.xaml.cs: VerifyAsync",
+        "samples/Orchard.Catalog/TogglesFixture.xaml.cs: VerifyPhysicalAsync",
+        "tests/PackageConsumer/ToggleGroupFixture.cs",
         "tests/PackageConsumer/ContentScaleFixture.cs",
         "scripts/verify-content-scale.mjs",
         "scripts/test-content-scale-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "nativeRasterizationVerification": {
         "sourceAudit": "artifacts/current/toggle-isolated-scale-source-audit-v1.json",
         "packageAudit": "artifacts/current/toggle-isolated-scale-package-audit-v1.json",
@@ -5263,12 +5266,13 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The package-matching extracted .38 x64 catalog passed Light/Dark eight-state paint checks per variant and physical pointer, Space and focus on default/outline toggles; OS animations were already disabled and stable selected paint was verified. The independent .38 x64 package consumer compiled and passed 12 standalone style/binding cases; its native 150% island passed all six style layouts in Light/Dark with no clipping. ARM64 runtime remains unverified."
     },
     {
       "id": "toggle-group",
