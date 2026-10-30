@@ -1,4 +1,14 @@
-# Notification badge (in progress)
+# Notification badge
+
+Notification Badge passes the current x64 component milestone: Light and Dark
+states, physical pointer/keyboard/focus behavior, native 150% flyout layout
+without clipped text, reduced motion, and independent NuGet consumer
+compilation. The package-matching catalog exercises populated, empty, overflow
+and long-content states, caller commands and live theme changes. The focused
+consumer probe opens a 320px flyout in a native 150% island in both themes.
+ARM64 runtime remains unverified. The older checkpoints below describe their
+original scope; raster parity and broader platform campaigns do not add gates
+to this milestone.
 
 `BleeckerNotificationBadge` supplies a 40px branded bell trigger, a 16px count badge (capped at `99+`), and a 320px notification popup. Its pinned reference is Bleecker `a86059013cd59684ce452849278ea81e734f2066`, `src/components/notification-badge.tsx`.
 
@@ -23,7 +33,7 @@ On x64 in dark appearance, physical input verifies one Tab from the header to th
 
 The long-content fixture adds mixed Japanese, Portuguese and Arabic description text under a wrapping English title. The popup now sets its maximum width to 320px as well as its width/minimum: WinUI otherwise expanded it for this content. Runtime checks inspect visible text bounds, restore short and long text while open, and verify first-row focus when no header action is present. The appearance regression changes the catalog root between light and dark while the same popup remains open, checking surface, title/description, dot and count colors in both directions. Captures are retained under `artifacts/smoke-notifications-content-final`. These cases do not establish every script's line-breaking behavior or scaled/constrained-viewport acceptance.
 
-This is an implementation checkpoint, not complete visual acceptance. Remaining work includes exact shadow rasterization and placement, reference motion, the full pointer/keyboard/disabled and focus-restoration matrix, long/non-Latin content, constrained viewport and text/display scaling, live appearance changes, component theme resources and row highlight foregrounds, and the full ARM64 acceptance matrix. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md). The local host is Intel x64; native ARM64 execution is available through the hosted Windows runner.
+The earlier implementation checkpoint left exact shadow rasterization and placement, reference motion, broader input, constrained viewport and text/display scaling, and ARM64 runtime open. These historical investigations do not change the current five-check x64 result. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md).
 
 Catalog readiness checks for live palette changes and long/short text remeasurement now retry the same exact assertions every 16ms for at most one second. This replaces fixed 100/150ms sleeps that intermittently inspected an earlier frame; assertion failures still surface at the deadline. The application behavior and expected colors/heights are unchanged. The combined catalog run at artifacts/smoke-tooltip-activation-ready passes these checks.
 

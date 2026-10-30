@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using System.Text.Json;
 
 namespace Orchard.Catalog;
 
@@ -173,6 +174,57 @@ public sealed partial class NotificationsFixture : UserControl
         emptyPopup.Hide();
         await AwaitVerificationAsync(() => Require(!emptyPopup.IsOpen && !VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Any(p => ReferenceEquals(p.Child, presenter)), "Empty notification popup did not close."));
         await VerifyLongContentAsync(scheme, folder, input);
+    }
+
+    internal async Task VerifyPhysicalAsync(ElementTheme theme, string folder)
+    {
+        Badge.Count = 3;
+        foreach (var item in Badge.Items) item.IsUnread = item.Id != "3";
+        await MainWindow.AwaitPresentationAsync(this);
+        var trigger = (BleeckerIconButton)Badge.FindName("Trigger");
+        var popup = (Flyout)trigger.Flyout;
+        var stack = (StackPanel)popup.Content;
+        var mark = (Button)((Grid)stack.Children[0]).Children[1];
+        using var input = new NativeInputSession(XamlRoot, folder, $"notification-physical-{theme}");
+        await input.AcquireAsync(trigger);
+        await input.ClickAsync(trigger);
+        await AwaitVerificationAsync(() => Require(popup.IsOpen && mark.IsLoaded,
+            "Pointer click did not open the Notification Badge flyout."));
+        var rows = Descendants<Button>((ItemsControl)stack.Children[3]).ToArray();
+        Require(rows.Length == 3 && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), mark),
+            "Notification flyout did not focus its first available action.");
+        input.Key(0x09);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), rows[0]),
+            "Tab did not reach the first notification row.");
+        var selectedBefore = selected;
+        input.Key(0x0D);
+        await AwaitVerificationAsync(() => Require(!popup.IsOpen && selected == selectedBefore + 1,
+            "Enter did not invoke the focused notification and close the flyout."));
+        await input.ClickAsync(trigger);
+        await AwaitVerificationAsync(() => Require(popup.IsOpen && mark.IsLoaded,
+            "Pointer click did not reopen the Notification Badge flyout."));
+        rows = Descendants<Button>((ItemsControl)stack.Children[3]).ToArray();
+        selectedBefore = selected;
+        await input.MoveAsync(rows[0]);
+        await input.PressPointerAsync();
+        input.PointerButton(false);
+        await AwaitVerificationAsync(() => Require(!popup.IsOpen && selected == selectedBefore + 1,
+            "Pointer click did not invoke the notification row and close the flyout."));
+        await input.ClickAsync(trigger);
+        await AwaitVerificationAsync(() => Require(popup.IsOpen && mark.IsLoaded,
+            "Pointer click did not reopen the Notification Badge header action."));
+        var markedBefore = marked;
+        await input.ClickAsync(mark);
+        await AwaitVerificationAsync(() => Require(popup.IsOpen && marked == markedBefore + 1 &&
+            Badge.Count == 0 && Badge.Items.All(item => !item.IsUnread),
+            "Pointer click did not mark caller-owned notifications read while leaving the flyout open."));
+        popup.Hide();
+        Require(!popup.AreOpenCloseAnimationsEnabled,
+            "Notification Badge retained flyout motion under reduced motion.");
+        await File.WriteAllTextAsync(Path.Combine(folder, $"notification-physical-{theme}.json"),
+            JsonSerializer.Serialize(new { passed = true, theme = theme.ToString(), pointerActions = 4,
+                keyboardActions = 2, focusVerified = true, reducedMotionVerified = true }));
     }
 
     private void VerifyPalette(FlyoutPresenter presenter, Button row, Border counter, BleeckerColorScheme scheme, FrameworkElement root)

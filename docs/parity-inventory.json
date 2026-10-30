@@ -2766,17 +2766,20 @@
       ],
       "regressionTests": [
         "NotificationsFixture.VerifyAsync",
+        "NotificationsFixture.VerifyPhysicalAsync",
         "samples/Orchard.Catalog/NotificationPopupTrace.cs",
-        "PackageConsumer.MainWindow.OnLoaded"
+        "PackageConsumer.MainWindow.OnLoaded",
+        "tests/PackageConsumer/NotificationBadgeScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The package-matching .39 x64 catalog passes populated, empty, overflow, long-content and inherited/local theme checks in Light/Dark, plus physical trigger, row and header pointer actions, Tab/Enter, focus and caller commands in both themes. A visible independent .39 NuGet consumer passes the native 150% flyout with long text within its 320px surface in Light/Dark and disabled open/close animation. The independent x64 consumer compiled and ran; ARM64 runtime remains unverified."
     },
     {
       "id": "accordion",
