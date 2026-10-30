@@ -3,7 +3,7 @@
 ## x64 milestone acceptance
 
 Switch passes all five checks in the [component-library acceptance contract](acceptance-contract.md)
-against the published `0.1.0-preview.20261029.30` package and its matching
+against the `0.1.0-preview.20261029.31` package and its matching
 extracted x64 catalog. The focused catalog route verifies applicable on, off,
 disabled, bound, and unlabeled states in Light and Dark. Native physical Space,
 Tab, track, and label input, focus order, disabled rejection, and RTL clicks
