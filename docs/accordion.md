@@ -1,5 +1,14 @@
 # Accordion
 
+For the current [x64 acceptance milestone](acceptance-contract.md), Accordion
+passes all five checks: Light/Dark states; native keyboard, pointer, and focus;
+collapsed and expanded content without clipping in a native 150% XAML island;
+reduced motion; and an independent consumer compiled against the `.36`
+package. The focused native routes passed in both themes, including 24
+reduced-motion cases and four 150% layout cases. ARM64 runtime remains
+unverified. The historical parity requirements below do not add milestone
+gates.
+
 The implementation target is the unmodified Bleecker `accordion.tsx` at commit
 `a86059013cd59684ce452849278ea81e734f2066`. Its required behavior is one internally
 expanded item, an initial expanded ID, independent header actions and rich
@@ -8,13 +17,13 @@ does not change the active state. Removing an item does not invent a new active
 ID; reinserting that ID restores its expansion. Empty and unknown IDs are explicit
 states. Header buttons support pointer, Enter, Space and ordinary Tab navigation.
 
-Before acceptance, source and native evidence must cover Light/Dark at 320, 639
+The earlier full-parity campaign sought source and native evidence at 320, 639
 and 640 pixels, the exact 640-pixel header-padding boundary, open/closed and rich
 content, hover/focus, independent actions, live collection and metadata changes,
 keyed identity, template/unload cleanup and stale automation peers. Native UIA
-must expose expansion and useful names. Reduced motion, normal/reversed height
-and chevron motion, text/display scaling, performance, x64 and native ARM64
-runtime remain required. Existing accessibility metadata and contrast resources
+must expose expansion and useful names. The campaign also tracked reduced
+motion, normal/reversed height and chevron motion, text/display scaling,
+performance, x64 and native ARM64 runtime. Existing accessibility metadata and contrast resources
 remain intact; Narrator and OS contrast campaigns are excluded by the
 [current library scope](library-scope.md). Any documented Windows adaptation
 must preserve consumer content and commands.

@@ -12,9 +12,9 @@ records pass/fail for all 112 entries; Avatar, Brand Lockup, Brand Mark, Breadcr
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
-Status Badge, Switch and Tooltip, plus Activity Item, Data List, Filter Chip,
-Radio Group and Slider, are accepted (42 of 112 entries in current source and
-the published `.35` preview).
+Status Badge, Switch and Tooltip, plus Accordion, Activity Item, Data List,
+Filter Chip, Radio Group and Slider, are accepted (43 of 112 entries in current
+source and the `.36` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 

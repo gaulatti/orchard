@@ -2832,14 +2832,15 @@
         "scripts/verify-accordion-scalars.mjs",
         "scripts/test-accordion-scalars-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The package-matching .36 x64 catalog passed the Accordion Light/Dark native interaction route and 24 reduced-motion cases. The independent .36 package consumer compiled and ran with the focused native 150% fixture; its four Light/Dark collapsed/expanded cases passed without clipping. ARM64 runtime is unverified."
     },
     {
       "id": "alert",

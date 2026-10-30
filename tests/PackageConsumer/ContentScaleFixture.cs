@@ -40,6 +40,7 @@ internal static class ContentScaleFixture
         var breadcrumbScale = new List<object>();
         var dialogCloseScale = new List<object>();
         var brandLockupScale = new List<object>();
+        var accordionScale = new List<object>();
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -1548,6 +1549,39 @@ internal static class ContentScaleFixture
                     root.Children.Remove(icon);await Layout();
                 }
             }
+            root.Width=400;root.Height=320;island.SiteBridge.OverrideScale=1.5f;
+            window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600,480));
+            island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0,0,600,480));
+            foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
+            foreach(var expanded in new[]{false,true})
+            {
+                stage=$"accordion/{theme}/{(expanded?"expanded":"collapsed")}/150-percent";root.RequestedTheme=theme;
+                var bodyText=new TextBlock{Text="Fictional editorial updates stay visible when this section expands at 150% scaling.",TextWrapping=TextWrapping.Wrap};
+                var body=new Border{Padding=new Thickness(16),Child=bodyText};
+                var accordion=new BleeckerAccordion{Width=320,DefaultExpandedId=expanded?"first":null,Items=[new("first","Fictional editorial delivery schedule with a title that wraps",body){Subtitle="Choose when local updates arrive for review."}]};
+                Canvas.SetLeft(accordion,24);Canvas.SetTop(accordion,24);root.Children.Add(accordion);await Layout();
+                var owner=accordion.TransformToVisual(root).TransformBounds(new Rect(0,0,accordion.ActualWidth,accordion.ActualHeight));
+                var title=Find<FrameworkElement>(accordion,"AccordionTitle")??throw new InvalidOperationException("Scaled Accordion title is missing.");
+                var subtitle=Find<FrameworkElement>(accordion,"AccordionSubtitle")??throw new InvalidOperationException("Scaled Accordion subtitle is missing.");
+                var header=Find<Button>(accordion,"AccordionHeader")??throw new InvalidOperationException("Scaled Accordion header is missing.");
+                Require(Math.Abs(root.XamlRoot.RasterizationScale-1.5)<.0001&&accordion.IsLoaded&&accordion.ActualWidth==320&&accordion.ExpandedId==(expanded?"first":null)&&owner.X>=24&&owner.Y>=24&&owner.Right<=root.Width&&owner.Bottom<=root.Height,
+                    $"Accordion escaped its native 150% host: {owner}.");
+                foreach(var part in new FrameworkElement[]{header,title,subtitle})
+                {
+                    var bounds=part.TransformToVisual(accordion).TransformBounds(new Rect(0,0,part.ActualWidth,part.ActualHeight));
+                    Require(part.IsLoaded&&part.ActualWidth>0&&part.ActualHeight>0&&bounds.X>=-.5&&bounds.Y>=-.5&&bounds.Right<=accordion.ActualWidth+.5&&bounds.Bottom<=accordion.ActualHeight+.5&&part.ActualHeight+.5>=part.DesiredSize.Height,
+                        $"Accordion header content clipped at native 150% scale: {theme}/{expanded}, part={bounds}, desired={part.DesiredSize}.");
+                }
+                if(expanded)
+                {
+                    var bounds=bodyText.TransformToVisual(accordion).TransformBounds(new Rect(0,0,bodyText.ActualWidth,bodyText.ActualHeight));
+                    Require(bodyText.IsLoaded&&bodyText.ActualWidth>0&&bodyText.ActualHeight>0&&bounds.X>=-.5&&bounds.Y>=-.5&&bounds.Right<=accordion.ActualWidth+.5&&bounds.Bottom<=accordion.ActualHeight+.5&&bodyText.ActualHeight+.5>=bodyText.DesiredSize.Height,
+                        $"Accordion body clipped at native 150% scale: {theme}, body={bounds}, desired={bodyText.DesiredSize}.");
+                }
+                accordionScale.Add(new{theme=theme.ToString(),expanded,scale=root.XamlRoot.RasterizationScale,passed=true});
+                root.Children.Clear();await Layout();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!,"accordion-scale.json"),JsonSerializer.Serialize(new{passed=true,cases=accordionScale,librarySha256=Hash(typeof(BleeckerAccordion).Assembly.Location),hostSha256=Hash(hostAssembly)}));
             root.Width=400;
             root.Height=160;
             island.SiteBridge.OverrideScale=1;
@@ -1594,7 +1628,7 @@ internal static class ContentScaleFixture
             root.Children.Clear();root.Children.Add(localInput);stage="input/template-and-remount";var inputTemplate=localInput.Template;localInput.Template=null;await Layout();localInput.Template=inputTemplate;await Layout();root.Children.Remove(localInput);await Layout();root.Children.Add(localInput);await Layout();Require(localInput.FontSize==23&&localInput.Padding==new Thickness(21,0,27,0)&&localInput.MinHeight==18,"Input template replacement or remount lost caller geometry.");inputOverrides.Add(new{id="template-and-remount",passed=true});
             stage="input/clear-restores-default";localInput.ClearValue(Control.FontSizeProperty);localInput.ClearValue(Control.PaddingProperty);localInput.ClearValue(FrameworkElement.MinHeightProperty);await Layout();Require(localInput.FontSize==13&&localInput.Padding==new Thickness(40,0,40,0)&&localInput.MinHeight==36,"Clearing Input caller geometry did not restore the live small/adorned recipe.");inputOverrides.Add(new{id="clear-restores-default",passed=true});
             root.Children.Clear();var implicitHost=new Grid();var implicitStyle=new Style{TargetType=typeof(BleeckerInput)};implicitStyle.Setters.Add(new Setter(Control.TemplateProperty,defaultInput.Template));implicitStyle.Setters.Add(new Setter(Control.FontSizeProperty,18d));implicitStyle.Setters.Add(new Setter(Control.PaddingProperty,new Thickness(23,0,29,0)));implicitStyle.Setters.Add(new Setter(FrameworkElement.MinHeightProperty,30d));implicitHost.Resources[typeof(BleeckerInput)]=implicitStyle;var implicitInput=new BleeckerInput{Width=240,InputSize=BleeckerInputSize.Large};implicitHost.Children.Add(implicitInput);root.Children.Add(implicitHost);stage="input/ancestor-implicit-style";await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Input size recipe replaced an ancestor implicit style.");implicitInput.InputSize=BleeckerInputSize.Small;await Layout();Require(implicitInput.FontSize==18&&implicitInput.Padding==new Thickness(23,0,29,0)&&implicitInput.MinHeight==30,"Live Input size replaced ancestor style geometry.");inputOverrides.Add(new{id="ancestor-implicit-style",passed=true});
-            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Tooltip, Brand Mark, Eyebrow, Label, Icon Badge, Icon Button, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid, Card, Empty, Progress Stack, Metric, Sparkline, Feed Grid, Page Frame, Detail Layout, Panel Layout, Footer, Avatar, Stat Card, Button Group, Button and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,tooltipScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,pageFrameScale,detailLayoutScale,panelLayoutScale,footerScale,avatarScale,statCardScale,buttonGroupScale,buttonScale,iconButtonScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
+            Guard();GC.KeepAlive(island);await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=true,scope="owned hidden DesktopWindowXamlSource SiteBridge.OverrideScale for Separator, Status Badge, Switch, Loading Spinner, Context Menu, Tooltip, Brand Mark, Eyebrow, Label, Icon Badge, Icon Button, Progress, Error State, Section Header, Page Header, Dashboard Section, Dashboard Grid, Card, Empty, Progress Stack, Metric, Sparkline, Feed Grid, Page Frame, Detail Layout, Panel Layout, Footer, Avatar, Stat Card, Button Group, Button, Accordion and native Toggle styles; Input caller geometry contracts; no physical monitor DPI or system text-scale change",observations,frames,toggleObservations,toggleFrames,inputOverrides,contextMenuScale,tooltipScale,brandMarkScale,eyebrowScale,labelScale,iconBadgeScale,progressScale,errorStateScale,sectionHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,pageFrameScale,detailLayoutScale,panelLayoutScale,footerScale,avatarScale,statCardScale,buttonGroupScale,buttonScale,iconButtonScale,accordionScale,guards,focus,activations,isolatedRasterizationScaleVerified=true,isolatedStatusBadgeRasterizationVerified=true,isolatedSwitchRasterizationVerified=true,isolatedSpinnerRasterizationVerified=true,isolatedToggleRasterizationVerified=true,inputOverrideContractsVerified=true,displayScalingVerified=false,systemTextScalingVerified=false,osSettingsChanged=false,hardwareInputSent=false,nativeARM64RuntimeVerified=false,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)},new JsonSerializerOptions{WriteIndented=true}));window.Close();Environment.Exit(0);
         }
         catch(Exception error){await File.WriteAllTextAsync(output,JsonSerializer.Serialize(new{format="orchard-content-scale-native-v3",passed=false,stage,error=error.ToString(),observations,frames,toggleObservations,toggleFrames,inputOverrides,tooltipScale,labelScale,iconBadgeScale,sectionHeaderScale,pageHeaderScale,dashboardSectionScale,dashboardGridScale,cardScale,emptyScale,progressStackScale,metricScale,sparklineScale,feedGridScale,pageFrameScale,detailLayoutScale,panelLayoutScale,footerScale,avatarScale,statCardScale,buttonGroupScale,buttonScale,iconButtonScale,guards,focus,activations,librarySha256=Hash(typeof(BleeckerSeparator).Assembly.Location),hostSha256=Hash(hostAssembly)}));Environment.Exit(1);}
     }
