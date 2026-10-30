@@ -1,5 +1,13 @@
 # Tooltip preview
 
+For the 2026-10-29 x64 milestone, Tooltip passes the five required checks:
+Light/Dark states across its four placements and content examples, physical
+pointer hover/leave and keyboard focus/Escape, 16 native 150% placement and
+viewport cases without clipping, immediate dismissal under reduced motion,
+and independent package-consumer compilation. ARM64 remains build-only and its
+runtime is unverified. Older diagnostics below are historical and do not add
+milestone gates.
+
 Current scope is the [component library and its fictional-data demos](library-scope.md).
 Narrator and OS accessibility/contrast campaigns are excluded.
 
@@ -15,8 +23,9 @@ The host's peer tree follows the same active popup scope and logical branches.
 
 Escape dismisses active help before its modal, Popover or Select owner. The
 source browser histories verify tooltip-only dismissal and retained trigger
-focus. Hidden native checks verify the dismissal decision and ownership;
-physical keyboard delivery and native focus remain unverified.
+focus. Hidden native checks verify the dismissal decision and ownership; the
+current extracted x64 catalog also verifies physical keyboard delivery and
+native focus in both themes.
 
 The default style disables layout rounding, and the shared text renderer uses
 the pinned CSS layout-unit metrics. This prevents the popup container from
@@ -34,8 +43,9 @@ and four Escape histories, with two independent JSON/PNG captures matching byte
 for byte. The shared placement model matches all 40 source states. Current
 background native validation compares both popup paths, modal ownership,
 Select scope changes, field-help removal and loaded-window teardown.
-These checks do not establish full raster, normal motion, hover timing,
-physical input/focus, scaling or native ARM64 acceptance.
+Those historical checks alone did not establish physical input/focus or scaling;
+the current x64 milestone evidence is stated above. Native ARM64 runtime is
+unverified.
 
 The [extracted-v7 x64 foreground probe](evidence/tooltip-foreground-v1/checkpoint.json)
 now verifies the Top specimen in both Light and Dark. A swept physical pointer

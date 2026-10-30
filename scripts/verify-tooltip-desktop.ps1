@@ -2,7 +2,8 @@ param(
     [Parameter(Mandatory)][string]$AppDirectory,
     [Parameter(Mandatory)][string]$ExpectedLibrarySha256,
     [Parameter(Mandatory)][ValidateSet('Light', 'Dark')][string]$Theme,
-    [Parameter(Mandatory)][string]$Output
+    [Parameter(Mandatory)][string]$Output,
+    [ValidatePattern('^[A-Za-z0-9-]+$')][string]$RunId = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,12 +25,14 @@ $app = (Resolve-Path -LiteralPath $AppDirectory).Path
 $exe = Join-Path $app 'Orchard.Catalog.exe'
 $dll = Join-Path $app 'Orchard.dll'
 $folder = [IO.Path]::GetFullPath($Output)
-if (Test-Path -LiteralPath $folder) { throw 'Use a fresh Tooltip output directory.' }
+$suffix = if ($RunId) { "-$RunId" } else { '' }
+$reportPath = Join-Path $folder "tooltip-desktop$suffix-$Theme.json"
+if (Test-Path -LiteralPath $reportPath) { throw 'Preserve the previous Tooltip report.' }
 foreach ($path in @($exe, $dll)) { if (-not (Test-Path -LiteralPath $path)) { throw "Missing catalog input: $path" } }
 $libraryHash = (Get-FileHash -LiteralPath $dll -Algorithm SHA256).Hash.ToLowerInvariant()
 if ($libraryHash -ne $ExpectedLibrarySha256.ToLowerInvariant()) { throw 'Catalog Orchard.dll does not match the expected package.' }
 if (@(Get-Process Orchard.Catalog -ErrorAction SilentlyContinue | Where-Object Path -eq $exe).Count) { throw 'Close this catalog before its isolated input check.' }
-New-Item -ItemType Directory -Path $folder | Out-Null
+New-Item -ItemType Directory -Path $folder -Force | Out-Null
 $report = [ordered]@{ format='orchard-tooltip-desktop-v1'; theme=$Theme; catalogExeSha256=(Get-FileHash $exe -Algorithm SHA256).Hash.ToLowerInvariant(); librarySha256=$libraryHash; passed=$false; physicalPointerSent=$false; physicalKeyboardSent=$false; physicalEscapeSent=$false; osSettingsChanged=$false; steps=[ordered]@{} }
 
 function Wait-For([scriptblock]$condition, [string]$failure) {
@@ -118,7 +121,7 @@ try {
         Add-Type -AssemblyName System.Drawing
         $image = [System.Drawing.Bitmap]::new(1600, 1000)
         $graphics = [System.Drawing.Graphics]::FromImage($image)
-        try { $graphics.CopyFromScreen(30, 30, 0, 0, $image.Size); $image.Save((Join-Path $folder 'tooltip-failure.png')) }
+        try { $graphics.CopyFromScreen(30, 30, 0, 0, $image.Size); $image.Save((Join-Path $folder "tooltip-failure$suffix-$Theme.png")) }
         finally { $graphics.Dispose(); $image.Dispose() }
     }
     throw
@@ -126,5 +129,5 @@ try {
 finally {
     if ($process -and -not $process.HasExited) { $process.CloseMainWindow() | Out-Null; if (-not $process.WaitForExit(5000)) { Stop-Process -Id $process.Id -Force } }
     $report.processExited = if ($process) { -not [bool](Get-Process -Id $process.Id -ErrorAction SilentlyContinue) } else { $true }
-    $report | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $folder 'tooltip-desktop.json') -Encoding utf8
+    $report | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $reportPath -Encoding utf8
 }

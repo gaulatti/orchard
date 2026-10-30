@@ -5277,15 +5277,23 @@
         "tests/PackageConsumer/TooltipModalRootFixture.cs",
         "scripts/verify-tooltip-modal-branch.mjs",
         "scripts/verify-package-tooltip-modal-root.mjs",
-        "scripts/verify-tooltip-desktop.ps1"
+        "scripts/verify-tooltip-desktop.ps1",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .27 x64 extracted catalog passed Tooltip fixture in Light and Dark across Top, Bottom, Left, Right, long text, template content, collision flips and live theme; artifacts/current/context-menu-native-candidate/tooltip-archive-v27.json",
+        "keyboardPointerFocus": "Matching .27 extracted x64 catalog passed physical Top hover/leave, Tab/Shift+Tab focus, and Escape dismissal in Light and Dark, while the catalog fixture covers all four placement paths; artifacts/current/context-menu-native-candidate/tooltip-desktop-v27-Light.json and tooltip-desktop-v27-Dark.json",
+        "scale150NoClip": "Independent .27 x64 package consumer passed 16 native 150% Light/Dark Top/Bottom/Left/Right narrow/wide cases with wrapped text inside the tooltip surface and tooltip inside the viewport; artifacts/current/context-menu-native-candidate/tooltip-scale-v27.json",
+        "reducedMotion": "Matching .27 x64 extracted catalog verified instant entry and removal on dismissal while Windows AnimationsEnabled=false, without changing an OS setting; artifacts/current/context-menu-native-candidate/tooltip-archive-v27.json",
+        "packageConsumerCompiles": "Independent .27 x64 NuGet consumer compiled and ran against package SHA-256 0e72141bf3d7ad28abd7f04d2db8eb89279818fd75968cda9326aa7f3fd1af0d and Orchard DLL SHA-256 5267e899c7cdfbaf705d76c8d28d130629ac9b1776f8602a85bb7a760b2f1bdc; artifacts/current/context-menu-native-candidate/tooltip-package-v27.json"
       }
     },
     {
