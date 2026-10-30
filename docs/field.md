@@ -52,8 +52,8 @@ label uses Encode Sans Medium at 13/19.5, Optional uses Libre Franklin at
 Original rich controls/templates retain their content and formatting. Direct,
 unwrapped TextBlocks with an explicit line height and Orchard font assets also
 use reference run advances and baseline placement. Other rich presentations
-retain native intrinsic metrics. Exact parity for those presentations remains
-an acceptance gap.
+retain native intrinsic metrics. Byte-identical raster matching is outside
+the current x64 acceptance contract.
 
 `IsTextScaleFactorEnabled` reaches Field's owned label/message text. The child
 retains normal WinUI inheritance and explicit-value precedence; Field does not
@@ -84,7 +84,10 @@ state/command/template regressions pass in both themes. The local NuGet package
 passes a fresh x64 consumer runtime and an ARM64 consumer build. These checks
 verify the measured/runtime contracts; full-frame pixels still differ.
 
-Acceptance remains in progress: exact raster parity, broader rich templates and
-consumer overrides, actual display/text scaling, and native ARM64 execution.
-See [runtime evidence](runtime-evidence.md) for the current candidate's measured
-results and [library scope](library-scope.md) for the governing scope.
+Field passed the five x64 milestone checks in the .52 preview: 44 Light/Dark
+catalog states, physical label/action input and focus, eight native 150% layouts
+without clipping, static layout with animations disabled, and independent NuGet
+consumer compilation/runtime. The native scale check covers narrow/wide and
+error/no-error states. ARM64 builds, but its runtime remains unverified. Older
+raster and larger system-scale investigations are historical, not milestone
+gates. See [runtime evidence](runtime-evidence.md) and [library scope](library-scope.md).

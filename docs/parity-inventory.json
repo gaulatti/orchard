@@ -5567,16 +5567,18 @@
         "scripts/FieldUiaProbe.cs",
         "scripts/verify-field.mjs",
         "scripts/test-field-audit.mjs",
-        "tests/PackageConsumer/MainWindow.Field.cs"
+        "tests/PackageConsumer/MainWindow.Field.cs",
+        "tests/PackageConsumer/FieldScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .52 x64 catalog: 44 Light/Dark states and physical label focus, editing and action input in both themes. Exact .52 independent NuGet consumer: eight native 150% Light/Dark narrow/wide error/no-error layouts without clipping, static layout with animations disabled, and package compile/runtime. ARM64 builds; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "header-select",
