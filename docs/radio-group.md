@@ -1,5 +1,14 @@
 # Radio group
 
+For the current x64 milestone, Radio Group passes the five checks in the
+[acceptance contract](acceptance-contract.md): Light/Dark states, physical
+keyboard/pointer/focus, native 150% no-clipping, reduced motion, and independent
+package-consumer compilation. The `.33` package-matching catalog passed 28
+states at each of 320px and 640px, both themes of physical input, and 26
+reduced-motion reports. The independent `.33` consumer passed two 150% cases.
+ARM64 runtime remains unverified. Older source raster and broader platform
+diagnostics below are historical and do not add gates to this milestone.
+
 `BleeckerRadioGroup` implements the pinned Bleecker RadioGroup option model:
 string value/label, optional description and per-option disabled state, a
 disabled group, vertical layout and a wrapping horizontal layout. Empty option
@@ -47,8 +56,8 @@ resources. Whole-option disabled opacity is .5. Stroke and dot transitions use
 the existing CSS transition clock and 190/220ms premium timing; OS reduced motion
 and Windows contrast suppress animation. Source and actual native runtime
 verification, full motion/raster matrices, real scaling, component theme and
-automation behavior, and native ARM64 execution must all be established before
-component acceptance.
+automation behavior, and native ARM64 execution were earlier parity goals; the
+current x64 milestone uses the five-check acceptance contract above.
 
 The reference collector imports the unmodified component from source commit
 `a86059013cd59684ce452849278ea81e734f2066`, verifies source/CSS/lock bytes and
@@ -160,6 +169,6 @@ and the unchanged 480-second watchdog. `scripts/test-radio-delivery-audit.mjs`
 uses the same `--native` and `--consumer` paths to prove that six altered focus,
 request, key-owner, modifier or scale reports fail the audit. Its temporary
 JSON-only workspace is removed after the test.
-Remaining acceptance includes the complete customization/error/lifecycle matrix,
-normal-motion and reversal raster comparisons, text/display scaling, component
-theme/automation behavior, collection performance and native ARM64 execution.
+The earlier broader parity program included complete customization/error/lifecycle
+matrices, raster comparisons, collection performance and native ARM64 execution.
+These are not additional current x64 milestone gates.

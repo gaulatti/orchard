@@ -128,6 +128,87 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "checkbox-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-checkbox-150-scale-v1", passed = true, cases = checkboxScale,
                     librarySha256 = Hash(typeof(BleeckerCheckbox).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var radioScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                stage = $"radio-group/{theme}/150-percent";
+                root.Width = 400; root.Height = 300; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 450));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 450));
+                var group = new BleeckerRadioGroup { Width = 280, Value = "daily", Options =
+                    [new("daily", "Daily editorial review", "A fictional digest that wraps within its option."),
+                     new("weekly", "Weekly summary", "Another fictional digest.")] };
+                Canvas.SetLeft(group, 24); Canvas.SetTop(group, 24); root.Children.Add(group);
+                await Layout();
+                var optionLabels = FindAll<TextBlock>(group, "RadioLabel").ToArray();
+                var descriptions = FindAll<TextBlock>(group, "RadioDescription").ToArray();
+                var rings = FindAll<Microsoft.UI.Xaml.Shapes.Ellipse>(group, "RadioRing").ToArray();
+                var bounds = group.TransformToVisual(root).TransformBounds(new Rect(0, 0, group.ActualWidth, group.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && group.IsLoaded && group.Value == "daily" &&
+                    group.ActualWidth == 280 && optionLabels.Length == 2 && descriptions.Length == 2 && rings.Length == 2 &&
+                    optionLabels[0].Text == "Daily editorial review" && optionLabels[1].Text == "Weekly summary" &&
+                    bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width && bounds.Bottom <= root.Height,
+                    "Radio Group did not render its options inside the native 150% island.");
+                foreach (var part in optionLabels.Cast<FrameworkElement>().Concat(descriptions).Concat(rings))
+                {
+                    var partBounds = part.TransformToVisual(root).TransformBounds(new Rect(0, 0, part.ActualWidth, part.ActualHeight));
+                    Require(part.ActualWidth > 0 && part.ActualHeight > 0 && partBounds.X >= bounds.X && partBounds.Y >= bounds.Y &&
+                        partBounds.Right <= bounds.Right + .5 && partBounds.Bottom <= bounds.Bottom + .5 &&
+                        part.ActualHeight + part.Margin.Top + part.Margin.Bottom + .5 >= part.DesiredSize.Height,
+                        $"Radio Group option clipped at 150% scaling: group={bounds}, part={partBounds}, desired={part.DesiredSize}.");
+                }
+                radioScale.Add(new { theme = theme.ToString(), scale = root.XamlRoot.RasterizationScale, passed = true,
+                    width = group.ActualWidth, height = group.ActualHeight });
+                root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "radio-group-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-radio-group-150-scale-v1", passed = true, cases = radioScale,
+                    librarySha256 = Hash(typeof(BleeckerRadioGroup).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var sliderScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                stage = $"slider/{theme}/150-percent";
+                root.Width = 400; root.Height = 160; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 240));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 240));
+                var slider = new BleeckerSlider { Width = 280, Label = "Fictional editorial review level", ShowValue = true, Value = 55 };
+                Canvas.SetLeft(slider, 24); Canvas.SetTop(slider, 24); root.Children.Add(slider);
+                await Layout();
+                var input = Find<FrameworkElement>(slider, "SliderInput") ?? throw new InvalidOperationException("Scaled Slider input is missing.");
+                var track = Find<Border>(slider, "SliderTrack") ?? throw new InvalidOperationException("Scaled Slider track is missing.");
+                var fill = Find<Border>(slider, "SliderFill") ?? throw new InvalidOperationException("Scaled Slider fill is missing.");
+                var thumb = Find<Thumb>(slider, "SliderThumb") ?? throw new InvalidOperationException("Scaled Slider thumb is missing.");
+                var label = Find<TextBlock>(slider, "SliderLabelText") ?? throw new InvalidOperationException("Scaled Slider label is missing.");
+                var value = Find<TextBlock>(slider, "SliderValueText") ?? throw new InvalidOperationException("Scaled Slider value is missing.");
+                var bounds = slider.TransformToVisual(root).TransformBounds(new Rect(0, 0, slider.ActualWidth, slider.ActualHeight));
+                var trackBounds = track.TransformToVisual(root).TransformBounds(new Rect(0, 0, track.ActualWidth, track.ActualHeight));
+                var thumbBounds = thumb.TransformToVisual(root).TransformBounds(new Rect(0, 0, thumb.ActualWidth, thumb.ActualHeight));
+                var labelBounds = label.TransformToVisual(root).TransformBounds(new Rect(0, 0, label.ActualWidth, label.ActualHeight));
+                var valueBounds = value.TransformToVisual(root).TransformBounds(new Rect(0, 0, value.ActualWidth, value.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && slider.IsLoaded && slider.ActualWidth == 280 &&
+                    track.ActualHeight == 8 && thumb.ActualWidth == 20 && thumb.ActualHeight == 20 &&
+                    label.Text == slider.Label && !string.IsNullOrWhiteSpace(value.Text) &&
+                    bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width && bounds.Bottom <= root.Height &&
+                    trackBounds.X >= bounds.X && trackBounds.Right <= bounds.Right + .5 && trackBounds.Bottom <= bounds.Bottom + .5 &&
+                    thumbBounds.X >= bounds.X && thumbBounds.Right <= bounds.Right + .5 && thumbBounds.Bottom <= bounds.Bottom + .5 &&
+                    labelBounds.X >= bounds.X && labelBounds.Right <= bounds.Right + .5 && labelBounds.Bottom <= bounds.Bottom + .5 &&
+                    valueBounds.X >= bounds.X && valueBounds.Right <= bounds.Right + .5 && valueBounds.Bottom <= bounds.Bottom + .5,
+                    $"Slider text or chrome clipped at 150% scaling: owner={bounds}, track={trackBounds}, thumb={thumbBounds}, label={labelBounds}, value={valueBounds}.");
+                Require(!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled, "Slider reduced-motion check requires animations already disabled.");
+                var before = fill.Width;
+                slider.Value = 80; root.UpdateLayout();
+                var target = Math.Floor((double)(float)(input.ActualWidth * .8) * 64) / 64;
+                Require(fill.Width > before && Math.Abs(fill.Width - target) < .02,
+                    $"Reduced-motion Slider fill did not snap to its new value: before={before}, actual={fill.Width}, target={target}.");
+                sliderScale.Add(new { theme = theme.ToString(), scale = root.XamlRoot.RasterizationScale, passed = true,
+                    width = slider.ActualWidth, height = slider.ActualHeight, fillWidth = fill.Width, reducedMotionSnap = true });
+                root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "slider-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-slider-150-scale-v1", passed = true, cases = sliderScale,
+                    librarySha256 = Hash(typeof(BleeckerSlider).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             root.Height = 160;
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {

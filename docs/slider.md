@@ -1,5 +1,12 @@
 # BleeckerSlider
 
+For the current x64 milestone, Slider passes the five checks in the
+[acceptance contract](acceptance-contract.md): 182 Light/Dark state frames,
+physical keyboard/pointer/focus in both themes, two independent native 150%
+no-clipping cases, reduced-motion fill snapping, and an independent `.33` NuGet
+consumer build and run. ARM64 runtime remains unverified. Older raster and
+broader platform diagnostics below are historical, not milestone gates.
+
 `BleeckerSlider` is a consumer-controlled range input. `Min`, `Max`, `Step` and
 `Value` default to 0, 100, 1 and 0. `Label` and `ShowValue` add the optional
 heading row. Caller changes flow through `ValueRequested`; the component keeps
@@ -100,6 +107,6 @@ binds both reports and their auditors to the unchanged package. The catalog
 auditor finds zero geometry error across 182 frames and verifies 18 keyboard
 sequences, but none of the 44 source/native image pairs are byte-identical.
 Two representative pairs were inspected; a full visual review remains open.
-Normal/reduced motion, broader visible and independent-consumer input, actual
-scaling, and native ARM64 runtime remain unverified. No Narrator or OS
-preference changes were used.
+That v7 checkpoint predated the current `.33` physical input, native 150%
+scaling and reduced-motion checks. Native ARM64 runtime remains unverified. No
+Narrator or OS preference changes were used.

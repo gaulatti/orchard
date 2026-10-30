@@ -4518,15 +4518,25 @@
         "scripts/test-radio-motion-audit.mjs",
         "scripts/verify-radio-delivery.mjs",
         "scripts/test-radio-delivery-audit.mjs",
-        "tests/PackageConsumer/MainWindow.RadioGroups.cs"
+        "tests/PackageConsumer/MainWindow.RadioGroups.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.33",
+        "librarySha256": "a41b89ec0ba49035941923da98a0d0a5bab6b1cebe4e83f53396f56c47673e99",
+        "lightDarkStates": "Package-matching extracted x64 catalog passed 28 Radio Group states in each 320px and 640px client across Light/Dark; artifacts/current/context-menu-native-candidate/radio-reference-{320,640}-v33.json",
+        "keyboardPointerFocus": "The same catalog passed physical Tab, arrow, Ctrl+arrow, Home/End, Space, pointer and native focus/selection in both themes; artifacts/current/context-menu-native-candidate/radio-runtime-{Light,Dark}.json",
+        "scale150NoClip": "Independent .33 x64 package consumer passed two native 150% Light/Dark option layout cases; artifacts/current/context-menu-native-candidate/radio-group-scale.json",
+        "reducedMotion": "The extracted catalog passed 26 reduced-motion Radio Group reports across Light/Dark with immediate ring/dot states and no active animation; artifacts/current/context-menu-native-candidate/radio-motion.json",
+        "packageConsumerCompiles": "Independent .33 x64 NuGet consumer compiled and ran against package SHA-256 c5c401cb590a08ad48afd25520668417a795eb86b0d5cd11aec1e6f02acf2b43; artifacts/current/context-menu-native-candidate/package-consumer-x64-v33.json"
       }
     },
     {
@@ -4881,15 +4891,25 @@
         "tests/PackageConsumer/App.HiddenSliderContracts.cs",
         "scripts/verify-hidden-slider-contracts.ps1",
         "scripts/verify-hidden-slider-contracts.mjs",
-        "scripts/test-hidden-slider-contracts-audit.mjs"
+        "scripts/test-hidden-slider-contracts-audit.mjs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.33",
+        "librarySha256": "a41b89ec0ba49035941923da98a0d0a5bab6b1cebe4e83f53396f56c47673e99",
+        "lightDarkStates": "Package-matching extracted x64 catalog passed 182 Slider frames covering Light/Dark and applicable states; artifacts/current/context-menu-native-candidate/slider.json",
+        "keyboardPointerFocus": "The same catalog passed physical track, thumb drag, 18 keyboard sequences, Tab/focus, UIA and accepted/rejected caller requests in Light/Dark; artifacts/current/context-menu-native-candidate/slider.json",
+        "scale150NoClip": "Independent .33 x64 package consumer passed two native 150% Light/Dark Slider label, value, track and thumb layout cases; artifacts/current/context-menu-native-candidate/slider-scale.json",
+        "reducedMotion": "The independent consumer observed animations disabled and immediate Slider fill snaps to caller value 80 in both themes; artifacts/current/context-menu-native-candidate/slider-scale.json",
+        "packageConsumerCompiles": "Independent .33 x64 NuGet consumer compiled and ran against package SHA-256 c5c401cb590a08ad48afd25520668417a795eb86b0d5cd11aec1e6f02acf2b43; artifacts/current/context-menu-native-candidate/package-consumer-x64-v33.json"
       }
     },
     {
