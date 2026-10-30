@@ -12,8 +12,9 @@ records pass/fail for all 112 entries; Avatar, Brand Lockup, Brand Mark, Breadcr
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
-Status Badge, Switch and Tooltip, plus Radio Group and Slider, are accepted
-(39 of 112 entries in current source and the `.33` preview).
+Status Badge, Switch and Tooltip, plus Activity Item, Radio Group and Slider,
+are accepted (40 of 112 entries in current source; 39 are in the published `.33`
+preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -344,7 +345,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | brand-lockup | `BleeckerBrandLockup`, typed consumer link context and live native image effects | Matching `.30` package DLL in extracted x64 catalog passes Light/Dark variants, live theme, physical pointer/Tab/Enter/focus, reduced-motion endpoints; independent consumer compiles and passes four native 150% small/large named cases | Accepted in `.30` for the five-check x64 milestone; ARM64 runtime unverified; see [contract](brand-lockup-reference.md) |
 | brand-mark | `BleeckerBrandMark`, original template PNG and fixed square size | Current package passes 37 Light/Dark states, decorative input/focus, static motion, independent consumer compilation and 150% no-clipping at four sizes in both themes | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](brand-mark.md) |
 | bauhaus-background | `BleeckerBauhausBackground`: four variants and live native image effects | Registered RGBA, square/tall and missing-image fixtures; x64 blend-pixel, source, geometry, motion-preference and UIA checks | In progress: [source contract and API](bauhaus-background-reference.md); full raster/motion, mutations, scaling, packaging and ARM64 acceptance |
-| activity-item | `BleeckerActivityItem`: exact strings, small Avatar, source typography and hover | Registered normal/empty/multilingual/RTL fixtures; frozen browser layout; x64/ARM64 pointer/Tab/UIA/lifecycle, motion-preference and independent-consumer checks pass at `64a2b27` | In progress: [source contract and API](activity-item-reference.md); baseline/raster, complete motion, constrained/override matrix/scaling |
+| activity-item | `BleeckerActivityItem`: exact strings, small Avatar, source typography and hover | `.33` package-matching x64 Light/Dark route and six native 150% consumer cases pass | Accepted on x64 under the [five-check contract](acceptance-contract.md); ARM64 runtime unverified; [source contract and API](activity-item-reference.md) |
 | attention-surface | `BleeckerAttentionSurface`: five elements, densities, source color model and consumer content/actions | 143 frozen-helper/browser numeric cases; 86 initial x64 source-layout cases and native action/style/hover checks | In progress: [source contract and API](attention-surface-reference.md); full raster/motion, constraints/lifecycle/overrides, scaling, package and ARM64 acceptance |
 | button | `BleeckerButton`: seven variants, four sizes, commands/content, loading | Registered fixtures; x64 native command/loading/binding, CanExecute/template replacement and 7×4 state checks in both themes; isolated NuGet consumer; ARM64 build | In progress: focus/input, scaling, motion, remaining ARM64 state checks; see [usage](buttons.md) |
 | button-group | `BleeckerButtonGroup` | Horizontal/vertical catalog fixtures; published x64 light/dark layout and group-role checks | In progress: edge fixtures, child restoration, keyboard, scaling, remaining ARM64 state checks; see [usage](button-group.md) |

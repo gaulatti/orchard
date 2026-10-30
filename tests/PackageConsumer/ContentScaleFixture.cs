@@ -209,6 +209,52 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "slider-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-slider-150-scale-v1", passed = true, cases = sliderScale,
                     librarySha256 = Hash(typeof(BleeckerSlider).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var activityScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var variant in new[] { "long", "empty", "rtl" })
+            {
+                stage = $"activity-item/{theme}/{variant}/150-percent";
+                root.Width = 400; root.Height = 320; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 480));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 480));
+                var item = variant switch
+                {
+                    "empty" => new BleeckerActivityItem { Width = 280, Init = "", Title = "", Time = "" },
+                    "rtl" => new BleeckerActivityItem { Width = 280, Init = "ريم هلال", Title = "العربية · a fictional RTL update that wraps in this row", Time = "قبل خمس دقائق", FlowDirection = FlowDirection.RightToLeft },
+                    _ => new BleeckerActivityItem { Width = 280, Init = "Alice Harbor", Title = "A longer fictional editorial activity title that wraps at this width", Time = "Consumer-supplied time with a longer description that also wraps" }
+                };
+                Canvas.SetLeft(item, 24); Canvas.SetTop(item, 24); root.Children.Add(item);
+                await Layout();
+                var surface = Find<Border>(item, "PART_Surface") ?? throw new InvalidOperationException("Scaled Activity Item surface is missing.");
+                var avatar = Find<BleeckerAvatar>(item, "PART_Avatar") ?? throw new InvalidOperationException("Scaled Activity Item avatar is missing.");
+                var title = Find<TextBlock>(item, "PART_Title") ?? throw new InvalidOperationException("Scaled Activity Item title is missing.");
+                var time = Find<TextBlock>(item, "PART_Time") ?? throw new InvalidOperationException("Scaled Activity Item time is missing.");
+                var bounds = item.TransformToVisual(root).TransformBounds(new Rect(0, 0, item.ActualWidth, item.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && item.IsLoaded && !item.IsTabStop &&
+                    item.ActualWidth == 280 && item.ActualHeight > 0 && title.Text == item.Title && time.Text == item.Time &&
+                    bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width && bounds.Bottom <= root.Height &&
+                    surface.ActualWidth == item.ActualWidth && surface.ActualHeight == item.ActualHeight &&
+                    avatar.ActualWidth == 32 && avatar.ActualHeight == 32,
+                    $"Activity Item host or content failed to render at native 150%: {theme}/{variant}, bounds={bounds}.");
+                foreach (var part in new FrameworkElement[] { avatar, title, time })
+                {
+                    if (part.Visibility != Visibility.Visible || part.ActualHeight == 0) continue;
+                    var partBounds = part.TransformToVisual(root).TransformBounds(new Rect(0, 0, part.ActualWidth, part.ActualHeight));
+                    Require(partBounds.X >= bounds.X - .5 && partBounds.Y >= bounds.Y - .5 &&
+                        partBounds.Right <= bounds.Right + .5 && partBounds.Bottom <= bounds.Bottom + .5 &&
+                        part.ActualHeight + .5 >= part.DesiredSize.Height,
+                        $"Activity Item {part.Name} clipped at native 150%: {theme}/{variant}, part={partBounds}, owner={bounds}.");
+                }
+                if (variant == "empty") Require(title.ActualHeight == 0 && time.ActualHeight == 0, "Empty Activity Item invented a text line at native 150%.");
+                else Require(title.ActualHeight >= 20 && time.ActualHeight >= 16.5, "Activity Item text collapsed at native 150%.");
+                activityScale.Add(new { theme = theme.ToString(), variant, scale = root.XamlRoot.RasterizationScale,
+                    passed = true, width = item.ActualWidth, height = item.ActualHeight });
+                root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "activity-item-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-activity-item-150-scale-v1", passed = true, cases = activityScale,
+                    librarySha256 = Hash(typeof(BleeckerActivityItem).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             root.Height = 160;
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {

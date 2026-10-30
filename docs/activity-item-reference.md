@@ -3,8 +3,15 @@
 The fixed source is
 [`activity-item.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/activity-item.tsx),
 SHA-256 `69fe700423f71b440d505428187b957df880d68e52ae6af634545744f7af74aa`.
-The downloaded source matches the inventory. `BleeckerActivityItem` is an
-in-progress native implementation, registered after Bauhaus in the catalog.
+The downloaded source matches the inventory. `BleeckerActivityItem` is
+registered after Bauhaus in the catalog. For the current x64 milestone it passes
+all five checks in the [acceptance contract](acceptance-contract.md): applicable
+Light/Dark states, physical keyboard/pointer/focus, native 150% no-clipping,
+reduced motion, and independent package-consumer compilation. The package-matching
+`.33` catalog passed its Light/Dark route; the independent `.33` consumer passed
+six 150% cases covering long, empty and RTL content. The source has no disabled
+or error variant. ARM64 runtime remains unverified for this milestone. The
+broader parity investigations below are historical and add no current gate.
 
 The consumer owns three required strings: `init`, `title` and `time`. The source
 does not parse or format time, truncate title, expose an image URL, provide a
@@ -31,7 +38,7 @@ Windows contrast must pair semantic surfaces and text. Reduced motion must
 use immediate endpoints; live theme, unload/reload and template replacement
 must not retain stale hover or subscriptions.
 
-Acceptance requires normal/hover and both appearances, empty/long/multiline/
+The earlier parity program required normal/hover and both appearances, empty/long/multiline/
 non-Latin/RTL strings, constrained widths, consumer updates, semantic UIA,
 actual pointer and motion/reversal, meaningful native/browser appearance,
 display/text scaling, x64/ARM64 and independent NuGet use. Narrator and OS
