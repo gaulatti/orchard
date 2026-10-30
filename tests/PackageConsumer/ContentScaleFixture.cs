@@ -302,6 +302,59 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "data-list-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-data-list-150-scale-v1", passed = true, cases = dataListScale,
                     librarySha256 = Hash(typeof(BleeckerDataList).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var filterChipScale = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var variant in new[] { "single", "group", "rtl" })
+            {
+                stage = $"filter-chip/{theme}/{variant}/150-percent";
+                root.Width = 400; root.Height = 320; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 480));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 480));
+                FrameworkElement owner;
+                if (variant == "single")
+                {
+                    var chip = new BleeckerFilterChip { Width = 320, Label = "Editorial status with a longer label", Value = "Review requested" };
+                    chip.RemoveRequested += (_, _) => { };
+                    owner = chip;
+                }
+                else
+                {
+                    var group = new BleeckerFilterGroup { Width = 320,
+                        FlowDirection = variant == "rtl" ? FlowDirection.RightToLeft : FlowDirection.LeftToRight };
+                    group.Filters.Add(new BleeckerFilter("Status", "Draft"));
+                    group.Filters.Add(new BleeckerFilter("Editorial category", "Longer fictional value"));
+                    group.Filters.Add(new BleeckerFilter("Language", "العربية"));
+                    group.Filters[0].RemoveRequested += (_, _) => { };
+                    group.ClearAllRequested += (_, _) => { };
+                    owner = group;
+                }
+                Canvas.SetLeft(owner, 24); Canvas.SetTop(owner, 24); root.Children.Add(owner);
+                await Layout();
+                var bounds = owner.TransformToVisual(root).TransformBounds(new Rect(0, 0, owner.ActualWidth, owner.ActualHeight));
+                var surfaces = FindAll<Border>(owner, "PART_Surface").ToArray();
+                var filterLabels = FindAll<FrameworkElement>(owner, "FilterLabel").ToArray();
+                var filterValues = FindAll<FrameworkElement>(owner, "FilterValue").Where(item => item.Visibility == Visibility.Visible).ToArray();
+                var filterActions = FindAll<Button>(owner, "RemoveFilterAction").Where(item => item.Visibility == Visibility.Visible).ToArray();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && owner.IsLoaded && owner.ActualWidth == 320 &&
+                    owner.ActualHeight > 0 && bounds.X >= 24 && bounds.Y >= 24 && bounds.Right <= root.Width && bounds.Bottom <= root.Height &&
+                    surfaces.Length == (variant == "single" ? 1 : 3) && filterLabels.Length == surfaces.Length && filterValues.Length == surfaces.Length &&
+                    filterActions.Length == 1, $"Filter Chip host or content failed to render at native 150%: {theme}/{variant}, bounds={bounds}.");
+                foreach (var part in surfaces.Cast<FrameworkElement>().Concat(filterLabels).Concat(filterValues).Concat(filterActions))
+                {
+                    var partBounds = part.TransformToVisual(owner).TransformBounds(new Rect(0, 0, part.ActualWidth, part.ActualHeight));
+                    Require(part.IsLoaded && part.ActualWidth > 0 && part.ActualHeight > 0 &&
+                        partBounds.X >= -.5 && partBounds.Y >= -.5 && partBounds.Right <= owner.ActualWidth + .5 &&
+                        partBounds.Bottom <= owner.ActualHeight + .5 && part.ActualHeight + .5 >= part.DesiredSize.Height,
+                        $"Filter Chip content clipped at native 150%: {theme}/{variant}, part={part.Name}, bounds={partBounds}.");
+                }
+                filterChipScale.Add(new { theme = theme.ToString(), variant, scale = root.XamlRoot.RasterizationScale,
+                    passed = true, width = owner.ActualWidth, height = owner.ActualHeight, surfaces = surfaces.Length });
+                root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "filter-chip-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-filter-chip-150-scale-v1", passed = true, cases = filterChipScale,
+                    librarySha256 = Hash(typeof(BleeckerFilterChip).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             root.Height = 160;
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {

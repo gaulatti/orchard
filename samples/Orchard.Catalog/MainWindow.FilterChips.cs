@@ -50,12 +50,31 @@ public sealed partial class MainWindow
                             texts=Descendants<TextBlock>(chip).Where(text=>VisualTreeHelper.GetParent(text)is FrameworkElement parent&&parent.Name is "FilterLabel" or "FilterValue"&&parent.Visibility==Visibility.Visible).Select(text=>new{text=text.Text,box=Box((FrameworkElement)VisualTreeHelper.GetParent(text)),baseline=text.TransformToVisual(page).TransformPoint(new Point()).Y+text.BaselineOffset,foreground=Paint(text.Foreground)}).ToArray(),
                             remove=Descendants<Button>(chip).Where(button=>button.Visibility==Visibility.Visible).Select(button=>new{box=Box(button),name=FrameworkElementAutomationPeer.CreatePeerForElement(button).GetName(),button.IsEnabled}).SingleOrDefault()}).ToArray(),
                         clear=Descendants<Button>(control).Where(button=>button.Name=="ClearAllFilters").Select(button=>new{box=Box(button),name=FrameworkElementAutomationPeer.CreatePeerForElement(button).GetName(),button.IsEnabled}).SingleOrDefault()});
-                    await SaveAsync();await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,reference.GetProperty("file").GetString()!));
+                    await SaveAsync();
+                    var capturePath=Path.Combine(folder,reference.GetProperty("file").GetString()!);
+                    if(chips.Length==0)
+                        await NativeScreenCapture.CaptureClientAsync(input.Window,capturePath,
+                            scheme==ElementTheme.Light?((byte)255,(byte)255,(byte)255):((byte)13,(byte)24,(byte)33));
+                    else await NativeScreenCapture.CaptureClientAsync(input.Window,capturePath);
                     if(phase=="removable")await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,$"catalog-{scheme.ToString().ToLowerInvariant()}.png"));
                 }
                 phase="input-"+scheme;canvas.Children.Clear();var groupInput=new BleeckerFilterGroup{Width=width-40};Canvas.SetLeft(groupInput,20);Canvas.SetTop(groupInput,20);canvas.Children.Add(groupInput);
                 var removed=0;var cleared=0;var modelInput=new BleeckerFilter("Status","Draft");modelInput.RemoveRequested+=(_,_)=>removed++;groupInput.Filters.Add(modelInput);groupInput.Filters.Add(new BleeckerFilter("Read-only","Culture"));groupInput.ClearAllRequested+=(_,_)=>cleared++;
                 await AwaitPresentationAsync(page);var removeButton=Descendants<Button>(groupInput).Single(button=>AutomationProperties.GetName(button)=="Remove Status filter");
+                var reducedMotionVerified=false;
+                if(!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled)
+                {
+                    var chrome=Descendants<Border>(removeButton).Single(border=>border.Name=="InlineActionChrome");
+                    var actual=(SolidColorBrush)chrome.Background;
+                    var expected=(SolidColorBrush)Descendants<TextBlock>(Descendants<BleeckerFilterChip>(groupInput).First()).Single(text=>text.Name=="PART_RemoveHoverBackground").Foreground;
+                    await input.MoveAsync(removeButton);
+                    Require(Math.Abs(actual.Color.R-expected.Color.R)<=1&&Math.Abs(actual.Color.G-expected.Color.G)<=1&&
+                        Math.Abs(actual.Color.B-expected.Color.B)<=1&&Math.Abs(actual.Opacity-expected.Opacity)<.005,
+                        "Reduced-motion Filter Chip hover did not reach its final paint immediately.");
+                    await input.MoveAsync(canvas,true,new Point(width-10,400));
+                    Require(actual.Opacity<.005,"Reduced-motion Filter Chip exit retained transitional paint.");
+                    reducedMotionVerified=true;
+                }
                 Require(removeButton.Focus(FocusState.Keyboard),"Filter remove action refused keyboard focus.");await input.KeyAsync(0x20,removeButton);await input.KeyAsync(0x0D,removeButton);await input.ClickAsync(removeButton);
                 Require(removed==3&&groupInput.Filters.Count==2,"Remove callbacks did not reach the original consumer or mutated its collection.");
                 var clearButton=Descendants<Button>(groupInput).Single(button=>button.Name=="ClearAllFilters");await input.ClickAsync(clearButton);Require(cleared==1&&groupInput.Filters.Count==2,"Clear all mutated caller-owned filters.");
@@ -81,7 +100,7 @@ public sealed partial class MainWindow
                 var synchronous=0;var selfRemoving=new BleeckerFilter("Synchronous","Consumer removal");selfRemoving.RemoveRequested+=(_,_)=>{synchronous++;groupInput.Filters.Remove(selfRemoving);};groupInput.Filters.Add(selfRemoving);await AwaitPresentationAsync(page);
                 var selfAction=Descendants<Button>(groupInput).Single(button=>AutomationProperties.GetName(button)=="Remove Synchronous filter");((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(selfAction).GetPattern(PatternInterface.Invoke)).Invoke();await AwaitPresentationAsync(page);
                 Require(synchronous==1&&groupInput.Filters.Count==0&&!selfAction.IsLoaded,"Synchronous consumer removal retained or repeated its native action.");
-                inputs.Add(new{scheme=scheme.ToString(),removed,cleared,executions,consumerOwnership=true,liveUpdates=true,canExecute=true,inheritedDisabled=true,reorderIdentity=true,reorderFocus=true,livePalette=true,templateReplacement=true,unloadRemount=true,emptyGroup=true,synchronousRemoval=true});await SaveAsync();
+                inputs.Add(new{scheme=scheme.ToString(),removed,cleared,executions,reducedMotionVerified,consumerOwnership=true,liveUpdates=true,canExecute=true,inheritedDisabled=true,reorderIdentity=true,reorderFocus=true,livePalette=true,templateReplacement=true,unloadRemount=true,emptyGroup=true,synchronousRemoval=true});await SaveAsync();
             }
             passed=true;
         }
