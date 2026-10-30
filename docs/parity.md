@@ -13,7 +13,7 @@ Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header, Panel Layout,
 Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch and Tooltip are accepted (37 of 112 entries in current
-source; the published `.31` preview lists the prior 36).
+source and in the `.32` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 

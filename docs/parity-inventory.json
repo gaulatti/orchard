@@ -4590,13 +4590,13 @@
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "packageVersion": "0.1.0-preview.20261029.31",
-        "librarySha256": "3a03722fd3f3e2c8ffce278a4f89f0426d3fa0a0765ea47b136877cc4b12ebd3",
-        "lightDarkStates": "Matching .31 extracted x64 catalog passed 11 Checkbox presentation states in each theme; artifacts/current/context-menu-native-candidate/checkbox-measurements-{Light,Dark}.json",
-        "keyboardPointerFocus": "The extracted catalog passed 10 native physical input stages per theme, including Space, Tab, box/label/description clicks, disabled rejection, focus ring, cursor, and RTL; artifacts/current/context-menu-native-candidate/checkbox-route-v31.json",
-        "scale150NoClip": "Independent .31 package consumer passed two native 150% Light/Dark cases with title, description, and chrome within the 320-DIP control; artifacts/current/context-menu-native-candidate/checkbox-scale-package-v1.json",
+        "packageVersion": "0.1.0-preview.20261029.32",
+        "librarySha256": "8c5b3d7eaca0932c9213f4b10a134acf9bce400e8feae87efa822e753445a903",
+        "lightDarkStates": "Matching .32 extracted x64 catalog passed 11 Checkbox presentation states in each theme; artifacts/current/context-menu-native-candidate/checkbox-measurements-{Light,Dark}.json",
+        "keyboardPointerFocus": "The extracted catalog passed 10 native physical input stages per theme, including Space, Tab, box/label/description clicks, disabled rejection, focus ring, cursor, and RTL; artifacts/current/context-menu-native-candidate/checkbox-route-v32.json",
+        "scale150NoClip": "Independent .32 package consumer passed two native 150% Light/Dark cases with title, description, and chrome within the 320-DIP control; artifacts/current/context-menu-native-candidate/checkbox-scale-package-v32.json",
         "reducedMotion": "The extracted catalog reported animations disabled and immediate settled glyph motion in both themes; artifacts/current/context-menu-native-candidate/checkbox-measurements-{Light,Dark}.json",
-        "packageConsumerCompiles": "Independent x64 .31 package consumer compiled and ran; artifacts/current/context-menu-native-candidate/package-consumer-x64-v31-checkbox.json"
+        "packageConsumerCompiles": "Independent x64 .32 package consumer compiled and ran; artifacts/current/context-menu-native-candidate/package-consumer-x64-v32.json"
       }
     },
     {

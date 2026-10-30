@@ -3,7 +3,7 @@
 ## x64 milestone acceptance
 
 Checkbox passes the five checks in the [component-library acceptance contract](acceptance-contract.md)
-against the published `0.1.0-preview.20261029.31` package. Its matching
+against the `0.1.0-preview.20261029.32` package. Its matching
 extracted x64 catalog passes 11 presentation states and 10 native physical
 input stages in each Light/Dark theme, including Space, Tab, box/label/description
 clicks, disabled rejection, RTL and focus. With animations already disabled,
