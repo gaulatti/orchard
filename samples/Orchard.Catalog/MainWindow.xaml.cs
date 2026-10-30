@@ -107,6 +107,20 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-footer")) await RunFooterAsync(folder);
             else if (args.Contains("--smoke-panel")) await RunPanelsAsync(folder);
             else if (args.Contains("--smoke-button-group")) await RunButtonGroupForegroundAsync(folder);
+            else if (args.Contains("--smoke-icon-button"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme; await SelectFixtureAsync(IconButtons);
+                    using var iconInput = new NativeInputSession(CatalogRoot.XamlRoot, folder, "icon-button-" + theme);
+                    var heading = (FrameworkElement)((StackPanel)IconButtons.Content).Children[0];
+                    await iconInput.AcquireAsync(heading); await iconInput.MoveAsync(heading);
+                    await IconButtons.VerifyAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark);
+                    await IconButtons.VerifyForegroundInputAsync(iconInput);
+                    await CaptureFixtureAsync(IconButtons, Path.Combine(folder, $"icon-button-{theme.ToString().ToLowerInvariant()}.png"));
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "icon-button", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-buttons"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })

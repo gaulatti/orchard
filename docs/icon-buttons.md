@@ -1,5 +1,13 @@
 # Icon buttons
 
+For the 2026-10-29 x64 milestone, Icon Button passes the five required checks:
+Light/Dark state rendering across all nine size/variant combinations, physical
+pointer/Space/Enter/focus, all nine combinations at native 150% scaling in both
+themes without clipping, immediate pressed geometry under reduced motion, and
+independent package-consumer compilation. ARM64 remains build-only and its
+runtime is unverified. Older raster and wider platform diagnostics below are
+historical and do not add milestone gates.
+
 `BleeckerIconButton` derives from the native WinUI `Button`. It accepts consumer-owned icon content, commands, command parameters and Click handlers. Disabled state, native focus visuals and the UI Automation Invoke pattern are retained.
 
 ```xml
@@ -44,6 +52,6 @@ contains the change, and its extracted x64 catalog repeats the focused native
 check. Normal animation playback and the wider public Icon Button state matrix
 remain open.
 
-Still open: the remaining physical keyboard/pointer and tooltip matrix, display/text scaling, reduced motion and ARM64 runtime. ARM64 compilation is separate evidence and does not establish runtime support. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md).
+For the current x64 milestone, the matching `.26` package, extracted catalog and independent consumer pass the five checks above. Native ARM64 runtime remains unverified. Narrator and OS contrast campaigns are excluded by the [current library scope](library-scope.md).
 
 Light Ghost hover/pressed backgrounds share the [measured byte-alpha sand recipe](brush-alpha-reference.md) with text Ghost buttons. Foreground, border, disabled and contrast resources retain their existing recipes.

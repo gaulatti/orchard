@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 
 namespace Orchard.Catalog;
@@ -77,6 +78,48 @@ public sealed partial class IconButtonsFixture : UserControl
         original.Style = originalStyle;
         Require(original.GetBindingExpression(Control.ForegroundProperty) is not null, "Reference foreground was not restored after replacing the custom style.");
         await MainWindow.AwaitPresentationAsync(this);
+    }
+
+    internal async Task VerifyForegroundInputAsync(NativeInputSession input)
+    {
+        Require(!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
+            "Icon Button reduced-motion check requires animations already disabled.");
+        var before = count;
+        await input.ClickAsync(EditAction);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(count == before + 1 && Result.Text == $"Edit story: {count}",
+            "Icon Button pointer click did not invoke its consumer command exactly once.");
+        Require(EditAction.Focus(FocusState.Keyboard) && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), EditAction),
+            "Icon Button did not retain native keyboard focus.");
+        await input.KeyAsync(0x20, EditAction);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(count == before + 2, "Icon Button Space did not invoke its consumer command exactly once.");
+        await input.KeyAsync(0x0D, EditAction);
+        await MainWindow.AwaitPresentationAsync(this);
+        Require(count == before + 3, "Icon Button Enter did not invoke its consumer command exactly once.");
+
+        await input.MoveAsync(EditAction);
+        await input.PressPointerAsync();
+        try
+        {
+            await MainWindow.AwaitPresentationAsync(EditAction);
+            var root = VisualTreeHelper.GetChild(EditAction, 0) as FrameworkElement;
+            var transform = root?.RenderTransform as CompositeTransform;
+            Require(EditAction.IsPressed && transform is not null &&
+                Math.Abs(transform.ScaleX - .97) < .001 && Math.Abs(transform.ScaleY - .97) < .001 &&
+                Math.Abs(transform.TranslateY - 1) < .001,
+                "Icon Button did not apply its pressed geometry immediately under reduced motion.");
+        }
+        finally { input.PointerButton(false); }
+        await MainWindow.AwaitPresentationAsync(EditAction);
+        var released = (VisualTreeHelper.GetChild(EditAction, 0) as FrameworkElement)?.RenderTransform as CompositeTransform;
+        Require(!EditAction.IsPressed && released is not null &&
+            Math.Abs(released.ScaleX - 1) < .001 && Math.Abs(released.ScaleY - 1) < .001 &&
+            Math.Abs(released.TranslateY) < .001,
+            "Icon Button did not reset pressed geometry immediately under reduced motion.");
+        var after = count;
+        await input.ClickAsync(DisabledAction);
+        Require(!DisabledAction.IsEnabled && count == after, "Disabled Icon Button invoked a consumer action.");
     }
 
     private static IEnumerable<DependencyObject> Descendants(DependencyObject parent)

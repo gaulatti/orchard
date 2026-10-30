@@ -5696,15 +5696,24 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/IconButtonsFixture.xaml.cs: VerifyAsync",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "samples/Orchard.Catalog/IconButtonsFixture.xaml.cs: VerifyForegroundInputAsync",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "lightDarkStates": "Matching .26 x64 catalog Icon Button fixture passed all nine size/variant combinations plus disabled state in Light and Dark; artifacts/current/context-menu-native-candidate/icon-button-archive-v26.json and icon-button-light.png and icon-button-dark.png",
+        "keyboardPointerFocus": "Matching .26 extracted x64 catalog passed physical pointer click, Space, Enter, native focus and disabled-action rejection in both themes; artifacts/current/context-menu-native-candidate/icon-button-archive-v26.json and icon-button-Light-desktop.json and icon-button-Dark-desktop.json",
+        "scale150NoClip": "Independent .26 x64 package consumer passed 18 native 150% Light/Dark size/variant cases with icon content within the native action and viewport; artifacts/current/context-menu-native-candidate/icon-button-scale-v26.json",
+        "reducedMotion": "Matching .26 x64 catalog verified pressed transform applies and resets immediately during physical pointer input while Windows AnimationsEnabled=false, without changing OS settings; artifacts/current/context-menu-native-candidate/icon-button-archive-v26.json",
+        "packageConsumerCompiles": "Independent .26 x64 NuGet consumer compiled and ran against package SHA-256 8a601f612bf169eb48c50795515567d40d53de2e280c667e03d2d5a0d4b53773 and Orchard DLL SHA-256 e5b97974f984881cafa0c425bcfd35653c90139f37040063b6426c192a8c4889; artifacts/current/context-menu-native-candidate/icon-button-package-v26.json"
       }
     },
     {
