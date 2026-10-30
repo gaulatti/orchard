@@ -60,26 +60,22 @@ demonstrates all three orientations, live maximum/direction changes, retained
 editing/actions, programmatic scrolling, wrapping and empty content. Monitoring
 and Editorial remain separate required fictional-data component demos.
 
-Local `0.1.0-scroll-area-v2-local` and the final x64 catalog each pass 94 source
-layouts, 12 controlled scrolling histories, 3,076 zero-error geometry values and
-five contract groups. Fourteen full native client PNGs verify 12 source paint
-samples, 17,952 straight thumb-body pixels (maximum channel error one) and 960
-zero-height clipping pixels. The auditor rejects 28 damaged catalog receipts
-and 32 damaged package receipts, including an actual earlier elliptical-thumb
-PNG with a consistent hash. The production radii are 3 DIPs vertically and
-7.5 DIPs horizontally; WinUI's oversized radius produced an ellipse rather than
-the source capsule. Both architecture catalogs and clean consumers compile;
-309 portable and nine windowless font tests pass. The fictional-data fixture
-and both theme styles are registered in `catalog-coverage.json` and navigation.
+Scroll Area is accepted for the x64 milestone. The exact packaged DLL passed 94
+Light/Dark native layouts, 12 scrolling histories and five contract groups in
+the independent consumer. The extracted .47 x64 catalog, with unchanged
+component source and fixture in .48, passed visible Light/Dark rendering,
+pointer activation of the original caller action, wheel
+scrolling, Tab traversal and Down-key scrolling. A Tab from the scroll command
+followed by Down moved the native viewport to its end. The automation
+focused-element field was stale; focus was assessed from visible outline and
+observable keyboard response, without claiming an automation focus identity.
 
-These are hidden diagnostics using production scroll methods and native visual
-states. They record zero visibility, activation, focus and physical input.
-An example [raw native capture](../artifacts/current/scroll-area-native-v6/Light-both-hover.png)
-shows the diagnostic viewport and thumbs, rather than normal catalog startup.
-
-This is an unaccepted local prototype. The [source contract](scroll-area-reference.md)
-and native/package evidence remain distinct from full acceptance. Physical
-input/focus delivery, complete source raster and normal motion behavior,
-customization, scaling, representative performance, visible startup and native
-ARM64 acceptance remain open. Background runs never authorize desktop input,
-Narrator, OS settings, pointer heartbeat, Actions or pushes.
+The independent package consumer passed ten native 150% Light/Dark layouts
+covering vertical, horizontal, both, RTL and empty areas. The owner and viewport
+stayed in bounds and original overflowing content was retained. Scroll Area
+has no component animation path, and `ScrollTo` requests immediate native
+scrolling. With Windows animations already disabled, offsets stayed static in
+the ten package-consumer layouts; no OS setting was changed. The independent
+x64 package consumer compiled and ran; ARM64 is build-only and runtime-unverified.
+The [source contract](scroll-area-reference.md) remains available for usage
+details. Raster/pixel parity and performance are not gates for this milestone.

@@ -4706,18 +4706,27 @@
       "regressionTests": [
         "tests/Orchard.Tests/ScrollAreaReferenceTests.cs",
         "tests/PackageConsumer/ScrollAreaReferenceFixture.cs",
+        "tests/PackageConsumer/ScrollAreaScaleFixture.cs",
         "scripts/verify-scroll-area-reference.mjs",
         "scripts/verify-hidden-scroll-areas.mjs",
         "scripts/test-scroll-area-audit.mjs",
         "tests/Fixtures/ScrollAreaNativeEllipse.png"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261030.48",
+        "lightDarkStates": "The exact .48 package DLL passed 94 hidden native layouts, 12 histories and five contract groups across Light/Dark, with no failures; artifacts/current/context-menu-native-candidate/scroll-area-hidden-v48.json. The unchanged catalog fixture rendered visibly in both themes with the .47 package-matching DLL; artifacts/current/context-menu-native-candidate/scroll-area-physical-v47.json.",
+        "keyboardPointerFocus": "The extracted x64 catalog passed real pointer activation of original caller content, wheel scrolling and Tab/Down keyboard scrolling in Light and Dark. From the focused scroll command, Tab then Down moved the native area offset from 120 to its 123.62 maximum. The UI Automation focused-element field was stale, so focus identity is inferred from visible focus and keyboard response, not claimed from that field; artifacts/current/context-menu-native-candidate/scroll-area-physical-v47.json.",
+        "scale150NoClip": "Independent .48 x64 package consumer passed ten native 150% Light/Dark vertical, horizontal, both, RTL and empty layouts: owner and viewport remained in bounds and original overflowing content was retained; artifacts/current/context-menu-native-candidate/scroll-area-scale-v48.json.",
+        "reducedMotion": "Scroll Area has no component animation path and ScrollTo disables native animation. With Windows animations already disabled, the .48 package consumer confirmed immediate static offsets in ten 150% layouts; artifacts/current/context-menu-native-candidate/scroll-area-scale-v48.json. No OS setting was changed.",
+        "packageConsumerCompiles": "Independent .48 x64 NuGet consumer compiled and ran against package SHA-256 804e6ebe7e1abeb15f2facdc75b28157d99a0cfe053792e0217eff1649f1cff3 and exact DLL f834c7267113960903ccf1a82697cae8769f80606890a080da5fe883e380ec12; artifacts/current/context-menu-native-candidate/package-consumer-scroll-area-x64-v48.json. Its 94 hidden layouts, 12 histories, five contract groups and ten native-scale cases passed. ARM64 runtime is unverified."
       }
     },
     {

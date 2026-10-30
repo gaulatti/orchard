@@ -11,16 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-30 `.47` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.47)
-for the current x64 component milestone. Fifty-four of 112 entries are accepted:
+Download the [2026-10-30 `.48` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.48)
+for the current x64 component milestone. Fifty-five of 112 entries are accepted:
 Accordion, Activity Item, Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button,
 Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric,
 Notification Badge, OTP Input, Page Frame, Page Header, Panel Layout, Progress, Progress Stack, Radio Group,
-Section Header, Segmented Control, Separator, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
-Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-47.md)
+Scroll Area, Section Header, Segmented Control, Separator, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
+Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-48.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.47/Orchard.Catalog.0.1.0-preview.20261030.47.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.47/Orchard.Catalog.0.1.0-preview.20261030.47.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.48/Orchard.Catalog.0.1.0-preview.20261030.48.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.48/Orchard.Catalog.0.1.0-preview.20261030.48.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
@@ -156,10 +156,10 @@ The [HoverCard prototype](docs/hover-card.md) retains original trigger/content
 in an inline hover surface with source placement and opacity motion. Hidden
 layout, presentation-clock and ownership diagnostics pass; physical input and
 complete visual/platform acceptance remain open.
-The [ScrollArea prototype](docs/scroll-area.md) retains original content in a
+The [accepted Scroll Area](docs/scroll-area.md) retains original content in a
 native viewport with user orientation, programmatic offsets, reserved scrollbar
-space and template support. Hidden source-layout, ownership and thumb-body
-checks pass in the catalog and a fresh package consumer; full acceptance is open.
+space and template support. Its x64 Light/Dark, physical input/focus,
+native 150%, reduced-motion and package-consumer checks pass.
 The [AdminShell draft](docs/admin-shell.md) adds a retained sidebar and a native
 main scroller containing body and footer. Its independent native consumer matches
 312 initial and 16 scrolled source states and passes 66 ownership checks,

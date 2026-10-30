@@ -11,9 +11,9 @@ Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Ta
 Card, Checkbox, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
-Notification Badge, OTP Input, Panel Layout, Progress, Progress Stack, Radio Group, Section Header, Segmented Control, Separator,
+Notification Badge, OTP Input, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Section Header, Segmented Control, Separator,
 Skeleton, Slider, Sparkline, Stat Card, Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 54 are accepted.
+inventory has 112 entries started; 55 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -192,8 +192,9 @@ keep their programmatic range. Inherited `MaxHeight` constrains height; source
 scrollbars reserve 6/15 DIPs and support both themes and RTL. `ScrollTo` uses
 native positive leading-edge offsets; actual offsets, viewport/extent values
 and `ViewChanged` remain public. It adds no data or virtualization policy.
-This local prototype's full visual, input, scaling, performance and platform
-acceptance remains open.
+For the x64 milestone, Light/Dark states, physical pointer/wheel/keyboard/focus,
+native 150% no-clipping, static reduced-motion behavior and independent
+package-consumer compilation pass. ARM64 runtime remains unverified.
 
 `BleeckerHoverCard` retains original trigger and content controls or models in
 an inline surface. Both slots support templates/selectors. `Side` is Top or

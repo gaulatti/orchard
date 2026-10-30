@@ -11,10 +11,10 @@ unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Kbd, Label, Loading Spinner, Metric, Notification Badge, Page Frame, Page Header, Panel Layout,
-Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline, Stat Card,
+Progress, Progress Stack, Scroll Area, Section Header, Separator, Skeleton, Sparkline, Stat Card,
 Status Badge, Switch, Theme Toggle, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List,
 Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
-(54 of 112 entries in current source for the `.47` preview).
+(55 of 112 entries in current source for the `.48` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -412,7 +412,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | progress | `BleeckerProgress`: three sizes, four variants and optional label | x64 Light/Dark matrix and passive range semantics pass; `.9` package consumer passes 24 native 150% cases and reduced-motion value changes settle immediately | Accepted for the x64 milestone; ARM64 runtime unverified. [Usage and evidence](progress.md) |
 | radio-group | `BleeckerRadioGroup` and immutable `BleeckerRadioOption` | Registered native fixture; 56 source/native frames and 136 options have zero geometry error; physical keyboard, controlled requests, UIA and lifecycle checks in both themes | In progress: [contract and evidence](radio-group.md); full raster/motion, customization/error matrix and Windows platform acceptance |
 | checkbox | `BleeckerCheckbox`: native selection with consumer label/description content | Registered fixture; v7 x64 catalog/consumer pass 72/70 rich-name, binding, style and native-toggle checks | In progress: [usage and gaps](checkboxes.md); complete rendering, physical input/cursor/focus, scaling, motion and ARM64 runtime |
-| scroll-area | BleeckerScrollArea: original content/templates, native scrolling, source scrollbar recipe and public scroll pattern | ScrollAreasFixture; 94 layouts, 12 native histories, five contract groups, 17,952 thumb-body pixels and fresh consumer | In progress: [contract and evidence](scroll-area.md); physical input, full visual/scaling/performance and platform acceptance open |
+| scroll-area | BleeckerScrollArea: original content/templates, native scrolling, source scrollbar recipe and public scroll pattern | Exact package DLL passes 94 Light/Dark layouts, 12 native histories and five contract groups; extracted x64 catalog passes physical pointer, wheel, Tab and keyboard scrolling; independent consumer passes ten native 150% layouts and static reduced-motion offsets | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract and evidence](scroll-area.md) |
 | separator | `BleeckerSeparator`: horizontal/vertical, decorative or semantic | Light/Dark states, passive input/focus semantics, 150% no-clipping, static reduced-motion behavior and current candidate package-consumer compilation pass | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](separator.md) |
 | sheet | `BleeckerSheet`: retained caller content, controlled close requests and four physical sides | Registered edge-dialog catalog; shared 194-state source/NuGet checks and 16 actual catalog cases cover all sides and nested composition | In progress: [contract and evidence](drawer-sheet.md); physical input, complete visual/motion/scaling and native ARM64 runtime |
 | slider | `BleeckerSlider`: controlled raw/sanitized values and native range semantics | 182 exact hidden layouts, 14 retained-fill states, 36 ownership/lifecycle checks and 44 corruption negatives; multilingual font and styled-name regressions | In progress: [contract](slider.md); visible input/raster/motion, scaling, shared-consumer integration and platform acceptance |
