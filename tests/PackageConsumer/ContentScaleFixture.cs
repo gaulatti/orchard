@@ -39,6 +39,7 @@ internal static class ContentScaleFixture
         var skeletonScale = new List<object>();
         var breadcrumbScale = new List<object>();
         var dialogCloseScale = new List<object>();
+        var brandLockupScale = new List<object>();
         void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
         try
         {
@@ -334,6 +335,40 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "dialog-close-scale-cases.json"),
                 JsonSerializer.Serialize(new { passed = dialogCloseScale.Count == 4, cases = dialogCloseScale,
                     librarySha256 = Hash(typeof(BleeckerDialogCloseButton).Assembly.Location) },
+                    new JsonSerializerOptions { WriteIndented = true }));
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var size in new[] { BleeckerBrandLockupSize.Small, BleeckerBrandLockupSize.Large })
+            {
+                stage = $"brand-lockup/{theme}/{size}/150-percent";
+                root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                var brand = new BleeckerBrandLockup { Href = "/fictional-studio", BrandName = "Fictional editorial studio with a longer name",
+                    Size = size, Width = size == BleeckerBrandLockupSize.Small ? 220 : 280 };
+                Canvas.SetLeft(brand, 24); Canvas.SetTop(brand, 8); root.Children.Add(brand);
+                try
+                {
+                    var deadline = System.Diagnostics.Stopwatch.StartNew();
+                    do { await Layout(); } while (!brand.IsLogoLoaded && deadline.Elapsed < TimeSpan.FromSeconds(3));
+                    var logo = Find<Grid>(brand, "PART_Logo") ?? throw new InvalidOperationException("Scaled Brand Lockup logo is missing.");
+                    var name = Find<TextBlock>(brand, "PART_Name") ?? throw new InvalidOperationException("Scaled Brand Lockup name is missing.");
+                    var owner = brand.TransformToVisual(root).TransformBounds(new Rect(0, 0, brand.ActualWidth, brand.ActualHeight));
+                    var logoBounds = logo.TransformToVisual(root).TransformBounds(new Rect(0, 0, logo.ActualWidth, logo.ActualHeight));
+                    var nameBounds = name.TransformToVisual(root).TransformBounds(new Rect(0, 0, name.ActualWidth, name.ActualHeight));
+                    Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && brand.IsLoaded && brand.IsLogoLoaded &&
+                        name.Text == brand.BrandName && name.ActualHeight > 0 && !name.IsTextTrimmed,
+                        "Brand Lockup did not render its decoded logo and full name at native 150% scale.");
+                    Require(owner.X >= -.5 && owner.Y >= -.5 && owner.Right <= root.Width + .5 && owner.Bottom <= root.Height + .5 &&
+                        logoBounds.X >= owner.X - .5 && logoBounds.Y >= owner.Y - .5 && logoBounds.Right <= owner.Right + .5 && logoBounds.Bottom <= owner.Bottom + .5 &&
+                        nameBounds.X >= owner.X - .5 && nameBounds.Y >= owner.Y - .5 && nameBounds.Right <= owner.Right + .5 && nameBounds.Bottom <= owner.Bottom + .5,
+                        $"Brand Lockup logo or name clipped at native 150% scale: owner={owner}, logo={logoBounds}, name={nameBounds}.");
+                    brandLockupScale.Add(new { theme = theme.ToString(), size = size.ToString(), scale = root.XamlRoot.RasterizationScale,
+                        logoLoaded = brand.IsLogoLoaded, passed = true });
+                }
+                finally { root.Children.Clear(); await Layout(); }
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "brand-lockup-scale-cases.json"),
+                JsonSerializer.Serialize(new { passed = brandLockupScale.Count == 4, cases = brandLockupScale,
+                    librarySha256 = Hash(typeof(BleeckerBrandLockup).Assembly.Location) },
                     new JsonSerializerOptions { WriteIndented = true }));
             foreach(var theme in new[]{ElementTheme.Light,ElementTheme.Dark})
             {

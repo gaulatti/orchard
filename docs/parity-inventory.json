@@ -180,15 +180,26 @@
         "samples/Orchard.Catalog/ContrastFixture.xaml.cs",
         "tests/Orchard.Tests/BrandMotionTests.cs",
         "tests/Reference/BrandOpacityTransitions.json",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261029.30",
+        "librarySha256": "7804559639adf4e1f9cab634c3f2e6faf0e9d8cbac9c0d3dd8cc49260897f38f",
+        "lightDarkStates": "Matching .30 package DLL in extracted x64 catalog passed small/large, named/empty, disabled, custom image/link, failed image, wrapped non-Latin and live Light/Dark theme states; artifacts/current/context-menu-native-candidate/brand-lockup-extracted-v30.json",
+        "keyboardPointerFocus": "Catalog route passed physical pointer click, Tab/Enter focus and invocation, caller route/parameter identity and disabled rejection in both themes; artifacts/current/context-menu-native-candidate/brand-measurements-Light.json and brand-measurements-Dark.json",
+        "scale150NoClip": "Independent .30 package consumer passed four native 150% Light/Dark small/large cases with decoded logos and wrapped names inside owner bounds; artifacts/current/context-menu-native-candidate/brand-lockup-scale-cases-v30.json",
+        "reducedMotion": "Brand motion reports pass immediate hover endpoints in Light/Dark with Windows animations disabled and no OS setting change; artifacts/current/context-menu-native-candidate/brand-motion-Light.json and brand-motion-Dark.json",
+        "packageConsumerCompiles": "Independent .30 x64 NuGet consumer compiled and ran against package SHA-256 33fc8672f303c6bc5f594e56b0f0e67e53666b487b6a7cdc1776e6376f3a8244; artifacts/current/context-menu-native-candidate/package-consumer-x64-v30.json",
+        "arm64RuntimeVerified": false
       }
     },
     {
@@ -3249,13 +3260,13 @@
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "packageVersion": "0.1.0-preview.20261029.29",
-        "librarySha256": "4557de029e1c2ddf675c1f6459dd933a42725ed614dcc47c53df4309f56bcefe",
-        "lightDarkStates": "Matching .29 extracted x64 catalog passed 16 Light/Dark normal, icon-size, disabled, hover, pressed and focus states; artifacts/current/context-menu-native-candidate/dialog-close-states-v29.json",
+        "packageVersion": "0.1.0-preview.20261029.30",
+        "librarySha256": "7804559639adf4e1f9cab634c3f2e6faf0e9d8cbac9c0d3dd8cc49260897f38f",
+        "lightDarkStates": "Matching .30 extracted x64 catalog passed 16 Light/Dark normal, icon-size, disabled, hover, pressed and focus states; artifacts/current/context-menu-native-candidate/dialog-close-states-v30.json",
         "keyboardPointerFocus": "Native catalog route passed physical held pointer, Tab, Space and Enter, three caller Click/Command invocations per theme, disabled rejection and focus; artifacts/current/context-menu-native-candidate/dialog-close-desktop.json",
-        "scale150NoClip": "Independent .29 package consumer passed four native 150% Light/Dark default/large-icon and enabled/disabled cases with root, border and icon inside the 36-DIP owner; artifacts/current/context-menu-native-candidate/dialog-close-scale-cases-v29.json",
-        "reducedMotion": "With Windows animations disabled, the package-matched x64 catalog passed settled rest/hover paint and immediate held-press transform without an OS setting change; artifacts/current/context-menu-native-candidate/dialog-close-catalog-v29.json",
-        "packageConsumerCompiles": "Independent .29 x64 NuGet consumer compiled and ran against package SHA-256 198306b4ec1ea0dbdce1d3ed52cd66f4d654b99c7d84695fef99767017862281; artifacts/current/context-menu-native-candidate/dialog-close-package-v29.json",
+        "scale150NoClip": "Independent .30 package consumer passed four native 150% Light/Dark default/large-icon and enabled/disabled cases with root, border and icon inside the 36-DIP owner; artifacts/current/context-menu-native-candidate/dialog-close-scale-cases-v30.json",
+        "reducedMotion": "With Windows animations disabled, the package-matched x64 catalog passed settled rest/hover paint and immediate held-press transform without an OS setting change; artifacts/current/context-menu-native-candidate/dialog-close-extracted-v30.json",
+        "packageConsumerCompiles": "Independent .30 x64 NuGet consumer compiled and ran against package SHA-256 33fc8672f303c6bc5f594e56b0f0e67e53666b487b6a7cdc1776e6376f3a8244; artifacts/current/context-menu-native-candidate/package-consumer-x64-v30.json",
         "arm64RuntimeVerified": false
       }
     },

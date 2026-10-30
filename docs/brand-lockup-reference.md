@@ -1,5 +1,19 @@
 # BrandLockup reference and acceptance
 
+The focused catalog fixture changes the actual `CatalogRoot` theme when it
+checks live inheritance. Changing the outer modal host could not override the
+root's explicit theme and gave a false component failure. This fixture repair
+does not change the public control or count as acceptance by itself.
+
+Brand Lockup is accepted in the `.30` preview under the
+[five-check x64 milestone](acceptance-contract.md). The matching `.30` package DLL passed the
+focused Light/Dark catalog route with physical pointer, Tab, Enter and focus,
+including live theme and disabled action checks. Four native 150% small/large
+cases in an independent x64 consumer kept decoded logos and wrapped names within
+their owners; the consumer compiled and ran. Both theme motion reports passed
+immediate endpoints with animations disabled. ARM64 runtime is unverified.
+Broader historical visual, motion and contrast review is outside these gates.
+
 The current native API exposes `IsLogoLoaded` and `LogoOpened` for the actual
 logo decoder, separately from element loading. `LogoFailed` remains the failure
 producer. Readiness resets when the source changes or decoding fails; an explicit
@@ -17,8 +31,8 @@ the visible effect surface. No system settings are changed.
 The frozen source is
 [`brand-lockup.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/brand-lockup.tsx),
 SHA-256 `8b2319f72c31ffb0c5e775484ed3b59d2ceeb59a4e73a779c805053585d601e6`.
-Its downloaded source matches the inventory hash. The native implementation is
-in progress; complete visual and accessibility acceptance remains open.
+Its downloaded source matches the inventory hash. Broader historical visual and
+accessibility review remains open outside the current milestone.
 
 ## Required native contract
 

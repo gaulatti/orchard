@@ -7,12 +7,12 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Avatar, Brand Mark, Breadcrumb, Button, Button Group,
+Accepted x64 components in this preview: Avatar, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Context Menu,
-Dashboard Grid, Dashboard Section, Detail Layout, Empty, Error State, Feed Grid,
+Dashboard Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Grid,
 Field Help Tooltip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Spinner, Metric, Page Frame, Page Header,
 Panel Layout, Progress, Progress Stack, Section Header, Separator, Skeleton, Sparkline,
-Stat Card, Status Badge and Tooltip. The fixed inventory has 112 entries started; 33 are accepted.
+Stat Card, Status Badge and Tooltip. The fixed inventory has 112 entries started; 35 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes

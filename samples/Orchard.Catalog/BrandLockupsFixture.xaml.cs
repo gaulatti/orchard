@@ -108,14 +108,17 @@ public sealed partial class BrandLockupsFixture : UserControl
         var beforeKeyboard = invocations; input.Key(0x0D);
         await AwaitAsync(() => invocations==beforeKeyboard+1 && invokedHref=="/", "Physical Enter did not invoke the consumer-owned brand route.");
         await input.MoveAsync(Heading);
-        var ownerTheme = ((FrameworkElement)XamlRoot.Content).RequestedTheme;
+        // CatalogRoot owns the fixture theme. The outer modal host binds to it,
+        // so changing the host cannot override CatalogRoot's explicit theme.
+        var themeOwner = (FrameworkElement)((BleeckerModalHost)XamlRoot.Content).Content;
+        var ownerTheme = themeOwner.RequestedTheme;
         try
         {
-            ((FrameworkElement)XamlRoot.Content).RequestedTheme = scheme==BleeckerColorScheme.Light?ElementTheme.Dark:ElementTheme.Light;
+            themeOwner.RequestedTheme = scheme==BleeckerColorScheme.Light?ElementTheme.Dark:ElementTheme.Light;
             await AwaitAsync(() => SmallNamed.ActualTheme==(scheme==BleeckerColorScheme.Light?ElementTheme.Dark:ElementTheme.Light), "Brand did not follow a live owner theme change.");
             await VerifyPixelsAsync(input,scheme==BleeckerColorScheme.Light?BleeckerColorScheme.Dark:BleeckerColorScheme.Light,folder);
         }
-        finally { ((FrameworkElement)XamlRoot.Content).RequestedTheme=ownerTheme; }
+        finally { themeOwner.RequestedTheme=ownerTheme; }
         await AwaitAsync(() => SmallNamed.ActualTheme==(scheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark), "Brand did not restore its owner theme.");
         SmallNamed.FlowDirection=FlowDirection.RightToLeft;CustomImage.FlowDirection=FlowDirection.RightToLeft;UpdateLayout();
         await MainWindow.AwaitPresentationAsync(SmallNamed);

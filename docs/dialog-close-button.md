@@ -1,8 +1,7 @@
 # Dialog Close Button
 
-`BleeckerDialogCloseButton` is accepted in current source for the
-[five-check x64 milestone](acceptance-contract.md). The published `.29` preview
-predates this inventory update. Its matching package DLL passed the focused
+`BleeckerDialogCloseButton` is accepted in the `.30` preview for the
+[five-check x64 milestone](acceptance-contract.md). Its matching package DLL passed the focused
 extracted catalog's 16 Light/Dark states and physical pointer, Space, Enter and
 focus path with animations disabled. The independent x64 consumer compiled and
 ran; four native 150% default/large-icon and enabled/disabled cases kept the
