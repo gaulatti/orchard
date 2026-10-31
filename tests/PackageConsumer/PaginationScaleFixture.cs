@@ -382,9 +382,59 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var chartCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            foreach (var kind in new[] { "bar", "sankey" })
+            {
+                stage = $"{kind}-chart/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 400; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 600));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 600));
+                Control wrapper;
+                if (kind == "bar")
+                {
+                    var bar = new BleeckerBarChart { XAxisKey = "label", ShowLegend = false };
+                    bar.Series.Add(new BleeckerChartSeries { Key = "v", Name = "Fictional" });
+                    bar.Data.Add(new Dictionary<string, object?> { ["label"] = "A", ["v"] = 10d });
+                    bar.Data.Add(new Dictionary<string, object?> { ["label"] = "B", ["v"] = 20d });
+                    wrapper = bar;
+                }
+                else
+                {
+                    wrapper = new BleeckerSankeyChart { Data = new()
+                    {
+                        Nodes = [new BleeckerSankeyNode { Name = "A" }, new BleeckerSankeyNode { Name = "B" }],
+                        Links = [new BleeckerSankeyLink { Source = 0, Target = 1, Value = 10 }]
+                    } };
+                }
+                wrapper.Width = viewport - 40; wrapper.Height = 300;
+                Canvas.SetLeft(wrapper, 20); Canvas.SetTop(wrapper, 20);
+                root.Children.Add(wrapper);
+                await LayoutAsync(root);
+                var chart = Descendants<BleeckerLineChart>(wrapper).Single();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    wrapper.IsLoaded && wrapper.ActualTheme == theme && chart.IsLoaded &&
+                    chart.ActualWidth > 0 && chart.ActualHeight > 0 &&
+                    Within(Bounds(wrapper, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(chart, wrapper), new Rect(0, 0, wrapper.ActualWidth, wrapper.ActualHeight)),
+                    "Bar or Sankey chart clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(chart, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(chart, root).Equals(before),
+                        "Bar or Sankey chart continued moving with reduced motion.");
+                }
+                chartCases.Add(new { kind, theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));

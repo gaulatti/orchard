@@ -1,5 +1,11 @@
 # Bar Chart source contract and evidence
 
+The `0.1.0-preview.20261031.81` milestone accepts Bar Chart on x64:
+Light/Dark states, physical focus and Right-arrow inspection, four native 150%
+no-clipping cases, static reduced-motion geometry and independent package-consumer
+compilation passed. ARM64 is build-only and runtime-unverified. Older exact
+visual and broader platform comparisons below remain historical diagnostics.
+
 The DataList independent consumer exposed a shared remount/focus race. Its
 failed `artifacts/package-consumer-data-list-x64-v2/runtime.json` records actual
 keyboard focus, intact original data, empty inspection and no pointer events.

@@ -1,5 +1,11 @@
 # Sankey Chart source contract and acceptance
 
+The `0.1.0-preview.20261031.81` milestone accepts Sankey Chart on x64:
+Light/Dark states, physical focus and Right-arrow inspection, four native 150%
+no-clipping cases, static reduced-motion geometry and independent package-consumer
+compilation passed. ARM64 is build-only and runtime-unverified. Older exact
+visual and broader platform comparisons below remain historical diagnostics.
+
 The shared renderer reconciles reload, focus and blur against the current
 `FocusManager` owner. The native `chart-load-focus` fixture covers Sankey's node
 channel and Bar's category channel across both themes, real event orders,
