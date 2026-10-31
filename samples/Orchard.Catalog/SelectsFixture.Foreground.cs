@@ -16,6 +16,7 @@ public sealed partial class SelectsFixture
         await MainWindow.AwaitPresentationAsync(Medium);
         using var input = new NativeInputSession(XamlRoot, folder, $"select-foreground-{scheme}");
         await input.AcquireAsync(Status);
+        var reducedMotion = !new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
 
         static IEnumerable<DependencyObject> Descendants(DependencyObject parent)
         {
@@ -48,6 +49,13 @@ public sealed partial class SelectsFixture
             "Pointer option selection did not reach the original consumer value request.");
         await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), medium),
             "Pointer selection did not restore trigger focus.");
+        if (reducedMotion)
+        {
+            var ring = Descendants(medium).OfType<Border>().Single(item => item.Name == "Ring");
+            await Task.Delay(32);
+            Require(Math.Abs(ring.Opacity - 1) < .000001,
+                $"Reduced-motion Select focus ring did not reach its endpoint: opacity={ring.Opacity}, focus={medium.FocusState}.");
+        }
 
         input.Key(0x20); // Space reopens the focused Select.
         await AwaitAsync(() => medium.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(medium, "b")),
@@ -93,7 +101,6 @@ public sealed partial class SelectsFixture
         Require(header.Focus(FocusState.Keyboard), "Header Select trigger rejected keyboard focus.");
         await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), header),
             "Header Select trigger did not receive keyboard focus.");
-        var reducedMotion = !new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
         if (reducedMotion)
         {
             var ring = Descendants(header).OfType<Border>().Single(item => item.Name == "Ring");
@@ -158,7 +165,7 @@ public sealed partial class SelectsFixture
             headerDownFocusedOriginalOption = true, headerRestoredFocus = true, escapePreservedValue = true,
             headerPointerValue = "b", headerPointerRestoredFocus = true,
             headerClosedTypeaheadValues = new[] { "", "a" }, headerOpenTypeaheadFocusedValue = "b", headerOutsideClickPreservedValue = true,
-            headerReducedMotion = reducedMotion
+            headerReducedMotion = reducedMotion, selectReducedMotion = reducedMotion
         }));
     }
 }
