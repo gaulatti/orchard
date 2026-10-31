@@ -118,3 +118,16 @@ The [interruption evidence](drawer-sheet-motion.md) adds 390 original CSS sample
 matching the C# clocks and live reduced-motion property checks in both native
 hosts. The machine's disabled-animation preference is preserved; normal-mode
 native timing and pixel motion remain open.
+
+## 2026-10-30 x64 milestone
+
+The exact .72 package consumer passes 194 Light/Dark Drawer/Sheet layouts and
+42 lifecycle/content cases. The extracted x64 catalog passes physical Drawer
+open/Escape and Sheet open/close/Escape with caller requests and opener focus
+return in both themes. The independent package consumer passes 20 native 150%
+layouts at 420 and 600 DIP: Drawer plus all four Sheet sides in each theme,
+without clipping. With animations already disabled, both surfaces reach their
+reduced-motion endpoints. The consumer compiles and runs, and the fictional
+Monitoring and Editorial demo checks remain green. These five checks accept
+Drawer and Sheet on x64. Raster parity is not a gate; ARM64 is build-only and
+runtime-unverified.

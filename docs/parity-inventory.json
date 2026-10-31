@@ -3408,9 +3408,11 @@
         "scripts/reference/verify-edge-interruptions.mjs",
         "scripts/reference/test-edge-interruption-audit.mjs",
         "scripts/verify-edge-motion.mjs",
-        "scripts/test-edge-motion-audit.mjs"
+        "scripts/test-edge-motion-audit.mjs",
+        "tests/PackageConsumer/EdgeDialogScaleFixture.cs",
+        "scripts/smoke-catalog.ps1"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourcePreparation": {
         "reference": "tests/Reference/EdgeDialog.json",
         "motion": "tests/Reference/EdgeDialogMotion.json",
@@ -3443,11 +3445,11 @@
         "motionContract": "docs/drawer-sheet-motion.md"
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
       }
     },
     {
@@ -4927,9 +4929,11 @@
         "scripts/reference/verify-edge-interruptions.mjs",
         "scripts/reference/test-edge-interruption-audit.mjs",
         "scripts/verify-edge-motion.mjs",
-        "scripts/test-edge-motion-audit.mjs"
+        "scripts/test-edge-motion-audit.mjs",
+        "tests/PackageConsumer/EdgeDialogScaleFixture.cs",
+        "scripts/smoke-catalog.ps1"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourcePreparation": {
         "reference": "tests/Reference/EdgeDialog.json",
         "motion": "tests/Reference/EdgeDialogMotion.json",
@@ -4962,11 +4966,11 @@
         "motionContract": "docs/drawer-sheet-motion.md"
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
       }
     },
     {
