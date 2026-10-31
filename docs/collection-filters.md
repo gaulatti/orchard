@@ -1,5 +1,14 @@
 # Collection Filters
 
+The `.56` x64 preview accepts Collection Filters under the five-check
+milestone. The extracted catalog passed 50 Light/Dark states, four filter input
+histories and four numeric-key input histories with animations disabled. The
+independent package consumer compiled and ran 16 native 150% layouts across
+themes, expanded/collapsed states, widths and RTL/LTR without clipped visible
+actions. Its static presentation stayed stable with reduced motion. ARM64
+built and its consumer compiled; ARM64 runtime is unverified. Historical pixel
+and broader normal-motion diagnostics below are not milestone gates.
+
 This inventory entry follows frozen Bleecker commit
 `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/collection-filters.tsx` (SHA-256
@@ -128,10 +137,8 @@ Two empty PNGs match exactly; the other 48 retain 661,819 differing pixels.
 The original 48 cases retain 630,648 differing pixels; the two new numeric-key
 cases add 31,171. All original source PNGs remain byte-identical.
 Images are complete client captures without masks, tolerance or resampling.
-Exact paint/raster, expanded prop and date-input coverage, normal motion,
-customization/scaling, final integration and native ARM64 runtime
-remain open. This component is in progress and is not accepted. The public wiki
-is unavailable; documentation remains in this repository. Narrator and OS
+The `.56` release and inventory record the current five x64 checks. The public
+wiki is unavailable; documentation remains in this repository. Narrator and OS
 settings campaigns are outside this component-library task.
 Broader prop coverage includes long labels, other locales,
 mutable option sequences, date selection/clearing and hover/pressed states.

@@ -6192,16 +6192,18 @@
         "scripts/verify-nav-menu.mjs",
         "scripts/test-nav-menu-audit.mjs",
         "scripts/verify-hidden-nav-menus.mjs",
-        "scripts/test-hidden-nav-menus-audit.mjs"
+        "scripts/test-hidden-nav-menus-audit.mjs",
+        "tests/PackageConsumer/NavMenuScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .56 extracted x64 catalog passed 42 Light/Dark Nav Menu frames and eight physical pointer/keyboard/focus input histories. The independent .56 NuGet consumer compiled and ran 16 native 150% Light/Dark direction/width/RTL layouts without clipped links; theme repaint settled immediately with animations disabled. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "pagination",
@@ -6311,16 +6313,18 @@
         "tests/PackageConsumer/ProducerThreadingFixture.cs",
         "scripts/verify-hidden-producer-threading.ps1",
         "scripts/verify-hidden-producer-threading.mjs",
-        "scripts/test-hidden-producer-threading-audit.mjs"
+        "scripts/test-hidden-producer-threading-audit.mjs",
+        "tests/PackageConsumer/CollectionFiltersScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .56 extracted x64 catalog passed 50 Light/Dark Collection Filters frames, four filter input histories and four numeric-key input histories with animations disabled. The independent .56 NuGet consumer compiled and ran 16 native 150% Light/Dark expanded/collapsed, width and RTL layouts without clipped visible actions; static presentation remained stable. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "command-spotlight",

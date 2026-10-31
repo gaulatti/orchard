@@ -8,12 +8,12 @@ build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
 Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
-Card, Checkbox, Context Menu,
+Card, Checkbox, Collection Filters, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Page Frame, Page Header,
-Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Section Header, Segmented Control, Separator,
+Nav Menu, Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Section Header, Segmented Control, Separator,
 Skeleton, Slider, Sparkline, Stat Card, Status Badge, Stepper, Switch, Tabs, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 63 are accepted.
+inventory has 112 entries started; 65 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes

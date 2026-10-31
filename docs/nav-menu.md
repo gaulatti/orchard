@@ -1,5 +1,13 @@
 # Nav Menu
 
+The `.56` x64 preview accepts Nav Menu under the five-check milestone. The
+extracted catalog passed 42 Light/Dark states and eight physical pointer,
+keyboard and focus histories. The independent package consumer compiled and
+ran 16 native 150% layouts across themes, directions, widths and RTL/LTR
+without clipped links. Theme repaint settled immediately with animations
+disabled. ARM64 built and its consumer compiled; ARM64 runtime is unverified.
+Older raster and normal-motion diagnostics below are not milestone gates.
+
 This in-progress inventory entry follows Bleecker commit
 `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/nav-menu.tsx` (SHA-256
@@ -77,9 +85,8 @@ hidden reports are rejected. Both consumer caches are removed. Package DLL,
 four loose XAML files, compiled PRI and README match the tested source/build.
 Both catalog architectures build without warnings or errors.
 
-Full raster, native motion, scaling, broader customization/integration and
-native ARM64 runtime verification remain open. This component has not been accepted.
-The public wiki is unavailable; documentation remains in this repository.
+The `.56` release and inventory record the current five x64 checks. The public
+wiki is unavailable; documentation remains in this repository.
 
 Collection and command notifications may be raised from a background thread;
 the control queues them before accessing UI state. Producers must synchronize
