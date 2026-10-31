@@ -451,6 +451,7 @@ public sealed partial class MainWindow : Window
             else if (args.Contains("--smoke-attention")) await RunAttentionSmokeAsync(folder);
             else if (args.Contains("--smoke-notifications")) await RunNotificationSmokeAsync(folder);
             else if (args.Contains("--smoke-media-library-foreground")) await RunMediaLibraryForegroundAsync(folder);
+            else if (args.Contains("--smoke-navigation-menu-foreground")) await RunNavigationMenuForegroundAsync(folder);
             else if (args.Contains("--smoke-select-foreground")) await RunSelectForegroundAsync(folder);
             else if (args.Contains("--smoke-input-pointer-foreground")) await RunInputPointerForegroundAsync(folder);
             else if (args.Contains("--smoke-popover-foreground")) await RunPopoverForegroundAsync(folder);

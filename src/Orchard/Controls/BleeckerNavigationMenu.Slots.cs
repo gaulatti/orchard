@@ -215,6 +215,7 @@ public sealed partial class BleeckerNavigationMenu
             {
                 element = template is null ? new LinkButton(Context) { Name = grouped ? "NavigationGroupedLink" : "NavigationDirectLink", Content = content, Command = Context.Command } : template.LoadContent() as FrameworkElement ?? throw new InvalidOperationException("Navigation Menu LinkTemplate must create a FrameworkElement.");
                 Context.Element = element; element.DataContext = Context;
+                element.Loaded += ElementLoaded;
                 if (template is null) ((HyperlinkButton)element).SetBinding(Control.ForegroundProperty, new Binding { Source = Context, Path = new PropertyPath(nameof(Context.Foreground)) });
                 Root.Children.Add(element); UpdateElement();
             }
@@ -225,6 +226,7 @@ public sealed partial class BleeckerNavigationMenu
             if (element is null) return; element.FlowDirection = owner.FlowDirection; element.Language = owner.Language;
             if (template is null) { var link = (HyperlinkButton)element; link.Style = Context.Style; ScaleLink(link, owner.RemScale); AutomationProperties.SetName(element, item!.Label); AutomationProperties.SetHelpText(element, grouped ? item.Description ?? "" : ""); }
         }
+        private void ElementLoaded(object sender, RoutedEventArgs args) => Context.Notify();
         internal void Paint()
         {
             Context.Foreground = !grouped && hovered && owner.IsEnabled ? owner.primaryProbe?.Foreground ?? probe.Foreground : probe.Foreground;
@@ -233,7 +235,7 @@ public sealed partial class BleeckerNavigationMenu
         private void ResetElement()
         {
             Context.Mounted = false; Context.Notify(); Context.SetValue(BleeckerNavigationLinkContext.ContentProperty, null); if (element is HyperlinkButton button && template is null) { button.Command = null; button.Content = null; }
-            if (element is not null) { Root.Children.Remove(element); element.DataContext = null; } element = null; Context.Element = null; hovered = false;
+            if (element is not null) { element.Loaded -= ElementLoaded; Root.Children.Remove(element); element.DataContext = null; } element = null; Context.Element = null; hovered = false;
             Context = new(owner) { IsGrouped = grouped, Content = content }; if (item is not null) Context.Item = item;
         }
         internal void Unmount() { ResetElement(); if (item is not null) Update(item); }

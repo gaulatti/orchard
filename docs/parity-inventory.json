@@ -4191,17 +4191,19 @@
         "src/Orchard/Themes/NavigationMenu.xaml"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/NavigationMenusFixture.xaml"
+        "samples/Orchard.Catalog/NavigationMenusFixture.xaml",
+        "samples/Orchard.Catalog/NavigationMenusFixture.Foreground.cs"
       ],
       "regressionTests": [
         "scripts/reference/verify-navigation-menu-source.mjs",
         "scripts/reference/test-navigation-menu-source-audit.mjs",
         "tests/PackageConsumer/NavigationMenuFixture.cs",
+        "tests/PackageConsumer/PaginationScaleFixture.cs",
         "scripts/verify-navigation-menu.ps1",
         "scripts/verify-navigation-menu.mjs",
         "scripts/test-navigation-menu-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourcePreparation": {
         "reference": "tests/Reference/NavigationMenu.json",
         "frames": "tests/Reference/NavigationMenu",
@@ -4321,11 +4323,20 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261031.85",
+        "librarySha256": "8c51d2b58e6f412598690f6c3360c44c4e9bf3aea91108a9a4dd9b9e1e971a71",
+        "lightDarkStates": "The package-matching x64 catalog passed 16 Light and 16 Dark hidden states and 22 behavior contracts; artifacts/current/context-menu-native-candidate/navigation-menu-v85.json.",
+        "keyboardPointerFocus": "The package-matching x64 catalog passed physical keyboard Home focus/Enter and pointer group opening/grouped Buttons activation in Light and Dark; artifacts/current/context-menu-native-candidate/navigation-menu-foreground-Light.json and navigation-menu-foreground-Dark.json.",
+        "scale150NoClip": "The independent .85 x64 consumer passed four native 150% Light/Dark 700/1000-DIP top-action and popup bounds cases; artifacts/current/context-menu-native-candidate/remaining-scale-v85.json.",
+        "reducedMotion": "With Windows animations already disabled, the independent consumer confirmed static popup geometry and endpoint opacity in four native 150% cases; artifacts/current/context-menu-native-candidate/remaining-scale-v85.json. No OS setting changed.",
+        "packageConsumerCompiles": "The independent x64 NuGet consumer compiled against .85 package SHA-256 06a4d2c8bd448133e07f4500624722d88308845b3b1cf5e406b8db2d3c967320 and matched its Orchard DLL; artifacts/current/context-menu-native-candidate/package-x64-v85.json. ARM64 is build-only; runtime unverified."
       }
     },
     {

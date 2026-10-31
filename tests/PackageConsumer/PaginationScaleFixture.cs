@@ -571,9 +571,63 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var navigationCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 700, 1000 })
+            {
+                stage = $"navigation-menu/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 360; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 540));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 540));
+                var navigation = new BleeckerNavigationMenu { Width = viewport - 40,
+                    Entries = new IBleeckerNavigationMenuEntry[]
+                    {
+                        new BleeckerNavigationMenuLink("/fictional/home", "Home"),
+                        new BleeckerNavigationMenuGroup("Components",
+                            [new BleeckerNavigationMenuLink("/fictional/buttons", "Buttons", "Fictional controls")])
+                    } };
+                Canvas.SetLeft(navigation, 20); Canvas.SetTop(navigation, 20);
+                root.Children.Add(navigation);
+                await LayoutAsync(root);
+                var topLink = Descendants<HyperlinkButton>(navigation).Single(link =>
+                    link.DataContext is BleeckerNavigationLinkContext context && context.Item.Label == "Home");
+                var trigger = Descendants<Button>(navigation).Single(button =>
+                    button.DataContext is BleeckerNavigationMenuGroup group && group.Trigger == "Components");
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    navigation.IsLoaded && navigation.ActualTheme == theme &&
+                    Within(Bounds(navigation, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(topLink, navigation), new Rect(0, 0, navigation.ActualWidth, navigation.ActualHeight)) &&
+                    Within(Bounds(trigger, navigation), new Rect(0, 0, navigation.ActualWidth, navigation.ActualHeight)),
+                    "Navigation Menu top actions clipped at native 150% scale.");
+                ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(trigger)
+                    .GetPattern(PatternInterface.Invoke)).Invoke();
+                await Task.Delay(180);
+                await LayoutAsync(root);
+                var surface = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .Where(popup => popup.Child is not null)
+                    .SelectMany(popup => Descendants<BleeckerOverlaySurface>(popup.Child))
+                    .Single(item => item.Name == "NavigationMenuSurface");
+                Require(surface.IsLoaded && Within(Bounds(surface, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Descendants<HyperlinkButton>(surface).Any(link =>
+                        link.DataContext is BleeckerNavigationLinkContext context && context.Item.Label == "Buttons" &&
+                        Within(Bounds(link, surface), new Rect(0, 0, surface.ActualWidth, surface.ActualHeight))),
+                    "Navigation Menu group clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(surface, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(surface, root).Equals(before) && surface.Opacity >= .99,
+                        "Navigation Menu surface continued moving with reduced motion.");
+                }
+                navigationCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));

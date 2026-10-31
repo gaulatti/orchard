@@ -8,8 +8,8 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries. The [current `.84` release](releases/2026-10-31-preview-84.md)
-lists the 106 x64-accepted components, including Media Library; six remain.
+records pass/fail for all 112 entries. The [current `.85` release](releases/2026-10-31-preview-85.md)
+lists the 107 x64-accepted components, including Navigation Menu; five remain.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -401,7 +401,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | kbd | `BleeckerKbd`: single content and observable key combinations | Current package DLL passes 64 Light/Dark content states, 32 corner states, 16 caller and 64 metadata contracts; native 150% single/combination captures stay inside bounds | Accepted on x64 for this milestone; static display has no action, tab stop or animation; ARM64 runtime unverified; [usage](keyboard.md) and [contract](kbd-reference.md) |
 | label | `BleeckerLabel`, explicit typography and input association | Focused x64 catalog passes Light/Dark states; independent consumer passes physical nested pointer/keyboard/focus, eight native 150% content cases, static reduced motion and package compilation | Accepted for the x64 milestone; ARM64 runtime unverified. [Component record](labels.md) and [reference](label-reference.md) |
 | menubar | `BleeckerMenubar`, original caller menu entries and controlled selection requests | Registered catalog; source/fresh NuGet 30 states, 26 contracts, presence/standalone lifecycles, 1,224 geometry checks per host and 30 identical PNG pairs; [native preview](menubar.md) | In progress: full native motion, input/focus, visual/scaling and platform acceptance |
-| navigation-menu | Original caller links/groups, guarded host routing and typed custom content | [Native contract](navigation-menu.md): source/fresh NuGet26states/18contracts each, both catalog themes,752exact geometry values and26identical PNG pairs | Full input/motion/metadata/scaling/raster, modal isolation and native ARM64 acceptance |
+| navigation-menu | Original caller links/groups, guarded host routing and typed custom content | Exact `.85` package-matching x64 catalog passes 32 Light/Dark states, 22 contracts and physical keyboard/pointer/focus in both themes; independent consumer passes four native 150% layouts and static reduced-motion popup | Accepted for the five-check x64 milestone; ARM64 runtime unverified; [API](navigation-menu.md) |
 | otp-input | Native controlled text/password preview | Registered fictional catalog, 60 source states and 32 native behavior cases | Physical input/clipboard, scaling, full visual/motion and ARM64 runtime acceptance |
 | popover | `BleeckerPopover`: original trigger/content, controlled requests, source placement and shared modal branches | Exact `.64` x64 consumer: 122 Light/Dark states, five contracts, six hosted cases, four native 150% layouts; extracted catalog: physical pointer/keyboard/focus, nested/modal and Escape in both themes | Accepted for the five-check x64 milestone; ARM64 runtime unverified; [usage](popover.md) |
 | progress | `BleeckerProgress`: three sizes, four variants and optional label | x64 Light/Dark matrix and passive range semantics pass; `.9` package consumer passes 24 native 150% cases and reduced-motion value changes settle immediately | Accepted for the x64 milestone; ARM64 runtime unverified. [Usage and evidence](progress.md) |

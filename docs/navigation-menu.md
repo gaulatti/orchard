@@ -1,5 +1,15 @@
 # Navigation Menu
 
+The 2026-10-31 `.85` x64 milestone accepts Navigation Menu under the five-check
+contract. Light and Dark hidden states, physical keyboard and pointer routing,
+focus, four native 150% layout cases, static reduced-motion behavior and
+compilation in an independent consumer of the exact NuGet package passed.
+Grouped links refresh native command enablement when their popup elements load,
+so a pointer click invokes the caller's link after opening the group. ARM64
+builds and consumer compilation pass; ARM64 runtime remains unverified.
+Historical prototype limitations below describe earlier investigations and do
+not add acceptance gates to this milestone.
+
 `BleeckerNavigationMenu` renders original caller links and groups. It is a
 component, not a router or browser launcher. `BleeckerNavigationMenuLink`
 retains its literal `Href`, `Label`, `Description` and `External` values;
@@ -170,17 +180,13 @@ consumer report the same Orchard DLL hash. The retained reports are in
 The updated library and its fresh isolated package consumer also build for
 ARM64; native ARM64 execution remains unverified.
 
-These results cover scoped component behavior. Six source fixture kinds have
-no equivalent native snapshot yet: individual trigger, direct and child hover,
-trigger/child focus and pressed trigger.
-Setting a native visual state for an open/hover combination does not prove
-physical hover input. The empty 14px popup has browser/native corner
-antialiasing differences; palette checks use flat interior padding and do not
-claim edge parity. Complete control/chevron motion, pointer/keyboard/focus,
-full metadata/customization, Windows scaling,
-complete visual review and native ARM64 execution remain open. Hidden public API/UIA
-tests do not claim those results. No Narrator, OS setting changes, pointer
-heartbeat or Actions are part of this work.
+At the earlier prototype checkpoint, six source fixture kinds had no equivalent
+native snapshot: individual trigger, direct and child hover, trigger/child focus
+and pressed trigger. The empty popup also had browser/native corner
+antialiasing differences. Those exact-raster comparisons are outside the .85
+milestone gate. The .85 focused physical input, scaling and reduced-motion checks
+are recorded above; ARM64 execution remains unverified. No Narrator, OS setting
+changes, pointer heartbeat or Actions are part of this work.
 
 The later [consolidated v5 package](releases/2026-10-26-components-v5-local.md)
 passed the focused Navigation Menu check in its independent x64 consumer:
