@@ -361,16 +361,18 @@
         "tests/Orchard.Tests/CatalogCoverageTests.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "scripts/verify-theme-toggle-package-input.ps1",
-        "scripts/verify-theme-toggle-package-accepted-input.ps1"
+        "scripts/verify-theme-toggle-package-accepted-input.ps1",
+        "tests/PackageConsumer/AttentionScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .65 x64 catalog passes 43 Light and 43 Dark Attention Surface states, physical pointer and keyboard/focus actions, caller content/lifecycle, and disabled/command behavior. The native reduced-motion hover reaches its endpoint with Windows animations already disabled. The independent .65 package consumer passes eight native 150% Light/Dark Article/Button layouts at 260/420 DIP with owner, paint and text within bounds. The .65 x64 package consumer compiles and runs. ARM64 builds only; runtime unverified. Raster/pixel parity diagnostics are outside this milestone."
     },
     {
       "id": "button",

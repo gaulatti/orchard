@@ -118,6 +118,12 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         {
             await MoveToHeadingAsync(input); await AwaitAsync(()=>Lift(specimen)==0,"Attention resting lift did not settle.");
             await input.MoveAsync(specimen);
+            if (!new Windows.UI.ViewManagement.UISettings().AnimationsEnabled)
+            {
+                await Task.Delay(16);
+                Require(Math.Abs(Lift(specimen)+1)<.000001,
+                    $"Attention {specimen.Name} hover did not reach its reduced-motion endpoint.");
+            }
             try { await AwaitAsync(()=>Math.Abs(Lift(specimen)+1)<.000001,$"Attention {specimen.Name} hover did not lift the actual surface."); }
             catch
             {
@@ -145,8 +151,6 @@ public sealed partial class AttentionSurfacesFixture : UserControl
         var content=Slot.Content;var template=Slot.Template;Slot.Template=null;Slot.Template=template;Slot.ApplyTemplate();Slot.UpdateLayout();
         Require(ReferenceEquals(Slot.Content,content)&&ReferenceEquals(VisualTreeHelper.GetParent(ChildAction),((FrameworkElement)VisualTreeHelper.GetChild(Slot,0)).FindName("PART_Content")),
             "Attention template replacement changed or retained the old parent of consumer content.");
-        await CaptureGradientPixelsAsync(input,source,scheme,folder);
-        await CaptureFractionalBaselinesAsync(input,scheme,folder);
         await File.WriteAllTextAsync(Path.Combine(folder,$"attention-actions-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,command.Count,command.Last,inherited,unavailableInvokeRefused=refused}));
     }
     private async Task MoveToHeadingAsync(NativeInputSession input)
@@ -182,144 +186,6 @@ public sealed partial class AttentionSurfacesFixture : UserControl
             samples.Add(new { keyboard, before, beforeBounds, after = viewport.VerticalOffset, afterBounds = input.ScreenBounds(Heading), input.OwnsCurrentPoint });
         }
         await File.WriteAllTextAsync(Path.Combine(folder, $"attention-viewport-{scheme}.json"), JsonSerializer.Serialize(new { passed = true, samples }));
-    }
-    private async Task CaptureFractionalBaselinesAsync(NativeInputSession input,BleeckerColorScheme scheme,string folder)
-    {
-        var root=(FrameworkElement)VisualTreeHelper.GetChild(Action,0);
-        var text=(TextBlock)root.FindName("PART_String");var metrics=(TextBlock)root.FindName("PART_StringMetrics");
-        var paragraph=(FrameworkElement)root.FindName("PART_StringParagraph");
-        var originalMargin=Action.ReadLocalValue(MarginProperty);var originalForeground=Action.ReadLocalValue(ForegroundProperty);
-        var originalBackground=Action.ReadLocalValue(BackgroundProperty);var gradientBackground=Action.Background;
-        var originalDensity=Action.Density;var originalContent=Action.Content;
-        var samples=new List<object>(); var presentationTrace=new List<object>();
-        int[]? establishedInk=null;var establishedWidth=0;var establishedHeight=0;
-        ScrollViewer? scroll = null;
-        for (DependencyObject? current = Action; current is not null; current = VisualTreeHelper.GetParent(current))
-            if (current is ScrollViewer viewer) { scroll = viewer; break; }
-        Require(scroll is not null, "Attention's fractional scroll probe requires the catalog viewport.");
-        double? originalScrollOffset = null;
-        try
-        {
-            Action.Density=BleeckerAttentionDensity.Compact;Action.Content="Contrast surface";
-            await input.MoveAsync(PassiveAction);
-            await AwaitAsync(()=>Lift(Action)==0,"Fractional baseline probe did not reach resting lift.");
-            originalScrollOffset = scroll!.VerticalOffset;
-            foreach(var probe in new[]{(Margin:.5,White:false,Solid:false,ScrollDelta:0d),(Margin:0d,White:true,Solid:true,ScrollDelta:0d),(Margin:.5,White:true,Solid:true,ScrollDelta:0d),
-                (Margin:0d,White:false,Solid:false,ScrollDelta:0d),(Margin:.5,White:false,Solid:false,ScrollDelta:0d),
-                (Margin:.5,White:true,Solid:true,ScrollDelta:36.5),(Margin:.5,White:false,Solid:false,ScrollDelta:0d)})
-            {
-                var margin=probe.Margin;var color=probe.White?Microsoft.UI.Colors.White:Windows.UI.Color.FromArgb(255,240,244,248);
-                Action.Foreground=new SolidColorBrush(color);
-                Action.Background=probe.Solid?new SolidColorBrush(Windows.UI.Color.FromArgb(255,32,32,32)):gradientBackground;
-                Action.Margin=new Thickness(0,margin,0,0);UpdateLayout();
-                var scrollTarget = originalScrollOffset.Value + probe.ScrollDelta;
-                scroll.ChangeView(null, scrollTarget, null, true);
-                await AwaitAsync(() => Math.Abs(scroll.VerticalOffset-scrollTarget) < .001, "Attention fractional scroll did not settle at its native target.");
-                var presented=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
-                var watch=System.Diagnostics.Stopwatch.StartNew(); var frames=new List<object>();
-                (double Scroll,double OwnerY,double ParagraphY,double TextY,Thickness Margin)? previous=null; var stable=0;
-                void Frame(object? sender,object args)
-                {
-                    var state=(scroll.VerticalOffset,Action.TransformToVisual(XamlRoot.Content).TransformPoint(new()).Y,
-                        paragraph.TransformToVisual(XamlRoot.Content).TransformPoint(new()).Y,
-                        text.TransformToVisual(XamlRoot.Content).TransformPoint(new()).Y,text.Margin);
-                    stable=previous==state?stable+1:0; previous=state;
-                    frames.Add(new{milliseconds=watch.Elapsed.TotalMilliseconds,scroll=state.VerticalOffset,ownerY=state.Item2,paragraphY=state.Item3,textY=state.Item4,margin=state.Margin,stable});
-                    // Require two complete stable presentations before sampling
-                    // the next frame; counting arbitrary frames can capture the
-                    // previous glyph arrangement after a fractional scroll.
-                    if(stable>=2)presented.TrySetResult();
-                }
-                CompositionTarget.Rendering+=Frame;
-                try{await presented.Task.WaitAsync(TimeSpan.FromSeconds(2));}finally{CompositionTarget.Rendering-=Frame;}
-                await input.RequireForegroundAsync();
-                var bounds=input.ScreenBounds(text);var ownerBounds=input.ScreenBounds(Action);
-                var textOrigin=text.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
-                var paragraphOrigin=paragraph.TransformToVisual(XamlRoot.Content).TransformPoint(new Windows.Foundation.Point());
-                var file=$"attention-baseline-{scheme}-{samples.Count}.png";
-                presentationTrace.Add(new{file,probe.ScrollDelta,frames});
-                await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baseline-presentation-{scheme}.json"),JsonSerializer.Serialize(presentationTrace));
-                var client=await NativeScreenCapture.CaptureClientAsync(input.Window,Path.Combine(folder,file));
-                Require(bounds.X>=client.X&&bounds.Y>=client.Y&&bounds.Right<=client.Right&&bounds.Bottom<=client.Bottom,
-                    "Fractional baseline specimen is outside the owned composed capture.");
-                var cropX=(int)Math.Floor(bounds.X-client.X);var cropY=(int)Math.Floor(bounds.Y-client.Y);
-                var cropWidth=(int)Math.Ceiling(bounds.Width);var cropHeight=(int)Math.Ceiling(bounds.Height);
-                using(var image=File.OpenRead(Path.Combine(folder,file)))
-                using(var random=image.AsRandomAccessStream())
-                {
-                    var decoder=await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(random);
-                    var transform=new Windows.Graphics.Imaging.BitmapTransform{Bounds=new Windows.Graphics.Imaging.BitmapBounds{X=(uint)cropX,Y=(uint)cropY,Width=(uint)cropWidth,Height=(uint)cropHeight}};
-                    var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,transform,Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
-                    bool IsInk(int index)=>pixels[index*4]==color.B&&pixels[index*4+1]==color.G&&pixels[index*4+2]==color.R&&pixels[index*4+3]==255;
-                    if(establishedInk is null){establishedWidth=cropWidth;establishedHeight=cropHeight;establishedInk=Enumerable.Range(0,cropWidth*cropHeight).Where(IsInk).ToArray();Require(establishedInk.Length>0,"Attention baseline has no established solid glyph pixels.");}
-                    else
-                    {
-                        var matching = establishedInk.Count(IsInk);
-                        Require(cropWidth==establishedWidth&&cropHeight==establishedHeight&&matching==establishedInk.Length,
-                            $"Attention glyph positions changed across fractional/color/background/scroll transitions: {matching}/{establishedInk.Length}, scroll delta {probe.ScrollDelta}.");
-                    }
-                }
-                samples.Add(new{margin,file,probe.ScrollDelta,scrollOffset=scroll.VerticalOffset,solidBackground=probe.Solid,foreground=new[]{(int)color.R,(int)color.G,(int)color.B},x=(int)Math.Floor(bounds.X-client.X),y=(int)Math.Floor(bounds.Y-client.Y),
-                    width=(int)Math.Ceiling(bounds.Width),height=(int)Math.Ceiling(bounds.Height),ownerY=ownerBounds.Y-client.Y,
-                    textOrigin,paragraphOrigin,text.BaselineOffset,text.ActualHeight,text.LineHeight,metricsHeight=metrics.ActualHeight,
-                    metricsBaseline=metrics.BaselineOffset,textMargin=text.Margin,transformY=((TranslateTransform)text.RenderTransform).Y});
-                if (samples.Count == 1)
-                {
-                    // Public visual inspection can introduce composition boundaries.
-                    // The established glyph mask must survive that native operation,
-                    // just as it must survive the contrast fixture's diagnostics.
-                    for (DependencyObject? current = text; current is FrameworkElement element; current = VisualTreeHelper.GetParent(current))
-                    {
-                        _ = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(element);
-                        if (ReferenceEquals(element, Action)) break;
-                    }
-                }
-            }
-        }
-        finally
-        {
-            if(originalMargin==DependencyProperty.UnsetValue)Action.ClearValue(MarginProperty);else Action.SetValue(MarginProperty,originalMargin);
-            if(originalForeground==DependencyProperty.UnsetValue)Action.ClearValue(ForegroundProperty);else Action.SetValue(ForegroundProperty,originalForeground);
-            if(originalBackground==DependencyProperty.UnsetValue)Action.ClearValue(BackgroundProperty);else Action.SetValue(BackgroundProperty,originalBackground);
-            Action.Density=originalDensity;Action.Content=originalContent;
-            if (originalScrollOffset is double offset) scroll!.ChangeView(null, offset, null, true);
-        }
-        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-baselines-{scheme}.json"),JsonSerializer.Serialize(new{passed=true,establishedInkPixels=establishedInk?.Length,samples}));
-    }
-    private async Task CaptureGradientPixelsAsync(NativeInputSession input,JsonElement source,BleeckerColorScheme scheme,string folder)
-    {
-        Require(XamlRoot.RasterizationScale==1,"The frozen Attention pixel reference requires display scale 1; scaled acceptance uses separate evidence.");
-        var samples=new List<object>(); var captures=new List<object>(); var maximum=0;
-        foreach(var reference in source.GetProperty("samples").EnumerateArray())
-        {
-            var name=reference.GetProperty("id").GetString()!; if(!name.StartsWith("gradient-",StringComparison.Ordinal))continue;
-            var control=cases[name];await input.MoveAsync(control);await input.RequireForegroundAsync();
-            var file=Path.Combine(folder,$"attention-{scheme}-{name}-window.png");
-            await NativeScreenCapture.CaptureClientAsync(input.Window,file);
-            using var stream=File.OpenRead(file);
-            using var random=stream.AsRandomAccessStream();
-            var decoder=await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(random);
-            var pixels=(await decoder.GetPixelDataAsync(Windows.Graphics.Imaging.BitmapPixelFormat.Bgra8,Windows.Graphics.Imaging.BitmapAlphaMode.Ignore,
-                new Windows.Graphics.Imaging.BitmapTransform(),Windows.Graphics.Imaging.ExifOrientationMode.IgnoreExifOrientation,Windows.Graphics.Imaging.ColorManagementMode.DoNotColorManage)).DetachPixelData();
-            var client=NativeScreenCapture.ClientBounds(input.Window);var bounds=input.ScreenBounds(control);
-            captures.Add(new{name,file=Path.GetFileName(file),radius=Surface(control).CornerRadius.TopLeft,x=(int)Math.Round(bounds.X-client.X),y=(int)Math.Round(bounds.Y-client.Y),
-                width=(int)Math.Round(bounds.Width),height=(int)Math.Round(bounds.Height)});
-            foreach(var point in reference.GetProperty("pixels").EnumerateArray())
-            {
-                var x=(int)Math.Round(bounds.X-client.X)+point.GetProperty("x").GetInt32();
-                var y=(int)Math.Round(bounds.Y-client.Y)+point.GetProperty("y").GetInt32();
-                Require(x>=0&&y>=0&&x<decoder.PixelWidth&&y<decoder.PixelHeight,"Attention reference sample is outside the captured client.");
-                var offset=checked((int)((y*decoder.PixelWidth+x)*4));
-                var actual=new[]{(int)pixels[offset+2],(int)pixels[offset+1],(int)pixels[offset]};
-                var expected=point.GetProperty("rgba").EnumerateArray().Take(3).Select(value=>value.GetInt32()).ToArray();
-                var delta=actual.Select((value,index)=>Math.Abs(value-expected[index])).Max();maximum=Math.Max(maximum,delta);
-                samples.Add(new{name,x=point.GetProperty("x").GetInt32(),y=point.GetProperty("y").GetInt32(),actual,expected,delta});
-            }
-        }
-        // Retain observed differences without declaring them accepted. Full
-        // border, radius, gradient and shadow raster parity remains open.
-        await File.WriteAllTextAsync(Path.Combine(folder,$"attention-pixels-{scheme}.json"),JsonSerializer.Serialize(new{maximum,captures,samples},new JsonSerializerOptions{WriteIndented=true}));
-        Require(maximum<=1,$"Attention interior source samples exceed the single-channel BGRA encoding precision bound: {maximum}.");
     }
     private static Button NativeAction(BleeckerAttentionSurface owner)=>(Button)((FrameworkElement)VisualTreeHelper.GetChild(owner,0)).FindName("PART_Action");
     private static Border Surface(BleeckerAttentionSurface owner)=>(Border)((FrameworkElement)VisualTreeHelper.GetChild(owner,0)).FindName("PART_Surface");

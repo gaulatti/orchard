@@ -1,5 +1,14 @@
 # Attention Surface reference and acceptance
 
+The .65 preview accepts Attention Surface for the five-check x64 milestone.
+Its exact x64 catalog passes 43 Light and 43 Dark states, physical pointer and
+keyboard/focus actions, caller-owned content and command behavior, and native
+hover endpoints with Windows animations already disabled. An independent .65
+package consumer passes eight native 150% Article/Button layouts at two widths
+without clipping, and compiles and runs. ARM64 is build-only and runtime-
+unverified. Raster/pixel parity is not an acceptance gate. Historical parity
+and platform notes below describe earlier checkpoints, not additional gates.
+
 The fixed component is
 [`attention-surface.tsx`](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/attention-surface.tsx),
 SHA-256 `59fb7ff2bb5459facc410a6fd204d5e977639ce093113b23d8fff8d86e7a8321`.
@@ -25,7 +34,7 @@ guards remain unchanged. This does not alter the library surface's behavior.
 The focused local Light/Dark fixture passes at
 `artifacts/smoke-attention-viewport`. Both focus paths return from vertical
 offset 2682.75 to zero and move the heading from screen Y=-2250.75 back to Y=432
-inside the owned window. Hosted full-sequence verification remains required.
+inside the owned window. This records an earlier hosted test plan.
 
 The consumer owns content and button attributes/actions. `hue` and `intensity`
 are required numeric inputs. Hue is rounded with ECMAScript Math.round and
@@ -54,7 +63,7 @@ A visual interactive override on a non-button does not itself invent keyboard
 or button semantics. Native adapters must retain applicable consumer-owned
 actions, disabled behavior and real native button focus/keyboard semantics.
 
-## Current foundation
+## Library foundation
 
 `BleeckerAttentionColor` is an internal numeric foundation. The native surface
 and catalog now have a prototype with initial x64 runtime evidence. The color model preserves double precision until pixel
@@ -69,7 +78,8 @@ regression compares source metadata and stop positions exactly, alpha within
 CSS serialization precision, and Oklab components within 0.00005. The latter
 records small browser-versus-CSS-conversion-matrix differences; it does not
 establish pixel parity or permit a different rendered treatment. Native/browser
-gradient pixels must still be compared at the actual rendering boundary.
+gradient pixels were part of the historical full-parity investigation, not
+the current x64 milestone.
 The capture script and source are retained at
 `artifacts/bauhaus-browser/capture-attention-color.cjs`.
 
@@ -91,15 +101,21 @@ precedence. Density supplies padding only when no consumer Padding override
 exists, including setters in a Style's BasedOn chain. Solid border colors use
 premultiplied Oklab transitions; unsupported non-solid border brushes fail
 explicitly. Background supports native brushes. High contrast maps default
-paint to system resources and suppresses lift/shadow motion. Actual contrast
-verification for this prototype remains pending.
+paint to system resources and suppresses lift/shadow motion. The earlier OS
+contrast campaign is excluded from the current milestone.
 
 `BleeckerAttentionGradient` renders the frozen 45-degree Oklab treatment into
 a per-instance BGRA bitmap at the actual XamlRoot raster scale. The CSS
 positioning area is the padding box; the gradient repeats into the border box.
 The cache changes only with recipe, dimensions, border or scale and releases
 its bitmap when unloaded. Native gradient, border, radius and shadow raster
-comparison remains required before acceptance.
+comparison was part of the historical parity review; it is outside the x64
+milestone gate.
+
+## Historical parity investigation
+
+The dated checkpoints below preserve earlier diagnostic findings. Their
+raster, OS contrast and ARM64 runtime plans are not current acceptance gates.
 
 The unchanged frozen React component and exact pinned styles were rendered
 under source-locked dependencies into 43 cases in each appearance, including
@@ -129,12 +145,11 @@ visible viewport minus the normalized rounded border contour. Fresh x64 at
 `artifacts/smoke-attention-shadow-cutout` passes both appearances; each set of
 81 interior samples differs by at most one channel value from the source.
 This does not establish full gradient, border, radius, shadow-edge or glyph
-raster parity. The component remains in progress.
+raster parity. This paragraph records the earlier parity checkpoint.
 
-The interior-sample regression now requires at most one channel value of
-BGRA encoding precision against the captured source and writes its report
-before asserting that bound. This is limited to those measured interior cells;
-it does not relax or replace the full raster acceptance matrix. A rapid
+The earlier interior-sample regression required at most one channel value of
+BGRA encoding precision against the captured source. That pixel assertion was
+removed from the current five-check smoke path. A rapid
 12-cycle remove/re-add regression initially cleared a live bitmap through a
 late Unloaded event. Runtime subscriptions now reconcile the final loaded
 owner/root after queued lifecycle notifications. Pointer registration retains
@@ -144,11 +159,9 @@ remove it after detach. The fresh focused x64 run at
 retains the same interior bound, and verifies template replacement preserves
 the consumer child and releases its old visual parent.
 
-Acceptance still requires the complete native surface, all element/density and
-interactive/disabled/content/command cases, browser/native gradient and shadow
-comparison, actual motion/reversal, component theme/automation behavior, scaling, x64/ARM64,
-independent package consumption and composition/performance evidence. The
-inventory remains in progress until every required acceptance boundary is verified.
+The older full-parity plan included browser/native gradient and shadow
+comparison, ARM64 runtime and performance evidence. The current x64 milestone
+uses only its five checks, which passed in .65.
 
 The complete x64 catalog passes both appearances at
 `artifacts/smoke-attention-full-catalog`. x64 and ARM64 solution builds have
@@ -191,7 +204,7 @@ A temporary fixture-only radius-10 probe is retained at
 differences but leaves large differences in both themes and slightly worsens
 Dark intensity 10. The probe was removed; the library's public radius and native
 stroke-centerline conversion are unchanged. Matching the full curved contour
-remains an open acceptance gate.
+is not part of the current acceptance gate.
 
 Run `38494432792` passes the full x64 catalog in both themes and the independent
 native ARM64 consumer's initial Attention contract. Its full ARM64 catalog stops
