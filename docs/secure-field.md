@@ -1,5 +1,15 @@
 # Secure Field native preview
 
+The `.59` x64 preview accepts Secure Field under the five-check milestone.
+Its extracted catalog and independent package consumer passed Light/Dark
+states and 30 hidden public-API cases. The earlier visible pointer, keyboard
+and focus check remains valid because the control, template, icon button and
+catalog fixture sources are unchanged. The independent package consumer ran
+32 native 150% layouts across themes, widths, reveal and enabled states and
+font sizes without clipped editor or action; state changes settled with
+animations disabled. ARM64 built and its consumer compiled; runtime is
+unverified. Older diagnostics below do not add milestone gates.
+
 `BleeckerSecureField` is a reusable password input, with a fictional local
 catalog fixture. It provides no authentication, credential storage or network
 service. Its contract comes from Sabella commit
@@ -76,7 +86,8 @@ Light. It observes the catalog's value-length counter and native reveal action
 name without recording the value. The longer sequence ran in Dark; Light covers
 a direct key, reveal and Clear while revealed. Full keyboard/pointer traversal,
 IME, actual OS text/DPI scaling, complete visual acceptance, independent-consumer
-foreground input and ARM64 runtime remain unverified. The component remains a
-preview. Narrator and OS contrast campaigns are excluded
+foreground input and ARM64 runtime remain unverified in that historical check.
+These are not additional gates for the five-check x64 milestone. Narrator and
+OS contrast campaigns are excluded
 by [the component-library scope](library-scope.md). Both required fictional-data
 Monitoring and Editorial demos remain in scope.

@@ -11,10 +11,10 @@ unverified. Raster/pixel parity is not a gate. The machine-readable inventory
 records pass/fail for all 112 entries; Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Collection Filters, Context Menu, Dashboard
 Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
 Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Nav Menu, Notification Badge, Page Frame, Page Header, Panel, Panel Layout,
-Progress, Progress Stack, Scroll Area, Search Input, Section Header, Separator, Sidebar, Skeleton, Sparkline, Stat Card,
+Progress, Progress Stack, Scroll Area, Search Input, Secure Field, Section Header, Separator, Sidebar, Skeleton, Sparkline, Stat Card,
 Status Badge, Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List, Pagination,
 Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
-(68 of 112 entries in current source for the `.58` preview).
+(69 of 112 entries in current source for the `.59` preview).
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
@@ -456,7 +456,7 @@ The visual audit tracks unresolved Windows defaults in current previews. Icon-bu
 | panel-layout | `BleeckerPanelLayout` / `BleeckerPanelColumn`: fixed/growing tracks, retained caller controls and horizontal scrolling | Matching .21 x64 Light/Dark catalog passed 86 layouts and two native input/focus sequences; independent package consumer passed 12 native 150% states and static reduced-motion behavior | Accepted on x64: [contract and evidence](panel-layout.md); ARM64 runtime unverified |
 
 | brand-mark (Sabella) | `BleeckerBrandMark`, original template PNG and caller-owned size/tint | Current package passes 37 Light/Dark states and eight native 150% size/theme checks; independent consumer compiles | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](brand-mark.md) |
-| secure-field (Sabella) | `BleeckerSecureField` | SecureFieldsFixture; native and fresh consumer 30 cases; disabled visual regression | In progress: [contract](secure-field.md); physical input, full visual/scaling/customization and ARM64 runtime |
+| secure-field (Sabella) | `BleeckerSecureField` | Exact `.59` x64 catalog and consumer Light/Dark checks; unchanged-source visible pointer/keyboard/focus evidence; independent package consumer 32 native 150% layouts with static reduced motion | Accepted on x64 for this milestone; ARM64 runtime unverified; [contract](secure-field.md) |
 | segmented-control (Sabella) | `BleeckerSegmentedControl` / `BleeckerSegmentOption` | Current package: 40 Light/Dark cases, eight layouts, physical pointer/keyboard/focus in both themes, 16 native 150% no-clipping cases, immediate reduced-motion behavior and independent consumer compilation | Accepted on x64: [contract](segmented-control.md); ARM64 runtime unverified |
 | app-tab-bar (Sabella) | Native compact destinations with typed selection, equal tracks, icons and badges | Exact .47 package passes 58 cases and eight Light/Dark layouts; focused physical input is unchanged; eight native 150% layouts and static reduced-motion behavior pass | Accepted on x64: [contract](app-tab-bar.md); ARM64 runtime unverified |
 
