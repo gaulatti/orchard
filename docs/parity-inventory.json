@@ -1905,19 +1905,21 @@
         "tests/Orchard.Tests/DataTableColumnToggleReferenceTests.cs",
         "samples/Orchard.Catalog/DataTableColumnTogglesFixture.xaml.cs",
         "samples/Orchard.Catalog/DataTableColumnTogglesFixture.Lifecycle.cs",
+        "tests/PackageConsumer/PaginationScaleFixture.cs",
         "tests/PackageConsumer/ProducerThreadingFixture.cs",
         "scripts/verify-hidden-producer-threading.ps1",
         "scripts/verify-hidden-producer-threading.mjs",
         "scripts/test-hidden-producer-threading-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .78 package consumer compiles on x64. The matching x64 catalog passes the existing Light/Dark physical trigger, checkbox, Space, Tab, Shift+Tab, Escape, outside click, focus and original-column lifecycle states. Four independent package-consumer native 150% Light/Dark, 400/700 DIP cases keep the trigger, open popup and three checkbox options in bounds. On an animations-disabled desktop the popup bounds and opacity stay static. ARM64 builds only; runtime unverified. Historical raster and focus-parity diagnostics are outside the five-check milestone."
     },
     {
       "id": "data-table-pagination",

@@ -1,5 +1,14 @@
 # Data Table Column Toggle contract
 
+The 2026-10-31 `.78` x64 preview accepts Data Table Column Toggle under the
+[five-check milestone contract](acceptance-contract.md). The matching catalog
+passes Light/Dark states and physical trigger, checkbox, keyboard, outside-click,
+focus, and original-column lifecycle paths. An independent package consumer
+compiles and passes four native 150% Light/Dark 400/700 DIP open-popup and option
+bounds cases. Popup geometry stays static when animations are disabled. ARM64
+builds but runtime remains unverified. Historical diagnostics below do not add
+acceptance gates.
+
 The `0.1.0-table-content-foreground-v2-local` preview lets the owned Columns caption
 inherit the rendered presenter color. Its three vector paths use the existing
 owned-glyph lifecycle helper, with one deferred reconciliation after native

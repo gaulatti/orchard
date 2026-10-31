@@ -130,9 +130,61 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var columnToggleCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            {
+                stage = $"column-toggle/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 420; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 630));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 630));
+                var model = new BleeckerDataTableModel();
+                model.SetColumns([
+                    new BleeckerDataTableColumn(accessorKey: "name", header: "Name"),
+                    new BleeckerDataTableColumn(accessorKey: "status", header: "Status"),
+                    new BleeckerDataTableColumn(accessorKey: "city", header: "City")]);
+                var toggle = new BleeckerDataTableColumnToggle { Table = model };
+                Canvas.SetLeft(toggle, 20); Canvas.SetTop(toggle, 20);
+                root.Children.Add(toggle);
+                await LayoutAsync(root);
+                var trigger = Descendants<Button>(toggle).Single(item => item.Name == "PART_Trigger");
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    toggle.IsLoaded && toggle.ActualTheme == theme &&
+                    Within(Bounds(toggle, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(trigger, root), new Rect(0, 0, root.Width, root.Height)),
+                    "Data Table Column Toggle trigger clipped at native 150% scale.");
+                var expansion = (IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(trigger).GetPattern(PatternInterface.ExpandCollapse);
+                expansion.Expand();
+                await LayoutAsync(root);
+                var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .Single(item => item.Child is FrameworkElement { Name: "PART_Dialog" });
+                var surface = Descendants<BleeckerOverlaySurface>(popup.Child).Single(item => item.Name == "PART_Surface");
+                var checks = Descendants<BleeckerCheckbox>(surface).ToArray();
+                Require(popup.ShouldConstrainToRootBounds && popup.IsOpen && surface.IsLoaded && surface.Opacity == 1 &&
+                    Within(Bounds(surface, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    checks.Length == 3 && checks.All(item => item.IsLoaded &&
+                        Within(Bounds(item, surface), new Rect(0, 0, surface.ActualWidth, surface.ActualHeight))),
+                    "Data Table Column Toggle chooser or options clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(surface, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(surface, root).Equals(before) && surface.Opacity == 1,
+                        "Data Table Column Toggle chooser continued moving with reduced motion.");
+                }
+                columnToggleCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, visibleOptions = checks.Length,
+                    chooserBounds = Bounds(surface, root), passed = true });
+                expansion.Collapse();
+                await LayoutAsync(root);
+                Require(!popup.IsOpen, "Data Table Column Toggle chooser remained open after collapse.");
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
+                passed = true, cases, tableCases, columnToggleCases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));
             window.Close(); Environment.Exit(0);
