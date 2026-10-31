@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Input;
+using System.Text.Json;
 
 namespace Orchard.Catalog;
 
@@ -13,6 +15,47 @@ public sealed partial class MenusFixture : UserControl
     public MenusFixture() => InitializeComponent();
     private int actions;
     private void OnAction(object sender, RoutedEventArgs args) => Result.Text = $"Menu actions: {++actions}";
+    internal async Task VerifyInputAsync(BleeckerColorScheme scheme, string folder)
+    {
+        static async Task AwaitAsync(Func<bool> condition, string message)
+        {
+            for (var attempt = 0; attempt < 100; attempt++)
+            {
+                if (condition()) return;
+                await Task.Delay(20);
+            }
+            throw new InvalidOperationException(message);
+        }
+        using var input = new NativeInputSession(XamlRoot, folder, $"dropdown-menu-{scheme}");
+        await input.AcquireAsync(Trigger);
+        var before = actions;
+        await input.ClickAsync(Trigger);
+        await AwaitAsync(() => Menu.IsOpen, "Pointer did not open Dropdown Menu.");
+        try { await input.ClickAsync(Action); }
+        catch (TimeoutException) when (actions == before + 1 && !Menu.IsOpen)
+        {
+            // Native flyouts close on pointer-up before the popup can report PointerReleased.
+            // The exact physical pointer move and the single action callback prove delivery.
+        }
+        await AwaitAsync(() => !Menu.IsOpen && actions == before + 1,
+            "Pointer did not invoke and dismiss the menu action once.");
+        if (!Trigger.Focus(FocusState.Keyboard)) throw new InvalidOperationException("Menu trigger refused focus.");
+        input.Key(0x20);
+        await AwaitAsync(() => Menu.IsOpen, "Space did not reopen Dropdown Menu.");
+        input.Key(0x1B);
+        await AwaitAsync(() => !Menu.IsOpen, "Escape did not dismiss Dropdown Menu.");
+        await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Trigger),
+            "Dropdown Menu did not return focus to its trigger.");
+        if (Menu.AreOpenCloseAnimationsEnabled)
+            throw new InvalidOperationException("Dropdown Menu ignored reduced-motion behavior.");
+        await File.WriteAllTextAsync(Path.Combine(folder, $"dropdown-menu-input-{scheme}.json"), JsonSerializer.Serialize(new
+        {
+            passed = true, theme = scheme.ToString(), pointerActionRequests = actions - before,
+            keyboardOpened = true, escapeDismissed = true, focusRestored = true,
+            reducedMotion = !new Windows.UI.ViewManagement.UISettings().AnimationsEnabled,
+            hardwareInputSent = true
+        }));
+    }
     internal async Task VerifyAsync(BleeckerColorScheme scheme, string folder)
     {
         StartBringIntoView(new BringIntoViewOptions { AnimationDesired = false });

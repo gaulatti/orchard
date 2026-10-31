@@ -1,4 +1,4 @@
-# Menu foundation (in progress)
+# Dropdown Menu
 
 The [current component-library scope](library-scope.md) governs this work.
 Narrator and Windows/OS contrast campaigns are excluded. Historical captures
@@ -9,21 +9,23 @@ Use `BleeckerDropdownMenu` with native menu items styled using `BleeckerMenuItem
 
 The generated `Menus.g.xaml` dictionary is merged by Orchard's resource entry point. Existing native integrations can apply `BleeckerMenuPresenterStyle` directly to `MenuFlyout.MenuFlyoutPresenterStyle`; that single style gives both levels a 176px minimum. The wrapper supplies the distinct defaults through root and shared presenter styles, without setting a local minimum on the presenter. An explicitly assigned `MenuFlyoutPresenterStyle` owns both levels' appearance and dimensions. Returning to the wrapper's original style restores its distinct defaults. Open/close animation remains disabled until the reference motion is implemented.
 
-This is an unfinished foundation, not accepted DropdownMenu parity. The pinned Bleecker recipe supplies Encode Sans Regular 14px/20px item typography, 8px horizontal and 6px vertical padding, 7px corners, 6px popup padding, a 1px border, the light/dark palette and Lucide selection/chevron paths. Windows' default presenter shadow is disabled. Native invocation, dismissal and selection behavior remain active.
+Dropdown Menu is accepted for the 2026-10-29 x64 milestone. The pinned Bleecker recipe supplies Encode Sans Regular 14px/20px item typography, 8px horizontal and 6px vertical padding, 7px corners, 6px popup padding, a 1px border, the light/dark palette and Lucide selection/chevron paths. Windows' default presenter shadow is disabled. Native invocation, dismissal and selection behavior remain active.
+
+The exact .73 package assembly and extracted catalog passed Light/Dark state fixtures and physical trigger, action, Space, Escape and focus-return checks in both themes. An independent package consumer compiled and ran. Its native 150% island passed wrapped item and label bounds in both themes; open/close animation is disabled. The native flyout can close during pointer-up before a popup-level `PointerReleased` observer fires; the physical action test verifies one callback and dismissal after the exact pointer move. ARM64 runtime remains unverified.
 
 The presenter uses `BleeckerOverlaySurface`, a consumer-content surface with the canonical two-layer overlay shadow: `(0,24,64,-20)` at .28 opacity and `(0,4,14,0)` at .06, both RGB `(26,55,77)`. These values are generated from the pinned tokens. It uses the shared rounded-mask geometry also used by cards, updates on resizing/corner changes, clears composition visuals on unload, and suppresses the shadow in Windows contrast mode. Its default font is Encode Sans Regular, and it is not a keyboard stop.
 
 The [shared renderer](overlay-shadow.md) now maps CSS blur to explicit Gaussian
 standard deviation with a padded native effect graph. Root, nested and
 standalone preview checks inspect the actual graph's blur, color, opacity,
-spread and offsets. Exact menu shadow raster acceptance remains open.
+spread and offsets. Exact shadow pixels are outside this milestone's gates.
 
 The surface background fills the rounded border box beneath its outline. This
 matches CSS background clipping and prevents the overlay shadow from tinting a
 translucent border differently on its upper and lower edges. Content padding,
 border geometry, shadow layers and native input remain unchanged.
 
-`BleeckerDropdownMenu` defaults to `ShouldConstrainToRootBounds=true`, keeping menus within the application viewport like the browser reference. This also lets the custom blur render beyond the menu edge; a separate native popup window can clip it. A desktop light-theme capture is retained at `artifacts/menu-shadow-root-light.jpg`. Consumers that opt back into windowed popup behavior must verify clipping for their host. Exact blur rasterization, edge placement, transparent consumer backgrounds and live contrast switching remain unaccepted.
+`BleeckerDropdownMenu` defaults to `ShouldConstrainToRootBounds=true`, keeping menus within the application viewport like the browser reference. This also lets the custom blur render beyond the menu edge; a separate native popup window can clip it. A desktop light-theme capture is retained at `artifacts/menu-shadow-root-light.jpg`. Consumers that opt back into windowed popup behavior must verify clipping for their host.
 
 The item styles enable `BleeckerMenuFocus.IsEnabled`, which forwards native keyboard focus to the template's `Focused`/`Unfocused` states. WinUI menu items do not drive these states automatically. The focused row uses the same Bleecker tint as hover, without adding the default Windows outline. Disabling the attached behavior detaches its event handlers and clears that template state.
 

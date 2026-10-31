@@ -35,6 +35,7 @@ internal static class ContentScaleFixture
     internal static async Task RunAsync(Window window,string output,string hostAssembly)
     {
         var observations=new List<object>();var frames=new List<object>();var toggleObservations=new List<object>();var toggleFrames=new List<object>();var inputOverrides=new List<object>();var contextMenuScale=new List<object>();var tooltipScale=new List<object>();var brandMarkScale=new List<object>();var eyebrowScale=new List<object>();var labelScale=new List<object>();var iconBadgeScale=new List<object>();var progressScale=new List<object>();var errorStateScale=new List<object>();var sectionHeaderScale=new List<object>();var pageHeaderScale=new List<object>();var dashboardSectionScale=new List<object>();var dashboardGridScale=new List<object>();var cardScale=new List<object>();var emptyScale=new List<object>();var progressStackScale=new List<object>();var metricScale=new List<object>();var sparklineScale=new List<object>();var feedGridScale=new List<object>();var pageFrameScale=new List<object>();var detailLayoutScale=new List<object>();var panelLayoutScale=new List<object>();var footerScale=new List<object>();var avatarScale=new List<object>();var statCardScale=new List<object>();var buttonGroupScale=new List<object>();var buttonScale=new List<object>();var iconButtonScale=new List<object>();var stage="initial";var guards=0;var focus=0;var activations=0;
+        var dropdownMenuScale = new List<object>();
         var fieldHelpScale = new List<object>();
         var skeletonScale = new List<object>();
         var breadcrumbScale = new List<object>();
@@ -433,6 +434,44 @@ internal static class ContentScaleFixture
                     openCloseAnimationsEnabled=menu.AreOpenCloseAnimationsEnabled});
                 menu.Hide();await Layout();root.Children.Clear();
             }
+            root.Width = 400; root.Height = 220;
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                stage = $"dropdown-menu/{theme}/150-percent";
+                root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(600, 330));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, 600, 330));
+                var target = new Button { Content = "Fictional menu trigger", Width = 180, Height = 36 };
+                Canvas.SetLeft(target, 80); Canvas.SetTop(target, 32); root.Children.Add(target);
+                var menu = new BleeckerDropdownMenu();
+                var constrainedStyle = new Style { TargetType = typeof(MenuFlyoutPresenter), BasedOn = menu.MenuFlyoutPresenterStyle };
+                constrainedStyle.Setters.Add(new Setter(FrameworkElement.MaxWidthProperty, 200d));
+                menu.MenuFlyoutPresenterStyle = constrainedStyle;
+                var item = new MenuFlyoutItem { Text = "Inspect a fictional local item with a wrapped label", Style = (Style)Application.Current.Resources["BleeckerMenuItemStyle"] };
+                menu.Items.Add(item);
+                await Layout(); ((FlyoutBase)menu).ShowAt(target, new FlyoutShowOptions { ShowMode = FlyoutShowMode.Transient }); await Layout();
+                var presenter = (MenuFlyoutPresenter)VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot).Single(p => p.Child is MenuFlyoutPresenter).Child;
+                var itemBounds = item.TransformToVisual(presenter).TransformBounds(new Rect(0, 0, item.ActualWidth, item.ActualHeight));
+                var label = Find<TextBlock>(item, "TextBlock") ?? throw new InvalidOperationException("Scaled Dropdown Menu label is missing.");
+                var labelBounds = label.TransformToVisual(presenter).TransformBounds(new Rect(0, 0, label.ActualWidth, label.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && menu.IsOpen && item.IsLoaded && menu.ShouldConstrainToRootBounds,
+                    $"Dropdown Menu did not render within the native 150% island: scale={root.XamlRoot.RasterizationScale}, open={menu.IsOpen}, loaded={item.IsLoaded}, requestedConfinement={menu.ShouldConstrainToRootBounds}.");
+                Require(presenter.ActualWidth >= 176 && presenter.ActualWidth <= 200 && presenter.ActualHeight >= 36 &&
+                    itemBounds.X >= -.5 && itemBounds.Y >= -.5 && itemBounds.Right <= presenter.ActualWidth + .5 && itemBounds.Bottom <= presenter.ActualHeight + .5,
+                    "Dropdown Menu item clipped its native presenter at 150% scaling.");
+                Require(label.Text == item.Text && label.ActualHeight > 19.5 && labelBounds.X >= itemBounds.X && labelBounds.Y >= itemBounds.Y &&
+                    labelBounds.Right <= itemBounds.Right + .5 && labelBounds.Bottom <= itemBounds.Bottom + .5,
+                    $"Dropdown Menu wrapped label clipped its item at 150% scaling: label={labelBounds}, item={itemBounds}.");
+                Require(!menu.AreOpenCloseAnimationsEnabled, "Dropdown Menu retained an open/close animation under reduced motion.");
+                dropdownMenuScale.Add(new { theme = theme.ToString(), scale = root.XamlRoot.RasterizationScale, passed = true,
+                    presenterWidth = presenter.ActualWidth, presenterHeight = presenter.ActualHeight,
+                    itemWidth = item.ActualWidth, itemHeight = item.ActualHeight, labelHeight = label.ActualHeight });
+                menu.Hide(); await Layout(); root.Children.Clear();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "dropdown-menu-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-dropdown-menu-150-scale-v1", passed = true, cases = dropdownMenuScale,
+                    librarySha256 = Hash(typeof(BleeckerDropdownMenu).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             foreach(var viewport in new[]{320,600})
             {
                 root.Width=viewport;root.Height=viewport==320?240:320;island.SiteBridge.OverrideScale=1.5f;

@@ -2644,6 +2644,8 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/MenusFixture.xaml.cs: VerifyAsync",
+        "samples/Orchard.Catalog/MenusFixture.xaml.cs: VerifyInputAsync",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
         "tests/Reference/Menu.json",
         "scripts/reference/capture-menu.cjs",
         "scripts/reference/menu-client.tsx",
@@ -2654,7 +2656,7 @@
         "scripts/verify-display-metadata.mjs",
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -2668,12 +2670,13 @@
         "fullComponentAcceptance": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .73 package assembly and extracted catalog passed the Light/Dark menu fixture and the focused physical trigger/action/Space/Escape/focus fixture in both themes. The action was requested exactly once and the native flyout dismissed before its PointerReleased observer could report. An independent .73 package consumer compiled and ran; its native 150% island passed wrapped item and label bounds in both themes, with menu open/close animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "metric",

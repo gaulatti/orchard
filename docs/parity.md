@@ -8,13 +8,8 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries; Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Collection Filters, Context Menu, Dashboard
-Grid, Dashboard Section, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item, Field Help Tooltip, Footer, Icon Badge,
-Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Nav Menu, Notification Badge, Page Frame, Page Header, Panel, Panel Layout,
-Progress, Progress Stack, Scroll Area, Search Input, Secure Field, Section Header, Separator, Sidebar, Skeleton, Sparkline, Stat Card,
-Status Badge, Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip, plus Accordion, Activity Item, Data List, Pagination,
-Filter Chip, Radio Group, Slider, Segmented Control and OTP Input, are accepted
-(69 of 112 entries in current source for the `.59` preview).
+records pass/fail for all 112 entries. The [current `.73` release](releases/2026-10-31-preview-73.md)
+lists the 84 x64-accepted components, including Dropdown Menu; 28 remain.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 
