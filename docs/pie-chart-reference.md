@@ -1,5 +1,11 @@
 # Pie and Donut source contracts and evidence
 
+Pie Chart and Donut Chart are accepted for the 2026-10-29 x64 milestone. Their
+exact Light/Dark catalog states and physical pointer/keyboard/focus pass, as
+do four native 150% no-clip cases each, static reduced-motion behavior, and
+independent package-consumer compilation. ARM64 runtime remains unverified.
+Earlier checkpoint status statements below are historical and do not add gates to this milestone.
+
 The frozen [Pie Chart](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/pie-chart.tsx)
 has SHA-256 `985309bd4131c154f88fcca7f03839519da66192e49bd940b92e3307a9ddf0ac`.
 The [Donut wrapper](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/donut-chart.tsx)

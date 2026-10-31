@@ -1,5 +1,11 @@
 # Sunburst Chart source contract and acceptance
 
+Sunburst Chart is accepted for the 2026-10-29 x64 milestone. Its exact
+Light/Dark catalog states and passive nonfocusable image semantics pass, as do
+four native 150% no-clip cases, static reduced-motion behavior, and
+independent package-consumer compilation. ARM64 runtime remains unverified.
+Earlier checkpoint status statements below are historical and do not add gates to this milestone.
+
 The frozen [Sunburst Chart](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/sunburst-chart.tsx)
 has SHA-256 `8bd60a556edd2feac675c9f473ac1895639948936e8cc42607cf3b3c45a2aa3a`.
 It uses React 19.2.4 and Recharts 3.8.1. Orchard pins .NET SDK 10.0.401,

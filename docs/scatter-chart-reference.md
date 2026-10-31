@@ -1,5 +1,11 @@
 # Scatter Chart source contract and acceptance
 
+Scatter Chart is accepted for the 2026-10-29 x64 milestone. Its exact
+Light/Dark catalog states and physical pointer/keyboard/focus pass, as do four
+native 150% no-clip cases, static reduced-motion behavior, and independent
+package-consumer compilation. ARM64 runtime remains unverified.
+Earlier checkpoint status statements below are historical and do not add gates to this milestone.
+
 The frozen [Scatter Chart](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/scatter-chart.tsx)
 has SHA-256 `84972e61d3849694bb5d69367e296b806b886747b1e24af1f252601dc86f7e00`.
 React 19.2.4 and Recharts 3.8.1 are pinned by the existing source lock. The

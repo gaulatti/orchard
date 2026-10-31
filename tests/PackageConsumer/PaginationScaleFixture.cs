@@ -385,7 +385,7 @@ internal static class PaginationScaleFixture
             var chartCases = new List<object>();
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
             foreach (var viewport in new[] { 400, 700 })
-            foreach (var kind in new[] { "bar", "sankey", "line", "area", "currency" })
+            foreach (var kind in new[] { "bar", "sankey", "line", "area", "currency", "pie", "donut", "scatter", "radar", "radial-bar", "funnel" })
             {
                 stage = $"{kind}-chart/{theme}/{viewport}/150-percent";
                 root.Width = viewport; root.Height = 400; root.RequestedTheme = theme;
@@ -424,12 +424,56 @@ internal static class PaginationScaleFixture
                     area.Data.Add(new Dictionary<string, object?> { ["label"] = "B", ["v"] = 20d });
                     wrapper = area;
                 }
-                else
+                else if (kind == "currency")
                 {
                     var currency = new BleeckerChart();
                     currency.Data.Add(new Dictionary<string, object?> { ["name"] = "A", ["total"] = 10d });
                     currency.Data.Add(new Dictionary<string, object?> { ["name"] = "B", ["total"] = 20d });
                     wrapper = currency;
+                }
+                else if (kind == "pie")
+                {
+                    var pie = new BleeckerPieChart { ShowLegend = false };
+                    pie.Data.Add(new Dictionary<string, object?> { ["name"] = "A", ["value"] = 10d });
+                    pie.Data.Add(new Dictionary<string, object?> { ["name"] = "B", ["value"] = 20d });
+                    wrapper = pie;
+                }
+                else if (kind == "donut")
+                {
+                    var donut = new BleeckerDonutChart { ShowLegend = false, CenterValue = "30", CenterLabel = "Fictional" };
+                    donut.Data.Add(new Dictionary<string, object?> { ["name"] = "A", ["value"] = 10d });
+                    donut.Data.Add(new Dictionary<string, object?> { ["name"] = "B", ["value"] = 20d });
+                    wrapper = donut;
+                }
+                else if (kind == "scatter")
+                {
+                    var scatter = new BleeckerScatterChart { ShowLegend = false };
+                    scatter.Series.Add(new BleeckerScatterSeries { Key = "points", Name = "Fictional", XKey = "x", YKey = "y" });
+                    scatter.Data.Add(new Dictionary<string, object?> { ["x"] = 10d, ["y"] = 20d });
+                    scatter.Data.Add(new Dictionary<string, object?> { ["x"] = 20d, ["y"] = 40d });
+                    wrapper = scatter;
+                }
+                else if (kind == "radar")
+                {
+                    var radar = new BleeckerRadarChart { SubjectKey = "subject", ShowLegend = false };
+                    radar.Series.Add(new BleeckerRadarSeries { Key = "v", Name = "Fictional" });
+                    radar.Data.Add(new Dictionary<string, object?> { ["subject"] = "A", ["v"] = 10d });
+                    radar.Data.Add(new Dictionary<string, object?> { ["subject"] = "B", ["v"] = 20d });
+                    wrapper = radar;
+                }
+                else if (kind == "radial-bar")
+                {
+                    var radial = new BleeckerRadialBarChart { ShowLegend = false };
+                    radial.Data.Add(new BleeckerRadialBarChartDatum { Name = "A", Value = 10 });
+                    radial.Data.Add(new BleeckerRadialBarChartDatum { Name = "B", Value = 20 });
+                    wrapper = radial;
+                }
+                else
+                {
+                    var funnel = new BleeckerFunnelChart();
+                    funnel.Data.Add(new BleeckerFunnelChartDatum { Name = "A", Value = 20 });
+                    funnel.Data.Add(new BleeckerFunnelChartDatum { Name = "B", Value = 10 });
+                    wrapper = funnel;
                 }
                 wrapper.Width = viewport - 40; wrapper.Height = 300;
                 Canvas.SetLeft(wrapper, 20); Canvas.SetTop(wrapper, 20);
@@ -455,9 +499,45 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var sunburstCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            {
+                stage = $"sunburst-chart/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 400; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 600));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 600));
+                var sunburst = new BleeckerSunburstChart { Width = viewport - 40, Height = 300,
+                    Data = new BleeckerSunburstNode { Name = "Root", Children = new()
+                    {
+                        new BleeckerSunburstNode { Name = "A", Value = 10 },
+                        new BleeckerSunburstNode { Name = "B", Value = 20 }
+                    } } };
+                Canvas.SetLeft(sunburst, 20); Canvas.SetTop(sunburst, 20);
+                root.Children.Add(sunburst);
+                await LayoutAsync(root);
+                var plot = Descendants<Canvas>(sunburst).Single(canvas => canvas.Name == "PART_Plot");
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    sunburst.IsLoaded && sunburst.ActualTheme == theme && plot.Children.Count > 0 &&
+                    Within(Bounds(sunburst, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(plot, sunburst), new Rect(0, 0, sunburst.ActualWidth, sunburst.ActualHeight)),
+                    "Sunburst chart clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(plot, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(plot, root).Equals(before),
+                        "Sunburst chart continued moving with reduced motion.");
+                }
+                sunburstCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));

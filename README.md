@@ -11,16 +11,22 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-31 `.82` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261031.82)
-for the current x64 component milestone. Ninety-eight of 112 entries are accepted:
-Accordion, Activity Item, Alert, Alert Dialog, Attention Surface, Admin Shell, App Shell, App Tab Bar, Area Chart, Auth Shell, Avatar, Bar Chart, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Chart, Chart Theme, Checkbox, Collection Filters, Context Menu, Dashboard Grid, Dashboard Section, Data List, Date Picker, Date Range Picker, Detail Layout, Dialog Close Button, Drawer,
-Dropdown Menu, Empty, Error State, Eyebrow, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip, File Input, Filter Chip, Footer, Header, Header Select, Hover Card, Icon Badge, Icon Button, Input, Kbd, Label, Line Chart, Loading Overlay, Loading Spinner, Metric,
-Modal, Nav Menu, Notification Badge, OTP Input, Page Frame, Page Header, Pagination, Data Table Column Toggle, Data Table Filters, Data Table Pagination, Data Table Toolbar, Panel, Panel Layout, Popover, Progress, Progress Stack, Radio Group,
-Sankey Chart, Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Select, Separator, Sheet, Sidebar, Skeleton, Slider, Sonner, Sparkline, Stat Card, Status Badge,
-Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-31-preview-82.md)
+Download the [2026-10-31 `.83` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261031.83)
+for the current x64 component milestone. One hundred five of 112 entries are accepted:
+Accordion, Activity Item, Admin Shell, Alert, Alert Dialog, App Shell, App Tab Bar, Area Chart, Attention Surface, Auth Shell,
+Avatar, Bar Chart, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Chart, Chart Theme,
+Checkbox, Collection Filters, Context Menu, Dashboard Grid, Dashboard Section, Data List, Data Table Column Toggle,
+Data Table Filters, Data Table Pagination, Data Table Toolbar, Date Picker, Date Range Picker, Detail Layout, Dialog Close Button,
+Donut Chart, Drawer, Dropdown Menu, Empty, Error State, Eyebrow, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip,
+File Input, Filter Chip, Footer, Funnel Chart, Header, Header Select, Hover Card, Icon Badge, Icon Button, Input, Kbd, Label,
+Line Chart, Loading Overlay, Loading Spinner, Metric, Modal, Nav Menu, Notification Badge, OTP Input, Page Frame, Page Header,
+Pagination, Panel, Panel Layout, Pie Chart, Popover, Progress, Progress Stack, Radar Chart, Radial Bar Chart, Radio Group,
+Sankey Chart, Scatter Chart, Scroll Area, Search Input, Section Header, Secure Field, Segmented Control, Select, Separator, Sheet,
+Sidebar, Skeleton, Slider, Sonner, Sparkline, Stat Card, Status Badge, Stepper, Sunburst Chart, Switch, Tabs, Textarea,
+Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-31-preview-83.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261031.82/Orchard.Catalog.0.1.0-preview.20261031.82.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261031.82/Orchard.Catalog.0.1.0-preview.20261031.82.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261031.83/Orchard.Catalog.0.1.0-preview.20261031.83.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261031.83/Orchard.Catalog.0.1.0-preview.20261031.83.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)

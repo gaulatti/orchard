@@ -1032,14 +1032,15 @@
         "samples/Orchard.Catalog/PieChartsFixture.Mutation.cs",
         "tests/Reference/PieChartLayout.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 Pie/Donut catalog passed 22 Pie cases per Light/Dark theme, including physical pointer/keyboard/focus. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP Pie cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "donut-chart",
@@ -1074,14 +1075,15 @@
         "samples/Orchard.Catalog/PieChartsFixture.Mutation.cs",
         "tests/Reference/PieChartLayout.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 Pie/Donut catalog passed 20 Donut cases per Light/Dark theme, including physical pointer/keyboard/focus. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP Donut cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "sparkline",
@@ -1173,14 +1175,15 @@
         "tests/Reference/ScatterChartLayout.json",
         "tests/PackageConsumer/MainWindow.ScatterChart.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 catalog passed 32 Light and 32 Dark Scatter cases with physical pointer/keyboard/focus. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "radar-chart",
@@ -1220,14 +1223,15 @@
         "tests/Reference/RadarChartLayout.json",
         "tests/PackageConsumer/MainWindow.RadarChart.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 catalog passed 36 Light and 36 Dark Radar cases with physical pointer/keyboard/focus. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "radial-bar-chart",
@@ -1272,14 +1276,15 @@
         "tests/PackageConsumer/MainWindow.RadialBarChart.cs",
         "tests/Reference/RadialBarChartLayout.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 catalog passed 40 Light and 40 Dark Radial Bar cases with physical pointer/keyboard/focus. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "funnel-chart",
@@ -1320,14 +1325,15 @@
         "tests/Orchard.Tests/FunnelGeometryTests.cs",
         "tests/Reference/FunnelChartLayout.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 catalog passed 27 Light and 27 Dark Funnel cases with physical pointer/keyboard/focus. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "sankey-chart",
@@ -1423,14 +1429,15 @@
         "tests/Orchard.Tests/SunburstGeometryTests.cs",
         "tests/Reference/SunburstChartLayout.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .82 x64 catalog passed 47 Light and 47 Dark Sunburst cases and verified its passive, nonfocusable image semantics. Pointer/keyboard activation is inapplicable to this control. An independent .82 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "stat-card",
