@@ -18,13 +18,12 @@ public sealed partial class DataTablePaginationsFixture
         await input.ClickAsync(buttons["PART_First"]); await ReadyAsync(() => table.PageIndex == 0);
         table.SetPagination(2, 10); await MainWindow.AwaitPresentationAsync(Preview); await input.ClickAsync(combo); await ReadyAsync(() => ChooserIsOpen(combo));
         Button? option = null;
-        await ReadyAsync(() => { option = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Where(popup => popup.Child is not null).SelectMany(popup => Descendants<Button>(popup.Child)).SingleOrDefault(item => item.Tag is int value && value == 20); return option is { IsLoaded: true }; });
+        await ReadyAsync(() => { option = combo.Items.OfType<Button>().SingleOrDefault(item => item.Tag is int value && value == 20); return option is { IsLoaded: true }; });
         await input.ClickAsync(option!); await ReadyAsync(() => table.PageSize == 20 && table.PageIndex == 1 && !ChooserIsOpen(combo));
         Require(ReferenceEquals(table.VisibleRows[0], table.Rows[20]) && Rows.Text == table.VisibleText, "Physical page-size selection lost original consumer rows.");
         await input.ClickAsync(combo); await ReadyAsync(() => ChooserIsOpen(combo)); await MainWindow.AwaitPresentationAsync(Preview);
-        var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(XamlRoot).Single(item => item.Child is not null && Descendants<Button>(item.Child).Any(option => option.Tag is int));
-        var popupRoot = popup.Child;
         var focused = FocusManager.GetFocusedElement(XamlRoot) as Control ?? throw new InvalidOperationException("Open native selector has no focused control.");
+        var popupRoot = (UIElement)focused;
         var downs = 0; var ups = 0; var downOwned = true; var upOwned = true; var released = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var down = new KeyEventHandler((_, args) => { if (args.Key != Windows.System.VirtualKey.Escape) return; downs++; downOwned &= ReferenceEquals(args.OriginalSource, focused); });
         var up = new KeyEventHandler((_, args) => { if (args.Key != Windows.System.VirtualKey.Escape) return; ups++; upOwned &= ReferenceEquals(args.OriginalSource, combo); released.TrySetResult(); });

@@ -1,5 +1,14 @@
 # Data Table Pagination contract and acceptance
 
+The 2026-10-31 `.77` x64 preview accepts Data Table Pagination under the
+[five-check milestone contract](acceptance-contract.md). The matching catalog
+passes Light and Dark states plus physical navigation, page-size pointer input,
+Escape, and focus return. An independent package consumer compiles and passes
+eight native 150% populated/empty layout and open-chooser bounds cases across
+Light/Dark and 400/700 DIP. The chooser stays static when animations are
+disabled. ARM64 builds but runtime remains unverified. Historical diagnostics
+below do not add acceptance gates.
+
 The working navigation-foreground repair shares the Data Table's native glyph
 binding. It follows the active content presenter's foreground, including its
 disabled state, and releases obsolete bindings on unload or retemplating.

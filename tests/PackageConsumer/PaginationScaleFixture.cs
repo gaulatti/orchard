@@ -1,6 +1,8 @@
 using System.Security.Cryptography;
 using System.Text.Json;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
@@ -69,9 +71,68 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var tableCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            foreach (var populated in new[] { true, false })
+            {
+                stage = $"data-table/{theme}/{viewport}/{populated}/150-percent";
+                root.Width = viewport; root.Height = 420; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 630));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 630));
+                var model = new BleeckerDataTableModel();
+                model.SetColumns([new BleeckerDataTableColumn(accessorKey: "name", header: "Name")]);
+                model.SetData(populated
+                    ? Enumerable.Range(0, 37).Select(index => new Dictionary<string, object?> { ["name"] = $"Fictional row {index}" }).ToArray()
+                    : []);
+                if (populated) model.SetPageIndex(1);
+                var pagination = new BleeckerDataTablePagination { Table = model, Width = viewport - 40 };
+                Canvas.SetLeft(pagination, 20); Canvas.SetTop(pagination, 20);
+                root.Children.Add(pagination);
+                await LayoutAsync(root);
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    pagination.IsLoaded && pagination.ActualTheme == theme &&
+                    Within(Bounds(pagination, root), new Rect(0, 0, root.Width, root.Height)),
+                    "Data Table Pagination owner clipped at native 150% scale.");
+                var chooser = Descendants<ItemsControl>(pagination).Single(item => item.Name == "PART_PageSize");
+                var controls = Descendants<FrameworkElement>(pagination)
+                    .Where(item => item.Name is "PART_Selection" or "PART_RowsLabel" or "PART_Page" or "PART_PageSize" or "PART_First" or "PART_Previous" or "PART_Next" or "PART_Last")
+                    .Where(item => item.Visibility == Visibility.Visible).ToArray();
+                Require(controls.Length >= 5 && controls.All(item => item.ActualWidth > 0 && item.ActualHeight > 0 &&
+                    Within(Bounds(item, pagination), new Rect(0, 0, pagination.ActualWidth, pagination.ActualHeight))),
+                    "Data Table Pagination text or actions clipped at native 150% scale.");
+                var page = (TextBlock)controls.Single(item => item.Name == "PART_Page");
+                Require(page.Text == (populated ? "Page 2 of 4" : "Page 1 of 0"), "Data Table Pagination lost the consumer's page state.");
+                var peer = FrameworkElementAutomationPeer.CreatePeerForElement(chooser);
+                var expansion = (IExpandCollapseProvider)peer.GetPattern(PatternInterface.ExpandCollapse);
+                expansion.Expand();
+                await LayoutAsync(root);
+                var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .Single(item => item.Child is not null && Descendants<BleeckerOverlaySurface>(item.Child).Any(surface => surface.Name == "PopupSurface"));
+                var surface = Descendants<BleeckerOverlaySurface>(popup.Child).Single(item => item.Name == "PopupSurface");
+                Require(popup.ShouldConstrainToRootBounds && popup.IsOpen && surface.IsLoaded && surface.Opacity == 1 &&
+                    Within(Bounds(surface, root), new Rect(0, 0, root.Width, root.Height)),
+                    "Data Table Pagination chooser clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(surface, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(surface, root).Equals(before) && surface.Opacity == 1,
+                        "Data Table Pagination chooser continued moving with reduced motion.");
+                }
+                tableCases.Add(new { theme = theme.ToString(), viewport, populated,
+                    scale = root.XamlRoot.RasterizationScale, visibleControls = controls.Length,
+                    chooserBounds = Bounds(surface, root), passed = true });
+                expansion.Collapse();
+                await LayoutAsync(root);
+                Require(!popup.IsOpen, "Data Table Pagination chooser remained open after collapse.");
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
+                passed = true, cases, tableCases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));
             window.Close(); Environment.Exit(0);

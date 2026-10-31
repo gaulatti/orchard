@@ -1951,12 +1951,14 @@
         "DataTablePaginationKeyboardReferenceTests",
         "DataTablePaginationOpenOptionsTests",
         "DataTablePaginationScrollTests",
+        "tests/PackageConsumer/PaginationScaleFixture.cs",
+        "samples/Orchard.Catalog/DataTablePaginationsFixture.Input.cs",
         "tests/PackageConsumer/ProducerThreadingFixture.cs",
         "scripts/verify-hidden-producer-threading.ps1",
         "scripts/verify-hidden-producer-threading.mjs",
         "scripts/test-hidden-producer-threading-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "generalConsumerSmoke": {
         "evidence": "docs/evidence/data-table-pagination-pixel-snap-v1/checkpoint.json",
         "package": "0.1.0-text-media-v4-local",
@@ -1988,12 +1990,13 @@
         "componentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .77 package consumer compiles on x64. Its matching x64 catalog passes Data Table Pagination Light/Dark states and physical Next, Last, First, page-size pointer selection, Escape keyboard release and focus return. The independent package consumer passes eight native 150% Light/Dark, 400/700 DIP, populated/empty cases: text/actions and the open chooser stay in bounds. On an animations-disabled desktop the chooser bounds and opacity stay static. ARM64 builds only; runtime unverified. Historical pixel parity and broader diagnostics above are not milestone gates."
     },
     {
       "id": "skeleton",
