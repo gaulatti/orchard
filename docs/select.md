@@ -1,5 +1,13 @@
 # Select and HeaderSelect
 
+`BleeckerHeaderSelect` is accepted for the five-check x64 milestone in preview
+`.68`: Light/Dark states, physical keyboard/pointer/focus and caller requests,
+four native 150% open-menu layouts without clipping, reduced-motion focus-ring
+endpoints, and independent package-consumer compilation/runtime pass. ARM64 is
+build-only and runtime-unverified. `BleeckerSelect` remains in progress. Older
+full-parity and platform-gap notes below are historical, not extra gates for
+Header Select's current milestone.
+
 `BleeckerSelect` is a reusable native choice menu over original
 `BleeckerSelectOption` objects. It shares the existing table choosers' input,
 scrolling, typeahead and selection surface. `BleeckerHeaderSelect` supplies the

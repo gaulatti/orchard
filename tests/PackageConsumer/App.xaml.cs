@@ -31,6 +31,12 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        if (Environment.GetCommandLineArgs().Contains("--probe-hidden-header-select-scale"))
+        {
+            var a = Environment.GetCommandLineArgs(); var o = Array.IndexOf(a, "--verify-output");
+            if (o < 0 || o + 1 >= a.Length) { Environment.Exit(2); return; }
+            window = new Window(); _ = Orchard.Testing.HeaderSelectScaleFixture.RunAsync(window, Path.GetFullPath(a[o + 1])); return;
+        }
         if (Environment.GetCommandLineArgs().Contains("--probe-hidden-hover-card-scale"))
         {
             var a = Environment.GetCommandLineArgs(); var o = Array.IndexOf(a, "--verify-output");

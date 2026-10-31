@@ -93,6 +93,14 @@ public sealed partial class SelectsFixture
         Require(header.Focus(FocusState.Keyboard), "Header Select trigger rejected keyboard focus.");
         await AwaitAsync(() => ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), header),
             "Header Select trigger did not receive keyboard focus.");
+        var reducedMotion = !new Windows.UI.ViewManagement.UISettings().AnimationsEnabled;
+        if (reducedMotion)
+        {
+            var ring = Descendants(header).OfType<Border>().Single(item => item.Name == "Ring");
+            await Task.Delay(32);
+            Require(Math.Abs(ring.Opacity - 1) < .000001,
+                $"Reduced-motion Header Select focus ring did not reach its endpoint: opacity={ring.Opacity}, focus={header.FocusState}.");
+        }
         input.Key(0x0D); // Enter opens the original option surface.
         await AwaitAsync(() => header.IsDropDownOpen && ReferenceEquals(FocusManager.GetFocusedElement(XamlRoot), Option(header, "")),
             "Keyboard opening Header Select did not focus its placeholder option.");
@@ -149,7 +157,8 @@ public sealed partial class SelectsFixture
             headerKeyboardValue = "a", headerInitiallyFocusedPlaceholder = true,
             headerDownFocusedOriginalOption = true, headerRestoredFocus = true, escapePreservedValue = true,
             headerPointerValue = "b", headerPointerRestoredFocus = true,
-            headerClosedTypeaheadValues = new[] { "", "a" }, headerOpenTypeaheadFocusedValue = "b", headerOutsideClickPreservedValue = true
+            headerClosedTypeaheadValues = new[] { "", "a" }, headerOpenTypeaheadFocusedValue = "b", headerOutsideClickPreservedValue = true,
+            headerReducedMotion = reducedMotion
         }));
     }
 }
