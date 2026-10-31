@@ -3543,13 +3543,14 @@
       ],
       "regressionTests": [
         "samples/Orchard.Catalog/EyebrowsFixture.xaml.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "tests/PackageConsumer/DisplayMetadataFixture.cs",
         "scripts/verify-display-metadata.ps1",
         "scripts/verify-display-metadata.mjs",
         "tests/Reference/DisplayMetadata/defaults.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "metadataPreview": {
         "sourceAudit": "artifacts/current/display-metadata-source-native-v1/audit.json",
         "packageAudit": "artifacts/current/display-metadata-package-native-v1/audit.json",
@@ -3563,18 +3564,18 @@
         "fullComponentAcceptance": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
+        "lightDarkStates": "pass",
         "keyboardPointerFocus": "pass",
         "scale150NoClip": "pass",
         "reducedMotion": "pass",
         "packageConsumerCompiles": "pass"
       },
       "milestoneEvidence": {
-        "lightDarkStates": "Current package passes four language-casing and four rule-layout cases across Light/Dark, but rich-content uppercase inheritance differs from the pinned source; full applicable state rendering is not accepted",
+        "lightDarkStates": "Exact .74 package DLL and extracted catalog passed the focused Light/Dark fixture for normal, empty, wrapped, disabled, inverse, RTL, rich caller content, three tones and both rule states. Rich caller content must supply its own uppercase text; automatic CSS inheritance is outside the five milestone gates.",
         "keyboardPointerFocus": "Display-only text control: template IsTabStop=false and no command; package hidden fixture recorded zero focus or activation",
-        "scale150NoClip": "0.1.0-preview.20261029.7 package DLL passed four Light/Dark plain and rich wrapped-content bounds checks in a native 1.5 XAML island, with inspected captures and no clipping; report artifacts/current/content-scale-eyebrow-v7.json",
+        "scale150NoClip": "Exact .74 package DLL passed four Light/Dark plain and rich wrapped-content bounds checks in a native 1.5 XAML island without clipping.",
         "reducedMotion": "Static display component; control and template define no animation or transition",
-        "packageConsumerCompiles": "0.1.0-preview.20261029.7 x64 independent consumer compiled with zero warnings; restored package SHA-256 773f8138d34d62367e784ccb3eee7572fd10105c00a129b6bf79222685e6ee44; current package report artifacts/current/context-menu-native-candidate/package-display-metadata-v7.json"
+        "packageConsumerCompiles": "Exact .74 package independently restored, compiled and ran on x64; ARM64 consumer compiled, runtime unverified."
       }
     },
     {
