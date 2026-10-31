@@ -1,5 +1,15 @@
 # Data Table
 
+For the 2026-10-29 five-check milestone, Data Table is accepted on x64 in the
+[.89 preview](releases/2026-10-31-preview-89.md). The exact .89 catalog passed
+24 Light/Dark states. Focused physical pointer, keyboard, sorting, selection,
+pagination and visible-focus checks passed in both themes. The independent
+.89 package consumer compiled and passed the Data Table runtime probe plus
+four native 150% Light/Dark cases at 700 and 1000 DIPs without clipped search,
+header, rows or pager; layout stayed static with Windows animations disabled.
+ARM64 runtime remains unverified. The historical performance target and raster
+diagnostics below are outside this five-check acceptance milestone.
+
 The published `0.1.0-preview.20261027.7` package-matching x64 catalog passes
 three independent sequential focused 16,384-row/page-100 replays: all 20
 semantic, original-content and unload operations pass in each process, with

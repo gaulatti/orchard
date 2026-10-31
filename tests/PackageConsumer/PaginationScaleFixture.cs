@@ -718,6 +718,91 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var tableComponentCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 700, 1000 })
+            foreach (var kind in new[] { "table", "simple-data-table", "data-table" })
+            {
+                stage = $"{kind}/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 1000; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 1500));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 1500));
+                FrameworkElement control;
+                if (kind == "table")
+                {
+                    var table = new BleeckerTable { Width = viewport - 40 };
+                    var header = new BleeckerTableHeader();
+                    var heading = new BleeckerTableRow();
+                    heading.Cells.Add(new BleeckerTableHead { Content = "Fictional item" });
+                    heading.Cells.Add(new BleeckerTableHead { Content = "Count" });
+                    header.Children.Add(heading);
+                    var body = new BleeckerTableBody();
+                    foreach (var (name, count) in new[] { ("Cedar", "12"), ("Birch", "7") })
+                    {
+                        var row = new BleeckerTableRow();
+                        row.Cells.Add(new BleeckerTableCell { Content = name });
+                        row.Cells.Add(new BleeckerTableCell { Content = count });
+                        body.Children.Add(row);
+                    }
+                    table.Sections.Add(header); table.Sections.Add(body);
+                    control = table;
+                }
+                else if (kind == "simple-data-table")
+                {
+                    var simple = new BleeckerSimpleDataTable
+                    { Width = viewport - 40, Caption = "Fictional local data", GetRowKey = (_, index) => index.ToString() };
+                    simple.Columns.Add(new("Name", "Fictional item"));
+                    simple.Columns.Add(new("Count", "Count"));
+                    simple.ItemsSource = new[] {
+                        new Dictionary<string, object?> { ["Name"] = "Cedar", ["Count"] = 12 },
+                        new Dictionary<string, object?> { ["Name"] = "Birch", ["Count"] = 7 } };
+                    control = simple;
+                }
+                else
+                {
+                    var data = new BleeckerDataTable { Width = viewport - 40, SearchKey = "Name" };
+                    data.Columns.Add(new(accessorKey: "Name", header: "Fictional item"));
+                    data.Columns.Add(new(accessorKey: "Count", header: "Count"));
+                    data.ItemsSource = Enumerable.Range(0, 23).Select(index =>
+                        new Dictionary<string, object?> { ["Name"] = $"Fictional row {index}", ["Count"] = index }).ToArray();
+                    control = data;
+                }
+                Canvas.SetLeft(control, 20); Canvas.SetTop(control, 20);
+                root.Children.Add(control);
+                await LayoutAsync(root);
+                var tableControl = control as BleeckerTable ?? Descendants<BleeckerTable>(control).Single();
+                var rows = Descendants<BleeckerTableRow>(tableControl)
+                    .Where(row => row.IsLoaded && row.ActualHeight > 0).ToArray();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    control.IsLoaded && control.ActualTheme == theme && rows.Length >= 3 &&
+                    Within(Bounds(control, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(tableControl, control), new Rect(0, 0, control.ActualWidth, control.ActualHeight)) &&
+                    rows.All(row => Within(Bounds(row, tableControl),
+                        new Rect(0, 0, tableControl.ActualWidth, tableControl.ActualHeight))),
+                    $"{kind} owner, header or rows clipped at native 150% scale.");
+                if (control is BleeckerDataTable)
+                {
+                    var search = Descendants<BleeckerInput>(control).Single(input => input.Name == "PART_Search");
+                    var pager = Descendants<Button>(control).Where(button => button.Name is "PART_Previous" or "PART_Next").ToArray();
+                    Require(pager.Length == 2 && search.ActualWidth > 0 &&
+                        Within(Bounds(search, control), new Rect(0, 0, control.ActualWidth, control.ActualHeight)) &&
+                        pager.All(button => Within(Bounds(button, control),
+                            new Rect(0, 0, control.ActualWidth, control.ActualHeight))),
+                        "Data Table search or pagination clipped at native 150% scale.");
+                }
+                if (!animationsEnabled)
+                {
+                    var before = (Bounds(control, root), Bounds(tableControl, control), Bounds(rows[0], tableControl));
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(before == (Bounds(control, root), Bounds(tableControl, control), Bounds(rows[0], tableControl)),
+                        $"{kind} continued moving with reduced motion.");
+                }
+                tableComponentCases.Add(new { kind, theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, rows = rows.Length, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             var spotlightCases = new List<object>();
             island.Content = null;
             var modalHost = new BleeckerModalHost { Content = root };
@@ -771,7 +856,7 @@ internal static class PaginationScaleFixture
             }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases, heroCases, spotlightCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases, heroCases, tableComponentCases, spotlightCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));

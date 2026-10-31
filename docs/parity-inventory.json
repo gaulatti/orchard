@@ -7210,7 +7210,7 @@
         "scripts/test-data-table-live-audit.mjs",
         "tests/Reference/DataTableLiveCounterexamples.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourcePreparation": {
         "source": "artifacts/current/table-source-audit-v2.json",
         "originalInputs": "artifacts/current/table-input-audit-v1.json",
@@ -7412,12 +7412,13 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .89 package-matching x64 catalog passes Light/Dark primitive and simple-table catalog states. Focused physical .88 catalog input invokes the original Table action in Dark and sortable simple-table header by pointer and Return in Light, with visible focus; control and fixture sources are unchanged in .89. The independent .89 NuGet consumer compiles and passes primitive and simple-table runtime probes, plus eight native 150% Light/Dark 700/1000-DIP cases with in-bounds header/rows and static reduced-motion layout. ARM64 is build-only; runtime unverified."
     },
     {
       "id": "data-table",
@@ -7511,7 +7512,7 @@
         "scripts/test-data-table-filter-plan-audit.mjs",
         "scripts/compare-data-table-performance.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourcePreparation": {
         "reference": "tests/Reference/DataTable.json",
         "source": "artifacts/current/data-table-frozen-audit-v1.json",
@@ -7786,12 +7787,13 @@
         "performancePassed": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .89 package-matching x64 catalog passes 24 Light/Dark Data Table catalog states. Focused physical .88 input verifies pointer and Return sorting, selection, Next/Previous pagination, Shift+Tab visible focus and Space activation in both themes; control and fixture sources are unchanged in .89. The independent .89 NuGet consumer compiles and passes the Data Table runtime probe and four native 150% Light/Dark 700/1000-DIP cases with in-bounds header, rows, search and pager plus static reduced-motion layout. Historical performance diagnostics are retained but are outside the five-check milestone. ARM64 is build-only; runtime unverified."
     },
     {
       "id": "tabs",

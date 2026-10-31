@@ -1,5 +1,14 @@
 # Table implementation work
 
+For the 2026-10-29 five-check milestone, Table is accepted on x64 in the
+[.89 preview](releases/2026-10-31-preview-89.md). The exact .89 catalog
+rendered Table primitives and the simple DataTable composition in Light and
+Dark. Focused physical pointer, keyboard and focus paths passed; the independent
+.89 package consumer compiled and passed both runtime probes plus eight native
+150% Light/Dark cases at 700 and 1000 DIPs. Their layout stayed static with
+Windows animations disabled. ARM64 runtime remains unverified. Historical
+performance and raster notes below do not add milestone gates.
+
 The pinned `src/components/table.tsx` exports the table primitives,
 `SortableTableHeader`, and its own `DataTable` composition. That composition is
 distinct from the TanStack adapter in `src/components/data-table.tsx`; both are

@@ -8,8 +8,8 @@ campaigns are excluded. The user has resumed component-library work.
 Use the [2026-10-29 acceptance contract](acceptance-contract.md) for this
 milestone: five x64 checks per component, with ARM64 build-only and runtime
 unverified. Raster/pixel parity is not a gate. The machine-readable inventory
-records pass/fail for all 112 entries. The [current `.88` release](releases/2026-10-31-preview-88.md)
-lists the 110 x64-accepted components, including Command Spotlight; two remain.
+records pass/fail for all 112 entries. The [current `.89` release](releases/2026-10-31-preview-89.md)
+lists all 112 x64-accepted components, including Table and Data Table.
 Older row descriptions below retain historical diagnostics and do not add
 milestone gates. Monitoring and Editorial remain required fictional demos.
 

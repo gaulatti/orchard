@@ -10,16 +10,16 @@ component notes below describe historical checks and do not add release gates.
 Accepted x64 components in this preview:
 Accordion, Activity Item, Admin Shell, Alert, Alert Dialog, App Shell, App Tab Bar, Area Chart, Attention Surface, Auth Shell,
 Avatar, Bar Chart, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Chart, Chart Theme,
-Checkbox, Collection Filters, Command Spotlight, Context Menu, Dashboard Grid, Dashboard Section, Data List, Data Table Column Toggle,
+Checkbox, Collection Filters, Command Spotlight, Context Menu, Dashboard Grid, Dashboard Section, Data List, Data Table, Data Table Column Toggle,
 Data Table Filters, Data Table Pagination, Data Table Toolbar, Date Picker, Date Range Picker, Detail Layout, Dialog Close Button,
 Donut Chart, Drawer, Dropdown Menu, Empty, Error State, Eyebrow, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip,
 File Input, Filter Chip, Footer, Funnel Chart, Header, Header Select, Hero Carousel, Hover Card, Icon Badge, Icon Button, Input, Kbd, Label,
 Line Chart, Loading Overlay, Loading Spinner, Media Library, Menubar, Metric, Modal, Nav Menu, Navigation Menu, Notification Badge, OTP Input, Page Frame, Page Header,
 Pagination, Panel, Panel Layout, Pie Chart, Popover, Progress, Progress Stack, Radar Chart, Radial Bar Chart, Radio Group,
 Sankey Chart, Scatter Chart, Scroll Area, Search Input, Section Header, Secure Field, Segmented Control, Select, Separator, Sheet,
-Sidebar, Skeleton, Slider, Sonner, Sparkline, Stat Card, Status Badge, Stepper, Sunburst Chart, Switch, Tabs, Textarea,
-Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 110 are accepted.
+Sidebar, Skeleton, Slider, Sonner, Sparkline, Stat Card, Status Badge, Stepper, Sunburst Chart, Switch, Table, Tabs, Textarea,
+Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. All 112 fixed
+inventory entries are accepted on x64.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
