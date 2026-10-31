@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "base_branch": "main",
+  "readme": "README.md",
+  "repository_policy": "AGENTS.md",
+  "verification": [
+    [
+      "node",
+      "scripts/generate-tokens.mjs",
+      "--check"
+    ],
+    [
+      "node",
+      "scripts/generate-table-palette.mjs",
+      "--check"
+    ],
+    [
+      "node",
+      "scripts/generate-data-table-palette.mjs",
+      "--check"
+    ],
+    [
+      "node",
+      "scripts/generate-collection-filters-palette.mjs",
+      "--check"
+    ]
+  ],
+  "coverage": {
+    "format": "cobertura",
+    "report": "artifacts/coverage/coverage.cobertura.xml",
+    "source_directory": "src"
+  }
+}

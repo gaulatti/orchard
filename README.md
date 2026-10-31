@@ -370,3 +370,37 @@ Attribution and license texts are adjacent to the fonts. The vendored Bleecker
 source retains its MIT license under `tokens/LICENSE-Bleecker.txt`.
 
 The passive [ProgressStack preview](docs/progress-stack.md) adds consumer-owned segments and a wrapping legend; acceptance remains in progress.
+
+## Pull request verification
+
+Local agent review uses the shared `clouseau` skill with the developer's
+authenticated coding harness and the `.clouseau-local.json` recipe; it needs no
+CI provider keys. `AGENTS.md` owns the rule: run it against the final committed
+change before opening a PR, repair findings, and publish the passing signed
+receipt in the initial ready PR body. Never push directly to `main`.
+
+Every PR runs:
+
+- `unit` on Ubuntu: the token and palette generation checks, the frozen shared policy tests and the workflow-contract tests in `.github/tests`,
+- `build` on Windows: the former `windows` job (x64 solution build, `Orchard.Tests` and `Orchard.Text.Tests`, frozen reference audits, package consumer and catalog verification),
+- `arm64-build` and `arm64-runtime`: the former ARM64 jobs, unchanged.
+
+The shared coverage gate does not support .NET: it has no Cobertura format. The
+engine also hard-requires a verify step named `Enforce 100% line and branch
+coverage`, which here only emits a warning and enforces nothing, and the policy
+selects `manual` merge mode: reviews run on every PR and the owner merges.
+Pushes to `main` now run the Windows jobs too (they were paused during the
+parity work); the workflow keeps the former pull-request and manual triggers.
+
+A PR carrying an authenticated local review stamp is verified by the pinned
+Clouseau engine without AI credentials; unstamped PRs use the CI reviewer.
+Reviews run on every PR and the policy selects manual merge mode, so the owner merges. Unresolved
+product-direction questions go to the owner, and changes to review controls need
+the owner's `/approve-intent <head SHA>` comment. See [the purpose
+contract](.github/clouseau.md). The CI engine is resolved from protected
+Clouseau `main` at the start of each run (see
+[automatic Clouseau CI upgrades](https://github.com/gaulatti/clouseau/blob/main/docs/automatic-ci-upgrades.md)).
+
+CI needs these repository secrets: `DEEPSEEK_API_KEY` and `TYPESAFE_API_KEY` for
+the CI reviewer, and `DEPLOYMENT_TOKEN` (a token with contents write access
+from an identity other than `github-actions[bot]`) for automatic repairs.
