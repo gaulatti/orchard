@@ -182,9 +182,113 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var filterCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            {
+                stage = $"select-filter/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 420; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 630));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 630));
+                var model = new BleeckerDataTableModel();
+                model.SetColumns([new BleeckerDataTableColumn(accessorKey: "status", header: "Status")]);
+                model.SetData(new[] {
+                    new Dictionary<string, object?> { ["status"] = "Draft" },
+                    new Dictionary<string, object?> { ["status"] = "Published" } });
+                var filter = new BleeckerDataTableSelectFilter
+                {
+                    Table = model, ColumnId = "status", Width = viewport - 40,
+                    Options = new[] { new BleeckerSelectOption("Draft", "Draft"), new BleeckerSelectOption("Published", "Published") }
+                };
+                Canvas.SetLeft(filter, 20); Canvas.SetTop(filter, 20);
+                root.Children.Add(filter);
+                await LayoutAsync(root);
+                var chooser = Descendants<ItemsControl>(filter).Single(item => item.Name == "PART_Select");
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    filter.IsLoaded && filter.ActualTheme == theme &&
+                    Within(Bounds(filter, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(chooser, filter), new Rect(0, 0, filter.ActualWidth, filter.ActualHeight)),
+                    "Data Table Select Filter trigger clipped at native 150% scale.");
+                var expansion = (IExpandCollapseProvider)FrameworkElementAutomationPeer.CreatePeerForElement(chooser).GetPattern(PatternInterface.ExpandCollapse);
+                expansion.Expand();
+                await LayoutAsync(root);
+                var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .Single(item => item.Child is Border { Name: "PopupBorder" });
+                var surface = Descendants<BleeckerOverlaySurface>(popup.Child).Single(item => item.Name == "PopupSurface");
+                var options = Descendants<Button>(surface).Where(item => item.Tag is BleeckerSelectOption).ToArray();
+                Require(popup.ShouldConstrainToRootBounds && popup.IsOpen && surface.IsLoaded && surface.Opacity == 1 &&
+                    Within(Bounds(surface, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    options.Length == 3 && options.All(item => item.IsLoaded &&
+                        Within(Bounds(item, surface), new Rect(0, 0, surface.ActualWidth, surface.ActualHeight))),
+                    "Data Table Select Filter popup or options clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(surface, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(surface, root).Equals(before) && surface.Opacity == 1,
+                        "Data Table Select Filter popup continued moving with reduced motion.");
+                }
+                filterCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, visibleOptions = options.Length,
+                    popupBounds = Bounds(surface, root), passed = true });
+                expansion.Collapse();
+                await LayoutAsync(root);
+                Require(!popup.IsOpen, "Data Table Select Filter popup remained open after collapse.");
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
+            var toolbarCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            {
+                stage = $"data-table-toolbar/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 420; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 630));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 630));
+                var model = new BleeckerDataTableModel();
+                model.SetColumns([new BleeckerDataTableColumn(accessorKey: "name", header: "Name")]);
+                model.SetData(new[] { new Dictionary<string, object?> { ["name"] = "Fictional record" } });
+                model.SetGlobalFilter("Fictional");
+                var filterButton = new Button { Content = "Status", Width = 176, Height = 36 };
+                var actionButton = new Button { Content = "New record", Width = 104, Height = 36 };
+                var toolbar = new BleeckerDataTableToolbar
+                {
+                    Table = model, SearchColumn = "name", Width = viewport - 40,
+                    FilterRenderers = filterButton, Actions = actionButton
+                };
+                Canvas.SetLeft(toolbar, 20); Canvas.SetTop(toolbar, 20);
+                root.Children.Add(toolbar);
+                await LayoutAsync(root);
+                var search = Descendants<BleeckerInput>(toolbar).Single(item => item.Name == "PART_Search");
+                var reset = Descendants<Button>(toolbar).Single(item => item.Name == "PART_Reset");
+                var controls = new FrameworkElement[] { search, filterButton, reset, actionButton };
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    toolbar.IsLoaded && toolbar.ActualTheme == theme &&
+                    Within(Bounds(toolbar, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    controls.All(item => item.IsLoaded && item.Visibility == Visibility.Visible &&
+                        item.ActualWidth > 0 && item.ActualHeight > 0 &&
+                        Within(Bounds(item, toolbar), new Rect(0, 0, toolbar.ActualWidth, toolbar.ActualHeight))),
+                    "Data Table Toolbar search, filter, reset or action clipped at native 150% scale.");
+                var caption = Descendants<TextBlock>(reset).Single(item => item.Text == "Reset");
+                Require(Within(Bounds(caption, reset), new Rect(0, 0, reset.ActualWidth, reset.ActualHeight)),
+                    "Data Table Toolbar Reset caption clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = controls.Select(item => Bounds(item, toolbar)).ToArray();
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(controls.Select((item, index) => Bounds(item, toolbar).Equals(before[index])).All(value => value),
+                        "Data Table Toolbar controls continued moving with reduced motion.");
+                }
+                toolbarCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, controls = controls.Length, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));
             window.Close(); Environment.Exit(0);

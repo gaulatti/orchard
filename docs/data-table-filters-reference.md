@@ -1,5 +1,12 @@
 # Data Table Filters source contract
 
+The `0.1.0-preview.20261031.79` milestone accepts Data Table Filters on x64:
+Light/Dark native and live-update states, physical pointer/keyboard/focus,
+four native 150% open-popup no-clipping cases, static reduced-motion geometry
+and independent package-consumer compilation passed. ARM64 is build-only and
+runtime-unverified. Older source focus and pixel comparisons below remain
+historical diagnostics outside this milestone's five checks.
+
 The fixed source is Bleecker `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/data-table-filters.tsx`, SHA-256
 `83a7e5de0d5b0a63d42591e3d45b230243d0ee97d9797a2f9b6b87d4369334bb`.

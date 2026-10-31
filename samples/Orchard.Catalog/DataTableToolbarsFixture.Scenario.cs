@@ -37,8 +37,9 @@ public sealed partial class DataTableToolbarsFixture
             B.SetInitial(Filters(props,"secondInitialColumnFilters"));B.SetFilters(Filters(props,"secondColumnFilters"));if(props.TryGetProperty("secondGlobalFilter",out var secondGlobal))B.SetGlobal(Value(secondGlobal));
             originalColumns=new(){[A]=new[]{"title","status"}.ToDictionary(id=>id,id=>A.GetColumn(id)!),[B]=new[]{"category","status"}.ToDictionary(id=>id,id=>B.GetColumn(id)!)};
             A.Changed+=Changed;B.Changed+=Changed;
-            Host=new Grid{Margin=new Thickness(16),Background=((Grid)owner.XamlRoot.Content).Background,RequestedTheme=scheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark,TabFocusNavigation=KeyboardNavigationMode.Cycle};
-            Grid.SetRowSpan(Host,((Grid)owner.XamlRoot.Content).RowDefinitions.Count);Grid.SetColumnSpan(Host,((Grid)owner.XamlRoot.Content).ColumnDefinitions.Count);
+            var catalogRoot=CatalogFixtureRoot.From(owner.XamlRoot);
+            Host=new Grid{Margin=new Thickness(16),Background=catalogRoot.Background,RequestedTheme=scheme==BleeckerColorScheme.Light?ElementTheme.Light:ElementTheme.Dark,TabFocusNavigation=KeyboardNavigationMode.Cycle};
+            Grid.SetRowSpan(Host,catalogRoot.RowDefinitions.Count);Grid.SetColumnSpan(Host,catalogRoot.ColumnDefinitions.Count);
             for(var row=0;row<5;row++)Host.RowDefinitions.Add(new(){Height=GridLength.Auto});
             Bar=new BleeckerDataTableToolbar{Table=A,Width=sample.GetProperty("hostWidth").GetDouble(),HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Top,FlowDirection=sample.GetProperty("direction").GetString()=="rtl"?FlowDirection.RightToLeft:FlowDirection.LeftToRight};
             if(props.TryGetProperty("searchColumn",out var column))Bar.SearchColumn=column.GetString();if(props.TryGetProperty("searchPlaceholder",out var placeholder))Bar.SearchPlaceholder=placeholder.GetString()!;

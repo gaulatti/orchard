@@ -1,5 +1,12 @@
 # Data Table Toolbar source contract and native acceptance
 
+The `0.1.0-preview.20261031.79` milestone accepts Data Table Toolbar on x64:
+Light/Dark states, physical pointer/keyboard/focus sequences, four native 150%
+no-clipping cases, static reduced-motion controls and independent package-consumer
+compilation passed. ARM64 is build-only and runtime-unverified. Older source
+focus and pixel comparisons below remain historical diagnostics outside this
+milestone's five checks.
+
 The `0.1.0-table-content-foreground-v2-local` preview removes Reset's explicit caption color binding,
 so native inheritance follows the active button presenter. Its cross vector uses
 the owned-glyph binding lifecycle. A fresh package replay exposed a late native
