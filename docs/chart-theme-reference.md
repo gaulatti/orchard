@@ -1,4 +1,16 @@
-# Chart theme source contract (in progress)
+# Chart Theme source contract
+
+Chart Theme is accepted for the current x64 component-library milestone. The
+exact package consumer verifies 170 Light/Dark chart-theme checks and compiles
+independently. The catalog renders live theme resources and caller-owned series
+in both appearances. Chart Theme metadata and swatches are passive, with no
+keyboard/pointer action or animation; their static reduced-motion state is
+verified. Four native 150% package-consumer cases keep swatches and wrapped text
+inside 320/400 DIP bounds. This acceptance covers the shared theme metadata and
+swatches, not the separate chart controls. ARM64 is build-only and runtime-unverified.
+
+The records below describe earlier investigations and do not add acceptance
+gates to the current five-check milestone.
 
 The current source-built x64 catalog and the package-reference consumer each
 pass 170 hidden native checks across Line, Bar, Area, Scatter and Radar at
@@ -57,7 +69,7 @@ The frozen [Bleecker chart-theme source](https://github.com/gaulatti/bleecker/bl
 has SHA-256 `94e006606feb77fc8163d05812e83668b04916dcdbb818a8aa8dc0d49e08e750`.
 It exports `chartTheme`, `pickColor` and `ChartSeries`. It defines shared chart
 configuration rather than a standalone rendered component. The Windows
-inventory entry remains in progress; the public metadata API and palette
+inventory entry was then in progress; the public metadata API and palette
 fixture do not constitute accepted chart rendering.
 
 Colors are references to the active Bleecker CSS variables. They must remain

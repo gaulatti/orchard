@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Foundation;
@@ -508,6 +509,34 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "sonner-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-sonner-150-scale-v1", passed = true, cases = sonnerScale,
                     librarySha256 = Hash(typeof(BleeckerSonner).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var chartThemeScale = new List<object>();
+            foreach (var viewport in new[] { 320, 400 })
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                stage = $"chart-theme/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 180; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport * 1.5), 270));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, (int)(viewport * 1.5), 270));
+                var key = BleeckerChartTheme.Colors["sea"];
+                var specimen = (StackPanel)XamlReader.Load($"<StackPanel xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Width=\"{viewport - 32}\" Spacing=\"8\"><TextBlock x:Name=\"ChartThemeCaption\" xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\" Text=\"Fictional chart theme color follows the active appearance and wraps at native display scale.\" TextWrapping=\"Wrap\" Foreground=\"{{ThemeResource BleeckerTextPrimaryBrush}}\" /><Rectangle x:Name=\"ChartThemeSwatch\" xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\" Height=\"28\" Fill=\"{{ThemeResource {key}}}\" /></StackPanel>");
+                Canvas.SetLeft(specimen, 16); Canvas.SetTop(specimen, 16);
+                root.Children.Add(specimen); await Layout();
+                var caption = Find<TextBlock>(specimen, "ChartThemeCaption")!;
+                var swatch = Find<Microsoft.UI.Xaml.Shapes.Rectangle>(specimen, "ChartThemeSwatch")!;
+                var captionBounds = caption.TransformToVisual(root).TransformBounds(new Rect(0, 0, caption.ActualWidth, caption.ActualHeight));
+                var swatchBounds = swatch.TransformToVisual(root).TransformBounds(new Rect(0, 0, swatch.ActualWidth, swatch.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && !caption.IsTextTrimmed &&
+                    caption.ActualHeight + .5 >= caption.DesiredSize.Height && captionBounds.X >= -.5 && captionBounds.Right <= viewport + .5 &&
+                    swatchBounds.X >= -.5 && swatchBounds.Right <= viewport + .5 && swatchBounds.Bottom <= root.Height + .5 &&
+                    swatch.Fill is SolidColorBrush { Color.A: 255 } && specimen.Opacity == 1,
+                    $"Chart Theme swatch or text clipped at native 150%: {theme}/{viewport}.");
+                chartThemeScale.Add(new { theme = theme.ToString(), viewport, scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear(); await Layout();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "chart-theme-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-chart-theme-150-scale-v1", passed = true, cases = chartThemeScale,
+                    librarySha256 = Hash(typeof(BleeckerChartTheme).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             foreach(var viewport in new[]{320,600})
             {
                 root.Width=viewport;root.Height=viewport==320?240:320;island.SiteBridge.OverrideScale=1.5f;

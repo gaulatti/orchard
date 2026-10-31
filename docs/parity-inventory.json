@@ -673,10 +673,11 @@
         "tests/Orchard.Tests/CatalogCoverageTests.cs",
         "tests/PackageConsumer/MainWindow.xaml.cs",
         "tests/PackageConsumer/ChartThemeConsumersFixture.cs",
+        "tests/PackageConsumer/ContentScaleFixture.cs",
         "scripts/verify-chart-theme-consumers.ps1",
         "scripts/verify-chart-theme-consumers.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "nativeSeriesConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -733,12 +734,13 @@
         "fullChartAcceptance": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .76 package consumer compiled and ran 170 hidden Light/Dark chart-theme consumer checks. The matching extracted .76 catalog rendered its Chart Theme fixture in both themes and verified live resource, caller-owned brush and series updates. Chart Theme metadata and swatches have no action or animation, so pointer/keyboard/focus behavior is inapplicable; the static reduced-motion state was verified. Four independent .76 package-consumer native 150% Light/Dark cases at 320/400 DIP kept resource swatches and wrapped text within bounds. ARM64 runtime remains unverified."
     },
     {
       "id": "line-chart",
