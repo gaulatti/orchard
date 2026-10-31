@@ -1,9 +1,18 @@
 # Sidebar
 
+The `.57` x64 preview accepts Sidebar under the five-check milestone. The
+extracted catalog passed Light/Dark states and physical pointer, keyboard and
+focus sequences. The independent package consumer compiled and ran 16 native
+150% layouts across themes, collapsed/expanded states, RTL and constrained
+widths without clipped navigation or links. Width changes snapped with Windows
+animations disabled. ARM64 built and its consumer compiled; ARM64 runtime is
+unverified. Historical raster and broader motion diagnostics below are not
+milestone gates.
+
 `BleeckerSidebar` renders consumer-owned destinations, one level of expandable
 groups, optional header/footer content and independently scrolling navigation.
 The frozen [source contract](sidebar-reference.md) is the acceptance baseline.
-This component is in progress; full desktop and visual acceptance is open.
+The five x64 milestone checks are recorded in the release and inventory.
 
 ```xml
 <orchard:BleeckerSidebar Height="480" Header="Workspace" Footer="Local only">
@@ -103,10 +112,9 @@ its source and one release at its new focus destination; same-target key
 checks and pointer/presentation gates remain unchanged. The independent NuGet
 consumer declares both the control and the typed link template.
 
-Exact raster, the full state/motion/override and RTL matrices, arbitrary content
-and template combinations, component theme/automation behavior, display/text
-scaling, measured large-collection performance and native ARM64 runtime remain
-required. The 35-row source fixture is not large-data performance acceptance.
+The 35-row source fixture is not large-data performance evidence. Historical
+exact-raster and broader override/runtime diagnostics remain separate from the
+five-check x64 milestone.
 The existing catalog left navigation still uses button/input previews. This
 native presentation component has no backend or Prometheus concern. The wiki
 is unavailable; documentation remains in the code repository. Push Actions

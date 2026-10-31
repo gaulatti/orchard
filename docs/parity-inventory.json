@@ -1726,16 +1726,18 @@
         "tests/Orchard.Tests/SidebarReferenceTests.cs",
         "tests/Orchard.Tests/CatalogCoverageTests.cs",
         "samples/Orchard.Catalog/SidebarsFixture.xaml.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/SidebarScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .57 extracted x64 catalog passed Sidebar Light/Dark states and physical pointer/keyboard/focus sequences. The independent .57 NuGet consumer compiled and ran 16 native 150% Light/Dark collapsed/expanded, RTL and constrained-width layouts without clipping; expanded/collapsed widths snapped under reduced motion. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "data-table-toolbar",
@@ -3657,17 +3659,19 @@
         "scripts/verify-content-scale.mjs",
         "scripts/test-content-scale-audit.mjs",
         "tests/PackageConsumer/MainWindow.SearchInput.cs",
-        "tests/PackageConsumer/MainWindow.xaml.cs"
+        "tests/PackageConsumer/MainWindow.xaml.cs",
+        "tests/PackageConsumer/InputScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "pointerForegroundCheckpoint": "docs/evidence/input-pointer-foreground-source-v1/checkpoint.json",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .57 extracted x64 catalog passed Input Light/Dark size, validation, editing, pointer and focus states with animations disabled. The independent .57 NuGet consumer compiled and ran 48 native 150% Light/Dark size, width, error and adornment layouts; editor viewport and adornments stayed in bounds, and border paint settled under reduced motion. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "kbd",

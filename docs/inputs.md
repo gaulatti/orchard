@@ -1,5 +1,14 @@
 # Input editing preview
 
+The `.57` x64 preview accepts Input under the five-check milestone. The
+extracted catalog passed Light/Dark size, validation, editing, pointer and
+focus states with animations disabled. The independent package consumer
+compiled and ran 48 native 150% layouts across themes, sizes, widths, error
+states and adornments without clipping the editor or viewport. Border paint
+settled with reduced motion. ARM64 built and its consumer compiled; ARM64
+runtime is unverified. The older 225% and exact-raster diagnostics below are
+historical and do not gate this x64 milestone.
+
 ## Fractional paint alpha and source color interpolation
 
 Input's translucent palette brushes now store the opaque source RGB color and

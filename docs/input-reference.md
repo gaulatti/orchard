@@ -2,8 +2,9 @@
 
 Reference: Bleecker `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/input.tsx` and `stories/components/Input.stories.tsx`.
-`BleeckerInput` is an incomplete implementation; neither it nor the existing
-`BleeckerTextBoxStyle` has full visual acceptance for this contract.
+`BleeckerInput` is accepted for the five-check `.57` x64 milestone. The older
+exact-raster and broader visual comparisons below remain historical diagnostics;
+`BleeckerTextBoxStyle` is a separate style and is not accepted by this entry.
 
 ## Geometry and typography
 
