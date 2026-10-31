@@ -1,9 +1,16 @@
-# Sonner native preview
+# Sonner
 
 `BleeckerSonner` is the Windows host for the pinned Bleecker toast contract.
 It is a reusable component with fictional local catalog examples, without a
 notification service or application workflow. See the [source contract and
 acceptance matrix](sonner-reference.md).
+
+Sonner is accepted for the 2026-10-29 x64 milestone. The exact package DLL
+passes 66 hidden Light/Dark states and 28 behavior contracts. Physical pointer
+action/dismiss and keyboard action/dismiss/focus pass in both themes. An
+independent package consumer passes four native 150% Light/Dark layouts at
+320/400 DIP without toast or text clipping. The animations-disabled desktop
+reaches the reduced-motion endpoint. ARM64 remains build-only and runtime-unverified.
 
 ```xml
 <orchard:BleeckerSonner x:Name="Notifications"
@@ -117,7 +124,7 @@ twelve-item stacking, immediate dismissal and the global API. It remains a
 component demonstration using fictional data. Both Monitoring and Editorial
 composition demos remain required.
 
-Earlier verification (the component remains in progress): the x64 build passed with zero
+Earlier verification: the x64 build passed with zero
 warnings/errors, and all 418 portable tests pass. The hidden source run passes
 66 states, 20 behavior checks, two retained lifetimes, two standalone histories
 and both actual catalog themes. It verifies 1,984 geometry values (maximum error
@@ -138,7 +145,8 @@ The x64 and ARM64 solution builds and isolated package consumers pass. The
 package contains the current DLL, 151 matching loose theme files, PRI, six fonts,
 two images and README. Physical input,
 full raster, motion/reversal, scaling/customization and
-native ARM64 runtime remain open; the component is not accepted.
+native ARM64 runtime were open in that earlier package. This milestone uses
+the five current x64 gates; raster equality and motion reversal are outside them.
 
 Reproduce the background checks with `scripts/verify-sonner.ps1` using a fresh
 output directory, then `scripts/test-sonner-audit.mjs --native <output>

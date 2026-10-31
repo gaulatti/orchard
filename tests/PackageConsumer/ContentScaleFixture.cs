@@ -472,6 +472,42 @@ internal static class ContentScaleFixture
             await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "dropdown-menu-scale.json"),
                 JsonSerializer.Serialize(new { format = "orchard-dropdown-menu-150-scale-v1", passed = true, cases = dropdownMenuScale,
                     librarySha256 = Hash(typeof(BleeckerDropdownMenu).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
+            var sonnerScale = new List<object>();
+            foreach (var viewport in new[] { 320, 400 })
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            {
+                stage = $"sonner/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 280; root.RequestedTheme = theme;
+                island.SiteBridge.OverrideScale = 1.5f;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32((int)(viewport * 1.5), 420));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, (int)(viewport * 1.5), 420));
+                var host = new BleeckerSonner { Duration = 0 };
+                root.Children.Add(host); await Layout();
+                host.Show(new BleeckerSonnerToast("Fictional scaled notification")
+                { Description = "Caller-owned local content wraps within the available width without clipping.", Duration = 0 });
+                await Layout();
+                var popup = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot).Single(p =>
+                    p.Child is not null && Find<BleeckerOverlaySurface>(p.Child, "SonnerToastSurface") is not null);
+                var surface = Find<BleeckerOverlaySurface>(popup.Child, "SonnerToastSurface")!;
+                var bounds = surface.TransformToVisual(root).TransformBounds(new Rect(0, 0, surface.ActualWidth, surface.ActualHeight));
+                var title = Find<TextBlock>(surface, "SonnerTitleText") ?? throw new InvalidOperationException("Scaled Sonner title is missing.");
+                var description = Find<TextBlock>(surface, "SonnerDescriptionText") ?? throw new InvalidOperationException("Scaled Sonner description is missing.");
+                var textBounds = description.TransformToVisual(surface).TransformBounds(new Rect(0, 0, description.ActualWidth, description.ActualHeight));
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 && surface.IsLoaded && surface.ActualWidth > 0 &&
+                    bounds.X >= -.5 && bounds.Y >= -.5 && bounds.Right <= viewport + .5 && bounds.Bottom <= root.Height + .5,
+                    $"Sonner toast clipped its native 150% viewport: {theme}/{viewport}, bounds={bounds}.");
+                Require(title.ActualHeight >= 16 && description.ActualHeight > 20 && !description.IsTextTrimmed &&
+                    textBounds.X >= -.5 && textBounds.Y >= -.5 && textBounds.Right <= surface.ActualWidth + .5 && textBounds.Bottom <= surface.ActualHeight + .5,
+                    $"Sonner text clipped its native 150% surface: {theme}/{viewport}, text={textBounds}.");
+                Require(surface.Opacity == 1 && surface.RenderTransform is TranslateTransform { Y: 0 },
+                    "Sonner did not reach its reduced-motion endpoint at native 150%.");
+                sonnerScale.Add(new { theme = theme.ToString(), viewport, scale = root.XamlRoot.RasterizationScale,
+                    passed = true, width = surface.ActualWidth, height = surface.ActualHeight, x = bounds.X, y = bounds.Y });
+                root.Children.Clear(); await Layout();
+            }
+            await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(output)!, "sonner-scale.json"),
+                JsonSerializer.Serialize(new { format = "orchard-sonner-150-scale-v1", passed = true, cases = sonnerScale,
+                    librarySha256 = Hash(typeof(BleeckerSonner).Assembly.Location), hostSha256 = Hash(hostAssembly) }));
             foreach(var viewport in new[]{320,600})
             {
                 root.Width=viewport;root.Height=viewport==320?240:320;island.SiteBridge.OverrideScale=1.5f;
