@@ -76,9 +76,9 @@ actual earlier stale-height package and incomplete native receipt are retained.
 Both architecture catalogs and isolated consumers compile. Package payload,
 138 loose XAML files, native PRI, fonts and README match the tested inputs.
 
-The component remains unaccepted. Remaining physical input/focus, raster, motion,
-scaling/performance, broader customization and content reflow/integration cases,
-and native ARM64 runtime are separate remaining gates. The current style cases
+At that historical review, the component remained unaccepted. Physical input,
+scaling and reduced motion are covered by the x64 milestone below; raster,
+broader customization and ARM64 runtime are outside its five checks. The style cases
 verify maximum width and radius overrides. Narrator and OS contrast campaigns
 remain excluded by the library scope.
 
@@ -92,7 +92,7 @@ visual, scaling, motion and ARM64 runtime checks are still open.
 The [archive-identical v8 catalog file set](evidence/components-v8-linked-catalog-v1/checkpoint.json)
 also passes this nested physical ownership and focus-return probe in both themes
 from a separate runnable directory. Fresh full ZIP extraction and the remaining
-Modal matrix remain open.
+Modal matrix remained open at that review.
 
 `ModalsFixture` is registered directly after AlertDialogs and preserves both
 fictional-data Monitoring and Editorial demos. It offers original editable
@@ -110,3 +110,14 @@ probe. The real catalog fixture separately passes eight native button invokes
 across both themes and records four expanded/shrunk PNGs. These are hidden
 software-invocation checks; the separate foreground probe above covers one
 nested physical input/focus path. Full raster acceptance remains open.
+
+## 2026-10-30 x64 milestone
+
+The exact .71 package passes 40 Light/Dark layouts and 26 content/ownership
+cases. The extracted x64 catalog passes physical pointer opening, nested-dialog
+Escape handling, caller close requests and opener focus return in both themes.
+The independent package consumer passes four native 150% layouts at 420 and
+600 DIP without clipping. With animations already disabled, the surface reaches
+its reduced-motion endpoint. The consumer compiles and runs. These five checks
+accept Modal on x64. Raster parity is not a milestone gate, and ARM64 runtime
+remains unverified.

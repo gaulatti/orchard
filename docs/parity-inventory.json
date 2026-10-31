@@ -6149,15 +6149,16 @@
         "scripts/verify-modal-content-source.mjs",
         "scripts/test-modal-content-audit.mjs",
         "samples/Orchard.Catalog/ModalCatalogProbe.cs",
-        "scripts/verify-modal-desktop.ps1"
+        "scripts/verify-modal-desktop.ps1",
+        "tests/PackageConsumer/ModalScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
       }
     },
     {
