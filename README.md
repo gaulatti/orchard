@@ -11,16 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-30 `.65` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.65)
-for the current x64 component milestone. Seventy-five of 112 entries are accepted:
+Download the [2026-10-30 `.66` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.66)
+for the current x64 component milestone. Seventy-six of 112 entries are accepted:
 Accordion, Activity Item, Alert, Attention Surface, Admin Shell, App Shell, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Collection Filters, Context Menu, Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button,
-Empty, Error State, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip, File Input, Filter Chip, Footer, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric,
+Empty, Error State, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip, File Input, Filter Chip, Footer, Header, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric,
 Nav Menu, Notification Badge, OTP Input, Page Frame, Page Header, Pagination, Panel, Panel Layout, Popover, Progress, Progress Stack, Radio Group,
 Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator, Sidebar, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
-Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-65.md)
+Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-66.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.65/Orchard.Catalog.0.1.0-preview.20261030.65.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.65/Orchard.Catalog.0.1.0-preview.20261030.65.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.66/Orchard.Catalog.0.1.0-preview.20261030.66.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.66/Orchard.Catalog.0.1.0-preview.20261030.66.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)

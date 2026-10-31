@@ -84,6 +84,7 @@ public sealed partial class BleeckerHeader
         private void Toggle(object sender, RoutedEventArgs args) => owner.ToggleNavigation();
         private void BrandMetricsChanged(object? sender, EventArgs args) => InvalidateMeasure();
         internal void NotifyBrand() => brandContext.Notify();
+        internal void NotifyCommands() => command.Notify();
         internal void InvalidateMenu() { mobile.InvalidateMeasure(); InvalidateMeasure(); }
         private bool CanInvokeBrand(BleeckerNavLinkContext context)
         {

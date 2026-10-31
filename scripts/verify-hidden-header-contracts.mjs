@@ -23,7 +23,7 @@ for (const [file, expected] of [['Orchard.dll', librarySha256], [host + '.dll', 
 let packageSha256;
 if (host === 'PackageConsumer') {
   packageSha256 = hash(await fs.readFile(path.resolve(option('--package')))); const build = await read('result.json'), cleanup = await read('cleanup.json');
-  assert.equal(build.buildPassed, true); assert.equal(build.runtimeVerified, false); assert.equal(build.platform.toLowerCase(), architecture.toLowerCase()); assert.equal(build.packageSha256, packageSha256); assert.equal(cleanup.removed, true); assert.equal(build.isolatedConsumer, cleanup.isolatedConsumer); await assert.rejects(fs.access(cleanup.isolatedConsumer), {code: 'ENOENT'});
+  assert(build.buildPassed === true && build.runtimeVerified === false || build.passed === true && build.runtime?.passed === true); assert.equal(build.platform.toLowerCase(), architecture.toLowerCase()); assert.equal(build.packageSha256, packageSha256); assert.equal(cleanup.removed, true); assert.equal(build.isolatedConsumer, cleanup.isolatedConsumer); await assert.rejects(fs.access(cleanup.isolatedConsumer), {code: 'ENOENT'});
 }
 const operations = [['scroll-view-fixed', 140], ['scroll-view-fixed-return', 0], ['scroll-view-sticky', 140], ['scroll-view-sticky-return', 0], ['scroll-view-static', 140], ['scroll-view-static-return', 0], ['scroll-view-sticky-parent-end', 500], ['scroll-view-reparented', 150]];
 assert.deepEqual(report.scrollOperations.map(row => row.id), operations.map(row => row[0]));

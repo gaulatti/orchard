@@ -76,7 +76,7 @@ public sealed partial class BleeckerHeader : Control
     public event EventHandler<BleeckerNavItem>? ItemInvoked;
     public event EventHandler<BleeckerHeaderBrand>? BrandInvoked;
     public void ToggleNavigation() { if (IsLoaded && IsEnabled && surface is not null) SetMenuOpen(!menuOpen); }
-    private void SetMenuOpen(bool value) { if (menuOpen == value) return; menuOpen = value; surface?.UpdateIcon(); PresentMenu(true); }
+    private void SetMenuOpen(bool value) { if (menuOpen == value) return; menuOpen = value; surface?.UpdateIcon(); PresentMenu(true); surface?.NotifyCommands(); }
     private void NavigationInvoked(object? sender, BleeckerNavItem item) { if (ReferenceEquals(sender, surface?.MobileNavigation)) SetMenuOpen(false); ItemInvoked?.Invoke(this, item); }
     protected override void OnApplyTemplate()
     {

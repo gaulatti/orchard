@@ -1,6 +1,15 @@
 # Header prototype
 
-`BleeckerHeader` is an in-progress reusable WinUI component. It composes the
+`BleeckerHeader` is a reusable WinUI component accepted for the five-check
+x64 milestone in preview `.66`. Its current package and extracted catalog pass
+Light/Dark states, physical pointer/keyboard/focus at mobile and desktop widths,
+six independent native 150% layouts without clipping, static reduced-motion
+menu presentation, and independent package-consumer compilation. The mobile
+menu refreshes native command eligibility when toggled, so its visible links
+accept Tab and direct focus. ARM64 is build-only and runtime-unverified.
+Historical parity notes below do not add milestone gates.
+
+It composes the
 existing BrandLockup, NavMenu and IconButton with caller-owned desktop/mobile
 actions. The caller owns routing. The [frozen source contract](header-reference.md)
 records 72 Bleecker states and four original input histories. Both fictional-data

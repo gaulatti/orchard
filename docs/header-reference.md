@@ -1,6 +1,7 @@
 # Header source contract
 
-Header now has an [in-progress native prototype](header.md). These fixtures establish the
+Header is [accepted for the five-check x64 milestone](header.md) in preview
+`.66`. These fixtures establish the
 source contract for a reusable layout component; they do not add application
 navigation, services or production routes. Monitoring and Editorial remain
 required fictional-data component demonstrations.
