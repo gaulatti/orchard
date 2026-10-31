@@ -1,6 +1,8 @@
 # HoverCard source contract and native preparation
 
-HoverCard has a local in-progress native prototype and catalog fixture. The reference is Bleecker
+Hover Card is accepted for the five-check x64 milestone in preview `.67`;
+ARM64 runtime remains unverified. Older parity plans below are historical.
+The component has a native control and catalog fixture. The reference is Bleecker
 commit `a86059013cd59684ce452849278ea81e734f2066`,
 `src/components/hover-card.tsx`, SHA-256
 `f8af0dfd5c71926359b269f15d8782bd97fbd3fd18579346f59b28a9bfd0fcb6`.

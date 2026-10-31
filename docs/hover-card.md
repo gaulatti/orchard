@@ -1,10 +1,16 @@
-# HoverCard prototype
+# HoverCard
 
 `BleeckerHoverCard` composes an original trigger and content in an inline hover
 surface. Its [frozen source contract](hover-card-reference.md) governs placement,
 pointer behavior, keyboard behavior and motion. The native control and fixture
 pass the hidden native source matrix, ownership diagnostics and fresh package
-replay. Complete component acceptance remains open.
+replay. Preview `.67` accepts Hover Card for the five-check x64 milestone:
+44 Light/Dark states and five ownership contracts, physical move-only pointer
+hover and dismissal, original trigger Space/Enter and caller-note Tab focus,
+eight native 150% Top/Bottom layouts without clipping, reduced-motion
+endpoints, and independent package-consumer compilation and runtime all pass.
+ARM64 is build-only and runtime-unverified. Historical full-parity notes below
+do not add gates to this milestone.
 
 ```xml
 <orchard:BleeckerHoverCard Side="Bottom">
@@ -91,8 +97,8 @@ built file, and the package DLL/XAML/PRI/README/license payload is verified.
 
 The sealed prototype evidence is
 `artifacts/current/hover-card-implementation-checkpoint.json`; the current
-package-level foreground evidence is linked above. Move-only pointer input,
-full keyboard focus, source raster/shadows, broader ancestor stacking and
-nested popup/modal integration, live normal motion, customization, scaling and
-performance remain unaccepted. Both fictional-data demos remain required and
-unaccepted.
+package-level foreground evidence is linked above. This paragraph records the
+older full-parity prototype scope. The `.67` five-check x64 milestone above
+supersedes its acceptance status; source raster/shadows and ARM64 runtime are
+outside that milestone. Both fictional-data demos remain required and pass the
+current extracted-catalog checks.

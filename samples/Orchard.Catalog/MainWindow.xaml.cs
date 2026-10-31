@@ -706,6 +706,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "header-input", environment = RuntimeEnvironment() }));
             }
+            else if (args.Contains("--smoke-hover-card-input"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme;
+                    await SelectFixtureAsync(HoverCards);
+                    await HoverCards.VerifyInputAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "hover-card-input", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-dashboard-grid"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
