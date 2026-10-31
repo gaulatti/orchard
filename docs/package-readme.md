@@ -7,13 +7,13 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Tab Bar, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
+Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Checkbox, Collection Filters, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Page Frame, Page Header,
 Nav Menu, Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator,
 Sidebar, Skeleton, Slider, Sparkline, Stat Card, Status Badge, Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 69 are accepted.
+inventory has 112 entries started; 70 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -1004,6 +1004,9 @@ Buttons update local display text only. The component provides layout and
 content composition; authentication services and product workflows are outside
 the library. Hidden source runtime covers 104 states and 24 behavior checks in
 both themes, including actual layout, original model binding and native
-action/disabled semantics. Fresh delivery validation is in progress. Full
-visual, physical input/focus, scaling, lifetime, performance and native ARM64
-acceptance remain open; the strict browser/native image gate still fails.
+action/disabled semantics. The x64 milestone also verifies physical Tab, Space,
+pointer activation and caller-content retention in both themes, four native
+150% centered/split layouts without clipped regions or text, static behavior
+with animations disabled, and independent package-consumer compilation. ARM64
+runtime is unverified. Historical browser/native pixel differences are outside
+this milestone's acceptance gates.

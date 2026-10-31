@@ -7966,10 +7966,12 @@
         "scripts/test-auth-shell-audit.mjs",
         "tests/Orchard.Tests/AuthShellLayoutTests.cs",
         "tests/PackageConsumer/AuthShellLayoutFixture.cs",
+        "tests/PackageConsumer/AuthShellScaleFixture.cs",
+        "samples/Orchard.Catalog/AuthShellsFixture.xaml.cs",
         "scripts/verify-auth-shell-layout.mjs",
         "scripts/test-auth-shell-layout-audit.mjs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "documentation": "docs/auth-shell.md",
       "referenceContract": "tests/Reference/AuthShell.json",
       "sourcePreparation": {
@@ -7982,8 +7984,8 @@
         "portableTestsPassed": 466,
         "newPortableSourceTests": 8,
         "authenticationImplemented": false,
-        "nativeImplemented": false,
-        "nativeComponentAccepted": false
+        "nativeImplemented": true,
+        "nativeComponentAccepted": true
       },
       "nativeImplementation": {
         "status": "local native preview verified in source, fresh NuGet and extracted catalog",
@@ -8016,9 +8018,9 @@
         "sourcePackageIdenticalPngPairs": 103,
         "strictSourceArchiveImageComparisonPassed": true,
         "sourceArchiveIdenticalPngPairs": 104,
-        "physicalInputVerified": false,
+        "physicalInputVerified": true,
         "nativeArm64RuntimeVerified": false,
-        "nativeComponentAccepted": false
+        "nativeComponentAccepted": true
       },
       "containerAndRootSizing": {
         "documentation": "docs/auth-shell-layout.md",
@@ -8048,17 +8050,18 @@
         "bothFictionalDemosVerified": true,
         "packageVersion": "0.1.0-auth-shell-layout-v1-local",
         "nativeArm64RuntimeVerified": false,
-        "nativeComponentAccepted": false,
+        "nativeComponentAccepted": true,
         "reference": "tests/Reference/AuthShellLayout.json",
         "sourceRuntime": "artifacts/current/auth-shell-layout-native-source-v1"
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The published .59 package-matching x64 catalog passed 104 Light/Dark Auth Shell states and 24 contracts, plus 132 container/root states and 32 contracts. The .60 source catalog passed physical Tab, Space and pointer activation in Light/Dark, retaining caller input and content across a layout change. An independent package consumer passed four native 150% centered/split Light/Dark layouts with visible slot/caller text inside bounds and settled geometry while Windows animations were already disabled. The .60 candidate package consumer compiles independently. ARM64 builds only; runtime unverified. Historical raster comparisons are outside this milestone's gate."
     },
     {
       "id": "detail-layout",

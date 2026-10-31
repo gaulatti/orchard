@@ -31,6 +31,12 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        if (Environment.GetCommandLineArgs().Contains("--probe-hidden-auth-shell-scale"))
+        {
+            var a = Environment.GetCommandLineArgs(); var o = Array.IndexOf(a, "--verify-output");
+            if (o < 0 || o + 1 >= a.Length) { Environment.Exit(2); return; }
+            window = new Window(); _ = Orchard.Testing.AuthShellScaleFixture.RunAsync(window, Path.GetFullPath(a[o + 1])); return;
+        }
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-rich-content-layout")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.RichContentLayoutFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-display-metadata")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.DisplayMetadataFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}
         if(Environment.GetCommandLineArgs().Contains("--probe-hidden-progress-range")){var a=Environment.GetCommandLineArgs();var o=Array.IndexOf(a,"--verify-output");if(o<0||o+1>=a.Length){Environment.Exit(2);return;}window=new Window();_ = Orchard.Testing.ProgressRangeFixture.RunAsync(window,Path.GetFullPath(a[o+1]),typeof(App).Assembly.Location);return;}

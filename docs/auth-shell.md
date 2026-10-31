@@ -10,8 +10,8 @@ checks across both themes, including 5,134 geometry/font checks and 144 rendered
 palette probes; 94 corrupted receipts/files/pixels are rejected. Both solution
 architectures build without warnings or errors. The fresh local NuGet consumer
 and extracted catalog independently pass the same 104 states and 24 checks.
-All state and contract data agree across the three hosts. No component
-acceptance is claimed.
+All state and contract data agree across the three hosts. The 2026-10-29 x64
+milestone accepts Auth Shell after the focused checks below.
 
 The pinned Bleecker producer is `src/layout/auth-shell.tsx` at
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
@@ -57,8 +57,8 @@ and theme changes. Responsive aside hiding preserves its editors. Switching
 to centered or a falsy aside unmounts the aside; restoring it mounts new content.
 The caller owns form actions; the diagnostic fixture prevents submission and
 performs no network operation. Native slots, retained templates, public API,
-catalog variants, runtime, visuals, scaling, input, lifecycle and delivery are
-still required before this entry can be accepted.
+catalog variants, runtime, scaling, input and delivery are covered by the
+current x64 milestone. Historical pixel parity is outside its acceptance gate.
 
 ## Native API and local examples
 
@@ -111,7 +111,7 @@ layout/side/RTL/text-size controls, fictional member and recovery forms, empty
 and scalar slots and a disabled example. Its buttons update local text only;
 no authentication, product service or external request is implemented.
 
-## Current verification limits
+## Historical verification limits
 
 The hidden fixture uses a native scrolling page host to match the source
 document's tall-content behavior. It verifies logical tracks, padding, centered
@@ -142,10 +142,21 @@ files are byte verified and replayed with the component and both fictional
 demos. All 469 portable and 10 Windows text tests pass. The source and package
 auditors each reject 94 corruptions. These remain local preview artifacts.
 
-Broader container widths independent of the viewport, customization and
-lifetime cases, measured performance, actual display/text scaling, physical
-input/focus/Tab and native ARM64 runtime acceptance remain open. All other
-inventory acceptance gaps remain in force.
+At that historical preview, broader container widths independent of the
+viewport, customization and lifetime cases, measured performance, actual
+display/text scaling, physical input/focus/Tab and native ARM64 runtime were
+open. The current milestone resolves the focused x64 checks below.
+
+For the current x64 milestone, the published-package catalog passes the 104
+Light/Dark source states and 24 contracts, plus the 132 container/root states
+and 32 contracts. A focused foreground catalog check passes real Tab, Space,
+pointer activation and caller-content retention in both themes. The independent
+package consumer passes centered and split layouts in Light/Dark at native 150%
+scale, with all visible text and regions inside the viewport. The component is
+static and its rendered geometry stays settled with animations disabled. The
+independent package consumer compiles. These five checks accept the component
+on x64; ARM64 runtime remains unverified. The older image and broader platform
+observations above remain historical, outside this milestone's gates.
 
 The subsequent [container/root-size correction](auth-shell-layout.md) adds a
 separate 132-state reference and closes padding-overflow, centered-height and
