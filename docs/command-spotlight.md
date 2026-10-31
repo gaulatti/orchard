@@ -1,12 +1,23 @@
 # Command Spotlight source contract
 
+The 2026-10-31 `.88` x64 milestone accepts Command Spotlight under the five-check
+contract. The exact package-matching catalog passed 100 Light/Dark states,
+24 behavior contracts, 168 hotkey cases and 38 Windows key checks. Focused
+physical keyboard, pointer, Tab and focus observations in both themes are reused
+from the released v7 control, whose control, theme and fixture source remain
+unchanged. The intervening modal-host change only permits owned-popup focus.
+An independent package consumer passed four native 150% Light/Dark no-clipping
+cases with static reduced-motion behavior. ARM64 builds and compiles, while
+its runtime remains unverified. Older diagnostics below describe their own
+recording times and do not add milestone gates.
+
 Command Spotlight is a reusable component in the fixed Windows inventory,
 within the [component-library scope](library-scope.md). Its pinned Bleecker source
 is `src/components/command-spotlight.tsx` at
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `21ec854ef2a06e975e42ec1cbd058e2ed6f67a4e8c1b46bfebc2316b3bc4209e`.
-Source preparation is verified and the native preview is described below;
-component acceptance remains open. The frozen `tests/Reference/CommandSpotlight.json` SHA-256 is
+Source preparation was verified before the native milestone. The frozen
+`tests/Reference/CommandSpotlight.json` SHA-256 is
 `12b264b46566b389eff73d6b21e7f32feb465cdc52f2c86ab8379555a49a075e`.
 It retains 100 canonical PNGs, 200 settled capture samples, 76 interaction
 histories, 122 pinned CSS scan inputs, 1,698 actual bundle inputs, six original

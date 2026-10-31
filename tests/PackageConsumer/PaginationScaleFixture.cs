@@ -718,9 +718,60 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var spotlightCases = new List<object>();
+            island.Content = null;
+            var modalHost = new BleeckerModalHost { Content = root };
+            island.Content = modalHost;
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            {
+                stage = $"command-spotlight/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 700; root.RequestedTheme = theme;
+                modalHost.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 1050));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 1050));
+                var spotlight = new BleeckerCommandSpotlight { Width = viewport - 40,
+                    Actions = new BleeckerCommandSpotlightActions([
+                        new BleeckerCommandSpotlightAction("first", "Fictional first command"),
+                        new BleeckerCommandSpotlightAction("second", "Fictional second command")]) };
+                Canvas.SetLeft(spotlight, 20); Canvas.SetTop(spotlight, 20);
+                root.Children.Add(spotlight);
+                await LayoutHostAsync(modalHost, root);
+                spotlight.Show();
+                await Task.Delay(80);
+                await LayoutHostAsync(modalHost, root);
+                var trigger = Descendants<Button>(spotlight).Single(button => button.Name == "SpotlightTrigger");
+                var surface = Descendants<ContentControl>(modalHost).Single(item => item.Name == "SpotlightSurface");
+                var search = Descendants<TextBox>(surface).Single(item => item.Name == "SpotlightSearch");
+                var actions = Descendants<Button>(surface).Where(button => button.Name == "SpotlightAction").ToArray();
+                var viewportBounds = new Rect(0, 0, viewport, root.Height);
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    spotlight.IsLoaded && spotlight.ActualTheme == theme && spotlight.IsOpen &&
+                    trigger.ActualWidth > 0 && surface.ActualWidth > 0 && actions.Length == 2 &&
+                    Within(Bounds(trigger, root), viewportBounds) &&
+                    Within(Bounds(surface, modalHost), viewportBounds) &&
+                    Within(Bounds(search, modalHost), viewportBounds) &&
+                    actions.All(action => Within(Bounds(action, modalHost), viewportBounds)),
+                    "Command Spotlight trigger, modal or actions clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    Require(surface.Opacity >= .99, "Command Spotlight modal did not settle with reduced motion.");
+                    var before = Bounds(surface, modalHost);
+                    await Task.Delay(120);
+                    await LayoutHostAsync(modalHost, root);
+                    Require(surface.Opacity >= .99 && Bounds(surface, modalHost).Equals(before),
+                        "Command Spotlight modal continued moving with reduced motion.");
+                }
+                spotlightCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                spotlight.Close();
+                await Task.Delay(40);
+                root.Children.Clear();
+                await LayoutHostAsync(modalHost, root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases, heroCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases, heroCases, spotlightCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));
@@ -744,6 +795,16 @@ internal static class PaginationScaleFixture
             root.Measure(new Size(root.Width, root.Height));
             root.Arrange(new Rect(0, 0, root.Width, root.Height));
             root.UpdateLayout();
+            await Task.Delay(16);
+        }
+    }
+    private static async Task LayoutHostAsync(BleeckerModalHost host, Canvas root)
+    {
+        for (var index = 0; index < 3; index++)
+        {
+            host.Measure(new Size(root.Width, root.Height));
+            host.Arrange(new Rect(0, 0, root.Width, root.Height));
+            host.UpdateLayout();
             await Task.Delay(16);
         }
     }
