@@ -7867,16 +7867,19 @@
         "scripts/verify-hidden-app-shells.ps1",
         "scripts/verify-hidden-app-shells.mjs",
         "scripts/test-hidden-app-shells-audit.mjs",
-        "tests/PackageConsumer/HeaderReferenceFixture.Contracts.cs"
+        "tests/PackageConsumer/HeaderReferenceFixture.Contracts.cs",
+        "tests/PackageConsumer/AppShellScaleFixture.cs",
+        "samples/Orchard.Catalog/AppShellsFixture.xaml.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The .60 independent package consumer passed all 168 Light/Dark frozen layouts and 44 ownership checks with zero geometry error. The .61 x64 catalog passed physical Tab, Space and pointer actions in header and body in both themes, retaining caller controls across an OffsetHeader change. The independent .61 package consumer passed eight native 150% Light/Dark width/offset layouts; visible text stayed within bounds except for a 1.8-DIP header line-box overhang with no ink in the first six physical viewport rows, and geometry remained static while Windows animations were already disabled. The .61 package consumer compiles independently. ARM64 builds only; runtime unverified. Raster parity is outside this milestone's gate."
     },
     {
       "id": "admin-shell",

@@ -32,15 +32,13 @@ region; its mobile menu can overlap body content. Replacing a slot or unloading
 it disconnects the old stacking observer. Clearing the slot resets its wrapper
 to zero. Caller controls and templates remain the source of the stacking value.
 
-Acceptance requires the complete 168-state frozen layout/paint reference and
-56 original PNGs, both themes, all three original slots, scalar truthiness,
-height/minimum/padding/token overrides, actual viewport changes, preserved
-template models and bindings, real keyboard/pointer traversal, exact raster,
-scaling, lifecycle and independent x64/ARM64 package/runtime verification. Source
-interaction probes retain an edited input and its original action through slot
-and width updates. Native verification is in progress; no visible acceptance is
-claimed by that historical hidden checkpoint. The desktop is now reconnected;
-initial visible AdminShell evidence is recorded separately.
+The historical full-parity review covers the complete 168-state frozen
+layout/paint reference and 56 original PNGs, both themes, all three slots,
+scalar truthiness, height/minimum/padding/token overrides, actual viewport
+changes, and preserved models and bindings. Its source interaction probes retain
+an edited input and its original action through slot and width updates. Raster
+equality and ARM64 runtime from that review are outside the current x64
+milestone's acceptance gates.
 
 The earlier independent native x64 consumer checkpoint matches all 168 layouts and checked
 paint properties with zero geometry error. Its 44 ownership/lifecycle checks
@@ -58,4 +56,19 @@ explicit zero observes its otherwise unnotified removal on a dispatcher tick;
 observation stops on unload or template removal. The AdminShell consumer also
 checks equal-valued overrides and exact one-way/two-way binding preservation
 during resize. Earlier failing receipts remain preserved. Broader visible and
-platform acceptance remains open.
+platform acceptance remained open at that historical checkpoint.
+
+## Current x64 milestone
+
+The independent package consumer passes all 168 frozen Light/Dark states and
+44 ownership checks with zero geometry error. The catalog passes real Tab,
+Space and pointer actions in the caller's header and body in both themes;
+changing `OffsetHeader` retains the original editor and controls. At native
+150%, an independent package consumer passes eight Light/Dark width/offset
+layouts. Header, main, content, footer and visible text stay inside the
+viewport. The baseline-shifted header TextBlock line box extends 1.8 DIP above
+the root, but no ink appears in the first six physical pixel rows; visible text
+is not clipped. The layout stays settled with Windows animations already
+disabled. The independent x64 package consumer compiles; ARM64 builds only and
+its runtime remains unverified. These five checks accept App Shell for the
+2026-10-29 milestone. No application services were added.

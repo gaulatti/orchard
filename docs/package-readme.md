@@ -7,13 +7,13 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
+Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Shell, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Checkbox, Collection Filters, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Page Frame, Page Header,
 Nav Menu, Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator,
 Sidebar, Skeleton, Slider, Sparkline, Stat Card, Status Badge, Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 70 are accepted.
+inventory has 112 entries started; 71 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -276,7 +276,11 @@ Header and footer wrappers follow the original native or template root's live
 `Canvas.ZIndex`, so Header and its mobile menu can overlap main content. Replaced
 or unloaded roots stop publishing stacking changes; empty slots reset to zero.
 The caller owns navigation, scrolling, values, commands and all application data.
-Complete visual, input, scaling and platform acceptance remain pending.
+For the x64 milestone, the package consumer covers 168 Light/Dark states and
+44 ownership checks, the catalog passes real header/body keyboard and pointer
+input in both themes, and the independent consumer verifies eight native 150%
+layouts without visible clipping. Static geometry remains settled with Windows
+animations disabled. ARM64 runtime is unverified.
 
 `BleeckerAdminShell` adds an original `Sidebar` beside a native scrolling Main
 region containing body and footer. Header/sidebar controls remain outside that
