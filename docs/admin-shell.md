@@ -166,13 +166,13 @@ parameters and coverage order. The current receipt is
 `artifacts/current/admin-shell-text-parameters-checkpoint.json`. A production
 text replacement has not been selected.
 
-This is an in-progress preview. The current visible catalog replay verifies body
+At the historical v20 checkpoint, the visible catalog replay verified body
 editing, Tab revealing offscreen content, original handlers through Enter,
 Space and pointer clicks, wheel scrolling with a stationary header and
 sidebar, and retained edits across theme changes and maximize/restore. Full focus
 and interaction coverage, source-raster comparison, broader nested-content and
 custom-renderer coverage, actual display/text scaling, and native ARM64 runtime
-acceptance remain open. No OS accessibility settings or Narrator campaign is
+acceptance were open. No OS accessibility settings or Narrator campaign is
 part of this work. The GitHub wiki remote is unavailable, so usage and evidence
 are maintained in the repository.
 
@@ -194,3 +194,17 @@ Its current hidden evidence is under
 `admin-shell-footer-hidden-negative-v20`. Six related package regressions and
 both component-demo fixtures pass on those rebuilt binaries. Earlier failed reports
 remain preserved; this passing preview does not imply complete component acceptance.
+
+## Current x64 milestone
+
+The exact .61 package consumer passes 312 Light/Dark initial states, 16 scrolled
+states and 72 ownership checks with zero geometry error. The catalog's focused
+physical-input fixture passes Tab and Space in the caller sidebar and pointer
+actions in the header, body and footer in both themes. Its original controls
+and text survive a content-padding change. The independent package
+consumer passes eight native 150% Light/Dark width and padding layouts with no
+visible clipping. Geometry stays settled with Windows animations already
+disabled. The independent x64 consumer compiles and runs; ARM64 builds only,
+with runtime unverified. These five checks accept Admin Shell for the
+2026-10-29 x64 component milestone. Raster comparison and the older diagnostic
+campaign are not milestone gates.

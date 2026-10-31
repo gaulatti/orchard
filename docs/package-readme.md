@@ -7,13 +7,13 @@ package-consumer compilation. The release lists accepted components. ARM64 is
 build-only and runtime-unverified; raster/pixel parity is not a gate. Older
 component notes below describe historical checks and do not add release gates.
 
-Accepted x64 components in this preview: Accordion, Activity Item, Alert, App Shell, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
+Accepted x64 components in this preview: Accordion, Activity Item, Alert, Admin Shell, App Shell, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group,
 Card, Checkbox, Collection Filters, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field, Field Help Tooltip, Filter Chip, Footer, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Page Frame, Page Header,
 Nav Menu, Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator,
 Sidebar, Skeleton, Slider, Sparkline, Stat Card, Status Badge, Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 71 are accepted.
+inventory has 112 entries started; 72 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -289,7 +289,11 @@ scroller. Body spacing follows viewport breakpoints at 640 and 1024 DIPs;
 models, templates and selectors. `Viewport` exposes the current ScrollViewer.
 Both shell controls keep their viewport minimum beneath local caller values,
 so clearing zero reveals the recipe and equal-valued overrides retain ownership.
-Their visual, input, scaling and platform acceptance remains in progress.
+For the x64 milestone, the independent package consumer covers 312 Light/Dark
+states and 72 ownership checks. The catalog passes real header, sidebar, body
+and footer input in both themes; the independent consumer verifies eight native
+150% layouts without visible clipping. Static geometry remains settled with
+Windows animations disabled. ARM64 runtime is unverified.
 
 `BleeckerThemeToggle` composes the three native icon-button sizes/variants with
 18 DIP Sun, Moon and Monitor vectors. `Mode` defaults to `System`. Handle
