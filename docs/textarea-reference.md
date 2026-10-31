@@ -1,11 +1,18 @@
 # Textarea source reference
 
-Textarea is in progress in the fixed parity inventory. `BleeckerTextarea` is a
+Textarea is accepted for the five-check `.58` x64 milestone. The extracted
+catalog passed 172 Light/Dark states at 320 and 640 client widths, with four
+physical pointer, keyboard, editing and focus sequences. The independent NuGet
+consumer compiled and passed 48 native 150% Light/Dark size, rows, width and
+error layouts without clipped editor, viewport or resize grip. Border paint
+settled with animations disabled. ARM64 built and its consumer compiled;
+runtime remains unverified. Older diagnostics below do not add milestone gates.
+
+`BleeckerTextarea` is a
 native `RichEditBox` with consumer-owned `Text`, `InputSize`, `Rows`, `IsError`
 and nullable `IsInvalid`. The latter maps an explicit accessibility override to
 `AutomationProperties.IsDataValidForForm`. The registered `TextareasFixture`
 shows sizes, rows, empty/error, disabled/read-only, constrained and Arabic examples.
-No component acceptance is claimed.
 
 The native RichEdit automation peer also combines its attached validity with
 `IsInvalid ?? IsError`. This keeps the Textarea invalid when a composing

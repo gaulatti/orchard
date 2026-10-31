@@ -5254,16 +5254,18 @@
         "scripts/verify-textarea-catalog-integration.mjs",
         "scripts/verify-textarea-package-context.mjs",
         "tests/PackageConsumer/MainWindow.TextareaCommands.cs",
-        "tests/PackageConsumer/MainWindow.Textarea.cs"
+        "tests/PackageConsumer/MainWindow.Textarea.cs",
+        "tests/PackageConsumer/TextareaScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .58 extracted x64 catalog passed 172 Light/Dark Textarea states at 320 and 640 client widths and four physical pointer, keyboard, editing and focus sequences. Independent .58 NuGet consumer compiled and ran 48 native 150% Light/Dark size, rows, width and error layouts without clipped editor, viewport or resize grip; border paint settled with animations disabled. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "toggle",
