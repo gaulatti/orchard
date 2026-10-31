@@ -75,7 +75,18 @@ public sealed partial class BleeckerMenubar
 
     private void FocusMenuTarget(MenubarButton target)
     {
-        void Focus() { if (InputAllowed && OwnsNavigationTarget(target)) target.Focus(FocusState.Keyboard); }
-        if (target.IsLoaded) Focus(); else DispatcherQueue.TryEnqueue(Focus);
+        void Focus()
+        {
+            if (!InputAllowed) return;
+            if (!target.IsLoaded)
+            {
+                RoutedEventHandler? loaded = null;
+                loaded = (_, _) => { target.Loaded -= loaded; DispatcherQueue.TryEnqueue(Focus); };
+                target.Loaded += loaded;
+                return;
+            }
+            if (OwnsNavigationTarget(target)) target.Focus(FocusState.Keyboard);
+        }
+        DispatcherQueue.TryEnqueue(Focus);
     }
 }

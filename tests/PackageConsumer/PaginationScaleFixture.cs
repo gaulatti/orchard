@@ -625,9 +625,56 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var menubarCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 700, 1000 })
+            {
+                stage = $"menubar/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 360; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 540));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 540));
+                var menubar = new BleeckerMenubar { Width = viewport - 40,
+                    Menus = [new BleeckerMenubarMenu("File",
+                        [new BleeckerMenubarAction("New fictional draft", () => { })])] };
+                Canvas.SetLeft(menubar, 20); Canvas.SetTop(menubar, 20);
+                root.Children.Add(menubar);
+                await LayoutAsync(root);
+                var trigger = Descendants<Button>(menubar).Single(button =>
+                    button.DataContext is BleeckerMenubarMenu menu && menu.Trigger == "File");
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    menubar.IsLoaded && menubar.ActualTheme == theme &&
+                    Within(Bounds(menubar, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(trigger, menubar), new Rect(0, 0, menubar.ActualWidth, menubar.ActualHeight)),
+                    "Menubar trigger clipped at native 150% scale.");
+                ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(trigger)
+                    .GetPattern(PatternInterface.Invoke)).Invoke();
+                await Task.Delay(180);
+                await LayoutAsync(root);
+                var surface = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .Where(popup => popup.Child is not null)
+                    .SelectMany(popup => Descendants<BleeckerOverlaySurface>(popup.Child))
+                    .Single(item => item.Name == "MenubarRootSurface");
+                Require(surface.IsLoaded && Within(Bounds(surface, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Descendants<Button>(surface).Any(button =>
+                        button.DataContext is BleeckerMenubarAction action && action.Label == "New fictional draft" &&
+                        Within(Bounds(button, surface), new Rect(0, 0, surface.ActualWidth, surface.ActualHeight))),
+                    "Menubar root menu clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(surface, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(surface, root).Equals(before) && surface.Opacity >= .99,
+                        "Menubar surface continued moving with reduced motion.");
+                }
+                menubarCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));

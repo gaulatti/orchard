@@ -1,10 +1,19 @@
-# Menubar native preview
+# Menubar
+
+The 2026-10-31 `.86` x64 milestone accepts Menubar under the five-check
+contract. The exact package-matching catalog passes Light and Dark states,
+physical keyboard and pointer activation with focus, four native 150% layouts,
+and static reduced-motion behavior. An independent x64 NuGet consumer compiles.
+The focus handoff now waits for popup rows to load before moving keyboard focus.
+ARM64 builds and consumer compilation pass; ARM64 runtime remains unverified.
+Historical prototype limitations below do not add milestone gates.
 
 `BleeckerMenubar` is a reusable WinUI control for ordered command menus. It uses
 Orchard's typography, theme brushes, card surface shadow and overlay shadow.
-The [frozen source contract](menubar-reference.md) remains authoritative evidence
-of the original Bleecker behavior. This preview is in progress; native test
-results must be read from the current checkpoint before claiming verification.
+The [frozen source contract](menubar-reference.md) remains evidence of the
+original Bleecker behavior. The five-check `.86` result is recorded in the
+current inventory and release note; the older prototype results below retain
+their original scope.
 
 The selected local preview `0.1.0-menubar-peer-metadata-v1-local` includes keyboard, radio
 provider and peer metadata repairs. Source, independent NuGet and unpacked catalog

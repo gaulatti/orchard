@@ -3936,10 +3936,12 @@
         "src/Orchard/Controls/BleeckerMenubar.Automation.cs"
       ],
       "catalogFixtures": [
-        "samples/Orchard.Catalog/MenubarsFixture.xaml"
+        "samples/Orchard.Catalog/MenubarsFixture.xaml",
+        "samples/Orchard.Catalog/MenubarsFixture.Foreground.cs"
       ],
       "regressionTests": [
         "tests/PackageConsumer/MenubarFixture.cs",
+        "tests/PackageConsumer/PaginationScaleFixture.cs",
         "scripts/verify-menubar.mjs",
         "scripts/test-menubar-audit.mjs",
         "scripts/reference/verify-menubar-source.mjs",
@@ -3949,7 +3951,7 @@
         "scripts/reference/capture-menubar-row-motion.cjs",
         "tests/Reference/MenubarNativeCounterexamples/DuplicatePeerText.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "sourcePreparation": {
         "reference": "tests/Reference/Menubar.json",
         "frames": "tests/Reference/Menubar",
@@ -4152,11 +4154,20 @@
         "externalClientTraversalVerified": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": {
+        "packageVersion": "0.1.0-preview.20261031.86",
+        "librarySha256": "acc3c532ff205d92187017b020979b860d7d1554069b6798f79b10aa4cbb8372",
+        "lightDarkStates": "The package-matching x64 catalog passed 15 Light and 15 Dark hidden states and 28 behavior contracts; artifacts/current/context-menu-native-candidate/menubar-v86.json.",
+        "keyboardPointerFocus": "The package-matching x64 catalog passed physical keyboard Down focus/Enter and pointer root/action activation in Light and Dark; artifacts/current/context-menu-native-candidate/menubar-foreground-Light-v86.json and menubar-foreground-Dark-v86.json.",
+        "scale150NoClip": "The independent .86 x64 consumer passed four native 150% Light/Dark 700/1000-DIP trigger, popup and row bounds cases; artifacts/current/context-menu-native-candidate/remaining-scale-v86.json.",
+        "reducedMotion": "With Windows animations already disabled, the independent consumer confirmed static popup geometry and endpoint opacity in four native 150% cases; artifacts/current/context-menu-native-candidate/remaining-scale-v86.json. No OS setting changed.",
+        "packageConsumerCompiles": "The independent x64 NuGet consumer compiled against .86 package SHA-256 44d1ddb5059dcac02967e3ce9c2de59be346a47d3ce7a5dd5ba1eb4cbaaa5634 and matched its Orchard DLL; artifacts/current/context-menu-native-candidate/package-x64-v86.json. ARM64 is build-only; runtime unverified."
       }
     },
     {
