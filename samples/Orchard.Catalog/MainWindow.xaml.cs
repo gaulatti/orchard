@@ -716,6 +716,16 @@ public sealed partial class MainWindow : Window
                 }
                 await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "hover-card-input", environment = RuntimeEnvironment() }));
             }
+            else if (args.Contains("--smoke-alert-dialog-input"))
+            {
+                foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+                {
+                    CatalogRoot.RequestedTheme = theme;
+                    await SelectFixtureAsync(AlertDialogs);
+                    await AlertDialogs.VerifyInputAsync(theme == ElementTheme.Light ? BleeckerColorScheme.Light : BleeckerColorScheme.Dark, folder);
+                }
+                await File.WriteAllTextAsync(Path.Combine(folder, "result.json"), JsonSerializer.Serialize(new { passed = true, component = "alert-dialog-input", environment = RuntimeEnvironment() }));
+            }
             else if (args.Contains("--smoke-dashboard-grid"))
             {
                 foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })

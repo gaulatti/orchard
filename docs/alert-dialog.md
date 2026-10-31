@@ -77,3 +77,15 @@ rendered geometry/text/metadata with the frozen source and exercise controlled
 actions, commands, property changes and teardown. They must not focus, activate
 or show a window or send hardware input. Physical input, foreground paint,
 scaling, motion and ARM64 runtime acceptance remain separate requirements.
+
+## 2026-10-30 x64 milestone
+
+The five-check x64 milestone supersedes the older full-raster and ARM64 runtime
+requirements above. The exact .70 package consumer renders all 56 Light/Dark
+source states, and the extracted x64 catalog verifies pointer confirmation,
+Space reopening, Escape cancellation, and focus return in both themes. Native
+150% layouts at 420 and 600 DIP pass in Light and Dark without clipping. With
+Windows animations already disabled, the open surface reaches its reduced-motion
+endpoint. The independent package consumer compiles and runs. The fictional
+Monitoring and Editorial demos remain catalog fixtures. ARM64 is build-only and
+its runtime remains unverified.

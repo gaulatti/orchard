@@ -2999,15 +2999,17 @@
         "scripts/verify-alert-dialog-native.mjs",
         "scripts/test-alert-dialog-native-audit.mjs",
         "scripts/verify-alert-dialog-actions.mjs",
-        "scripts/test-alert-dialog-actions-audit.mjs"
+        "scripts/test-alert-dialog-actions-audit.mjs",
+        "tests/PackageConsumer/AlertDialogScaleFixture.cs",
+        "scripts/smoke-catalog.ps1"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
       }
     },
     {

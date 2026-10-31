@@ -4,7 +4,7 @@
  <TextBlock Text="Fictional local confirmation. Requests remain caller-controlled; this fixture chooses when to close." TextWrapping="Wrap"/>
  <TextBlock x:Name="Status" Text="No requests" TextWrapping="Wrap"/>
  <StackPanel Orientation="Horizontal" Spacing="12">
-  <orchard:BleeckerButton Content="Open confirmation" Size="Small" Click="OpenDefault"/>
+  <orchard:BleeckerButton x:Name="OpenDefaultButton" Content="Open confirmation" Size="Small" Click="OpenDefault"/>
   <orchard:BleeckerButton Content="Open destructive confirmation" Size="Small" Variant="Destructive" Click="OpenDestructive"/>
  </StackPanel>
  <StackPanel Orientation="Horizontal" Spacing="12">
