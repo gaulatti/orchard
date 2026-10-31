@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Automation.Provider;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
@@ -286,9 +287,105 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var dateCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 400, 700 })
+            {
+                stage = $"date-controls/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 440; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 660));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 660));
+                var date = new DateTime(2026, 10, 17);
+                var value = new DateTimeOffset(date, TimeZoneInfo.Local.GetUtcOffset(date));
+                var calendar = new BleeckerCalendar { Width = 280, Value = value };
+                Canvas.SetLeft(calendar, 20); Canvas.SetTop(calendar, 20);
+                root.Children.Add(calendar);
+                await LayoutAsync(root);
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    calendar.IsLoaded && calendar.ActualTheme == theme &&
+                    Within(Bounds(calendar, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Descendants<ToggleButton>(calendar).Where(day => int.TryParse(day.Content?.ToString(), out _)).Count() >= 28 &&
+                    Descendants<ToggleButton>(calendar).Where(day => int.TryParse(day.Content?.ToString(), out _)).All(day => day.IsLoaded &&
+                        Within(Bounds(day, calendar), new Rect(0, 0, calendar.ActualWidth, calendar.ActualHeight))),
+                    "Calendar or day cells clipped at native 150% scale.");
+                dateCases.Add(new { kind = "calendar", theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+                var picker = new BleeckerDatePicker { Width = viewport - 40, Value = value };
+                Canvas.SetLeft(picker, 20); Canvas.SetTop(picker, 20);
+                root.Children.Add(picker);
+                await LayoutAsync(root);
+                var trigger = Descendants<Button>(picker).Single(item => item.Name == "PART_Trigger");
+                Require(picker.IsLoaded && picker.ActualTheme == theme &&
+                    Within(Bounds(picker, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    Within(Bounds(trigger, picker), new Rect(0, 0, picker.ActualWidth, picker.ActualHeight)),
+                    "Date Picker trigger clipped at native 150% scale.");
+                ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(trigger).GetPattern(PatternInterface.Invoke)).Invoke();
+                await LayoutAsync(root);
+                var pickerCalendar = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .SelectMany(popup => Descendants<BleeckerCalendar>(popup.Child)).Single();
+                Require(picker.IsDropDownOpen && pickerCalendar.IsLoaded &&
+                    Within(Bounds(pickerCalendar, root), new Rect(0, 0, root.Width, root.Height)),
+                    "Date Picker calendar clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(pickerCalendar, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(pickerCalendar, root).Equals(before),
+                        "Date Picker calendar continued moving with reduced motion.");
+                }
+                dateCases.Add(new { kind = "date-picker", theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(trigger).GetPattern(PatternInterface.Invoke)).Invoke();
+                await LayoutAsync(root);
+                Require(!picker.IsDropDownOpen, "Date Picker calendar remained open.");
+                root.Children.Clear();
+                await LayoutAsync(root);
+                var range = new BleeckerDateRangePicker
+                {
+                    Width = viewport - 40, Value = new("2026-10-10", "2026-10-20"),
+                    Presets = new[] { new BleeckerDatePreset("Seven days", 7) }
+                };
+                Canvas.SetLeft(range, 20); Canvas.SetTop(range, 20);
+                root.Children.Add(range);
+                await LayoutAsync(root);
+                var fields = Descendants<BleeckerDatePicker>(range).ToArray();
+                Require(range.IsLoaded && range.ActualTheme == theme &&
+                    Within(Bounds(range, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    fields.Length == 2 && fields.All(field => field.IsLoaded &&
+                        Within(Bounds(field, range), new Rect(0, 0, range.ActualWidth, range.ActualHeight))),
+                    "Date Range Picker fields clipped at native 150% scale.");
+                var startField = fields[0];
+                var startTrigger = Descendants<Button>(startField).Single(item => item.Name == "PART_Trigger");
+                ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(startTrigger).GetPattern(PatternInterface.Invoke)).Invoke();
+                await LayoutAsync(root);
+                var rangeCalendar = VisualTreeHelper.GetOpenPopupsForXamlRoot(root.XamlRoot)
+                    .SelectMany(popup => Descendants<BleeckerCalendar>(popup.Child)).Single();
+                Require(startField.IsDropDownOpen && rangeCalendar.IsLoaded &&
+                    Within(Bounds(rangeCalendar, root), new Rect(0, 0, root.Width, root.Height)),
+                    "Date Range Picker calendar clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = Bounds(rangeCalendar, root);
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(Bounds(rangeCalendar, root).Equals(before),
+                        "Date Range Picker calendar continued moving with reduced motion.");
+                }
+                dateCases.Add(new { kind = "date-range-picker", theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                ((IInvokeProvider)FrameworkElementAutomationPeer.CreatePeerForElement(startTrigger).GetPattern(PatternInterface.Invoke)).Invoke();
+                await LayoutAsync(root);
+                Require(!startField.IsDropDownOpen, "Date Range Picker calendar remained open.");
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases,
+                animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));
             window.Close(); Environment.Exit(0);

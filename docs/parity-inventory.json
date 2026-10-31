@@ -2477,16 +2477,18 @@
         "samples/Orchard.Catalog/MainWindow.DateTypography.cs",
         "scripts/verify-date-typography.mjs",
         "samples/Orchard.Catalog/DateShadowProbe.cs",
-        "scripts/verify-date-shadows.mjs"
+        "scripts/verify-date-shadows.mjs",
+        "tests/PackageConsumer/PaginationScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The x64 Date Controls catalog passed Light/Dark physical pointer, keyboard and focus flows for Date Range Picker, including endpoint bounds, selection, retained focus and preset updates. The independent .80 package consumer compiled and passed four native 150% Light/Dark 400/700-DIP range-field and open-calendar cases without clipping; the calendar remained static with animations disabled. ARM64 catalog and consumer built; runtime unverified. Reports use the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "filter-chip",
@@ -3308,16 +3310,18 @@
         "samples/Orchard.Catalog/MainWindow.DateTypography.cs",
         "scripts/verify-date-typography.mjs",
         "samples/Orchard.Catalog/DateShadowProbe.cs",
-        "scripts/verify-date-shadows.mjs"
+        "scripts/verify-date-shadows.mjs",
+        "tests/PackageConsumer/PaginationScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The x64 Date Controls catalog passed Light/Dark Calendar and Date Picker physical pointer, keyboard and focus flows, including day selection, popup closure and focus restoration. The independent .80 package consumer compiled and passed eight native 150% Light/Dark 400/700-DIP Calendar and Date Picker open-popup cases without clipping; the popup remained static with animations disabled. ARM64 catalog and consumer built; runtime unverified. Reports use the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "dialog-close-button",

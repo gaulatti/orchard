@@ -1,5 +1,12 @@
 # Calendar and date-control source contract
 
+The `0.1.0-preview.20261031.80` milestone accepts Date Picker (Calendar and
+Date Picker controls) and Date Range Picker on x64. Light/Dark states, physical
+pointer/keyboard/focus, native 150% no-clipping cases, static reduced-motion
+geometry and independent package-consumer compilation passed. ARM64 is
+build-only and runtime-unverified. Older exact visual and platform comparisons
+below remain historical diagnostics outside this milestone's five checks.
+
 `BleeckerCalendar`, `BleeckerDatePicker` and `BleeckerDateRangePicker` now have
 native controls and a registered Dates catalog fixture. Their browser producer
 contract remains the acceptance reference. Implementation and targeted runtime
