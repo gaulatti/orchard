@@ -13,13 +13,13 @@ Avatar, Bar Chart, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, But
 Checkbox, Collection Filters, Context Menu, Dashboard Grid, Dashboard Section, Data List, Data Table Column Toggle,
 Data Table Filters, Data Table Pagination, Data Table Toolbar, Date Picker, Date Range Picker, Detail Layout, Dialog Close Button,
 Donut Chart, Drawer, Dropdown Menu, Empty, Error State, Eyebrow, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip,
-File Input, Filter Chip, Footer, Funnel Chart, Header, Header Select, Hover Card, Icon Badge, Icon Button, Input, Kbd, Label,
+File Input, Filter Chip, Footer, Funnel Chart, Header, Header Select, Hero Carousel, Hover Card, Icon Badge, Icon Button, Input, Kbd, Label,
 Line Chart, Loading Overlay, Loading Spinner, Media Library, Menubar, Metric, Modal, Nav Menu, Navigation Menu, Notification Badge, OTP Input, Page Frame, Page Header,
 Pagination, Panel, Panel Layout, Pie Chart, Popover, Progress, Progress Stack, Radar Chart, Radial Bar Chart, Radio Group,
 Sankey Chart, Scatter Chart, Scroll Area, Search Input, Section Header, Secure Field, Segmented Control, Select, Separator, Sheet,
 Sidebar, Skeleton, Slider, Sonner, Sparkline, Stat Card, Status Badge, Stepper, Sunburst Chart, Switch, Tabs, Textarea,
 Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 108 are accepted.
+inventory has 112 entries started; 109 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -977,10 +977,13 @@ with text, font, layout-size and DPI changes; empty text, removed tags, replaced
 templates and unload release owned graphics resources. Caller replacement
 templates continue to own their visuals.
 
-Hero Carousel remains a preview. Hidden layout, sampled palette and ownership
-checks do not establish physical input/focus, full raster/motion/customization
-or native ARM64 acceptance. The fictional catalog fixture demonstrates the
-component without product services.
+Hero Carousel is accepted for the focused five-check x64 milestone. The exact
+package-matching catalog passes Light/Dark states; the independent consumer
+passes native 150% layout and reduced-motion checks. Focused physical arrow,
+inactive-slide Tab/Enter and pointer evidence from the earlier released x64
+build remains valid because the Hero control, theme and catalog fixture source
+have not changed since that build. ARM64 runtime remains unverified. The
+fictional catalog fixture demonstrates the component without product services.
 
 ### AuthShell layout
 

@@ -1,8 +1,20 @@
-# Hero Carousel native preview
+# Hero Carousel
+
+The 2026-10-31 `.87` x64 milestone accepts Hero Carousel under the five-check
+contract. The exact package-matching catalog passes 41 Light and 41 Dark states
+and 34 behavior contracts. An independent package consumer passes four native
+150% no-clipping and reduced-motion cases. Focused physical keyboard arrows,
+native-editor exclusion, inactive-slide Tab/Enter/focus and pointer click were
+verified in both themes in the released v7 binary. The Hero control, theme and
+catalog fixture sources have not changed since that release; those focused
+observations are reused under the milestone's evidence-reuse rule. ARM64 builds
+and consumer compilation pass, while ARM64 runtime remains unverified.
+The earlier prototype and v7 diagnostic records below describe the status at
+their recording times; they do not add milestone gates.
 
 On 2026-10-22 the user explicitly selected the source behavior: arrow keys throughout the owning window, plus Tab and click input on inactive slides. The `0.1.0-hero-carousel-input-v1-local` preview implements that choice. Source, fresh NuGet consumer and extracted catalog pass 82 states and 34 checks in each host, including owning-root subscriptions, direct outside-arrow processing, eleven native INPUT/TEXTAREA exclusions, contenteditable-equivalent RichEditBox, inactive link eligibility and original-item invocation, source empty/visible-content hit ordering and unload/remount cleanup. The later [v5 foreground input checkpoint](evidence/components-v5-hero-carousel-foreground-v1/checkpoint.json) verifies focused native paths in the extracted x64 catalog. No OS-global keyboard hook is used.
 
-Both solution and isolated-consumer architectures build with no solution warnings; 434 portable and 10 Windows text tests pass. The source auditor rejects 88 corruptions and the package auditor rejects 85. Both fictional demos load in the source and extracted catalog. Native state/contract data match across all three hosts. The strict source/package image comparison fails at 52 pixels, maximum channel difference 24, with 78/82 identical PNGs. Source/archive fails at 58 pixels, maximum 24, with 76/82 identical PNGs. The diagnostic threshold remains zero; byte-identical browser/native raster output is not a public-component delivery gate under the [acceptance contract](acceptance-contract.md). Complete source-derived visual review, broader physical input, scaling/motion/customization and native ARM64 acceptance remain open.
+Both solution and isolated-consumer architectures build with no solution warnings; 434 portable and 10 Windows text tests pass. The source auditor rejects 88 corruptions and the package auditor rejects 85. Both fictional demos load in the source and extracted catalog. Native state/contract data match across all three hosts. The strict source/package image comparison fails at 52 pixels, maximum channel difference 24, with 78/82 identical PNGs. Source/archive fails at 58 pixels, maximum 24, with 76/82 identical PNGs. The diagnostic threshold remains zero; byte-identical browser/native raster output is not a public-component delivery gate under the [acceptance contract](acceptance-contract.md). At that prototype checkpoint, broader physical input, scaling/motion/customization and native ARM64 runtime remained open.
 
 The [published v7 x64 catalog pointer checkpoint](evidence/hero-carousel-v7-published-archive-pointer-v1/checkpoint.json) verifies the exact released library DLL in the extracted catalog. In system Dark and explicit Light, a physical click in the empty area while the coastal slide is visible invokes the original inactive mountain item and retains its `/fictional/mountain` destination. The catalog window was closed and its process no longer ran; its exit code was not captured. The v7 outside-arrow and inactive Tab/Enter paths were not established by this focused check; their independent local-package evidence above remains separate from published-archive evidence.
 
@@ -29,9 +41,9 @@ closes the corresponding focused catalog gap. With the coastal slide still
 visible, physical Tab and Enter invoked the original inactive article item and
 returned its destination and external flag in system Dark and explicit Light.
 The archive, executable and library hashes match the released v7 files. The
-catalog process closed; its exit code was not captured. The full input/focus,
-visual, scaling, motion and performance matrices and native ARM64 runtime remain
-open, so the component is still in progress.
+catalog process closed; its exit code was not captured. At that v7 checkpoint,
+the broader focus, visual, scaling, motion and ARM64 runtime checks remained
+open.
 
 The [published v7 extracted catalog global-arrow checkpoint](evidence/hero-carousel-v7-published-archive-global-arrows-v1/checkpoint.json)
 tests the other focused input boundary in that same released binary. After
@@ -39,8 +51,8 @@ resetting to slide `0` and clicking the catalog navigation button, physical
 Right and Left changed the visible index `0 → 1 → 0` in system Dark and explicit Light.
 Right from the focused native component-search editor left the index unchanged
 in both themes. The catalog process closed, though its exit code was not
-captured. Broader focus, visual, scaling, motion, performance and ARM64 runtime
-checks remain open.
+captured. At that v7 checkpoint, broader focus, visual, scaling, motion and
+ARM64 runtime checks remained open.
 
 A [separate independent local NuGet-consumer foreground check](evidence/hero-carousel-current-package-foreground-v1/checkpoint.json)
 exercises the user-selected input behavior with the byte-matched

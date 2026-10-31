@@ -672,9 +672,55 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var heroCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 700, 1000 })
+            {
+                stage = $"hero-carousel/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 700; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 1050));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 1050));
+                var hero = new BleeckerHeroCarousel { Width = viewport - 40,
+                    AutoAdvanceMilliseconds = 1_000_000,
+                    Items = new BleeckerHeroCarouselItems([
+                        new BleeckerHeroCarouselItem("/fictional/coast", "Fictional coastal project", "Local component example") { Id = "first" },
+                        new BleeckerHeroCarouselItem("/fictional/mountain", "Fictional mountain project", "Second local example") { Id = "second" }]) };
+                Canvas.SetLeft(hero, 20); Canvas.SetTop(hero, 20);
+                root.Children.Add(hero);
+                await LayoutAsync(root);
+                var slides = Descendants<ContentControl>(hero).Where(item => item.Name == "HeroSlide").ToArray();
+                var arrows = Descendants<Button>(hero).Where(button => button.Name is "HeroPrevious" or "HeroNext").ToArray();
+                var titles = Descendants<TextBlock>(hero).Where(text => text.Name == "HeroTitleText").ToArray();
+                var actions = Descendants<Border>(hero).Where(border => border.Name == "HeroCta").ToArray();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    hero.IsLoaded && hero.ActualTheme == theme && slides.Length == 2 && arrows.Length == 2 &&
+                    titles.Length == 2 && actions.Length == 2 &&
+                    Within(Bounds(hero, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    slides.All(slide => Within(Bounds(slide, hero), new Rect(0, 0, hero.ActualWidth, hero.ActualHeight))) &&
+                    arrows.All(arrow => Within(Bounds(arrow, hero), new Rect(0, 0, hero.ActualWidth, hero.ActualHeight))) &&
+                    titles.All(text => Within(Bounds(text, hero), new Rect(0, 0, hero.ActualWidth, hero.ActualHeight))) &&
+                    actions.All(action => Within(Bounds(action, hero), new Rect(0, 0, hero.ActualWidth, hero.ActualHeight))),
+                    "Hero Carousel slide, title or arrow clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    hero.MoveNext();
+                    await LayoutAsync(root);
+                    var settled = slides.Select(slide => slide.Opacity).ToArray();
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(hero.CurrentIndex == 1 && settled.Count(value => value >= .99) == 1 &&
+                        settled.All(value => value <= .01 || value >= .99) &&
+                        slides.Select(slide => slide.Opacity).SequenceEqual(settled),
+                        "Hero Carousel slide opacity continued moving with reduced motion.");
+                }
+                heroCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases, navigationCases, menubarCases, heroCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));
