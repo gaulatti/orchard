@@ -1,5 +1,11 @@
 # Line Chart frozen contract and acceptance
 
+For the 2026-10-29 x64 milestone, Line Chart is accepted: the exact .81 catalog
+passes Light/Dark states and physical pointer/keyboard/focus; the independent
+.81 package consumer compiles and passes four native 150% no-clip cases with
+static geometry under reduced motion. ARM64 runtime is unverified. Older
+checkpoint gaps below are historical and outside this milestone.
+
 Ordinary chart inspection initializes from the current XAML-root focus owner
 before handling Left, Right or Enter. Pinned WinUI 2.3.9 raises `GotFocus`
 asynchronously, so a key can precede that notification after Tab assigns focus.
@@ -256,14 +262,14 @@ This checkpoint has 38 passing regressions and clean x64/ARM64 solution builds.
 The complete local x64 catalog passes Light/Dark at
 `artifacts/smoke-line-interaction-all`; hosted ARM64 interaction remains required.
 
-Remaining acceptance includes complete text/paint/legend and tooltip raster comparison,
+At this earlier checkpoint, broader verification included complete text/paint/legend and tooltip raster comparison,
 source line/tooltip animation, chart-viewport edge review, duplicate
 categories, date/object/boolean plotting and raw tooltip conversion, consumer
 overrides, complete unload/reload and retemplating, measured collection performance,
 component accessibility metadata, display/text scaling and native ARM64 checks.
 Narrator and OS contrast campaigns are excluded by the
 [library scope](library-scope.md). The inventory
-stays in progress; this control is not an accepted complete chart component.
+was in progress under that earlier contract.
 
 The catalog's retained interaction sequence now waits for actual routed key
 release before changing focus or consumer data. Each injected key must deliver

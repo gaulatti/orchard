@@ -1,5 +1,11 @@
 # Area Chart source contract and acceptance
 
+For the 2026-10-29 x64 milestone, Area Chart is accepted: the exact .81
+catalog passes 40 Light and 40 Dark cases with physical pointer/keyboard/focus;
+the independent .81 package consumer compiles and passes four native 150%
+no-clip cases with static geometry under reduced motion. ARM64 runtime is
+unverified. Older checkpoint gaps below are historical and outside this milestone.
+
 `BleeckerAreaChart` implements the public properties of the pinned [Bleecker
 Area Chart](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/area-chart.tsx).
 Source SHA-256 is `885d1f48264dd0b2f55a0fde90c554bd12fa983dee7c2c50b7f794faf8b6fdce`.
@@ -129,11 +135,9 @@ unchanged. All six stationary Input remounts record two rendered, owned,
 settled native cursor/border observations. The published focused Checkbox mode
 also passes both themes at `artifacts/smoke-checkbox-remount-published`.
 
-This component remains **in progress**. Full area/glyph/legend/tooltip raster
-and effect equivalence, normal/interrupted motion, the complete content/key/
-formatter/override/RTL matrix, component theme and automation behavior,
-display/text scaling, large-collection performance and native ARM64 acceptance
-remain required. Narrator and OS contrast campaigns are excluded by the
+At this earlier checkpoint, broader raster, motion, content, override, RTL,
+scaling, performance and native ARM64 verification remained open. Narrator
+and OS contrast campaigns are excluded by the
 [current library scope](library-scope.md).
 This native presentation change has no backend or metrics surface.
 

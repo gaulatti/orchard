@@ -630,14 +630,15 @@
         "tests/Orchard.Tests/CurrencyChartLayoutTests.cs",
         "tests/Reference/ChartLayout.json"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "47 Light and 47 Dark exact .81 catalog cases pass native states and physical pointer/keyboard/focus. The independent .81 package consumer compiled and passed four Light/Dark 400/700-DIP native 150% cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "chart-theme",
@@ -791,7 +792,7 @@
         "samples/Orchard.Catalog/Reference/LineShadow.json",
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "chartThemeConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -825,12 +826,13 @@
         "sharedEvidenceOnly": true
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .81 catalog Light/Dark states and physical pointer/keyboard/focus pass. The independent .81 package consumer compiled and passed four Light/Dark 400/700-DIP native 150% cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "bar-chart",
@@ -951,7 +953,7 @@
         "tests/Reference/AreaChartLayout.json",
         "tests/PackageConsumer/MainWindow.xaml.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "chartThemeConsumerVerification": {
         "librarySha256": "dae62c719a6887104f5e5ba2d38ce81465b4b19e9ef42e96225bbcbc91f5ce7d",
         "packageVersion": "0.1.0-menu-toast-modal-v1-local",
@@ -985,12 +987,13 @@
         "sharedEvidenceOnly": true
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "40 Light and 40 Dark exact .81 catalog cases pass native states and physical pointer/keyboard/focus. The independent .81 package consumer compiled and passed four Light/Dark 400/700-DIP native 150% cases without clipping; geometry remained static with animations disabled. ARM64 runtime is unverified."
     },
     {
       "id": "pie-chart",

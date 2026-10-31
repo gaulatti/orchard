@@ -385,7 +385,7 @@ internal static class PaginationScaleFixture
             var chartCases = new List<object>();
             foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
             foreach (var viewport in new[] { 400, 700 })
-            foreach (var kind in new[] { "bar", "sankey" })
+            foreach (var kind in new[] { "bar", "sankey", "line", "area", "currency" })
             {
                 stage = $"{kind}-chart/{theme}/{viewport}/150-percent";
                 root.Width = viewport; root.Height = 400; root.RequestedTheme = theme;
@@ -400,13 +400,36 @@ internal static class PaginationScaleFixture
                     bar.Data.Add(new Dictionary<string, object?> { ["label"] = "B", ["v"] = 20d });
                     wrapper = bar;
                 }
-                else
+                else if (kind == "sankey")
                 {
                     wrapper = new BleeckerSankeyChart { Data = new()
                     {
                         Nodes = [new BleeckerSankeyNode { Name = "A" }, new BleeckerSankeyNode { Name = "B" }],
                         Links = [new BleeckerSankeyLink { Source = 0, Target = 1, Value = 10 }]
                     } };
+                }
+                else if (kind == "line")
+                {
+                    var line = new BleeckerLineChart { XAxisKey = "label", ShowLegend = false };
+                    line.Series.Add(new BleeckerChartSeries { Key = "v", Name = "Fictional" });
+                    line.Data.Add(new Dictionary<string, object?> { ["label"] = "A", ["v"] = 10d });
+                    line.Data.Add(new Dictionary<string, object?> { ["label"] = "B", ["v"] = 20d });
+                    wrapper = line;
+                }
+                else if (kind == "area")
+                {
+                    var area = new BleeckerAreaChart { XAxisKey = "label", ShowLegend = false };
+                    area.Series.Add(new BleeckerChartSeries { Key = "v", Name = "Fictional" });
+                    area.Data.Add(new Dictionary<string, object?> { ["label"] = "A", ["v"] = 10d });
+                    area.Data.Add(new Dictionary<string, object?> { ["label"] = "B", ["v"] = 20d });
+                    wrapper = area;
+                }
+                else
+                {
+                    var currency = new BleeckerChart();
+                    currency.Data.Add(new Dictionary<string, object?> { ["name"] = "A", ["total"] = 10d });
+                    currency.Data.Add(new Dictionary<string, object?> { ["name"] = "B", ["total"] = 20d });
+                    wrapper = currency;
                 }
                 wrapper.Width = viewport - 40; wrapper.Height = 300;
                 Canvas.SetLeft(wrapper, 20); Canvas.SetTop(wrapper, 20);
@@ -418,14 +441,14 @@ internal static class PaginationScaleFixture
                     chart.ActualWidth > 0 && chart.ActualHeight > 0 &&
                     Within(Bounds(wrapper, root), new Rect(0, 0, root.Width, root.Height)) &&
                     Within(Bounds(chart, wrapper), new Rect(0, 0, wrapper.ActualWidth, wrapper.ActualHeight)),
-                    "Bar or Sankey chart clipped at native 150% scale.");
+                    $"{kind} chart clipped at native 150% scale.");
                 if (!animationsEnabled)
                 {
                     var before = Bounds(chart, root);
                     await Task.Delay(120);
                     await LayoutAsync(root);
                     Require(Bounds(chart, root).Equals(before),
-                        "Bar or Sankey chart continued moving with reduced motion.");
+                        $"{kind} chart continued moving with reduced motion.");
                 }
                 chartCases.Add(new { kind, theme = theme.ToString(), viewport,
                     scale = root.XamlRoot.RasterizationScale, passed = true });

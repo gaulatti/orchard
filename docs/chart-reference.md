@@ -1,5 +1,11 @@
 # Chart source contract and acceptance
 
+For the 2026-10-29 x64 milestone, Chart is accepted: the exact .81 catalog
+passes 47 Light and 47 Dark cases with physical pointer/keyboard/focus, and the
+independent .81 package consumer compiles and passes four native 150% no-clip
+cases with static geometry under reduced motion. ARM64 runtime is unverified.
+Older checkpoint gaps below are historical and are outside this milestone.
+
 The frozen [Chart source](https://github.com/gaulatti/bleecker/blob/a86059013cd59684ce452849278ea81e734f2066/src/components/chart.tsx)
 has SHA-256 `eacc1a099bf0957734ddbffcae03f28a4a087f7c3ba676812ba42094d3d21ece`.
 It is a fixed currency line plot: original consumer `data`, Height 300 by
@@ -30,9 +36,9 @@ boundary regressions, both architecture builds and complete published runtime
 evidence. Keep all current source assertions, tolerances, native exact event
 receipts, two-second presentation deadlines and the full 360-second deadline.
 
-This entry is in progress and not accepted. Exact raster/motion, complete data/
-override/RTL coverage, component theme/automation behavior, display and text scaling,
-measured collection performance and native ARM64 runtime remain required.
+At this earlier checkpoint, exact raster/motion, complete data/override/RTL
+coverage, component theme/automation behavior, display and text scaling,
+measured collection performance and native ARM64 runtime remained open.
 The public wiki remains unavailable, so documentation is retained here. This
 native presentation component has no backend or Prometheus surface.
 
