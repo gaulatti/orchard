@@ -281,3 +281,18 @@ retain both selected dialog rows; that report remains alongside the full repeat
 pass. This proves the observed catalog path once, not repeatability or an
 independent consumer foreground picker. File Input remains in progress pending
 its remaining visual, motion and native ARM64 runtime checks.
+
+## Current x64 milestone
+
+The .63 preview accepts File Input under the five-check x64 contract. Its exact
+package consumer renders 68 Light/Dark states and passes 34 selection and
+lifecycle contracts. The extracted x64 catalog passes real pointer and keyboard
+picker opening, cancellation, single and Shift-click multiple selection,
+extension filtering, original file callbacks, clearing, and selection retention.
+Two earlier native Ctrl-click attempts did not retain both rows; the focused
+fixture now selects adjacent rows with Shift-click and passes. The independent
+package consumer passes 24 native 150% layouts across themes, sizes, widths,
+and empty/selected states without clipping. File Input has static visual states
+and settled geometry with Windows animations disabled. ARM64 builds and its
+package consumer compiles; ARM64 runtime remains unverified. Raster/pixel parity
+is outside this milestone.

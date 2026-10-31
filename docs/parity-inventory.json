@@ -6775,9 +6775,10 @@
         "scripts/verify-file-input-desktop.ps1",
         "tests/Fixtures/fictional-playlist.m3u",
         "tests/Fixtures/fictional-playlist-alt.m3u8",
-        "tests/Fixtures/fictional-note.txt"
+        "tests/Fixtures/fictional-note.txt",
+        "tests/PackageConsumer/FileInputScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "desktopPickerCheckpoint": {
         "evidence": "docs/evidence/file-input-desktop-v1/checkpoint.json",
         "x64CatalogRunsPassed": 2,
@@ -6836,12 +6837,13 @@
         "nativeComponentAccepted": false
       },
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "The exact .63 independent package consumer passed 68 Light/Dark visual states and 34 selection/lifecycle contracts. The extracted .63 x64 catalog passed real pointer and keyboard picker opening, cancellation, single and Shift-click multiple selection, extension filtering, original native-file callbacks, clear and retention. The independent .63 package consumer passed 24 native 150% Light/Dark size/width/empty/selected layouts without clipping. File Input is static and its geometry remained settled with Windows animations disabled. The .63 independent x64 package consumer compiled and ran. ARM64 builds only; runtime unverified. Browser/native pixel parity is outside this milestone."
     },
     {
       "id": "section-header",

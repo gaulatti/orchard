@@ -198,11 +198,11 @@ try {
     if ($first.Count -ne 1 -or $alternate.Count -ne 1 -or $sentinel.Count -ne 0) { throw 'The native .m3u/.m3u8 filter did not distinguish the tracked note.' }
     $allowedNames = @($first[0].Current.Name, $alternate[0].Current.Name)
     ClickFileItem $first[0]
-    [OrchardFileInputDesktop]::keybd_event(0x11, 0, 0, [UIntPtr]::Zero)
+    [OrchardFileInputDesktop]::keybd_event(0x10, 0, 0, [UIntPtr]::Zero)
     try { ClickFileItem $alternate[0] }
-    finally { [OrchardFileInputDesktop]::keybd_event(0x11, 0, 2, [UIntPtr]::Zero) }
+    finally { [OrchardFileInputDesktop]::keybd_event(0x10, 0, 2, [UIntPtr]::Zero) }
     foreach ($item in @($first[0], $alternate[0])) {
-        if (-not $item.GetCurrentPattern([System.Windows.Automation.SelectionItemPattern]::Pattern).Current.IsSelected) { throw 'Native Ctrl-click did not retain both file selections.' }
+        if (-not $item.GetCurrentPattern([System.Windows.Automation.SelectionItemPattern]::Pattern).Current.IsSelected) { throw 'Native Shift-click did not retain both file selections.' }
     }
     NativeOpen $multiplePicker
     $twoFiles = 'fictional-playlist.m3u, fictional-playlist-alt.m3u8'
