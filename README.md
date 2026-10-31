@@ -11,16 +11,16 @@ initial input styles. See [Switch usage and acceptance](docs/switches.md) and
 [Checkbox usage and acceptance](docs/checkboxes.md).
 Full component parity and platform acceptance remain in progress.
 
-Download the [2026-10-30 `.63` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.63)
-for the current x64 component milestone. Seventy-three of 112 entries are accepted:
+Download the [2026-10-30 `.64` preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261030.64)
+for the current x64 component milestone. Seventy-four of 112 entries are accepted:
 Accordion, Activity Item, Alert, Admin Shell, App Shell, App Tab Bar, Auth Shell, Avatar, Bauhaus Background, Brand Lockup, Brand Mark, Breadcrumb, Button, Button Group, Card, Checkbox, Collection Filters, Context Menu, Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button,
 Empty, Error State, Feed Column, Feed Grid, Feed Item, Field, Field Help Tooltip, File Input, Filter Chip, Footer, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric,
-Nav Menu, Notification Badge, OTP Input, Page Frame, Page Header, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group,
+Nav Menu, Notification Badge, OTP Input, Page Frame, Page Header, Pagination, Panel, Panel Layout, Popover, Progress, Progress Stack, Radio Group,
 Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator, Sidebar, Skeleton, Slider, Sparkline, Stat Card, Status Badge,
-Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-63.md)
+Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The [release note](docs/releases/2026-10-30-preview-64.md)
 records the five checks and package hashes. Download the matching
-[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.63/Orchard.Catalog.0.1.0-preview.20261030.63.win-x64.zip)
-or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.63/Orchard.Catalog.0.1.0-preview.20261030.63.win-arm64.zip).
+[x64 catalog ZIP](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.64/Orchard.Catalog.0.1.0-preview.20261030.64.win-x64.zip)
+or the [ARM64 build](https://github.com/gaulatti/orchard/releases/download/v0.1.0-preview.20261030.64/Orchard.Catalog.0.1.0-preview.20261030.64.win-arm64.zip).
 ARM64 runtime remains unverified.
 
 The earlier [v5 preview](https://github.com/gaulatti/orchard/releases/tag/v0.1.0-preview.20261027.5)
@@ -148,10 +148,10 @@ The [AppShell preview](docs/app-shell.md) composes original header/body/footer
 controls with a viewport minimum and caller-controlled header offset.
 The [Header prototype](docs/header.md) composes original brand/navigation and
 desktop/mobile actions with responsive, fixed/sticky/static layout.
-The [Popover prototype](docs/popover.md) anchors original caller content to an
+The [accepted Popover](docs/popover.md) anchors original caller content to an
 original trigger, with controlled requests, internal history and source
-placement. Hidden source-layout and ownership checks pass; full acceptance is
-in progress.
+placement. Its Light/Dark states, physical input, native 150% layout, reduced
+motion and package consumer pass on x64.
 The [HoverCard prototype](docs/hover-card.md) retains original trigger/content
 in an inline hover surface with source placement and opacity motion. Hidden
 layout, presentation-clock and ownership diagnostics pass; physical input and

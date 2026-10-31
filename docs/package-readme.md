@@ -11,9 +11,9 @@ Accepted x64 components in this preview: Accordion, Activity Item, Alert, Admin 
 Card, Checkbox, Collection Filters, Context Menu,
 Dashboard Grid, Dashboard Section, Data List, Detail Layout, Dialog Close Button, Empty, Error State, Feed Column, Feed Grid, Feed Item,
 Field, Field Help Tooltip, File Input, Filter Chip, Footer, Icon Badge, Icon Button, Input, Kbd, Label, Loading Overlay, Loading Spinner, Metric, Page Frame, Page Header,
-Nav Menu, Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator,
+Nav Menu, Notification Badge, OTP Input, Pagination, Panel, Panel Layout, Popover, Progress, Progress Stack, Radio Group, Scroll Area, Search Input, Secure Field, Section Header, Segmented Control, Separator,
 Sidebar, Skeleton, Slider, Sparkline, Stat Card, Status Badge, Stepper, Switch, Tabs, Textarea, Theme Toggle, Timeline, Toggle, Toggle Group and Tooltip. The fixed
-inventory has 112 entries started; 73 are accepted.
+inventory has 112 entries started; 74 are accepted.
 
 `BleeckerSkeleton` accepts caller-owned `Content`, `ContentTemplate` and
 `ContentTemplateSelector`. Content and opacity bindings survive template changes
@@ -227,8 +227,8 @@ Handle `OpenRequested` and update `Open` to accept controlled transitions;
 models and templates/selectors. `Side`, `Align` and `SideOffset` control source
 placement, including RTL, collision shifting/flipping and negative offsets.
 `SurfaceStyle` customizes the private surface; inherited paint and typography
-properties remain public. Popover is an unaccepted prototype. Full visual,
-input/focus, nested modal, scaling and ARM64 runtime acceptance remain open.
+properties remain public. Popover passes the five-check x64 milestone; ARM64
+runtime remains unverified.
 
 `BleeckerBrandLockup.IsLogoLoaded` and `LogoOpened` expose the current native
 logo decoder's readiness, independently of element loading; `LogoFailed`

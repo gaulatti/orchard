@@ -1,11 +1,20 @@
-# Popover prototype
+# Popover
 
 `BleeckerPopover` hosts an original trigger and nonmodal content. Inside a
 `BleeckerModalHost` it uses the host's private portal plane; outside that host it
 uses a native Popup. The [frozen contract](popover-reference.md) records its Bleecker source
 and placement/input behavior. The local component and catalog fixture pass
-hidden native checks and a fresh independent package replay. Complete native
-input, visual and platform acceptance remain open.
+hidden native checks and a fresh independent package replay. The .64 preview
+accepts Popover for the five-check x64 milestone; ARM64 runtime is unverified.
+
+The exact .64 independent package consumer passes 122 Light/Dark placement and
+state cases, five lifecycle contracts and six hosted modal cases. Its package
+compiles and runs. The extracted .64 x64 catalog passes physical pointer,
+keyboard, focus, Escape, outside dismissal, nested and modal interactions in
+both themes. An independent package consumer passes four native 150% Light/Dark
+popup surface and caller-text layouts at 320/480 DIP without clipping. Popover
+defines no animation or transition; its geometry settles with Windows
+animations disabled. Raster/pixel parity is outside this milestone.
 
 ```xml
 <orchard:BleeckerPopover OpenRequested="PopoverRequested">
@@ -94,7 +103,7 @@ component's explicit paint bindings continue to use its public properties.
 The default component template requires a Grid named `PART_Layout`. Replacement
 releases old presenters and input subscriptions before mounting originals in the
 new template. The source's effective stylesheet supplies no popup animation;
-the prototype does not add stock open/close motion or change OS preferences.
+Popover does not add stock open/close motion or change OS preferences.
 Theme and existing accessibility metadata support remain intact.
 
 Visible-host opening focuses the first focusable content or the content host.
@@ -103,14 +112,15 @@ outside pointer/focus requests preserve outside focus. Controlled requests may
 be ignored. Nested popovers register their content as owned branches. The group
 peer provides ExpandCollapse, and the content uses a native Pane peer. The x64
 foreground check verifies focus on the original TextBox and restoration to the
-native trigger action. Nested modal/flyout interoperability and complete
-accessibility behavior still require runtime acceptance evidence.
+native trigger action. The current foreground fixture also verifies nested and
+modal input in Light and Dark.
 
 `samples/Orchard.Catalog/PopoversFixture.xaml` registers fictional default,
 controlled, side/alignment and nested examples. Both required Monitoring and
-Editorial demos remain preserved. Broader native input, complete raster,
-scaling, performance and ARM64 runtime acceptance remain open. The focused
-foreground fixture uses the desktop for component pointer and keyboard checks.
+Editorial demos remain preserved. The focused foreground fixture uses the
+desktop for component pointer and keyboard checks. Broader historical parity
+and performance diagnostics are outside this milestone; ARM64 runtime remains
+unverified.
 
 ## Verified prototype checkpoint
 

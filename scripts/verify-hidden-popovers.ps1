@@ -9,6 +9,14 @@ $hostName=if($HostKind -eq 'Catalog'){'Orchard.Catalog'}else{'PackageConsumer'}
 $referencePath=(Resolve-Path -LiteralPath $Reference).Path
 $identity=Join-Path $target 'app-identity';New-Item -ItemType Directory -Path $identity -Force | Out-Null
 foreach($file in @('Orchard.dll',"$hostName.dll")){Copy-Item -LiteralPath (Join-Path $app $file) -Destination $identity}
+if($HostKind -eq 'PackageConsumer'){
+    $consumerRoot=Split-Path $app -Parent
+    foreach($receipt in @('result.json','cleanup.json')){
+        $receiptPath=Join-Path $consumerRoot $receipt
+        if(-not(Test-Path -LiteralPath $receiptPath -PathType Leaf)){throw "Missing independent package consumer $receipt receipt."}
+        Copy-Item -LiteralPath $receiptPath -Destination $target
+    }
+}
 $process=Start-Process -FilePath (Join-Path $app "$hostName.exe") -ArgumentList "--verify-hidden-popovers `"$referencePath`" --verify-output `"$report`"" -PassThru -WindowStyle Hidden
 @{processId=$process.Id;startedAt=[DateTime]::UtcNow.ToString('o')}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $target 'process.json')
 if(-not $process.WaitForExit(120000)){$process.Kill();throw 'Own hidden Popover run exceeded its watchdog.'}
