@@ -535,9 +535,45 @@ internal static class PaginationScaleFixture
                 root.Children.Clear();
                 await LayoutAsync(root);
             }
+            var mediaCases = new List<object>();
+            foreach (var theme in new[] { ElementTheme.Light, ElementTheme.Dark })
+            foreach (var viewport in new[] { 700, 1000 })
+            {
+                stage = $"media-library/{theme}/{viewport}/150-percent";
+                root.Width = viewport; root.Height = 900; root.RequestedTheme = theme;
+                window.AppWindow.ResizeClient(new Windows.Graphics.SizeInt32(viewport * 3 / 2, 1350));
+                island.SiteBridge.MoveAndResize(new Windows.Graphics.RectInt32(0, 0, viewport * 3 / 2, 1350));
+                var media = new BleeckerMediaLibrary { Width = viewport - 40,
+                    Items = new[] { new BleeckerMediaLibraryItem("one", "Fictional coast"),
+                        new BleeckerMediaLibraryItem("two", "Fictional portrait"),
+                        new BleeckerMediaLibraryItem("three", "Fictional archive") } };
+                media.DeleteRequested += (_, _) => { };
+                Canvas.SetLeft(media, 20); Canvas.SetTop(media, 20);
+                root.Children.Add(media);
+                await LayoutAsync(root);
+                var tiles = Descendants<Grid>(media).Where(tile => tile.Name == "MediaTile").ToArray();
+                Require(Math.Abs(root.XamlRoot.RasterizationScale - 1.5) < .0001 &&
+                    media.IsLoaded && media.ActualTheme == theme && tiles.Length == 3 &&
+                    Within(Bounds(media, root), new Rect(0, 0, root.Width, root.Height)) &&
+                    tiles.All(tile => tile.IsLoaded && Within(Bounds(tile, media),
+                        new Rect(0, 0, media.ActualWidth, media.ActualHeight))),
+                    "Media Library or tile clipped at native 150% scale.");
+                if (!animationsEnabled)
+                {
+                    var before = tiles.Select(tile => Bounds(tile, root)).ToArray();
+                    await Task.Delay(120);
+                    await LayoutAsync(root);
+                    Require(tiles.Select((tile, index) => Bounds(tile, root).Equals(before[index])).All(stable => stable),
+                        "Media Library tiles continued moving with reduced motion.");
+                }
+                mediaCases.Add(new { theme = theme.ToString(), viewport,
+                    scale = root.XamlRoot.RasterizationScale, passed = true });
+                root.Children.Clear();
+                await LayoutAsync(root);
+            }
             await File.WriteAllTextAsync(output, JsonSerializer.Serialize(new
             {
-                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases,
+                passed = true, cases, tableCases, columnToggleCases, filterCases, toolbarCases, dateCases, chartCases, sunburstCases, mediaCases,
                 animationsEnabled, reducedMotionStaticVerified = !animationsEnabled,
                 librarySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(typeof(BleeckerPagination).Assembly.Location)))
             }));

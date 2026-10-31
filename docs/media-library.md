@@ -6,10 +6,14 @@ the [component-library scope](library-scope.md). The pinned Bleecker source is
 `a86059013cd59684ce452849278ea81e734f2066`, SHA-256
 `eac6b2e0474d8970539f6f23fff22cc515df39fb496dd7bed8beeb646e420232`.
 Source preparation is verified. The public Windows component and its fictional
-catalog fixture now have a verified hidden preview. The x64 solution builds
-without warnings, as does ARM64. Fresh NuGet consumers for both architectures
-build successfully; the x64 consumer and extracted runnable catalog pass the
-hidden preview. No full native acceptance is claimed.
+catalog fixture are accepted for the 2026-10-29 x64 milestone. The exact `.84`
+package consumer compiled and rendered 50 Light and 50 Dark states with 38
+behavior contracts. The matching catalog passed physical pointer Delete/Open,
+Tab/Space Delete and focus in both themes. The independent consumer passed four
+native 150% Light/Dark 700/1000-DIP no-clipping cases; tile geometry stayed
+static with Windows animations disabled. ARM64 builds, but its runtime is
+unverified. Historical delivery notes below describe earlier preview status
+and do not add acceptance gates.
 
 The caller owns ordered items and their original IDs, filenames, optional alt
 text, thumbnail/full URLs and creation-date values. The component owns only
