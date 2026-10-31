@@ -6248,16 +6248,18 @@
         "tests/Orchard.Tests/PaginationMotionTests.cs",
         "samples/Orchard.Catalog/MainWindow.PaginationMotion.cs",
         "scripts/verify-pagination-motion.mjs",
-        "scripts/test-pagination-motion-audit.mjs"
+        "scripts/test-pagination-motion-audit.mjs",
+        "tests/PackageConsumer/PaginationScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .55 extracted x64 catalog passed 66 Light/Dark Pagination frames, four physical input sequences and 64 reduced-motion presentation cases. The independent .55 NuGet consumer compiled and ran; 24 native 150% Light/Dark page/width/RTL cases kept every action in bounds and static with animations disabled. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "collection-filters",
@@ -7744,16 +7746,18 @@
         "scripts/reference/capture-tabs.cjs",
         "scripts/reference/tabs-client.tsx",
         "scripts/reference/capture-tabs-motion.cjs",
-        "scripts/reference/tabs-motion-client.tsx"
+        "scripts/reference/tabs-motion-client.tsx",
+        "tests/PackageConsumer/TabsScaleFixture.cs"
       ],
-      "status": "in-progress",
+      "status": "accepted",
       "milestoneChecks": {
-        "lightDarkStates": "fail",
-        "keyboardPointerFocus": "fail",
-        "scale150NoClip": "fail",
-        "reducedMotion": "fail",
-        "packageConsumerCompiles": "fail"
-      }
+        "lightDarkStates": "pass",
+        "keyboardPointerFocus": "pass",
+        "scale150NoClip": "pass",
+        "reducedMotion": "pass",
+        "packageConsumerCompiles": "pass"
+      },
+      "milestoneEvidence": "Exact .55 extracted x64 catalog passed Light/Dark Tabs states across nine variant/size pairs and physical keyboard, pointer and focus sequences. The independent .55 NuGet consumer compiled and ran; 36 native 150% Light/Dark variant/size/width layouts kept all buttons in bounds. Selection paint and positions remained static under reduced motion. ARM64 catalog built and consumer compiled; runtime unverified. Reports are in the existing artifacts/current/context-menu-native-candidate directory."
     },
     {
       "id": "theme-toggle",

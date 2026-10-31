@@ -1,5 +1,14 @@
 # Pagination
 
+The `.55` x64 preview accepts Pagination under the five-check milestone. The
+extracted catalog passed 66 Light/Dark states and four physical input sequences;
+its 64 reduced-motion presentation cases passed with animations disabled. The
+independent package consumer compiled and ran 24 native 150% cases across both
+themes, two widths, three page positions and RTL/LTR without clipped actions.
+ARM64 built and its consumer compiled; ARM64 runtime is unverified. Earlier
+pixel and normal-motion diagnostics below are historical and are not gates for
+this milestone.
+
 The fixed inventory's Pagination entry follows Bleecker commit
 `a86059013cd59684ce452849278ea81e734f2066`, `src/components/pagination.tsx`
 (SHA-256 `9111a975e78d31dcd8e3c68b588110547b45ee31facad43b81f84bb9e7318834`).
@@ -117,10 +126,7 @@ node scripts/verify-pagination-motion.mjs --native artifacts/pagination-motion -
 node scripts/test-pagination-motion-audit.mjs --native artifacts/pagination-motion --app artifacts/catalog --output artifacts/pagination-motion-negative
 ```
 
-Implementation remains in progress. Exact raster parity, real-time normal-motion
-playback, interrupted/held-key input, broader caller customization and scaling, full integration and
-native ARM64 runtime require further work. The verified v20 preview is retained
-separately and does not contain this new draft. The working draft is recorded
-in `artifacts/current/pagination-motion-checkpoint.json`.
-No collector or arithmetic test establishes component acceptance. The public
+The older `artifacts/current/pagination-motion-checkpoint.json` describes the
+pre-milestone draft and is not the current acceptance record. The `.55` release
+and machine-readable inventory record the five current x64 checks. The public
 wiki is unavailable; this contract is maintained in the repository.

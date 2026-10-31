@@ -1,5 +1,14 @@
 # Tabs
 
+The `.55` x64 preview accepts Tabs under the five-check milestone. The extracted
+catalog passed Light/Dark states across nine variant/size pairs and physical
+keyboard, pointer and focus sequences. The independent package consumer
+compiled and ran 36 native 150% Light/Dark layouts across variants, sizes and
+widths; buttons stayed in bounds. Selection paint and positions stayed static
+with animations disabled. ARM64 built and its consumer compiled; ARM64 runtime
+is unverified. Pixel differences and normal-motion diagnostics below are
+historical, not milestone gates.
+
 `BleeckerTabs` is a reusable, consumer-controlled strip of `BleeckerTabItem`
 records. Variants are `Underline`, `Segmented` and `Enclosed`; sizes are `Small`,
 `Medium` and `Large`. `Stretch` distributes the available width while retaining
@@ -81,11 +90,9 @@ font and a custom link renderer with unchanged destination metadata. A fresh
 ARM64 consumer builds against the same package; ARM64 runtime remains unverified.
 The consumer helpers confirm removal of their isolated temporary sources/caches.
 
-Complete source-derived visual review, normal native motion presentation, complete consumer
-override/scaling/lifecycle coverage and current native ARM64 runtime remain
-acceptance work. The entry stays in progress until verified. Package
-evidence is recorded in `artifacts/current/tabs-motion-checkpoint.json`; older package reports must
-not be used to accept newer source changes.
+The historical package evidence in `artifacts/current/tabs-motion-checkpoint.json`
+does not establish the `.55` milestone; use the current release and inventory
+for its five x64 checks.
 Narrator and OS contrast campaigns are excluded by the [library scope](library-scope.md).
 
 The 2026-10-25 visual review found a selected-tab border compositing defect.
